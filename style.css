@@ -1,1 +1,690 @@
-/* Pas 6: fitxer de reserva. Els estils reals es construiran al Pas 8. */
+/* ==========================================================================
+   Agenda cultural — Catalunya Nord
+   Disseny blanc i negre: el «sang i or» només com a accent (data/hora, punt
+   del dia, banderola de categoria); els cartells aporten el color.
+   Tipografies. Català: Fraunces (títols) + Montserrat (cos/UI).
+   Francès: Georgia en cursiva (veu secundària).
+   Mobile-first, sense frameworks. Tema clar i tema fosc.
+   ========================================================================== */
+/* --------------------------------------------------------------------
+   Tipografies autoallotjades (woff2 dins de /fonts).
+   Català: Fraunces (títols) + Montserrat (cos/UI). Francès: Georgia cursiva.
+   Si els .woff2 no hi són, es mostren les alternatives sense trencar res.
+-------------------------------------------------------------------- */
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/fraunces-700.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/fraunces-900.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/montserrat-400.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/montserrat-600.woff2') format('woff2'); }
+
+/* --------------------------------------------------------------------
+   Colors. El «sang i or» és invariable i només surt com a accent.
+   Els temes clar/fosc canvien l'entorn (blanc i negre dominants).
+-------------------------------------------------------------------- */
+:root {
+  --vermell: #b5121b;
+  --or: #fcdd09;
+
+  /* Tema CLAR (per defecte). */
+  --fons: #ffffff;
+  --fons-targeta: #ffffff;
+  --tinta: #1a1a1a;
+  --tinta-suau: #6f6862;
+  --vora: #e7e4df;
+  --accent: var(--vermell);          /* data i hora, en clar */
+  --banderola-fons: #1a1a1a;
+  --banderola-text: #ffffff;
+  --placeholder-fons: #f5eccf;       /* or molt suau darrere la icona */
+  --placeholder-icona: #7a5f12;      /* or fosc, llegible sobre el groc suau */
+  --capcalera-fons: #ffffff;
+  --capcalera-text: #1a1a1a;
+
+  --tipo-titol: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --tipo-ui: 'Montserrat', system-ui, 'Segoe UI', Arial, sans-serif;
+  --tipo-serif: Georgia, 'Times New Roman', serif;
+}
+
+/* Tema FOSC — només canvia els colors d'entorn; la marca no es toca. */
+[data-tema="fosc"] {
+  --fons: #121110;
+  --fons-targeta: #1b1917;
+  --tinta: #f2efe9;
+  --tinta-suau: #9b938c;
+  --vora: #2c2825;
+  --accent: var(--or);               /* data i hora, en fosc */
+  --banderola-fons: #f2efe9;
+  --banderola-text: #121110;
+  --placeholder-fons: #241f16;
+  --placeholder-icona: #c2a23a;
+  --capcalera-fons: #121110;
+  --capcalera-text: #f2efe9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fons);
+  color: var(--tinta);
+  font-family: var(--tipo-ui);
+  line-height: 1.5;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contingut { max-width: 760px; margin: 0 auto; padding: 0 1rem; }
+
+/* --------------------------------------------------------------------
+   Capçalera — tinta sobre fons net (sense banda vermella ni senyera).
+   Deixa lloc per a una futura secció hero i un logo per dissenyar.
+-------------------------------------------------------------------- */
+.capcalera {
+  background: var(--capcalera-fons);
+  color: var(--capcalera-text);
+  padding: 1.4rem 0 1.3rem;
+  border-bottom: 1px solid var(--vora);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.capcalera .contingut { position: relative; }
+
+/* El logotip «Què fas?» fa de títol. Hi ha dues imatges, una per tema;
+   la del tema inactiu s'amaga (per defecte es veu la clara). */
+.capcalera h1 { margin: 0; }
+.logo-quefas { display: block; width: min(220px, 56vw); height: auto; }
+.logo-fosc { display: none; }
+[data-tema="fosc"] .logo-clar { display: none; }
+[data-tema="fosc"] .logo-fosc { display: block; }
+/* Subtítol de capçalera: ja no s'usa a la portada (l'índex només duu el
+   logotip), però la pàgina legal encara el fa servir (.subtitol-legal). */
+.capcalera .subtitol {
+  margin: 0.45rem 0 0;
+  font-family: var(--tipo-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--tinta-suau);
+}
+
+/* Botó de canvi de tema, a la cantonada de la capçalera. */
+.boto-tema {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--vora);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta-suau);
+  cursor: pointer;
+  line-height: 1;
+}
+.boto-tema:hover { background: var(--vora); color: var(--tinta); }
+.boto-tema .icona-tema { display: inline-flex; }
+
+/* --------------------------------------------------------------------
+   Capçalera de portada («faixa») — només l'usa index.html.
+   El logotip, centrat i gran, fa d'imatge que encapçala el web; a sota,
+   la fila d'utilitats («Qui som» + botó de tema). La pàgina legal manté
+   la capçalera compacta de sempre.
+-------------------------------------------------------------------- */
+.capcalera-portada { padding: 2.1rem 0 1.5rem; }
+.capcalera-portada .contingut { text-align: center; }
+.capcalera-portada .logo-quefas { width: min(430px, 94vw); margin: 0 auto; }
+
+/* Fila d'utilitats sota el logotip. */
+.fila-utilitats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* En mòbil i tauleta el botó de tema viu dins la fila (no flota).
+   En pantalla ampla torna a la cantonada (vegeu el @media de 900px). */
+.capcalera-portada .boto-tema { position: static; }
+
+/* Botó «Qui som»: píndola amb contorn de tinta i punt d'accent davant,
+   una mica més present que el botó de tema (és contingut, no utilitat). */
+.boto-quisom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.34rem 0.8rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta);
+  text-decoration: none;
+  line-height: 1;
+}
+.boto-quisom::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.boto-quisom .quisom-fr { font-family: var(--tipo-serif); font-style: italic; font-weight: 400; opacity: 0.85; }
+.boto-quisom:hover { background: var(--tinta); color: var(--fons); }
+.boto-quisom:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* --------------------------------------------------------------------
+   Seccio hero - convida a subscriure's a l'agenda (public general).
+   Blanc i negre, com la resta: fons net i una vora fina a sota.
+-------------------------------------------------------------------- */
+.hero {
+  background: var(--fons);
+  border-bottom: 1px solid var(--vora);
+  padding: 1.5rem 0 1.6rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.hero .contingut { display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+
+.hero-text { margin: 0; max-width: 46ch; }
+.hero-text .hero-ca { display: block; font-family: var(--tipo-ui); font-weight: 600; font-size: 1.05rem; line-height: 1.35; color: var(--tinta); }
+.hero-text .hero-fr { display: block; margin-top: 0.25rem; font-family: var(--tipo-serif); font-style: italic; font-size: 0.95rem; color: var(--tinta-suau); }
+
+/* Etiquetes bilingues dins dels botons d'accio (catala a dalt, frances a sota).
+   El català va en Fraunces amb un punt d'accent davant (vermell en clar,
+   or en fosc), com el punt de les capçaleres de dia. */
+.boto-ca { font-family: var(--tipo-titol); font-weight: 700; font-size: 1.02rem; }
+.boto-ca::before {
+  content: "";
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 0.5rem;
+  vertical-align: 0.12em;
+}
+.boto-fr { font-family: var(--tipo-serif); font-weight: 400; font-style: italic; font-size: 0.78rem; opacity: 0.85; }
+
+/* Boto principal de subscripcio: ple, en tinta, rectangle arrodonit
+   (10px, com les targetes) per distingir-lo de les píndoles de filtre.
+   white-space: nowrap garanteix que cada llengua ocupa una sola línia. */
+.boto-hero {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.3;
+  padding: 0.65rem 1.7rem 0.75rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 10px;
+  background: var(--tinta);
+  color: var(--fons);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.boto-hero:hover { background: transparent; color: var(--tinta); }
+
+/* Anell d'accent quan s'hi arriba amb el teclat (accessibilitat). */
+.boto-hero:focus-visible,
+.boto-peu:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------
+   Barra de filtres (enganxada a dalt). Botons en blanc i negre.
+-------------------------------------------------------------------- */
+.filtres {
+  background: var(--fons);
+  border-bottom: 1px solid var(--vora);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.filtres-interior { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.filtre-comarques { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.boto-comarca {
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta);
+  cursor: pointer;
+}
+.boto-comarca:hover { background: var(--vora); }
+.boto-comarca.actiu { background: var(--tinta); color: var(--fons); border-color: var(--tinta); }
+
+.filtre-categoria { margin-left: auto; }
+
+#selector-categoria {
+  font-family: var(--tipo-ui);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.5rem;
+  border: 1.5px solid var(--vora);
+  border-radius: 6px;
+  background: var(--fons-targeta);
+  color: var(--tinta);
+  max-width: 100%;
+}
+
+/* Filtre per dates: dos camps natius de data i un botó per esborrar-los.
+   El calendari desplegable és el del navegador (cap giny propi);
+   color-scheme li fa seguir el tema clar o fosc. */
+.filtre-dates { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
+
+.etiqueta-data { font-family: var(--tipo-ui); font-weight: 600; font-size: 0.8rem; color: var(--tinta-suau); }
+.etiqueta-data span[lang="fr"] { font-family: var(--tipo-serif); font-style: italic; font-weight: normal; }
+
+.camp-data {
+  font-family: var(--tipo-ui);
+  font-size: 0.85rem;
+  padding: 0.3rem 0.45rem;
+  border: 1.5px solid var(--vora);
+  border-radius: 6px;
+  background: var(--fons-targeta);
+  color: var(--tinta);
+  color-scheme: light;
+  max-width: 100%;
+}
+[data-tema="fosc"] .camp-data { color-scheme: dark; }
+
+.boto-esborra-dates {
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--vora);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta-suau);
+  cursor: pointer;
+}
+.boto-esborra-dates:hover { background: var(--vora); color: var(--tinta); }
+
+.camp-data:focus-visible,
+.boto-esborra-dates:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+main { padding-top: 1rem; padding-bottom: 2rem; min-height: 50vh; }
+
+/* --------------------------------------------------------------------
+   Capçalera de dia: "21 Juny, Dimarts · 21 Juin, Mardi".
+   Text en tinta; l'únic color és el punt d'accent (vermell en clar,
+   or en fosc), com el punt dels botons d'acció.
+-------------------------------------------------------------------- */
+.titol-dia {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--tipo-titol);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--tinta);
+  margin: 1.85rem 0 0.7rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--vora);
+}
+.titol-dia::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  align-self: center;
+}
+.titol-dia .dia-fr {
+  font-family: var(--tipo-serif);
+  color: var(--tinta-suau);
+  font-style: italic;
+  font-weight: normal;
+  font-size: 0.9em;
+}
+
+/* --------------------------------------------------------------------
+   Targeta: cartell a l'esquerra (amb banderola de categoria), cos a la dreta.
+-------------------------------------------------------------------- */
+.esdeveniment {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  background: var(--fons-targeta);
+  border: 1px solid var(--vora);
+  border-radius: 10px;
+  margin-bottom: 0.85rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Cartell (o substitut) — quadrat lleugerament tombat, a l'esquerra. */
+.imatge-esdeveniment {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100px;
+  height: 100px;
+  margin: 0.85rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--placeholder-fons);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s ease;
+}
+.imatge-esdeveniment img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.imatge-esdeveniment.sense-imatge { display: flex; align-items: center; justify-content: center; }
+
+/* El cartell reposa tombat i s'adreça quan hi passem el ratolí. */
+.gir-esquerra .imatge-esdeveniment { transform: rotate(-3deg); }
+.gir-dreta .imatge-esdeveniment { transform: rotate(3deg); }
+.gir-esquerra .imatge-esdeveniment:hover,
+.gir-dreta .imatge-esdeveniment:hover { transform: rotate(0deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .imatge-esdeveniment { transition: none; }
+  .gir-esquerra .imatge-esdeveniment,
+  .gir-dreta .imatge-esdeveniment { transform: none; }
+}
+
+/* Banderola negra amb el nom de la categoria, a dalt del cartell. */
+.banderola-categoria {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--banderola-text);
+  background: var(--banderola-fons);
+  padding: 0.14rem 0.85rem 0.14rem 0.45rem;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 0.5rem) 100%, 0 100%);
+}
+
+/* Icona de la categoria, quan no hi ha cartell. */
+.icona-categoria { display: inline-flex; color: var(--placeholder-icona); }
+.icona-categoria svg { width: 44px; height: 44px; }
+
+/* Cos de la targeta. */
+.cos-esdeveniment { flex: 1; min-width: 0; padding: 0.85rem 0.95rem 0.85rem 0; }
+
+.titol-esdeveniment {
+  margin: 0 0 0.3rem;
+  font-family: var(--tipo-titol);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  color: var(--tinta);
+}
+.titol-esdeveniment a { color: inherit; text-decoration: underline; }
+
+/* Comarca: etiqueta de text discreta (ja no és una píndola clicable). */
+.comarca {
+  margin: 0 0 0.35rem;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--tinta-suau);
+}
+
+.meta { font-family: var(--tipo-ui); font-size: 0.85rem; color: var(--tinta-suau); margin: 0 0 0.4rem; }
+.meta .quan { color: var(--accent); font-weight: 600; }   /* data i hora: l'accent «sang i or» */
+.meta .icona-pin { display: inline-flex; vertical-align: -2px; margin-right: 2px; }
+.meta .icona-pin svg { display: block; }
+
+/* Contingut que es desplega amb "Veure més". */
+.detalls { display: none; margin-top: 0.5rem; }
+.cos-esdeveniment.obert .detalls { display: block; }
+
+.descripcio-ca { font-family: var(--tipo-ui); margin: 0 0 0.3rem; font-size: 0.92rem; }
+.descripcio-fr { font-family: var(--tipo-serif); margin: 0 0 0.3rem; color: var(--tinta-suau); font-style: italic; font-size: 0.95rem; }
+.associacio { font-family: var(--tipo-ui); font-size: 0.8rem; color: var(--tinta-suau); margin: 0.2rem 0 0; }
+
+.boto-mes {
+  margin-top: 0.45rem;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--vora);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta-suau);
+  cursor: pointer;
+}
+.boto-mes:hover { background: var(--vora); color: var(--tinta); }
+
+.missatge-estat { font-family: var(--tipo-serif); text-align: center; color: var(--tinta-suau); padding: 3rem 1rem; font-style: italic; }
+
+/* --------------------------------------------------------------------
+   Peu — net, en blanc i negre.
+-------------------------------------------------------------------- */
+.peu {
+  background: var(--fons);
+  border-top: 1px solid var(--vora);
+  color: var(--tinta-suau);
+  font-family: var(--tipo-ui);
+  font-size: 0.85rem;
+  padding: 1.25rem 0;
+  text-align: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Convida (al peu) a proposar un acte - adrecat a organitzadors. */
+.convida { margin: 0 0 0.85rem; }
+.convida-ca { display: block; font-family: var(--tipo-ui); font-weight: 600; color: var(--tinta); }
+.convida-fr { display: block; margin-top: 0.2rem; font-family: var(--tipo-serif); font-style: italic; color: var(--tinta-suau); font-size: 0.92em; }
+
+/* Boto secundari del peu: contorn, s'omple en passar-hi per sobre.
+   Mateix rectangle arrodonit que el boto principal. */
+.boto-peu {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1.25;
+  padding: 0.5rem 1.35rem 0.6rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--tinta);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.boto-peu:hover { background: var(--tinta); color: var(--fons); }
+
+.peu-firma { margin: 1.1rem 0 0; color: var(--tinta-suau); }
+
+/* Línia legal curta del peu + enllaç a les mencions legals. */
+.peu-legal { margin: 1rem 0 0; font-size: 0.78rem; color: var(--tinta-suau); }
+.peu-legal-ca { display: block; }
+.peu-legal-fr { display: block; margin-top: 0.15rem; font-family: var(--tipo-serif); font-style: italic; font-size: 0.95em; }
+.enllac-legal { display: inline-block; margin-top: 0.45rem; color: var(--tinta-suau); text-decoration: underline; }
+.enllac-legal:hover { color: var(--tinta); }
+
+.visualment-amagat {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------
+   Pàgina legal (mencions-legals.html): prosa llarga en dues llengües.
+   Català primer, en Montserrat; el francès en Georgia rodona (no cursiva:
+   la cursiva contínua cansa en textos llargs; la serifa ja marca la veu
+   francesa) i en color suau. Capçaleres com les capçaleres de dia.
+-------------------------------------------------------------------- */
+.pagina-legal { padding-top: 1.1rem; padding-bottom: 2.5rem; }
+
+.pagina-legal .torna { margin: 0 0 1.3rem; font-size: 0.85rem; }
+.pagina-legal .torna a { color: var(--tinta-suau); text-decoration: none; }
+.pagina-legal .torna a:hover { color: var(--tinta); text-decoration: underline; }
+.pagina-legal .torna span[lang="fr"] { font-family: var(--tipo-serif); font-style: italic; }
+
+/* A la pàgina legal el logotip de la capçalera és un enllaç de tornada. */
+.logo-enllac { margin: 0; }
+.logo-enllac a { display: inline-block; }
+
+.titol-legal { font-family: var(--tipo-titol); font-weight: 900; font-size: 1.6rem; line-height: 1.15; margin: 0 0 1rem; color: var(--tinta); }
+.titol-legal .t-ca { display: block; }
+.titol-legal .t-fr { display: block; margin-top: 0.2rem; font-family: var(--tipo-serif); font-style: italic; font-weight: 400; font-size: 1rem; color: var(--tinta-suau); }
+
+/* El subtítol de la capçalera legal té les dues llengües: el català hi va
+   en Montserrat rodona (la Georgia cursiva és la veu francesa). */
+.subtitol-legal .t-ca { font-family: var(--tipo-ui); font-style: normal; }
+
+/* Nota «la versió francesa fa fe». */
+.nota-fe { margin: 0 0 1.4rem; padding: 0.6rem 0.85rem; border-left: 3px solid var(--accent); background: var(--fons-targeta); border-radius: 0 8px 8px 0; font-size: 0.85rem; }
+.legal-ca-inline { display: block; font-family: var(--tipo-ui); color: var(--tinta); }
+.legal-fr-inline { display: block; margin-top: 0.15rem; font-family: var(--tipo-serif); font-style: italic; color: var(--tinta-suau); }
+
+/* Sumari d'ancoratges. */
+.sumari { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.5rem; }
+.sumari a {
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--vora);
+  border-radius: 999px;
+  color: var(--tinta-suau);
+  text-decoration: none;
+}
+.sumari a:hover { background: var(--vora); color: var(--tinta); }
+.sumari span[lang="fr"] { font-family: var(--tipo-serif); font-style: italic; font-weight: normal; }
+
+/* Capçalera de secció: mateix llenguatge que la capçalera de dia. */
+.titol-seccio {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--tipo-titol);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--tinta);
+  margin: 2.2rem 0 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--vora);
+  scroll-margin-top: 1rem;
+}
+.titol-seccio::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  align-self: center;
+}
+.titol-seccio .fr { font-family: var(--tipo-serif); color: var(--tinta-suau); font-style: italic; font-weight: normal; font-size: 0.85em; }
+
+.pagina-legal h3 { font-family: var(--tipo-ui); font-weight: 600; font-size: 0.95rem; margin: 1.4rem 0 0.4rem; color: var(--tinta); }
+.pagina-legal h3 .fr { font-family: var(--tipo-serif); color: var(--tinta-suau); font-style: italic; font-weight: normal; font-size: 0.92em; }
+
+/* Els dos registres de text: català (primari) i francès (secundari). */
+.legal-ca { font-family: var(--tipo-ui); font-size: 0.92rem; color: var(--tinta); margin: 0 0 0.5rem; }
+.legal-fr { font-family: var(--tipo-serif); font-size: 0.95rem; color: var(--tinta-suau); margin: 0 0 0.9rem; }
+.legal-ca a, .legal-fr a { color: inherit; }
+.legal-avis strong { color: var(--tinta); }
+
+/* Taules legals: filets fins amb els colors del tema. */
+.taula-scroll { overflow-x: auto; margin: 0.4rem 0 0.9rem; }
+.taula-legal { width: 100%; border-collapse: collapse; font-size: 0.82rem; font-family: var(--tipo-ui); }
+.taula-legal th, .taula-legal td { border: 1px solid var(--vora); padding: 0.45rem 0.55rem; text-align: left; vertical-align: top; }
+.taula-legal th { font-weight: 600; background: var(--fons-targeta); }
+.taula-legal .fr { font-family: var(--tipo-serif); font-style: italic; color: var(--tinta-suau); font-weight: normal; }
+
+/* El peu de la pàgina legal reutilitza .peu; l'enllaç de tornada hi és discret. */
+.peu .convida a { color: var(--tinta); text-decoration: underline; }
+.peu .convida a span[lang="fr"] { font-family: var(--tipo-serif); font-style: italic; color: var(--tinta-suau); }
+
+/* Pista per llegir l'adreça ofuscada (protecció contra robots de correu brossa). */
+.pista-correu { font-size: 0.85em; color: var(--tinta-suau); }
+
+/* --------------------------------------------------------------------
+   Selector de llengua de la pàgina legal (Català / Français).
+   Mateixa forma de píndola que els filtres de comarca.
+-------------------------------------------------------------------- */
+.selector-llengua { position: absolute; top: 0; right: 1rem; display: inline-flex; gap: 0.35rem; }
+
+.boto-llengua {
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta);
+  cursor: pointer;
+  line-height: 1;
+}
+.boto-llengua:hover { background: var(--vora); }
+.boto-llengua.actiu { background: var(--tinta); color: var(--fons); }
+.boto-llengua:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* --------------------------------------------------------------------
+   Mode d'una sola llengua (l'atribut data-llengua el posa el JS de la
+   pàgina legal; sense JavaScript no hi és i es veuen les dues llengües).
+   .t-ca = text català · .t-fr = text francès · .t-sep = separador «·».
+-------------------------------------------------------------------- */
+[data-llengua="ca"] .t-fr,
+[data-llengua="ca"] .t-sep,
+[data-llengua="ca"] .legal-fr { display: none; }
+
+[data-llengua="fr"] .t-ca,
+[data-llengua="fr"] .t-sep,
+[data-llengua="fr"] .legal-ca { display: none; }
+
+/* Quan el francès és l'única llengua visible passa a veu primària:
+   tinta plena i lletra rodona (la serifa ja el marca com a francès). */
+[data-llengua="fr"] .legal-fr { color: var(--tinta); }
+[data-llengua="fr"] .titol-legal .t-fr { margin-top: 0; font-style: normal; font-weight: 700; font-size: 1em; color: var(--tinta); }
+[data-llengua="fr"] .titol-seccio .t-fr { font-style: normal; font-weight: 700; font-size: 1em; color: var(--tinta); }
+[data-llengua="fr"] .pagina-legal h3 .t-fr { font-style: normal; font-weight: 600; font-size: 1em; color: var(--tinta); }
+[data-llengua="fr"] .taula-legal .t-fr { font-style: normal; color: inherit; }
+[data-llengua="fr"] .sumari .t-fr { font-style: normal; font-weight: 600; }
+[data-llengua="fr"] .nota-fe .legal-fr-inline { font-style: normal; color: var(--tinta); }
+[data-llengua="fr"] .subtitol-legal .t-fr { font-style: normal; }
+[data-llengua="fr"] .torna .t-fr,
+[data-llengua="fr"] .peu .convida .t-fr { font-style: normal; color: inherit; }
+
+@media (min-width: 600px) {
+  .logo-quefas { width: 240px; }
+  .capcalera-portada { padding: 2.6rem 0 1.8rem; }
+  .capcalera-portada .logo-quefas { width: 400px; }
+  .imatge-esdeveniment { width: 120px; height: 120px; }
+  .icona-categoria svg { width: 50px; height: 50px; }
+  .hero .contingut { flex-direction: row; align-items: center; justify-content: space-between; }
+  .hero-text { margin-right: 1.5rem; }
+}
+
+/* En pantalla ampla (ordinador), el botó de tema torna a la cantonada de
+   dalt a la dreta; la fila queda només amb «Qui som», centrat sota el
+   logotip. En mòbil i tauleta tots dos resten dins la fila. */
+@media (min-width: 900px) {
+  .capcalera-portada .boto-tema {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+  }
+}
+  
