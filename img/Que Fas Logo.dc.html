@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/clm-vallespir-design-system-5d90f70c-f52b-42d3-b882-4a717efd5a9d/tokens/colors.css">
+<meta name="design_doc_mode" content="canvas">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Montserrat:wght@400;600&family=Space+Grotesk:wght@400;500;600&display=swap');
+  @font-face { font-family:'FrauncesBlackLocal'; src:url('fonts/Fraunces-Black.ttf') format('truetype'); font-weight:900; font-style:normal; font-display:swap; }
+  @font-face { font-family:'MontserratLocal'; src:url('fonts/Montserrat-SemiBold.ttf') format('truetype'); font-weight:600; font-style:normal; font-display:swap; }
+</style>
+</helmet>
+
+<div style="position:absolute; left:80px; top:80px; width:1980px;">
+  <div data-drags-parent="1" style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:#1A1F24; font-weight:500; margin-bottom:6px;">Agenda Catalunya Nord · Logotip</div>
+  <div data-drags-parent="1" style="font-family:'Fraunces',serif; font-size:40px; font-weight:600; color:#1A1F24; letter-spacing:-0.01em;">Què fas? — sticker tipogràfic</div>
+</div>
+
+<div style="position:absolute; left:80px; top:230px; width:1000px;">
+  <div data-drags-parent="1" style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#3A5168; font-weight:600; margin-bottom:12px;">Versió A · tinta negra sobre fons blanc</div>
+  <div style="background:#fff; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,.08); overflow:hidden;">
+    <div style="outline:1px solid rgba(26,31,36,.07); outline-offset:-1px;">{{ logoA }}</div>
+  </div>
+</div>
+
+<div style="position:absolute; left:1160px; top:230px; width:1000px;">
+  <div data-drags-parent="1" style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#3A5168; font-weight:600; margin-bottom:12px;">Versió B · tinta blanca sobre fons negre</div>
+  <div style="background:#fff; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,.08); overflow:hidden;">{{ logoB }}</div>
+</div>
+
+<div style="position:absolute; left:80px; top:760px; width:1000px;">
+  <div data-drags-parent="1" style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#3A5168; font-weight:600; margin-bottom:12px;">Prova de llegibilitat · escala d'impressió</div>
+  <div style="background:#fff; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,.08); padding:44px 48px;">
+    <div style="display:flex; align-items:flex-end; gap:48px; flex-wrap:wrap;">
+      <div>
+        <div style="width:227px; outline:1px solid rgba(26,31,36,.10);">{{ logoSmallA }}</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#1A1F24; margin-top:10px;">6 cm — mida d'enganxina</div>
+        <div style="font-family:'Montserrat',sans-serif; font-size:12px; color:#6b7177; margin-top:3px;">llegible a 2 m</div>
+      </div>
+      <div>
+        <div style="width:113px; outline:1px solid rgba(26,31,36,.10);">{{ logoSmallB }}</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#1A1F24; margin-top:10px;">3 cm</div>
+      </div>
+      <div>
+        <div style="width:60px; outline:1px solid rgba(26,31,36,.10);">{{ logoSmallC }}</div>
+        <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#1A1F24; margin-top:10px;">1,5 cm</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="position:absolute; left:1160px; top:760px; width:1000px;">
+  <div data-drags-parent="1" style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#3A5168; font-weight:600; margin-bottom:12px;">Especificacions</div>
+  <div style="background:#fff; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,.08); padding:44px 48px; font-family:'Montserrat',sans-serif; color:#1A1F24;">
+    <div style="display:grid; grid-template-columns:150px 1fr; row-gap:18px; column-gap:24px; font-size:15px; line-height:1.5;">
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#3A5168; padding-top:3px;">Títol</div>
+      <div style="font-family:'Fraunces',serif; font-weight:900; font-size:22px;">{{ titleSpec }}</div>
+
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#3A5168; padding-top:3px;">Subtítol</div>
+      <div>{{ subSpec }}</div>
+
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#3A5168; padding-top:3px;">Tinta</div>
+      <div>Negre pur #000000 · blanc pur #FFFFFF · sense grisos, degradats ni ombres</div>
+
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#3A5168; padding-top:3px;">Controls</div>
+      <div>Signe del títol (? / !) · subtítol en majúscules · distància entre línies — al tauler de Tweaks</div>
+
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#3A5168; padding-top:3px;">Masters SVG</div>
+      <div style="font-family:'SF Mono',ui-monospace,monospace; font-size:13px; line-height:1.7;">que-fas_black-on-white.svg<br>que-fas_white-on-black.svg<br><span style="font-family:'Montserrat',sans-serif; font-size:12px; color:#6b7177;">(corbes; versió original "?" en minúscules)</span></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;punctuation&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;?&quot;,&quot;!&quot;],&quot;default&quot;:&quot;?&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subtitleCaps&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;subtitleGap&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:70,&quot;min&quot;:110,&quot;max&quot;:240,&quot;step&quot;:5,&quot;tsType&quot;:&quot;number&quot;},&quot;subtitleShiftX&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:18,&quot;min&quot;:-300,&quot;max&quot;:300,&quot;step&quot;:1,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  titleRef = React.createRef();
+  subRef = React.createRef();
+  titleSize = 300;
+  subSize = 59.4;          // reduced 10% from 66
+  subShiftX = 73;          // centred between the "u" and final "s" of the title
+  shiftX() { return Number(this.props.subtitleShiftX ?? this.subShiftX); }
+  breath = 14;
+  state = { vb: { x: -820, y: -300, w: 1640, h: 600 } };
+
+  punct() { return this.props.punctuation ?? '!'; }
+  gap() { return Number(this.props.subtitleGap ?? 150); }
+  caps() { return this.props.subtitleCaps ?? true; }
+  ls() { return this.caps() ? 5 : 2.6; }
+  subDisplay() {
+    const s = "l\u2019Agenda de Cat Nord";
+    return this.caps() ? s.toUpperCase() : s;
+  }
+
+  geom() {
+    const v = this.state.vb;
+    return {
+      viewBox: `${v.x} ${v.y} ${v.w} ${v.h}`,
+      rect: { x: v.x, y: v.y, width: v.w, height: v.h }
+    };
+  }
+
+  makeLogo(ink, ground, attachRef) {
+    const g = this.geom();
+    const tProps = { x: 0, y: 0, textAnchor: 'middle', fill: ink,
+      style: { fontFamily: "'FrauncesBlackLocal', serif", fontWeight: 900, fontSize: this.titleSize + 'px' } };
+    if (attachRef) tProps.ref = this.titleRef;
+    const sProps = { x: this.shiftX(), y: this.gap(), textAnchor: 'middle', fill: ink,
+      style: { fontFamily: "'MontserratLocal', sans-serif", fontWeight: 600, fontSize: this.subSize + 'px', letterSpacing: this.ls() + 'px' } };
+    if (attachRef) sProps.ref = this.subRef;
+    return React.createElement('svg',
+      { viewBox: g.viewBox, width: '100%', preserveAspectRatio: 'xMidYMid meet', xmlns: 'http://www.w3.org/2000/svg', style: { display: 'block' } },
+      React.createElement('rect', { ...g.rect, fill: ground }),
+      React.createElement('text', tProps, 'Què fas', React.createElement('tspan', { dx: this.breath }, this.punct())),
+      React.createElement('text', sProps, this.subDisplay())
+    );
+  }
+
+  measure() {
+    const t = this.titleRef.current, s = this.subRef.current;
+    if (!t || !s) return;
+    let tb, sb;
+    try { tb = t.getBBox(); sb = s.getBBox(); } catch (e) { return; }
+    if (!tb.width || !sb.width) return;
+    const minX = Math.min(tb.x, sb.x), minY = Math.min(tb.y, sb.y);
+    const maxX = Math.max(tb.x + tb.width, sb.x + sb.width), maxY = Math.max(tb.y + tb.height, sb.y + sb.height);
+    const w = maxX - minX, h = maxY - minY, M = 0.30 * h;
+    const vb = { x: minX - M, y: minY - M, w: w + 2 * M, h: h + 2 * M };
+    const c = this.state.vb;
+    if (Math.abs(c.x - vb.x) > 0.5 || Math.abs(c.y - vb.y) > 0.5 || Math.abs(c.w - vb.w) > 0.5 || Math.abs(c.h - vb.h) > 0.5) {
+      this.setState({ vb });
+    }
+  }
+
+  componentDidMount() {
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.measure());
+    else setTimeout(() => this.measure(), 300);
+    setTimeout(() => this.measure(), 700);
+  }
+
+  componentDidUpdate(prev) {
+    if (prev.punctuation !== this.props.punctuation
+      || prev.subtitleCaps !== this.props.subtitleCaps
+      || prev.subtitleGap !== this.props.subtitleGap
+      || prev.subtitleShiftX !== this.props.subtitleShiftX) {
+      requestAnimationFrame(() => this.measure());
+    }
+  }
+
+  renderVals() {
+    return {
+      logoA: this.makeLogo('#000000', '#ffffff', true),
+      logoB: this.makeLogo('#ffffff', '#000000', false),
+      logoSmallA: this.makeLogo('#000000', '#ffffff', false),
+      logoSmallB: this.makeLogo('#000000', '#ffffff', false),
+      logoSmallC: this.makeLogo('#000000', '#ffffff', false),
+      titleSpec: 'Què fas' + this.punct() + ' · Fraunces 900',
+      subSpec: this.caps()
+        ? "L'AGENDA DE CAT NORD · Montserrat 600 · majúscules"
+        : "l'Agenda de Cat Nord · Montserrat 600"
+    };
+  }
+}
+</script>
+</body>
+</html>

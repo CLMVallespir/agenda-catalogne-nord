@@ -4,43 +4,19 @@
 // It creates the "Esdeveniments" tab with headers, dropdowns
 // and conditional formatting. Safe to re-run: it rebuilds the
 // validations and formatting without deleting existing rows.
+//
+// The schema constants it uses (NOM_FULL, COLUMN_HEADERS,
+// COMARCA_VALUES, CATEGORIA_VALUES, ESTAT_VALUES) live in
+// utils.gs, because the ingestion and digest jobs read them
+// too. This file is now purely procedural: once it has been
+// run, it is inert.
+//
+// CONVENTION EXCEPTION: this setup file keeps its internal
+// helper names in English (getOrCreateEventsSheet, writeHeaders,
+// addDropdown, addStatusColours), unlike the Catalan-domain
+// names used elsewhere. It is a run-once file with no cross-file
+// callers, so the exception is documented rather than renamed.
 // ============================================================
-
-// The schema field names, in the exact order of the columns.
-var COLUMN_HEADERS = [
-  'id',
-  'titol',
-  'data_inici',
-  'data_fi',
-  'hora',
-  'lloc',
-  'municipi',
-  'comarca',
-  'categoria',
-  'descripcio_ca',
-  'descripcio_fr',
-  'associacio',
-  'imatge_url',
-  'font_url',
-  'estat',
-  'data_entrada'
-];
-
-// Allowed values for the dropdown columns.
-var COMARCA_VALUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
-var CATEGORIA_VALUES = [
-  'Música',
-  'Teatre',
-  'Dansa i ball',
-  'Conferència',
-  'Exposició',
-  'Mercat',
-  'Cinema',
-  'Taller',
-  'Activitat infantil',
-  'Patrimoni i tradicions'
-];
-var ESTAT_VALUES = ['pendent', 'publicat', 'rebutjat'];
 
 // How many data rows the dropdowns and colours should cover.
 var LAST_ROW = 1000;
@@ -58,16 +34,16 @@ function setupSheet() {
   addDropdown(sheet, CATEGORIA_COLUMN, CATEGORIA_VALUES);
   addDropdown(sheet, ESTAT_COLUMN, ESTAT_VALUES);
   addStatusColours(sheet);
-  Logger.log('Setup complete. Sheet "Esdeveniments" is ready.');
+  Logger.log('setupSheet: preparació completada. El full "' + NOM_FULL + '" està a punt.');
 }
 
 // Finds the "Esdeveniments" tab, or creates it if missing. Returns the sheet.
 function getOrCreateEventsSheet() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = spreadsheet.getSheetByName('Esdeveniments');
+  var sheet = spreadsheet.getSheetByName(NOM_FULL);
   if (sheet === null) {
-    sheet = spreadsheet.insertSheet('Esdeveniments');
-    Logger.log('Created new tab "Esdeveniments".');
+    sheet = spreadsheet.insertSheet(NOM_FULL);
+    Logger.log('setupSheet: pestanya "' + NOM_FULL + '" creada.');
   }
   return sheet;
 }

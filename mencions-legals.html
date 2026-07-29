@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales — Què fas? · Catalunya Nord</title>
+  <meta name="description" content="Mentions légales, politique de confidentialité, limitation de responsabilité et conditions de soumission de l’agenda culturel Què fas? — Catalogne Nord. Mencions legals de l’agenda cultural Què fas?">
+  <meta name="robots" content="noindex">
+
+  <!-- Aplica el tema desat i la llengua de lectura ABANS de pintar.
+       Llengua: 'ca' per defecte (català primer, com a tot el lloc); 'fr' si
+       l'usuari l'ha triat abans. La versió francesa fa fe igualment (vegeu
+       la nota de la pàgina). Sense JavaScript no s'aplica cap atribut i la
+       pàgina es mostra en les dues llengües alhora. -->
+  <script>
+    (function () {
+      var tema = 'clar';
+      try {
+        var desat = localStorage.getItem('tema');
+        if (desat === 'fosc' || desat === 'clar') {
+          tema = desat;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          tema = 'fosc';
+        }
+      } catch (e) { /* sense localStorage: es queda en tema clar */ }
+      document.documentElement.setAttribute('data-tema', tema);
+
+      var llengua = 'ca';
+      try {
+        var desada = localStorage.getItem('llengua-legal');
+        if (desada === 'ca' || desada === 'fr') { llengua = desada; }
+      } catch (e) { /* sense localStorage: es queda en català */ }
+      document.documentElement.setAttribute('data-llengua', llengua);
+      document.documentElement.lang = llengua;
+    })();
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="capcalera">
+    <div class="contingut">
+      <!-- El logotip enllaça de tornada a l'agenda. -->
+      <p class="logo-enllac">
+        <a href="index.html">
+          <img class="logo-quefas logo-clar" src="img/logo/que-fas_clar.svg" alt="Què fas? — l’Agenda de Cat Nord">
+          <img class="logo-quefas logo-fosc" src="img/logo/que-fas_fosc.svg" alt="Què fas? — l’Agenda de Cat Nord">
+        </a>
+      </p>
+      <p class="subtitol subtitol-legal">
+        <span class="t-ca">Mencions legals — Agenda cultural, Catalunya Nord</span><span class="t-sep"> · </span><span class="t-fr" lang="fr">Mentions légales — Agenda culturel, Catalogne Nord</span>
+      </p>
+      <!-- Selector de llengua de lectura (només en aquesta pàgina). -->
+      <div class="selector-llengua" role="group" aria-label="Llengua de la pàgina · Langue de la page">
+        <button id="boto-llengua-ca" class="boto-llengua" type="button" aria-pressed="false">Català</button>
+        <button id="boto-llengua-fr" class="boto-llengua" type="button" aria-pressed="false">Français</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contingut pagina-legal">
+
+    <p class="torna"><a href="index.html">← <span class="t-ca">Torna a l’agenda</span><span class="t-sep"> · </span><span class="t-fr" lang="fr">Retour à l’agenda</span></a></p>
+
+    <h1 class="titol-legal">
+      <span class="t-ca">Mencions legals</span>
+      <span class="t-fr" lang="fr">Mentions légales</span>
+    </h1>
+
+    <p class="nota-fe">
+      <span class="legal-ca-inline t-ca">Aquesta pàgina es publica en català i en francès. En cas de divergència, la versió francesa fa fe.</span>
+      <span class="legal-fr-inline t-fr" lang="fr">Cette page est publiée en catalan et en français. En cas de divergence, la version française fait foi.</span>
+    </p>
+
+    <nav class="sumari" aria-label="Sumari · Sommaire">
+      <a href="#editor"><span class="t-ca">Editor</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Éditeur</span></a>
+      <a href="#confidencialitat"><span class="t-ca">Confidencialitat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Confidentialité</span></a>
+      <a href="#responsabilitat"><span class="t-ca">Responsabilitat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Responsabilité</span></a>
+      <a href="#condicions"><span class="t-ca">Condicions de tramesa</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Conditions de soumission</span></a>
+    </nav>
+
+    <!-- ================================================================
+         1. EDITOR / ÉDITEUR
+    ================================================================= -->
+    <h2 id="editor" class="titol-seccio"><span class="t-ca">Editor del lloc web</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Éditeur du site</span></h2>
+
+    <p class="legal-ca">El present lloc web («Què fas?», l’Agenda cultural de la Catalunya Nord, d’ara endavant «l’Agenda») és editat per l’associació <strong>CULTURES, LANGUES ET MÉMOIRES DU VALLESPIR</strong>, anomenada d’ara endavant «CLM», associació declarada regida per la llei francesa de l’1 de juliol de 1901 i el decret del 16 d’agost de 1901.</p>
+    <p class="legal-ca">SIREN: 101 221 711 — Núm. RNA: W661007263<br>
+    Seu social: 1 Place d’Armes, 2ème étage porte gauche — 66230 Prats-de-Mollo-la-Preste<br>
+    Lloc web: <a href="https://clm.cat" rel="noopener">clm.cat</a><br>
+    Correu electrònic: info arrova clm punt cat <span class="pista-correu">(escriviu l’adreça amb @ i punts)</span></p>
+
+    <p class="legal-fr" lang="fr">Le présent site (« Què fas ? », Agenda culturel de la Catalogne Nord, dénommé ci-après « l’Agenda ») est édité par l’association <strong>CULTURES, LANGUES ET MÉMOIRES DU VALLESPIR</strong>, dénommée ci-après « CLM ». Association déclarée régie par la loi du 1er juillet 1901 et le décret du 16 août 1901.</p>
+    <p class="legal-fr" lang="fr">SIREN : 101 221 711 — N° RNA : W661007263<br>
+    Siège social : 1 Place d’Armes, 2ème étage porte gauche — 66230 Prats-de-Mollo-la-Preste<br>
+    Site web : <a href="https://clm.cat" rel="noopener">clm.cat</a><br>
+    Courriel : info arobase clm point cat <span class="pista-correu">(écrivez l’adresse avec @ et des points)</span></p>
+
+    <h3><span class="t-ca">Director de la publicació</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Directeur de la publication</span></h3>
+    <p class="legal-ca">Miquel Rodrigues, president de l’associació CLM.</p>
+    <p class="legal-fr" lang="fr">Miquel Rodrigues, Président de l’association CLM.</p>
+
+    <h3><span class="t-ca">Allotjament</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Hébergement</span></h3>
+    <p class="legal-ca">GitHub, Inc. — 88 Colin P Kelly Jr St, San Francisco, CA 94107, Estats Units — <a href="https://github.com" rel="noopener">github.com</a>. Entitat sotmesa al dret nord-americà.</p>
+    <p class="legal-ca">El lloc és allotjat als Estats Units. CLM no transfereix cap dada personal a aquest allotjador en el funcionament normal del lloc.</p>
+    <p class="legal-fr" lang="fr">GitHub, Inc. — 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis — <a href="https://github.com" rel="noopener">github.com</a>. Entité soumise au droit américain.</p>
+    <p class="legal-fr" lang="fr">Le site étant hébergé aux États-Unis, les données qu’il publie transitent par une infrastructure extra-européenne. CLM n’opère aucun transfert de données personnelles vers cet hébergeur dans le cadre du fonctionnement normal du site.</p>
+
+    <h3><span class="t-ca">Serveis de tercers</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Services tiers utilisés</span></h3>
+    <p class="legal-ca">Per al seu funcionament, el lloc es recolza en els serveis següents:</p>
+    <p class="legal-fr" lang="fr">Dans le cadre de son fonctionnement, le site mobilise les services suivants :</p>
+
+    <div class="taula-scroll">
+      <table class="taula-legal">
+        <thead>
+          <tr>
+            <th><span class="t-ca">Servei</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Service</span></th>
+            <th><span class="t-ca">Funció</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Rôle</span></th>
+            <th><span class="t-ca">Seu</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Siège</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google LLC (Workspace: Gmail, Sheets; API Gemini)</td>
+            <td><span class="t-ca">Recepció i tractament de les trameses; extracció automatitzada de les dades dels esdeveniments</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Réception et traitement des soumissions ; extraction automatisée des données d’événements</span></td>
+            <td><span class="t-ca">Estats Units</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">États-Unis</span></td>
+          </tr>
+          <tr>
+            <td>Typebot</td>
+            <td><span class="t-ca">Formulari de tramesa d’esdeveniments</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Formulaire de soumission d’événements</span></td>
+            <td><span class="t-ca">França</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">France</span></td>
+          </tr>
+          <tr>
+            <td>Cloudinary, Inc.</td>
+            <td><span class="t-ca">Allotjament de les imatges</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Hébergement des visuels</span></td>
+            <td><span class="t-ca">Estats Units</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">États-Unis</span></td>
+          </tr>
+          <tr>
+            <td>Brevo (Sendinblue SA)</td>
+            <td><span class="t-ca">Enviament del butlletí setmanal</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Envoi du digest hebdomadaire</span></td>
+            <td><span class="t-ca">França</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">France</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="legal-ca">CLM es recolza en els acords de tractament de dades (DPA) estàndard proposats per cadascun d’aquests proveïdors. Els tractaments corresponents queden coberts per les clàusules contractuals tipus de la Comissió Europea (CCT) aplicables a les transferències cap a països tercers.</p>
+    <p class="legal-fr" lang="fr">CLM s’appuie sur les accords de traitement des données (DPA) standard proposés par chacun de ces prestataires. Ces traitements sont couverts par les clauses contractuelles types de la Commission européenne (CCT) applicables aux transferts vers des pays tiers.</p>
+
+    <!-- ================================================================
+         2. CONFIDENCIALITAT / CONFIDENTIALITÉ
+    ================================================================= -->
+    <h2 id="confidencialitat" class="titol-seccio"><span class="t-ca">Política de confidencialitat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Politique de confidentialité</span></h2>
+
+    <h3><span class="t-ca">Responsable del tractament</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Responsable du traitement</span></h3>
+    <p class="legal-ca">CULTURES, LANGUES ET MÉMOIRES DU VALLESPIR (CLM) — dades de contacte a la secció <a href="#editor">Editor</a>.</p>
+    <p class="legal-fr" lang="fr">CULTURES, LANGUES ET MÉMOIRES DU VALLESPIR (CLM) — coordonnées à la section <a href="#editor">Éditeur</a>.</p>
+
+    <h3><span class="t-ca">Bases jurídiques</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Bases légales des traitements</span></h3>
+    <p class="legal-ca">CLM tracta les dades personals sobre dues bases: l’interès legítim (article 6.1.f del RGPD) per a la gestió voluntària d’un agenda cultural d’utilitat pública territorial (trameses d’esdeveniments), i el consentiment (article 6.1.a del RGPD) per a l’enviament del butlletí setmanal, al qual hom s’inscriu voluntàriament i del qual es pot donar de baixa en qualsevol moment.</p>
+    <p class="legal-fr" lang="fr">CLM traite les données personnelles sur deux bases : l’intérêt légitime (article 6.1.f du RGPD) pour la gestion bénévole d’un agenda culturel d’utilité publique territoriale (soumissions d’événements), et le consentement (article 6.1.a du RGPD) pour l’envoi du digest hebdomadaire, auquel on s’inscrit volontairement et dont on peut se désinscrire à tout moment.</p>
+
+    <h3><span class="t-ca">Dades recollides i finalitats</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Données collectées et finalités</span></h3>
+    <div class="taula-scroll">
+      <table class="taula-legal">
+        <thead>
+          <tr>
+            <th><span class="t-ca">Categoria</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Catégorie</span></th>
+            <th><span class="t-ca">Dades</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Données</span></th>
+            <th><span class="t-ca">Finalitat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Finalité</span></th>
+            <th><span class="t-ca">Conservació</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Conservation</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="t-ca">Trameses d’esdeveniments</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Soumissions d’événements</span></td>
+            <td><span class="t-ca">Nom de l’associació, adreça electrònica de contacte, contingut del missatge</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Nom de l’association, adresse électronique de contact, contenu du message</span></td>
+            <td><span class="t-ca">Avaluació i publicació de l’esdeveniment</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Évaluation et publication de l’événement</span></td>
+            <td><span class="t-ca">12 mesos després de la data de l’esdeveniment</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">12 mois après la date de l’événement</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-ca">Confirmació de conformitat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Confirmation de conformité</span></td>
+            <td><span class="t-ca">Adreça electrònica del remitent, data i contingut de la confirmació</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Adresse électronique de l’expéditeur, date et contenu de l’accusé de réception</span></td>
+            <td><span class="t-ca">Prova de l’acceptació de les condicions de tramesa</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Preuve du consentement aux conditions de soumission</span></td>
+            <td><span class="t-ca">3 anys</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">3 ans</span></td>
+          </tr>
+          <tr>
+            <td><span class="t-ca">Subscriptors del butlletí</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Abonnés digest</span></td>
+            <td><span class="t-ca">Adreça electrònica</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Adresse électronique</span></td>
+            <td><span class="t-ca">Enviament del butlletí setmanal</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Envoi du digest hebdomadaire</span></td>
+            <td><span class="t-ca">Fins a la baixa</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Jusqu’à désinscription</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="legal-ca">Aquest lloc no diposita cap galeta ni recull cap dada de navegació. Els únics elements desats al vostre dispositiu són la preferència de tema (clar o fosc) i la llengua de lectura d’aquesta pàgina, emmagatzemades localment i mai transmeses. Cap dada no es cedeix, ven ni comparteix amb finalitats comercials.</p>
+    <p class="legal-fr" lang="fr">Ce site ne dépose aucun cookie et ne collecte aucune donnée de navigation. Les seuls éléments enregistrés sur votre appareil sont votre préférence d’affichage (thème clair ou sombre) et la langue de lecture de cette page, stockées localement et jamais transmises. Aucune donnée n’est cédée, vendue ou partagée à des fins commerciales.</p>
+
+    <h3><span class="t-ca">Tractament automatitzat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Traitement automatisé</span></h3>
+    <p class="legal-ca">Els missatges rebuts se sotmeten a un tractament automatitzat per intel·ligència artificial (API Google Gemini) per extreure’n la informació estructurada necessària per a la publicació. Aquest tractament es limita al contingut factual de l’esdeveniment. Cada esdeveniment és, a més, validat per una revisió humana abans de publicar-se. Cap decisió individual automatitzada en el sentit de l’article 22 del RGPD no s’aplica a persones físiques.</p>
+    <p class="legal-fr" lang="fr">Les messages reçus sont soumis à un traitement automatisé par intelligence artificielle (API Google Gemini) afin d’extraire les informations structurées nécessaires à la publication. Ce traitement porte exclusivement sur le contenu factuel de l’événement. Chaque événement est en outre validé par une révision humaine avant publication. Aucune décision individuelle automatisée au sens de l’article 22 du RGPD n’est appliquée aux personnes physiques.</p>
+
+    <h3><span class="t-ca">Drets de les persones</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Droits des personnes</span></h3>
+    <p class="legal-ca">Tota persona les dades de la qual són tractades disposa dels drets següents, exercibles per correu electrònic a l’adreça de contacte indicada a la secció <a href="#editor">Editor</a>: dret d’accés, dret de rectificació, dret de supressió, dret a la limitació del tractament, dret d’oposició i dret a la portabilitat. En cas de resposta insatisfactòria, tota persona pot presentar una reclamació davant la <strong>CNIL</strong> (Commission Nationale de l’Informatique et des Libertés — <a href="https://cnil.fr" rel="noopener">cnil.fr</a>).</p>
+    <p class="legal-fr" lang="fr">Toute personne dont les données sont traitées dispose des droits suivants, exerçables par courriel à l’adresse de contact indiquée à la section <a href="#editor">Éditeur</a> : droit d’accès · droit de rectification · droit à l’effacement · droit à la limitation du traitement · droit d’opposition · droit à la portabilité. En cas de réponse insatisfaisante, toute personne peut introduire une réclamation auprès de la <strong>CNIL</strong> (Commission Nationale de l’Informatique et des Libertés — <a href="https://cnil.fr" rel="noopener">cnil.fr</a>).</p>
+
+    <!-- ================================================================
+         3. RESPONSABILITAT / RESPONSABILITÉ
+    ================================================================= -->
+    <h2 id="responsabilitat" class="titol-seccio"><span class="t-ca">Limitació de responsabilitat editorial</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Limitation de responsabilité éditoriale</span></h2>
+
+    <h3><span class="t-ca">Naturalesa del servei</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Nature du service</span></h3>
+    <p class="legal-ca">«Què fas?» és un servei d’informació cultural voluntari, no comercial i sense vocació d’exhaustivitat, editat per CLM en l’únic interès del públic de la Catalunya Nord. No constitueix una publicació de premsa en el sentit de la llei francesa del 29 de juliol de 1881 i no compromet la responsabilitat de CLM segons les disposicions aplicables als editors de premsa.</p>
+    <p class="legal-fr" lang="fr">« Què fas ? » est un service d’information culturelle bénévole, non commercial et sans vocation exhaustive, édité par CLM dans le seul intérêt du public de la Catalogne Nord. Il ne constitue pas une publication de presse au sens de la loi du 29 juillet 1881 et n’engage pas la responsabilité de CLM au titre des dispositions applicables aux éditeurs de presse.</p>
+
+    <h3><span class="t-ca">Responsabilitat dels organitzadors</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Responsabilité des organisateurs</span></h3>
+    <p class="legal-ca">Les informacions publicades en aquest lloc són transmeses lliurement i voluntàriament per les associacions organitzadores, que en romanen les úniques responsables pel que fa a l’exactitud, la integritat, la licitud i l’actualització. CLM no és l’organitzadora dels esdeveniments esmentats i no assumeix cap responsabilitat en aquest concepte.</p>
+    <p class="legal-fr" lang="fr">Les informations publiées sur ce site sont transmises librement et volontairement par les associations organisatrices, qui en demeurent les seules et uniques responsables quant à leur exactitude, leur complétude, leur licéité et leur mise à jour. CLM n’est pas l’organisateur des événements mentionnés et n’assume aucune responsabilité à ce titre.</p>
+
+    <h3><span class="t-ca">Paper editorial de CLM</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Rôle éditorial de CLM</span></h3>
+    <p class="legal-ca">CLM efectua una verificació formal de les trameses (coherència de les dades, conformitat amb les condicions de tramesa), però no verifica l’exactitud factual de les informacions transmeses ni pot ser obligada a fer-ho. La publicació d’un esdeveniment no equival a cap aval, garantia ni certificació per part de CLM.</p>
+    <p class="legal-fr" lang="fr">CLM procède à une vérification formelle des soumissions (cohérence des données, conformité aux conditions de soumission) mais ne vérifie pas l’exactitude factuelle des informations transmises et ne saurait être tenue d’effectuer une telle vérification. La publication d’un événement ne vaut ni approbation, ni garantie, ni certification de la part de CLM.</p>
+
+    <h3><span class="t-ca">Evolucions i modificacions</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Évolutions et modifications</span></h3>
+    <p class="legal-ca">Canvis de darrera hora — canvi de lloc o d’horari, ajornament, anul·lació total o parcial — poden produir-se després de la publicació sense que CLM en sigui informada ni en condicions d’actuar. CLM no pot ser considerada responsable del perjudici sofert per qualsevol persona que s’hagi desplaçat sobre la base d’informacions publicades de bona fe i posteriorment modificades o anul·lades per l’organitzador.</p>
+    <p class="legal-ca legal-avis"><strong>Correspon a cada usuari verificar les informacions directament amb l’associació organitzadora abans de desplaçar-se.</strong></p>
+    <p class="legal-fr" lang="fr">Des modifications de dernière minute — changement de lieu, d’horaire, report, annulation totale ou partielle — peuvent survenir après la publication et sans que CLM en soit informée ou en mesure d’agir. CLM ne peut être tenue responsable du préjudice subi par toute personne qui se serait déplacée sur la base d’informations publiées de bonne foi et ultérieurement modifiées ou annulées par l’organisateur.</p>
+    <p class="legal-fr legal-avis" lang="fr"><strong>Il incombe à chaque utilisateur de vérifier les informations directement auprès de l’association organisatrice avant tout déplacement.</strong></p>
+
+    <h3><span class="t-ca">Limitació de responsabilitat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Limitation de responsabilité</span></h3>
+    <p class="legal-ca">Dins dels límits permesos pel dret aplicable, CLM exclou tota responsabilitat per: qualsevol dany directe o indirecte resultant de l’ús o de la impossibilitat d’usar el lloc; qualsevol inexactitud, omissió o obsolescència de les informacions publicades; qualsevol interrupció o indisponibilitat del lloc atribuïble a l’allotjador o a qualsevol altre tercer tècnic; qualsevol contingut accessible mitjançant els enllaços externs presents al lloc.</p>
+    <p class="legal-fr" lang="fr">Dans les limites permises par le droit applicable, CLM exclut toute responsabilité pour : tout dommage direct ou indirect résultant de l’utilisation ou de l’impossibilité d’utiliser le site ; toute inexactitude, omission ou obsolescence des informations publiées ; toute interruption ou indisponibilité du site liée à l’hébergeur ou à tout autre tiers technique ; tout contenu accessible via les liens externes présents sur le site.</p>
+
+    <h3><span class="t-ca">Disponibilitat del lloc</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Disponibilité du site</span></h3>
+    <p class="legal-ca">CLM s’esforça a mantenir el lloc accessible però no en garanteix la disponibilitat contínua. Poden produir-se interrupcions per manteniment, actualització o per raons independents de la voluntat de CLM (fallada de l’allotjador, força major).</p>
+    <p class="legal-fr" lang="fr">CLM s’efforce de maintenir le site accessible mais ne garantit pas une disponibilité continue. Des interruptions peuvent survenir pour maintenance, mise à jour ou pour des raisons indépendantes de la volonté de CLM (défaillance de l’hébergeur, force majeure).</p>
+
+    <!-- ================================================================
+         4. CONDICIONS DE TRAMESA / CONDITIONS DE SOUMISSION
+    ================================================================= -->
+    <h2 id="condicions" class="titol-seccio"><span class="t-ca">Condicions de tramesa d’un esdeveniment</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Conditions de soumission d’un événement</span></h2>
+
+    <p class="legal-ca">En trametre un esdeveniment a «Què fas?», l’associació que fa la tramesa (d’ara endavant «l’Organitzador») accepta sense reserves les presents condicions.</p>
+    <p class="legal-fr" lang="fr">En soumettant un événement à « Què fas ? », l’association soumettante (ci-après « l’Organisateur ») accepte sans réserve les présentes conditions.</p>
+
+    <h3><span class="t-ca">1. Exactitud de les informacions</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">1. Exactitude des informations</span></h3>
+    <p class="legal-ca">L’Organitzador certifica que les informacions transmeses — títol, dates, horaris, lloc, descripció, imatges — són exactes i completes en la data de la tramesa. L’Organitzador es compromet a notificar a CLM sense demora qualsevol modificació posterior, a l’adreça de contacte indicada a la secció <a href="#editor">Editor</a>. Sense aquesta notificació, CLM no pot ser considerada responsable de la publicació d’informacions esdevingudes inexactes.</p>
+    <p class="legal-fr" lang="fr">L’Organisateur certifie que les informations transmises — titre, dates, horaires, lieu, description, visuels — sont exactes et complètes à la date de soumission. L’Organisateur s’engage à notifier CLM sans délai de toute modification ultérieure, à l’adresse de contact indiquée à la section <a href="#editor">Éditeur</a>. À défaut de notification, CLM ne saurait être tenue responsable de la publication d’informations devenues inexactes.</p>
+
+    <h3><span class="t-ca">2. Drets sobre les imatges</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">2. Droits sur les visuels</span></h3>
+    <p class="legal-ca">L’Organitzador declara ser titular de tots els drets de propietat intel·lectual, o disposar de totes les autoritzacions necessàries, sobre les imatges (fotografies, cartells, il·lustracions) transmeses amb la tramesa. L’Organitzador autoritza CLM a reproduir, adaptar i difondre aquestes imatges amb l’única finalitat de promoure l’esdeveniment a l’Agenda i al butlletí de correu associat, sense contrapartida econòmica. Aquesta autorització val per la durada de publicació de l’esdeveniment. L’Organitzador garanteix CLM contra qualsevol reclamació de tercers fonamentada en l’ús de les imatges així transmeses.</p>
+    <p class="legal-fr" lang="fr">L’Organisateur déclare être titulaire de tous les droits de propriété intellectuelle ou disposer de toutes les autorisations nécessaires sur les visuels (photographies, affiches, illustrations) transmis avec la soumission. L’Organisateur autorise CLM à reproduire, adapter et diffuser ces visuels aux seules fins de la promotion de l’événement sur l’Agenda et dans les digests email associés, sans contrepartie financière. Cette autorisation vaut pour la durée de publication de l’événement. L’Organisateur garantit CLM contre tout recours de tiers fondé sur l’utilisation des visuels ainsi transmis.</p>
+
+    <h3><span class="t-ca">3. Contingut il·lícit</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">3. Contenu illicite</span></h3>
+    <p class="legal-ca">L’Organitzador garanteix que les informacions i imatges transmeses no contenen cap contingut il·lícit, difamatori, discriminatori o que vulneri drets de tercers. CLM es reserva el dret de refusar o retirar qualsevol tramesa sense obligació de motivació.</p>
+    <p class="legal-fr" lang="fr">L’Organisateur garantit que les informations et visuels transmis ne contiennent aucun contenu illicite, diffamatoire, discriminatoire ou portant atteinte aux droits de tiers. CLM se réserve le droit de refuser ou de retirer toute soumission sans obligation de motivation.</p>
+
+    <h3><span class="t-ca">4. Tractament automatitzat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">4. Traitement automatisé</span></h3>
+    <p class="legal-ca">L’Organitzador queda informat que el contingut del missatge de tramesa se sotmet a un tractament automatitzat per intel·ligència artificial per extreure’n les dades estructurades necessàries per a la publicació. Aquest tractament és confidencial i les dades no es transmeten a tercers amb finalitats diferents de la publicació.</p>
+    <p class="legal-fr" lang="fr">L’Organisateur est informé que le contenu du message de soumission est soumis à un traitement automatisé par intelligence artificielle afin d’en extraire les données structurées nécessaires à la publication. Ce traitement est confidentiel et les données ne sont pas transmises à des tiers à des fins autres que la publication.</p>
+
+    <h3><span class="t-ca">5. Responsabilitat residual</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">5. Responsabilité résiduelle</span></h3>
+    <p class="legal-ca">La publicació d’un esdeveniment per CLM no crea cap obligació per a CLM de verificar l’exactitud de les informacions ni de mantenir l’esdeveniment publicat. CLM es reserva el dret de modificar, corregir o retirar qualsevol esdeveniment a la seva sola discreció.</p>
+    <p class="legal-fr" lang="fr">La publication d’un événement par CLM ne crée aucune obligation pour CLM de vérifier l’exactitude des informations ni de maintenir l’événement publié. CLM se réserve le droit de modifier, corriger ou retirer tout événement à sa seule discrétion.</p>
+
+  </main>
+
+  <footer class="peu">
+    <div class="contingut">
+      <p class="convida">
+        <a href="index.html">← <span class="t-ca">Torna a l’agenda</span><span class="t-sep"> · </span><span class="t-fr" lang="fr">Retour à l’agenda</span></a>
+      </p>
+      <p class="peu-firma">Agenda cultural de la Catalunya Nord</p>
+    </div>
+  </footer>
+
+  <!-- Canvi de llengua de lectura: mostra només el català o només el
+       francès i desa la tria a localStorage ('llengua-legal'). -->
+  <script>
+    (function () {
+      var botoCa = document.getElementById('boto-llengua-ca');
+      var botoFr = document.getElementById('boto-llengua-fr');
+
+      // Aplica la llengua triada a la pàgina, als botons i a la memòria local.
+      function aplicaLlengua(llengua) {
+        document.documentElement.setAttribute('data-llengua', llengua);
+        document.documentElement.lang = llengua;
+        botoCa.classList.toggle('actiu', llengua === 'ca');
+        botoFr.classList.toggle('actiu', llengua === 'fr');
+        botoCa.setAttribute('aria-pressed', llengua === 'ca' ? 'true' : 'false');
+        botoFr.setAttribute('aria-pressed', llengua === 'fr' ? 'true' : 'false');
+        try { localStorage.setItem('llengua-legal', llengua); } catch (e) { /* sense localStorage: la tria no es desa */ }
+      }
+
+      botoCa.addEventListener('click', function () { aplicaLlengua('ca'); });
+      botoFr.addEventListener('click', function () { aplicaLlengua('fr'); });
+
+      // Estat inicial: el que la capçalera ja ha aplicat abans de pintar.
+      var inicial = document.documentElement.getAttribute('data-llengua');
+      if (inicial !== 'ca' && inicial !== 'fr') { inicial = 'ca'; }
+      aplicaLlengua(inicial);
+    })();
+  </script>
+
+</body>
+</html>

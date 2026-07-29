@@ -1,0 +1,86 @@
+# Auditoria de qualitat del codi — §9: Taula final consolidada
+
+> Totes les troballes de §§1–7 en una sola taula, **ordenades per severitat** (alta → mitjana → baixa) i, dins de cada nivell, per secció d'origen.
+> Categoria ∈ {consistency, structure, simplicity, resilience, reliability, tests}. Severitat = deute de manteniment/operació, **no risc de seguretat** (auditat a part); tot camí de fallada silenciosa és **alta** per la regla §6.
+> Data: 2026-07-07. Base: reports `00`–`07` (`docs/auditoria/*-codi.md`).
+> Recompte: **39 troballes — 4 altes · 14 mitjanes · 21 baixes.** Zero incidències de correcció aplicada: aquesta és la llista completa; **en Miquel decideix l'ordre i l'abast**.
+
+---
+
+## Severitat ALTA (4) — ja fa mal o en farà aviat / fallada silenciosa
+
+| # | Origen | fitxer:línia | Categoria | Troballa (1 frase) | Fix concret |
+|---|---|---|---|---|---|
+| 1 | §4-1 | `sendWeeklyDigest.gs:94–145` | resilience | El digest no té ni lock ni guarda d'idempotència: un trigger repetit o solapat reenvia el digest sencer a **tots** els subscriptors, i una execució morta a mitges no es pot reprendre sense doblar correus. | Al començament: (a) `LockService.getScriptLock()` + `tryLock(0)` amb sortida immediata; (b) Script Property `DIGEST_DARRER_ENVIAMENT` — si val `avuiText`, log i sortir; si no, `setProperty` just abans del bucle de comarques. |
+| 2 | §4-2 | `sendWeeklyDigest.gs:137–139`, `:312–314` | resilience | Les fallades capturades del digest només van a `Logger.log`: una llista mal configurada o una caiguda de Brevo pot fer fallar una comarca sencera **cada setmana en silenci** (el resum «X destinataris, 0 enviats» també és només log). | Al `catch` per comarca i quan `enviats === 0 && destinataris.length > 0`, avisar el curador amb `MailApp.sendEmail(...)`; a més, posar la notificació d'errors d'Apps Script dels dos triggers a «immediatament». |
+| 3 | §5-1 | `TECH-KNOWLEDGE-BASE.md:63–136,441–444,552,577` · `PROJECT-KNOWLEDGE.md` · `PROJECT-INSTRUCTIONS.md` · `README.md` · `prompts/README.md` · `skill/agenda-nord-core/SKILL.md` (+ «Publier» a diversos) | reliability | **9 fitxers** de documentació descriuen un sistema que ja no existeix: API de Claude (`claude-sonnet-4-6`, `api.anthropic.com`, `CLAUDE_API_KEY`, `max_tokens` 1000) en lloc de Gemini (`gemini-2.5-flash`, `x-goog-api-key`, `GEMINI_API_KEY`, 2048), botó «Publier» en lloc del menú real, i passos «blocked on Workspace» ja resolts — i l'skill obsolet es carrega a **cada** sessió. | Una passada d'alineació fitxer a fitxer amb el codi com a font de veritat; reescriure la capa 2 de `TECH-KNOWLEDGE-BASE.md` per a Gemini (i afegir Cloudinary com a 4t servei), substituir Claude→Gemini i «Publier»→«Publica els esdeveniments aprovats», i **tornar a desar l'skill instal·lat**. |
+| 4 | §7-1 | tot el projecte (cap fitxer de tests) | tests | Zero tests automatitzats amb ~20 fixos de §§1–6 a la cua (inclosos refactors que mouen codi) en un entorn **sense anàlisi estàtica**: un nom mal escrit només peta en temps d'execució, potser dimarts a les 15:00 sense ningú mirant. | Crear **`tests.gs`** (patró A): `executaTotsElsTests()` amb `ui.alert` resum + `Logger.log` detall i entrada de menú «Executa els tests»; asserts de lògica pura sobre `analitzaJsonResposta`, `extreuTextResposta`, `valorPermes`, `creaId`, `construeixFila` (inclòs `estat` forçat a `pendent` + 16 claus), i els bessons del digest (`finsAl`, `objecteDataDe`, `dataLlegibleCatala`, `escapaHtml`). |
+
+---
+
+## Severitat MITJANA (14) — arregla-ho abans que mossegui
+
+| # | Origen | fitxer:línia | Categoria | Troballa (1 frase) | Fix concret |
+|---|---|---|---|---|---|
+| 5 | §1-1 | `processNewEmails.gs:128,145,497` vs `:169,174` (i altres) | consistency | La llengua dels `Logger.log` barreja anglès i català **dins del mateix fitxer**, cosa que alenteix la lectura del registre quan una feina desatesa falla. | Una passada única: tots els missatges de log en català (la llengua del curador). |
+| 6 | §1-3 | `processNewEmails.gs:139`, `sendWeeklyDigest.gs:101`, `processBotSubmission.gs:68` vs `publishToGitHub.gs:86` | consistency | El mateix error («no trobo el full Esdeveniments») existeix en **tres redaccions i dues llengües**, i alguns arriben al curador via `ui.alert`. | Un sol text català per a l'error de full absent, reutilitzat als quatre llocs; tots els `throw new Error(...)` en català. |
+| 7 | §1-7 | `sendWeeklyDigest.gs:201,206,216–226` | consistency | El digest reimplementa inline, 12 vegades, exactament el que fa el helper global `textDeCella()` — dues maneres de llegir una cel·la al mateix projecte. | Substituir els 12 inline per `textDeCella(fila[col])`; §2 valorarà moure el helper a `utils.gs`. |
+| 8 | §2-1 | `processNewEmails.gs:460`, `sendWeeklyDigest.gs:240`, `publishToGitHub.gs:153`, `processBotSubmission.gs:144,158` | structure | Cinc helpers de càrrega creuada (`getSecret`, `indexDeColumna`, `textDeCella`, `readField`, `creaId`) viuen dins de fitxers amb nom d'una altra feina: esborrar «el fitxer del webhook» trencaria la ingestió sense avís. | Crear **`utils.gs`** amb els 5 helpers tal qual i actualitzar els banners; canvi mecànic, mateix espai global. |
+| 9 | §2-2 | `setupSheet.gs:10–51` | structure | El fitxer de setup —pensat per córrer **un sol cop**— és propietari de les constants d'esquema que la ingestió i el digest llegeixen cada hora i cada setmana; suprimir-lo trencaria dues feines. | Moure `COLUMN_HEADERS`, `COMARCA_VALUES`, `CATEGORIA_VALUES`, `ESTAT_VALUES` a `utils.gs`; `setupSheet.gs` queda purament procedimental. |
+| 10 | §2-4 | `sendWeeklyDigest.gs` (856 línies) | structure | El fitxer barreja orquestració i ~300 línies de plantilla HTML amb colors i mesos — el vermell més gros del llindar §6. | Partir en `sendWeeklyDigest.gs` (orquestració + Brevo) i `digestHtml.gs` (`construeix*` purs + colors + mesos/dies); la meitat pura esdevé testable en local. |
+| 11 | §3-1 | `processBotSubmission.gs:80–81` | simplicity | El camí del webhook escriu `comarca`/`categoria` **sense** el contrast `valorPermes` que el camí del correu sí aplica: el full pot acumular valors fora d'enum que cap filtre ni digest mostrarà. | Dues línies: `valorPermes(readField(body,'comarca'), COMARCA_VALUES)` i l'equivalent amb `CATEGORIA_VALUES`. |
+| 12 | §3-2 | `sendWeeklyDigest.gs:376–406` (`obteContactesDeLlista`) | simplicity | Única funció amb profunditat 4, governada pel flag `seguir` que amaga el cas normal dins d'un `else` — vermell §6, i és paginació que corre desatesa. | Reestructurar amb sortides primerenques (`while(true){ pàgina; if(buida) break; for(...); offset+=…; if(última) break; }`), profunditat 2. |
+| 13 | §4-3 | `processNewEmails.gs:208–214` (+ `:47`) | resilience | Cap límit per remitent i `GmailApp.search` retorna els més nous primer: un remitent que inunda la bústia enterra el correu legítim i consumeix la quota compartida de Gemini. | (a) `threads.reverse()` per fer la cua FIFO; (b) comptador per remitent dins la tanda: a partir del 3r correu del mateix remitent, deixar el fil no llegit. |
+| 14 | §4-4 | `sendWeeklyDigest.gs:303–316` | resilience | Cap consciència del sostre gratuït de Brevo (300 correus/dia): en créixer les llistes, els enviaments que excedeixin la quota fallaran d'un en un, només visibles al log. | Abans del bucle, sumar `destinataris` de totes les comarques; si el total > ~280, avisar el curador (troballa 2) i documentar el pla B a `docs/pas-9-digest-brevo.md`. |
+| 15 | §5-2 | `README.md` (tot el fitxer) | reliability | El README no permetria a un successor operar el sistema: no diu quins triggers hi ha, quines Script Properties calen, com desplegar un canvi ni com desfer-lo. | Secció «Operació» de ~30 línies: *Triggers* (funció, cadència, reinstal·lació), *Script Properties* (llista de noms sense valors), *Desplegar un canvi*, *Rollback*. |
+| 16 | §5-3 | `apps-script/` (sense `appsscript.json`) | reliability | El manifest (fus horari, permisos OAuth, runtime) no està versionat, i enlloc es declara si mana l'editor en línia o el repo: un hotfix a l'editor no replicat fa que totes les auditories deixin de descriure producció. | (a) Copiar `appsscript.json` de l'editor al repo; (b) política a la capçalera de cada `.gs` i al README: «el repo és el mestre; cap edició directa a l'editor sense replicar-la el mateix dia». |
+| 17 | §5-4 | tots els `.gs` (`getActiveSpreadsheet()`) | reliability | No hi ha entorn de proves per al backend: verificar qualsevol canvi obliga a executar contra el full de producció amb dades vives. | **Còpia del full de càlcul** (l'script lligat es copia; properties i triggers no) amb propietats de prova a mà (repo GitHub i llistes Brevo de prova) i 3–4 files fictícies; documentar-ho al README. |
+| 18 | §7-2 | `sendWeeklyDigest.gs` (guardes §4-1) · full de proves §5-4 · runbook §5-2 | tests | Els quatre tests d'integració de §7.2 estan **bloquejats per prerequisits d'altres seccions**; sense seqüència explícita, el risc és refactoritzar abans que la xarxa existeixi. | Seqüència canònica al runbook (vegeu «Seqüència d'aplicació» a sota). |
+
+---
+
+## Severitat BAIXA (21) — poliment
+
+| # | Origen | fitxer:línia | Categoria | Troballa (1 frase) | Fix concret |
+|---|---|---|---|---|---|
+| 19 | §1-2 | `processNewEmails.gs:174` vs `:169`; `sendWeeklyDigest.gs:318` vs `:114` | consistency | El prefix `nomFuncio:` als logs és intermitent, i és l'única pista de «qui parla» quan el registre barreja les tres feines. | Convenció única `nomFuncio: missatge` a les 17 crides. |
+| 20 | §1-4 | `setupSheet.gs:10–123` | consistency | `setupSheet.gs` és l'únic fitxer amb tots els identificadors en anglès, contra el patró CA-domini de la resta. | Documentar l'excepció, o catalanitzar només els helpers interns (sense tocar `COLUMN_HEADERS`/`COMARCA_VALUES`/`CATEGORIA_VALUES`, d'ús creuat). |
+| 21 | §1-5 | `processNewEmails.gs:406`, `processBotSubmission.gs:116` vs `publishToGitHub.gs:115`, `sendWeeklyDigest.gs:199` | consistency | El mateix concepte es diu `row` o `fila` segons el fitxer — i `construeixFila` retorna una variable dita `row`. | Reanomenar les dues locals a `fila` (canvi local, cap efecte creuat). |
+| 22 | §1-6 | tots els `.gs` vs `app.js` | consistency | La llengua dels comentaris està partida per runtime (backend anglès, frontend català). | Decidir-ho i escriure-ho a la nota de convenció (recomanat: català); convergir gradualment en tocar cada fitxer. |
+| 23 | §1-8 | `sendWeeklyDigest.gs:796–804` (`dataLlegibleCatala`) | consistency | Reimplementa el parse `split('-')` + validació que ja fa `objecteDataDe()` tres pantalles més amunt. | Reescriure `dataLlegibleCatala` sobre `objecteDataDe`. |
+| 24 | §1-9 | `app.js:246–250,439–455,477–479` vs `sendWeeklyDigest.gs:665–698,739–758` | consistency | Els helpers bessons entre frontend i digest divergeixen d'estil i de blindatge (ternaris vs `if/else`, guarda de cadena buida present a un i no a l'altre). | A cada parella, un comentari creuat «bessó de X a Y» i alinear el cos a l'`if/else` explícit (regla de casa). |
+| 25 | §1-10 | `sendWeeklyDigest.gs:855` (i `:8`) | consistency | El log diu «Tuesdays at 15:00» amb l'hora **picada a mà**, mentre l'hora real surt de `HORA_ENVIAMENT` — si es canvia la constant, el log mentirà. | Construir el missatge amb la constant: `'... (dimarts a les ' + HORA_ENVIAMENT + ':00).'`. |
+| 26 | §1-11 | `processNewEmails.gs:263–264` | consistency | Claus d'objecte entre cometes sense necessitat (`'upload_preset'`, `'file'`), únic lloc del projecte. | Treure les cometes; convenció: cometes només quan el nom ho obliga. |
+| 27 | §2-3 | `processBotSubmission.gs:20–37` (`BOT_COLUMN_HEADERS`) | structure | Constant mai llegida en execució que **duplica** `COLUMN_HEADERS` — segona còpia de l'ordre canònic que pot derivar en silenci. | Esborrar-la i fer que el comentari de `:115` apunti a `COLUMN_HEADERS`. |
+| 28 | §2-5 | `processNewEmails.gs:63–115` (`EXTRACTION_PROMPT`) | structure | El fitxer (498 línies) barreja «text que s'edita» (el prompt) amb «codi que no es toca». | Opcional: moure la constant a `extractionPrompt.gs` i actualitzar el comentari de sincronia. |
+| 29 | §2-6 | `docs/prova-local.html` (617 línies) | structure | Còpia **antiga i divergent** de la previsualització que cap document ni codi referencia. | Esborrar `docs/prova-local.html`. |
+| 30 | §2-7 | `processNewEmails.gs:57–59` + `prompts/extract-event.txt` | structure | Dues fonts de veritat per al prompt, protegides només per un comentari (avui idèntiques byte a byte). | Escriure a `prompts/README.md` quina és la mestra (la del `.gs`) + data d'última verificació; si es munta el runner §7, un test que les compari. |
+| 31 | §2-8 | `PROJECT-KNOWLEDGE.md:149,214` | structure | Diu que el redisseny B&N viu només a `prova-local.html` i «està per portar», però `index.html`/`style.css`/`app.js` ja el porten (2026-06-29). | Actualitzar les dues línies (dins la passada d'alineació de docs, troballa 3). |
+| 32 | §3-3 | `processNewEmails.gs:430–432` (`escriuFila`) vs `processBotSubmission.gs:135` (`appendRow`) | simplicity | El pas «escriu la fila» existeix en dues formes: un camí el té amb nom, l'altre l'encasta — al punt on convergeixen els dos fluxos. | Que el bot també cridi `escriuFila` (via `utils.gs`), donant a §7 una costura única on comprovar `estat = pendent`. |
+| 33 | §3-4 | `processNewEmails.gs:89` + `prompts/extract-event.txt` | simplicity | El prompt ensenya el model a construir `id`… que `construeixFila` descarta sempre i reconstrueix amb `creaId`: instruccions mortes. | Moure `id` a «CAMPS QUE NO HAS D'OMPLIR MAI», actualitzar l'exemple i **les dues còpies**; revalidar amb els 3 correus de `prompts/exemples-test/`. |
+| 34 | §3-5 | `processBotSubmission.gs:66`, `processNewEmails.gs:137`, `publishToGitHub.gs:84`, `sendWeeklyDigest.gs:99`, `setupSheet.gs:67,69` | simplicity | El nom del full `'Esdeveniments'` és una cadena màgica repetida 6 vegades en 5 fitxers. | Constant `NOM_FULL = 'Esdeveniments'` a `utils.gs`, usada a les 6 posicions. |
+| 35 | §4-5 | `processNewEmails.gs:192–198` | resilience | Dins `processaThread`, el cartell puja a Cloudinary **abans** de la crida a Gemini: si l'extracció falla, queda un actiu orfe (i un reintent el duplica). | Intercanviar l'ordre: primer `demanaExtraccioGemini`, pujar el cartell només amb una extracció vàlida. |
+| 36 | §4-6 | `app.js:411–419` (`creaMeta`) | resilience | El separador « · » s'afegeix **abans** de saber si `finsAl()` retornarà `''` → línia meta amb separador orfe (el bessó del digest ja ho fa bé). | Calcular `var fins = finsAl(e.data_fi)` primer i afegir separador + span només si `fins !== ''`. |
+| 37 | §6-1 | `app.js:111` | simplicity | L'únic ternari encadenat del projecte (comparador d'ordenació), mentre el bessó del digest `comparaPerDataIHora` fa el mateix amb `if/else` pla. | Reescriure el comparador amb l'`if/else` del bessó (plegar-ho dins l'alineació de bessons, troballa 24). |
+| 38 | §7-3 | `events-exemple.json` (10 esdeveniments vàlids) | tests | El fum de render de `?prova=1` només veu casos benignes: cap enum forà ni `data_fi` malformada — justament els camins que §4.2 va auditar però ningú ha vist renderitzats. | Afegir 2 esdeveniments hostils (`comarca:"Occitània"`/`categoria:"Circ"` i `data_fi:"2026-13-99"`) i una checklist de 6 punts a `docs/` per a l'ullada amb `?prova=1`. |
+| 39 | §7-4 | `processNewEmails.gs:57–59` + `prompts/extract-event.txt` | tests | La sincronia de les dues còpies del prompt només la protegeix un comentari; §2-7 ho deixava «per si es munta el runner». | Assert opcional al runner: `fetch` del raw d'`extract-event.txt` i comparació amb `EXTRACTION_PROMPT` (avís, no fallada); si no, mantenir la verificació manual datada. |
+
+---
+
+## Seqüència d'aplicació recomanada (de §7-2)
+
+Les troballes **no** s'han d'aplicar en ordre de severitat, sinó en ordre de dependència, perquè cap refactor gros es faci sense xarxa de seguretat:
+
+1. **`tests.gs` amb els asserts purs** (troballa 4) — no depèn de res, es pot fer primer; dona la suite verda de base.
+2. **Fix d'enums al bot** (troballa 11) amb el seu test **primer en vermell** — el cicle test-first en miniatura que prova que el runner detecta res.
+3. **Banc de proves** (troballa 17): còpia del full + properties de prova → hi corren els tests d'integració (bot, lock, publicació a repo de proves amb 409 visible).
+4. **Fixos del digest** (troballes 1 i 2) al banc de proves, cadascun amb el seu test d'acceptació (idempotència, avís d'error).
+5. **Refactors estructurals** (troballes 7, 8, 9, 10) amb la suite com a xarxa — «suite verda primer, refactor després».
+6. **Alineació de documentació** (troballa 3, arrossega 31) — passada d'edició independent, sense tocar codi; en paral·lel a tot l'anterior.
+7. **Poliments** (consistència §1, bessons, cadenes màgiques, separador orfe…) quan es toqui cada fitxer, sense passades massives.
+
+---
+
+**No apliquis encara cap correcció — aquesta és la llista completa; en Miquel decideix l'ordre i l'abast.**
+
+*Fi de l'auditoria de qualitat del codi (§§0–7 + §9 consolidada). Reports a `docs/auditoria/00`–`08-*-codi.md`. Auditoria de seguretat, a part: `auditoria-seguretat-agenda-nord.md` + `00`–`08` sense sufix `-codi`.*

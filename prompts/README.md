@@ -2,17 +2,19 @@
 
 ## extract-event.txt
 
-Prompt enviat a l'API de Claude (claude-sonnet-4-6) pel script d'ingestió de correus (Pas 4). Converteix el cos d'un correu en un objecte JSON amb els 16 camps de l'esquema.
+Prompt enviat a l'API de Gemini (`gemini-2.5-flash`, Google AI Studio) pel script d'ingestió de correus (Pas 4). Converteix el cos d'un correu en un objecte JSON amb els 16 camps de l'esquema.
+
+> **Còpia mestra:** aquest `extract-event.txt` i la constant `EXTRACTION_PROMPT` de `apps-script/processNewEmails.gs` han de dir el mateix. La **mestra és la del `.gs`** (és la que s'executa); aquest `.txt` és la còpia llegible per a proves manuals. Si en canvies una, canvia l'altra. Darrera verificació d'igualtat: 2026-07-10.
 
 ### Com funciona
 
 - `{{AVUI}}` és un marcador que el script del Pas 4 substituirà per la data del dia (format AAAA-MM-DD). Serveix per deduir l'any quan el correu no l'indica.
 - El cos del correu s'enganxa al final, després de la línia `CORREU:`.
-- Els camps `imatge_url`, `font_url`, `estat` i `data_entrada` tornen sempre buits: els omple el script, no Claude.
+- Els camps `id`, `imatge_url`, `font_url`, `estat` i `data_entrada` tornen sempre buits: els omple el sistema, no el model (l'`id` es reconstrueix amb `creaId`).
 
 ### Com provar-lo manualment (verificació del Pas 2)
 
-1. Obre claude.ai i copia tot el contingut de `extract-event.txt`.
+1. Obre Google AI Studio (aistudio.google.com), tria el model `gemini-2.5-flash` i copia tot el contingut de `extract-event.txt`.
 2. Substitueix `{{AVUI}}` per la data d'avui (per exemple `2026-06-12`).
 3. Enganxa un dels correus de `exemples-test/` després de la línia `CORREU:`.
 4. Envia i comprova el resultat amb la llista següent.
@@ -25,7 +27,7 @@ Prompt enviat a l'API de Claude (claude-sonnet-4-6) pel script d'ingestió de co
 - [ ] `comarca` i `categoria` són exactament un dels valors permesos, o `""`.
 - [ ] Dates en AAAA-MM-DD, hora en HH:MM.
 - [ ] `descripcio_ca` té 2–4 frases en català natural; `descripcio_fr` n'és la traducció.
-- [ ] `imatge_url`, `font_url`, `estat`, `data_entrada` són `""`.
+- [ ] `id`, `imatge_url`, `font_url`, `estat`, `data_entrada` són `""`.
 
 ### Resultats esperats dels correus de prova
 

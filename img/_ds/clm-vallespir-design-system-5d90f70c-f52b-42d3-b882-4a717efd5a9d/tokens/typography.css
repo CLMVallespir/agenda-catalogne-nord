@@ -1,0 +1,42 @@
+/* ==========================================================================
+   CLM Vallespir — typography.css
+   Fraunces is the serif voice (wordmarks → display → body). Space Grotesk is
+   the quiet UI sans for eyebrows, labels, nav, meta. Liana is logotype only.
+   NOTE: the MM production build shipped Noto Serif Display; the CLM brand
+   family standardises on Fraunces (per the logo brief) — see README.
+   ========================================================================== */
+:root {
+  /* ── Families ─────────────────────────────────────────────────────── */
+  --font-display:  'Fraunces', Georgia, 'Times New Roman', serif;   /* headings, wordmarks */
+  --font-serif:    'Fraunces', Georgia, 'Times New Roman', serif;   /* running text */
+  --font-ui:       'Space Grotesk', system-ui, sans-serif;          /* eyebrows, labels, meta */
+  --font-logotype: 'Liana', 'Fraunces', serif;                      /* "a Taula!" only */
+
+  /* ── Type scale ───────────────────────────────────────────────────── */
+  --text-xs:   .68rem;   /* eyebrows, labels, badges */
+  --text-sm:   .85rem;   /* meta, captions */
+  --text-base: 1rem;     /* body */
+  --text-lg:   1.1rem;   /* lead body */
+  --text-xl:   1.25rem;  /* sub / card title */
+  --text-2xl:  1.65rem;  /* section sub-head */
+  --text-3xl:  2.25rem;  /* section title */
+  --text-hero: clamp(2.8rem, 5.5vw, 5.25rem);  /* hero display */
+
+  /* ── Weights (Fraunces) ───────────────────────────────────────────── */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-book:    450;
+  --weight-medium:  500;
+  --weight-semi:    600;
+
+  /* ── Line heights ─────────────────────────────────────────────────── */
+  --leading-tight:  1.08;   /* hero / display */
+  --leading-snug:   1.18;   /* headings */
+  --leading-normal: 1.55;   /* body */
+  --leading-relaxed:1.65;   /* article body */
+
+  /* ── Tracking ─────────────────────────────────────────────────────── */
+  --tracking-eyebrow: .1em;    /* uppercase UI labels */
+  --tracking-wide:    .16em;   /* frontier / micro-labels */
+  --tracking-tight:   -.01em;  /* large display */
+}

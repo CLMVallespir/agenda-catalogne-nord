@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qui som — Què fas? · Catalunya Nord</title>
+  <meta name="description" content="L’agenda cultural de la Catalunya Nord: concerts, festes tradicionals, exposicions i tallers a les cinc comarques. · Sorties culturelles et fêtes catalanes dans les Pyrénées-Orientales.">
+
+  <!-- Aplica el tema desat ABANS de pintar, per evitar el parpelleig. -->
+  <script>
+    (function () {
+      var tema = 'clar';
+      try {
+        var desat = localStorage.getItem('tema');
+        if (desat === 'fosc' || desat === 'clar') {
+          tema = desat;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          tema = 'fosc';
+        }
+      } catch (e) { /* sense localStorage: es queda en tema clar */ }
+      document.documentElement.setAttribute('data-tema', tema);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Capçalera compacta, com la de la pàgina legal (la «faixa» amb el
+       logotip gran és només per a la portada). -->
+  <header class="capcalera">
+    <div class="contingut">
+      <!-- El logotip enllaça de tornada a l'agenda. -->
+      <p class="logo-enllac">
+        <a href="index.html">
+          <img class="logo-quefas logo-clar" src="img/logo/que-fas_clar.svg" alt="Què fas? — l’Agenda de Cat Nord">
+          <img class="logo-quefas logo-fosc" src="img/logo/que-fas_fosc.svg" alt="Què fas? — l’Agenda de Cat Nord">
+        </a>
+      </p>
+      <p class="subtitol subtitol-legal">
+        <span class="t-ca">Qui som — Agenda cultural, Catalunya Nord</span><span class="t-sep"> · </span><span class="t-fr" lang="fr">Qui sommes-nous — Agenda culturel, Catalogne Nord</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- Reutilitza els estils de pàgina de prosa de style.css (.pagina-legal,
+       .titol-legal, .titol-seccio, .legal-ca, .legal-fr): són estils
+       genèrics de pàgina de text en dues llengües, no només «legals».
+       Aquesta pàgina no duu selector de llengua: el text és curt i es
+       mostra sempre en català i francès alhora. -->
+  <main class="contingut pagina-legal">
+
+    <p class="torna"><a href="index.html">← <span class="t-ca">Torna a l’agenda</span><span class="t-sep"> · </span><span class="t-fr" lang="fr">Retour à l’agenda</span></a></p>
+
+    <h1 class="titol-legal">
+      <span class="t-ca">Qui som</span>
+      <span class="t-fr" lang="fr">Qui sommes-nous</span>
+    </h1>
+
+    <!-- ================================================================
+         1. QUÈ ÉS «QUÈ FAS?»
+    ================================================================= -->
+    <h2 class="titol-seccio"><span class="t-ca">Què és «Què fas?»</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Qu’est-ce que « Què fas ? »</span></h2>
+
+    <p class="legal-ca">«Què fas?» és l’agenda cultural de la Catalunya Nord: un web gratuït i obert que aplega, en un sol lloc, els actes culturals de les cinc comarques del nord — el Rosselló, el Conflent, el Vallespir, el Capcir i la Cerdanya —, de Perpinyà als pobles de muntanya dels Pirineus Orientals. Concerts, teatre, exposicions, mercats, tallers, patrimoni: tot allò que fa viure la cultura del país, en català i en francès.</p>
+    <p class="legal-fr" lang="fr">« Què fas ? » est l’agenda culturel de la Catalogne Nord : un site gratuit et ouvert qui rassemble, en un seul lieu, les événements culturels des cinq régions historiques du nord — le Roussillon, le Conflent, le Vallespir, le Capcir et la Cerdagne —, de Perpignan aux villages de montagne des Pyrénées-Orientales. Concerts, théâtre, expositions, marchés, ateliers, patrimoine : tout ce qui fait vivre la culture du Pays Catalan, en catalan et en français.</p>
+
+    <!-- ================================================================
+         2. LA CATALANITAT
+    ================================================================= -->
+    <h2 class="titol-seccio"><span class="t-ca">La catalanitat</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">La catalanité</span></h2>
+
+    <p class="legal-ca">La catalanitat hi té un lloc central. L’agenda segueix de prop les festes tradicionals que marquen l’any a la Catalunya Nord: la Festa de l’Ós al Vallespir, els focs de Sant Joan i la Flama del Canigó, els aplecs, les sardanes, les festes majors dels pobles i totes les celebracions que mantenen viva la cultura catalana d’aquesta banda dels Pirineus. I resta oberta a tota la vida cultural del territori, en català i en francès.</p>
+    <p class="legal-fr" lang="fr">La catalanité y tient une place centrale. L’agenda suit de près les fêtes traditionnelles qui rythment l’année en Catalogne Nord : la Fête de l’Ours en Vallespir, les feux de la Saint-Jean et la Flamme du Canigou, les aplecs, les sardanes, les fêtes de village et toutes les célébrations qui font vivre la culture catalane de ce côté-ci des Pyrénées. Et il reste ouvert à toute la vie culturelle du territoire, en catalan comme en français.</p>
+
+    <!-- ================================================================
+         3. AL VOLTANT D'UNA TAULA
+         Nota: parla d'actes en bars i amb restauració, no de restaurants.
+         L'agenda no és un directori de restaurants; no prometre'n més.
+    ================================================================= -->
+    <h2 class="titol-seccio"><span class="t-ca">Al voltant d’una taula</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Autour d’une table</span></h2>
+
+    <p class="legal-ca">La cultura també es viu al voltant d’una taula. Per això hi trobareu vetllades i concerts en bars i cafès, sopars-concert, festes amb restauració, fires gastronòmiques i mercats de productors: totes les ocasions on la trobada, la música i la bona taula van juntes.</p>
+    <p class="legal-fr" lang="fr">La culture se vit aussi autour d’une table : soirées et concerts dans les bars et cafés, dîners-concerts, fêtes avec restauration, foires gastronomiques et marchés de producteurs — toutes les occasions où la rencontre, la musique et la bonne table vont ensemble.</p>
+
+    <!-- ================================================================
+         4. QUI HI HA AL DARRERE
+    ================================================================= -->
+    <h2 class="titol-seccio"><span class="t-ca">Qui hi ha al darrere</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Qui est derrière le projet</span></h2>
+
+    <p class="legal-ca">L’agenda és un projecte voluntari i sense ànim de lucre de l’associació <strong>Cultures, Llengües i Memòries del Vallespir (CLM)</strong>, amb seu a Prats de Molló. Un equip curador revisa cada proposta abans de publicar-la, perquè la informació sigui fiable i llegidora.</p>
+    <p class="legal-fr" lang="fr">L’agenda est un projet bénévole et sans but lucratif de l’association <strong>Cultures, Langues et Mémoires du Vallespir (CLM)</strong>, dont le siège est à Prats-de-Mollo. Une équipe de curation relit chaque proposition avant publication, afin que l’information soit fiable et lisible.</p>
+
+    <!-- PENDENT DE CONFIRMAR (Miquel): paràgraf sobre la col·laboració amb
+         la federació d'associacions nord-catalana per a la moderació dels
+         continguts. Esborrany a validar (nom exacte de l'entitat inclòs):
+
+    <p class="legal-ca">Aquesta feina de revisió es fa en col·laboració amb
+    la [NOM EXACTE DE LA FEDERACIÓ], que ajuda a moderar els continguts de
+    l'agenda.</p>
+    <p class="legal-fr" lang="fr">Ce travail de relecture est mené en
+    collaboration avec la [NOM EXACT DE LA FÉDÉRATION], qui aide à modérer
+    les contenus de l'agenda.</p>
+    -->
+
+    <!-- ================================================================
+         5. COM FUNCIONA
+    ================================================================= -->
+    <h2 class="titol-seccio"><span class="t-ca">Com funciona</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Comment ça marche</span></h2>
+
+    <p class="legal-ca">Les associacions i els organitzadors envien els seus actes per correu electrònic o pel formulari del peu de pàgina. Cada setmana revisem les propostes i publiquem les que encaixen amb l’esperit de l’agenda: oberta, acollidora i cultural. Qui ho vol pot rebre, cada setmana, els actes de la seva comarca directament al correu.</p>
+    <p class="legal-fr" lang="fr">Les associations et les organisateurs envoient leurs événements par courriel ou par le formulaire en bas de page. Chaque semaine, nous relisons les propositions et publions celles qui correspondent à l’esprit de l’agenda : ouvert, accueillant et culturel. Qui le souhaite peut recevoir, chaque semaine, les événements de sa région directement par courriel.</p>
+
+    <!-- ================================================================
+         6. CONTACTE
+    ================================================================= -->
+    <h2 class="titol-seccio"><span class="t-ca">Contacte</span><span class="fr t-sep" lang="fr"> · </span><span class="fr t-fr" lang="fr">Contact</span></h2>
+
+    <p class="legal-ca">Ens podeu escriure a info arrova clm punt cat <span class="pista-correu">(escriviu l’adreça amb @ i punts)</span>. Les dades legals completes són a les <a href="mencions-legals.html">mencions legals</a>.</p>
+    <p class="legal-fr" lang="fr">Vous pouvez nous écrire à info arobase clm point cat <span class="pista-correu">(écrivez l’adresse avec @ et des points)</span>. Les informations légales complètes figurent dans les <a href="mencions-legals.html">mentions légales</a>.</p>
+
+  </main>
+
+  <footer class="peu">
+    <div class="contingut">
+      <p class="convida">
+        <a href="index.html">← <span class="t-ca">Torna a l’agenda</span><span class="t-sep"> · </span><span class="t-fr" lang="fr">Retour à l’agenda</span></a>
+      </p>
+      <p class="peu-firma">Agenda cultural de la Catalunya Nord</p>
+    </div>
+  </footer>
+
+</body>
+</html>

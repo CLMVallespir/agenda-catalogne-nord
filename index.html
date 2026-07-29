@@ -4,10 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agenda cultural — Catalunya Nord</title>
+  <meta name="description" content="Agenda cultural de la Catalunya Nord: Rosselló, Conflent, Vallespir, Capcir i Cerdanya. Agenda culturelle de la Catalogne Nord.">
+
+  <!-- Aplica el tema desat ABANS de pintar, per evitar el parpelleig. -->
+  <script>
+    (function () {
+      var tema = 'clar';
+      try {
+        var desat = localStorage.getItem('tema');
+        if (desat === 'fosc' || desat === 'clar') {
+          tema = desat;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          tema = 'fosc';
+        }
+      } catch (e) { /* sense localStorage: es queda en tema clar */ }
+      document.documentElement.setAttribute('data-tema', tema);
+    })();
+  </script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Pas 6: estructura mínima. El contingut real es construirà al Pas 8. -->
+
+  <!-- Capçalera de portada («faixa»): el logotip, centrat i gran, fa
+       d'imatge de capçalera. La pàgina legal manté la capçalera compacta. -->
+  <header class="capcalera capcalera-portada">
+    <div class="contingut">
+      <!-- El logotip: dues imatges, una per tema (el CSS amaga la inactiva). -->
+      <h1>
+        <img class="logo-quefas logo-clar" src="img/logo/que-fas_clar.svg" alt="Què fas? — l’Agenda de Cat Nord">
+        <img class="logo-quefas logo-fosc" src="img/logo/que-fas_fosc.svg" alt="Què fas? — l’Agenda de Cat Nord">
+      </h1>
+      <!-- Fila d'utilitats sota el logotip: «Qui som» + botó de tema.
+           En pantalla ampla (≥900px) el botó de tema salta a la cantonada
+           de dalt a la dreta (vegeu style.css). -->
+      <div class="fila-utilitats">
+        <a class="boto-quisom" href="qui-som.html">Qui som <span class="quisom-fr" lang="fr">· Qui sommes-nous</span></a>
+        <button id="boto-tema" class="boto-tema" type="button" aria-label="Canvia el tema · Changer de thème">
+          <span class="icona-tema" aria-hidden="true"></span>
+          <span class="text-tema"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" aria-label="Subscripció · Abonnement">
+    <div class="contingut">
+      <p class="hero-text">
+        <span class="hero-ca">Rebeu cada setmana els actes culturals de la vostra comarca, directament al correu.</span>
+        <span class="hero-fr" lang="fr">Recevez chaque semaine les événements culturels de votre région, directement par courriel.</span>
+      </p>
+      <a class="boto-hero" href="https://f9bc9f9d.sibforms.com/serve/MUIFAIHaD39NvG-rdtk3KHbiOT8uomU70pKPAwSySNFopL0TP21ej-amyakMTRfRIZmEYViaWiNHGFsAiiePTf3WUMX8D6PxtcoyWRkMz6QoGUQXswZYmfRv5rjr5lnv2buIcSoHnQ7kco6LzNVrEK4cNv-hlb8tl14B9oFlprB3EeFcaGQiUZt_bauL5EuyRUkHY1iQFTLIZZm-ng==" target="_blank" rel="noopener">
+        <span class="boto-ca">Subscriviu-vos a l’agenda</span>
+        <span class="boto-fr" lang="fr">Abonnez-vous</span>
+      </a>
+    </div>
+  </section>
+
+  <nav class="filtres" aria-label="Filtres">
+    <div class="contingut filtres-interior">
+      <div class="filtre-comarques" id="filtre-comarques" role="group" aria-label="Filtra per comarca / Filtrer par région">
+        <!-- Els botons de comarca es generen a app.js -->
+      </div>
+      <div class="filtre-categoria">
+        <label for="selector-categoria" class="visualment-amagat">Categoria / Catégorie</label>
+        <select id="selector-categoria">
+          <!-- Les opcions de categoria es generen a app.js -->
+        </select>
+      </div>
+      <!-- Filtre per dates: interval opcional. Un sol dia = mateixa data als dos camps;
+           un camp buit no limita. La lògica és a app.js (construeixFiltreDates). -->
+      <div class="filtre-dates" role="group" aria-label="Filtra per dates / Filtrer par dates">
+        <label class="etiqueta-data" for="data-des">Del <span lang="fr">· Du</span></label>
+        <input type="date" id="data-des" class="camp-data">
+        <label class="etiqueta-data" for="data-fins">al <span lang="fr">· au</span></label>
+        <input type="date" id="data-fins" class="camp-data">
+        <button type="button" id="boto-esborra-dates" class="boto-esborra-dates" hidden
+                aria-label="Esborra les dates · Effacer les dates">Esborra · Effacer</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="contingut">
+    <p id="missatge-estat" class="missatge-estat" hidden></p>
+    <div id="llista-esdeveniments">
+      <!-- Els esdeveniments es generen a app.js -->
+    </div>
+  </main>
+
+  <footer class="peu">
+    <div class="contingut">
+      <p class="convida">
+        <span class="convida-ca">Organitzeu un acte cultural? Proposeu-lo a l’agenda.</span>
+        <span class="convida-fr" lang="fr">Vous organisez un événement culturel&nbsp;? Proposez-le.</span>
+      </p>
+      <!-- SUBMISSIO d'actes via Typebot (enllac confirmat per Miquel). -->
+      <a class="boto-peu" href="https://typebot.co/lead-generation-64b0gcq" target="_blank" rel="noopener">
+        <span class="boto-ca">Proposeu una activitat</span>
+        <span class="boto-fr" lang="fr">Proposez une activité</span>
+      </a>
+      <p class="peu-firma">Agenda cultural de la Catalunya Nord</p>
+      <!-- Línia legal permanent: responsabilitat dels organitzadors + enllaç a les mencions legals. -->
+      <p class="peu-legal">
+        <span class="peu-legal-ca">Les informacions es publiquen de bona fe sota la responsabilitat exclusiva dels organitzadors. Verifiqueu sempre horaris i lloc amb l’organitzador.</span>
+        <span class="peu-legal-fr" lang="fr">Les informations sont publiées de bonne foi sous la responsabilité exclusive des organisateurs. Vérifiez toujours auprès de l’organisateur.</span>
+        <a class="enllac-legal" href="mencions-legals.html">Mencions legals i condicions · Mentions légales et conditions</a>
+      </p>
+    </div>
+  </footer>
+
   <script src="app.js"></script>
 </body>
 </html>

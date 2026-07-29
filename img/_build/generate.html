@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SVG generator</title>
+<script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
+<style>
+  body { margin:0; font-family: monospace; background:#888; }
+  .row { display:flex; gap:24px; padding:24px; flex-wrap:wrap; }
+  .row > div { box-shadow:0 2px 12px rgba(0,0,0,.3); }
+  #status { padding:12px 24px; color:#fff; background:#222; }
+</style>
+</head>
+<body>
+<div id="status">loading…</div>
+<div class="row" id="out"></div>
+<script>
+const TITLE = "Què fas?";
+const SUB = "l\u2019Agenda de Cat Nord";
+const TITLE_SEG = "Què fas";  // split off the ? to give it breathing room
+
+function bbUnion(a, b) {
+  return { x1: Math.min(a.x1,b.x1), y1: Math.min(a.y1,b.y1), x2: Math.max(a.x2,b.x2), y2: Math.max(a.y2,b.y2) };
+}
+
+async function load(url){
+  const buf = await (await fetch(url)).arrayBuffer();
+  return opentype.parse(buf);
+}
+
+function buildSVG(fraunces, mont, ink, ground){
+  const T = 300; // title font size (svg units)
+  const upmF = fraunces.unitsPerEm;
+  const capF = (fraunces.tables.os2.sCapHeight || 700) * T / upmF; // title cap height
+
+  // ---- Title: "Què fas" + breathing gap + "?" ----
+  const pTitle = fraunces.getPath(TITLE_SEG, 0, 0, T);
+  const advTitle = fraunces.getAdvanceWidth(TITLE_SEG, T);
+  const gapQ = 0.045 * T; // breathing room before ?
+  const pQ = fraunces.getPath("?", advTitle + gapQ, 0, T);
+  const tbb = bbUnion(pTitle.getBoundingBox(), pQ.getBoundingBox());
+  const dTitle = pTitle.toPathData(2) + " " + pQ.toPathData(2);
+
+  // ---- Subtitle: Montserrat, cap height = 21% of title cap height ----
+  const upmM = mont.unitsPerEm;
+  const capMunits = (mont.tables.os2.sCapHeight || 700);
+  const targetSubCap = 0.21 * capF;
+  const S = targetSubCap * upmM / capMunits; // subtitle font size
+  // slight positive tracking on subtitle for legibility at the eyebrow scale
+  const trackS = 0.04 * S;
+  let x = 0; const subParts = [];
+  for (const ch of SUB){
+    const g = mont.getPath(ch, x, 0, S);
+    subParts.push(g);
+    x += mont.getAdvanceWidth(ch, S) + (ch === " " ? 0 : trackS);
+  }
+  let sbb = subParts[0].getBoundingBox();
+  for (const g of subParts) sbb = bbUnion(sbb, g.getBoundingBox());
+  const dSub = subParts.map(g => g.toPathData(2)).join(" ");
+
+  // ---- Layout ----
+  const titleW = tbb.x2 - tbb.x1, titleH = tbb.y2 - tbb.y1;
+  const subW = sbb.x2 - sbb.x1, subH = sbb.y2 - sbb.y1;
+  const gapTiers = 0.50 * capF; // leading between the two tiers
+  const contentW = Math.max(titleW, subW);
+  const contentH = titleH + gapTiers + subH;
+  const M = 0.30 * contentH; // even margin all sides
+  const W = contentW + 2*M;
+  const H = contentH + 2*M;
+
+  const cx = W/2;
+  // title placement
+  const tShiftX = cx - (tbb.x1 + titleW/2);
+  const tShiftY = M - tbb.y1;
+  // subtitle placement
+  const sTop = M + titleH + gapTiers;
+  const sShiftX = cx - (sbb.x1 + subW/2);
+  const sShiftY = sTop - sbb.y1;
+
+  const r = n => Math.round(n*100)/100;
+  const heightMM = 60 * H / W;
+
+  const svg =
+`<svg xmlns="http://www.w3.org/2000/svg" width="60mm" height="${r(heightMM)}mm" viewBox="0 0 ${r(W)} ${r(H)}" role="img" aria-label="Què fas? — l'Agenda de Cat Nord">
+  <rect width="${r(W)}" height="${r(H)}" fill="${ground}"/>
+  <g fill="${ink}" fill-rule="nonzero">
+    <g transform="translate(${r(tShiftX)} ${r(tShiftY)})"><path d="${dTitle}"/></g>
+    <g transform="translate(${r(sShiftX)} ${r(sShiftY)})"><path d="${dSub}"/></g>
+  </g>
+</svg>`;
+  return { svg, W, H };
+}
+
+(async () => {
+  try {
+    const [fraunces, mont] = await Promise.all([
+      load("../fonts/Fraunces-Black.ttf"),
+      load("../fonts/Montserrat-SemiBold.ttf"),
+    ]);
+    const A = buildSVG(fraunces, mont, "#000000", "#ffffff");
+    const B = buildSVG(fraunces, mont, "#ffffff", "#000000");
+    window.SVG_A = A.svg;
+    window.SVG_B = B.svg;
+    const out = document.getElementById("out");
+    for (const v of [A, B]){
+      const d = document.createElement("div");
+      d.style.width = "360px";
+      d.innerHTML = v.svg;
+      out.appendChild(d);
+    }
+    document.getElementById("status").textContent =
+      `done — A: ${Math.round(A.W)}x${Math.round(A.H)} ratio ${(A.W/A.H).toFixed(2)}`;
+    window.DONE = true;
+  } catch(e){
+    document.getElementById("status").textContent = "ERROR: " + e.message;
+    window.ERR = e.message;
+  }
+})();
+</script>
+</body>
+</html>

@@ -24,14 +24,13 @@ CAMPS QUE HAS D'EXTREURE
 - descripcio_ca: de 2 a 4 frases en català. Redacta-la tu directament en català natural i correcte a partir de la informació del correu; no facis una traducció literal del francès. To informatiu i acollidor, sense exclamacions publicitàries. No hi afegeixis informació que el correu no doni.
 - descripcio_fr: traducció francesa fidel de descripcio_ca, també de 2 a 4 frases.
 - associacio: nom de l'entitat o associació organitzadora.
-- id: només si data_inici i titol són coneguts. Format: data_inici, un guió, i un fragment curt del títol o del municipi (2 a 4 paraules, en minúscules, sense accents ni apòstrofs, amb els espais substituïts per guions). Exemple: 2026-09-14-ball-prats. Si data_inici és buida, id també és buida.
 
 CAMPS QUE NO HAS D'OMPLIR MAI
-- imatge_url, font_url, estat, data_entrada: retorna sempre cadena buida "". Aquests camps els omple el sistema, no tu.
+- id, imatge_url, font_url, estat, data_entrada: retorna sempre cadena buida "". Aquests camps els omple el sistema, no tu.
 
 EXEMPLE DE RESPOSTA (només per il·lustrar el format; no copiïs aquestes dades)
 {
-  "id": "2026-09-14-ball-prats",
+  "id": "",
   "titol": "Ball de la festa major",
   "data_inici": "2026-09-14",
   "data_fi": "2026-09-14",

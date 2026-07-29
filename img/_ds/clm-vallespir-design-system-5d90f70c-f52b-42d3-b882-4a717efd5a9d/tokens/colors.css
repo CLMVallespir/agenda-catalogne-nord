@@ -1,0 +1,60 @@
+/* ==========================================================================
+   CLM Vallespir — colors.css
+   Palette is LOCKED (per MM build spec): warm stone grounds, near-black ink,
+   the Tramontane slate-blue as structural accent, and four territorial event
+   hues (wine / sea / wine / forest). No --ochre, no invented swatches.
+   ========================================================================== */
+:root {
+  /* ── Grounds (warm, paper-like) ───────────────────────────────────── */
+  --stone:        #F2EDE0;   /* page background */
+  --stone-deep:   #E6DFD0;   /* recessed / hover ground */
+  --mark-stone:   #EFEAE1;   /* light fill inside the marks & on dark fields */
+  --paper:        #FFFFFF;   /* raised cards on stone */
+
+  /* ── Ink (near-black, never pure #000) ────────────────────────────── */
+  --ink:          #1A1F24;   /* hero, footer, marks */
+  --ink-territory:#1E2E3A;   /* deep Tramontane ambient field */
+  --ink-deep:     #16222B;   /* darkest valley fold */
+
+  /* ── Text ─────────────────────────────────────────────────────────── */
+  --text:         #252628;
+  --text-muted:   #7E7E82;
+
+  /* ── Structural accent — the Tramontane (the wind off the Pyrenees) ── */
+  --tramontane:   #3A5168;
+
+  /* ── Territorial event hues ───────────────────────────────────────── */
+  --wine:         #7A2C38;   /* festa / vinya — the warm accent */
+  --forest:       #4A5C42;   /* bosc */
+  --sea:          #3A5168;   /* mar (== Tramontane) */
+
+  /* Event identity tokens (badges, card accents — colored automatically) */
+  --ev-catfesta:   #7A2C38;  /* Cat'Festa · Muntanya · Nord */
+  --ev-bullinada:  #3A5168;  /* Bullinada · Mar · Nord */
+  --ev-contraband: #7A2C38;  /* Contraband · Vinya · Sud */
+  --ev-vajol:      #4A5C42;  /* Fira del Bolet · Bosc · Sud */
+
+  /* Mark fills */
+  --mark-sea:     #3A5168;
+
+  /* ── Semantic aliases ─────────────────────────────────────────────── */
+  --surface-page:      var(--stone);
+  --surface-recessed:  var(--stone-deep);
+  --surface-raised:    var(--paper);
+  --surface-deep:      var(--ink);
+  --surface-territory: var(--ink-territory);
+
+  --text-body:    var(--text);
+  --text-soft:    var(--text-muted);
+  --text-on-dark: var(--mark-stone);
+  --text-on-dark-muted: rgba(239, 234, 225, .55);
+
+  --accent:        var(--tramontane);   /* structural / links / focus */
+  --accent-warm:   var(--wine);         /* the one warm accent */
+
+  --border-hairline:  rgba(37, 38, 40, .08);
+  --border-on-dark:   rgba(239, 234, 225, .08);
+  --border-strong:    rgba(37, 38, 40, .16);
+
+  --focus-ring:   var(--tramontane);
+}

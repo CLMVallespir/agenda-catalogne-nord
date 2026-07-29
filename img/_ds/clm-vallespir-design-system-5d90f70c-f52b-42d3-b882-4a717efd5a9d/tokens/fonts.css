@@ -1,0 +1,16 @@
+/* ==========================================================================
+   CLM Vallespir — fonts.css
+   Three voices: Fraunces (serif — wordmarks, display & running text),
+   Space Grotesk (UI — eyebrows, labels, nav, meta), and Liana (the brand
+   logotype script, used ONLY for "a Taula!"). Liana ships from the repo,
+   subset to the brand glyphs (~4 KB).
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Space+Grotesk:wght@300;400;500;600&display=swap');
+
+@font-face {
+  font-family: 'Liana';
+  src: url('../assets/logos/liana-logo.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

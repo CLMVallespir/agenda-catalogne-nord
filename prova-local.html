@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+  PREVISUALITZACIÓ LOCAL — feu doble clic sobre aquest fitxer i prou.
+  Conté una còpia de style.css i de la lògica d'app.js amb les dades
+  d'exemple incrustades (no cal servidor ni connexió).
+  ATENCIÓ: això és NOMÉS per mirar el disseny. Els fitxers de veritat
+  són index.html, style.css i app.js a l'arrel del projecte.
+
+  Disseny: blanc i negre dominants; el «sang i or» només com a accent
+  (la data/hora i el punt del dia) i els cartells aporten el color.
+====================================================================== -->
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[PROVA LOCAL] Agenda cultural — Catalunya Nord</title>
+
+  <!-- Aplica el tema desat ABANS de pintar, per evitar el parpelleig. -->
+  <script>
+    (function () {
+      var tema = 'clar';
+      try {
+        var desat = localStorage.getItem('tema');
+        if (desat === 'fosc' || desat === 'clar') {
+          tema = desat;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          tema = 'fosc';
+        }
+      } catch (e) { /* sense localStorage: es queda en tema clar */ }
+      document.documentElement.setAttribute('data-tema', tema);
+    })();
+  </script>
+
+  <style>
+/* --------------------------------------------------------------------
+   Tipografies autoallotjades (woff2 dins de /fonts).
+   Català: Fraunces (títols) + Montserrat (cos/UI). Francès: Georgia cursiva.
+   Si els .woff2 no hi són, es mostren les alternatives sense trencar res.
+-------------------------------------------------------------------- */
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/fraunces-700.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/fraunces-900.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/montserrat-400.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/montserrat-600.woff2') format('woff2'); }
+
+/* --------------------------------------------------------------------
+   Colors. El «sang i or» és invariable i només surt com a accent.
+   Els temes clar/fosc canvien l'entorn (blanc i negre dominants).
+-------------------------------------------------------------------- */
+:root {
+  --vermell: #b5121b;
+  --or: #fcdd09;
+
+  /* Tema CLAR (per defecte). */
+  --fons: #ffffff;
+  --fons-targeta: #ffffff;
+  --tinta: #1a1a1a;
+  --tinta-suau: #6f6862;
+  --vora: #e7e4df;
+  --accent: var(--vermell);          /* data i hora, en clar */
+  --banderola-fons: #1a1a1a;
+  --banderola-text: #ffffff;
+  --placeholder-fons: #f5eccf;       /* or molt suau darrere la icona */
+  --placeholder-icona: #7a5f12;      /* or fosc, llegible sobre el groc suau */
+  --capcalera-fons: #ffffff;
+  --capcalera-text: #1a1a1a;
+
+  --tipo-titol: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --tipo-ui: 'Montserrat', system-ui, 'Segoe UI', Arial, sans-serif;
+  --tipo-serif: Georgia, 'Times New Roman', serif;
+}
+
+/* Tema FOSC — només canvia els colors d'entorn; la marca no es toca. */
+[data-tema="fosc"] {
+  --fons: #121110;
+  --fons-targeta: #1b1917;
+  --tinta: #f2efe9;
+  --tinta-suau: #9b938c;
+  --vora: #2c2825;
+  --accent: var(--or);               /* data i hora, en fosc */
+  --banderola-fons: #f2efe9;
+  --banderola-text: #121110;
+  --placeholder-fons: #241f16;
+  --placeholder-icona: #c2a23a;
+  --capcalera-fons: #121110;
+  --capcalera-text: #f2efe9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fons);
+  color: var(--tinta);
+  font-family: var(--tipo-ui);
+  line-height: 1.5;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contingut { max-width: 760px; margin: 0 auto; padding: 0 1rem; }
+
+/* Avís del mode de prova (només en aquest fitxer). */
+.avis-prova {
+  background: var(--or);
+  color: #2b2220;
+  font-family: var(--tipo-ui);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0.3rem 1rem;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------
+   Capçalera — tinta sobre fons net (sense banda vermella ni senyera).
+   Deixa lloc per a una futura secció hero i un logo per dissenyar.
+-------------------------------------------------------------------- */
+.capcalera {
+  background: var(--capcalera-fons);
+  color: var(--capcalera-text);
+  padding: 1.4rem 0 1.3rem;
+  border-bottom: 1px solid var(--vora);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.capcalera .contingut { position: relative; }
+
+/* El logotip «Què fas?» fa de títol. Hi ha dues imatges, una per tema;
+   la del tema inactiu s'amaga (per defecte es veu la clara). */
+.capcalera h1 { margin: 0; }
+.logo-quefas { display: block; width: min(220px, 56vw); height: auto; }
+.logo-fosc { display: none; }
+[data-tema="fosc"] .logo-clar { display: none; }
+[data-tema="fosc"] .logo-fosc { display: block; }
+.capcalera .subtitol {
+  margin: 0.45rem 0 0;
+  font-family: var(--tipo-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--tinta-suau);
+}
+
+/* Botó de canvi de tema, a la cantonada de la capçalera. */
+.boto-tema {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--vora);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta-suau);
+  cursor: pointer;
+  line-height: 1;
+}
+.boto-tema:hover { background: var(--vora); color: var(--tinta); }
+.boto-tema .icona-tema { display: inline-flex; }
+
+/* --------------------------------------------------------------------
+   Capçalera de portada («faixa»): el logotip, centrat i gran, fa
+   d'imatge que encapçala el web; a sota, la fila d'utilitats
+   («Qui som» + botó de tema).
+-------------------------------------------------------------------- */
+.capcalera-portada { padding: 2.1rem 0 1.5rem; }
+.capcalera-portada .contingut { text-align: center; }
+.capcalera-portada .logo-quefas { width: min(430px, 94vw); margin: 0 auto; }
+
+/* Fila d'utilitats sota el logotip. */
+.fila-utilitats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* En mòbil i tauleta el botó de tema viu dins la fila (no flota). */
+.capcalera-portada .boto-tema { position: static; }
+
+/* Botó «Qui som»: píndola amb contorn de tinta i punt d'accent davant. */
+.boto-quisom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.34rem 0.8rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta);
+  text-decoration: none;
+  line-height: 1;
+}
+.boto-quisom::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.boto-quisom .quisom-fr { font-family: var(--tipo-serif); font-style: italic; font-weight: 400; opacity: 0.85; }
+.boto-quisom:hover { background: var(--tinta); color: var(--fons); }
+.boto-quisom:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* --------------------------------------------------------------------
+   Seccio hero - convida a subscriure's a l'agenda (public general).
+   Blanc i negre, com la resta: fons net i una vora fina a sota.
+-------------------------------------------------------------------- */
+.hero {
+  background: var(--fons);
+  border-bottom: 1px solid var(--vora);
+  padding: 1.5rem 0 1.6rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.hero .contingut { display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+
+.hero-text { margin: 0; max-width: 46ch; }
+.hero-text .hero-ca { display: block; font-family: var(--tipo-ui); font-weight: 600; font-size: 1.05rem; line-height: 1.35; color: var(--tinta); }
+.hero-text .hero-fr { display: block; margin-top: 0.25rem; font-family: var(--tipo-serif); font-style: italic; font-size: 0.95rem; color: var(--tinta-suau); }
+
+/* Etiquetes bilingues dins dels botons d'accio (catala a dalt, frances a sota).
+   El català va en Fraunces amb un punt d'accent davant (vermell en clar,
+   or en fosc), com el punt de les capçaleres de dia. */
+.boto-ca { font-family: var(--tipo-titol); font-weight: 700; font-size: 1.02rem; }
+.boto-ca::before {
+  content: "";
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 0.5rem;
+  vertical-align: 0.12em;
+}
+.boto-fr { font-family: var(--tipo-serif); font-weight: 400; font-style: italic; font-size: 0.78rem; opacity: 0.85; }
+
+/* Boto principal de subscripcio: ple, en tinta, rectangle arrodonit
+   (10px, com les targetes) per distingir-lo de les píndoles de filtre.
+   white-space: nowrap garanteix que cada llengua ocupa una sola línia. */
+.boto-hero {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.3;
+  padding: 0.65rem 1.7rem 0.75rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 10px;
+  background: var(--tinta);
+  color: var(--fons);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.boto-hero:hover { background: transparent; color: var(--tinta); }
+
+/* --------------------------------------------------------------------
+   Barra de filtres (enganxada a dalt). Botons en blanc i negre.
+-------------------------------------------------------------------- */
+.filtres {
+  background: var(--fons);
+  border-bottom: 1px solid var(--vora);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.filtres-interior { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.filtre-comarques { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.boto-comarca {
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta);
+  cursor: pointer;
+}
+.boto-comarca:hover { background: var(--vora); }
+.boto-comarca.actiu { background: var(--tinta); color: var(--fons); border-color: var(--tinta); }
+
+.filtre-categoria { margin-left: auto; }
+
+#selector-categoria {
+  font-family: var(--tipo-ui);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.5rem;
+  border: 1.5px solid var(--vora);
+  border-radius: 6px;
+  background: var(--fons-targeta);
+  color: var(--tinta);
+  max-width: 100%;
+}
+
+/* Filtre per dates: dos camps natius de data i un botó per esborrar-los. */
+.filtre-dates { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
+
+.etiqueta-data { font-family: var(--tipo-ui); font-weight: 600; font-size: 0.8rem; color: var(--tinta-suau); }
+.etiqueta-data span[lang="fr"] { font-family: var(--tipo-serif); font-style: italic; font-weight: normal; }
+
+.camp-data {
+  font-family: var(--tipo-ui);
+  font-size: 0.85rem;
+  padding: 0.3rem 0.45rem;
+  border: 1.5px solid var(--vora);
+  border-radius: 6px;
+  background: var(--fons-targeta);
+  color: var(--tinta);
+  color-scheme: light;
+  max-width: 100%;
+}
+[data-tema="fosc"] .camp-data { color-scheme: dark; }
+
+.boto-esborra-dates {
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--vora);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta-suau);
+  cursor: pointer;
+}
+.boto-esborra-dates:hover { background: var(--vora); color: var(--tinta); }
+
+.camp-data:focus-visible,
+.boto-esborra-dates:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+main { padding-top: 1rem; padding-bottom: 2rem; min-height: 50vh; }
+
+/* --------------------------------------------------------------------
+   Capçalera de dia: "21 Juny, Dimarts · 21 Juin, Mardi".
+   Text en tinta; l'únic color és el punt d'accent (vermell en clar,
+   or en fosc), com el punt dels botons d'acció.
+-------------------------------------------------------------------- */
+.titol-dia {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--tipo-titol);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--tinta);
+  margin: 1.85rem 0 0.7rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--vora);
+}
+.titol-dia::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--accent);
+  align-self: center;
+}
+.titol-dia .dia-fr {
+  font-family: var(--tipo-serif);
+  color: var(--tinta-suau);
+  font-style: italic;
+  font-weight: normal;
+  font-size: 0.9em;
+}
+
+/* --------------------------------------------------------------------
+   Targeta: cartell a l'esquerra (amb banderola de categoria), cos a la dreta.
+-------------------------------------------------------------------- */
+.esdeveniment {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  background: var(--fons-targeta);
+  border: 1px solid var(--vora);
+  border-radius: 10px;
+  margin-bottom: 0.85rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Cartell (o substitut) — quadrat lleugerament tombat, a l'esquerra. */
+.imatge-esdeveniment {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100px;
+  height: 100px;
+  margin: 0.85rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--placeholder-fons);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s ease;
+}
+.imatge-esdeveniment img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.imatge-esdeveniment.sense-imatge { display: flex; align-items: center; justify-content: center; }
+
+/* El cartell reposa tombat i s'adreça quan hi passem el ratolí. */
+.gir-esquerra .imatge-esdeveniment { transform: rotate(-3deg); }
+.gir-dreta .imatge-esdeveniment { transform: rotate(3deg); }
+.gir-esquerra .imatge-esdeveniment:hover,
+.gir-dreta .imatge-esdeveniment:hover { transform: rotate(0deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .imatge-esdeveniment { transition: none; }
+  .gir-esquerra .imatge-esdeveniment,
+  .gir-dreta .imatge-esdeveniment { transform: none; }
+}
+
+/* Banderola negra amb el nom de la categoria, a dalt del cartell. */
+.banderola-categoria {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--banderola-text);
+  background: var(--banderola-fons);
+  padding: 0.14rem 0.85rem 0.14rem 0.45rem;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 0.5rem) 100%, 0 100%);
+}
+
+/* Icona de la categoria, quan no hi ha cartell. */
+.icona-categoria { display: inline-flex; color: var(--placeholder-icona); }
+.icona-categoria svg { width: 44px; height: 44px; }
+
+/* Cos de la targeta. */
+.cos-esdeveniment { flex: 1; min-width: 0; padding: 0.85rem 0.95rem 0.85rem 0; }
+
+.titol-esdeveniment {
+  margin: 0 0 0.3rem;
+  font-family: var(--tipo-titol);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  color: var(--tinta);
+}
+.titol-esdeveniment a { color: inherit; text-decoration: underline; }
+
+/* Comarca: etiqueta de text discreta (ja no és una píndola clicable). */
+.comarca {
+  margin: 0 0 0.35rem;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--tinta-suau);
+}
+
+.meta { font-family: var(--tipo-ui); font-size: 0.85rem; color: var(--tinta-suau); margin: 0 0 0.4rem; }
+.meta .quan { color: var(--accent); font-weight: 600; }   /* data i hora: l'accent «sang i or» */
+.meta .icona-pin { display: inline-flex; vertical-align: -2px; margin-right: 2px; }
+.meta .icona-pin svg { display: block; }
+
+/* Contingut que es desplega amb "Veure més". */
+.detalls { display: none; margin-top: 0.5rem; }
+.cos-esdeveniment.obert .detalls { display: block; }
+
+.descripcio-ca { font-family: var(--tipo-ui); margin: 0 0 0.3rem; font-size: 0.92rem; }
+.descripcio-fr { font-family: var(--tipo-serif); margin: 0 0 0.3rem; color: var(--tinta-suau); font-style: italic; font-size: 0.95rem; }
+.associacio { font-family: var(--tipo-ui); font-size: 0.8rem; color: var(--tinta-suau); margin: 0.2rem 0 0; }
+
+.boto-mes {
+  margin-top: 0.45rem;
+  font-family: var(--tipo-ui);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--vora);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta-suau);
+  cursor: pointer;
+}
+.boto-mes:hover { background: var(--vora); color: var(--tinta); }
+
+.missatge-estat { font-family: var(--tipo-serif); text-align: center; color: var(--tinta-suau); padding: 3rem 1rem; font-style: italic; }
+
+/* --------------------------------------------------------------------
+   Peu — net, en blanc i negre.
+-------------------------------------------------------------------- */
+.peu {
+  background: var(--fons);
+  border-top: 1px solid var(--vora);
+  color: var(--tinta-suau);
+  font-family: var(--tipo-ui);
+  font-size: 0.85rem;
+  padding: 1.25rem 0;
+  text-align: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Convida (al peu) a proposar un acte - adrecat a organitzadors. */
+.convida { margin: 0 0 0.85rem; }
+.convida-ca { display: block; font-family: var(--tipo-ui); font-weight: 600; color: var(--tinta); }
+.convida-fr { display: block; margin-top: 0.2rem; font-family: var(--tipo-serif); font-style: italic; color: var(--tinta-suau); font-size: 0.92em; }
+
+/* Boto secundari del peu: contorn, s'omple en passar-hi per sobre.
+   Mateix rectangle arrodonit que el boto principal. */
+.boto-peu {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1.25;
+  padding: 0.5rem 1.35rem 0.6rem;
+  border: 1.5px solid var(--tinta);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--tinta);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.boto-peu:hover { background: var(--tinta); color: var(--fons); }
+
+.peu-firma { margin: 1.1rem 0 0; color: var(--tinta-suau); }
+
+/* Línia legal curta del peu + enllaç a les mencions legals. */
+.peu-legal { margin: 1rem 0 0; font-size: 0.78rem; color: var(--tinta-suau); }
+.peu-legal-ca { display: block; }
+.peu-legal-fr { display: block; margin-top: 0.15rem; font-family: var(--tipo-serif); font-style: italic; font-size: 0.95em; }
+.enllac-legal { display: inline-block; margin-top: 0.45rem; color: var(--tinta-suau); text-decoration: underline; }
+.enllac-legal:hover { color: var(--tinta); }
+
+.visualment-amagat {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 600px) {
+  .logo-quefas { width: 240px; }
+  .capcalera-portada { padding: 2.6rem 0 1.8rem; }
+  .capcalera-portada .logo-quefas { width: 400px; }
+  .imatge-esdeveniment { width: 120px; height: 120px; }
+  .icona-categoria svg { width: 50px; height: 50px; }
+  .hero .contingut { flex-direction: row; align-items: center; justify-content: space-between; }
+  .hero-text { margin-right: 1.5rem; }
+}
+
+/* En pantalla ampla (ordinador), el botó de tema torna a la cantonada de
+   dalt a la dreta; la fila queda només amb «Qui som». */
+@media (min-width: 900px) {
+  .capcalera-portada .boto-tema {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+  }
+}
+
+/* Anell d'accent quan s'hi arriba amb el teclat (accessibilitat). */
+.boto-hero:focus-visible,
+.boto-peu:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+  </style>
+</head>
+<body>
+
+  <p class="avis-prova">PROVA LOCAL — dades fictícies. Els fitxers reals són index.html, style.css i app.js.</p>
+
+  <!-- Capçalera de portada («faixa»): el logotip, centrat i gran. -->
+  <header class="capcalera capcalera-portada">
+    <div class="contingut">
+      <!-- El logotip: dues imatges, una per tema (el CSS amaga la inactiva). -->
+      <h1>
+        <img class="logo-quefas logo-clar" src="img/logo/que-fas_clar.svg" alt="Què fas? — l’Agenda de Cat Nord">
+        <img class="logo-quefas logo-fosc" src="img/logo/que-fas_fosc.svg" alt="Què fas? — l’Agenda de Cat Nord">
+      </h1>
+      <!-- Fila d'utilitats sota el logotip: «Qui som» + botó de tema.
+           En pantalla ampla (≥900px) el botó de tema salta a la cantonada. -->
+      <div class="fila-utilitats">
+        <a class="boto-quisom" href="qui-som.html">Qui som <span class="quisom-fr" lang="fr">· Qui sommes-nous</span></a>
+        <button id="boto-tema" class="boto-tema" type="button" aria-label="Canvia el tema · Changer de thème">
+          <span class="icona-tema" aria-hidden="true"></span>
+          <span class="text-tema"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" aria-label="Subscripció · Abonnement">
+    <div class="contingut">
+      <p class="hero-text">
+        <span class="hero-ca">Rebeu cada setmana els actes culturals de la vostra comarca, directament al correu.</span>
+        <span class="hero-fr" lang="fr">Recevez chaque semaine les événements culturels de votre région, directement par courriel.</span>
+      </p>
+      <a class="boto-hero" href="https://f9bc9f9d.sibforms.com/serve/MUIFAIHaD39NvG-rdtk3KHbiOT8uomU70pKPAwSySNFopL0TP21ej-amyakMTRfRIZmEYViaWiNHGFsAiiePTf3WUMX8D6PxtcoyWRkMz6QoGUQXswZYmfRv5rjr5lnv2buIcSoHnQ7kco6LzNVrEK4cNv-hlb8tl14B9oFlprB3EeFcaGQiUZt_bauL5EuyRUkHY1iQFTLIZZm-ng==" target="_blank" rel="noopener">
+        <span class="boto-ca">Subscriviu-vos a l’agenda</span>
+        <span class="boto-fr" lang="fr">Abonnez-vous</span>
+      </a>
+    </div>
+  </section>
+
+  <nav class="filtres" aria-label="Filtres">
+    <div class="contingut filtres-interior">
+      <div class="filtre-comarques" id="filtre-comarques" role="group" aria-label="Filtra per comarca / Filtrer par région"></div>
+      <div class="filtre-categoria">
+        <label for="selector-categoria" class="visualment-amagat">Categoria / Catégorie</label>
+        <select id="selector-categoria"></select>
+      </div>
+      <!-- Filtre per dates: interval opcional. Un sol dia = mateixa data als dos camps. -->
+      <div class="filtre-dates" role="group" aria-label="Filtra per dates / Filtrer par dates">
+        <label class="etiqueta-data" for="data-des">Del <span lang="fr">· Du</span></label>
+        <input type="date" id="data-des" class="camp-data">
+        <label class="etiqueta-data" for="data-fins">al <span lang="fr">· au</span></label>
+        <input type="date" id="data-fins" class="camp-data">
+        <button type="button" id="boto-esborra-dates" class="boto-esborra-dates" hidden
+                aria-label="Esborra les dates · Effacer les dates">Esborra · Effacer</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="contingut">
+    <p id="missatge-estat" class="missatge-estat" hidden></p>
+    <div id="llista-esdeveniments"></div>
+  </main>
+
+  <footer class="peu">
+    <div class="contingut">
+      <p class="convida">
+        <span class="convida-ca">Organitzeu un acte cultural? Proposeu-lo a l’agenda.</span>
+        <span class="convida-fr" lang="fr">Vous organisez un événement culturel&nbsp;? Proposez-le.</span>
+      </p>
+      <!-- SUBMISSIO d'actes via Typebot (enllac confirmat per Miquel). -->
+      <a class="boto-peu" href="https://typebot.co/lead-generation-64b0gcq" target="_blank" rel="noopener">
+        <span class="boto-ca">Proposeu una activitat</span>
+        <span class="boto-fr" lang="fr">Proposez une activité</span>
+      </a>
+      <p class="peu-firma">Agenda cultural de la Catalunya Nord</p>
+      <!-- Línia legal permanent: responsabilitat dels organitzadors + enllaç a les mencions legals. -->
+      <p class="peu-legal">
+        <span class="peu-legal-ca">Les informacions es publiquen de bona fe sota la responsabilitat exclusiva dels organitzadors. Verifiqueu sempre horaris i lloc amb l’organitzador.</span>
+        <span class="peu-legal-fr" lang="fr">Les informations sont publiées de bonne foi sous la responsabilité exclusive des organisateurs. Vérifiez toujours auprès de l’organisateur.</span>
+        <a class="enllac-legal" href="mencions-legals.html">Mencions legals i condicions · Mentions légales et conditions</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+// Còpia de la lògica d'app.js amb una única diferència: en lloc de fer
+// fetch() de events.json, les dades d'exemple són incrustades aquí sota.
+
+var DADES_DE_PROVA = [
+  {
+    "id": "2026-05-10-concert-passat",
+    "titol": "Concert de prova (passat — no s'ha de veure)",
+    "data_inici": "2026-05-10", "data_fi": "2026-05-10", "hora": "18:00",
+    "lloc": "Sala de proves", "municipi": "Perpinyà", "comarca": "Rosselló", "categoria": "Música",
+    "descripcio_ca": "Aquest esdeveniment ja ha passat i serveix per comprovar que l'aplicació amaga els esdeveniments antics.",
+    "descripcio_fr": "Cet événement est déjà passé et sert à vérifier que l'application masque les événements anciens.",
+    "associacio": "Associació de proves", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-04-01"
+  },
+  {
+    "id": "2026-06-21-festa-musica-perpinya",
+    "titol": "Festa de la Música a Perpinyà",
+    "data_inici": "2026-06-21", "data_fi": "2026-06-21", "hora": "19:00",
+    "lloc": "Plaça de la República", "municipi": "Perpinyà", "comarca": "Rosselló", "categoria": "Música",
+    "descripcio_ca": "Concerts gratuïts al cor de Perpinyà amb grups del país. La plaça de la República acull escenaris oberts des del vespre fins a mitjanit. Hi haurà food trucks i espai per ballar.",
+    "descripcio_fr": "Concerts gratuits au cœur de Perpignan avec des groupes du pays. La place de la République accueille des scènes ouvertes du soir jusqu'à minuit. Food trucks et espace de danse sur place.",
+    "associacio": "Casa de la Música del Rosselló", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-01"
+  },
+  {
+    "id": "2026-07-04-taller-ceramica-prada",
+    "titol": "Taller de ceràmica catalana",
+    "data_inici": "2026-07-04", "data_fi": "2026-07-04", "hora": "10:00",
+    "lloc": "Casa de la Vila", "municipi": "Prada", "comarca": "Conflent", "categoria": "Taller",
+    "descripcio_ca": "Taller d'iniciació a la ceràmica tradicional catalana per a adults i joves a partir de 12 anys. El material va inclòs i cada participant s'endú la seva peça. Cal inscripció prèvia.",
+    "descripcio_fr": "Atelier d'initiation à la céramique traditionnelle catalane pour adultes et jeunes à partir de 12 ans. Le matériel est inclus et chaque participant repart avec sa pièce. Inscription préalable obligatoire.",
+    "associacio": "Terres del Conflent", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-05"
+  },
+  {
+    "id": "2026-07-18-exposicio-fotografia-ceret",
+    "titol": "Exposició: «Memòria del Vallespir»",
+    "data_inici": "2026-07-18", "data_fi": "2026-08-30", "hora": "",
+    "lloc": "Sala d'exposicions del Castellet", "municipi": "Ceret", "comarca": "Vallespir", "categoria": "Exposició",
+    "descripcio_ca": "Fotografies històriques del Vallespir recollides entre les famílies de la comarca. L'exposició repassa un segle de vida quotidiana, festes i oficis. Entrada lliure cada dia excepte el dilluns.",
+    "descripcio_fr": "Photographies historiques du Vallespir recueillies auprès des familles de la région. L'exposition retrace un siècle de vie quotidienne, de fêtes et de métiers. Entrée libre tous les jours sauf le lundi.",
+    "associacio": "Cultures, Llengües i Memòries del Vallespir",
+    "imatge_url": "https://picsum.photos/seed/vallespir/400/400", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-08"
+  },
+  {
+    "id": "2026-08-01-mercat-nocturn-formigueres",
+    "titol": "Mercat nocturn d'artesania",
+    "data_inici": "2026-08-01", "data_fi": "2026-08-01", "hora": "18:30",
+    "lloc": "Carrer Major", "municipi": "Formiguera", "comarca": "Capcir", "categoria": "Mercat",
+    "descripcio_ca": "Mercat nocturn amb artesans i productors del Capcir. Es podran tastar formatges, mels i embotits de muntanya mentre els tallers mostren els seus oficis. Animació musical durant tota la vetllada.",
+    "descripcio_fr": "Marché nocturne avec artisans et producteurs du Capcir. Dégustation de fromages, miels et charcuteries de montagne pendant que les ateliers présentent leurs métiers. Animation musicale toute la soirée.",
+    "associacio": "Fira del Capcir", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-10"
+  },
+  {
+    "id": "2026-08-15-aplec-sant-marti-cerdanya",
+    "titol": "Aplec de Sant Martí d'Envalls",
+    "data_inici": "2026-08-15", "data_fi": "2026-08-15", "hora": "",
+    "lloc": "Ermita de Sant Martí d'Envalls", "municipi": "Angostrina", "comarca": "Cerdanya", "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "Aplec tradicional a l'ermita de Sant Martí d'Envalls amb missa, dinar popular i havaneres a la tarda. Cal portar el dinar; l'organització ofereix la beguda i el cafè. Caminada des del poble a les nou del matí.",
+    "descripcio_fr": "Aplec traditionnel à l'ermitage de Sant Martí d'Envalls avec messe, repas populaire et havaneres l'après-midi. Repas tiré du sac ; l'organisation offre la boisson et le café. Marche depuis le village à neuf heures du matin.",
+    "associacio": "Amics de Sant Martí", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-11"
+  },
+  {
+    "id": "2026-09-14-ball-prats",
+    "titol": "Ball de la festa major",
+    "data_inici": "2026-09-14", "data_fi": "2026-09-14", "hora": "18:30",
+    "lloc": "Plaça del Firal", "municipi": "Prats de Molló", "comarca": "Vallespir", "categoria": "Dansa i ball",
+    "descripcio_ca": "La festa major de Prats de Molló es tanca amb un ball obert a tothom a la plaça del Firal. L'orquestra local farà ballar petits i grans fins a mitjanit. L'entrada és gratuïta.",
+    "descripcio_fr": "La fête patronale de Prats-de-Mollo se termine par un bal ouvert à tous sur la place du Firal. L'orchestre local fera danser petits et grands jusqu'à minuit. L'entrée est gratuite.",
+    "associacio": "Comitè de festes de Prats de Molló", "imatge_url": "", "font_url": "https://example.org/festa-major-prats", "estat": "publicat", "data_entrada": "2026-06-12"
+  },
+  {
+    "id": "2026-09-26-conferencia-trobadors-illa",
+    "titol": "Conferència: els trobadors del Rosselló",
+    "data_inici": "2026-09-26", "data_fi": "2026-09-26", "hora": "17:00",
+    "lloc": "Biblioteca municipal", "municipi": "Illa", "comarca": "Rosselló", "categoria": "Conferència",
+    "descripcio_ca": "Xerrada sobre la poesia trobadoresca a la Catalunya Nord medieval, amb lectura de textos originals. L'acte es clourà amb un petit refrigeri. Entrada lliure fins a omplir l'aforament.",
+    "descripcio_fr": "Conférence sur la poésie des troubadours dans la Catalogne Nord médiévale, avec lecture de textes originaux. La séance se terminera par un petit rafraîchissement. Entrée libre dans la limite des places disponibles.",
+    "associacio": "Cercle d'Estudis Nord-Catalans", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-12"
+  },
+  {
+    "id": "2026-10-01-cinema-catala-vinca",
+    "titol": "Cicle de cinema en català",
+    "data_inici": "2026-10-01", "data_fi": "2026-10-22", "hora": "20:30",
+    "lloc": "Cinema Lido", "municipi": "Vinçà", "comarca": "Conflent", "categoria": "Cinema",
+    "descripcio_ca": "Quatre dijous seguits de cinema en català subtitulat en francès. Cada projecció anirà seguida d'un debat amb cafè i pastes. El programa complet es publicarà al setembre.",
+    "descripcio_fr": "Quatre jeudis consécutifs de cinéma en catalan sous-titré en français. Chaque projection sera suivie d'un débat avec café et gâteaux. Le programme complet sera publié en septembre.",
+    "associacio": "Cinemaginaire", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-12"
+  },
+  {
+    "id": "2026-10-11-titelles-elna",
+    "titol": "Titelles per als menuts: «El drac de Sant Jordi»",
+    "data_inici": "2026-10-11", "data_fi": "2026-10-11", "hora": "16:00",
+    "lloc": "Teatre municipal", "municipi": "Elna", "comarca": "Rosselló", "categoria": "Activitat infantil",
+    "descripcio_ca": "Espectacle de titelles en català per a infants a partir de 3 anys. La companyia adapta la llegenda de Sant Jordi amb música en directe. Després de la funció, els infants podran conèixer els titelles de prop.",
+    "descripcio_fr": "Spectacle de marionnettes en catalan pour les enfants à partir de 3 ans. La compagnie adapte la légende de Sant Jordi avec musique en direct. Après la représentation, les enfants pourront découvrir les marionnettes de près.",
+    "associacio": "Titelles del Nord", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-12"
+  }
+];
+
+var COMARQUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
+
+var CATEGORIES = [
+  { ca: 'Música', fr: 'Musique' },
+  { ca: 'Teatre', fr: 'Théâtre' },
+  { ca: 'Dansa i ball', fr: 'Danse et bal' },
+  { ca: 'Conferència', fr: 'Conférence' },
+  { ca: 'Exposició', fr: 'Exposition' },
+  { ca: 'Mercat', fr: 'Marché' },
+  { ca: 'Cinema', fr: 'Cinéma' },
+  { ca: 'Taller', fr: 'Atelier' },
+  { ca: 'Activitat infantil', fr: 'Jeune public' },
+  { ca: 'Patrimoni i tradicions', fr: 'Patrimoine et traditions' }
+];
+
+var MESOS_CA = ['gener', 'febrer', 'març', 'abril', 'maig', 'juny',
+  'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'];
+var MESOS_FR = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+  'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+var DIES_CA = ['Diumenge', 'Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte'];
+var DIES_FR = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+
+// Icones SVG d'interfície (constants).
+var ICONA_PIN = '<svg viewBox="0 0 24 24" width="13" height="13" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>';
+var ICONA_LLUNA = '<svg viewBox="0 0 24 24" width="14" height="14" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
+var ICONA_SOL = '<svg viewBox="0 0 24 24" width="14" height="14" focusable="false"><circle cx="12" cy="12" r="4" fill="currentColor"/><path d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
+
+// Icones de categoria (substitueixen el cartell quan no n'hi ha).
+var CATEGORIA_ICONES = {
+  'Música': '<svg viewBox="0 0 24 24" focusable="false"><path d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5" fill="currentColor"/><circle cx="16.5" cy="16" r="2.5" fill="currentColor"/></svg>',
+  'Teatre': '<svg viewBox="0 0 24 24" focusable="false"><path d="M5 4h14v6a7 7 0 0 1-14 0z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9.5" cy="9" r="1" fill="currentColor"/><circle cx="14.5" cy="9" r="1" fill="currentColor"/><path d="M9 13c1.2 1.2 4.8 1.2 6 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  'Dansa i ball': '<svg viewBox="0 0 24 24" focusable="false"><circle cx="14" cy="4.5" r="2" fill="currentColor"/><path d="M14 6.5l-2.5 5.5 3.5 2.5-2 5.5M11.5 12L6 9.5M14 8.5l5 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  'Conferència': '<svg viewBox="0 0 24 24" focusable="false"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8.5 21h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  'Exposició': '<svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="4" width="18" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="9.5" r="1.5" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+  'Mercat': '<svg viewBox="0 0 24 24" focusable="false"><path d="M4 8h16l-1.5 11.5H5.5L4 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 8l3-4.5M15.5 8l-3-4.5M9 12v4M15 12v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  'Cinema': '<svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="8" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 8l3.5-3.5 3 3M10 4.2l3 3M16 4l3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+  'Taller': '<svg viewBox="0 0 24 24" focusable="false"><path d="M14 6l4 4M16 4l4 4-2 2-4-4zM14 8l-9 9 1.5 1.5 9-9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+  'Activitat infantil': '<svg viewBox="0 0 24 24" focusable="false"><path d="M12 3c3 0 5 2.5 5 6s-2 6-5 6-5-2.5-5-6 2-6 5-6z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 15v3M10.5 21c0-1.5 3-1.5 3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  'Patrimoni i tradicions': '<svg viewBox="0 0 24 24" focusable="false"><path d="M4 9l8-5 8 5zM6 9v8M10 9v8M14 9v8M18 9v8M4 20h16M5 17h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
+var ICONA_DEFECTE = '<svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="5" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16M8.5 3v4M15.5 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+
+var comarcaActiva = 'Totes';
+var categoriaActiva = 'Totes';
+var dataDesActiva = '';   // 'AAAA-MM-DD' o '' (sense límit inferior)
+var dataFinsActiva = '';  // 'AAAA-MM-DD' o '' (sense límit superior)
+var esdeveniments = [];
+
+// Carrega les dades de prova i pinta-ho tot.
+function carregaEsdeveniments() {
+  esdeveniments = preparaEsdeveniments(DADES_DE_PROVA);
+  pintaTot();
+}
+
+// Filtra els passats i ordena per data i hora; torna la llista neta.
+function preparaEsdeveniments(dades) {
+  var avui = new Date();
+  avui.setHours(0, 0, 0, 0);
+
+  var valids = dades.filter(function (e) {
+    var inici = analitzaData(e.data_inici);
+    if (inici === null) {
+      return false;
+    }
+    var fi = analitzaData(e.data_fi) || inici;
+    return fi >= avui;
+  });
+
+  valids.sort(function (a, b) {
+    if (a.data_inici !== b.data_inici) {
+      return a.data_inici < b.data_inici ? -1 : 1;
+    }
+    return a.hora < b.hora ? -1 : a.hora > b.hora ? 1 : 0;
+  });
+
+  return valids;
+}
+
+// Converteix "AAAA-MM-DD" en Date; torna null si el format no és vàlid.
+function analitzaData(text) {
+  if (!text || !/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+    return null;
+  }
+  var parts = text.split('-');
+  return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+}
+
+// Construeix els botons de comarca i el selector de categoria.
+function construeixFiltres() {
+  var grup = document.getElementById('filtre-comarques');
+  var noms = ['Totes'].concat(COMARQUES);
+  noms.forEach(function (nom) {
+    var boto = document.createElement('button');
+    boto.type = 'button';
+    boto.className = 'boto-comarca';
+    boto.textContent = nom === 'Totes' ? 'Totes · Toutes' : nom;
+    boto.dataset.comarca = nom;
+    if (nom === comarcaActiva) {
+      boto.classList.add('actiu');
+    }
+    boto.addEventListener('click', function () {
+      comarcaActiva = nom;
+      marcaBotoActiu();
+      pintaTot();
+    });
+    grup.appendChild(boto);
+  });
+
+  var selector = document.getElementById('selector-categoria');
+  var opcioTotes = document.createElement('option');
+  opcioTotes.value = 'Totes';
+  opcioTotes.textContent = 'Totes les categories · Toutes les catégories';
+  selector.appendChild(opcioTotes);
+  CATEGORIES.forEach(function (cat) {
+    var opcio = document.createElement('option');
+    opcio.value = cat.ca;
+    opcio.textContent = cat.ca + ' · ' + cat.fr;
+    selector.appendChild(opcio);
+  });
+  selector.addEventListener('change', function () {
+    categoriaActiva = selector.value;
+    pintaTot();
+  });
+}
+
+// Prepara els dos camps de data (Del · Du / al · au) i el botó d'esborrar-los.
+function construeixFiltreDates() {
+  var campDes = document.getElementById('data-des');
+  var campFins = document.getElementById('data-fins');
+  var botoEsborra = document.getElementById('boto-esborra-dates');
+
+  campDes.addEventListener('change', function () {
+    dataDesActiva = campDes.value;
+    actualitzaBotoEsborraDates();
+    pintaTot();
+  });
+
+  campFins.addEventListener('change', function () {
+    dataFinsActiva = campFins.value;
+    actualitzaBotoEsborraDates();
+    pintaTot();
+  });
+
+  botoEsborra.addEventListener('click', function () {
+    campDes.value = '';
+    campFins.value = '';
+    dataDesActiva = '';
+    dataFinsActiva = '';
+    actualitzaBotoEsborraDates();
+    pintaTot();
+  });
+}
+
+// Mostra el botó d'esborrar només quan hi ha alguna data triada.
+function actualitzaBotoEsborraDates() {
+  var botoEsborra = document.getElementById('boto-esborra-dates');
+  botoEsborra.hidden = (dataDesActiva === '' && dataFinsActiva === '');
+}
+
+// Marca visualment el botó de comarca actiu.
+function marcaBotoActiu() {
+  var botons = document.querySelectorAll('.boto-comarca');
+  botons.forEach(function (boto) {
+    boto.classList.toggle('actiu', boto.dataset.comarca === comarcaActiva);
+  });
+}
+
+// Torna els esdeveniments que passen els filtres actius.
+function esdevenimentsFiltrats() {
+  return esdeveniments.filter(function (e) {
+    if (comarcaActiva !== 'Totes' && e.comarca !== comarcaActiva) {
+      return false;
+    }
+    if (categoriaActiva !== 'Totes' && e.categoria !== categoriaActiva) {
+      return false;
+    }
+    if (!passaFiltreDates(e)) {
+      return false;
+    }
+    return true;
+  });
+}
+
+// Diu si un esdeveniment cau dins de l'interval de dates triat.
+// Es mostra si el seu període [data_inici, data_fi] TOCA l'interval;
+// un camp buit no limita.
+function passaFiltreDates(e) {
+  var inici = analitzaData(e.data_inici);
+  if (inici === null) {
+    return false;
+  }
+  var fi = analitzaData(e.data_fi);
+  if (fi === null) {
+    fi = inici;
+  }
+
+  var des = analitzaData(dataDesActiva);
+  if (des !== null && fi < des) {
+    return false;
+  }
+
+  var fins = analitzaData(dataFinsActiva);
+  if (fins !== null && inici > fins) {
+    return false;
+  }
+
+  return true;
+}
+
+// Pinta la llista sencera, agrupada per dia.
+function pintaTot() {
+  var llista = document.getElementById('llista-esdeveniments');
+  llista.textContent = '';
+
+  if (esdeveniments.length === 0) {
+    mostraMissatge('Encara no hi ha esdeveniments publicats. · Aucun événement publié pour le moment.');
+    return;
+  }
+
+  var filtrats = esdevenimentsFiltrats();
+  if (filtrats.length === 0) {
+    mostraMissatge('Cap esdeveniment no coincideix amb els filtres. · Aucun événement ne correspond aux filtres.');
+    return;
+  }
+
+  amagaMissatge();
+
+  var diaAnterior = '';
+  var comptador = 0;
+  filtrats.forEach(function (e) {
+    var dia = e.data_inici;
+    if (dia !== diaAnterior) {
+      llista.appendChild(creaTitolDia(dia));
+      diaAnterior = dia;
+    }
+    llista.appendChild(creaTargeta(e, comptador));
+    comptador++;
+  });
+}
+
+// Crea la capçalera d'un dia: "23 Juny, Dimarts · 23 Juin, Mardi".
+function creaTitolDia(textData) {
+  var data = analitzaData(textData);
+  var titol = document.createElement('h2');
+  titol.className = 'titol-dia';
+
+  var ca = document.createElement('span');
+  ca.className = 'dia-ca';
+  ca.textContent = etiquetaDiaCa(data);
+  titol.appendChild(ca);
+
+  var fr = document.createElement('span');
+  fr.className = 'dia-fr';
+  fr.lang = 'fr';
+  fr.textContent = '· ' + etiquetaDiaFr(data);
+  titol.appendChild(fr);
+
+  return titol;
+}
+
+// Torna l'etiqueta catalana del dia: "23 Juny, Dimarts".
+function etiquetaDiaCa(data) {
+  return data.getDate() + ' ' + majuscula(MESOS_CA[data.getMonth()]) + ', ' + DIES_CA[data.getDay()];
+}
+
+// Torna l'etiqueta francesa del dia: "23 Juin, Mardi" (1er per al dia 1).
+function etiquetaDiaFr(data) {
+  var dia = data.getDate();
+  var diaFr = (dia === 1) ? '1er' : String(dia);
+  return diaFr + ' ' + majuscula(MESOS_FR[data.getMonth()]) + ', ' + DIES_FR[data.getDay()];
+}
+
+// Crea la targeta d'un esdeveniment (cartell + cos); l'índex alterna la inclinació.
+function creaTargeta(e, index) {
+  var article = document.createElement('article');
+  article.className = 'esdeveniment ' + (index % 2 === 0 ? 'gir-esquerra' : 'gir-dreta');
+  article.appendChild(creaCartell(e));
+  article.appendChild(creaCos(e));
+  return article;
+}
+
+// Crea la columna del cartell amb la banderola de categoria a dalt.
+// Si no hi ha imatge, mostra la icona de la categoria com a substitut.
+function creaCartell(e) {
+  var marc = document.createElement('div');
+  marc.className = 'imatge-esdeveniment';
+
+  if (e.imatge_url) {
+    var imatge = document.createElement('img');
+    imatge.src = e.imatge_url;
+    imatge.alt = 'Cartell: ' + e.titol;
+    imatge.loading = 'lazy';
+    marc.appendChild(imatge);
+  } else {
+    marc.classList.add('sense-imatge');
+    var icona = document.createElement('span');
+    icona.className = 'icona-categoria';
+    icona.setAttribute('aria-hidden', 'true');
+    icona.innerHTML = iconaCategoria(e.categoria);
+    marc.appendChild(icona);
+  }
+
+  if (e.categoria) {
+    marc.appendChild(creaBanderola(e.categoria));
+  }
+
+  return marc;
+}
+
+// Crea la banderola amb el nom de la categoria (a dalt del cartell).
+function creaBanderola(categoria) {
+  var banderola = document.createElement('span');
+  banderola.className = 'banderola-categoria';
+  banderola.textContent = categoria;
+  return banderola;
+}
+
+// Torna l'SVG de la icona d'una categoria (o una icona per defecte).
+function iconaCategoria(categoria) {
+  return CATEGORIA_ICONES[categoria] || ICONA_DEFECTE;
+}
+
+// Crea el cos visible: títol, comarca, meta i el botó "Veure més".
+function creaCos(e) {
+  var cos = document.createElement('div');
+  cos.className = 'cos-esdeveniment';
+
+  var titol = document.createElement('h3');
+  titol.className = 'titol-esdeveniment';
+  if (e.font_url) {
+    var enllac = document.createElement('a');
+    enllac.href = e.font_url;
+    enllac.textContent = e.titol;
+    titol.appendChild(enllac);
+  } else {
+    titol.textContent = e.titol;
+  }
+  cos.appendChild(titol);
+
+  if (e.comarca) {
+    var comarca = document.createElement('p');
+    comarca.className = 'comarca';
+    comarca.textContent = e.comarca;
+    cos.appendChild(comarca);
+  }
+
+  cos.appendChild(creaMeta(e));
+
+  var detalls = creaDetalls(e);
+  if (detalls) {
+    cos.appendChild(detalls);
+    cos.appendChild(creaBotoMes(cos));
+  }
+
+  return cos;
+}
+
+// Crea el bloc amagat amb les descripcions i l'associació; null si no n'hi ha.
+function creaDetalls(e) {
+  if (!e.descripcio_ca && !e.descripcio_fr && !e.associacio) {
+    return null;
+  }
+  var detalls = document.createElement('div');
+  detalls.className = 'detalls';
+
+  if (e.descripcio_ca) {
+    var ca = document.createElement('p');
+    ca.className = 'descripcio-ca';
+    ca.textContent = e.descripcio_ca;
+    detalls.appendChild(ca);
+  }
+  if (e.descripcio_fr) {
+    var fr = document.createElement('p');
+    fr.className = 'descripcio-fr';
+    fr.lang = 'fr';
+    fr.textContent = e.descripcio_fr;
+    detalls.appendChild(fr);
+  }
+  if (e.associacio) {
+    var assoc = document.createElement('p');
+    assoc.className = 'associacio';
+    assoc.textContent = 'Organitza · Organise : ' + e.associacio;
+    detalls.appendChild(assoc);
+  }
+
+  return detalls;
+}
+
+// Crea el botó que desplega o plega els detalls del cos indicat.
+function creaBotoMes(cos) {
+  var boto = document.createElement('button');
+  boto.type = 'button';
+  boto.className = 'boto-mes';
+  boto.setAttribute('aria-expanded', 'false');
+  boto.textContent = 'Veure més · Voir plus';
+  boto.addEventListener('click', function () {
+    var obert = cos.classList.toggle('obert');
+    boto.setAttribute('aria-expanded', obert ? 'true' : 'false');
+    boto.textContent = obert ? 'Veure menys · Voir moins' : 'Veure més · Voir plus';
+  });
+  return boto;
+}
+
+// Crea la línia meta: hora · (pin) lloc, municipi · fins al ...
+// La data i l'hora porten l'accent de color (classe "quan").
+function creaMeta(e) {
+  var meta = document.createElement('p');
+  meta.className = 'meta';
+
+  if (e.hora) {
+    var hora = document.createElement('span');
+    hora.className = 'quan';
+    hora.textContent = e.hora + ' h';
+    meta.appendChild(hora);
+  }
+
+  var lloc = textLloc(e);
+  if (lloc) {
+    if (meta.childNodes.length > 0) {
+      meta.appendChild(document.createTextNode(' · '));
+    }
+    var pin = document.createElement('span');
+    pin.className = 'icona-pin';
+    pin.setAttribute('aria-hidden', 'true');
+    pin.innerHTML = ICONA_PIN;
+    meta.appendChild(pin);
+    var nomLloc = document.createElement('span');
+    nomLloc.textContent = lloc;
+    meta.appendChild(nomLloc);
+  }
+
+  if (e.data_fi && e.data_fi !== e.data_inici) {
+    if (meta.childNodes.length > 0) {
+      meta.appendChild(document.createTextNode(' · '));
+    }
+    var fins = document.createElement('span');
+    fins.className = 'quan';
+    fins.textContent = finsAl(e.data_fi);
+    meta.appendChild(fins);
+  }
+
+  return meta;
+}
+
+// Torna el text del lloc combinant lloc i municipi.
+function textLloc(e) {
+  if (e.lloc && e.municipi) {
+    return e.lloc + ', ' + e.municipi;
+  }
+  if (e.lloc) {
+    return e.lloc;
+  }
+  if (e.municipi) {
+    return e.municipi;
+  }
+  return '';
+}
+
+// Torna la frase bilingüe "Fins al ... · Jusqu'au ..." per a dates de fi.
+function finsAl(textData) {
+  var data = analitzaData(textData);
+  if (data === null) {
+    return '';
+  }
+  var dia = data.getDate();
+  var mesCa = MESOS_CA[data.getMonth()];
+  var mesFr = MESOS_FR[data.getMonth()];
+
+  var diaCa = (dia === 1 || dia === 11) ? 'a l’' + dia : 'al ' + dia;
+  var prepMes = comencaAmbVocal(mesCa) ? 'd’' : 'de ';
+  var ca = 'Fins ' + diaCa + ' ' + prepMes + mesCa;
+
+  var diaFr = (dia === 1) ? '1er' : String(dia);
+  var frase = ca + ' · Jusqu’au ' + diaFr + ' ' + mesFr;
+  return frase;
+}
+
+// Diu si una paraula comença amb vocal (per a la contracció de/d').
+function comencaAmbVocal(paraula) {
+  return 'aeiouàéèíòóú'.indexOf(paraula.charAt(0)) !== -1;
+}
+
+// Mostra el missatge d'estat (buit / sense resultats).
+function mostraMissatge(text) {
+  var missatge = document.getElementById('missatge-estat');
+  missatge.textContent = text;
+  missatge.hidden = false;
+}
+
+// Amaga el missatge d'estat.
+function amagaMissatge() {
+  document.getElementById('missatge-estat').hidden = true;
+}
+
+// Posa la primera lletra en majúscula.
+function majuscula(paraula) {
+  return paraula.charAt(0).toUpperCase() + paraula.slice(1);
+}
+
+/* --------------------------------------------------------------------
+   Tema clar / fosc.
+-------------------------------------------------------------------- */
+
+// Torna el tema actiu ('fosc' o 'clar').
+function temaActual() {
+  return document.documentElement.getAttribute('data-tema') === 'fosc' ? 'fosc' : 'clar';
+}
+
+// Aplica un tema, el desa i actualitza el botó.
+function aplicaTema(tema) {
+  document.documentElement.setAttribute('data-tema', tema);
+  try {
+    localStorage.setItem('tema', tema);
+  } catch (e) { /* sense localStorage: no es desa, però funciona igual */ }
+  sincronitzaBotoTema();
+}
+
+// Posa la icona i el text del botó segons el tema actiu.
+function sincronitzaBotoTema() {
+  var boto = document.getElementById('boto-tema');
+  var icona = boto.querySelector('.icona-tema');
+  var text = boto.querySelector('.text-tema');
+  if (temaActual() === 'fosc') {
+    icona.innerHTML = ICONA_SOL;
+    text.textContent = 'Clar · Clair';
+  } else {
+    icona.innerHTML = ICONA_LLUNA;
+    text.textContent = 'Fosc · Sombre';
+  }
+}
+
+// Canvia de tema (clar <-> fosc).
+function alternaTema() {
+  aplicaTema(temaActual() === 'fosc' ? 'clar' : 'fosc');
+}
+
+// Prepara el botó de tema i el seu clic.
+function configuraTema() {
+  sincronitzaBotoTema();
+  document.getElementById('boto-tema').addEventListener('click', alternaTema);
+}
+
+configuraTema();
+construeixFiltres();
+construeixFiltreDates();
+carregaEsdeveniments();
+  </script>
+</body>
+</html>

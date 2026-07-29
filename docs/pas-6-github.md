@@ -45,7 +45,7 @@ Comprova que a la pàgina principal del dipòsit es veuen els 5 fitxers i les 3 
 
 ## 6. Token per al Pas 7 (es pot fer ara o més endavant)
 
-El botó «Publier» del Pas 7 necessitarà un *personal access token* per escriure `events.json` des d'Apps Script. Per crear-lo:
+La publicació del Pas 7 (menú «Agenda → Publica els esdeveniments aprovats») necessitarà un *personal access token* per escriure `events.json` des d'Apps Script. Per crear-lo:
 
 1. GitHub → la teva foto (a dalt a la dreta) → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
 2. Configura:

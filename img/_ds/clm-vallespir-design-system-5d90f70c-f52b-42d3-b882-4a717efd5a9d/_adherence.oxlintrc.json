@@ -1,0 +1,326 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/brand/**",
+              "components/cards/**",
+              "components/core/**",
+              "ui_kits/agenda-catalunya-nord/**",
+              "ui_kits/mar-i-muntanya/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Liana|Fraunces|Space Grotesk))/i]",
+        "message": "Font not provided by the design system. Available: Liana, Fraunces, Space Grotesk."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|tone|onDark|as|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, tone, onDark, as."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:text|solid|outline)$/]",
+        "message": "<Button> variant must be one of 'text' | 'solid' | 'outline'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:accent|warm|ink)$/]",
+        "message": "<Button> tone must be one of 'accent' | 'warm' | 'ink'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CategoryBadge'] > JSXAttribute > JSXIdentifier[name!=/^(?:category|shape|key|ref|className|style|children)$/]",
+        "message": "<CategoryBadge> doesn't accept that prop. Declared props: category, shape."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CategoryBadge'] > JSXAttribute[name.name='category'] > Literal[value!=/^(?:catfesta|bullinada|contraband|vajol|muntanya-nord|mar-nord|vinya-sud|bosc-sud|territori|projecte)$/]",
+        "message": "<CategoryBadge> category must be one of 'catfesta' | 'bullinada' | 'contraband' | 'vajol' | 'muntanya-nord' | 'mar-nord' | 'vinya-sud' | 'bosc-sud' | 'territori' | 'projecte'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CategoryBadge'] > JSXAttribute[name.name='shape'] > Literal[value!=/^(?:text|pill)$/]",
+        "message": "<CategoryBadge> shape must be one of 'text' | 'pill'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EventCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:event|name|location|side|organiser|description|more|image|key|ref|className|style|children)$/]",
+        "message": "<EventCard> doesn't accept that prop. Declared props: event, name, location, side, organiser, description, more, image."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EventCard'] > JSXAttribute[name.name='event'] > Literal[value!=/^(?:catfesta|bullinada|contraband|vajol)$/]",
+        "message": "<EventCard> event must be one of 'catfesta' | 'bullinada' | 'contraband' | 'vajol'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EventCard'] > JSXAttribute[name.name='side'] > Literal[value!=/^(?:nord|sud)$/]",
+        "message": "<EventCard> side must be one of 'nord' | 'sud'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|onDark|key|ref|className|style|children)$/]",
+        "message": "<Eyebrow> doesn't accept that prop. Declared props: tone, onDark."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:muted|accent)$/]",
+        "message": "<Eyebrow> tone must be one of 'muted' | 'accent'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Logo'] > JSXAttribute > JSXIdentifier[name!=/^(?:brand|variant|tone|size|key|ref|className|style|children)$/]",
+        "message": "<Logo> doesn't accept that prop. Declared props: brand, variant, tone, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Logo'] > JSXAttribute[name.name='brand'] > Literal[value!=/^(?:tvallespir|mariMuntanya|agenda)$/]",
+        "message": "<Logo> brand must be one of 'tvallespir' | 'mariMuntanya' | 'agenda'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Logo'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:mark|lockup)$/]",
+        "message": "<Logo> variant must be one of 'mark' | 'lockup'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Logo'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:dark|light)$/]",
+        "message": "<Logo> tone must be one of 'dark' | 'light'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PostCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:category|title|excerpt|image|href|portrait|key|ref|className|style|children)$/]",
+        "message": "<PostCard> doesn't accept that prop. Declared props: category, title, excerpt, image, href, portrait."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PostCard'] > JSXAttribute[name.name='category'] > Literal[value!=/^(?:catfesta|bullinada|contraband|vajol|muntanya-nord|mar-nord|vinya-sud|bosc-sud|territori|projecte)$/]",
+        "message": "<PostCard> category must be one of 'catfesta' | 'bullinada' | 'contraband' | 'vajol' | 'muntanya-nord' | 'mar-nord' | 'vinya-sud' | 'bosc-sud' | 'territori' | 'projecte'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Scene'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|src|alt|radius|key|ref|className|style|children)$/]",
+        "message": "<Scene> doesn't accept that prop. Declared props: tone, src, alt, radius."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Button": {
+        "replaces": []
+      },
+      "CategoryBadge": {
+        "replaces": []
+      },
+      "EventCard": {
+        "replaces": []
+      },
+      "Eyebrow": {
+        "replaces": []
+      },
+      "Logo": {
+        "replaces": []
+      },
+      "PostCard": {
+        "replaces": []
+      },
+      "Scene": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--accent",
+      "--accent-warm",
+      "--border-hairline",
+      "--border-on-dark",
+      "--border-strong",
+      "--dur-base",
+      "--dur-fast",
+      "--dur-slow",
+      "--ease-out",
+      "--ev-bullinada",
+      "--ev-catfesta",
+      "--ev-contraband",
+      "--ev-vajol",
+      "--focus-ring",
+      "--font-display",
+      "--font-logotype",
+      "--font-serif",
+      "--font-ui",
+      "--forest",
+      "--gutter",
+      "--ink",
+      "--ink-deep",
+      "--ink-territory",
+      "--leading-normal",
+      "--leading-relaxed",
+      "--leading-snug",
+      "--leading-tight",
+      "--mark-sea",
+      "--mark-stone",
+      "--max",
+      "--measure-prose",
+      "--paper",
+      "--radius-lg",
+      "--radius-none",
+      "--radius-photo",
+      "--radius-pill",
+      "--radius-sm",
+      "--sea",
+      "--shadow-card",
+      "--shadow-halo",
+      "--shadow-soft",
+      "--space-0",
+      "--space-1",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--space-9",
+      "--stone",
+      "--stone-deep",
+      "--surface-deep",
+      "--surface-page",
+      "--surface-raised",
+      "--surface-recessed",
+      "--surface-territory",
+      "--text",
+      "--text-2xl",
+      "--text-3xl",
+      "--text-base",
+      "--text-body",
+      "--text-hero",
+      "--text-lg",
+      "--text-muted",
+      "--text-on-dark",
+      "--text-on-dark-muted",
+      "--text-sm",
+      "--text-soft",
+      "--text-xl",
+      "--text-xs",
+      "--tracking-eyebrow",
+      "--tracking-tight",
+      "--tracking-wide",
+      "--tramontane",
+      "--weight-book",
+      "--weight-light",
+      "--weight-medium",
+      "--weight-regular",
+      "--weight-semi",
+      "--wine"
+    ],
+    "tokenKinds": {
+      "--stone": "color",
+      "--stone-deep": "color",
+      "--mark-stone": "color",
+      "--paper": "color",
+      "--ink": "color",
+      "--ink-territory": "color",
+      "--ink-deep": "color",
+      "--text": "font",
+      "--text-muted": "font",
+      "--tramontane": "color",
+      "--wine": "color",
+      "--forest": "color",
+      "--sea": "color",
+      "--ev-catfesta": "color",
+      "--ev-bullinada": "color",
+      "--ev-contraband": "color",
+      "--ev-vajol": "color",
+      "--mark-sea": "color",
+      "--surface-page": "color",
+      "--surface-recessed": "color",
+      "--surface-raised": "color",
+      "--surface-deep": "color",
+      "--surface-territory": "color",
+      "--text-body": "font",
+      "--text-soft": "font",
+      "--text-on-dark": "font",
+      "--text-on-dark-muted": "font",
+      "--accent": "color",
+      "--accent-warm": "color",
+      "--border-hairline": "color",
+      "--border-on-dark": "color",
+      "--border-strong": "color",
+      "--focus-ring": "color",
+      "--font-display": "font",
+      "--font-serif": "font",
+      "--font-ui": "font",
+      "--font-logotype": "font",
+      "--text-xs": "font",
+      "--text-sm": "font",
+      "--text-base": "font",
+      "--text-lg": "font",
+      "--text-xl": "font",
+      "--text-2xl": "font",
+      "--text-3xl": "font",
+      "--text-hero": "font",
+      "--weight-light": "font",
+      "--weight-regular": "font",
+      "--weight-book": "font",
+      "--weight-medium": "font",
+      "--weight-semi": "font",
+      "--leading-tight": "font",
+      "--leading-snug": "font",
+      "--leading-normal": "font",
+      "--leading-relaxed": "font",
+      "--tracking-eyebrow": "font",
+      "--tracking-wide": "font",
+      "--tracking-tight": "font",
+      "--space-0": "spacing",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--space-9": "spacing",
+      "--gutter": "spacing",
+      "--max": "spacing",
+      "--measure-prose": "spacing",
+      "--radius-none": "radius",
+      "--radius-sm": "radius",
+      "--radius-photo": "radius",
+      "--radius-lg": "radius",
+      "--radius-pill": "radius",
+      "--shadow-soft": "shadow",
+      "--shadow-card": "shadow",
+      "--shadow-halo": "shadow",
+      "--ease-out": "other",
+      "--dur-fast": "other",
+      "--dur-base": "other",
+      "--dur-slow": "other"
+    },
+    "fontFamilies": [
+      "Fraunces",
+      "Liana",
+      "Space Grotesk"
+    ]
+  }
+}
