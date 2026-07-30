@@ -113,6 +113,17 @@
     </div>
   </footer>
 
+  <!-- Visor del cartell: capa negra a pantalla completa amb la imatge sencera.
+       S'obre en pitjar la miniatura d'un cartell i es tanca amb la creu, amb
+       un clic al fons o amb la tecla Escape (vegeu app.js). -->
+  <div id="visor-cartell" class="visor" role="dialog" aria-modal="true"
+       aria-label="Cartell de l’acte · Affiche de l’événement" hidden>
+    <button type="button" id="visor-tanca" class="visor-tanca"
+            aria-label="Tanca el cartell · Fermer l’affiche">×</button>
+    <img id="visor-imatge" class="visor-imatge" src="" alt="">
+    <p id="visor-titol" class="visor-titol"></p>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

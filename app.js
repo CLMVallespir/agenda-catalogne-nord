@@ -346,16 +346,14 @@ function creaTargeta(e, index) {
 
 // Crea la columna del cartell amb la banderola de categoria a dalt.
 // Si no hi ha imatge, mostra la icona de la categoria com a substitut.
+// Quan hi ha imatge, la miniatura és un botó que obre el visor (obreVisor):
+// els cartells sovint porten informació que no cap a la miniatura.
 function creaCartell(e) {
   var marc = document.createElement('div');
   marc.className = 'imatge-esdeveniment';
 
   if (e.imatge_url) {
-    var imatge = document.createElement('img');
-    imatge.src = e.imatge_url;
-    imatge.alt = 'Cartell: ' + e.titol;
-    imatge.loading = 'lazy';
-    marc.appendChild(imatge);
+    marc.appendChild(creaBotoCartell(e));
   } else {
     marc.classList.add('sense-imatge');
     var icona = document.createElement('span');
@@ -370,6 +368,26 @@ function creaCartell(e) {
   }
 
   return marc;
+}
+
+// Crea el botó-miniatura del cartell; en pitjar-lo obre el visor a mida grossa.
+function creaBotoCartell(e) {
+  var boto = document.createElement('button');
+  boto.type = 'button';
+  boto.className = 'obre-cartell';
+  boto.setAttribute('aria-label', 'Veure el cartell sencer · Voir l’affiche en grand');
+
+  var imatge = document.createElement('img');
+  imatge.src = e.imatge_url;
+  imatge.alt = 'Cartell: ' + e.titol;
+  imatge.loading = 'lazy';
+  boto.appendChild(imatge);
+
+  boto.addEventListener('click', function () {
+    obreVisor(e.imatge_url, e.titol, boto);
+  });
+
+  return boto;
 }
 
 // Crea la banderola amb el nom de la categoria (a dalt del cartell).
@@ -635,9 +653,81 @@ function configuraTema() {
   boto.addEventListener('click', alternaTema);
 }
 
+// ------------------------------------------------------ visor de cartells
+
+// El botó-cartell que ha obert el visor, per tornar-li el focus al tancar.
+var cartellObridor = null;
+
+// Obre el visor amb el cartell sencer d'un esdeveniment.
+function obreVisor(urlImatge, titol, obridor) {
+  var visor = document.getElementById('visor-cartell');
+  if (!visor) {
+    return;
+  }
+  cartellObridor = obridor;
+
+  var imatge = document.getElementById('visor-imatge');
+  imatge.src = urlImatge;
+  imatge.alt = 'Cartell: ' + titol;
+
+  document.getElementById('visor-titol').textContent = titol;
+
+  visor.hidden = false;
+  document.body.classList.add('visor-obert');
+  document.getElementById('visor-tanca').focus();
+}
+
+// Tanca el visor i torna el focus al cartell que l'ha obert.
+function tancaVisor() {
+  var visor = document.getElementById('visor-cartell');
+  if (!visor || visor.hidden) {
+    return;
+  }
+  visor.hidden = true;
+  document.body.classList.remove('visor-obert');
+
+  // Buidem el src per no deixar la imatge grossa carregada a la memòria.
+  document.getElementById('visor-imatge').src = '';
+
+  if (cartellObridor) {
+    cartellObridor.focus();
+    cartellObridor = null;
+  }
+}
+
+// Diu si el visor és obert ara mateix.
+function visorObert() {
+  var visor = document.getElementById('visor-cartell');
+  return visor !== null && visor.hidden === false;
+}
+
+// Prepara el visor: botó de tancar, clic al fons negre i tecla Escape.
+function configuraVisor() {
+  var visor = document.getElementById('visor-cartell');
+  if (!visor) {
+    return;
+  }
+
+  document.getElementById('visor-tanca').addEventListener('click', tancaVisor);
+
+  // Clic al fons (no sobre la imatge ni el títol): tanca.
+  visor.addEventListener('click', function (event) {
+    if (event.target === visor) {
+      tancaVisor();
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && visorObert()) {
+      tancaVisor();
+    }
+  });
+}
+
 // -------------------------------------------------------------------- inici
 
 configuraTema();
+configuraVisor();
 construeixFiltres();
 construeixFiltreDates();
 carregaEsdeveniments();
