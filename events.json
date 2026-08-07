@@ -70,5 +70,23 @@
     "font_url": "",
     "estat": "publicat",
     "data_entrada": "2026-07-29T18:51:58.620Z"
+  },
+  {
+    "id": "2026-08-18-concert-commemoratiu-narcisa",
+    "titol": "Concert Commemoratiu Narcisa Freixas",
+    "data_inici": "2026-08-18",
+    "data_fi": "2026-08-18",
+    "hora": "20:00",
+    "lloc": "Auditori Liceu Renouvier",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "Les Aoédées trio amb Guillem Ballaz i Pep Coca revisiten obres de Narcisa Freixas, en el centenari de la seva mort",
+    "descripcio_fr": "Le trio Aoédées avec Guillem Ballaz et Pep Coca revisitent des œuvres de Narcisa Freixas, au centenaire de sa mort",
+    "associacio": "UCE i Casa Macià",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1786023526/140000_zqx5bq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-08-06T13:38:53.630Z"
   }
 ]
