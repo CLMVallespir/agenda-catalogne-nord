@@ -88,5 +88,23 @@
     "font_url": "",
     "estat": "publicat",
     "data_entrada": "2026-08-06T13:38:53.630Z"
+  },
+  {
+    "id": "2026-09-12-concert-de-goulamask",
+    "titol": "Concert de Goulamas'k",
+    "data_inici": "2026-09-12",
+    "data_fi": "2026-09-12",
+    "hora": "20:00",
+    "lloc": "Casa Macià",
+    "municipi": "Prats de Molló",
+    "comarca": "Vallespir",
+    "categoria": "Música",
+    "descripcio_ca": "A la tarda actes del Centenari dels Fets de Prats de Molló. Hi haurà servei de menjar i beure, I al final de festa amb Goulamas'k",
+    "descripcio_fr": "Dans l'après-midi, les événements du centenaire des événements de Prats de Molló. Il y aura un service de nourriture et de boissons, et à la fin de la fête avec Goulamas'k",
+    "associacio": "Casa Macià",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1786265222/138310_av0jjv.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-08-09T08:47:04.835Z"
   }
 ]
