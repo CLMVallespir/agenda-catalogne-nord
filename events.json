@@ -106,5 +106,23 @@
     "font_url": "",
     "estat": "publicat",
     "data_entrada": "2026-08-09T08:47:04.835Z"
+  },
+  {
+    "id": "2026-08-24-estelades-a-la",
+    "titol": "Estelades a la Vuelta",
+    "data_inici": "2026-08-24",
+    "data_fi": "2026-08-24",
+    "hora": "12:00",
+    "lloc": "Porta Catalana",
+    "municipi": "Salses",
+    "comarca": "Rosselló",
+    "categoria": "Concentració",
+    "descripcio_ca": "Animeu-vos a portar estelades i senyeres per tal de mostrar que Salses és a Catalunya del Nord",
+    "descripcio_fr": "N'hésitez pas à apporter des estelades et des senyeres afin de montrer que Salses est en Catalogne du Nord",
+    "associacio": "ANC",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1786613039/IMG-20260812-WA0005_eymxgk.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-08-13T09:24:01.621Z"
   }
 ]
