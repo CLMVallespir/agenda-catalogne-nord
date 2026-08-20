@@ -35,14 +35,23 @@
         <img class="logo-quefas logo-clar" src="img/logo/que-fas_clar.svg" alt="Què fas? — l’Agenda de Cat Nord">
         <img class="logo-quefas logo-fosc" src="img/logo/que-fas_fosc.svg" alt="Què fas? — l’Agenda de Cat Nord">
       </h1>
-      <!-- Fila d'utilitats sota el logotip: «Qui som» + botó de tema.
+      <!-- Fila d'utilitats sota el logotip: «Qui sem» + botó de tema.
            En pantalla ampla (≥900px) el botó de tema salta a la cantonada
            de dalt a la dreta (vegeu style.css). -->
       <div class="fila-utilitats">
-        <a class="boto-quisom" href="qui-som.html">Qui som <span class="quisom-fr" lang="fr">· Qui sommes-nous</span></a>
+        <!-- Les dues píndoles porten el català a dalt i el francès a sota
+             (mateixa jerarquia bilingüe que els botons d'acció), perquè en
+             pantalla estreta el text no es reparteixi en dues columnes. -->
+        <a class="boto-quisom" href="qui-som.html">
+          <span class="quisom-ca">Qui sem</span>
+          <span class="quisom-fr" lang="fr">Qui sommes-nous</span>
+        </a>
         <button id="boto-tema" class="boto-tema" type="button" aria-label="Canvia el tema · Changer de thème">
           <span class="icona-tema" aria-hidden="true"></span>
-          <span class="text-tema"></span>
+          <span class="text-tema">
+            <span class="tema-ca"></span>
+            <span class="tema-fr" lang="fr"></span>
+          </span>
         </button>
       </div>
     </div>
@@ -73,11 +82,14 @@
         </select>
       </div>
       <!-- Filtre per dates: interval opcional. Un sol dia = mateixa data als dos camps;
-           un camp buit no limita. La lògica és a app.js (construeixFiltreDates). -->
+           un camp buit no limita. La lògica és a app.js (construeixFiltreDates).
+           En pantalla estreta el CSS amaga les etiquetes franceses (.etiqueta-fr)
+           perquè els dos camps càpiguen en una sola línia: la barra de filtres
+           és enganxada i cada línia de més tapa els actes. -->
       <div class="filtre-dates" role="group" aria-label="Filtra per dates / Filtrer par dates">
-        <label class="etiqueta-data" for="data-des">Del <span lang="fr">· Du</span></label>
+        <label class="etiqueta-data" for="data-des">Del <span class="etiqueta-fr" lang="fr">· Du</span></label>
         <input type="date" id="data-des" class="camp-data">
-        <label class="etiqueta-data" for="data-fins">al <span lang="fr">· au</span></label>
+        <label class="etiqueta-data" for="data-fins">al <span class="etiqueta-fr" lang="fr">· au</span></label>
         <input type="date" id="data-fins" class="camp-data">
         <button type="button" id="boto-esborra-dates" class="boto-esborra-dates" hidden
                 aria-label="Esborra les dates · Effacer les dates">Esborra · Effacer</button>
@@ -90,6 +102,22 @@
     <div id="llista-esdeveniments">
       <!-- Els esdeveniments es generen a app.js -->
     </div>
+
+    <!-- Franja de llarga durada: els actes que duren més de 5 dies
+         (típicament exposicions) surten de la llista cronològica i es
+         mostren aquí, al peu. Si no, una exposició de dos mesos encalla
+         la llista sota la capçalera del dia en què va començar, que al
+         cap d'unes setmanes ja és una data passada. -->
+    <section id="franja-llarga-durada" class="franja-llarga"
+             aria-labelledby="titol-llarga-durada" hidden>
+      <h2 id="titol-llarga-durada" class="titol-dia titol-franja">
+        <span class="dia-ca">De llarga durada</span>
+        <span class="dia-fr" lang="fr">· De longue durée</span>
+      </h2>
+      <div id="llista-llarga-durada">
+        <!-- Les targetes es generen a app.js -->
+      </div>
+    </section>
   </main>
 
   <footer class="peu">

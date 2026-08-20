@@ -123,12 +123,22 @@ body {
   line-height: 1;
 }
 .boto-tema:hover { background: var(--vora); color: var(--tinta); }
-.boto-tema .icona-tema { display: inline-flex; }
+.boto-tema .icona-tema { display: inline-flex; flex: 0 0 auto; }
+/* Les etiquetes van en columna: català a dalt, francès a sota. Així la
+   píndola no reparteix el text en dues columnes en pantalla estreta. */
+.boto-tema .text-tema {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.25;
+}
+.boto-tema .tema-ca { font-family: var(--tipo-ui); font-weight: 600; }
+.boto-tema .tema-fr { font-family: var(--tipo-serif); font-style: italic; font-weight: 400; font-size: 0.92em; opacity: 0.85; }
 
 /* --------------------------------------------------------------------
    Capçalera de portada («faixa») — només l'usa index.html.
    El logotip, centrat i gran, fa d'imatge que encapçala el web; a sota,
-   la fila d'utilitats («Qui som» + botó de tema). La pàgina legal manté
+   la fila d'utilitats («Qui sem» + botó de tema). La pàgina legal manté
    la capçalera compacta de sempre.
 -------------------------------------------------------------------- */
 .capcalera-portada { padding: 2.1rem 0 1.5rem; }
@@ -148,32 +158,38 @@ body {
    En pantalla ampla torna a la cantonada (vegeu el @media de 900px). */
 .capcalera-portada .boto-tema { position: static; }
 
-/* Botó «Qui som»: píndola amb contorn de tinta i punt d'accent davant,
+/* Botó «Qui sem»: píndola amb contorn de tinta i punt d'accent davant,
    una mica més present que el botó de tema (és contingut, no utilitat). */
 .boto-quisom {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.45rem;
+  text-align: center;
+  white-space: nowrap;
   font-family: var(--tipo-ui);
   font-weight: 600;
   font-size: 0.75rem;
-  padding: 0.34rem 0.8rem;
+  line-height: 1.25;
+  padding: 0.34rem 0.95rem 0.4rem;
   border: 1.5px solid var(--tinta);
   border-radius: 999px;
   background: transparent;
   color: var(--tinta);
   text-decoration: none;
-  line-height: 1;
 }
-.boto-quisom::before {
+/* El punt d'accent va davant del català (dins la línia), no davant de tot
+   el botó: si fos un element flex de la columna, quedaria a sobre del text. */
+.boto-quisom .quisom-ca::before {
   content: "";
-  flex: 0 0 auto;
+  display: inline-block;
   width: 0.42rem;
   height: 0.42rem;
   border-radius: 50%;
   background: var(--accent);
+  margin-right: 0.4rem;
+  vertical-align: 0.1em;
 }
-.boto-quisom .quisom-fr { font-family: var(--tipo-serif); font-style: italic; font-weight: 400; opacity: 0.85; }
+.boto-quisom .quisom-fr { font-family: var(--tipo-serif); font-style: italic; font-weight: 400; font-size: 0.92em; opacity: 0.85; }
 .boto-quisom:hover { background: var(--tinta); color: var(--fons); }
 .boto-quisom:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -187,9 +203,11 @@ body {
   padding: 1.5rem 0 1.6rem;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-.hero .contingut { display: flex; flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+/* En pantalla estreta tot va centrat (text i botó); a partir de 600px
+   el text torna a l'esquerra i el botó se'n va a la dreta. */
+.hero .contingut { display: flex; flex-direction: column; align-items: center; gap: 0.9rem; }
 
-.hero-text { margin: 0; max-width: 46ch; }
+.hero-text { margin: 0; max-width: 46ch; text-align: center; }
 .hero-text .hero-ca { display: block; font-family: var(--tipo-ui); font-weight: 600; font-size: 1.05rem; line-height: 1.35; color: var(--tinta); }
 .hero-text .hero-fr { display: block; margin-top: 0.25rem; font-family: var(--tipo-serif); font-style: italic; font-size: 0.95rem; color: var(--tinta-suau); }
 
@@ -267,31 +285,42 @@ body {
 .boto-comarca:hover { background: var(--vora); }
 .boto-comarca.actiu { background: var(--tinta); color: var(--fons); border-color: var(--tinta); }
 
-.filtre-categoria { margin-left: auto; }
+/* En pantalla estreta el selector ocupa la seva pròpia línia, arrenca a
+   l'esquerra i no arriba fins a la vora dreta de la pantalla (era incòmode
+   de prémer). A partir de 600px pren l'amplada que li cal, sempre a l'esquerra. */
+.filtre-categoria { margin-left: 0; flex: 1 1 100%; max-width: 20rem; min-width: 0; }
 
 #selector-categoria {
   font-family: var(--tipo-ui);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  width: 100%;
   padding: 0.35rem 0.5rem;
   border: 1.5px solid var(--vora);
   border-radius: 6px;
   background: var(--fons-targeta);
   color: var(--tinta);
   max-width: 100%;
+  text-overflow: ellipsis;
 }
 
 /* Filtre per dates: dos camps natius de data i un botó per esborrar-los.
    El calendari desplegable és el del navegador (cap giny propi);
    color-scheme li fa seguir el tema clar o fosc. */
-.filtre-dates { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
+.filtre-dates { display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem; }
 
-.etiqueta-data { font-family: var(--tipo-ui); font-weight: 600; font-size: 0.8rem; color: var(--tinta-suau); }
-.etiqueta-data span[lang="fr"] { font-family: var(--tipo-serif); font-style: italic; font-weight: normal; }
+.etiqueta-data { font-family: var(--tipo-ui); font-weight: 600; font-size: 0.78rem; color: var(--tinta-suau); }
+.etiqueta-data .etiqueta-fr { font-family: var(--tipo-serif); font-style: italic; font-weight: normal; }
+
+/* En pantalla estreta les etiquetes franceses («· Du», «· au») s'amaguen
+   perquè «Del [data] al [data]» càpiga en una sola línia. La barra de
+   filtres és enganxada a dalt: cada línia que estalvia és espai per als
+   actes. A partir de 600px tornen a sortir (vegeu el @media de 600px). */
+.etiqueta-data .etiqueta-fr { display: none; }
 
 .camp-data {
   font-family: var(--tipo-ui);
-  font-size: 0.85rem;
-  padding: 0.3rem 0.45rem;
+  font-size: 0.78rem;
+  padding: 0.28rem 0.35rem;
   border: 1.5px solid var(--vora);
   border-radius: 6px;
   background: var(--fons-targeta);
@@ -353,6 +382,23 @@ main { padding-top: 1rem; padding-bottom: 2rem; min-height: 50vh; }
   font-weight: normal;
   font-size: 0.9em;
 }
+
+/* --------------------------------------------------------------------
+   Franja de llarga durada: els actes de més de 5 dies (exposicions)
+   surten de la llista cronològica i es recullen aquí, al peu. Es
+   distingeix de la llista amb un filet de separació més marcat a dalt,
+   no amb cap color nou: la pàgina continua sent monocroma.
+-------------------------------------------------------------------- */
+.franja-llarga {
+  margin-top: 2.5rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--vora);
+}
+
+/* La capçalera de la franja reutilitza .titol-dia (mateixa tipografia,
+   mateix punt d'accent) i només en treu el marge de dalt, que aquí ja
+   el posa la mateixa franja. */
+.titol-franja { margin-top: 0.9rem; }
 
 /* --------------------------------------------------------------------
    Targeta: cartell a l'esquerra (amb banderola de categoria), cos a la dreta.
@@ -689,11 +735,22 @@ main { padding-top: 1rem; padding-bottom: 2rem; min-height: 50vh; }
   .imatge-esdeveniment { width: 120px; height: 120px; }
   .icona-categoria svg { width: 50px; height: 50px; }
   .hero .contingut { flex-direction: row; align-items: center; justify-content: space-between; }
-  .hero-text { margin-right: 1.5rem; }
+  .hero-text { margin-right: 1.5rem; text-align: left; }
+
+  /* El selector de categoria queda alineat a l'esquerra, sota les píndoles
+     de comarca i sobre les dates: els tres filtres arrenquen del mateix
+     marge. Aquí pren l'amplada que li cal (hi ha lloc de sobres). */
+  .filtre-categoria { flex: 0 0 auto; max-width: none; }
+  #selector-categoria { width: auto; font-size: 0.85rem; }
+
+  /* Les dates recuperen les etiquetes franceses i la mida de sempre. */
+  .etiqueta-data { font-size: 0.8rem; }
+  .etiqueta-data .etiqueta-fr { display: inline; }
+  .camp-data { font-size: 0.85rem; padding: 0.3rem 0.45rem; }
 }
 
 /* En pantalla ampla (ordinador), el botó de tema torna a la cantonada de
-   dalt a la dreta; la fila queda només amb «Qui som», centrat sota el
+   dalt a la dreta; la fila queda només amb «Qui sem», centrat sota el
    logotip. En mòbil i tauleta tots dos resten dins la fila. */
 @media (min-width: 900px) {
   .capcalera-portada .boto-tema {

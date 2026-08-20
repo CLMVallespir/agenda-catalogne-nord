@@ -23,8 +23,18 @@ var CATEGORIES = [
   { ca: 'Cinema', fr: 'Cinéma' },
   { ca: 'Taller', fr: 'Atelier' },
   { ca: 'Activitat infantil', fr: 'Jeune public' },
-  { ca: 'Patrimoni i tradicions', fr: 'Patrimoine et traditions' }
+  { ca: 'Patrimoni i tradicions', fr: 'Patrimoine et traditions' },
+  { ca: 'Concentració', fr: 'Rassemblement' }
 ];
+
+// Un acte que dura MÉS d'aquests dies no surt a la llista del dia:
+// passa a la franja de llarga durada, al peu de la pàgina. Així un cap
+// de setmana llarg o una fira de quatre dies es queden al seu lloc
+// cronològic, i una exposició de dos mesos no encalla la llista.
+var DIES_LLARGA_DURADA = 5;
+
+// Mil·lisegons en un dia, per mesurar la durada d'un acte.
+var MS_PER_DIA = 24 * 60 * 60 * 1000;
 
 var MESOS_CA = ['gener', 'febrer', 'març', 'abril', 'maig', 'juny',
   'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'];
@@ -48,7 +58,8 @@ var CATEGORIA_ICONES = {
   'Cinema': '<svg viewBox="0 0 24 24" focusable="false"><rect x="3" y="8" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 8l3.5-3.5 3 3M10 4.2l3 3M16 4l3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
   'Taller': '<svg viewBox="0 0 24 24" focusable="false"><path d="M14 6l4 4M16 4l4 4-2 2-4-4zM14 8l-9 9 1.5 1.5 9-9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
   'Activitat infantil': '<svg viewBox="0 0 24 24" focusable="false"><path d="M12 3c3 0 5 2.5 5 6s-2 6-5 6-5-2.5-5-6 2-6 5-6z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 15v3M10.5 21c0-1.5 3-1.5 3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
-  'Patrimoni i tradicions': '<svg viewBox="0 0 24 24" focusable="false"><path d="M4 9l8-5 8 5zM6 9v8M10 9v8M14 9v8M18 9v8M4 20h16M5 17h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  'Patrimoni i tradicions': '<svg viewBox="0 0 24 24" focusable="false"><path d="M4 9l8-5 8 5zM6 9v8M10 9v8M14 9v8M18 9v8M4 20h16M5 17h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  'Concentració': '<svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="6" r="2.4" fill="currentColor"/><circle cx="5.5" cy="8.5" r="2" fill="currentColor"/><circle cx="18.5" cy="8.5" r="2" fill="currentColor"/><path d="M7.5 19v-2.5a4.5 4.5 0 0 1 9 0V19M2 19v-1.6a3.6 3.6 0 0 1 3.5-3.6M22 19v-1.6a3.6 3.6 0 0 0-3.5-3.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 var ICONA_DEFECTE = '<svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="5" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16M8.5 3v4M15.5 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 
@@ -266,10 +277,11 @@ function passaFiltreDates(e) {
 
 // ------------------------------------------------------------------ pintat
 
-// Pinta la llista sencera, agrupada per dia.
+// Pinta la pàgina sencera: la llista per dies i la franja de llarga durada.
 function pintaTot() {
   var llista = document.getElementById('llista-esdeveniments');
   llista.textContent = '';
+  buidaFranjaLlarga();
 
   if (esdeveniments.length === 0) {
     mostraMissatge('Encara no hi ha esdeveniments publicats. · Aucun événement publié pour le moment.');
@@ -284,17 +296,100 @@ function pintaTot() {
 
   amagaMissatge();
 
+  // Els actes llargs surten de la llista del dia i van a la franja.
+  var curts = [];
+  var llargs = [];
+  filtrats.forEach(function (e) {
+    if (esLlargaDurada(e)) {
+      llargs.push(e);
+    } else {
+      curts.push(e);
+    }
+  });
+
+  pintaLlistaPerDies(curts, llista);
+  pintaFranjaLlarga(llargs);
+}
+
+// Diu si un acte dura més de DIES_LLARGA_DURADA dies. Un acte sense
+// dates vàlides no és mai de llarga durada: es queda a la llista del dia.
+function esLlargaDurada(e) {
+  var inici = analitzaData(e.data_inici);
+  if (inici === null) {
+    return false;
+  }
+  var fi = analitzaData(e.data_fi);
+  if (fi === null) {
+    return false; // data_fi buida o malformada: es tracta com un sol dia
+  }
+  var dies = Math.round((fi.getTime() - inici.getTime()) / MS_PER_DIA);
+  return dies > DIES_LLARGA_DURADA;
+}
+
+// Pinta la llista cronològica agrupada per dia dins del contenidor donat.
+function pintaLlistaPerDies(llistaEsdeveniments, contenidor) {
   var diaAnterior = '';
   var comptador = 0;
-  filtrats.forEach(function (e) {
+  llistaEsdeveniments.forEach(function (e) {
     var dia = e.data_inici;
     if (dia !== diaAnterior) {
-      llista.appendChild(creaTitolDia(dia));
+      contenidor.appendChild(creaTitolDia(dia));
       diaAnterior = dia;
     }
+    contenidor.appendChild(creaTargeta(e, comptador));
+    comptador++;
+  });
+}
+
+// Buida la franja de llarga durada i l'amaga. Es crida al principi de
+// cada pintat, perquè un canvi de filtre no hi deixi targetes velles.
+function buidaFranjaLlarga() {
+  var franja = document.getElementById('franja-llarga-durada');
+  var llista = document.getElementById('llista-llarga-durada');
+  if (franja === null || llista === null) {
+    return; // pàgines sense franja (p. ex. una versió reduïda)
+  }
+  llista.textContent = '';
+  franja.hidden = true;
+}
+
+// Pinta la franja de llarga durada, ordenada pel que s'acaba abans:
+// el que està a punt de tancar surt primer. Si no hi ha res, no es mostra.
+function pintaFranjaLlarga(llargs) {
+  var franja = document.getElementById('franja-llarga-durada');
+  var llista = document.getElementById('llista-llarga-durada');
+  if (franja === null || llista === null) {
+    return;
+  }
+  if (llargs.length === 0) {
+    return; // buidaFranjaLlarga ja l'ha amagada
+  }
+
+  // Còpia abans d'ordenar: no toquem l'ordre de la llista filtrada.
+  var ordenats = llargs.slice();
+  ordenats.sort(function (a, b) {
+    if (a.data_fi < b.data_fi) {
+      return -1;
+    }
+    if (a.data_fi > b.data_fi) {
+      return 1;
+    }
+    if (a.data_inici < b.data_inici) {
+      return -1;
+    }
+    if (a.data_inici > b.data_inici) {
+      return 1;
+    }
+    return 0;
+  });
+
+  var comptador = 0;
+  ordenats.forEach(function (e) {
     llista.appendChild(creaTargeta(e, comptador));
     comptador++;
   });
+
+  franja.hidden = false;
 }
 
 // Crea la capçalera d'un dia: "23 Juny, Dimarts · 23 Juin, Mardi".
@@ -621,20 +716,25 @@ function aplicaTema(tema) {
   sincronitzaBotoTema();
 }
 
-// Posa la icona i el text del botó segons el tema actiu.
+// Posa la icona i les dues etiquetes del botó segons el tema actiu.
+// El català va a dalt i el francès a sota (dos elements separats), perquè
+// en pantalla estreta el text no es parteixi pel separador «·».
 function sincronitzaBotoTema() {
   var boto = document.getElementById('boto-tema');
   if (!boto) {
     return;
   }
   var icona = boto.querySelector('.icona-tema');
-  var text = boto.querySelector('.text-tema');
+  var textCa = boto.querySelector('.tema-ca');
+  var textFr = boto.querySelector('.tema-fr');
   if (temaActual() === 'fosc') {
     icona.innerHTML = ICONA_SOL;
-    text.textContent = 'Clar · Clair';
+    textCa.textContent = 'Clar';
+    textFr.textContent = 'Clair';
   } else {
     icona.innerHTML = ICONA_LLUNA;
-    text.textContent = 'Fosc · Sombre';
+    textCa.textContent = 'Fosc';
+    textFr.textContent = 'Sombre';
   }
 }
 
