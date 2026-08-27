@@ -64,6 +64,37 @@ cosa, digues-ho al de fora; no te la quedis en silenci.**
 
 ---
 
+## Al camí de Git, les variables de text del tauler no sobreviuen
+
+**Resum:** `wrangler deploy` esborra les variables de text posades al tauler
+cada vegada que desplega; els Secrets no els toca mai.
+
+Amb el Worker connectat al repositori, cada empenta executa `npx wrangler
+deploy`, i per a wrangler la configuració manda: les variables de text (`vars`)
+que hagis posat al tauler i no siguin a `wrangler.jsonc` desapareixen. Els
+Secrets (variables xifrades) queden: només els esborra un `wrangler secret
+delete` explícit.
+
+La trampa és que no falla en desplegar, sinó dies després i de biaix. Una
+variable esborrada no dona cap error de construcció: simplement, el dia que
+arriba un correu amb cartell, la pujada a Cloudinary falla i la fila entra sense
+imatge. Ningú no relaciona les dues coses.
+
+D'aquí la regla del projecte, que val també per a les claus de Brevo de la Fase
+3b: **si és secret, als Secrets del tauler; si no és secret, a
+`wrangler.jsonc`.** Res al mig. `CLOUDINARY_CLOUD_NAME` és a la configuració
+(surt a l'URL de cada cartell públic, no té res a amagar) i les altres tres són
+Secrets — `ADRECA_ARXIU` inclosa, que no és cap contrasenya però és una adreça
+personal i el repositori és públic.
+
+Detall que costa una tarda si no se sap: **un Secret canviat al tauler no és viu
+fins que es desplega.** Els valors formen part de la versió del Worker, i la
+pantalla del tauler acaba amb un botó **Deploy**. Si el registre diu que falta
+una variable que jures haver posat, mira si aquella versió s'ha desplegat abans
+de buscar res més — i mira l'hora de l'entrada, que se'n guarden tres dies.
+
+---
+
 ## postal-mime NO converteix l'HTML a text pla
 
 **Resum:** en un correu només HTML, `email.text` ve `undefined`, no buit ni

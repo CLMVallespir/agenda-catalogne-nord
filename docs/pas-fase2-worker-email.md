@@ -60,19 +60,48 @@ res, i els canvis de configuració sí.
 
 ## 3. Els secrets i les variables
 
-Al Worker → **Settings** → **Variables and Secrets**. Cap d'aquests valors no
-viu mai al codi, ni a `wrangler.jsonc`, ni a Git.
+El Worker necessita quatre valors, i **al camí de Git no van tots al mateix
+lloc**. La regla és una i té una raó mecànica:
 
-| Nom | Tipus | Valor |
-|---|---|---|
-| `GEMINI_API_KEY` | Secret | La clau d'AI Studio |
-| `GITHUB_TOKEN` | Secret | Token de gra fi, **només** el repositori `agenda-catalogne-nord`, permís únic `Contents: Read and write` |
-| `CLOUDINARY_CLOUD_NAME` | Text | El nom del cloud (no és cap secret) |
-| `ADRECA_ARXIU` | Text | El Gmail d'arxiu. **Ha de ser una destinació verificada** a l'Email Routing, si no el reenviament falla |
+> `npx wrangler deploy` **esborra les variables de text posades al tauler** cada
+> vegada que desplega, perquè la configuració manda. Els **Secrets no els toca
+> mai**. Per tant: tot el que sigui secret, als Secrets del tauler; tot el que
+> no sigui secret, a `wrangler.jsonc`. Una variable de text posada al tauler
+> desapareixeria a la primera construcció, i te n'adonaries dies després, quan
+> un cartell no pugés.
 
-Es podrien posar els dos últims com a `vars` dins `wrangler.jsonc`, però val més
-que els quatre visquin al mateix lloc: quan alguna cosa falli, un sol lloc per
-mirar.
+**Tres Secrets, al tauler.** Worker → **Settings** → **Variables and Secrets**,
+tipus **Secret**. No surten mai del tauler: ni al codi, ni a `wrangler.jsonc`,
+ni a Git.
+
+| Nom | Valor |
+|---|---|
+| `GEMINI_API_KEY` | La clau d'AI Studio |
+| `GITHUB_TOKEN` | Token de gra fi, **només** el repositori `agenda-catalogne-nord`, permís únic `Contents: Read and write` |
+| `ADRECA_ARXIU` | El Gmail d'arxiu. **Ha de ser una destinació verificada** a l'Email Routing, si no el reenviament falla |
+
+`ADRECA_ARXIU` és Secret tot i que una adreça de correu no és cap contrasenya:
+aquest repositori és públic, i l'adreça personal del propietari no hi ha de
+sortir. Com que és Secret, també sobreviu als desplegaments.
+
+**Una variable, a `wrangler.jsonc`.** Ja hi és, no has de fer res:
+
+```jsonc
+"vars": {
+  "CLOUDINARY_CLOUD_NAME": "clm-agenda"
+}
+```
+
+Aquesta no és secreta de cap manera: el nom del cloud surt sencer a l'URL de
+cada cartell del web públic (obre `events.json` i ho veuràs) i la pujada és
+sense signatura. Si algun dia canvia el compte de Cloudinary, es canvia aquí i
+es fa un commit — i el desplegament la torna a posar sola.
+
+Quan afegeixes o canvies un Secret al tauler, **el canvi no és viu fins que
+desplegues**: la pantalla acaba amb un botó **Deploy**, i els valors formen part
+de la versió del Worker. Si has posat un Secret i el registre continua dient que
+falta, mira primer si aquella versió s'ha desplegat de debò (Worker →
+**Deployments**), i si no, torna a construir.
 
 ## 4. Enganxar el Worker a l'adreça
 
@@ -169,6 +198,7 @@ funció. Les claus no s'hi escriuen mai.
 |---|---|
 | `Failed to match Worker name` | El `name` de `wrangler.jsonc` i el nom del Worker al tauler han de ser el mateix: `agenda-catalogne-nord`. El registre de construcció diu tots dos noms, el que esperava i el que ha trobat. |
 | `falta la variable ADRECA_ARXIU` | La secció 3 no s'ha fet. Aquest cas és l'únic en què el Worker **rebutja** el correu en comptes de processar-lo: sense adreça d'arxiu no hi ha manera de desar l'original, i val més que el remitent rebi un avís de no-entrega que empassar-se-li el correu. Posa la variable i demana-li que el torni a enviar. |
+| «falta la variable…» i jures que la vas posar | Tres causes, per ordre de probabilitat. **(1)** El canvi al tauler no s'ha desplegat: els Secrets formen part de la versió del Worker i la pantalla acaba amb un botó **Deploy**. Mira Worker → **Deployments** i, si cal, torna a construir. **(2)** L'has posada com a **variable de text** i no com a Secret: `wrangler deploy` esborra les de text a cada desplegament (secció 3). **(3)** És al Worker equivocat, o el nom no és exacte — cap accent, cap espai al final. I abans de res: mira l'hora de l'entrada del registre, que se'n guarden 3 dies i pot ser d'abans que ho arreglessis. |
 | `el reenviament ha fallat` | L'adreça d'arxiu no és una destinació verificada a l'Email Routing. |
 | `Gemini ha respost amb codi 404` | Google ha retirat el model. Cicle de vida normal: mira quins Flash / Flash-Lite hi ha vigents i canvia la constant `GEMINI_MODEL`. Mai la gamma Pro, que és de pagament. |
 | `Gemini ha respost amb codi 429` | Quota diària del nivell gratuït esgotada. El correu és a l'arxiu; es pot reenviar demà. |

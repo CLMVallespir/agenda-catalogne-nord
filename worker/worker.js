@@ -23,15 +23,24 @@
 // en silenci és l'única cosa que no ens podem permetre.
 // Res no arriba mai al web públic sense passar pel curador.
 //
-// SECRETS I VARIABLES (tauler de Cloudflare > el Worker >
-// Configuració > Variables i secrets). MAI dins d'aquest fitxer:
-//   GEMINI_API_KEY         (secret)
-//   GITHUB_TOKEN           (secret; gra fi, només aquest repositori,
-//                           permís únic `contents: write`)
-//   CLOUDINARY_CLOUD_NAME  (variable de text: no és cap secret)
-//   ADRECA_ARXIU           (variable de text: el Gmail d'arxiu; ha de
-//                           ser una destinació VERIFICADA a l'Email
-//                           Routing, si no el reenviament falla)
+// SECRETS I VARIABLES. Cap valor no viu mai dins d'aquest fitxer.
+// Tres són Secrets al tauler de Cloudflare (el Worker > Settings >
+// Variables and Secrets):
+//   GEMINI_API_KEY         (la clau d'AI Studio)
+//   GITHUB_TOKEN           (gra fi, només aquest repositori, permís
+//                           únic `contents: write`)
+//   ADRECA_ARXIU           (el Gmail d'arxiu; ha de ser una destinació
+//                           VERIFICADA a l'Email Routing, si no el
+//                           reenviament falla. És Secret perquè el
+//                           repositori és públic i és una adreça
+//                           personal, no perquè sigui cap contrasenya)
+// I una viu a `wrangler.jsonc`, com a `vars`:
+//   CLOUDINARY_CLOUD_NAME  (no és secreta de cap manera: surt a l'URL
+//                           de cada cartell del web públic. Va a la
+//                           configuració i no al tauler perquè
+//                           `wrangler deploy` esborra les variables de
+//                           text del tauler a cada desplegament; els
+//                           Secrets, en canvi, no els toca)
 //
 // DESPLEGAMENT: vegeu docs/pas-fase2-worker-email.md.
 // ============================================================

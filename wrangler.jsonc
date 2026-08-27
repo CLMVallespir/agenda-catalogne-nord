@@ -6,9 +6,16 @@
 // tornes al desplegament manual (enganxar el codi al tauler), aquest
 // fitxer no molesta: simplement ningú no el llegeix.
 //
-// Hi ha tres coses i prou. Cap d'elles és un secret: els secrets viuen
-// al tauler (Settings > Variables and Secrets) i no han de sortir mai
-// d'allà. Vegeu docs/pas-fase2-worker-email.md.
+// AQUÍ NO HI HA CAP SECRET, I NO N'HI POT HAVER CAP: aquest fitxer és
+// públic com tot el repositori. Les tres claus (GEMINI_API_KEY,
+// GITHUB_TOKEN i ADRECA_ARXIU) viuen als Secrets del tauler i no
+// surten mai d'allà. Vegeu docs/pas-fase2-worker-email.md.
+//
+// L'única variable que sí que viu aquí és CLOUDINARY_CLOUD_NAME, i el
+// perquè és important: `wrangler deploy` esborra les variables de text
+// posades al tauler cada vegada que desplega. Una variable de text que
+// no sigui secreta, per tant, s'ha de declarar aquí o desapareixerà al
+// pròxim desplegament. Els Secrets no: aquells wrangler no els toca.
 //
 // NO HI HA CAP CLAU `assets`, I NO N'HI HA D'HAVER MAI.
 // Declarar-la faria que Cloudflare pugés fitxers d'aquest repositori
@@ -31,6 +38,14 @@
   // quieta: canviar-la pot canviar el comportament de coses ja
   // provades. Només s'apuja a posta, i tornant a provar la Fase 2.
   "compatibility_date": "2026-08-27",
+
+  // El nom del cloud de Cloudinary. No és cap secret: surt sencer a
+  // l'URL de cada cartell del web públic (mira events.json), i la
+  // pujada és sense signatura. Viu aquí, i no al tauler, perquè les
+  // variables de text del tauler no sobreviuen a un `wrangler deploy`.
+  "vars": {
+    "CLOUDINARY_CLOUD_NAME": "clm-agenda"
+  },
 
   // Els registres, desats. Sense això només hi ha el flux en directe
   // del tauler, que serveix mentre el mires: un correu que falla a les
