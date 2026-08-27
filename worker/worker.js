@@ -17,8 +17,11 @@
 // LA INVARIANT: cap correu no es perd mai. El reenviament a l'arxiu
 // es fa ABANS de qualsevol altra cosa i no llança mai. Tot el que ve
 // després pot fallar tant com vulgui: l'original ja és a l'arxiu i
-// l'error queda al registre. Res no arriba mai al web públic sense
-// passar pel curador.
+// l'error queda al registre. I si no hi ha on arxivar-lo —falta la
+// variable ADRECA_ARXIU—, el correu es REBUTJA: el remitent rep un
+// avís de no-entrega i el pot tornar a enviar. Empassar-se un correu
+// en silenci és l'única cosa que no ens podem permetre.
+// Res no arriba mai al web públic sense passar pel curador.
 //
 // SECRETS I VARIABLES (tauler de Cloudflare > el Worker >
 // Configuració > Variables i secrets). MAI dins d'aquest fitxer:
@@ -142,6 +145,19 @@ export default {
   // queda al registre i el correu ja és a l'arxiu.
   // ------------------------------------------------------------
   async email(message, env, ctx) {
+    // Sense adreça d'arxiu no hi ha manera de desar l'original, i
+    // empassar-se un correu en silenci és l'única cosa que no ens
+    // podem permetre. Val més rebutjar-lo: el remitent rep un avís de
+    // no-entrega amb el text de sota i el pot tornar a enviar quan la
+    // configuració estigui posada. És un rebuig PERMANENT (un 5xx):
+    // el servidor del remitent no ho reintentarà sol, ho ha de fer la
+    // persona — per això el text li diu què fer.
+    if (!env.ADRECA_ARXIU) {
+      console.log('email(): falta la variable ADRECA_ARXIU. Rebutjo el correu en comptes d\'empassar-me\'l.');
+      message.setReject('L\'agenda no ha pogut acceptar aquest correu; torna a enviar-lo més tard. · L\'agenda n\'a pas pu accepter ce message ; merci de le renvoyer plus tard.');
+      return;
+    }
+
     // PRIMER de tot, l'arxiu. Aquest ordre és la invariant de la
     // Fase 2: si reenviéssim al final, un error a mig camí (o un
     // límit de CPU) deixaria el correu sense cap còpia enlloc.
@@ -162,11 +178,9 @@ export default {
 // continuar igualment. Torna cert si s'ha reenviat.
 // ------------------------------------------------------------
 async function reenviaAArxiu(message, env) {
+  // Que l'adreça hi sigui, ja ho ha comprovat email(): si faltés, el
+  // correu s'hauria rebutjat i aquí no hi arribaríem.
   var adreca = env.ADRECA_ARXIU;
-  if (!adreca) {
-    console.log('reenviaAArxiu(): falta la variable ADRECA_ARXIU. El correu NO s\'ha arxivat.');
-    return false;
-  }
 
   try {
     await message.forward(adreca);

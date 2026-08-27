@@ -49,6 +49,19 @@ mai: si el reenviament falla, ho registra i el gestor continua igualment.
 La regla general que se'n treu: **el que no es pot refer, fes-ho primer.** Un
 `finally` és per netejar, no per garantir.
 
+Queda un sol cas en què no es pot arxivar res: que falti la variable
+`ADRECA_ARXIU`, perquè sense adreça no hi ha on reenviar. Allà el gestor
+**rebutja** el correu amb `message.setReject()` en comptes de continuar. Sembla
+pitjor i és millor: processant-lo, el remitent creuria que ha arribat i
+l'original no existiria enlloc; rebutjant-lo, rep un avís de no-entrega i el pot
+tornar a enviar. És un rebuig permanent (5xx), o sigui que el seu servidor no ho
+reintentarà sol: per això el text del rebuig és bilingüe i li diu què fer. I com
+que rebutjar vol dir «no ho hem acceptat», el gestor no escriu cap fila en
+aquell cas — si no, el reenviament de la persona en faria una segona.
+
+El corol·lari, que val per a tot el projecte: **quan no puguis garantir una
+cosa, digues-ho al de fora; no te la quedis en silenci.**
+
 ---
 
 ## postal-mime NO converteix l'HTML a text pla

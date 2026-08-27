@@ -168,7 +168,7 @@ funció. Les claus no s'hi escriuen mai.
 | Al registre hi diu | Què vol dir |
 |---|---|
 | `Failed to match Worker name` | El `name` de `wrangler.jsonc` i el nom del Worker al tauler han de ser el mateix: `agenda-catalogne-nord`. El registre de construcció diu tots dos noms, el que esperava i el que ha trobat. |
-| `falta la variable ADRECA_ARXIU` | La secció 3 no s'ha fet. |
+| `falta la variable ADRECA_ARXIU` | La secció 3 no s'ha fet. Aquest cas és l'únic en què el Worker **rebutja** el correu en comptes de processar-lo: sense adreça d'arxiu no hi ha manera de desar l'original, i val més que el remitent rebi un avís de no-entrega que empassar-se-li el correu. Posa la variable i demana-li que el torni a enviar. |
 | `el reenviament ha fallat` | L'adreça d'arxiu no és una destinació verificada a l'Email Routing. |
 | `Gemini ha respost amb codi 404` | Google ha retirat el model. Cicle de vida normal: mira quins Flash / Flash-Lite hi ha vigents i canvia la constant `GEMINI_MODEL`. Mai la gamma Pro, que és de pagament. |
 | `Gemini ha respost amb codi 429` | Quota diària del nivell gratuït esgotada. El correu és a l'arxiu; es pot reenviar demà. |
@@ -179,6 +179,13 @@ funció. Les claus no s'hi escriuen mai.
 reenviament és la primera cosa que fa el gestor, abans de tocar cap servei. Si
 un correu no s'ha pogut convertir en fila, no s'ha perdut: és a l'arxiu i
 l'error és al registre.
+
+I si no hi ha on arxivar-lo, perquè falta `ADRECA_ARXIU`, el correu es rebutja
+amb un avís bilingüe en comptes d'arxivar-se: el remitent sap que no ha arribat
+i el pot tornar a enviar. És un rebuig permanent, o sigui que el seu servidor no
+ho reintentarà sol — ho ha de fer la persona, i per això el text del rebuig li
+diu què fer. Un correu empassat en silenci és l'única cosa que aquest disseny no
+es permet.
 
 ## Camí de recanvi — desplegament manual
 
