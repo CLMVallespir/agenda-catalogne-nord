@@ -92,10 +92,16 @@ descartar que Cloudflare hagi desplegat res més que `worker/worker.js`.
 1. **El registre de construcció** (Worker → **Deployments**, o **Settings** →
    **Build**, i obre la construcció). A la sortida del `npx wrangler deploy` hi
    ha d'haver:
+   - que **la construcció acabi bé**. Aquesta és la comprovació forta del punt
+     d'entrada, i no la mida: si l'`import` de `./postal-mime.js` no s'hagués
+     resolt, esbuild s'hauria aturat amb un error de resolució i no hi hauria
+     cap desplegament. Un Worker de 27 kB sense el parser no és un resultat
+     possible;
    - una línia de pujada del guió amb la seva mida, del tipus
-     `Total Upload: … KiB / gzip: … KiB`. Ha de ser d'uns **185 kB**, que és el
-     Worker més el parser empaquetats junts: si fos de 27 kB, l'`import` no
-     s'hauria resolt;
+     `Total Upload: … KiB / gzip: … KiB`. Ha de ser de **centenars de kB**, no
+     de desenes: el parser sol ja són 155 kB de codi font. Serà bastant menys
+     que la suma dels dos fitxers, perquè en empaquetar es descarten els
+     comentaris — no t'espantis pel número exacte;
    - `Uploaded quefas-agenda` i `Deployed quefas-agenda`;
    - i sobretot **cap línia que parli d'actius** (res de «assets», ni de
      «Uploading N files»). Si n'hi ha cap, algú ha afegit una clau `assets`:
