@@ -1,5 +1,23 @@
 [
   {
+    "id": "2026-09-03-trobada-festiva-i",
+    "titol": "Trobada festiva i arrossada popular",
+    "data_inici": "2026-09-03",
+    "data_fi": "2026-09-03",
+    "hora": "15:00",
+    "lloc": "Placeta de Mont d'Arles",
+    "municipi": "Arles",
+    "comarca": "Vallespir",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La placeta de Mont d'Arles acollirà una trobada festiva amb una arrossada popular i una cercavila pel poble. L'activitat està organitzada pels dansaires catalans de l'Alegria. Tothom hi és convidat a participar.",
+    "descripcio_fr": "La placette de Mont-d'Arles accueillera une rencontre festive avec un repas de riz populaire et un défilé dans le village. L'activité est organisée par les danseurs catalans de l'Alegria. Tout le monde est invité à y participer.",
+    "associacio": "Danzaires catalans de l'Alegria",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1787842099/unnamed_ewhpru.webp",
+    "font_url": "",
+    "estat": "pendent",
+    "data_entrada": "2026-08-27T14:48:20.500Z"
+  },
+  {
     "id": "2026-01-15-i-la-llum",
     "titol": "I la llum va ser",
     "data_inici": "2026-01-15",
