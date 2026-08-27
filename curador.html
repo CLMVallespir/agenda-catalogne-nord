@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ca" data-tema="clar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cua de revisió — Què fas?</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- ============================================================
+       CURADOR — la cua de revisió
+       Segona pàgina estàtica del repositori. Mostra cada fila de
+       pendents.json amb el cartell al costat del text, deixa
+       corregir qualsevol camp, i valida amb dos botons: Publica i
+       Rebutja.
+
+       Publica: posa estat = "publicat", afegeix la fila a
+                events.json i la treu de pendents.json.
+       Rebutja: treu la fila de pendents.json i prou. El correu
+                original al Gmail d'arxiu és el registre permanent.
+
+       El testimoni de GitHub NO viu mai aquí dins. S'enganxa al
+       camp de dalt, viu en una variable durant la sessió i mor en
+       tancar la pestanya. Cap emmagatzematge, cap login.
+
+       Sense testimoni, la pàgina és només de lectura.
+
+       Aquesta pàgina és deliberadament autònoma: porta el seu propi
+       estil i les seves pròpies còpies de creaId i valorPermes. Es
+       pot obrir i arreglar sense mirar cap altre fitxer.
+       ============================================================ -->
+
+  <style>
+  /* --------------------------------------------------------------------
+     Tipografies pròpies, les mateixes del web públic.
+  --------------------------------------------------------------------- */
+  @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/fraunces-700.woff2') format('woff2'); }
+  @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/montserrat-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/montserrat-600.woff2') format('woff2'); }
+
+  /* --------------------------------------------------------------------
+     Colors i tipus. Un sol tema (el clar): l'únic usuari n'és el curador.
+  --------------------------------------------------------------------- */
+  :root {
+    --vermell: #b5121b;
+    --or: #fcdd09;
+
+    --fons: #ffffff;
+    --fons-targeta: #ffffff;
+    --tinta: #1a1a1a;
+    --tinta-suau: #6f6862;
+    --vora: #e7e4df;
+    --accent: var(--vermell);
+    --banderola-fons: #1a1a1a;
+    --banderola-text: #ffffff;
+    --placeholder-fons: #f5eccf;
+    --placeholder-icona: #7a5f12;
+
+    --tipo-titol: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --tipo-ui: 'Montserrat', system-ui, 'Segoe UI', Arial, sans-serif;
+    --tipo-serif: Georgia, 'Times New Roman', serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--fons);
+    color: var(--tinta);
+    font-family: var(--tipo-ui);
+    line-height: 1.5;
+  }
+
+  .contingut { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+
+  /* --------------------------------------------------------------------
+     Capçalera i barra del testimoni.
+  --------------------------------------------------------------------- */
+  .capcalera {
+    padding: 1.4rem 0 1.3rem;
+    border-bottom: 1px solid var(--vora);
+  }
+  .capcalera h1 {
+    margin: 0;
+    font-family: var(--tipo-titol);
+    font-weight: 700;
+    font-size: 1.6rem;
+  }
+  .capcalera h1::before {
+    content: "";
+    display: inline-block;
+    width: 0.55rem;
+    height: 0.55rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: var(--accent);
+    vertical-align: 0.12em;
+  }
+  .capcalera .subtitol {
+    margin: 0.45rem 0 0;
+    font-family: var(--tipo-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--tinta-suau);
+  }
+  .capcalera .subtitol a { color: inherit; }
+
+  .barra-testimoni {
+    border-bottom: 1px solid var(--vora);
+    padding: 0.85rem 0;
+  }
+  .barra-interior { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+
+  .camp-testimoni {
+    font-family: var(--tipo-ui);
+    font-size: 0.8rem;
+    flex: 1 1 18rem;
+    min-width: 0;
+    padding: 0.35rem 0.5rem;
+    border: 1.5px solid var(--vora);
+    border-radius: 6px;
+    background: var(--fons-targeta);
+    color: var(--tinta);
+  }
+
+  /* --------------------------------------------------------------------
+     Botons. Mateixa geometria que els del web públic.
+  --------------------------------------------------------------------- */
+  .boto {
+    font-family: var(--tipo-ui);
+    font-weight: 600;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.9rem;
+    border: 1.5px solid var(--tinta);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--tinta);
+    cursor: pointer;
+    line-height: 1.2;
+  }
+  .boto:hover { background: var(--vora); }
+  .boto:disabled { opacity: 0.4; cursor: not-allowed; }
+  .boto:disabled:hover { background: transparent; }
+
+  .boto-publica { background: var(--tinta); color: var(--fons); }
+  .boto-publica:hover { background: transparent; color: var(--tinta); }
+  .boto-publica:disabled:hover { background: var(--tinta); color: var(--fons); }
+
+  .boto-rebutja { border-color: var(--tinta-suau); color: var(--tinta-suau); }
+
+  .boto:focus-visible,
+  .camp-testimoni:focus-visible,
+  .fitxa input:focus-visible,
+  .fitxa select:focus-visible,
+  .fitxa textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* --------------------------------------------------------------------
+     Missatges d'estat: un de global, un per fitxa.
+  --------------------------------------------------------------------- */
+  .avis {
+    font-family: var(--tipo-ui);
+    font-size: 0.8rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--vora);
+    background: var(--fons-targeta);
+    color: var(--tinta-suau);
+  }
+  .avis.error { border-color: var(--accent); color: var(--accent); }
+  .avis.fet { border-color: var(--tinta); color: var(--tinta); }
+
+  .missatge-estat {
+    font-family: var(--tipo-serif);
+    text-align: center;
+    color: var(--tinta-suau);
+    padding: 3rem 1rem;
+    font-style: italic;
+  }
+
+  /* Etiqueta que només existeix per als lectors de pantalla. */
+  .visualment-amagat {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .recompte {
+    font-family: var(--tipo-ui);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--tinta-suau);
+    margin: 1.5rem 0 0.7rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--vora);
+  }
+
+  /* --------------------------------------------------------------------
+     La fitxa d'un esdeveniment pendent: cartell a l'esquerra, camps
+     a la dreta. La decisió del curador és en bona part visual, així
+     que el cartell hi surt gran.
+  --------------------------------------------------------------------- */
+  .fitxa {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: var(--fons-targeta);
+    border: 1px solid var(--vora);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 0.85rem;
+  }
+  .fitxa.ocupada { opacity: 0.5; }
+
+  .cartell {
+    position: relative;
+    flex: 0 0 auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--placeholder-fons);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.18);
+  }
+  .cartell a { display: block; width: 100%; height: 100%; cursor: zoom-in; }
+  .cartell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cartell.sense-cartell { display: flex; align-items: center; justify-content: center; }
+  .cartell .icona { display: inline-flex; color: var(--placeholder-icona); }
+  .cartell .icona svg { width: 56px; height: 56px; }
+
+  .cos { flex: 1; min-width: 0; }
+
+  .graella { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+  .graella .ample { grid-column: 1 / -1; }
+
+  .camp { display: flex; flex-direction: column; }
+  /* L'entrada va dins de l'etiqueta, per no haver d'inventar cap id. */
+  .camp label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-family: var(--tipo-ui);
+    font-weight: 600;
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--tinta-suau);
+  }
+  .fitxa input,
+  .fitxa select,
+  .fitxa textarea {
+    font-family: var(--tipo-ui);
+    font-size: 0.82rem;
+    width: 100%;
+    padding: 0.3rem 0.45rem;
+    border: 1.5px solid var(--vora);
+    border-radius: 6px;
+    background: var(--fons-targeta);
+    color: var(--tinta);
+    color-scheme: light;
+    /* L'etiqueta que els conté va en versaletes: no ho han d'heretar. */
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+  }
+  .fitxa textarea { resize: vertical; min-height: 4.5rem; line-height: 1.45; }
+  .fitxa input:disabled,
+  .fitxa select:disabled,
+  .fitxa textarea:disabled { background: var(--vora); color: var(--tinta-suau); }
+
+  /* El títol és el camp que més sovint cal tocar: se li dóna pes. */
+  .camp-titol input { font-family: var(--tipo-titol); font-weight: 700; font-size: 1rem; }
+
+  .identificador {
+    font-family: var(--tipo-serif);
+    font-style: italic;
+    font-size: 0.75rem;
+    color: var(--tinta-suau);
+    margin: 0.5rem 0 0;
+    word-break: break-all;
+  }
+
+  .accions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--vora);
+  }
+
+  /* En pantalla estreta el cartell passa a dalt i els camps a una columna. */
+  @media (max-width: 700px) {
+    .fitxa { flex-direction: column; }
+    .cartell { width: 100%; height: 220px; }
+    .graella { grid-template-columns: minmax(0, 1fr); }
+  }
+  </style>
+</head>
+<body>
+
+  <header class="capcalera">
+    <div class="contingut">
+      <h1>Cua de revisió</h1>
+      <p class="subtitol">
+        Els actes que esperen validació · <a href="index.html">torna a l’agenda</a>
+      </p>
+    </div>
+  </header>
+
+  <section class="barra-testimoni" aria-label="Testimoni de GitHub">
+    <div class="contingut barra-interior">
+      <label class="visualment-amagat" for="camp-testimoni">Testimoni de GitHub</label>
+      <input type="password" id="camp-testimoni" class="camp-testimoni"
+             placeholder="Enganxa aquí el testimoni de GitHub" autocomplete="off" spellcheck="false">
+      <button type="button" id="boto-testimoni" class="boto">Activa l’escriptura</button>
+      <button type="button" id="boto-recarrega" class="boto">Torna a carregar la cua</button>
+      <p id="avis-global" class="avis">Només lectura: sense testimoni no es pot publicar ni rebutjar res.</p>
+    </div>
+  </section>
+
+  <main class="contingut">
+    <p id="recompte" class="recompte" hidden></p>
+    <p id="missatge-estat" class="missatge-estat">Carregant la cua…</p>
+    <div id="llista-pendents"></div>
+  </main>
+
+<script>
+// ============================================================
+// Coordenades fixes del repositori. Si el repositori es mou o es
+// canvia de branca, es canvia aquí i enlloc més.
+// ============================================================
+var GITHUB_OWNER = 'CLMVallespir';
+var GITHUB_REPO = 'agenda-catalogne-nord';
+var GITHUB_BRANCH = 'main';
+var FITXER_PENDENTS = 'pendents.json';
+var FITXER_EVENTS = 'events.json';
+
+// Els valors permesos dels dos camps d'enumeració (§4 de CLAUDE.md).
+var COMARCA_VALUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
+var CATEGORIA_VALUES = [
+  'Música',
+  'Teatre',
+  'Dansa i ball',
+  'Conferència',
+  'Exposició',
+  'Mercat',
+  'Cinema',
+  'Taller',
+  'Activitat infantil',
+  'Patrimoni i tradicions'
+];
+
+// Icona de reserva quan un acte no porta cartell, presa del web públic.
+var ICONA_SENSE_CARTELL = '<svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="5" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16M8.5 3v4M15.5 3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+
+// El testimoni viu només aquí, en memòria, mentre la pestanya és oberta.
+var TESTIMONI = '';
+
+// La cua tal com s'ha llegit l'últim cop. Serveix per retrobar una fila
+// al fitxer fresc abans d'escriure-hi.
+var CUA = [];
+
+// ------------------------------------------------------------
+// Còpia literal de creaId (apps-script/utils.gs). El sistema sempre
+// reconstrueix l'id, mai es refia del que porti la fila.
+// ------------------------------------------------------------
+function creaId(dataInici, titol) {
+  if (dataInici === '') {
+    return '';
+  }
+
+  var text = titol.toLowerCase();
+  text = text.normalize('NFD').replace(/[̀-ͯ]/g, '');
+  text = text.replace(/['’]/g, '');
+  text = text.replace(/[^a-z0-9]+/g, ' ');
+  text = text.trim();
+
+  if (text === '') {
+    return dataInici;
+  }
+
+  var paraules = text.split(/\s+/);
+  var paraulesCurtes = paraules.slice(0, 3);
+  return dataInici + '-' + paraulesCurtes.join('-');
+}
+
+// ------------------------------------------------------------
+// Còpia literal de valorPermes (apps-script/utils.gs).
+// Torna el valor si és a la llista permesa, si no "".
+// ------------------------------------------------------------
+function valorPermes(valor, llistaPermesa) {
+  if (llistaPermesa.indexOf(valor) === -1) {
+    return '';
+  }
+  return valor;
+}
+
+// ------------------------------------------------------------
+// Les capçaleres de cada crida a l'API de GitHub. Sense testimoni
+// s'hi va igualment: el repositori és públic i la lectura funciona.
+// ------------------------------------------------------------
+function capcaleresGitHub() {
+  var capcaleres = {
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+  if (TESTIMONI !== '') {
+    capcaleres['Authorization'] = 'Bearer ' + TESTIMONI;
+  }
+  return capcaleres;
+}
+
+// ------------------------------------------------------------
+// Llegeix un fitxer JSON del repositori per l'API de continguts (mai
+// de Pages, que serveix còpies endarrerides). Torna { dades, sha }.
+// ------------------------------------------------------------
+async function llegeixFitxer(nomFitxer) {
+  var url = 'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO +
+    '/contents/' + nomFitxer + '?ref=' + GITHUB_BRANCH;
+
+  var resposta = await fetch(url, {
+    method: 'GET',
+    headers: capcaleresGitHub(),
+    cache: 'no-store'
+  });
+
+  if (!resposta.ok) {
+    var detall = await resposta.text();
+    throw new Error('No he pogut llegir ' + nomFitxer + ' (codi ' + resposta.status + '). ' + detall);
+  }
+
+  var fitxer = await resposta.json();
+  return {
+    dades: JSON.parse(descodificaBase64(fitxer.content)),
+    sha: fitxer.sha
+  };
+}
+
+// ------------------------------------------------------------
+// Escriu un fitxer JSON al repositori amb un sol PUT. Cal el sha
+// actual: l'API el demana per acceptar la substitució.
+// Torna la resposta ja parsejada, o llança un error clar.
+// ------------------------------------------------------------
+async function escriuFitxer(nomFitxer, dades, sha, missatgeCommit) {
+  var url = 'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO +
+    '/contents/' + nomFitxer;
+
+  var cos = {
+    message: missatgeCommit,
+    content: codificaBase64(JSON.stringify(dades, null, 2) + '\n'),
+    sha: sha,
+    branch: GITHUB_BRANCH
+  };
+
+  var resposta = await fetch(url, {
+    method: 'PUT',
+    headers: capcaleresGitHub(),
+    body: JSON.stringify(cos)
+  });
+
+  if (!resposta.ok) {
+    var detall = await resposta.text();
+    throw new Error('GitHub ha rebutjat l\'escriptura de ' + nomFitxer +
+      ' (codi ' + resposta.status + '). ' + detall);
+  }
+
+  return await resposta.json();
+}
+
+// ------------------------------------------------------------
+// Llegeix un fitxer, hi aplica una transformació i el torna a
+// escriure. Si un altre escriptor s'hi ha avançat (conflicte de sha),
+// torna a llegir i ho reintenta UN cop, tal com mana el §7.
+// ------------------------------------------------------------
+async function desaAmbReintent(nomFitxer, transforma, missatgeCommit) {
+  var intents = 0;
+
+  while (intents < 2) {
+    var actual = await llegeixFitxer(nomFitxer);
+    var nouContingut = transforma(actual.dades);
+
+    try {
+      await escriuFitxer(nomFitxer, nouContingut, actual.sha, missatgeCommit);
+      return nouContingut;
+    } catch (error) {
+      intents++;
+      // Un conflicte de sha és l'únic error que val la pena reintentar.
+      var esConflicte = error.message.indexOf('codi 409') !== -1 ||
+        error.message.indexOf('codi 422') !== -1;
+      if (!esConflicte || intents >= 2) {
+        throw error;
+      }
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// Base64 <-> text, passant per UTF-8. btoa i atob sols trenquen amb
+// els accents i les cometes tipogràfiques, que aquí n'hi ha a dojo.
+// ------------------------------------------------------------
+function codificaBase64(text) {
+  var bytes = new TextEncoder().encode(text);
+  var binari = '';
+  for (var i = 0; i < bytes.length; i++) {
+    binari += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binari);
+}
+
+function descodificaBase64(base64) {
+  var binari = atob(base64.replace(/\n/g, ''));
+  var bytes = new Uint8Array(binari.length);
+  for (var i = 0; i < binari.length; i++) {
+    bytes[i] = binari.charCodeAt(i);
+  }
+  return new TextDecoder().decode(bytes);
+}
+
+// ------------------------------------------------------------
+// Diu si la pàgina pot escriure. Sense testimoni és només de lectura.
+// ------------------------------------------------------------
+function potEscriure() {
+  return TESTIMONI !== '';
+}
+
+// ------------------------------------------------------------
+// Escriu el missatge de dalt de tot. La mena és '', 'error' o 'fet'.
+// ------------------------------------------------------------
+function mostraAvis(text, mena) {
+  var avis = document.getElementById('avis-global');
+  avis.textContent = text;
+  avis.className = 'avis';
+  if (mena) {
+    avis.classList.add(mena);
+  }
+}
+
+// ------------------------------------------------------------
+// Construeix un camp de text amb la seva etiqueta. Torna l'element
+// embolcall, amb l'<input> accessible per data-camp.
+// ------------------------------------------------------------
+function creaCamp(nomCamp, etiqueta, valor, ample) {
+  var embolcall = document.createElement('div');
+  embolcall.className = 'camp camp-' + nomCamp;
+  if (ample) {
+    embolcall.classList.add('ample');
+  }
+
+  var etiquetaEl = document.createElement('label');
+  etiquetaEl.textContent = etiqueta;
+  embolcall.appendChild(etiquetaEl);
+
+  var entrada = document.createElement('input');
+  entrada.type = 'text';
+  entrada.value = valor;
+  entrada.setAttribute('data-camp', nomCamp);
+  entrada.disabled = !potEscriure();
+  etiquetaEl.appendChild(entrada);
+
+  return embolcall;
+}
+
+// ------------------------------------------------------------
+// Construeix un desplegable amb la llista de valors permesa, més una
+// opció buida per als casos que el curador encara no ha decidit.
+// ------------------------------------------------------------
+function creaDesplegable(nomCamp, etiqueta, valor, opcions) {
+  var embolcall = document.createElement('div');
+  embolcall.className = 'camp camp-' + nomCamp;
+
+  var etiquetaEl = document.createElement('label');
+  etiquetaEl.textContent = etiqueta;
+  embolcall.appendChild(etiquetaEl);
+
+  var selector = document.createElement('select');
+  selector.setAttribute('data-camp', nomCamp);
+  selector.disabled = !potEscriure();
+
+  var buida = document.createElement('option');
+  buida.value = '';
+  buida.textContent = '— sense triar —';
+  selector.appendChild(buida);
+
+  for (var i = 0; i < opcions.length; i++) {
+    var opcio = document.createElement('option');
+    opcio.value = opcions[i];
+    opcio.textContent = opcions[i];
+    selector.appendChild(opcio);
+  }
+
+  selector.value = valor;
+  etiquetaEl.appendChild(selector);
+
+  return embolcall;
+}
+
+// ------------------------------------------------------------
+// Construeix una àrea de text (les dues descripcions), sempre ampla.
+// ------------------------------------------------------------
+function creaArea(nomCamp, etiqueta, valor) {
+  var embolcall = document.createElement('div');
+  embolcall.className = 'camp camp-' + nomCamp + ' ample';
+
+  var etiquetaEl = document.createElement('label');
+  etiquetaEl.textContent = etiqueta;
+  embolcall.appendChild(etiquetaEl);
+
+  var area = document.createElement('textarea');
+  area.value = valor;
+  area.setAttribute('data-camp', nomCamp);
+  area.disabled = !potEscriure();
+  etiquetaEl.appendChild(area);
+
+  return embolcall;
+}
+
+// ------------------------------------------------------------
+// Construeix el bloc del cartell: la imatge que s'obre a mida
+// sencera, o el quadre de reserva amb la icona quan no n'hi ha.
+// ------------------------------------------------------------
+function creaCartell(esdeveniment) {
+  var marc = document.createElement('div');
+  marc.className = 'cartell';
+
+  if (esdeveniment.imatge_url === '') {
+    marc.classList.add('sense-cartell');
+    var icona = document.createElement('span');
+    icona.className = 'icona';
+    icona.setAttribute('aria-hidden', 'true');
+    icona.innerHTML = ICONA_SENSE_CARTELL;
+    marc.appendChild(icona);
+    return marc;
+  }
+
+  var enllac = document.createElement('a');
+  enllac.href = esdeveniment.imatge_url;
+  enllac.target = '_blank';
+  enllac.rel = 'noopener';
+
+  var imatge = document.createElement('img');
+  imatge.src = esdeveniment.imatge_url;
+  imatge.alt = 'Cartell: ' + esdeveniment.titol;
+  imatge.loading = 'lazy';
+
+  enllac.appendChild(imatge);
+  marc.appendChild(enllac);
+  return marc;
+}
+
+// ------------------------------------------------------------
+// Construeix la fitxa sencera d'un esdeveniment pendent: cartell,
+// camps editables i els dos botons. Torna l'element <article>.
+// ------------------------------------------------------------
+function creaFitxa(esdeveniment) {
+  var fitxa = document.createElement('article');
+  fitxa.className = 'fitxa';
+
+  fitxa.appendChild(creaCartell(esdeveniment));
+
+  var cos = document.createElement('div');
+  cos.className = 'cos';
+
+  var graella = document.createElement('div');
+  graella.className = 'graella';
+  graella.appendChild(creaCamp('titol', 'Títol', esdeveniment.titol, true));
+  graella.appendChild(creaCamp('data_inici', 'Data d’inici', esdeveniment.data_inici));
+  graella.appendChild(creaCamp('data_fi', 'Data de fi', esdeveniment.data_fi));
+  graella.appendChild(creaCamp('hora', 'Hora', esdeveniment.hora));
+  graella.appendChild(creaCamp('lloc', 'Lloc', esdeveniment.lloc));
+  graella.appendChild(creaCamp('municipi', 'Municipi', esdeveniment.municipi));
+  graella.appendChild(creaDesplegable('comarca', 'Comarca', esdeveniment.comarca, COMARCA_VALUES));
+  graella.appendChild(creaDesplegable('categoria', 'Categoria', esdeveniment.categoria, CATEGORIA_VALUES));
+  graella.appendChild(creaArea('descripcio_ca', 'Descripció en català', esdeveniment.descripcio_ca));
+  graella.appendChild(creaArea('descripcio_fr', 'Descripció en francès', esdeveniment.descripcio_fr));
+  graella.appendChild(creaCamp('associacio', 'Associació', esdeveniment.associacio, true));
+  graella.appendChild(creaCamp('imatge_url', 'URL del cartell', esdeveniment.imatge_url, true));
+  graella.appendChild(creaCamp('font_url', 'URL de la font', esdeveniment.font_url, true));
+  cos.appendChild(graella);
+
+  var identificador = document.createElement('p');
+  identificador.className = 'identificador';
+  identificador.textContent = 'Identificador en publicar: ' +
+    creaId(esdeveniment.data_inici, esdeveniment.titol);
+  cos.appendChild(identificador);
+
+  var accions = document.createElement('div');
+  accions.className = 'accions';
+
+  var botoPublica = document.createElement('button');
+  botoPublica.type = 'button';
+  botoPublica.className = 'boto boto-publica';
+  botoPublica.textContent = 'Publica';
+  botoPublica.disabled = !potEscriure();
+  botoPublica.addEventListener('click', function () {
+    publica(fitxa, esdeveniment);
+  });
+  accions.appendChild(botoPublica);
+
+  var botoRebutja = document.createElement('button');
+  botoRebutja.type = 'button';
+  botoRebutja.className = 'boto boto-rebutja';
+  botoRebutja.textContent = 'Rebutja';
+  botoRebutja.disabled = !potEscriure();
+  botoRebutja.addEventListener('click', function () {
+    rebutja(fitxa, esdeveniment);
+  });
+  accions.appendChild(botoRebutja);
+
+  var avisFitxa = document.createElement('span');
+  avisFitxa.className = 'avis';
+  avisFitxa.hidden = true;
+  avisFitxa.setAttribute('data-avis-fitxa', '');
+  accions.appendChild(avisFitxa);
+
+  cos.appendChild(accions);
+  fitxa.appendChild(cos);
+
+  // L'identificador es refà tot sol quan es toca la data o el títol.
+  fitxa.addEventListener('input', function () {
+    var editat = recullFitxa(fitxa, esdeveniment);
+    identificador.textContent = 'Identificador en publicar: ' +
+      creaId(editat.data_inici, editat.titol);
+  });
+
+  return fitxa;
+}
+
+// ------------------------------------------------------------
+// Llegeix els camps editats d'una fitxa i els torna com un
+// esdeveniment complet de 16 camps. Els camps que el sistema omple
+// (estat, data_entrada) es queden com eren; l'id es reconstrueix.
+// ------------------------------------------------------------
+function recullFitxa(fitxa, original) {
+  var editat = {};
+  var entrades = fitxa.querySelectorAll('[data-camp]');
+
+  for (var i = 0; i < entrades.length; i++) {
+    editat[entrades[i].getAttribute('data-camp')] = entrades[i].value.trim();
+  }
+
+  return {
+    id: creaId(editat.data_inici, editat.titol),
+    titol: editat.titol,
+    data_inici: editat.data_inici,
+    data_fi: editat.data_fi,
+    hora: editat.hora,
+    lloc: editat.lloc,
+    municipi: editat.municipi,
+    comarca: valorPermes(editat.comarca, COMARCA_VALUES),
+    categoria: valorPermes(editat.categoria, CATEGORIA_VALUES),
+    descripcio_ca: editat.descripcio_ca,
+    descripcio_fr: editat.descripcio_fr,
+    associacio: editat.associacio,
+    imatge_url: editat.imatge_url,
+    font_url: editat.font_url,
+    estat: original.estat,
+    data_entrada: original.data_entrada
+  };
+}
+
+// ------------------------------------------------------------
+// Retroba una fila dins d'una cua acabada de llegir, comparant-la
+// sencera. Torna la posició, o -1 si ja no hi és (algú altre l'ha
+// tocada mentrestant).
+// ------------------------------------------------------------
+function trobaIndex(cua, original) {
+  var agulla = JSON.stringify(original);
+  for (var i = 0; i < cua.length; i++) {
+    if (JSON.stringify(cua[i]) === agulla) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+// El text exacte de l'error quan una fila ja no és a la cua. Es compara
+// literalment a publica(), que és l'únic cas on això no és greu.
+var JA_NO_HI_ES = 'La fila ja no era a la cua.';
+
+// ------------------------------------------------------------
+// Torna una transformació que treu una fila de la cua. Si la fila ja
+// no hi és, peta: val més aturar-se que dir que s'ha fet una cosa que
+// no s'ha fet.
+// ------------------------------------------------------------
+function treuDeLaCua(original) {
+  return function (pendents) {
+    var posicio = trobaIndex(pendents, original);
+    if (posicio === -1) {
+      throw new Error(JA_NO_HI_ES);
+    }
+    return pendents.slice(0, posicio).concat(pendents.slice(posicio + 1));
+  };
+}
+
+// ------------------------------------------------------------
+// Escriu un missatge dins d'una fitxa concreta i, si cal, la deixa
+// mig apagada mentre s'hi treballa.
+// ------------------------------------------------------------
+function avisaFitxa(fitxa, text, mena, ocupada) {
+  var avis = fitxa.querySelector('[data-avis-fitxa]');
+  avis.hidden = (text === '');
+  avis.textContent = text;
+  avis.className = 'avis';
+  if (mena) {
+    avis.classList.add(mena);
+  }
+  fitxa.classList.toggle('ocupada', ocupada === true);
+}
+
+// ------------------------------------------------------------
+// Publica un acte: l'afegeix a events.json amb estat "publicat" i
+// després el treu de pendents.json.
+//
+// L'ordre importa i no és casual. Són dues escriptures i no hi ha
+// manera de fer-les alhora: si primer s'esborrés de la cua i després
+// fallés events.json, l'acte es perdria. Fent-ho al revés, una
+// fallada deixa un duplicat visible a la cua, que és recuperable.
+// ------------------------------------------------------------
+async function publica(fitxa, original) {
+  if (!potEscriure()) {
+    return;
+  }
+
+  var editat = recullFitxa(fitxa, original);
+  editat.estat = 'publicat';
+
+  avisaFitxa(fitxa, 'Publicant…', '', true);
+
+  try {
+    await desaAmbReintent(FITXER_EVENTS, function (events) {
+      return events.concat([editat]);
+    }, 'Publica ' + editat.titol);
+  } catch (error) {
+    // Encara no s'ha tocat la cua: l'acte segueix pendent i es pot reintentar.
+    avisaFitxa(fitxa, 'No s’ha publicat. ' + error.message, 'error', false);
+    mostraAvis('La publicació ha fallat. L’acte segueix a la cua.', 'error');
+    return;
+  }
+
+  // A partir d'aquí l'acte JA és a events.json. Si el que ve falla, el
+  // que queda és un duplicat a la cua, i cal dir-ho tal com és.
+  try {
+    await desaAmbReintent(FITXER_PENDENTS, treuDeLaCua(original),
+      'Treu de la cua ' + editat.titol);
+  } catch (error) {
+    if (error.message !== JA_NO_HI_ES) {
+      avisaFitxa(fitxa, 'Publicat a events.json, però no l’he pogut treure de la cua: ' +
+        error.message + ' Torna a carregar la cua i rebutja aquesta fila.', 'error', false);
+      mostraAvis('Publicat a mitges: mira el missatge de la fitxa.', 'error');
+      return;
+    }
+    // Algú altre ja l'havia tret de la cua. Publicat igualment.
+  }
+
+  fitxa.remove();
+  CUA = CUA.filter(function (fila) {
+    return JSON.stringify(fila) !== JSON.stringify(original);
+  });
+  actualitzaRecompte();
+  mostraAvis('Publicat: ' + editat.titol, 'fet');
+}
+
+// ------------------------------------------------------------
+// Rebutja un acte: el treu de pendents.json i prou. No es guarda
+// enlloc més — el correu original al Gmail d'arxiu és el registre.
+// ------------------------------------------------------------
+async function rebutja(fitxa, original) {
+  if (!potEscriure()) {
+    return;
+  }
+
+  var confirmat = window.confirm('Rebutjar «' + original.titol + '»?\n\n' +
+    'Se’n va de la cua i no es desa enlloc més. El correu original al Gmail d’arxiu és el registre.');
+  if (!confirmat) {
+    return;
+  }
+
+  avisaFitxa(fitxa, 'Rebutjant…', '', true);
+
+  try {
+    await desaAmbReintent(FITXER_PENDENTS, treuDeLaCua(original),
+      'Rebutja ' + original.titol);
+
+    fitxa.remove();
+    CUA = CUA.filter(function (fila) {
+      return JSON.stringify(fila) !== JSON.stringify(original);
+    });
+    actualitzaRecompte();
+    mostraAvis('Rebutjat: ' + original.titol, 'fet');
+  } catch (error) {
+    avisaFitxa(fitxa, error.message, 'error', false);
+    mostraAvis('El rebuig ha fallat. Mira el missatge de la fitxa.', 'error');
+  }
+}
+
+// ------------------------------------------------------------
+// Refà la línia del recompte a partir de la cua que hi ha en pantalla.
+// ------------------------------------------------------------
+function actualitzaRecompte() {
+  var recompte = document.getElementById('recompte');
+  var missatge = document.getElementById('missatge-estat');
+
+  if (CUA.length === 0) {
+    recompte.hidden = true;
+    missatge.hidden = false;
+    missatge.textContent = 'La cua és buida.';
+    return;
+  }
+
+  recompte.hidden = false;
+  missatge.hidden = true;
+  if (CUA.length === 1) {
+    recompte.textContent = '1 acte pendent';
+  } else {
+    recompte.textContent = CUA.length + ' actes pendents';
+  }
+}
+
+// ------------------------------------------------------------
+// Llegeix pendents.json i el pinta sencer. És també el que es crida
+// per tornar a carregar i quan s'activa el testimoni (perquè els
+// camps deixin d'estar bloquejats).
+// ------------------------------------------------------------
+async function carregaCua() {
+  var llista = document.getElementById('llista-pendents');
+  var missatge = document.getElementById('missatge-estat');
+
+  llista.innerHTML = '';
+  document.getElementById('recompte').hidden = true;
+  missatge.hidden = false;
+  missatge.textContent = 'Carregant la cua…';
+
+  try {
+    var fitxer = await llegeixFitxer(FITXER_PENDENTS);
+    CUA = fitxer.dades;
+
+    for (var i = 0; i < CUA.length; i++) {
+      llista.appendChild(creaFitxa(CUA[i]));
+    }
+
+    actualitzaRecompte();
+  } catch (error) {
+    missatge.hidden = false;
+    missatge.textContent = 'No he pogut carregar la cua.';
+    mostraAvis(error.message, 'error');
+  }
+}
+
+// ------------------------------------------------------------
+// Guarda el testimoni en memòria i repinta la cua perquè els camps
+// i els botons quedin actius. No el desa enlloc: en tancar la
+// pestanya, desapareix.
+// ------------------------------------------------------------
+function activaTestimoni() {
+  var camp = document.getElementById('camp-testimoni');
+  var valor = camp.value.trim();
+
+  if (valor === '') {
+    TESTIMONI = '';
+    mostraAvis('Només lectura: sense testimoni no es pot publicar ni rebutjar res.', '');
+    carregaCua();
+    return;
+  }
+
+  TESTIMONI = valor;
+  camp.value = '';
+  camp.placeholder = 'Testimoni actiu en aquesta sessió';
+  mostraAvis('Escriptura activada. El testimoni viu només en aquesta pestanya.', 'fet');
+  carregaCua();
+}
+
+// ------------------------------------------------------------
+// Engega la pàgina: lliga els dos botons de dalt i carrega la cua.
+// ------------------------------------------------------------
+function inicia() {
+  // L'avís el posa sempre el codi, mai només el marcatge: així no pot dir
+  // una cosa mentre la pàgina en fa una altra.
+  mostraAvis('Només lectura: sense testimoni no es pot publicar ni rebutjar res.', '');
+
+  document.getElementById('boto-testimoni').addEventListener('click', activaTestimoni);
+  document.getElementById('boto-recarrega').addEventListener('click', carregaCua);
+  document.getElementById('camp-testimoni').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      activaTestimoni();
+    }
+  });
+  carregaCua();
+}
+
+inicia();
+</script>
+</body>
+</html>
