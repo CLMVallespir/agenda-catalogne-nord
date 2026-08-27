@@ -1,0 +1,43 @@
+// ============================================================
+// WRANGLER.JSONC — la configuració del desplegament del Worker
+//
+// Només serveix per al camí «Connect to Git»: Cloudflare llegeix
+// aquest fitxer a cada empenta i desplega el Worker sol. Si algun dia
+// tornes al desplegament manual (enganxar el codi al tauler), aquest
+// fitxer no molesta: simplement ningú no el llegeix.
+//
+// Hi ha tres coses i prou. Cap d'elles és un secret: els secrets viuen
+// al tauler (Settings > Variables and Secrets) i no han de sortir mai
+// d'allà. Vegeu docs/pas-fase2-worker-email.md.
+//
+// NO HI HA CAP CLAU `assets`, I NO N'HI HA D'HAVER MAI.
+// Declarar-la faria que Cloudflare pugés fitxers d'aquest repositori
+// com a pàgina web pública: amb `"directory": "."` hi entrarien
+// l'historial de Git, els documents interns i el CSV d'importació.
+// El web públic es serveix des de GitHub Pages i prou (CLAUDE.md §8).
+// La segona barrera contra això és el `.assetsignore` de l'arrel.
+// ============================================================
+{
+  // Ha de ser EXACTAMENT el nom del Worker al tauler de Cloudflare.
+  // Si no coincideix, la construcció falla amb un error d'això.
+  "name": "quefas-agenda",
+
+  // El punt d'entrada. Wrangler l'empaqueta amb esbuild, així que
+  // l'`import` de './postal-mime.js' es resol sol: els dos fitxers
+  // pugen com un de sol sense que ningú hagi de concatenar res.
+  "main": "worker/worker.js",
+
+  // La data que fixa el comportament del temps d'execució. Deixa-la
+  // quieta: canviar-la pot canviar el comportament de coses ja
+  // provades. Només s'apuja a posta, i tornant a provar la Fase 2.
+  "compatibility_date": "2026-08-27",
+
+  // Els registres, desats. Sense això només hi ha el flux en directe
+  // del tauler, que serveix mentre el mires: un correu que falla a les
+  // tres de la matinada no deixaria cap rastre, i la Fase 2 promet que
+  // tot error queda registrat. Al pla gratuït són 200 000 entrades al
+  // dia i es guarden 3 dies.
+  "observability": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,45 @@
+# ============================================================
+# .assetsignore — segona barrera, i res més
+#
+# Avui aquest fitxer NO FA RES, i està bé que sigui així.
+#
+# Cloudflare només puja fitxers com a pàgina web estàtica si la
+# configuració del Worker declara una clau `assets` amb un directori.
+# `wrangler.jsonc` no en té cap, a posta: el web públic de «Què fas?»
+# es serveix des de GitHub Pages, no des del Worker (CLAUDE.md §8).
+#
+# Això és la xarxa per si algú, algun dia, hi afegeix
+# `"assets": { "directory": "." }` pensant que serveix el web des del
+# Worker. Sense aquesta llista, aquella línia publicaria l'historial
+# de Git sencer, els documents interns del projecte i el CSV
+# d'importació. Amb la llista, no.
+#
+# Sintaxi: la mateixa que un .gitignore. Ha de viure a l'arrel del
+# directori d'actius; com que l'únic directori que algú declararia mai
+# aquí és l'arrel del repositori, viu a l'arrel del repositori.
+#
+# Què NO hi és, i per què: index.html, style.css, app.js, les altres
+# pàgines, fonts/, img/, events.json, events-exemple.json i
+# pendents.json. Són el web públic i les seves dades: ja es publiquen
+# a GitHub Pages i no hi ha cap raó per amagar-los.
+# ============================================================
+
+# L'historial i les preferències locals.
+.git/
+.gitignore
+.claude/
+
+# El codi que s'executa als servidors, no al navegador de ningú.
+worker/
+apps-script/
+wrangler.jsonc
+
+# Documentació i material intern del projecte.
+docs/
+prompts/
+skill/
+*.md
+
+# Eines i dades d'un sol ús.
+importa-csv.js
+esdeveniments-importacio-filtrat.csv
