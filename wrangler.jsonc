@@ -20,7 +20,7 @@
 {
   // Ha de ser EXACTAMENT el nom del Worker al tauler de Cloudflare.
   // Si no coincideix, la construcció falla amb un error d'això.
-  "name": "quefas-agenda",
+  "name": "agenda-catalogne-nord",
 
   // El punt d'entrada. Wrangler l'empaqueta amb esbuild, així que
   // l'`import` de './postal-mime.js' es resol sol: els dos fitxers

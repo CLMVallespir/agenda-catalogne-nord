@@ -23,9 +23,11 @@ creada, destinacions verificades i provades des de fora). Vegeu `FASES.md`.
    **Import a repository**, i tria `CLMVallespir/agenda-catalogne-nord`.
    - Si ja tens el Worker creat d'abans (del camí manual), no cal refer-lo: ves
      al Worker → **Settings** → **Build** i connecta-hi el repositori des d'allà.
-2. **El nom del Worker ha de ser `quefas-agenda`**, exactament igual que el
-   `name` de `wrangler.jsonc`. Si no coincideixen, la construcció falla i el
-   registre t'ho diu amb aquestes paraules.
+2. **El nom del Worker ha de ser `agenda-catalogne-nord`**, exactament igual
+   que el `name` de `wrangler.jsonc`. En importar un repositori, Cloudflare
+   bateja el Worker amb el nom del repositori: d'aquí ve aquest nom, i per això
+   el `name` de la configuració l'ha de dir igual. Si no coincideixen, la
+   construcció falla amb «Failed to match Worker name».
 
 ## 2. Les opcions de construcció
 
@@ -78,7 +80,7 @@ Cloudflare → el domini `clm.cat` → **Email** → **Email Routing** → **Rou
 rules** → la regla de `agenda@clm.cat` → **Edit**:
 
 - **Action:** `Send to a Worker`
-- **Destination:** `quefas-agenda`
+- **Destination:** `agenda-catalogne-nord`
 
 Guarda. A partir d'aquest moment el correu d'`agenda@clm.cat` ja **no** va
 directament al Gmail: hi arriba reenviat pel Worker. Aquesta regla viu a l'Email
@@ -102,7 +104,7 @@ descartar que Cloudflare hagi desplegat res més que `worker/worker.js`.
      de desenes: el parser sol ja són 155 kB de codi font. Serà bastant menys
      que la suma dels dos fitxers, perquè en empaquetar es descarten els
      comentaris — no t'espantis pel número exacte;
-   - `Uploaded quefas-agenda` i `Deployed quefas-agenda`;
+   - `Uploaded agenda-catalogne-nord` i `Deployed agenda-catalogne-nord`;
    - i sobretot **cap línia que parli d'actius** (res de «assets», ni de
      «Uploading N files»). Si n'hi ha cap, algú ha afegit una clau `assets`:
      llegeix l'avís de la secció següent.
@@ -165,7 +167,7 @@ funció. Les claus no s'hi escriuen mai.
 
 | Al registre hi diu | Què vol dir |
 |---|---|
-| el nom del Worker no coincideix | El `name` de `wrangler.jsonc` i el nom al tauler han de ser el mateix: `quefas-agenda`. |
+| `Failed to match Worker name` | El `name` de `wrangler.jsonc` i el nom del Worker al tauler han de ser el mateix: `agenda-catalogne-nord`. El registre de construcció diu tots dos noms, el que esperava i el que ha trobat. |
 | `falta la variable ADRECA_ARXIU` | La secció 3 no s'ha fet. |
 | `el reenviament ha fallat` | L'adreça d'arxiu no és una destinació verificada a l'Email Routing. |
 | `Gemini ha respost amb codi 404` | Google ha retirat el model. Cicle de vida normal: mira quins Flash / Flash-Lite hi ha vigents i canvia la constant `GEMINI_MODEL`. Mai la gamma Pro, que és de pagament. |
