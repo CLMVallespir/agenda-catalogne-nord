@@ -27,3 +27,50 @@ ordena-les perquè la fallada intermèdia dupliqui, mai perquè esborri.**
 `curador.html` ho fa així a `publica()`, amb dos `try` separats justament perquè
 el segon pugui donar un missatge diferent: «Publicat a events.json, però no l'he
 pogut treure de la cua».
+
+---
+
+## El gestor `email()` reenvia a l'arxiu ABANS de fer res més
+
+**Resum:** l'arxiu es fa primer perquè és l'única còpia que no es pot refer.
+
+La temptació natural és analitzar el correu, escriure la fila i reenviar
+l'original al final, tot dins d'un `try/finally`. No serveix: hi ha maneres de
+morir que un `finally` no arriba a executar — el límit de CPU del Worker, un
+error dins del mateix `finally`, una excepció que es menja el reenviament a
+mitges. I si el reenviament no es fa, el correu **desapareix**: Email Routing
+l'ha entregat al Worker i ja no el torna a enviar. No hi ha segona oportunitat.
+
+Fent-lo primer, l'única cosa fràgil del sistema queda protegida per l'ordre, no
+per la gestió d'errors: quan comença la part que pot fallar (MIME, Gemini,
+Cloudinary, GitHub), l'original ja és desat. `reenviaAArxiu()` tampoc no llança
+mai: si el reenviament falla, ho registra i el gestor continua igualment.
+
+La regla general que se'n treu: **el que no es pot refer, fes-ho primer.** Un
+`finally` és per netejar, no per garantir.
+
+---
+
+## postal-mime NO converteix l'HTML a text pla
+
+**Resum:** en un correu només HTML, `email.text` ve `undefined`, no buit ni
+convertit.
+
+El codi de postal-mime porta un `htmlToText`, i és fàcil suposar que omple
+`text` quan el correu no porta cap part de text pla. No ho fa: aquella
+conversió és per a submissatges. Provat amb la versió vendoritzada (3.0.0), tant
+amb `Content-Type: text/html` sol com amb un `multipart/alternative` que només
+porta la part HTML: `text` és `undefined` en tots dos casos.
+
+Importa perquè **molts correus d'associació arriben només en HTML**. Sense
+adonar-se'n, el Worker enviaria a Gemini només la línia d'assumpte i tornaria
+files buides sense cap error. Per això `worker.js` té un `textDeHtml()` propi,
+tosc a posta: fora `<script>` i `<style>`, salts de línia on l'HTML els marca,
+fora la resta d'etiquetes, quatre entitats desxifrades. Prou per al model, i 20
+línies que es poden llegir d'un cop d'ull.
+
+L'altra cara: la comprovació de «correu sense text» ha d'anar sobre el
+contingut, no sobre la cadena ja muntada. `'Assumpte: ' + '' + '\n\n' + ''` no
+és mai buida, i un correu del tot buit passava el filtre i gastava una crida a
+Gemini. `textDelCorreu()` torna `""` només si ni l'assumpte ni el cos no porten
+res.

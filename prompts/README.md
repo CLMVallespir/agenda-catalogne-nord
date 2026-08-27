@@ -4,7 +4,9 @@
 
 Prompt enviat a l'API de Gemini (`gemini-2.5-flash`, Google AI Studio) pel script d'ingestió de correus (Pas 4). Converteix el cos d'un correu en un objecte JSON amb els 16 camps de l'esquema.
 
-> **Còpia mestra:** aquest `extract-event.txt` i la constant `EXTRACTION_PROMPT` de `apps-script/processNewEmails.gs` han de dir el mateix. La **mestra és la del `.gs`** (és la que s'executa); aquest `.txt` és la còpia llegible per a proves manuals. Si en canvies una, canvia l'altra. Darrera verificació d'igualtat: 2026-07-10.
+> **Còpia mestra:** la mestra és **aquest `extract-event.txt`**. La constant `EXTRACTION_PROMPT` de `worker/worker.js` n'és una còpia que ha de ser-hi idèntica, byte a byte (verificada el 27 d'agost de 2026: 3 773 bytes, iguals). Es compara **tal com Git els guarda**, amb salts LF: al disc, a Windows, aquest `.txt` es veu amb CRLF i fa 3 824 bytes, que és cosa de `core.autocrlf` i no cap diferència de text. Si en canvies una, canvia l'altra.
+>
+> Hi ha una tercera còpia, a `apps-script/processNewEmails.gs`: és el camí antic d'Apps Script, que la Fase 4 retirarà. Mentre les dues canonades roden en paral·lel, un canvi al prompt s'ha d'aplicar als tres llocs.
 
 ### Com funciona
 
