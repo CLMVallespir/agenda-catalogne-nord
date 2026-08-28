@@ -15,6 +15,24 @@
     "imatge_url": "",
     "font_url": "",
     "estat": "pendent",
+    "data_entrada": "2026-08-28T08:56:11.389Z"
+  },
+  {
+    "id": "2026-12-01-prova-amb-secret",
+    "titol": "Prova amb secret",
+    "data_inici": "2026-12-01",
+    "data_fi": "2026-12-01",
+    "hora": "",
+    "lloc": "",
+    "municipi": "",
+    "comarca": "",
+    "categoria": "",
+    "descripcio_ca": "",
+    "descripcio_fr": "",
+    "associacio": "",
+    "imatge_url": "",
+    "font_url": "",
+    "estat": "pendent",
     "data_entrada": "2026-08-28T08:02:03.690Z"
   },
   {
