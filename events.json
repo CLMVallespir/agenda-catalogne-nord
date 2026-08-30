@@ -124,23 +124,5 @@
     "font_url": "",
     "estat": "publicat",
     "data_entrada": "2026-08-13T09:24:01.621Z"
-  },
-  {
-    "id": "2026-01-01-el-gran-mercat",
-    "titol": "El gran mercat de Prada",
-    "data_inici": "2026-01-01",
-    "data_fi": "2026-12-31",
-    "hora": "08:00",
-    "lloc": "Place de la République",
-    "municipi": "Prada",
-    "comarca": "Conflent",
-    "categoria": "Mercat",
-    "descripcio_ca": "Cada dimarts al matí, la plaça de la República de Prada acull un dels mercats més grans del departament. S’hi troben productes locals i de la terra, gastronomia, roba i parades d’artesania. És una cita setmanal que estructura la vida del poble durant tot l’any.",
-    "descripcio_fr": "Chaque mardi matin, la place de la République de Prades accueille l’un des plus grands marchés du département. On y trouve des produits locaux et du terroir, de la gastronomie, des vêtements et des stands d’artisanat. C’est un rendez-vous hebdomadaire qui structure la vie du village toute l’année.",
-    "associacio": "Comerçants de Prada",
-    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/Marche-de-Prades.png",
-    "font_url": "https://www.tourisme-canigo.com/agenda/grand-marche-de-prades-fmalar066v52utm8/",
-    "estat": "publicat",
-    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
