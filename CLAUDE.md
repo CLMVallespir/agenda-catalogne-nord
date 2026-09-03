@@ -29,7 +29,10 @@ associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Clou
 ```
 
 - **`events.json`** (arrel del repositori) és la font de veritat del que és públic.
-- **`pendents.json`** (arrel del repositori) és la cua de revisió del curador.
+- **`pendents.json`** (arrel del repositori) és la cua de revisió del curador
+  **i la memòria de rebuig del projecte**: rebutjar una fila no la suprimeix, li
+  posa `estat = "rebutjat"` i la deixa on és. Per això la cua del curador filtra
+  explícitament `estat === 'pendent'` en pintar.
 - El **Gmail d'arxiu** només rep correu reenviat pel Worker. Cap script no hi viu.
   És el registre permanent de cada tramesa original.
 
@@ -81,9 +84,27 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 
 ## 4. L'esquema — canònic i exacte
 
-Setze camps, amb aquests noms i aquest ordre, idèntics al prompt d'extracció, a
-`pendents.json`, a `events.json` i al frontend. No en canviïs mai cap sense tocar
-els quatre llocs alhora.
+**Disset camps** — el recompte real des del 29 d'agost de 2026 —, amb aquests
+noms i aquest ordre, idèntics a tot arreu. No en canviïs mai cap sense tocar
+**tots** els llocs de la llista del §4 bis alhora.
+
+> **CORRECCIÓ DEL 3 DE SETEMBRE DE 2026.** Aquest paràgraf deia «els quatre
+> llocs alhora», i la xifra era falsa. Els enums viuen a **catorze còpies dins
+> de nou fitxers de codi**, més cinc documents. La conseqüència no va ser
+> teòrica: quan es va afegir `Concentració` a l'enum, es va posar només al
+> filtre i a les icones d'`app.js` —dos llocs de catorze—, i durant dies hi va
+> haver una fila publicada a `events.json` amb una categoria que
+> `curador.html` i `worker/worker.js` no reconeixien i **buidaven en silenci**
+> via `valorPermes()`. La llista del §4 bis existeix perquè això no torni a
+> passar.
+
+*Per què disset i no setze:* els setze primers són els de sempre i no n'ha
+canviat cap. El dissetè, `nota_curador`, és nou i és de naturalesa diferent: no
+descriu l'acte, sinó que diu al curador què ha d'anar a mirar abans d'aprovar la
+fila. Es va afegir quan la canonada d'ingestió externa va començar a produir
+files amb problemes coneguts —títol per traduir, categoria sense calaix, municipi
+que no consta— que fins llavors no tenien on dir-se. Si algun document del
+projecte encara diu «setze camps», és anterior a aquesta data.
 
 1. `id` — `YYYY-MM-DD-slug` (ex.: `2026-09-14-ball-prats`); buit si no hi ha data
 2. `titol` — títol, en català
@@ -93,7 +114,7 @@ els quatre llocs alhora.
 6. `lloc` — nom del local
 7. `municipi` — poble, en forma catalana quan es coneix (Perpinyà, Prada, Ceret)
 8. `comarca` — una de les 5 exactes, si no `""`
-9. `categoria` — una de les 10 exactes, si no `""`
+9. `categoria` — una de les 13 exactes, si no `""`
 10. `descripcio_ca` — 2–4 frases, català natural
 11. `descripcio_fr` — traducció francesa fidel de `descripcio_ca`
 12. `associacio` — entitat organitzadora
@@ -101,10 +122,12 @@ els quatre llocs alhora.
 14. `font_url` — enllaç a la font original; `""` si no n'hi ha
 15. `estat` — `pendent` · `publicat` · `rebutjat`
 16. `data_entrada` — marca de temps ISO de creació de la fila
+17. `nota_curador` — avisos per a qui revisa la fila; `""` per defecte
 
 **Comarques:** Rosselló · Conflent · Vallespir · Capcir · Cerdanya
-**Categories:** Música · Teatre · Dansa i ball · Conferència · Exposició · Mercat ·
-Cinema · Taller · Activitat infantil · Patrimoni i tradicions
+**Categories (13):** Música · Teatre · Dansa i ball · Conferència · Exposició ·
+Mercat · Cinema · Taller · Activitat infantil · Patrimoni i tradicions ·
+Concentració · Esports · Vida associativa
 
 Regles de què depèn el codi:
 
@@ -114,6 +137,112 @@ Regles de què depèn el codi:
 - **No et refiïs mai de l'`id` que retorni el model:** reconstrueix-lo sempre amb
   `creaId(dataInici, titol)`. Coerceix `comarca` i `categoria` a la llista permesa
   amb `valorPermes(...)`, si no `""`.
+
+**Regles pròpies d'`estat` a `pendents.json`** — `rebutjat` hi és **persistent**:
+
+- **Rebutjar no suprimeix la fila.** `rebutja()` a `curador.html` fa **una sola
+  escriptura**: llegeix `pendents.json`, posa `estat = "rebutjat"` a la fila i
+  torna a escriure el fitxer sencer. Cap `splice`, cap fila treta.
+- **Per això `pendents.json` és la memòria de rebuig del projecte.** Un acte que
+  el curador ha dit que no ha de deixar rastre en algun lloc, o la
+  sincronització automàtica de l'ADT66 el tornarà a oferir cada setmana. Aquest
+  lloc és el mateix fitxer —posició al fitxer, no un tercer magatzem—, perquè el
+  §3 diu que l'estat viu en dos fitxers JSON i prou.
+- **La cua només pinta `estat === 'pendent'`**, i el filtre és literalment això,
+  no `!== 'rebutjat'`: qualsevol estat nou o inesperat queda fora de la cua per
+  defecte, que és el costat segur.
+- **Publicar no ha canviat:** dues escriptures, `events.json` primer i **treure**
+  la fila de `pendents.json` després (vegeu `NOTES.md`). Publicar treu, rebutjar
+  marca. Decidit el 3 de setembre de 2026.
+
+**Regles pròpies de `nota_curador`** — és un camp de servei, no de contingut:
+
+- **L'escriuen només els agents de darrere** (ara mateix, `mapejaAProduccio()`).
+  Ni el model d'extracció, ni el Typebot, ni cap persona hi escriuen: el prompt
+  no el coneix i el formulari no el demana.
+- **El frontend públic no el llegeix mai.** `index.html` i `app.js` l'han
+  d'ignorar si hi és. Avui ho fan sols, perquè llegeixen els camps pel nom i mai
+  no itineren les claus d'un esdeveniment; qui hi toqui ha de mantenir-ho així.
+- **Només es mostra a `curador.html`**, com un avís groc a dalt de la fitxa, i
+  **no és editable**: no porta `data-camp`, de manera que `recullFitxa()` ni el
+  veu. El curador el llegeix, no el toca.
+- **Es descarta en publicar, i és deliberat.** És el camp 17è: viu a
+  `pendents.json` i a `curador.html` i s'atura allà. `recullFitxa()` construeix
+  els **16 camps canònics exactes** i la nota no hi entra, o sigui que
+  `events.json` no en porta mai cap. El motiu: `events.json` és l'arxiu públic i
+  es serveix sencer a qualsevol navegador, i una nota de treball intern
+  («municipi que no consta», «títol per traduir») no hi pinta res; si mai cal
+  consultar-la, la traça queda a l'historial de git de `pendents.json`.
+  **Decidit el 29 d'agost de 2026: no és cap descuit i no s'ha d'«arreglar».**
+- És l'única excepció a «cada camp descriu l'acte»: aquest descriu **la fila**.
+  Per això, quan es fusionen dues files duplicades, no mana la jerarquia de fonts
+  sinó que es queden **totes dues notes** (`eines/dedup-esdeveniments.js`).
+
+*Qui l'escriu avui i qui encara no:* `mapejaAProduccio()` sí. El Worker
+(`email()` i `fetch()`) encara **no**: les files que hi entren no porten el camp
+fins que el Worker es torni a desplegar. Com que un camp desconegut és `""`,
+això no trenca res ni al curador ni al web, però val més saber-ho que
+descobrir-ho.
+
+## 4 bis. On viu l'enum — la llista completa
+
+Comprovat amb `grep` sobre tot el repositori el 3 de setembre de 2026. **Un
+valor nou de `comarca` o de `categoria` s'ha d'afegir als catorze llocs de la
+primera taula el mateix dia**, o el sistema el buida sol: `valorPermes()`
+retorna `""` per a tot el que no és a la seva llista, i tant `curador.html` com
+el Worker el criden en desar.
+
+**No ho comprovis a mà —hi ha un guió que ho fa:**
+
+```
+node eines/verifica-enum.js
+```
+
+Llegeix les dues llistes bones de `prompts/extract-event.txt` (el mestre, §7),
+les compara amb totes les còpies, i torna 1 si res no quadra. Enxampa un valor
+que falti, un que sobri, l'ordre canviat, el numeral del prompt que es queda
+enrere («una d'aquestes **deu**» amb tretze valors a la llista) i una còpia del
+prompt del Worker que hagi deixat de ser literal. **Executa'l sempre que toquis
+un enum, i abans de desplegar el Worker.**
+
+**Les catorze còpies vives, en nou fitxers:**
+
+| # | Fitxer | Què hi ha |
+|---|---|---|
+| 1 | `prompts/extract-event.txt` | la línia `- categoria:` del prompt mestre |
+| 2 | `worker/worker.js` | `CATEGORIA_VALUES` |
+| 3 | `worker/worker.js` | la còpia literal del prompt |
+| 4 | `worker/worker-concatenat.js` | `CATEGORIA_VALUES` |
+| 5 | `worker/worker-concatenat.js` | la còpia literal del prompt |
+| 6 | `app.js` | `CATEGORIES` (filtre del web públic, amb el francès) |
+| 7 | `app.js` | `CATEGORIA_ICONES` (**una icona SVG per categoria**) |
+| 8 | `curador.html` | `CATEGORIA_VALUES` (desplegable **i** `valorPermes()` en desar) |
+| 9 | `importa-csv.js` | `CATEGORIA_VALUES` |
+| 10 | `eines/dedup-esdeveniments.js` | `CATEGORIES` |
+| 11 | `eines/mapeja-adt66.js` | `CATEGORIES` |
+| 12 | `eines/mapeja-recerca.js` | `CATEGORIES` |
+| 13 | `prova-local.html` | `CATEGORIES` (mirall offline d'`app.js`) |
+| 14 | `prova-local.html` | `CATEGORIA_ICONES` (ídem) |
+
+**Els cinc documents que també l'escriuen** i que queden desfasats si no es
+toquen: aquest fitxer (§4), `skill/agenda-nord-core/SKILL.md`,
+`PROJECT-KNOWLEDGE.md` (l'enum **i** el recompte d'icones),
+`PROJECT-KNOWLEDGE-CHAT.md` i `docs/pas-5-typebot-questionari.md`.
+
+**Dues còpies congelades que NO s'han de sincronitzar mai**, i per què:
+
+- `docs/arxiu-google/utils.gs` i `docs/arxiu-google/processNewEmails.gs` — codi
+  mort del sistema anterior (§9). Actualitzar-les seria fer veure que
+  s'executen.
+- `img/_ds/clm-vallespir-design-system-*/_ds_bundle.js` — export d'una eina de
+  disseny del 27 d'agost de 2026, amb una còpia fossilitzada de `CATEGORIES` a
+  dins. **Cap pàgina no el carrega**: els dos `.dc.html` d'`img/` només en fan
+  servir `tokens/colors.css`. És una fotografia, no codi.
+
+*La resta d'ocurrències del repositori són **dades o casos de prova**, no
+enums: `events.json`, `pendents.json`, `events-exemple.json`,
+`esdeveniments-importacio-filtrat.csv` i les files de prova d'
+`eines/classifica-editorial.js`. No es toquen quan creix l'enum.*
 
 ## 5. Estil de codi
 
@@ -158,7 +287,7 @@ publicitària.
   exigeix només JSON, sense preàmbul ni tanques markdown, amb les 16 claus sempre
   presents com a cadenes.
 - **Cloudinary** — pujada *unsigned*: preset `agenda-posters`, carpeta
-  `agenda-nord/posters`, transformació d'entrada `w_800,c_limit,q_80,f_webp`. Només
+  `clm-agenda/posters`, transformació d'entrada `w_800,c_limit,q_80,f_webp`. Només
   cal el nom del cloud, cap signatura. El preset ja converteix un PDF en WebP de la
   primera pàgina: puja el PDF tal qual. Accepta la primera imatge o PDF adjunt;
   ignora les imatges en línia.
@@ -199,6 +328,12 @@ Ja fets, en producció, al mateix repositori:
 - **`fonts/`** (woff2 autoallotjats) i **`img/logo/`**.
 - **`docs/`** — guies i informes, inclòs `CRITERI-EDITORIAL.md` (el criteri de què
   entra a l'agenda i què no: és del curador, no del codi).
+- **`docs/arxiu-google/`** — **codi mort, no el toquis.** El sistema anterior
+  (full de càlcul + Apps Script), retirat de l'ús viu el 29 d'agost de 2026 amb
+  la Fase 4, i les guies que el descrivien. Es conserva perquè diverses notes de
+  `NOTES.md` s'hi refereixen per explicar per què el Worker fa les coses com les
+  fa. Res d'allà dins no s'executa i res no s'ha de mantenir al dia. Les còpies
+  originals de `creaId()` i `valorPermes()` són a `docs/arxiu-google/utils.gs`.
 
 La teva feina és **la canonada nova i `curador.html`** — res més. Els detalls, fase
 a fase, a `FASES.md`.

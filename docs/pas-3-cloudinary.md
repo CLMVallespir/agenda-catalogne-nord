@@ -2,7 +2,7 @@
 
 Cloudinary allotjarà els cartells dels esdeveniments (no es guarden mai al Git). Aquest pas es fa tot al navegador. Temps estimat: 15 minuts.
 
-Decisió presa el 2026-06-12: el preset és **unsigned**. Conseqüència: el script del Pas 4 només necessitarà `CLOUDINARY_CLOUD_NAME` per pujar imatges (cap signatura, cap secret a la crida de pujada).
+Decisió presa el 2026-06-12: el preset és **unsigned**. Conseqüència: el Worker només necessita `CLOUDINARY_CLOUD_NAME` per pujar imatges (cap signatura, cap secret a la crida de pujada).
 
 ## 1. Crear el compte
 
@@ -21,7 +21,7 @@ El pla gratuït (25 crèdits/mes) és molt més que suficient per a aquest proje
    - `CLOUDINARY_API_KEY`
    - `CLOUDINARY_API_SECRET`
 
-Amb el preset unsigned, el Pas 4 només farà servir el cloud name. La key i el secret guarda'ls igualment: caldran si mai vols esborrar imatges per API o fer operacions d'administració.
+Amb el preset unsigned, el Worker només fa servir el cloud name. La key i el secret guarda'ls igualment: caldran si mai vols esborrar imatges per API o fer operacions d'administració.
 
 ## 3. Crear l'upload preset
 
@@ -32,7 +32,7 @@ Amb el preset unsigned, el Pas 4 només farà servir el cloud name. La key i el 
    |---|---|
    | Upload preset name | `agenda-posters` (substitueix el nom generat automàticament) |
    | Signing mode | **Unsigned** |
-   | Folder (o "Asset folder") | `agenda-nord/posters` |
+   | Folder (o "Asset folder") | `clm-agenda/posters` |
 
 3. Pestanya (o secció) **Transform** → **Incoming transformation** → edita i posa exactament:
 
@@ -53,17 +53,17 @@ Amb el preset unsigned, el Pas 4 només farà servir el cloud name. La key i el 
 3. Obre la imatge pujada i copia la seva URL.
 4. Torna a deixar el preset per defecte del Media Library com estava.
 
-### Opció B — prova real de l'API (idèntica al que farà el Pas 4)
+### Opció B — prova real de l'API (idèntica al que fa el Worker)
 
 Dona'm el cloud name i faig jo la pujada de prova des d'aquí amb una crida POST a
 `https://api.cloudinary.com/v1_1/CLOUD_NAME/image/upload` amb `upload_preset=agenda-posters`.
-No cal cap credencial secreta: és exactament la crida que farà l'Apps Script.
+No cal cap credencial secreta: és exactament la crida que fa el Worker.
 
 ### Llista de verificació
 
 - [ ] El compte existeix i les 3 credencials estan anotades en lloc segur.
 - [ ] El preset `agenda-posters` existeix, mode **Unsigned**.
-- [ ] La imatge de prova apareix a la carpeta `agenda-nord/posters`.
+- [ ] La imatge de prova apareix a la carpeta `clm-agenda/posters`.
 - [ ] La URL resultant es veu públicament en una finestra d'incògnit.
 - [ ] La imatge servida és WebP i fa com a màxim 800 px d'amplada (la URL o la pestanya de detalls ho indiquen; també es pot comprovar amb clic dret → inspecciona).
 - [ ] Una imatge més petita de 800 px no s'amplia (opcional, segona prova).

@@ -1,76 +1,129 @@
-# Agenda cultural — Catalunya Nord
+# «Què fas?» — Agenda cultural de la Catalunya Nord
 
-> **Per a l'assistent (Claude):** abans de tocar res, carrega l'skill `agenda-nord-core` (a `skill/agenda-nord-core/SKILL.md`). Recull la visió estratègica, l'esquema, la filosofia de codi i el llenguatge de disseny del projecte. Cal mantenir l'esperit: simplicitat per sobre de tot, bilingüe català primer, només nivells gratuïts, sense frameworks ni comptes d'usuari.
+> **Per a l'assistent (Claude):** abans de tocar res, llegeix `CLAUDE.md` (la
+> constitució: arquitectura, esquema, restriccions, estil) i `FASES.md` (el pla
+> de construcció i l'estat de cada fase). Cal mantenir l'esperit: simplicitat
+> per sobre de tot, bilingüe català primer, només nivells gratuïts, sense
+> frameworks ni comptes d'usuari.
 
-Agenda cultural automatitzada per a la Catalunya Nord (Rosselló, Conflent, Vallespir, Capcir, Cerdanya).
+Agenda cultural automatitzada per a la Catalunya Nord (Rosselló, Conflent,
+Vallespir, Capcir, Cerdanya).
 
 Agenda culturelle automatisée pour la Catalogne Nord.
 
 ## Com funciona
 
-1. Les associacions envien els esdeveniments per correu electrònic o pel formulari Typebot.
-2. Un script de Google Apps Script extreu les dades amb l'API de Gemini (`gemini-2.5-flash`, Google AI Studio) i les escriu a Google Sheets.
-3. Una persona curadora revisa els esdeveniments un cop per setmana i marca els aprovats com a `publicat`.
-4. El menú «Agenda → Publica els esdeveniments aprovats» del full de càlcul envia els esdeveniments aprovats a `events.json` en aquest dipòsit.
-5. GitHub Pages serveix l'aplicació web estàtica (aquest dipòsit) amb filtres per comarca i categoria.
-6. Un resum setmanal per comarca s'envia per correu via Brevo.
+```
+associació ──correu──► agenda@clm.cat ──► Cloudflare Email Routing
+                                                │
+associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Cloudflare)
+                                            ├─ email():     parseja → Gemini → Cloudinary → pendents.json → reenvia l'original al Gmail d'arxiu
+                                            ├─ fetch():     mapa determinista del formulari → pendents.json
+                                            └─ scheduled(): digest setmanal per comarca via Brevo
+                                                │
+                              curador.html (GitHub Pages) ──valida──► events.json
+                                                │
+                              web públic estàtic (GitHub Pages) llegeix events.json
+```
+
+1. Les associacions envien els actes **per correu a `agenda@clm.cat`** o **pel
+   formulari Typebot**. No hi ha cap altra via.
+2. Un **únic Worker de Cloudflare** els converteix en files pendents. Pel camí
+   del correu, en treu les dades amb l'API de Gemini i puja el cartell a
+   Cloudinary; pel camí del formulari, els camps ja arriben estructurats i no
+   cal cap model. Passi el que passi, el correu original es reenvia al Gmail
+   d'arxiu.
+3. La cua de revisió és **`pendents.json`**, a l'arrel del repositori.
+4. La persona curadora revisa la cua a **`curador.html`**, corregeix el que
+   calgui i valida amb dos botons: **Publica** o **Rebutja**.
+5. Publicar afegeix l'acte a **`events.json`**, que és la font de veritat del
+   que és públic. **GitHub Pages** serveix el web estàtic que el llegeix.
+6. Cada dimarts a les 15.00 (hora de París), el mateix Worker envia un **digest
+   setmanal per comarca** via Brevo.
+
+**Cap base de dades i cap servidor** més enllà d'aquest Worker: tot l'estat viu
+en dos fitxers JSON del repositori.
 
 ## Estructura
 
 | Fitxer / carpeta | Funció |
 |---|---|
-| `index.html`, `style.css`, `app.js` | Aplicació web estàtica (vanilla JS, sense frameworks) |
-| `events.json` | Dades publicades — font de veritat dels esdeveniments en línia |
-| `events-exemple.json` | Dades fictícies de prova (vegeu `docs/pas-8-frontend.md`, mode `?prova=1`) |
-| `prompts/` | Prompt d'extracció per a l'API de Gemini i correus de prova |
-| `apps-script/` | Scripts de Google Apps Script (`utils.gs` = helpers i constants compartits; configuració del full, ingestió, publicació, digest, tests) |
-| `docs/` | Guies de configuració (Cloudinary, etc.) i el runbook d'operació |
+| `index.html`, `style.css`, `app.js` | Web públic estàtic (vanilla JS, sense frameworks) |
+| `curador.html` | La cua de revisió. Pàgina autònoma; el testimoni de GitHub s'hi enganxa i mor amb la pestanya |
+| `events.json` | Dades publicades — font de veritat del que és en línia |
+| `pendents.json` | La cua de revisió — el que espera validació |
+| `events-exemple.json` | Dades fictícies de prova (mode `?prova=1`) |
+| `prova-local.html` | Mirall offline del web públic |
+| `worker/worker.js` | **La font de veritat del Worker.** Els tres gestors: `email()`, `fetch()`, `scheduled()` |
+| `worker/postal-mime.js` | Analitzador MIME vendoritzat (l'única dependència del projecte) |
+| `worker/worker-concatenat.js` | **Generat.** Els dos fitxers de dalt en un de sol: és el que s'enganxa al tauler |
+| `prompts/extract-event.txt` | El prompt d'extracció mestre per a Gemini |
+| `importa-csv.js` | Eina d'un sol ús que va sembrar `pendents.json` des del CSV del full antic |
+| `docs/` | Guies de configuració i informes |
+| `docs/arxiu-google/` | **Codi mort.** El sistema anterior (full de càlcul + Apps Script), conservat com a registre històric |
 
 ## Principis
 
-- Sense infraestructura de pagament: només nivells gratuïts (Google, GitHub, Cloudinary, Brevo).
-- Sense comptes d'usuari, sense backend en temps real.
+- Sense infraestructura de pagament: només nivells gratuïts (Cloudflare, GitHub
+  Pages, Cloudinary, Brevo, API de Gemini).
+- Sense comptes d'usuari, sense login, sense base de dades.
+- Sense framework, sense eina de compilació, sense npm.
 - Tot el text públic és bilingüe: català primer, francès a sota.
-- Simplicitat per sobre de tot: codi explícit, fàcil de llegir i de reparar.
+- Simplicitat per sobre de tot: codi explícit, fàcil de llegir i de reparar per
+  una sola persona no professional, sis mesos després.
 
 ## Operació (runbook)
 
-Guia mínima per operar el sistema (i per a qui l'hereti). El detall pas a pas viu a `docs/`.
+Guia mínima per operar el sistema (i per a qui l'hereti). El detall pas a pas
+viu a `docs/`.
 
-### Activadors (triggers)
+### Desplegar un canvi al Worker
 
-| Funció | Cadència | Com (re)instal·lar |
+**El fitxer que s'edita no és el fitxer que es desplega.** Es toca
+`worker/worker.js`, es torna a generar `worker/worker-concatenat.js` i s'enganxa
+sencer al tauler de Cloudflare (Worker → Edit code → Deploy). Mai al revés: un
+pedaç fet directament al fitxer concatenat es perd la propera vegada que es
+generi.
+
+El Git Build està **desconnectat** a posta. Amb ell connectat hi hauria dues
+vies de desplegament trepitjant-se en silenci (vegeu `NOTES.md`). Mentre el
+desplegament sigui manual, **`wrangler.jsonc` no el llegeix ningú**: el que hi
+ha declarat és decoració.
+
+### Configuració (tauler de Cloudflare)
+
+| Nom | On va | Què és |
 |---|---|---|
-| `processNewEmails` | cada hora | executa `installHourlyTrigger()` un cop des de l'editor |
-| `sendWeeklyDigest` | dimarts a les 15:00 | executa `installWeeklyTrigger()` un cop des de l'editor |
+| `CLOUDINARY_CLOUD_NAME` | Variable de text | surt a l'URL de cada cartell públic; no té res a amagar |
+| `GEMINI_API_KEY` | Secret | API de Gemini |
+| `GITHUB_TOKEN` | Secret | gra fi, només aquest repositori, només `contents: write` |
+| `BREVO_API_KEY` | Secret | enviament del digest |
+| `BREVO_LIST_ROSSELLO` … `_CERDANYA` | Secrets | els cinc IDs de llista per comarca |
+| `TYPEBOT_SECRET` | Secret | el secret compartit del webhook del formulari |
+| `ADRECA_ARXIU` | Secret | on es reenvia cada correu original |
 
-Totes dues funcions són segures de reinstal·lar: esborren el seu activador anterior abans de crear-ne un de nou (mai no en dupliquen).
+**Un Secret canviat al tauler no és viu fins que es desplega.** L'activador cron
+(`*/10 13,14 * * 2`) també s'afegeix a mà: Worker → Settings → Trigger Events →
+Cron Triggers.
 
-### Script Properties (Configuració del projecte → Propietats de l'script)
+### Publicar i rebutjar actes
 
-Noms (sense valors) que el codi espera. Els secrets mai no són al codi.
+`curador.html` es publica sol per GitHub Pages: **no cal desplegar-lo**. S'obre,
+s'hi enganxa el testimoni de GitHub de gra fi i es treballa. Sense testimoni, la
+pàgina és només de lectura.
 
-- `GEMINI_API_KEY`
-- `CLOUDINARY_CLOUD_NAME` (i, només per a tasques d'administració, `CLOUDINARY_API_KEY` / `CLOUDINARY_API_SECRET`)
-- `GITHUB_OWNER`, `GITHUB_TOKEN`
-- `BREVO_API_KEY`, `BREVO_SENDER_EMAIL`, `BREVO_SENDER_NAME`
-- `BREVO_LIST_ROSSELLO`, `BREVO_LIST_CONFLENT`, `BREVO_LIST_VALLESPIR`, `BREVO_LIST_CAPCIR`, `BREVO_LIST_CERDANYA`
-- `DIGEST_DARRER_ENVIAMENT` — **la fixa el codi, no tu** (guarda d'idempotència del digest: la data AAAA-MM-DD del darrer enviament).
-
-### Desplegar un canvi
-
-El **dipòsit és el mestre; l'editor només rep còpies**. Cap edició directa a l'editor sense replicar-la al dipòsit el mateix dia (si no, les auditories, que llegeixen el dipòsit, deixen de descriure producció).
-
-1. Edita al dipòsit (via la interfície web de GitHub) i enganxa el fitxer canviat a l'editor d'Apps Script.
-2. Els **activadors** executen sempre el HEAD de l'editor: enganxar ja n'hi ha prou.
-3. El **Web App** (`doPost`, Typebot) **no** canvia fins que crees una versió nova: Desplega → Gestiona desplegaments → edita → «Versió: Nova». Un hotfix del `doPost` enganxat i **no** versionat *sembla* aplicat i no ho està.
-4. Abans de promocionar res, executa els tests (menú «Agenda → Executa els tests»); no versionis amb tests en vermell.
+Publicar escriu `events.json` **abans** de treure la fila de `pendents.json`.
+L'ordre no és casual: si falla enmig, deixa un duplicat visible a la cua i no un
+acte perdut.
 
 ### Rollback
 
-- **Codi d'activador:** restaura el fitxer des de l'historial de GitHub i torna'l a enganxar a l'editor.
-- **Web App:** Desplega → Gestiona desplegaments → torna a una versió anterior.
+Tot l'estat és a Git. Un `events.json` o un `pendents.json` que hagi quedat
+malament es restaura des de l'historial de commits del repositori. El Worker es
+torna enrere des de la pestanya **Deployments** del tauler de Cloudflare.
 
-### Provar sense tocar producció
+### Quan alguna cosa no surt
 
-Vegeu `docs/pas-proves-i-desplegament.md`: el runner de tests (`tests.gs`), el banc de proves (còpia del full amb propietats de prova) i la seqüència d'aplicació dels canvis.
+El registre del Worker (Cloudflare → Worker → Logs) guarda **tres dies**. Cap
+clau no s'hi escriu mai. Els símptomes que enganyen més estan documentats a
+`NOTES.md`, una lliçó per entrada.

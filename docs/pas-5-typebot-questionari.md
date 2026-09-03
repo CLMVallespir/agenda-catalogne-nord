@@ -1,10 +1,10 @@
 # Pas 5 — Qüestionari Typebot (formulari d'esdeveniments)
 
-Aquest document descriu **el formulari** que les associacions ompliran per enviar un esdeveniment: l'ordre dels passos, el text bilingüe exacte i el nom de la variable que cada pregunta ha de desar. La part tècnica que **connecta** aquest formulari amb el full de càlcul (desplegar l'Apps Script, agafar l'URL, configurar el bloc *Webhook* de Typebot) està documentada a part, a `docs/pas-5-typebot-connexio.md`.
+Aquest document descriu **el formulari** que les associacions ompliran per enviar un esdeveniment: l'ordre dels passos, el text bilingüe exacte i el nom de la variable que cada pregunta ha de desar. La part tècnica que **connecta** aquest formulari amb el Worker (l'URL, la capçalera del secret compartit i el bloc *Webhook* de Typebot) està documentada a part, a `docs/pas-fase3a-worker-formulari.md`.
 
 Regla de llengua del projecte: **català primer, francès a sota**, més petit i en cursiva. Cada bombolla de text de Typebot ha de portar les dues llengües, amb el català a dalt.
 
-Les variables que recull aquest formulari són exactament les que espera la funció `processBotSubmission()` (`apps-script/processBotSubmission.gs`). Si canvies un nom de variable aquí, l'has de canviar també allà.
+Les variables que recull aquest formulari són exactament les que espera `respostaDelFormulari()` a `worker/worker.js`. Si canvies un nom de variable aquí, l'has de canviar també allà.
 
 ---
 
@@ -30,7 +30,7 @@ Les variables que recull aquest formulari són exactament les que espera la func
 
 El camp `imatge_url` ara **sí** que es recull al formulari: la càrrega del cartell es fa directament del navegador a Cloudinary (vegeu el Pas 13 i `docs/pas-5-typebot-cartell-cloudinary.md`). Si l'usuari no carrega cap cartell, arriba com a cadena buida `""`.
 
-Els camps `id`, `font_url`, `estat` i `data_entrada` **no** es demanen al formulari: els omple el sistema (vegeu `processBotSubmission.gs`).
+Els camps `id`, `font_url`, `estat` i `data_entrada` **no** es demanen al formulari: els omple el sistema (vegeu `respostaDelFormulari()` a `worker/worker.js`).
 
 ---
 
@@ -194,6 +194,9 @@ Pas de tria (botons) → desa a `categoria`. Les deu opcions, escrites **exactam
 - `Taller`
 - `Activitat infantil`
 - `Patrimoni i tradicions`
+- `Concentració`
+- `Esports`
+- `Vida associativa`
 
 Mateixa regla que la comarca: el valor desat ha de ser el català exacte.
 
@@ -210,7 +213,7 @@ Pas de tria (botons) → desa a `idioma_descripcio`:
 - **Català · Catalan** → desa el valor `ca`
 - **Francès · Français** → desa el valor `fr`
 
-> El valor desat ha de ser exactament `ca` o `fr` (en minúscules), perquè és el que llegeix `processBotSubmission()` per decidir on posa el text.
+> El valor desat ha de ser exactament `ca` o `fr` (en minúscules), perquè és el que llegeix el Worker per decidir on posa el text.
 
 ---
 
@@ -255,7 +258,7 @@ Tancar sense carregar és un camí vàlid, no un error: per això el pas és **o
 
 ## Pas 14 — Enviament i comiat
 
-Aquí va el bloc **Webhook** que envia totes les variables a l'Apps Script. La configuració d'aquest bloc (URL, cos JSON) està a `docs/pas-5-typebot-connexio.md`.
+Aquí va el bloc **Webhook** que envia totes les variables al Worker. La configuració d'aquest bloc (URL, capçalera del secret, cos JSON) està a `docs/pas-fase3a-worker-formulari.md`.
 
 Després del webhook, una bombolla final de confirmació:
 

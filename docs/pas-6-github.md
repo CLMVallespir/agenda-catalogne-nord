@@ -21,7 +21,7 @@ Aquest pas no depèn de Google: el compte GitHub pot ser personal i no caldrà c
 ## 3. Pujar els fitxers del projecte
 
 1. A la pàgina del dipòsit nou que diu «Quick setup», clica l'enllaç **uploading an existing file**.
-2. Obre la carpeta del projecte al teu ordinador (`agenda-catalogne-nord`) i arrossega-hi **tot el contingut**: `index.html`, `style.css`, `app.js`, `events.json`, `README.md` i les carpetes `prompts/`, `apps-script/`, `docs/`.
+2. Obre la carpeta del projecte al teu ordinador (`agenda-catalogne-nord`) i arrossega-hi **tot el contingut**: `index.html`, `style.css`, `app.js`, `events.json`, `README.md` i les carpetes `prompts/`, `worker/`, `docs/`.
    - Si el navegador no accepta carpetes arrossegades, puja primer els 5 fitxers solts i després entra a cada carpeta i repeteix l'operació (botó **Add file → Upload files**, i escriu el nom de la carpeta seguit de `/` davant del nom del fitxer per crear-la).
 3. A baix, al camp del missatge de commit, escriu: `Pas 6: estructura inicial del dipòsit`.
 4. Clica **Commit changes**.
@@ -45,7 +45,7 @@ Comprova que a la pàgina principal del dipòsit es veuen els 5 fitxers i les 3 
 
 ## 6. Token per al Pas 7 (es pot fer ara o més endavant)
 
-La publicació del Pas 7 (menú «Agenda → Publica els esdeveniments aprovats») necessitarà un *personal access token* per escriure `events.json` des d'Apps Script. Per crear-lo:
+Tant `curador.html` com el Worker necessiten un *personal access token* de gra fi per escriure `events.json` i `pendents.json` per l'API de continguts. Per crear-lo:
 
 1. GitHub → la teva foto (a dalt a la dreta) → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
 2. Configura:
@@ -55,4 +55,4 @@ La publicació del Pas 7 (menú «Agenda → Publica els esdeveniments aprovats�
    - **Permissions** → Repository permissions → **Contents: Read and write**. Res més.
 3. Clica **Generate token** i **copia'l immediatament** (no es torna a mostrar). Guarda'l al gestor de contrasenyes, mai al dipòsit.
 
-Quan el Workspace estigui llest, aquest token s'introduirà com a Script Property a l'Apps Script (Pas 7).
+El token viu com a Secret `GITHUB_TOKEN` al tauler de Cloudflare, i s'enganxa a mà a `curador.html` a cada sessió de curació. Mai al codi ni a Git.

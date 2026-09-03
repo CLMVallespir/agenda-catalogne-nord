@@ -20,7 +20,7 @@ CAMPS QUE HAS D'EXTREURE
 - lloc: nom del local o de l'espai (per exemple: "Sala polivalent", "Església de Sant Pere", "Plaça de la República").
 - municipi: nom del municipi, en la forma catalana si la coneixes (per exemple: "Perpinyà", "Prada", "Ceret").
 - comarca: NOMÉS una d'aquestes cinc, escrita exactament així: Rosselló, Conflent, Vallespir, Capcir, Cerdanya. Dedueix-la del municipi només si la correspondència és clara i segura. Si tens cap dubte, cadena buida.
-- categoria: NOMÉS una d'aquestes deu, escrita exactament així: Música, Teatre, Dansa i ball, Conferència, Exposició, Mercat, Cinema, Taller, Activitat infantil, Patrimoni i tradicions. Si cap no encaixa clarament, cadena buida.
+- categoria: NOMÉS una d'aquestes tretze, escrita exactament així: Música, Teatre, Dansa i ball, Conferència, Exposició, Mercat, Cinema, Taller, Activitat infantil, Patrimoni i tradicions, Concentració, Esports, Vida associativa. Si cap no encaixa clarament, cadena buida.
 - descripcio_ca: de 2 a 4 frases en català. Redacta-la tu directament en català natural i correcte a partir de la informació del correu; no facis una traducció literal del francès. To informatiu i acollidor, sense exclamacions publicitàries. No hi afegeixis informació que el correu no doni.
 - descripcio_fr: traducció francesa fidel de descripcio_ca, també de 2 a 4 frases.
 - associacio: nom de l'entitat o associació organitzadora.

@@ -13,10 +13,17 @@
        corregir qualsevol camp, i valida amb dos botons: Publica i
        Rebutja.
 
+       Excepció: nota_curador no és un camp editable. Si la fila en
+       porta, surt a dalt com a avís groc — és el que un agent de
+       darrere ha deixat dit sobre la fila, i el curador no el toca.
+
        Publica: posa estat = "publicat", afegeix la fila a
                 events.json i la treu de pendents.json.
-       Rebutja: treu la fila de pendents.json i prou. El correu
-                original al Gmail d'arxiu és el registre permanent.
+       Rebutja: NO treu la fila. Hi posa estat = "rebutjat" i la
+                deixa on és. pendents.json és la memòria de rebuig
+                del projecte: la fila rebutjada hi queda perquè una
+                futura sincronització automàtica no la torni a
+                oferir. La cua només pinta les files pendents.
 
        El testimoni de GitHub NO viu mai aquí dins. S'enganxa al
        camp de dalt, viu en una variable durant la sessió i mor en
@@ -274,6 +281,36 @@
   /* El títol és el camp que més sovint cal tocar: se li dóna pes. */
   .camp-titol input { font-family: var(--tipo-titol); font-weight: 700; font-size: 1rem; }
 
+  /* --------------------------------------------------------------------
+     L'avís de nota_curador. No és un camp: és el que un agent de darrere
+     ha deixat dit sobre aquesta fila. Va en groc i amb franja a
+     l'esquerra perquè no es pugui confondre mai amb una casella
+     editable, que aquí totes són blanques i amb vora grisa.
+  --------------------------------------------------------------------- */
+  .nota-curador {
+    margin: 0 0 0.7rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid #e0c94a;
+    border-left: 5px solid var(--or);
+    border-radius: 6px;
+    background: var(--placeholder-fons);
+    color: var(--tinta);
+    font-family: var(--tipo-ui);
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+  .nota-curador .etiqueta {
+    display: block;
+    font-weight: 600;
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--placeholder-icona);
+    margin-bottom: 0.15rem;
+  }
+  /* La nota pot portar salts de línia: s'han de veure tal com són. */
+  .nota-curador .text { white-space: pre-wrap; }
+
   .identificador {
     font-family: var(--tipo-serif);
     font-style: italic;
@@ -352,7 +389,10 @@ var CATEGORIA_VALUES = [
   'Cinema',
   'Taller',
   'Activitat infantil',
-  'Patrimoni i tradicions'
+  'Patrimoni i tradicions',
+  'Concentració',
+  'Esports',
+  'Vida associativa'
 ];
 
 // Icona de reserva quan un acte no porta cartell, presa del web públic.
@@ -366,7 +406,7 @@ var TESTIMONI = '';
 var CUA = [];
 
 // ------------------------------------------------------------
-// Còpia literal de creaId (apps-script/utils.gs). El sistema sempre
+// Còpia literal de creaId (docs/arxiu-google/utils.gs). El sistema sempre
 // reconstrueix l'id, mai es refia del que porti la fila.
 // ------------------------------------------------------------
 function creaId(dataInici, titol) {
@@ -390,7 +430,7 @@ function creaId(dataInici, titol) {
 }
 
 // ------------------------------------------------------------
-// Còpia literal de valorPermes (apps-script/utils.gs).
+// Còpia literal de valorPermes (docs/arxiu-google/utils.gs).
 // Torna el valor si és a la llista permesa, si no "".
 // ------------------------------------------------------------
 function valorPermes(valor, llistaPermesa) {
@@ -620,6 +660,41 @@ function creaArea(nomCamp, etiqueta, valor) {
 }
 
 // ------------------------------------------------------------
+// Construeix l'avís de nota_curador, si la fila en porta. És el que un
+// agent de darrere ha deixat dit sobre AQUESTA fila (títol per
+// traduir, municipi que no consta...), no una dada de l'acte: per això
+// només es mostra, no s'edita, i no porta data-camp.
+//
+// Torna null quan no hi ha nota: cap requadre buit a la fitxa.
+// ------------------------------------------------------------
+function creaNotaCurador(esdeveniment) {
+  var nota = '';
+  if (typeof esdeveniment.nota_curador === 'string') {
+    nota = esdeveniment.nota_curador.trim();
+  }
+
+  if (nota === '') {
+    return null;
+  }
+
+  var avis = document.createElement('div');
+  avis.className = 'nota-curador';
+  avis.setAttribute('role', 'note');
+
+  var etiqueta = document.createElement('span');
+  etiqueta.className = 'etiqueta';
+  etiqueta.textContent = 'Avís sobre aquesta fila';
+  avis.appendChild(etiqueta);
+
+  var text = document.createElement('span');
+  text.className = 'text';
+  text.textContent = nota;
+  avis.appendChild(text);
+
+  return avis;
+}
+
+// ------------------------------------------------------------
 // Construeix el bloc del cartell: la imatge que s'obre a mida
 // sencera, o el quadre de reserva amb la icona quan no n'hi ha.
 // ------------------------------------------------------------
@@ -664,6 +739,12 @@ function creaFitxa(esdeveniment) {
 
   var cos = document.createElement('div');
   cos.className = 'cos';
+
+  // L'avís va abans dels camps: es llegeix abans de decidir res.
+  var notaCurador = creaNotaCurador(esdeveniment);
+  if (notaCurador !== null) {
+    cos.appendChild(notaCurador);
+  }
 
   var graella = document.createElement('div');
   graella.className = 'graella';
@@ -720,12 +801,18 @@ function creaFitxa(esdeveniment) {
   cos.appendChild(accions);
   fitxa.appendChild(cos);
 
-  // L'identificador es refà tot sol quan es toca la data o el títol.
-  fitxa.addEventListener('input', function () {
+  // Cada tecla o cada tria refà l'identificador i marca la fitxa com a
+  // editada. S'escolten els dos esdeveniments a posta: els camps de text
+  // van per 'input' i els desplegables per 'change'.
+  function apuntaEdicio() {
+    marcaEditada(fitxa);
     var editat = recullFitxa(fitxa, esdeveniment);
     identificador.textContent = 'Identificador en publicar: ' +
       creaId(editat.data_inici, editat.titol);
-  });
+  }
+
+  fitxa.addEventListener('input', apuntaEdicio);
+  fitxa.addEventListener('change', apuntaEdicio);
 
   return fitxa;
 }
@@ -782,6 +869,29 @@ function trobaIndex(cua, original) {
 // literalment a publica(), que és l'únic cas on això no és greu.
 var JA_NO_HI_ES = 'La fila ja no era a la cua.';
 
+// El començament del text de l'error quan l'id que es vol publicar ja
+// és a events.json. Porta l'id enganxat al final, i publica() el
+// reconeix per aquest començament.
+var JA_PUBLICAT = 'Aquest acte ja estava publicat, no s’ha duplicat.';
+
+// ------------------------------------------------------------
+// Diu si un identificador ja és a la llista d'actes publicats. Un id
+// buit (un acte sense data d'inici) no compta: no identifica ningú, i
+// tots els actes sense data el compartirien.
+// ------------------------------------------------------------
+function idJaPublicat(events, id) {
+  if (id === '') {
+    return false;
+  }
+
+  for (var i = 0; i < events.length; i++) {
+    if (events[i].id === id) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // ------------------------------------------------------------
 // Torna una transformació que treu una fila de la cua. Si la fila ja
 // no hi és, peta: val més aturar-se que dir que s'ha fet una cosa que
@@ -798,8 +908,39 @@ function treuDeLaCua(original) {
 }
 
 // ------------------------------------------------------------
+// Torna una transformació que marca una fila de la cua com a rebutjada.
+// La fila NO se'n va del fitxer: només li canvia l'estat. Això és la
+// memòria de rebuig del projecte —posició al fitxer, no un tercer
+// magatzem—, i és el que evita que una sincronització automàtica torni
+// a oferir un acte que el curador ja ha dit que no.
+//
+// Es copia la fila en comptes de tocar-la: l'objecte de la cua acabada
+// de llegir no s'ha de modificar mai a mitja escriptura, perquè un
+// reintent el torna a llegir de zero.
+//
+// Si la fila ja no hi és, peta, igual que treuDeLaCua().
+// ------------------------------------------------------------
+function marcaRebutjadaALaCua(original) {
+  return function (pendents) {
+    var posicio = trobaIndex(pendents, original);
+    if (posicio === -1) {
+      throw new Error(JA_NO_HI_ES);
+    }
+
+    var rebutjada = JSON.parse(JSON.stringify(pendents[posicio]));
+    rebutjada.estat = 'rebutjat';
+
+    var nova = pendents.slice();
+    nova[posicio] = rebutjada;
+    return nova;
+  };
+}
+
+// ------------------------------------------------------------
 // Escriu un missatge dins d'una fitxa concreta i, si cal, la deixa
-// mig apagada mentre s'hi treballa.
+// mig apagada i amb els botons bloquejats mentre s'hi treballa. Les
+// dues coses van sempre juntes a posta: una fitxa apagada que encara
+// es pogués clicar és exactament el forat que això tanca.
 // ------------------------------------------------------------
 function avisaFitxa(fitxa, text, mena, ocupada) {
   var avis = fitxa.querySelector('[data-avis-fitxa]');
@@ -810,6 +951,59 @@ function avisaFitxa(fitxa, text, mena, ocupada) {
     avis.classList.add(mena);
   }
   fitxa.classList.toggle('ocupada', ocupada === true);
+  bloquejaAccions(fitxa, ocupada === true);
+}
+
+// ------------------------------------------------------------
+// Bloqueja (o desbloqueja) els dos botons d'una fitxa. Es crida abans
+// de qualsevol await, perquè un segon clic no pugui engegar una
+// segona escriptura mentre la primera encara vola.
+//
+// Desbloquejar sempre és segur: aquí només s'hi arriba des de
+// publica() i rebutja(), que surten abans si no hi ha testimoni.
+// ------------------------------------------------------------
+function bloquejaAccions(fitxa, bloquejada) {
+  var botons = fitxa.querySelectorAll('.accions .boto');
+  for (var i = 0; i < botons.length; i++) {
+    botons[i].disabled = bloquejada;
+  }
+}
+
+// ------------------------------------------------------------
+// Marca una fitxa com a editada. La marca viu al mateix element: quan
+// la fitxa es publica o es rebutja, fitxa.remove() se l'emporta, i per
+// això no hi ha cap comptador a part que es pugui desincronitzar.
+// ------------------------------------------------------------
+function marcaEditada(fitxa) {
+  fitxa.setAttribute('data-editada', '');
+}
+
+// ------------------------------------------------------------
+// Compta les fitxes amb edicions que encara no s'han desat.
+// ------------------------------------------------------------
+function comptaEdicionsPendents() {
+  return document.querySelectorAll('[data-editada]').length;
+}
+
+// ------------------------------------------------------------
+// Demana permís abans de repintar la cua, perquè repintar-la llença
+// les edicions que no s'hagin publicat. Torna cert si es pot
+// continuar; sense edicions pendents no pregunta res.
+// ------------------------------------------------------------
+function potLlencarEdicions() {
+  var quantes = comptaEdicionsPendents();
+  if (quantes === 0) {
+    return true;
+  }
+
+  var quines = quantes + ' fitxes tenen';
+  if (quantes === 1) {
+    quines = '1 fitxa té';
+  }
+
+  return window.confirm('Atenció: ' + quines + ' canvis sense desar.\n\n' +
+    'La cua es tornarà a carregar i els perdrà. Les correccions només es ' +
+    'desen en publicar l’acte.\n\nVols continuar igualment?');
 }
 
 // ------------------------------------------------------------
@@ -820,6 +1014,10 @@ function avisaFitxa(fitxa, text, mena, ocupada) {
 // manera de fer-les alhora: si primer s'esborrés de la cua i després
 // fallés events.json, l'acte es perdria. Fent-ho al revés, una
 // fallada deixa un duplicat visible a la cua, que és recuperable.
+//
+// Cap de les dues escriptures no és cega: la primera no afegeix un id
+// que ja hi sigui, i la segona diu en veu alta si la fila ja no era a
+// la cua. Publicar dues vegades el mateix acte ha de deixar rastre.
 // ------------------------------------------------------------
 async function publica(fitxa, original) {
   if (!potEscriure()) {
@@ -833,10 +1031,25 @@ async function publica(fitxa, original) {
 
   try {
     await desaAmbReintent(FITXER_EVENTS, function (events) {
+      // La comprovació va aquí dins, sobre la llista acabada de llegir:
+      // així el reintent la torna a fer sobre el fitxer fresc, i no
+      // s'escriu res si algú altre l'ha publicat mentrestant.
+      if (idJaPublicat(events, editat.id)) {
+        throw new Error(JA_PUBLICAT + ' Identificador: ' + editat.id + '.');
+      }
       return events.concat([editat]);
     }, 'Publica ' + editat.titol);
   } catch (error) {
-    // Encara no s'ha tocat la cua: l'acte segueix pendent i es pot reintentar.
+    // No s'ha escrit res i la fila segueix a la cua, tant si l'id ja hi
+    // era com si l'escriptura ha fallat. El que canvia és què cal fer-hi.
+    if (error.message.indexOf(JA_PUBLICAT) === 0) {
+      // La fila es queda a la cua perquè el curador decideixi: rebutjar-la,
+      // o canviar-li la data o el títol si de debò és un acte diferent que
+      // ha topat amb el mateix id.
+      avisaFitxa(fitxa, error.message + ' Rebutja la fila si sobra.', '', false);
+      mostraAvis(error.message, '');
+      return;
+    }
     avisaFitxa(fitxa, 'No s’ha publicat. ' + error.message, 'error', false);
     mostraAvis('La publicació ha fallat. L’acte segueix a la cua.', 'error');
     return;
@@ -844,6 +1057,8 @@ async function publica(fitxa, original) {
 
   // A partir d'aquí l'acte JA és a events.json. Si el que ve falla, el
   // que queda és un duplicat a la cua, i cal dir-ho tal com és.
+  var laCuaHaCanviat = false;
+
   try {
     await desaAmbReintent(FITXER_PENDENTS, treuDeLaCua(original),
       'Treu de la cua ' + editat.titol);
@@ -854,7 +1069,10 @@ async function publica(fitxa, original) {
       mostraAvis('Publicat a mitges: mira el missatge de la fitxa.', 'error');
       return;
     }
-    // Algú altre ja l'havia tret de la cua. Publicat igualment.
+    // Algú altre l'ha tret de la cua mentre es publicava. L'acte s'ha
+    // publicat igualment, però això no es pot dir en silenci: la cua ha
+    // canviat sota els peus i val més que el curador ho sàpiga.
+    laCuaHaCanviat = true;
   }
 
   fitxa.remove();
@@ -862,12 +1080,23 @@ async function publica(fitxa, original) {
     return JSON.stringify(fila) !== JSON.stringify(original);
   });
   actualitzaRecompte();
+
+  if (laCuaHaCanviat) {
+    mostraAvis('Publicat: ' + editat.titol + ' (' + editat.id + '). La fila ja no era ' +
+      'a la cua: algú altre l’ha tret mentre es publicava. Torna a carregar la cua.', '');
+    return;
+  }
+
   mostraAvis('Publicat: ' + editat.titol, 'fet');
 }
 
 // ------------------------------------------------------------
-// Rebutja un acte: el treu de pendents.json i prou. No es guarda
-// enlloc més — el correu original al Gmail d'arxiu és el registre.
+// Rebutja un acte amb UNA sola escriptura: li posa estat = 'rebutjat' i
+// el deixa a pendents.json. La fila no se suprimeix mai; desapareix de
+// la pantalla perquè la cua només pinta les files pendents.
+//
+// Publicar sí que treu la fila (dues escriptures, events.json primer).
+// Rebutjar no: la fila rebutjada és justament el rastre que ha de quedar.
 // ------------------------------------------------------------
 async function rebutja(fitxa, original) {
   if (!potEscriure()) {
@@ -875,7 +1104,8 @@ async function rebutja(fitxa, original) {
   }
 
   var confirmat = window.confirm('Rebutjar «' + original.titol + '»?\n\n' +
-    'Se’n va de la cua i no es desa enlloc més. El correu original al Gmail d’arxiu és el registre.');
+    'Se’n va de la cua però es queda a pendents.json amb estat «rebutjat», ' +
+    'perquè no torni a entrar mai més.');
   if (!confirmat) {
     return;
   }
@@ -883,7 +1113,7 @@ async function rebutja(fitxa, original) {
   avisaFitxa(fitxa, 'Rebutjant…', '', true);
 
   try {
-    await desaAmbReintent(FITXER_PENDENTS, treuDeLaCua(original),
+    await desaAmbReintent(FITXER_PENDENTS, marcaRebutjadaALaCua(original),
       'Rebutja ' + original.titol);
 
     fitxa.remove();
@@ -937,7 +1167,12 @@ async function carregaCua() {
 
   try {
     var fitxer = await llegeixFitxer(FITXER_PENDENTS);
-    CUA = fitxer.dades;
+
+    // Explícitament només 'pendent'. Les files rebutjades continuen al
+    // fitxer com a memòria de rebuig, i no han de tornar a la cua.
+    CUA = fitxer.dades.filter(function (fila) {
+      return fila.estat === 'pendent';
+    });
 
     for (var i = 0; i < CUA.length; i++) {
       llista.appendChild(creaFitxa(CUA[i]));
@@ -952,11 +1187,29 @@ async function carregaCua() {
 }
 
 // ------------------------------------------------------------
+// Torna a carregar la cua a petició del curador, però pregunta abans
+// si hi ha edicions sense desar: el repintat se les emporta.
+// ------------------------------------------------------------
+function recarregaLaCua() {
+  if (!potLlencarEdicions()) {
+    return;
+  }
+
+  carregaCua();
+}
+
+// ------------------------------------------------------------
 // Guarda el testimoni en memòria i repinta la cua perquè els camps
 // i els botons quedin actius. No el desa enlloc: en tancar la
 // pestanya, desapareix.
 // ------------------------------------------------------------
 function activaTestimoni() {
+  // Activar o canviar el testimoni repinta la cua, i repintar llença les
+  // edicions: es demana permís abans de tocar res, també el testimoni.
+  if (!potLlencarEdicions()) {
+    return;
+  }
+
   var camp = document.getElementById('camp-testimoni');
   var valor = camp.value.trim();
 
@@ -983,7 +1236,7 @@ function inicia() {
   mostraAvis('Només lectura: sense testimoni no es pot publicar ni rebutjar res.', '');
 
   document.getElementById('boto-testimoni').addEventListener('click', activaTestimoni);
-  document.getElementById('boto-recarrega').addEventListener('click', carregaCua);
+  document.getElementById('boto-recarrega').addEventListener('click', recarregaLaCua);
   document.getElementById('camp-testimoni').addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
       activaTestimoni();

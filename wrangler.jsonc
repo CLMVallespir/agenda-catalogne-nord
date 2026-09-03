@@ -39,6 +39,30 @@
   // provades. Només s'apuja a posta, i tornant a provar la Fase 2.
   "compatibility_date": "2026-08-27",
 
+  // L'ACTIVADOR DEL DIGEST (Fase 3b). El cron de Cloudflare és
+  // SEMPRE en UTC i no sap res de l'horari d'estiu, i el digest ha de
+  // sortir a les 15.00 de París tot l'any: 13.00 UTC a l'estiu, 14.00
+  // UTC a l'hivern. No hi ha manera d'escriure això en una expressió
+  // cron, així que es fa en dos temps: aquesta expressió desperta el
+  // Worker cada deu minuts durant les DUES hores candidates dels
+  // dimarts, i el gestor scheduled() mira quina hora és a París i
+  // se'n torna a dormir si no són les 15 (vegeu horaDeParis a
+  // worker/worker.js).
+  //
+  // Les sis despertades que sí que passen el porter no són cap
+  // malbaratament: el pla gratuït només deixa 50 subpeticions per
+  // execució, i com que la guarda d'idempotència és per persona,
+  // cada despertada continua la feina per on la va deixar l'anterior.
+  //
+  // ATENCIÓ: aquest fitxer només el llegeix el camí «Connect to Git»,
+  // que ara està DESCONNECTAT a posta. Mentre el desplegament es faci
+  // a mà des del tauler, el cron s'ha d'afegir també al tauler
+  // (Worker > Settings > Trigger Events > Cron Triggers) amb aquesta
+  // mateixa expressió.
+  "triggers": {
+    "crons": ["*/10 13,14 * * 2"]
+  },
+
   // El nom del cloud de Cloudinary. No és cap secret: surt sencer a
   // l'URL de cada cartell del web públic (mira events.json), i la
   // pujada és sense signatura. Viu aquí, i no al tauler, perquè les

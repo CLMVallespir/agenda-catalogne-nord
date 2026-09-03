@@ -13,7 +13,7 @@ Es guarda a part perquè és la peça més tècnica del formulari i la que costa
 Comprova al Cloudinary Console (Settings → Upload → Upload presets) que el preset `agenda-posters` té:
 
 - **Signing mode:** `Unsigned` — és el que permet pujar des del navegador sense servidor.
-- **Folder:** `agenda-nord/posters`.
+- **Folder:** `clm-agenda/posters`.
 - **Incoming transformation:** `w_800,c_limit,q_80,f_webp` — limita la mida i converteix a webp automàticament.
 
 Apunta el teu **cloud name** (Dashboard, a dalt a l'esquerra, p. ex. `dxyz1234ab`). No cal cap API key ni secret.
@@ -155,7 +155,7 @@ return await uploadPoster();
 
 ## 5. Cablejat amb el webhook
 
-El webhook final ha d'incloure `imatge_url` al cos JSON, perquè arribi a `processBotSubmission()`. El detall és a `docs/pas-5-typebot-connexio.md`. Com que `imatge_url` és sempre o bé un URL de Cloudinary o bé `""`, el codi de l'Apps Script no necessita cap tractament especial: el llegeix com una cadena i ja està.
+El webhook final ha d'incloure `imatge_url` al cos JSON, perquè arribi al Worker. El detall és a `docs/pas-fase3a-worker-formulari.md`. Com que `imatge_url` és sempre o bé un URL de Cloudinary o bé `""`, el Worker no necessita cap tractament especial: el llegeix com una cadena i el desa tal qual.
 
 ---
 
@@ -164,7 +164,7 @@ El webhook final ha d'incloure `imatge_url` al cos JSON, perquè arribi a `proce
 1. **Publica** el Typebot i obre'l en un navegador real (no al panell de previsualització: el widget necessita un context de navegador real).
 2. **Camí amb cartell:** carrega una imatge de prova; el widget es tanca, el flux continua i el webhook porta un URL `https://res.cloudinary.com/...` a `imatge_url`.
 3. **Camí sense cartell:** tanca el widget sense carregar; el flux continua i `imatge_url` és `""`.
-4. A **Cloudinary**, comprova que la imatge de prova ha anat a la carpeta `agenda-nord/posters` i s'ha convertit a webp.
+4. A **Cloudinary**, comprova que la imatge de prova ha anat a la carpeta `clm-agenda/posters` i s'ha convertit a webp.
 
 ---
 

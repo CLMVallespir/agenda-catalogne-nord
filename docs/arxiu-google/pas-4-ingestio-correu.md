@@ -69,7 +69,7 @@ La cerca que fa el script és: `label:agenda-entrant is:unread -label:agenda-tra
 
 - [ ] Apareix **una fila nova** a `Esdeveniments` amb `estat = pendent`.
 - [ ] Els camps de l'esdeveniment estan ben omplerts (títol, dates, descripcions CA/FR, etc.).
-- [ ] A Cloudinary, a la carpeta `agenda-nord/posters`, hi ha la imatge pujada i ja redimensionada (WebP, màx. 800 px).
+- [ ] A Cloudinary, a la carpeta `clm-agenda/posters`, hi ha la imatge pujada i ja redimensionada (WebP, màx. 800 px).
 - [ ] El fil del correu té ara l'etiqueta `agenda-traitat` i està llegit.
 - [ ] Si executes la funció dues vegades alhora (per exemple, mentre la primera encara corre), al registre (Ver → Registres d'execució) hi surt el missatge del *lock*: «another execution is already running».
 - [ ] Si un correu falla (per exemple, sense connexió a Gemini), el fil queda amb `agenda-error` i la resta de correus es processen igualment.

@@ -1,5 +1,20 @@
 # Agenda Catalunya Nord — Project Knowledge
 
+> **⚠ Anterior al tall de cinta — no descriu el sistema viu.**
+> Aquest document explica l'arquitectura de Google Sheets + Apps Script, retirada
+> el **29 d'agost de 2026** (Fase 4). Es conserva com a registre històric.
+>
+> **L'arquitectura vigent és un únic Worker de Cloudflare** (`email()`,
+> `fetch()`, `scheduled()`) amb `pendents.json`, `events.json` i
+> `curador.html`. La font de veritat és `CLAUDE.md` (la constitució),
+> `FASES.md` (l'estat de cada fase) i `README.md` (el runbook). El codi
+> `.gs` mort és a `docs/arxiu-google/`.
+>
+> No et refiïs de res del que ve a sota sense contrastar-ho amb `CLAUDE.md`.
+>
+> A més, aquest fitxer està **substituït per `PROJECT-KNOWLEDGE-CHAT.md`**, que sí que descriu el sistema actual.
+
+
 A detailed reference for the `agenda-catalogne-nord` project. This document captures the architecture, the exact data contract, the current build status, the coding and language rules, and the design decisions made so far — including the complexity added in the most recent iterations (the move to a black-and-white design, category icons, and the self-hosted font system). Read this before writing or changing any code. *Last updated: 7 July 2026 — the black-and-white redesign is now ported to the canonical files, and the extraction model is Gemini (`gemini-2.5-flash`), not Claude.*
 
 ---
@@ -88,7 +103,7 @@ Sixteen fields. The **exact names and order** are used identically in the Sheet 
 
 **Comarca enum:** `Rosselló` · `Conflent` · `Vallespir` · `Capcir` · `Cerdanya`
 
-**Categoria enum:** `Música` · `Teatre` · `Dansa i ball` · `Conferència` · `Exposició` · `Mercat` · `Cinema` · `Taller` · `Activitat infantil` · `Patrimoni i tradicions`
+**Categoria enum (13):** `Música` · `Teatre` · `Dansa i ball` · `Conferència` · `Exposició` · `Mercat` · `Cinema` · `Taller` · `Activitat infantil` · `Patrimoni i tradicions` · `Concentració` · `Esports` · `Vida associativa`
 
 Rules the code relies on:
 
@@ -162,7 +177,7 @@ All text pairs meet WCAG AA contrast in both themes (verified; lowest ≈ 5.1:1)
 
 - The list is **grouped by day**, with a bilingual day header — e.g. "21 Juny, Dimarts · 21 Juin, Mardi" — preceded by a small **gold dot**. Catalan in Fraunces, French in Georgia italic.
 - Each event is a card: a **square poster on the left**, slightly tilted (alternating ±3° by row, straightening on hover; disabled under `prefers-reduced-motion`), with a **black angular "banner"** (clip-path) at the top-left corner showing the **category** name (this replaced the old gold category chip; it inverts to a light banner in the dark theme).
-- **Missing-poster fallback:** when `imatge_url` is empty, the poster area shows a **per-category inline-SVG icon** on a soft-gold tile (each of the 10 categories has its own icon: a note for Música, masks for Teatre, a dancer for Dansa i ball, a mic for Conferència, a frame for Exposició, a basket for Mercat, a clapperboard for Cinema, a tool for Taller, a balloon for Activitat infantil, a monument for Patrimoni i tradicions; plus a calendar default). This **retired the earlier mini-senyera placeholder.** When `imatge_url` is set, the real image shows.
+- **Missing-poster fallback:** when `imatge_url` is empty, the poster area shows a **per-category inline-SVG icon** on a soft-gold tile (each of the 13 categories has its own icon: a note for Música, masks for Teatre, a dancer for Dansa i ball, a mic for Conferència, a frame for Exposició, a basket for Mercat, a clapperboard for Cinema, a tool for Taller, a balloon for Activitat infantil, a monument for Patrimoni i tradicions, three silhouettes for Concentració, a medal for Esports, a round table for Vida associativa; plus a calendar default). This **retired the earlier mini-senyera placeholder.** When `imatge_url` is set, the real image shows.
 - Card body: **title** in Fraunces (links out only if `font_url` is set), a **muted uppercase comarca label** (a plain text label, not a clickable-looking pill — filtering is done in the filter bar), a **meta line** (`hora` and any multi-day "Fins al…" carry the colour accent; a pin icon precedes the venue), and a **"Veure més · Voir plus"** expander that reveals the Catalan + French descriptions and the organiser.
 - Behaviour kept from earlier: past events auto-hidden (`data_fi` before today); events with no valid `data_inici` are not shown; multi-day events show `Fins al … · Jusqu'au …`.
 
@@ -185,7 +200,7 @@ All text pairs meet WCAG AA contrast in both themes (verified; lowest ≈ 5.1:1)
 
 - **`?prova=1` test mode:** `app.js` loads `events-exemple.json` instead of `events.json` when the URL has `?prova=1`. `prova-local.html` is the fully standalone version (embedded data, no fetch) used to preview layout without publishing.
 - **Extraction prompt mechanics:** `prompts/extract-event.txt` is the master; its text is copied **verbatim** into the `EXTRACTION_PROMPT` constant in `processNewEmails.gs` — change one, change the other. A `{{AVUI}}` placeholder is replaced by today's date (`YYYY-MM-DD`) and used only to infer a missing year (pick the next future occurrence). The email body is appended after a `CORREU:` line. The prompt demands JSON only — no preamble, no markdown fences — with all 16 keys always present. The Gemini call uses JSON mode (`responseMimeType: 'application/json'`) with `thinkingBudget: 0` so thinking tokens don't truncate the output.
-- **Cloudinary upload is unsigned:** preset `agenda-posters`, folder `agenda-nord/posters`, incoming transformation `w_800,c_limit,q_80,f_webp`. The upload call needs only `CLOUDINARY_CLOUD_NAME` — no signature, no secret. (Key/secret are kept only for possible admin/delete operations.)
+- **Cloudinary upload is unsigned:** preset `agenda-posters`, folder `clm-agenda/posters`, incoming transformation `w_800,c_limit,q_80,f_webp`. The upload call needs only `CLOUDINARY_CLOUD_NAME` — no signature, no secret. (Key/secret are kept only for possible admin/delete operations.)
 - **Secrets** go in Apps Script **Script Properties** — `GEMINI_API_KEY`, Cloudinary cloud name, GitHub token, Brevo key + per-comarca list IDs. Never hardcoded, never committed.
 - **Backend robustness:** `processNewEmails()` takes a `LockService` lock first (exit if not acquired, prevents double runs); Gmail labels drive state (`agenda-entrant` → `agenda-traitat`); `publishToGitHub()` fetches the current `events.json` SHA, then does one PUT with base64 content and `JSON.stringify(data, null, 2)`.
 - **Sheet conditional formatting:** `publicat` → light green `#D9EAD3`; `pendent` → light yellow `#FFF2CC`; `rebutjat` → light red `#F4CCCC`.

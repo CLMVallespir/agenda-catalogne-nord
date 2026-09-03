@@ -568,6 +568,11 @@ main { padding-top: 1rem; padding-bottom: 2rem; min-height: 50vh; }
 }
 .boto-peu:hover { background: var(--tinta); color: var(--fons); }
 
+/* L'altra via de tramesa: l'adreça de correu, sota el botó del formulari. */
+.peu-correu { margin: 0.85rem 0 0; font-size: 0.82rem; }
+.peu-correu-ca { display: block; color: var(--tinta); }
+.peu-correu-fr { display: block; margin-top: 0.15rem; font-family: var(--tipo-serif); font-style: italic; color: var(--tinta-suau); font-size: 0.95em; }
+
 .peu-firma { margin: 1.1rem 0 0; color: var(--tinta-suau); }
 
 /* Línia legal curta del peu + enllaç a les mencions legals. */

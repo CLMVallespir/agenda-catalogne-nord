@@ -1,0 +1,62 @@
+
+=== Tourinsoft / ADT66 ===
+  ✓ metadata amb client «cdt66.tourinsoft.com» — 200 application/json (1744 bytes) — ESTRUCTURA DISPONIBLE
+     primers camps: {"syndicationId":"60a37063-5667-45f8-82e1-a1db2d8375b9","name":"CDT-INDEPENDANT WEB FMA","isAggregated":true,"collections":[{"name":"Objects","collectionType":"fixed","sourceFieldLabel":null,"isNocc":null,"properties":[{"name":"SyndicObjectID","dataType":"string (Length : Maximum)"},{"name":"Published","dataType":"datetime"},{"name":"Updated","dataType":"datetime"},{"name":"SyndicObjectName","data
+  ·  metadata amb client «cdt66» — 500 application/json (40 bytes)
+  ✓ flux diferencial des de 2026-08-28 — 200 application/atom+xml (1416039 bytes)
+
+  Si els dos clients fallen amb 404, vol dir que l’ADT66 no té
+  cap sindicació v3 amb aquest identificador. Aleshores la via
+  no és tècnica: és demanar-la a l’ADT66 per correu.
+
+=== WordPress REST ===
+  ✓ https://thuir.fr — 200 application/json (6658 bytes) — WordPress, cap tipus d’event reconegut
+  ·  https://www.ceret.fr — 404 text/html (42628 bytes)
+  ✓ https://www.ville-elne.fr — 200 application/json (36488 bytes) — WordPress, cap tipus d’event reconegut
+  ·  https://www.mairie-perpignan.fr — 404 text/html (68972 bytes)
+  ✓ https://www.reynes.fr — 200 application/json (22808 bytes) — WordPress, cap tipus d’event reconegut
+  ✓ https://stjeanpladecorts.fr — 200 application/json (9902 bytes) — WordPress, cap tipus d’event reconegut
+  ✓ https://www.saintlaurentdecerdans.fr — 200 application/json (13020 bytes) — WordPress, cap tipus d’event reconegut
+  ·  https://www.maureillaslasillas.fr — 403 text/plain (11 bytes)
+  ✓ https://www.rivesaltes.fr — 200 application/json (6423 bytes) — WordPress, cap tipus d’event reconegut
+  ✓ https://www.formigueres.fr — 200 application/json (29872 bytes) — WordPress, cap tipus d’event reconegut
+  ✓ https://www.mairie-matemale.fr — 200 application/json (7377 bytes) — WordPress, cap tipus d’event reconegut
+  ✓ https://www.ille-sur-tet.com — 200 application/json (8072 bytes) — WordPress, cap tipus d’event reconegut
+  ✓ https://www.ville-arles-sur-tech.fr — 200 application/json (6541 bytes) — WordPress, cap tipus d’event reconegut
+  ✓ https://www.mairie-amelie.com — 200 application/json (8542 bytes) — WordPress, cap tipus d’event reconegut
+  ✓ https://www.corsavy.fr — 200 application/json (6065 bytes) — WordPress, cap tipus d’event reconegut
+  ·  https://www.serralongue.com — 404 text/html (1072 bytes)
+  ✓ https://lamanere.fr — 200 application/json (19442 bytes) — WordPress, cap tipus d’event reconegut
+  ·  https://www.vallespirbarroc.fr — 404 text/html (187164 bytes)
+  ✓ https://www.casamacia.cat — 200 application/json (21371 bytes) — WordPress, cap tipus d’event reconegut
+
+  Un 200 a /wp-json/wp/v2/types amb un tipus d’event és una font
+  de nivell 1: JSON, sense model, i amb camp de data de modificació.
+
+=== IntraMuros ===
+  ·  Prats de Molló — 403 application/json (38 bytes)
+
+  La pregunta oberta és si una sola crida cobreix tota la
+  intercomunalitat. Si a «pobles coberts» hi surt més d’un nom,
+  una crida per vall substitueix una crida per poble.
+
+=== CMS de rutes .htm ===
+  ✓ https://www.ceret.fr — 200 text/html (57567 bytes)
+  ✓ https://www.mairie-leboulou.fr — 200 text/html (114666 bytes)
+  ✓ https://www.meylan.fr — 200 text/html (100530 bytes)
+  ✓ https://www.ville-clichy.fr — 200 text/html (78981 bytes)
+
+  El que busquem no és el nom del proveïdor sinó si el CMS
+  publica un flux (RSS, ICS o XML) de l’agenda. Si el publica,
+  un sol adaptador cobreix Ceret, el Voló i tots els ajuntaments
+  francesos que fan servir el mateix producte.
+
+  Vocabulari d’events d’aquest CMS, ja recollit del Voló i que
+  només cal mapar una vegada cap al nostre enum de deu:
+  Action citoyenne · Débat/Conférence · Exposition · Foire ·
+  Jeux · Portes ouvertes · Projection, cinéma ·
+  Rassemblement/réunion · Sport · Stage/Atelier · Thé dansants ·
+  Visite guidée
+
+Fet. Cap escriptura: aquesta sonda només llegeix.
+

@@ -21,7 +21,7 @@
 // Ús:   node importa-csv.js esdeveniments-importacio-filtrat.csv pendents.json
 //
 // No fa cap crida de xarxa i no toca res més que el fitxer de sortida.
-// `creaId` i `valorPermes` són còpies literals d'apps-script/utils.gs.
+// `creaId` i `valorPermes` són còpies literals de docs/arxiu-google/utils.gs.
 // ============================================================
 
 var fs = require('fs');
@@ -47,7 +47,7 @@ var ESQUEMA = [
   'data_entrada'
 ];
 
-// Els valors permesos dels dos camps d'enumeració (apps-script/utils.gs).
+// Els valors permesos dels dos camps d'enumeració (docs/arxiu-google/utils.gs).
 var COMARCA_VALUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
 var CATEGORIA_VALUES = [
   'Música',
@@ -59,7 +59,10 @@ var CATEGORIA_VALUES = [
   'Cinema',
   'Taller',
   'Activitat infantil',
-  'Patrimoni i tradicions'
+  'Patrimoni i tradicions',
+  'Concentració',
+  'Esports',
+  'Vida associativa'
 ];
 
 // ------------------------------------------------------------
@@ -129,7 +132,7 @@ function valorCsv(objecte, clau) {
 }
 
 // ------------------------------------------------------------
-// Còpia literal de valorPermes (apps-script/utils.gs).
+// Còpia literal de valorPermes (docs/arxiu-google/utils.gs).
 // Torna el valor si és a la llista permesa, si no "".
 // ------------------------------------------------------------
 function valorPermes(valor, llistaPermesa) {
@@ -140,7 +143,7 @@ function valorPermes(valor, llistaPermesa) {
 }
 
 // ------------------------------------------------------------
-// Còpia literal de creaId (apps-script/utils.gs). El sistema sempre
+// Còpia literal de creaId (docs/arxiu-google/utils.gs). El sistema sempre
 // reconstrueix l'id amb aquesta funció, mai es refia del que porti
 // la font, perquè totes les vies d'entrada donin l'id idèntic.
 // ------------------------------------------------------------

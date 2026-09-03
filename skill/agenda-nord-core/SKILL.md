@@ -5,7 +5,7 @@ description: >
   black-and-white two-theme design language of the "agenda-catalogne-nord"
   project — an automated, free-tier cultural agenda for North Catalonia
   (Catalunya Nord). Load this in EVERY working session on this project,
-  whatever the task (Apps Script, frontend, extraction prompt, Brevo digest,
+  whatever the task (the Cloudflare Worker, frontend, extraction prompt, digest,
   docs), BEFORE writing or changing any code. It carries the settled decisions
   so new work stays in the project's spirit: radical simplicity, bilingual
   Catalan-first display, no paid infra, no accounts, no frameworks — plus a
@@ -16,6 +16,21 @@ metadata:
   type: project
   project: agenda-catalogne-nord
 ---
+
+> **⚠ Anterior al tall de cinta — no descriu el sistema viu.**
+> Aquest document explica l'arquitectura de Google Sheets + Apps Script, retirada
+> el **29 d'agost de 2026** (Fase 4). Es conserva com a registre històric.
+>
+> **L'arquitectura vigent és un únic Worker de Cloudflare** (`email()`,
+> `fetch()`, `scheduled()`) amb `pendents.json`, `events.json` i
+> `curador.html`. La font de veritat és `CLAUDE.md` (la constitució),
+> `FASES.md` (l'estat de cada fase) i `README.md` (el runbook). El codi
+> `.gs` mort és a `docs/arxiu-google/`.
+>
+> No et refiïs de res del que ve a sota sense contrastar-ho amb `CLAUDE.md`.
+>
+> Aquesta skill **encara no s'ha reescrit** per al Worker: és la peça de documentació més gran que queda pendent del tall.
+
 
 # Agenda Catalunya Nord — project core ("Què fas?")
 
@@ -149,9 +164,9 @@ reorder, or add fields without updating all four places together.
 | 16 | `data_entrada` | string | ISO timestamp when the row was created |
 
 **Comarca enum:** `Rosselló` · `Conflent` · `Vallespir` · `Capcir` · `Cerdanya`
-**Categoria enum:** `Música` · `Teatre` · `Dansa i ball` · `Conferència` ·
+**Categoria enum (13):** `Música` · `Teatre` · `Dansa i ball` · `Conferència` ·
 `Exposició` · `Mercat` · `Cinema` · `Taller` · `Activitat infantil` ·
-`Patrimoni i tradicions`
+`Patrimoni i tradicions` · `Concentració` · `Esports` · `Vida associativa`
 
 Schema rules the code relies on:
 
@@ -359,7 +374,7 @@ sun/moon, category icons and calendar default. No icon font, no library.
   so they are turned off for this plain extraction task. The reply is defensively
   parsed from the first `{` to the last `}` (`analitzaJsonResposta`).
 - **Cloudinary upload is unsigned:** preset `agenda-posters`, folder
-  `agenda-nord/posters`, incoming transformation `w_800,c_limit,q_80,f_webp`. The
+  `clm-agenda/posters`, incoming transformation `w_800,c_limit,q_80,f_webp`. The
   upload call needs **only** `CLOUDINARY_CLOUD_NAME` — no signature, no secret.
   (Key/secret kept only for possible admin/delete.) The email path
   (`pujaImatgeCloudinary`) accepts the first image **or PDF** attachment (a PDF

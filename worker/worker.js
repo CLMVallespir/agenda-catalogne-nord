@@ -1,11 +1,15 @@
 // ============================================================
 // WORKER — «Què fas?» · l'únic servidor del projecte
 //
-// Aquesta FASE 2 només implementa el gestor `email()`: cada correu
-// que arriba a agenda@clm.cat es converteix en una fila pendent de
-// `pendents.json`, i l'original SEMPRE acaba arxivat al Gmail.
-// Els gestors `fetch()` (formulari Typebot) i `scheduled()` (digest
-// Brevo) són les fases 3a i 3b: encara no hi són.
+// Té dues portes d'entrada, i totes dues acaben al mateix lloc: una
+// fila pendent a `pendents.json`, que el curador revisa.
+//   `email()`  (Fase 2)  — un correu a agenda@clm.cat. L'original
+//                          SEMPRE acaba arxivat al Gmail.
+//   `fetch()`  (Fase 3a) — el POST del webhook del formulari
+//                          Typebot, amb secret compartit.
+//   `scheduled()` (Fase 3b) — el digest setmanal de Brevo. És
+//                          l'única porta que no escriu res enlloc:
+//                          llegeix `events.json` i envia correu.
 //
 // EL CAMÍ D'UN CORREU, en ordre:
 //   1. reenviament a l'arxiu  ← el primer de tot, i passi el que passi
@@ -13,6 +17,16 @@
 //   3. Gemini                 → els 11 camps que el model pot deduir
 //   4. Cloudinary             → el primer cartell adjunt (opcional)
 //   5. pendents.json          → una fila de 16 cadenes, estat "pendent"
+//
+// EL CAMÍ D'UNA TRAMESA DEL FORMULARI, en ordre:
+//   1. el secret de la capçalera  ← el primer de tot; si no, 403
+//   2. només POST                 → qualsevol altre mètode, 405
+//   3. mapa determinista          → camp a camp, CAP crida a Gemini:
+//                                   el formulari ja dona els camps
+//                                   separats, i el cartell ja ha
+//                                   pujat a Cloudinary des del
+//                                   navegador de qui l'envia
+//   4. pendents.json              → la mateixa fila de 16 cadenes
 //
 // LA INVARIANT: cap correu no es perd mai. El reenviament a l'arxiu
 // es fa ABANS de qualsevol altra cosa i no llança mai. Tot el que ve
@@ -23,8 +37,33 @@
 // en silenci és l'única cosa que no ens podem permetre.
 // Res no arriba mai al web públic sense passar pel curador.
 //
+// EL CAMÍ DEL DIGEST, en ordre:
+//   1. la porta de l'hora     ← el cron de Cloudflare és en UTC i no
+//                               sap res de l'horari d'estiu: el
+//                               Worker es desperta cada deu minuts
+//                               entre les 13.00 i les 14.59 UTC dels
+//                               dimarts, i només treballa quan a
+//                               París són les 15
+//   2. events.json            → per l'API de GitHub, mai de Pages
+//   3. la finestra            → els actes «publicat» que comencen
+//                               d'avui a d'aquí a set dies, comarca
+//                               per comarca
+//   4. el registre de Brevo   → a qui ja s'ha enviat el digest d'avui
+//   5. un correu per persona  → transaccional, mai cap campanya
+//
+// LA IDEMPOTÈNCIA DEL DIGEST. No hi ha cap tercer fitxer ni cap base
+// de dades on apuntar «ja enviat»: el registre d'enviaments de Brevo
+// ÉS l'apunt. Cada correu surt etiquetat `digest-AAAA-MM-DD-comarca`,
+// i abans d'enviar res el Worker es llegeix els enviaments d'avui i
+// en fa un conjunt. Té dues conseqüències bones: la guarda és per
+// PERSONA i no per dia, o sigui que una execució que es mori a mig
+// camí no repeteix ningú i la següent continua per on era; i no
+// s'inventa cap lloc nou on desar estat (CLAUDE.md §3). I si el
+// registre NO es pot llegir, no s'envia res: val més un digest de
+// menys que dos digests a tothom.
+//
 // SECRETS I VARIABLES. Cap valor no viu mai dins d'aquest fitxer.
-// Tres són Secrets al tauler de Cloudflare (el Worker > Settings >
+// Als Secrets del tauler de Cloudflare (Worker > Settings >
 // Variables and Secrets):
 //   GEMINI_API_KEY         (la clau d'AI Studio)
 //   GITHUB_TOKEN           (gra fi, només aquest repositori, permís
@@ -33,7 +72,19 @@
 //                           VERIFICADA a l'Email Routing, si no el
 //                           reenviament falla. És Secret perquè el
 //                           repositori és públic i és una adreça
-//                           personal, no perquè sigui cap contrasenya)
+//                           personal, no perquè sigui cap contrasenya.
+//                           El digest de prova hi envia la mostra)
+//   TYPEBOT_SECRET         (el secret compartit del webhook del
+//                           formulari; el mateix valor va al bloc
+//                           webhook del Typebot, dins la capçalera
+//                           X-Typebot-Secret)
+//   BREVO_API_KEY          (la clau d'API de Brevo; viatja només a la
+//                           capçalera `api-key`, mai al registre)
+//   BREVO_LIST_ROSSELLO    (l'id numèric de la llista de subscriptors
+//   BREVO_LIST_CONFLENT     de cada comarca a Brevo: cinc Secrets, un
+//   BREVO_LIST_VALLESPIR    per llista. No són contrasenyes, però són
+//   BREVO_LIST_CAPCIR       dades del compte i el repositori és
+//   BREVO_LIST_CERDANYA     públic)
 // I una viu a `wrangler.jsonc`, com a `vars`:
 //   CLOUDINARY_CLOUD_NAME  (no és secreta de cap manera: surt a l'URL
 //                           de cada cartell del web públic. Va a la
@@ -42,7 +93,9 @@
 //                           text del tauler a cada desplegament; els
 //                           Secrets, en canvi, no els toca)
 //
-// DESPLEGAMENT: vegeu docs/pas-fase2-worker-email.md.
+// DESPLEGAMENT: vegeu docs/pas-fase2-worker-email.md (el correu),
+// docs/pas-fase3a-worker-formulari.md (el formulari) i
+// docs/pas-fase3b-worker-digest.md (el digest).
 // ============================================================
 
 import PostalMime from './postal-mime.js';
@@ -52,6 +105,7 @@ var GITHUB_OWNER = 'CLMVallespir';
 var GITHUB_REPO = 'agenda-catalogne-nord';
 var GITHUB_BRANCH = 'main';
 var FITXER_PENDENTS = 'pendents.json';
+var FITXER_EVENTS = 'events.json';
 
 // --- L'API de Gemini (nivell gratuït d'AI Studio) ---
 // El nom del model viu en UNA constant i prou. Si algun dia torna un
@@ -63,11 +117,82 @@ var GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/' + GE
 var GEMINI_MAX_TOKENS = 4096;
 
 // --- Cloudinary: pujada sense signatura (docs/pas-3-cloudinary.md) ---
-// El preset ja porta la carpeta (agenda-nord/posters) i la
+// El preset ja porta la carpeta (clm-agenda/posters) i la
 // transformació d'entrada (w_800,c_limit,q_80,f_webp), que és la que
 // converteix un PDF en un WebP de la primera pàgina. Aquí només cal
 // el nom del cloud: cap signatura, cap secret.
 var CLOUDINARY_PRESET = 'agenda-posters';
+
+// --- El formulari Typebot: el secret compartit ---
+// El bloc webhook del Typebot ha d'enviar aquesta capçalera amb el
+// valor del Secret TYPEBOT_SECRET. L'URL del Worker és públic: sense
+// aquesta comprovació, qualsevol que el trobés podria injectar files
+// a la cua del curador.
+var CAPCALERA_SECRET = 'X-Typebot-Secret';
+
+// --- El digest setmanal de Brevo (Fase 3b) ---
+// L'HORA. El cron de Cloudflare és sempre en UTC i no sap res de
+// l'horari d'estiu. Les 15.00 de París són les 13.00 UTC a l'estiu i
+// les 14.00 UTC a l'hivern, i no hi ha cap manera d'escriure això en
+// una expressió cron. La solució més simple que ho garanteix tot
+// l'any: el cron desperta el Worker cada deu minuts durant les DUES
+// hores candidates, i el Worker mira quina hora és a París i se'n
+// torna a dormir si no són les 15. L'expressió és a wrangler.jsonc,
+// i és una de sola: "*/10 13,14 * * 2".
+var HORA_DIGEST_PARIS = 15;
+
+// Cada despertada envia com a molt aquests correus, i la següent
+// —deu minuts després— continua per on era. El motiu és el límit del
+// pla gratuït de Cloudflare: 50 subpeticions per execució, i cada
+// correu n'és una (i unes quantes se'n van a llegir el GitHub, el
+// registre de Brevo i les llistes). Amb sis despertades dins l'hora
+// hi caben uns 240 correus, per sota del sostre diari de Brevo.
+// Això només funciona perquè la guarda d'idempotència és per
+// persona: si fos per dia, la segona despertada no enviaria res.
+var MAX_ENVIAMENTS_PER_EXECUCIO = 40;
+
+// Quants dies endavant mira el digest, avui inclòs.
+var DIES_FINESTRA = 7;
+
+// El sostre diari de correus transaccionals del pla gratuït de Brevo
+// i el llindar on val la pena deixar-ne un avís al registre. No es
+// talla res: només s'avisa, perquè es pugui planificar el pas a
+// campanyes abans que els enviaments comencin a fallar.
+var BREVO_MAX_DIARI = 300;
+var BREVO_LLINDAR_AVIS = 280;
+
+// --- Brevo: els tres punts de l'API que fa servir el digest ---
+var BREVO_ENVIA_URL = 'https://api.brevo.com/v3/smtp/email';
+var BREVO_CONTACTES_URL = 'https://api.brevo.com/v3/contacts/lists/';
+var BREVO_HISTORIAL_URL = 'https://api.brevo.com/v3/smtp/emails';
+var BREVO_PER_PAGINA = 500;
+
+// Una pausa curta entre correus, per no atabalar l'API de Brevo.
+var PAUSA_ENTRE_CORREUS_MS = 150;
+
+// --- El remitent del digest ---
+// Cap dels tres no és secret: totes dues adreces són públiques i el
+// nom també. L'adreça de RESPOSTA no és agenda@clm.cat a posta:
+// agenda@ va a parar al gestor email() d'aquest mateix Worker, i una
+// resposta demanant la baixa hi entraria com una fila nova a la cua
+// del curador. Les baixes, doncs, van a contacte@clm.cat.
+var DIGEST_REMITENT_EMAIL = 'agenda@clm.cat';
+var DIGEST_REMITENT_NOM = 'Agenda cultural de la Catalunya Nord';
+var DIGEST_ADRECA_BAIXA = 'contacte@clm.cat';
+var AGENDA_URL = 'https://agenda.clm.cat';
+
+// --- Les cinc comarques i el que Brevo en necessita ---
+// Una sola taula explícita, sense cap truc de transliteració: el nom
+// de la comarca tal com surt a l'esquema, el nom del Secret que en
+// guarda l'id de llista, i el tros d'etiqueta (sense accents) que
+// marca els correus ja enviats.
+var COMARQUES_BREVO = [
+  { comarca: 'Rosselló', secret: 'BREVO_LIST_ROSSELLO', etiqueta: 'rossello' },
+  { comarca: 'Conflent', secret: 'BREVO_LIST_CONFLENT', etiqueta: 'conflent' },
+  { comarca: 'Vallespir', secret: 'BREVO_LIST_VALLESPIR', etiqueta: 'vallespir' },
+  { comarca: 'Capcir', secret: 'BREVO_LIST_CAPCIR', etiqueta: 'capcir' },
+  { comarca: 'Cerdanya', secret: 'BREVO_LIST_CERDANYA', etiqueta: 'cerdanya' }
+];
 
 // --- Els valors permesos dels dos camps d'enumeració (CLAUDE.md §4) ---
 var COMARCA_VALUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
@@ -81,7 +206,10 @@ var CATEGORIA_VALUES = [
   'Cinema',
   'Taller',
   'Activitat infantil',
-  'Patrimoni i tradicions'
+  'Patrimoni i tradicions',
+  'Concentració',
+  'Esports',
+  'Vida associativa'
 ];
 
 // El prompt d'extracció. És una còpia LITERAL de
@@ -112,7 +240,7 @@ CAMPS QUE HAS D'EXTREURE
 - lloc: nom del local o de l'espai (per exemple: "Sala polivalent", "Església de Sant Pere", "Plaça de la República").
 - municipi: nom del municipi, en la forma catalana si la coneixes (per exemple: "Perpinyà", "Prada", "Ceret").
 - comarca: NOMÉS una d'aquestes cinc, escrita exactament així: Rosselló, Conflent, Vallespir, Capcir, Cerdanya. Dedueix-la del municipi només si la correspondència és clara i segura. Si tens cap dubte, cadena buida.
-- categoria: NOMÉS una d'aquestes deu, escrita exactament així: Música, Teatre, Dansa i ball, Conferència, Exposició, Mercat, Cinema, Taller, Activitat infantil, Patrimoni i tradicions. Si cap no encaixa clarament, cadena buida.
+- categoria: NOMÉS una d'aquestes tretze, escrita exactament així: Música, Teatre, Dansa i ball, Conferència, Exposició, Mercat, Cinema, Taller, Activitat infantil, Patrimoni i tradicions, Concentració, Esports, Vida associativa. Si cap no encaixa clarament, cadena buida.
 - descripcio_ca: de 2 a 4 frases en català. Redacta-la tu directament en català natural i correcte a partir de la informació del correu; no facis una traducció literal del francès. To informatiu i acollidor, sense exclamacions publicitàries. No hi afegeixis informació que el correu no doni.
 - descripcio_fr: traducció francesa fidel de descripcio_ca, també de 2 a 4 frases.
 - associacio: nom de l'entitat o associació organitzadora.
@@ -178,6 +306,65 @@ export default {
     } catch (error) {
       console.log('email(): no he pogut fer la fila d\'aquest correu: ' + error.message);
     }
+  },
+
+  // ------------------------------------------------------------
+  // Una petició HTTP. L'única que s'accepta és el POST del webhook
+  // del formulari Typebot, amb el secret compartit a la capçalera.
+  // Torna sempre una Response, també quan rebutja.
+  // ------------------------------------------------------------
+  async fetch(request, env, ctx) {
+    // EL SECRET PRIMER, abans de mirar res més: ni el mètode, ni el
+    // cos, ni res. L'URL del Worker és públic, i qui no porta el
+    // secret no ha de saber ni què hi ha darrere ni per què l'hem
+    // rebutjat: rep un 403 pelat. El motiu real va al registre, que
+    // és on el mira el propietari.
+    if (!secretCorrecte(request, env)) {
+      return respostaJson(403, { ok: false, error: 'no autoritzat' });
+    }
+
+    // Només POST (FASES.md, Fase 3a). Aquí ja sabem que qui pregunta
+    // porta el secret, o sigui que sí que li podem dir la veritat:
+    // un 405 li estalvia mitja tarda de buscar on és l'error.
+    if (request.method !== 'POST') {
+      console.log('fetch(): mètode ' + request.method + ' rebutjat; només POST.');
+      return respostaJson(405, { ok: false, error: 'només POST' });
+    }
+
+    // LA PORTA DE PROVA DEL DIGEST (Fase 3b). Mateix secret i mateix
+    // POST que el formulari; només hi ha una marca a l'URL. Envia el
+    // digest d'avui NOMÉS a l'adreça d'arxiu, amb una etiqueta de
+    // prova que no toca ni consulta la guarda del digest de debò.
+    // Existeix perquè, si no, l'única manera de provar la Fase 3b
+    // seria esperar el dimarts a les tres de la tarda.
+    var url = new URL(request.url);
+    if (url.searchParams.get('digest') === 'prova') {
+      return await respostaDigestDeProva(request, env);
+    }
+
+    return await respostaDelFormulari(request, env);
+  },
+
+  // ------------------------------------------------------------
+  // El despertador setmanal del digest. El cron de Cloudflare és en
+  // UTC, així que el Worker es desperta cada deu minuts durant les
+  // dues hores que poden ser les 15.00 de París (13.00 UTC a l'estiu,
+  // 14.00 a l'hivern) i només treballa quan de debò ho són. No torna
+  // res i no llança mai: el que falli queda al registre.
+  // ------------------------------------------------------------
+  async scheduled(event, env, ctx) {
+    var ara = new Date(event.scheduledTime);
+    var hora = horaDeParis(ara);
+    if (hora !== HORA_DIGEST_PARIS) {
+      console.log('scheduled(): a París són les ' + hora + ', no les ' + HORA_DIGEST_PARIS + '. Cap digest.');
+      return;
+    }
+
+    try {
+      await enviaDigestSetmanal(env, ara);
+    } catch (error) {
+      console.log('scheduled(): el digest d\'aquesta setmana ha fallat: ' + error.message);
+    }
   }
 };
 
@@ -236,8 +423,155 @@ async function processaCorreu(message, env) {
   }
 
   var fila = construeixFila(dadesExtretes, imatgeUrl);
-  await afegeixAPendents(fila, env.GITHUB_TOKEN);
+  await afegeixAPendents(fila, env.GITHUB_TOKEN, 'correu');
   console.log('processaCorreu(): fila afegida a la cua. id: "' + fila.id + '".');
+}
+
+// ============================================================
+// EL FORMULARI (TYPEBOT)
+// ============================================================
+
+// ------------------------------------------------------------
+// El secret compartit de la capçalera. Torna cert només si el
+// Worker té el secret configurat I la petició porta el mateix
+// valor. No registra mai el valor de cap dels dos.
+// ------------------------------------------------------------
+function secretCorrecte(request, env) {
+  var esperat = env.TYPEBOT_SECRET;
+
+  // Sense secret configurat, la porta queda tancada per a tothom.
+  // Sembla exagerat i no ho és: l'alternativa —acceptar-ho tot
+  // mentre falti el secret— obriria la cua al primer que trobés
+  // l'URL, i justament el dia que la configuració no és a lloc.
+  if (!esperat) {
+    console.log('secretCorrecte(): falta el Secret TYPEBOT_SECRET. Rebutjo tota petició fins que hi sigui.');
+    return false;
+  }
+
+  var rebut = request.headers.get(CAPCALERA_SECRET);
+  if (rebut === null) {
+    console.log('secretCorrecte(): petició sense la capçalera ' + CAPCALERA_SECRET + '.');
+    return false;
+  }
+
+  if (rebut !== esperat) {
+    console.log('secretCorrecte(): la capçalera ' + CAPCALERA_SECRET + ' no coincideix.');
+    return false;
+  }
+
+  return true;
+}
+
+// ------------------------------------------------------------
+// El POST del formulari, de JSON a fila a la cua. Qui la crida ja
+// ha comprovat el secret i el mètode. No llança: torna sempre la
+// Response que toca, i registra el detall de tot el que falla.
+// ------------------------------------------------------------
+async function respostaDelFormulari(request, env) {
+  var cos = null;
+  try {
+    cos = await request.json();
+  } catch (error) {
+    console.log('respostaDelFormulari(): el cos no és JSON vàlid: ' + error.message);
+    return respostaJson(400, { ok: false, error: 'el cos ha de ser un objecte JSON' });
+  }
+
+  // Un JSON vàlid també pot ser una llista, un número o null, i
+  // d'aquests campText() en trauria bestieses. Només un objecte val.
+  if (cos === null || typeof cos !== 'object' || Array.isArray(cos)) {
+    console.log('respostaDelFormulari(): el cos és JSON, però no és un objecte.');
+    return respostaJson(400, { ok: false, error: 'el cos ha de ser un objecte JSON' });
+  }
+
+  var fila = construeixFilaFormulari(cos);
+
+  // Una tramesa sense títol ni data no és cap esdeveniment: seria
+  // una fila buida per revisar. És el mateix criteri del camí del
+  // correu, que tampoc no fa fila d'un correu sense text.
+  if (fila.titol === '' && fila.data_inici === '') {
+    console.log('respostaDelFormulari(): tramesa sense títol ni data. Cap fila.');
+    return respostaJson(400, { ok: false, error: 'cal com a mínim un títol o una data' });
+  }
+
+  try {
+    await afegeixAPendents(fila, env.GITHUB_TOKEN, 'formulari');
+  } catch (error) {
+    console.log('respostaDelFormulari(): no he pogut escriure la fila: ' + error.message);
+    return respostaJson(500, { ok: false, error: 'no he pogut desar la tramesa' });
+  }
+
+  console.log('respostaDelFormulari(): fila afegida a la cua. id: "' + fila.id + '".');
+  return respostaJson(200, { ok: true, id: fila.id });
+}
+
+// ------------------------------------------------------------
+// Munta la fila de 16 camps a partir del cos del formulari. Mapa
+// determinista, camp a camp, sense cap crida a Gemini: el formulari
+// ja dona la informació separada. Torna l'objecte de la fila.
+// ------------------------------------------------------------
+function construeixFilaFormulari(cos) {
+  var titol = campText(cos, 'titol');
+  var dataInici = campText(cos, 'data_inici');
+  var dataFi = campText(cos, 'data_fi');
+
+  // El formulari no demana data_fi si l'acte és d'un sol dia, i
+  // l'esquema diu que en aquest cas data_fi és igual a data_inici.
+  if (dataFi === '') {
+    dataFi = dataInici;
+  }
+
+  // El formulari recull UNA descripció i un senyal de quina llengua
+  // és (CLAUDE.md §7): el text va a la banda que toca i l'altra
+  // queda buida. La traducció que falta la fa el curador en revisar.
+  // Es compara en minúscules per si el Typebot envia "FR" o "Fr".
+  var descripcio = campText(cos, 'descripcio');
+  var idioma = campText(cos, 'idioma_descripcio').toLowerCase();
+  var descripcioCa = '';
+  var descripcioFr = '';
+  if (idioma === 'fr') {
+    descripcioFr = descripcio;
+  } else {
+    descripcioCa = descripcio;
+  }
+
+  return {
+    // --- L'id el reconstrueix sempre el sistema, mai el formulari ---
+    id: creaId(dataInici, titol),
+    // --- Els camps que omple l'associació al formulari ---
+    titol: titol,
+    data_inici: dataInici,
+    data_fi: dataFi,
+    hora: campText(cos, 'hora'),
+    lloc: campText(cos, 'lloc'),
+    municipi: campText(cos, 'municipi'),
+    // La interfície del formulari ja constreny aquests dos a la
+    // llista, però l'endpoint accepta qualsevol POST que porti el
+    // secret: es filtren igual, com al camí del correu.
+    comarca: valorPermes(campText(cos, 'comarca'), COMARCA_VALUES),
+    categoria: valorPermes(campText(cos, 'categoria'), CATEGORIA_VALUES),
+    descripcio_ca: descripcioCa,
+    descripcio_fr: descripcioFr,
+    associacio: campText(cos, 'associacio'),
+    // El cartell ja ha pujat del navegador a Cloudinary dins el flux
+    // del Typebot: l'URL arriba fet i es desa tal qual (o "" si
+    // l'associació s'ha saltat el pas).
+    imatge_url: campText(cos, 'imatge_url'),
+    // --- Els camps que omple el sistema, mai el formulari ---
+    font_url: '',                             // el formulari no demana cap enllaç d'origen
+    estat: 'pendent',                         // sempre: espera el curador
+    data_entrada: new Date().toISOString()    // quan s'ha creat la fila
+  };
+}
+
+// ------------------------------------------------------------
+// Una Response de JSON amb el codi que se li digui. Un sol lloc on
+// es decideix la forma de la resposta, perquè totes siguin iguals.
+// ------------------------------------------------------------
+function respostaJson(codi, objecte) {
+  return new Response(JSON.stringify(objecte), {
+    status: codi,
+    headers: { 'Content-Type': 'application/json; charset=utf-8' }
+  });
 }
 
 // ============================================================
@@ -517,7 +851,7 @@ function campText(objecte, clau) {
 }
 
 // ------------------------------------------------------------
-// Còpia literal de creaId (apps-script/utils.gs, curador.html). Fa
+// Còpia literal de creaId (docs/arxiu-google/utils.gs, curador.html). Fa
 // l'id: la data d'inici, un guió, i un pedaç curt fet de les tres
 // primeres paraules del títol. El sistema RECONSTRUEIX sempre l'id,
 // mai es refia del que hagi tornat el model. Torna "" si no hi ha
@@ -548,7 +882,7 @@ function creaId(dataInici, titol) {
 }
 
 // ------------------------------------------------------------
-// Còpia literal de valorPermes (apps-script/utils.gs, curador.html).
+// Còpia literal de valorPermes (docs/arxiu-google/utils.gs, curador.html).
 // Torna el valor si és a la llista permesa, si no "".
 // ------------------------------------------------------------
 function valorPermes(valor, llistaPermesa) {
@@ -568,8 +902,12 @@ function valorPermes(valor, llistaPermesa) {
 // d'arribar, i curador.html pinta la cua en l'ordre del fitxer) i
 // l'escriu. Si el sha ha canviat perquè algú altre ha escrit al
 // mateix moment, torna a llegir i reintenta un cop. No torna res.
+//
+// La comparteixen els dos camins d'entrada: `origen` ('correu' o
+// 'formulari') només serveix per al missatge del commit, que és
+// l'única traça de per quina porta ha entrat cada fila.
 // ------------------------------------------------------------
-async function afegeixAPendents(fila, token) {
+async function afegeixAPendents(fila, token, origen) {
   if (!token) {
     throw new Error('falta el secret GITHUB_TOKEN.');
   }
@@ -578,7 +916,7 @@ async function afegeixAPendents(fila, token) {
   if (titol === '') {
     titol = '(sense títol)';
   }
-  var missatgeCommit = 'Correu nou a la cua: ' + titol;
+  var missatgeCommit = 'Fila nova a la cua (' + origen + '): ' + titol;
 
   var intents = 0;
   while (intents < 2) {
@@ -697,4 +1035,958 @@ function descodificaBase64(base64) {
     bytes[i] = binari.charCodeAt(i);
   }
   return new TextDecoder().decode(bytes);
+}
+
+// ============================================================
+// EL DIGEST SETMANAL (BREVO)
+// ============================================================
+
+// ------------------------------------------------------------
+// L'hora que és a París en un moment donat, com a número de 0 a 23.
+// El cron és en UTC i no sap res de l'horari d'estiu; aquesta funció
+// sí, perquè el fus «Europe/Paris» el resol el motor de JavaScript.
+// Torna el número de l'hora.
+// ------------------------------------------------------------
+function horaDeParis(data) {
+  var format = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Paris',
+    hour: '2-digit',
+    hourCycle: 'h23'
+  });
+  return parseInt(format.format(data), 10);
+}
+
+// ------------------------------------------------------------
+// La data que és a París en un moment donat, com a "AAAA-MM-DD". Es
+// munta per parts, i no amb un format sencer, perquè es vegi que
+// l'ordre és any-mes-dia i no cap altre. Torna la cadena.
+// ------------------------------------------------------------
+function dataDeParis(data) {
+  var format = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Paris',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  });
+
+  var parts = format.formatToParts(data);
+  var any = '';
+  var mes = '';
+  var dia = '';
+  for (var i = 0; i < parts.length; i++) {
+    if (parts[i].type === 'year') {
+      any = parts[i].value;
+    }
+    if (parts[i].type === 'month') {
+      mes = parts[i].value;
+    }
+    if (parts[i].type === 'day') {
+      dia = parts[i].value;
+    }
+  }
+  return any + '-' + mes + '-' + dia;
+}
+
+// ------------------------------------------------------------
+// La data "AAAA-MM-DD" que hi haurà d'aquí a tants dies. Tanca la
+// finestra del digest. Es compta a partir de mitjanit UTC perquè el
+// resultat només serveix per comparar-lo amb altres cadenes ISO, i
+// les cadenes ISO s'ordenen igual que les dates. Torna la cadena.
+// ------------------------------------------------------------
+function dataMesDies(dataText, dies) {
+  var milisegonsPerDia = 24 * 60 * 60 * 1000;
+  var inici = new Date(dataText + 'T00:00:00Z');
+  var futur = new Date(inici.getTime() + dies * milisegonsPerDia);
+  return futur.toISOString().slice(0, 10);
+}
+
+// ------------------------------------------------------------
+// El digest de la setmana, de cap a cap: llegeix els actes publicats
+// dels propers dies i, per cada comarca que en tingui, envia un
+// correu a cada subscriptor que encara no l'hagi rebut avui. Llança
+// si no pot llegir events.json o el registre de Brevo; una comarca
+// que falla, en canvi, no atura les altres. No torna res.
+// ------------------------------------------------------------
+async function enviaDigestSetmanal(env, ara) {
+  var apiKey = env.BREVO_API_KEY;
+  if (!apiKey) {
+    throw new Error('falta el secret BREVO_API_KEY.');
+  }
+
+  var avui = dataDeParis(ara);
+  var final = dataMesDies(avui, DIES_FINESTRA);
+  var setmanaText = dataLlegibleCatala(avui);
+
+  var esdeveniments = await llegeixEsdevenimentsDeLaSetmana(env.GITHUB_TOKEN, avui, final);
+  if (esdeveniments.length === 0) {
+    console.log('enviaDigestSetmanal(): cap acte publicat entre ' + avui + ' i ' + final + '. No s\'envia res.');
+    return;
+  }
+
+  // LA GUARDA, abans de tocar cap llista i abans d'enviar res. Si
+  // aquesta lectura peta, la funció sencera peta i no s'envia res:
+  // sense saber a qui ja s'ha enviat, val més quedar-se curt.
+  var jaEnviats = await adrecesJaEnviadesAvui(apiKey, avui);
+
+  var pressupost = MAX_ENVIAMENTS_PER_EXECUCIO;
+  var totalEnviats = 0;
+
+  for (var i = 0; i < COMARQUES_BREVO.length; i++) {
+    var fila = COMARQUES_BREVO[i];
+    var actes = actesDeLaComarca(esdeveniments, fila.comarca);
+    if (actes.length === 0) {
+      continue; // una comarca sense actes aquesta setmana no envia res
+    }
+    if (pressupost <= 0) {
+      console.log('enviaDigestSetmanal(): pressupost exhaurit. La propera despertada continuarà per ' + fila.comarca + '.');
+      break;
+    }
+
+    // Una comarca que peta —un id de llista dolent, Brevo caigut— no
+    // ha d'endur-se el digest de les altres quatre.
+    try {
+      var enviats = await enviaDigestComarca(fila, actes, env, apiKey, jaEnviats, avui, setmanaText, pressupost);
+      pressupost = pressupost - enviats;
+      totalEnviats = totalEnviats + enviats;
+    } catch (error) {
+      console.log('enviaDigestSetmanal(): el digest de ' + fila.comarca + ' ha fallat sencer: ' + error.message);
+    }
+  }
+
+  var totalAvui = jaEnviats.size + totalEnviats;
+  console.log('enviaDigestSetmanal(): ' + totalEnviats + ' correus en aquesta despertada, ' + totalAvui + ' en tot el dia.');
+
+  if (totalAvui >= BREVO_LLINDAR_AVIS) {
+    console.log('enviaDigestSetmanal(): AVÍS — ' + totalAvui + ' correus avui, a prop del sostre gratuït de Brevo (' +
+      BREVO_MAX_DIARI + ' al dia). Convé planificar el pas a campanyes.');
+  }
+}
+
+// ------------------------------------------------------------
+// Els actes d'events.json que ja són publicats i que comencen entre
+// dues dates, totes dues incloses, ordenats per data i hora. Es
+// llegeix SEMPRE per l'API de continguts de GitHub, mai de Pages, que
+// serveix còpies de CDN endarrerides. Cada acte es torna a muntar
+// camp a camp perquè tots els valors siguin cadenes. Torna una
+// llista, potser buida.
+// ------------------------------------------------------------
+async function llegeixEsdevenimentsDeLaSetmana(token, avui, final) {
+  if (!token) {
+    throw new Error('falta el secret GITHUB_TOKEN.');
+  }
+
+  var actual = await llegeixFitxerGitHub(FITXER_EVENTS, token);
+  var tots = actual.dades;
+  if (!Array.isArray(tots)) {
+    throw new Error(FITXER_EVENTS + ' no conté una llista.');
+  }
+
+  var triats = [];
+  for (var i = 0; i < tots.length; i++) {
+    var acte = tots[i];
+
+    if (campText(acte, 'estat') !== 'publicat') {
+      continue;
+    }
+
+    var dataInici = campText(acte, 'data_inici');
+    // Una data buida és "" i queda per sota d'avui: els actes sense
+    // data cauen aquí, que és exactament on han de caure.
+    if (dataInici < avui) {
+      continue;
+    }
+    if (dataInici > final) {
+      continue;
+    }
+
+    triats.push({
+      titol: campText(acte, 'titol'),
+      data_inici: dataInici,
+      data_fi: campText(acte, 'data_fi'),
+      hora: campText(acte, 'hora'),
+      lloc: campText(acte, 'lloc'),
+      municipi: campText(acte, 'municipi'),
+      comarca: campText(acte, 'comarca'),
+      categoria: campText(acte, 'categoria'),
+      descripcio_ca: campText(acte, 'descripcio_ca'),
+      descripcio_fr: campText(acte, 'descripcio_fr'),
+      associacio: campText(acte, 'associacio')
+    });
+  }
+
+  triats.sort(comparaPerDataIHora);
+  return triats;
+}
+
+// ------------------------------------------------------------
+// Comparador per a sort: ordena els actes per data d'inici i, dins
+// del mateix dia, per hora. Tots dos camps són cadenes. Torna un
+// número negatiu, zero o positiu.
+// ------------------------------------------------------------
+function comparaPerDataIHora(a, b) {
+  if (a.data_inici < b.data_inici) {
+    return -1;
+  }
+  if (a.data_inici > b.data_inici) {
+    return 1;
+  }
+  if (a.hora < b.hora) {
+    return -1;
+  }
+  if (a.hora > b.hora) {
+    return 1;
+  }
+  return 0;
+}
+
+// ------------------------------------------------------------
+// Els actes d'una comarca i prou. Un acte amb la comarca buida o
+// desconeguda no surt en cap digest: no hi ha cap llista on posar-lo.
+// Torna una llista, potser buida.
+// ------------------------------------------------------------
+function actesDeLaComarca(esdeveniments, comarca) {
+  var triats = [];
+  for (var i = 0; i < esdeveniments.length; i++) {
+    if (esdeveniments[i].comarca === comarca) {
+      triats.push(esdeveniments[i]);
+    }
+  }
+  return triats;
+}
+
+// ------------------------------------------------------------
+// A qui ja s'ha enviat el digest d'avui, segons el registre
+// d'enviaments del mateix Brevo. Torna un conjunt de claus
+// "etiqueta|adreça": per comarca I per persona, no només per dia.
+// Això és tot el sistema d'idempotència del digest — no hi ha cap
+// altre lloc on es desi estat. LLANÇA si el registre no es pot
+// llegir, i és a posta: qui la crida no ha d'enviar res.
+// ------------------------------------------------------------
+async function adrecesJaEnviadesAvui(apiKey, avui) {
+  var prefix = 'digest-' + avui + '-';
+  var jaEnviats = new Set();
+  var desplacament = 0;
+
+  while (true) {
+    var pagina = await paginaHistorialBrevo(apiKey, avui, desplacament);
+    var correus = pagina.transactionalEmails;
+
+    if (!Array.isArray(correus) || correus.length === 0) {
+      break; // cap enviament més
+    }
+
+    for (var i = 0; i < correus.length; i++) {
+      var correu = correus[i];
+      var etiquetes = correu.tags;
+      if (!Array.isArray(etiquetes)) {
+        continue; // un correu sense etiquetes no és cap digest nostre
+      }
+      for (var j = 0; j < etiquetes.length; j++) {
+        if (etiquetes[j].indexOf(prefix) === 0) {
+          jaEnviats.add(etiquetes[j] + '|' + correu.email);
+        }
+      }
+    }
+
+    // Una pàgina més curta que el màxim vol dir que ja no n'hi ha més.
+    if (correus.length < BREVO_PER_PAGINA) {
+      break;
+    }
+    desplacament = desplacament + BREVO_PER_PAGINA;
+  }
+
+  return jaEnviats;
+}
+
+// ------------------------------------------------------------
+// UNA pàgina del registre d'enviaments d'avui. Un 204 vol dir «cap
+// enviament» i Brevo el respon amb el cos buit: es tracta com una
+// pàgina buida i prou. Llança en qualsevol altre error. Torna
+// l'objecte de la resposta, que porta .transactionalEmails.
+// ------------------------------------------------------------
+async function paginaHistorialBrevo(apiKey, avui, desplacament) {
+  var url = BREVO_HISTORIAL_URL +
+    '?startDate=' + avui +
+    '&endDate=' + avui +
+    '&limit=' + BREVO_PER_PAGINA +
+    '&offset=' + desplacament;
+
+  var resposta = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'api-key': apiKey,
+      'accept': 'application/json'
+    }
+  });
+
+  if (resposta.status === 204) {
+    return { transactionalEmails: [] };
+  }
+  if (!resposta.ok) {
+    var detall = await resposta.text();
+    throw new Error('Brevo (registre d\'enviaments) ha respost amb codi ' + resposta.status + '. ' + detall);
+  }
+
+  var text = await resposta.text();
+  if (text.trim() === '') {
+    return { transactionalEmails: [] };
+  }
+  return JSON.parse(text);
+}
+
+// ------------------------------------------------------------
+// El digest d'UNA comarca: busca l'id de la llista, es baixa els
+// contactes, munta el correu UN SOL COP i l'envia a qui encara no
+// l'ha rebut avui. Torna quants correus ha enviat. Llança si la
+// configuració de la comarca és dolenta o si no pot llegir la
+// llista; un destinatari que falla, en canvi, només es registra.
+// ------------------------------------------------------------
+async function enviaDigestComarca(fila, actes, env, apiKey, jaEnviats, avui, setmanaText, pressupost) {
+  var llistaId = idDeLlistaBrevo(env, fila);
+  var etiqueta = 'digest-' + avui + '-' + fila.etiqueta;
+  var assumpte = construeixAssumpte(fila.comarca, setmanaText);
+  var html = construeixHtmlDigest(fila.comarca, actes, setmanaText);
+
+  var destinataris = await contactesDeLlista(llistaId, apiKey);
+  var enviats = 0;
+  var saltats = 0;
+
+  for (var i = 0; i < destinataris.length; i++) {
+    var adreca = destinataris[i];
+
+    // La guarda: aquesta persona ja té el digest d'avui d'aquesta
+    // comarca. Se salta sense gastar cap subpetició.
+    if (jaEnviats.has(etiqueta + '|' + adreca)) {
+      saltats = saltats + 1;
+      continue;
+    }
+
+    if (enviats >= pressupost) {
+      console.log('enviaDigestComarca(): ' + fila.comarca + ' s\'atura al pressupost d\'aquesta despertada; la següent continuarà.');
+      break;
+    }
+
+    // Un destinatari que falla no ha d'aturar la resta de la llista.
+    try {
+      await enviaCorreuTransaccional(apiKey, adreca, assumpte, html, etiqueta);
+      enviats = enviats + 1;
+    } catch (error) {
+      console.log('enviaDigestComarca(): un contacte de ' + fila.comarca + ' no ha rebut el digest: ' + error.message);
+    }
+    await dorm(PAUSA_ENTRE_CORREUS_MS);
+  }
+
+  console.log('enviaDigestComarca(): ' + fila.comarca + ' — ' + destinataris.length + ' contactes, ' +
+    enviats + ' enviats, ' + saltats + ' ja el tenien.');
+  return enviats;
+}
+
+// ------------------------------------------------------------
+// L'id de la llista de Brevo d'una comarca, llegit del seu Secret.
+// Llança amb un missatge clar si el Secret falta o no és un número:
+// una configuració dolenta ha de petar aquí, i no més endins, dins
+// d'una URL estranya. El valor no surt mai al missatge d'error.
+// Torna l'id com a cadena.
+// ------------------------------------------------------------
+function idDeLlistaBrevo(env, fila) {
+  var valor = env[fila.secret];
+  if (!valor) {
+    throw new Error('falta el secret ' + fila.secret + ' (l\'id de la llista de ' + fila.comarca + ').');
+  }
+  if (!/^[0-9]+$/.test(valor)) {
+    throw new Error('el secret ' + fila.secret + ' ha de ser un número: és l\'id de la llista de Brevo.');
+  }
+  return valor;
+}
+
+// ------------------------------------------------------------
+// Totes les adreces d'una llista de Brevo, pàgina a pàgina. Els
+// contactes que Brevo té a la llista negra —baixes i rebots— no hi
+// surten. Torna una llista d'adreces, potser buida. Llança si l'API
+// falla.
+// ------------------------------------------------------------
+async function contactesDeLlista(llistaId, apiKey) {
+  var adreces = [];
+  var desplacament = 0;
+
+  while (true) {
+    var pagina = await paginaContactesBrevo(llistaId, apiKey, desplacament);
+    var contactes = pagina.contacts;
+
+    if (!Array.isArray(contactes) || contactes.length === 0) {
+      break; // cap contacte més
+    }
+
+    for (var i = 0; i < contactes.length; i++) {
+      var contacte = contactes[i];
+      if (contacte.emailBlacklisted === true) {
+        continue; // es respecten les baixes i els rebots
+      }
+      if (contacte.email) {
+        adreces.push(contacte.email);
+      }
+    }
+
+    if (contactes.length < BREVO_PER_PAGINA) {
+      break;
+    }
+    desplacament = desplacament + BREVO_PER_PAGINA;
+  }
+
+  return adreces;
+}
+
+// ------------------------------------------------------------
+// UNA pàgina de contactes d'una llista. Com el registre: un 204 és
+// una llista buida, no un error. Llança en qualsevol altre cas.
+// Torna l'objecte de la resposta, que porta .contacts.
+// ------------------------------------------------------------
+async function paginaContactesBrevo(llistaId, apiKey, desplacament) {
+  var url = BREVO_CONTACTES_URL + llistaId + '/contacts' +
+    '?limit=' + BREVO_PER_PAGINA + '&offset=' + desplacament;
+
+  var resposta = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'api-key': apiKey,
+      'accept': 'application/json'
+    }
+  });
+
+  if (resposta.status === 204) {
+    return { contacts: [] };
+  }
+  if (!resposta.ok) {
+    var detall = await resposta.text();
+    throw new Error('Brevo (contactes de la llista ' + llistaId + ') ha respost amb codi ' + resposta.status + '. ' + detall);
+  }
+
+  var text = await resposta.text();
+  if (text.trim() === '') {
+    return { contacts: [] };
+  }
+  return JSON.parse(text);
+}
+
+// ------------------------------------------------------------
+// UN correu transaccional a UNA adreça. Mai cap campanya, i mai
+// diverses adreces al mateix correu: així ningú no veu l'adreça de
+// ningú. L'etiqueta és el que després permetrà saber que aquesta
+// persona ja té el digest d'avui. La clau només viatja a la
+// capçalera. No torna res; llança si Brevo no l'accepta.
+// ------------------------------------------------------------
+async function enviaCorreuTransaccional(apiKey, adreca, assumpte, html, etiqueta) {
+  var cos = {
+    sender: { name: DIGEST_REMITENT_NOM, email: DIGEST_REMITENT_EMAIL },
+    to: [ { email: adreca } ],
+    replyTo: { email: DIGEST_ADRECA_BAIXA },
+    subject: assumpte,
+    htmlContent: html,
+    tags: [ etiqueta ],
+    headers: {
+      'List-Unsubscribe': '<mailto:' + DIGEST_ADRECA_BAIXA + '?subject=baixa>'
+    }
+  };
+
+  var resposta = await fetch(BREVO_ENVIA_URL, {
+    method: 'POST',
+    headers: {
+      'api-key': apiKey,
+      'accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(cos)
+  });
+
+  if (resposta.status !== 201 && resposta.status !== 202) {
+    var detall = await resposta.text();
+    throw new Error('Brevo (enviament) ha respost amb codi ' + resposta.status + '. ' + detall);
+  }
+}
+
+// ------------------------------------------------------------
+// Espera els mil·lisegons que se li diguin. Serveix per no engegar
+// els correus l'un darrere l'altre sense respirar.
+// ------------------------------------------------------------
+function dorm(milisegons) {
+  return new Promise(function (resol) {
+    setTimeout(resol, milisegons);
+  });
+}
+
+// ------------------------------------------------------------
+// El digest de PROVA. Munta el digest de debò a partir d'events.json
+// però l'envia NOMÉS a l'adreça d'arxiu —la del propietari— i amb
+// una etiqueta de prova, de manera que no consulta ni embruta la
+// guarda del digest real. Serveix per provar la Fase 3b qualsevol
+// dia i a qualsevol hora, sense esperar el dimarts a les tres.
+// El cos pot dur { "comarca": "Vallespir" }; si no en duu cap, envia
+// una mostra de cada comarca que tingui actes. Torna la Response.
+// ------------------------------------------------------------
+async function respostaDigestDeProva(request, env) {
+  var adreca = env.ADRECA_ARXIU;
+  if (!adreca) {
+    console.log('respostaDigestDeProva(): falta la variable ADRECA_ARXIU; no sé on enviar la prova.');
+    return respostaJson(500, { ok: false, error: 'falta ADRECA_ARXIU' });
+  }
+
+  var apiKey = env.BREVO_API_KEY;
+  if (!apiKey) {
+    console.log('respostaDigestDeProva(): falta el secret BREVO_API_KEY.');
+    return respostaJson(500, { ok: false, error: 'falta BREVO_API_KEY' });
+  }
+
+  // El cos és opcional: un cos buit vol dir «totes les comarques».
+  var comarcaDemanada = '';
+  try {
+    var cos = await request.json();
+    if (cos !== null && typeof cos === 'object' && !Array.isArray(cos)) {
+      comarcaDemanada = campText(cos, 'comarca');
+    }
+  } catch (error) {
+    comarcaDemanada = '';
+  }
+
+  var ara = new Date();
+  var avui = dataDeParis(ara);
+  var final = dataMesDies(avui, DIES_FINESTRA);
+  var setmanaText = dataLlegibleCatala(avui);
+
+  var esdeveniments = null;
+  try {
+    esdeveniments = await llegeixEsdevenimentsDeLaSetmana(env.GITHUB_TOKEN, avui, final);
+  } catch (error) {
+    console.log('respostaDigestDeProva(): no he pogut llegir ' + FITXER_EVENTS + ': ' + error.message);
+    return respostaJson(500, { ok: false, error: 'no he pogut llegir ' + FITXER_EVENTS });
+  }
+
+  var enviats = 0;
+  var comarques = [];
+
+  for (var i = 0; i < COMARQUES_BREVO.length; i++) {
+    var fila = COMARQUES_BREVO[i];
+    if (comarcaDemanada !== '' && comarcaDemanada !== fila.comarca) {
+      continue;
+    }
+
+    var actes = actesDeLaComarca(esdeveniments, fila.comarca);
+    if (actes.length === 0) {
+      continue;
+    }
+
+    var assumpte = '[PROVA] ' + construeixAssumpte(fila.comarca, setmanaText);
+    var html = construeixHtmlDigest(fila.comarca, actes, setmanaText);
+
+    try {
+      await enviaCorreuTransaccional(apiKey, adreca, assumpte, html, 'digest-prova-' + avui);
+      enviats = enviats + 1;
+      comarques.push(fila.comarca);
+    } catch (error) {
+      console.log('respostaDigestDeProva(): la prova de ' + fila.comarca + ' ha fallat: ' + error.message);
+    }
+  }
+
+  console.log('respostaDigestDeProva(): ' + enviats + ' correus de prova a l\'adreça d\'arxiu. Finestra ' + avui + ' … ' + final + '.');
+  return respostaJson(200, {
+    ok: true,
+    finestra: avui + ' … ' + final,
+    actes: esdeveniments.length,
+    enviats: enviats,
+    comarques: comarques
+  });
+}
+
+// ============================================================
+// L'HTML DEL DIGEST
+//
+// La meitat PURA del digest: només munta text i dates, i no crida
+// cap API. És el mateix disseny que ja estava aprovat a l'Apps
+// Script (docs/arxiu-google/digestHtml.gs): targeta blanca sobre fons
+// clar, actes agrupats per dia sota una capçalera amb un punt
+// daurat, el vermell només a l'hora i al «Fins al…», la categoria
+// com una etiqueta negra. Taules i estils en línia, sense fonts
+// externes ni imatges, perquè es vegi bé a tots els clients de
+// correu — que és per què aquí NO hi ha ni Fraunces ni Montserrat.
+// ============================================================
+
+// --- Els colors del web («sang i or» només com a accent) ---
+var COLOR_TINTA = '#1a1a1a';        // quasi negre: títols i capçaleres de dia
+var COLOR_TINTA_SUAU = '#6f6862';   // tinta apagada: francès i text secundari
+var COLOR_ACCENT = '#b5121b';       // vermell: només data i hora
+var COLOR_OR = '#fcdd09';           // or: només el punt del dia
+var COLOR_VORA = '#e7e4df';         // filets i vora de la targeta
+var COLOR_VORA_SUAU = '#f0ede7';    // separador entre actes
+var COLOR_FONS = '#f2f1ed';         // fons de la pàgina, darrere la targeta
+
+// --- Els noms dels mesos i dels dies, idèntics als del web ---
+var MESOS_CATALA = [
+  'gener', 'febrer', 'març', 'abril', 'maig', 'juny',
+  'juliol', 'agost', 'setembre', 'octubre', 'novembre', 'desembre'
+];
+var MESOS_FRANCES = [
+  'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+  'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'
+];
+var DIES_CATALA = ['Diumenge', 'Dilluns', 'Dimarts', 'Dimecres', 'Dijous', 'Divendres', 'Dissabte'];
+var DIES_FRANCES = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+
+// ------------------------------------------------------------
+// L'assumpte del digest d'una comarca, en el format acordat:
+// «Agenda cultural — [Comarca] — setmana del [data]». Torna la línia.
+// ------------------------------------------------------------
+function construeixAssumpte(comarca, setmanaText) {
+  return 'Agenda cultural — ' + comarca + ' — setmana del ' + setmanaText;
+}
+
+// ------------------------------------------------------------
+// L'HTML sencer del correu d'una comarca: una targeta blanca amb la
+// capçalera, els actes agrupats per dia i el peu de baixa. Torna la
+// cadena d'HTML.
+// ------------------------------------------------------------
+function construeixHtmlDigest(comarca, esdeveniments, setmanaText) {
+  var contextLinia = escapaHtml(comarca + ' · setmana del ' + setmanaText);
+
+  var cos = '';
+  var diaAnterior = '';
+  for (var i = 0; i < esdeveniments.length; i++) {
+    var esdeveniment = esdeveniments[i];
+    if (esdeveniment.data_inici !== diaAnterior) {
+      cos = cos + construeixCapcaleraDia(esdeveniment.data_inici);
+      diaAnterior = esdeveniment.data_inici;
+    }
+    cos = cos + construeixBlocEsdeveniment(esdeveniment);
+  }
+
+  var peu = construeixPeuBaixa();
+
+  var html =
+    '<!DOCTYPE html>' +
+    '<html lang="ca"><head><meta charset="utf-8">' +
+    '<meta name="viewport" content="width=device-width, initial-scale=1"></head>' +
+    '<body style="margin:0;padding:0;background-color:' + COLOR_FONS + ';">' +
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:' + COLOR_FONS + ';">' +
+    '<tr><td align="center" style="padding:16px;">' +
+    '<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background-color:#ffffff;border:1px solid ' + COLOR_VORA + ';">' +
+    '<tr><td style="padding:24px 26px 16px;border-bottom:1px solid ' + COLOR_VORA + ';">' +
+    '<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:15px;color:' + COLOR_TINTA + ';letter-spacing:0.02em;">Agenda cultural</div>' +
+    '<div style="font-family:Georgia,\'Times New Roman\',serif;font-weight:bold;font-size:23px;color:' + COLOR_TINTA + ';line-height:1.1;">Catalunya Nord</div>' +
+    '<div lang="fr" style="font-family:Georgia,\'Times New Roman\',serif;font-style:italic;font-size:12px;color:' + COLOR_TINTA_SUAU + ';padding-top:4px;">Agenda culturel — Catalogne Nord</div>' +
+    '<div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:' + COLOR_TINTA_SUAU + ';padding-top:8px;">' + contextLinia + '</div>' +
+    '</td></tr>' +
+    '<tr><td style="padding:0 26px 6px;">' + cos + '</td></tr>' +
+    '<tr><td style="padding:16px 26px 24px;border-top:1px solid ' + COLOR_VORA + ';">' + peu + '</td></tr>' +
+    '</table></td></tr></table></body></html>';
+
+  return html;
+}
+
+// ------------------------------------------------------------
+// La capçalera d'un dia, «30 Juny, Dimarts · 30 Juin, Mardi», amb el
+// punt daurat, igual que al web. Català primer, francès en cursiva.
+// Torna la cadena d'HTML.
+// ------------------------------------------------------------
+function construeixCapcaleraDia(dataText) {
+  var data = objecteDataDe(dataText);
+  var textCa;
+  var textFr;
+  if (data === null) {
+    textCa = dataText;
+    textFr = '';
+  } else {
+    textCa = etiquetaDiaCatala(data);
+    textFr = etiquetaDiaFrances(data);
+  }
+
+  var punt = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background-color:' + COLOR_OR + ';margin-right:8px;vertical-align:middle;"></span>';
+
+  var html =
+    '<div style="border-bottom:1px solid ' + COLOR_VORA + ';padding-bottom:6px;margin:22px 0 10px;">' +
+    punt +
+    '<span style="font-family:Georgia,\'Times New Roman\',serif;font-weight:bold;font-size:15px;color:' + COLOR_TINTA + ';vertical-align:middle;">' + escapaHtml(textCa) + '</span>';
+  if (textFr !== '') {
+    html = html + '<span lang="fr" style="font-family:Georgia,\'Times New Roman\',serif;font-style:italic;font-size:13px;color:' + COLOR_TINTA_SUAU + ';vertical-align:middle;"> · ' + escapaHtml(textFr) + '</span>';
+  }
+  html = html + '</div>';
+  return html;
+}
+
+// ------------------------------------------------------------
+// El bloc d'UN acte: l'etiqueta negra de categoria, el títol, la
+// línia de dades (hora i «Fins al…» en vermell, més el lloc), la
+// descripció catalana, la francesa en cursiva i qui l'organitza.
+// Tot valor dinàmic passa per escapaHtml. Torna la cadena d'HTML.
+// ------------------------------------------------------------
+function construeixBlocEsdeveniment(esdeveniment) {
+  var xipCategoria = construeixXipCategoria(esdeveniment.categoria);
+  var titol = escapaHtml(esdeveniment.titol);
+  var meta = construeixMeta(esdeveniment);
+  var descCa = escapaHtml(esdeveniment.descripcio_ca);
+  var descFr = escapaHtml(esdeveniment.descripcio_fr);
+  var associacio = esdeveniment.associacio;
+
+  var bloc =
+    '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-bottom:1px solid ' + COLOR_VORA_SUAU + ';">' +
+    '<tr><td style="padding:14px 0;">';
+
+  if (xipCategoria !== '') {
+    bloc = bloc + '<div style="padding-bottom:8px;">' + xipCategoria + '</div>';
+  }
+
+  bloc = bloc + '<div style="font-family:Georgia,\'Times New Roman\',serif;font-weight:bold;font-size:17px;line-height:1.25;color:' + COLOR_TINTA + ';">' + titol + '</div>';
+
+  if (meta !== '') {
+    bloc = bloc + '<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:' + COLOR_TINTA_SUAU + ';padding-top:6px;">' + meta + '</div>';
+  }
+  if (descCa !== '') {
+    bloc = bloc + '<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:' + COLOR_TINTA + ';padding-top:8px;line-height:1.5;">' + descCa + '</div>';
+  }
+  if (descFr !== '') {
+    bloc = bloc + '<div lang="fr" style="font-family:Georgia,\'Times New Roman\',serif;font-style:italic;font-size:13px;color:' + COLOR_TINTA_SUAU + ';padding-top:4px;line-height:1.5;">' + descFr + '</div>';
+  }
+  if (associacio !== '') {
+    bloc = bloc + '<div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:' + COLOR_TINTA_SUAU + ';padding-top:6px;">Organitza · Organise : ' + escapaHtml(associacio) + '</div>';
+  }
+
+  bloc = bloc + '</td></tr></table>';
+  return bloc;
+}
+
+// ------------------------------------------------------------
+// L'etiqueta negra amb el nom de la categoria, o "" si l'acte no en
+// té cap. Torna la cadena d'HTML.
+// ------------------------------------------------------------
+function construeixXipCategoria(categoria) {
+  if (categoria === '') {
+    return '';
+  }
+  var text = escapaHtml(categoria);
+  return '<span style="display:inline-block;background-color:' + COLOR_TINTA + ';color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;">' + text + '</span>';
+}
+
+// ------------------------------------------------------------
+// La línia de dades d'un acte: l'hora («18:30 h», en vermell), el
+// lloc i el municipi, i per als actes de més d'un dia el «Fins al…
+// · Jusqu'au…» (també en vermell). Les parts s'uneixen amb « · ».
+// Torna la línia, o "" si no hi ha res a dir.
+// ------------------------------------------------------------
+function construeixMeta(esdeveniment) {
+  var parts = [];
+
+  if (esdeveniment.hora !== '') {
+    parts.push(spanAccent(esdeveniment.hora + ' h'));
+  }
+
+  var lloc = textLloc(esdeveniment);
+  if (lloc !== '') {
+    parts.push(escapaHtml(lloc));
+  }
+
+  if (esdeveniment.data_fi !== '' && esdeveniment.data_fi !== esdeveniment.data_inici) {
+    var fins = finsAl(esdeveniment.data_fi);
+    if (fins !== '') {
+      parts.push(spanAccent(fins));
+    }
+  }
+
+  if (parts.length === 0) {
+    return '';
+  }
+  return parts.join(' · ');
+}
+
+// ------------------------------------------------------------
+// Embolcalla un tros de text amb el vermell d'accent, en negreta.
+// El text s'escapa aquí dins. Torna la cadena d'HTML.
+// ------------------------------------------------------------
+function spanAccent(text) {
+  return '<span style="color:' + COLOR_ACCENT + ';font-weight:bold;">' + escapaHtml(text) + '</span>';
+}
+
+// ------------------------------------------------------------
+// El lloc de l'acte com a text: «lloc, municipi», només un dels dos,
+// o "" si no se'n sap cap. Torna text CRU, sense escapar: qui la
+// crida ja l'escapa.
+// ------------------------------------------------------------
+function textLloc(esdeveniment) {
+  var lloc = esdeveniment.lloc;
+  var municipi = esdeveniment.municipi;
+  if (lloc !== '' && municipi !== '') {
+    return lloc + ', ' + municipi;
+  }
+  if (lloc !== '') {
+    return lloc;
+  }
+  if (municipi !== '') {
+    return municipi;
+  }
+  return '';
+}
+
+// ------------------------------------------------------------
+// El «Fins al … · Jusqu'au …» d'una data de fi, amb les
+// contraccions catalanes correctes (a l'1, al 20, d'agost) i el
+// «1er» francès, com al web. Torna "" si la data no és bona.
+// ------------------------------------------------------------
+function finsAl(dataText) {
+  var data = objecteDataDe(dataText);
+  if (data === null) {
+    return '';
+  }
+  var dia = data.getDate();
+  var mesCa = MESOS_CATALA[data.getMonth()];
+  var mesFr = MESOS_FRANCES[data.getMonth()];
+
+  var diaCa;
+  if (dia === 1 || dia === 11) {
+    diaCa = 'a l’' + dia;
+  } else {
+    diaCa = 'al ' + dia;
+  }
+
+  var prepMes;
+  if (comencaAmbVocal(mesCa)) {
+    prepMes = 'd’';
+  } else {
+    prepMes = 'de ';
+  }
+
+  var ca = 'Fins ' + diaCa + ' ' + prepMes + mesCa;
+
+  var diaFr;
+  if (dia === 1) {
+    diaFr = '1er';
+  } else {
+    diaFr = String(dia);
+  }
+
+  return ca + ' · Jusqu’au ' + diaFr + ' ' + mesFr;
+}
+
+// ------------------------------------------------------------
+// Cert si una paraula comença per vocal, per triar entre «de» i «d'».
+// ------------------------------------------------------------
+function comencaAmbVocal(paraula) {
+  return 'aeiouàéèíòóú'.indexOf(paraula.charAt(0)) !== -1;
+}
+
+// ------------------------------------------------------------
+// Converteix "AAAA-MM-DD" en un objecte Date, només per llegir-ne el
+// dia del mes i el dia de la setmana. Torna null si el format no és
+// bo.
+// ------------------------------------------------------------
+function objecteDataDe(dataText) {
+  if (dataText === '') {
+    return null;
+  }
+  var parts = dataText.split('-');
+  if (parts.length !== 3) {
+    return null;
+  }
+  var any = parseInt(parts[0], 10);
+  var mes = parseInt(parts[1], 10);
+  var dia = parseInt(parts[2], 10);
+  if (isNaN(any) || isNaN(mes) || isNaN(dia) || mes < 1 || mes > 12 || dia < 1 || dia > 31) {
+    return null;
+  }
+  return new Date(any, mes - 1, dia);
+}
+
+// ------------------------------------------------------------
+// L'etiqueta catalana d'un dia: «30 Juny, Dimarts».
+// ------------------------------------------------------------
+function etiquetaDiaCatala(data) {
+  return data.getDate() + ' ' + majuscula(MESOS_CATALA[data.getMonth()]) + ', ' + DIES_CATALA[data.getDay()];
+}
+
+// ------------------------------------------------------------
+// L'etiqueta francesa d'un dia: «30 Juin, Mardi» («1er» el dia u).
+// ------------------------------------------------------------
+function etiquetaDiaFrances(data) {
+  var dia = data.getDate();
+  var diaFr;
+  if (dia === 1) {
+    diaFr = '1er';
+  } else {
+    diaFr = String(dia);
+  }
+  return diaFr + ' ' + majuscula(MESOS_FRANCES[data.getMonth()]) + ', ' + DIES_FRANCES[data.getDay()];
+}
+
+// ------------------------------------------------------------
+// La paraula amb la primera lletra en majúscula.
+// ------------------------------------------------------------
+function majuscula(paraula) {
+  if (paraula === '') {
+    return '';
+  }
+  return paraula.charAt(0).toUpperCase() + paraula.slice(1);
+}
+
+// ------------------------------------------------------------
+// El peu del correu: l'enllaç al web i la nota de baixa bilingüe.
+// Brevo NO afegeix cap enllaç de baixa als correus transaccionals,
+// així que la nota hi ha de ser sempre, a tots els missatges. Les
+// baixes van a contacte@clm.cat i no a agenda@clm.cat: agenda@ el
+// llegeix el gestor email() d'aquest mateix Worker, i una petició de
+// baixa hi entraria com una fila nova a la cua del curador.
+// Torna la cadena d'HTML.
+// ------------------------------------------------------------
+function construeixPeuBaixa() {
+  var enllac =
+    '<div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;padding-bottom:10px;">' +
+    '<a href="' + escapaHtml(AGENDA_URL) + '" style="color:' + COLOR_ACCENT + ';font-weight:bold;text-decoration:none;">Veure tota l’agenda · Voir tout l’agenda</a>' +
+    '</div>';
+
+  var text =
+    'Reps aquest correu perquè estàs subscrit/a a l’agenda cultural de la Catalunya Nord. ' +
+    'Per donar-te de baixa, respon a aquest correu amb la paraula «baixa» o escriu a ' +
+    escapaHtml(DIGEST_ADRECA_BAIXA) + '.' +
+    '<br><span style="font-style:italic;">' +
+    'Vous recevez ce message car vous êtes abonné·e à l’agenda culturel de Catalogne Nord. ' +
+    'Pour vous désabonner, répondez « baixa » à ce courriel ou écrivez à ' +
+    escapaHtml(DIGEST_ADRECA_BAIXA) + '.' +
+    '</span>';
+
+  return enllac + '<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:' + COLOR_TINTA_SUAU + ';line-height:1.5;">' + text + '</div>';
+}
+
+// ------------------------------------------------------------
+// Converteix "2026-09-14" en «14 de setembre de 2026». Serveix per
+// a la línia d'assumpte. Torna "" si la data és buida o dolenta.
+// ------------------------------------------------------------
+function dataLlegibleCatala(dataText) {
+  var data = objecteDataDe(dataText);
+  if (data === null) {
+    return '';
+  }
+  var dia = data.getDate();
+  var mesNom = MESOS_CATALA[data.getMonth()];
+  var any = data.getFullYear();
+
+  var preposicio;
+  if (comencaAmbVocal(mesNom)) {
+    preposicio = 'd’';
+  } else {
+    preposicio = 'de ';
+  }
+  return dia + ' ' + preposicio + mesNom + ' de ' + any;
+}
+
+// ------------------------------------------------------------
+// El text amb els caràcters especials de l'HTML convertits en
+// entitats. El contingut dels actes ve de fora —correus
+// d'associacions, formularis— i no pot injectar mai marcatge dins
+// del correu. Torna "" si no hi ha res.
+// ------------------------------------------------------------
+function escapaHtml(text) {
+  if (text === null || text === undefined) {
+    return '';
+  }
+  var resultat = String(text);
+  resultat = resultat.replace(/&/g, '&amp;');
+  resultat = resultat.replace(/</g, '&lt;');
+  resultat = resultat.replace(/>/g, '&gt;');
+  resultat = resultat.replace(/"/g, '&quot;');
+  resultat = resultat.replace(/'/g, '&#39;');
+  return resultat;
 }

@@ -60,7 +60,7 @@ res, i els canvis de configuració sí.
 
 ## 3. Els secrets i les variables
 
-El Worker necessita quatre valors, i **al camí de Git no van tots al mateix
+El Worker necessita cinc valors, i **al camí de Git no van tots al mateix
 lloc**. La regla és una i té una raó mecànica:
 
 > `npx wrangler deploy` **esborra les variables de text posades al tauler** cada
@@ -70,7 +70,7 @@ lloc**. La regla és una i té una raó mecànica:
 > desapareixeria a la primera construcció, i te n'adonaries dies després, quan
 > un cartell no pugés.
 
-**Tres Secrets, al tauler.** Worker → **Settings** → **Variables and Secrets**,
+**Quatre Secrets, al tauler.** Worker → **Settings** → **Variables and Secrets**,
 tipus **Secret**. No surten mai del tauler: ni al codi, ni a `wrangler.jsonc`,
 ni a Git.
 
@@ -79,6 +79,7 @@ ni a Git.
 | `GEMINI_API_KEY` | La clau d'AI Studio |
 | `GITHUB_TOKEN` | Token de gra fi, **només** el repositori `agenda-catalogne-nord`, permís únic `Contents: Read and write` |
 | `ADRECA_ARXIU` | El Gmail d'arxiu. **Ha de ser una destinació verificada** a l'Email Routing, si no el reenviament falla |
+| `TYPEBOT_SECRET` | El secret compartit del webhook del formulari. No el fa servir el camí del correu: és de la Fase 3a, i el procediment és a `docs/pas-fase3a-worker-formulari.md` |
 
 `ADRECA_ARXIU` és Secret tot i que una adreça de correu no és cap contrasenya:
 aquest repositori és públic, i l'adreça personal del propietari no hi ha de

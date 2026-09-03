@@ -1,5 +1,20 @@
 # Agenda Catalunya Nord — Technical Knowledge Base
 
+> **⚠ Anterior al tall de cinta — no descriu el sistema viu.**
+> Aquest document explica l'arquitectura de Google Sheets + Apps Script, retirada
+> el **29 d'agost de 2026** (Fase 4). Es conserva com a registre històric.
+>
+> **L'arquitectura vigent és un únic Worker de Cloudflare** (`email()`,
+> `fetch()`, `scheduled()`) amb `pendents.json`, `events.json` i
+> `curador.html`. La font de veritat és `CLAUDE.md` (la constitució),
+> `FASES.md` (l'estat de cada fase) i `README.md` (el runbook). El codi
+> `.gs` mort és a `docs/arxiu-google/`.
+>
+> No et refiïs de res del que ve a sota sense contrastar-ho amb `CLAUDE.md`.
+>
+> Les capes que no depenen de Google (HTML/CSS/JS vanilla, GitHub Pages, Cloudinary, Brevo, tipografia, disseny) segueixen sent vàlides; la capa de servidor, no.
+
+
 **Purpose of this document.** A reference for every technology, language, tool, service, methodology, and design decision used to build the Agenda Catalunya Nord project. It is structured for three uses: (1) a human learning roadmap, layer by layer; (2) ingestion into NotebookLM for contextual Q&A; (3) generation of audio overviews and podcasts. Each section names the technology, explains exactly what role it plays in this project, identifies what you need to understand to work on that layer, and points to the best books and resources to learn more.
 
 *Last updated: June 2026.*
@@ -175,7 +190,7 @@ The curator changes the `estat` dropdown of each pending row to either `publicat
 **Key technical decisions.**
 - **Unsigned upload preset.** The upload preset (`agenda-posters`) is configured as "unsigned". This means the upload API call requires no secret signature — just the cloud name and the preset name. This simplifies the Apps Script code (no HMAC signature computation) and means the `CLOUDINARY_API_SECRET` is never needed at upload time.
 - **Incoming transformation.** The preset applies `w_800,c_limit,q_80,f_webp` on upload. Every poster is automatically converted to WebP format, capped at 800px wide, and compressed to 80% quality before being stored. This means lightweight, fast-loading images regardless of what the original file looks like.
-- **Folder structure.** All posters land in `agenda-nord/posters/` in the Cloudinary account.
+- **Folder structure.** All posters land in `clm-agenda/posters/` in the Cloudinary account.
 - **Images are never in Git.** Storing binary files in Git would bloat the repository. Cloudinary separates media storage from code storage cleanly.
 
 **What you need to understand.**
