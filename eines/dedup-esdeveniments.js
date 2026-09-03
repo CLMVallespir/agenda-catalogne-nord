@@ -461,12 +461,14 @@ function fusionaFiles(candidatA, candidatB) {
     fusionada[camp] = valor;
   }
 
-  // Els camps que omple el sistema no els decideix la jerarquia de fonts:
-  // vénen de la fila que ja existia, perquè són la seva història, no
-  // informació sobre l'acte.
+  // La data d'entrada no la decideix la jerarquia de fonts: vé de la fila que
+  // ja existia, perquè és la seva història, no informació sobre l'acte.
   var primera = filaMesAntiga(filaA, filaB);
-  fusionada.estat = cadena(primera.estat);
   fusionada.data_entrada = cadena(primera.data_entrada);
+
+  // L'estat, en canvi, no el decideix cap posició —ni l'ordre dels arguments
+  // ni qui va entrar abans—: el decideix la precedència de resolEstat().
+  fusionada.estat = resolEstat(filaA.estat, filaB.estat);
 
   // La nota del curador és l'excepció a la regla de «mana el rang més alt»:
   // no és informació sobre l'acte, és el que algú ha d'anar a mirar. Quedar-se
@@ -499,6 +501,44 @@ function ajuntaNotes(notaA, notaB) {
   }
 
   return a + ' ' + b;
+}
+
+// ------------------------------------------------------------
+// L'estat d'una fila fusionada, per precedència i no per posició: els dos
+// estats decidits per una persona guanyen el que encara no s'ha decidit, i ho
+// fan vingui la fila del costat que vingui i tant se val quina va entrar
+// abans.
+// ------------------------------------------------------------
+function resolEstat(estatA, estatB) {
+  var a = cadena(estatA);
+  var b = cadena(estatB);
+
+  // La precedència, de més forta a més fluixa, en una sola llista.
+  //
+  //   'publicat'  un esdeveniment publicat ja ha passat el filtre humà, i cap
+  //               fusió automàtica no pot revertir-ho. Hi arriba el dia que es
+  //               dedupliqui contra events.json (docs/HANDOFF-ADT66.md §4).
+  //   'rebutjat'  un rebuig és una decisió sobre l'ESDEVENIMENT i no sobre la
+  //               fila que el porta: ha de sobreviure la fusió, o la memòria de
+  //               rebuig es perd i el curador torna a revisar el que ja havia
+  //               dit que no.
+  //   'pendent'   ningú no ha decidit res encara: és el que cedeix.
+  if (a === 'publicat' || b === 'publicat') {
+    return 'publicat';
+  }
+  if (a === 'rebutjat' || b === 'rebutjat') {
+    return 'rebutjat';
+  }
+  if (a === 'pendent' || b === 'pendent') {
+    return 'pendent';
+  }
+
+  // Cap dels dos no és cap dels tres estats coneguts: no s'inventa res, es
+  // queda el primer que digui alguna cosa.
+  if (a !== '') {
+    return a;
+  }
+  return b;
 }
 
 // ------------------------------------------------------------
@@ -770,6 +810,139 @@ function casosDeProva() {
       },
       espera: 'mateix-esdeveniment',
       esperaNota: 'Cal traduir el títol. La categoria no té equivalent.'
+    },
+    {
+      nom: 'Fusió: «publicat» guanya «rebutjat», publicada primera',
+      a: {
+        fila: filaDeProva('Fira del llibre', '2026-11-21', 'Ceret', {
+          estat: 'publicat',
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Fira del llibre a Ceret', '2026-11-21', 'Céret', {
+          estat: 'rebutjat',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaEstat: 'publicat'
+    },
+    {
+      nom: 'Fusió: «publicat» guanya «rebutjat», publicada segona',
+      a: {
+        fila: filaDeProva('Fira del llibre', '2026-11-21', 'Ceret', {
+          estat: 'rebutjat',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Fira del llibre a Ceret', '2026-11-21', 'Céret', {
+          estat: 'publicat',
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaEstat: 'publicat'
+    },
+    {
+      nom: 'Fusió: «publicat» guanya «pendent», publicada primera',
+      a: {
+        fila: filaDeProva('Fira del llibre', '2026-11-21', 'Ceret', {
+          estat: 'publicat',
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Fira del llibre a Ceret', '2026-11-21', 'Céret', {
+          estat: 'pendent',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaEstat: 'publicat'
+    },
+    {
+      nom: 'Fusió: «publicat» guanya «pendent», publicada segona',
+      a: {
+        fila: filaDeProva('Fira del llibre', '2026-11-21', 'Ceret', {
+          estat: 'pendent',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Fira del llibre a Ceret', '2026-11-21', 'Céret', {
+          estat: 'publicat',
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaEstat: 'publicat'
+    },
+    {
+      nom: 'Fusió: «rebutjat» guanya «pendent», rebutjada primera',
+      a: {
+        fila: filaDeProva('Fira del llibre', '2026-11-21', 'Ceret', {
+          estat: 'rebutjat',
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Fira del llibre a Ceret', '2026-11-21', 'Céret', {
+          estat: 'pendent',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaEstat: 'rebutjat'
+    },
+    {
+      nom: 'Fusió: «rebutjat» guanya «pendent», rebutjada segona',
+      a: {
+        fila: filaDeProva('Fira del llibre', '2026-11-21', 'Ceret', {
+          estat: 'pendent',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Fira del llibre a Ceret', '2026-11-21', 'Céret', {
+          estat: 'rebutjat',
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaEstat: 'rebutjat'
+    },
+    {
+      nom: 'Fusió: dues «pendent» segueixen «pendent»',
+      a: {
+        fila: filaDeProva('Fira del llibre', '2026-11-21', 'Ceret', {
+          estat: 'pendent',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Fira del llibre a Ceret', '2026-11-21', 'Céret', {
+          estat: 'pendent',
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaEstat: 'pendent'
     }
   ];
 }
@@ -791,6 +964,11 @@ function principal() {
       passa = (resposta.fila !== null && resposta.fila.nota_curador === cas.esperaNota);
     }
 
+    // Els que vigilen l'estat comproven la precedència de resolEstat().
+    if (passa && cas.esperaEstat !== undefined) {
+      passa = (resposta.fila !== null && resposta.fila.estat === cas.esperaEstat);
+    }
+
     if (!passa) {
       fallades += 1;
     }
@@ -807,6 +985,11 @@ function principal() {
                   ' -> ' + resposta.fila.id);
       console.log('               lloc «' + resposta.fila.lloc + '»' +
                   ', imatge «' + resposta.fila.imatge_url + '»');
+      var esperat = '';
+      if (cas.esperaEstat !== undefined) {
+        esperat = '   (esperat «' + cas.esperaEstat + '»)';
+      }
+      console.log('               estat «' + resposta.fila.estat + '»' + esperat);
     }
     console.log('');
   }

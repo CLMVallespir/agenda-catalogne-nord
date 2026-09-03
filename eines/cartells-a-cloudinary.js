@@ -11,6 +11,8 @@
 //     descarta i què s'escriu a `nota_curador` és pujaCartell(); aquest fitxer
 //     només llegeix el JSON, l'hi passa fila a fila i el desa.
 //   - No toca `events.json`. El que ja és públic no es remena.
+//   - Només mira les files `estat === 'pendent'`. Una fila rebutjada és una
+//     decisió presa: es queda tal com és i no gasta ni una petició.
 //
 // ÉS INCREMENTAL, i no per cap comptabilitat pròpia sinó per la guarda que ja
 // porta pujaCartell(): una fila que ja té l'`imatge_url` a `res.cloudinary.com`
@@ -60,14 +62,36 @@ var CAMI_PENDENTS = path.join(__dirname, '..', 'pendents.json');
 //                 la nota que ho diu i l'URL forà es quedarà on és.
 //
 // Torna { files, recompte }: la llista NOVA —cap fila d'entrada no es toca— i
-// els números de la passada. No escriu cap fitxer: desar-lo és de qui la crida.
+// els números de la passada. Hi surten TOTES les files, també les que no s'han
+// tocat, perquè qui la crida hi torna a escriure el fitxer sencer.
+//
+// NOMÉS PUJA ELS CARTELLS DE LES FILES `estat === 'pendent'`. Les altres surten
+// tal com han entrat: una fila rebutjada és una decisió presa, i pujar-li el
+// cartell —o reintentar-ho a cada passada programada— només gastaria quota per
+// deixar a Cloudinary una còpia permanent d'un acte que no es publicarà mai.
+// El filtre és literalment `=== 'pendent'`, no `!== 'rebutjat'`: qualsevol estat
+// nou o inesperat es queda fora, que és el costat segur (§4 de CLAUDE.md).
 // ------------------------------------------------------------
 async function pujaElsCartellsDe(files, funcioPujada) {
-  var sortida = [];
-  var recompte = { total: files.length, sensCartell: 0, jaNostres: 0, pujats: 0, fallats: 0 };
+  var sortida = files.slice();
+  var recompte = { total: files.length, pendents: 0, altresEstats: 0, sensCartell: 0, jaNostres: 0, pujats: 0, fallats: 0 };
 
-  for (var i = 0; i < files.length; i++) {
-    var abans = files[i];
+  // El filtre, abans del bucle de pujada: es guarden les POSICIONS de les
+  // files pendents, de manera que la llista de sortida conserva l'ordre del
+  // fitxer i les files que no toquem s'hi queden intactes.
+  var posicionsPendents = [];
+  for (var f = 0; f < files.length; f++) {
+    if (files[f].estat === 'pendent') {
+      posicionsPendents.push(f);
+    } else {
+      recompte.altresEstats += 1;
+    }
+  }
+  recompte.pendents = posicionsPendents.length;
+
+  for (var i = 0; i < posicionsPendents.length; i++) {
+    var posicio = posicionsPendents[i];
+    var abans = files[posicio];
 
     if (abans.imatge_url === '') {
       recompte.sensCartell += 1;
@@ -89,7 +113,7 @@ async function pujaElsCartellsDe(files, funcioPujada) {
       }
     }
 
-    sortida.push(despres);
+    sortida[posicio] = despres;
   }
 
   return { files: sortida, recompte: recompte };
@@ -123,11 +147,13 @@ async function passadaSobreLaCua(esProva) {
   console.log('Fitxer: ' + CAMI_PENDENTS);
   console.log('Mode:   ' + (esProva ? 'prova (cap crida, cap escriptura)' : 'de debò'));
   console.log('');
-  console.log('  files a la cua        ' + recompte.total);
+  console.log('  files al fitxer       ' + recompte.total);
+  console.log('  files pendents        ' + recompte.pendents);
+  console.log('  altres estats         ' + recompte.altresEstats + ' (intactes)');
   console.log('  sense cap cartell     ' + recompte.sensCartell);
   console.log('  ja a Cloudinary       ' + recompte.jaNostres);
   console.log('  cartells forans       ' +
-    (recompte.total - recompte.sensCartell - recompte.jaNostres));
+    (recompte.pendents - recompte.sensCartell - recompte.jaNostres));
 
   if (!esProva) {
     console.log('  pujats ara            ' + recompte.pujats);

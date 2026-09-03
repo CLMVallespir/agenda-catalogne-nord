@@ -154,6 +154,30 @@ Regles de què depèn el codi:
 - **Publicar no ha canviat:** dues escriptures, `events.json` primer i **treure**
   la fila de `pendents.json` després (vegeu `NOTES.md`). Publicar treu, rebutjar
   marca. Decidit el 3 de setembre de 2026.
+- **En fusionar dues files duplicades, l'estat es resol per precedència i mai
+  per posició.** L'ordre definitiu, de més fort a més fluix, és
+  **`publicat` > `rebutjat` > `pendent`** (i, si cap dels dos no és cap dels
+  tres, el primer que digui alguna cosa). Ho decideix
+  `resolEstat(estatA, estatB)` a `eines/dedup-esdeveniments.js`, amb la
+  precedència en una sola llista llegible. Guanya vingui la fila del costat que
+  vingui, i tant se val quina de les dues va entrar abans:
+    - **`publicat` primer** perquè un esdeveniment publicat ja ha passat el
+      filtre humà i cap fusió automàtica no pot revertir-ho. Hi arribarà el dia
+      que es dedupliqui contra `events.json` (`docs/HANDOFF-ADT66.md` §4, tasca
+      encara per fer); avui cap camí no hi porta cap fila `publicat`.
+    - **`rebutjat` abans que `pendent`** perquè un rebuig és una decisió sobre
+      l'**esdeveniment**, no sobre la fila que el porta. Si manés la posició, la
+      fusió perdria la memòria de rebuig (el curador tornaria a revisar el que ja
+      havia dit que no) o bé suprimiria un acte nou que ningú no ha vist mai.
+- **Tot mòdul nou que llegeixi `pendents.json` ha de declarar quins estats
+  tracta**, al bàner de dalt del fitxer, i filtrar-los explícitament amb
+  `=== 'pendent'` —mai `!== 'rebutjat'`. Els mòduls d'avui:
+  `curador.html` només pinta `pendent`; `eines/cartells-a-cloudinary.js` només
+  puja cartells de files `pendent` (una fila rebutjada gastaria quota per deixar
+  a Cloudinary una còpia permanent d'un acte que no es publicarà mai) i torna la
+  resta intacta, perquè qui la crida hi reescriu el fitxer sencer;
+  `eines/dedup-esdeveniments.js` tracta els tres estats i els resol per
+  precedència. Decidit el 3 de setembre de 2026.
 
 **Regles pròpies de `nota_curador`** — és un camp de servei, no de contingut:
 
