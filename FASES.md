@@ -462,10 +462,34 @@ d'ADT66 sense `?width=150&height=120` dona l'original, i qui la desfà és
 dues trampes que hi havia (una imatge que només existeix retallada; el `?itok=`
 de Drupal, que no es pot tocar) són a `NOTES.md`.
 
+Fet el **3 de setembre de 2026**: **la deduplicació contra els fitxers que ja
+tenim.** `eines/dedup-contra-fitxers.js`, amb `classificaContraFitxers()`, que
+compara cada oferta entrant amb el que ja hi ha i en torna una etiqueta
+—`ja_publicat` · `ja_a_la_cua` · `ja_rebutjat` · `nova`—. **No escriu res, no
+esborra res i no canvia cap estat**, i `events.json` **només es llegeix**. Dues
+capes de força diferent: la **1 exacta**, pel tag `[ADT66 id: …]` contra
+`pendents.json`, que mira els tres estats sense filtrar-ne cap (una oferta ja
+rebutjada no torna a entrar); i la **2 difusa** contra `events.json`, que
+reutilitza `comparaEsdeveniments()` sencer i hi posa un llindar propi de **0,75**
+en comptes del 0,55 del mòdul de dedup. El biaix és, a tot arreu, cap a `nova`:
+un duplicat a la cua es resol en un clic, un acte perdut no el veu mai ningú. El
+llindar i les mesures d'on surt són al §4 ter de `CLAUDE.md`.
+
+Passat pel flux real del mateix dia (**1 463 ofertes → 1 445 amb data**) contra
+`pendents.json` (84 files) i `events.json` (8 files): **1 445 `nova`, 0 a la
+resta**, i els dos zeros tenen causa coneguda —cap fila de la cua no porta
+encara el tag, i cap fila publicada no ve d'ADT66. Amb els títols declarats en
+català, només **4 ofertes de 1 445** arriben a tenir clau dura igual amb una
+fila publicada i la similitud més alta és **0**: mentre els títols del flux
+arribin en francès, la capa 2 no s'activarà per a aquesta font. La bateria del
+fitxer són **20 casos** (`node eines/dedup-contra-fitxers.js`), tots passats,
+inclosa una prova que comprova que cap de les dues llistes d'entrada no es
+modifica.
+
 Encara **no fet**, i cada cosa serà la seva pròpia tasca —i cap no es comença
-fins que el punt 2 estigui resolt: el **cablejat** de la deduplicació i del
-mapeig a la cua real, el filtre previ, la classificació editorial, i qualsevol
-altra escriptura a `pendents.json`.
+fins que el punt 2 estigui resolt: el **cablejat** del mapeig i d'aquesta
+classificació a la cua real, el filtre previ, la classificació editorial, i
+qualsevol altra escriptura a `pendents.json`.
 
 ---
 

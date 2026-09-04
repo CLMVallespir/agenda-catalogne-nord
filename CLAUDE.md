@@ -177,7 +177,61 @@ Regles de què depèn el codi:
   a Cloudinary una còpia permanent d'un acte que no es publicarà mai) i torna la
   resta intacta, perquè qui la crida hi reescriu el fitxer sencer;
   `eines/dedup-esdeveniments.js` tracta els tres estats i els resol per
-  precedència. Decidit el 3 de setembre de 2026.
+  precedència; `eines/dedup-contra-fitxers.js` tracta els tres estats i en
+  torna una etiqueta cadascun (§4 ter). Decidit el 3 de setembre de 2026.
+
+## 4 ter. Ancoratge contra el que ja tenim — dues capes, i el biaix cap a encuar
+
+Quan una font externa torna a oferir el mateix acte cada setmana, cal saber si
+ja el tenim. `eines/dedup-contra-fitxers.js` ho resol en **dues capes de força
+diferent**, i **no escriu res**: torna una etiqueta per oferta
+—`ja_publicat` · `ja_a_la_cua` · `ja_rebutjat` · `nova`— i qui la crida decideix.
+**`events.json` només es llegeix; d'aquesta capa no en surt mai cap escriptura.**
+
+- **Capa 1, exacta, contra `pendents.json`.** El tag `[ADT66 id: …]` que
+  `mapejaOfertaADT66()` deixa a `nota_curador` es torna a llegir amb
+  `extreuIdentificador()` d'`eines/adt66-identificador.js`. Igualtat
+  d'identificador, cap llindar. Mira **totes** les files del fitxer, sense
+  filtrar-ne cap per estat abans de comparar: filtrar-hi «només les pendents»
+  seria justament l'error que la memòria de rebuig del §4 vol evitar —l'oferta
+  rebutjada tornaria a entrar cada setmana.
+- **Capa 2, difusa, contra `events.json`.** Les files publicades no porten
+  identificador i no en portaran mai (`recullFitxa()` deixa `nota_curador` a la
+  cua), i `docs/SONDEIG-FONT-URL-ADT66.md` va tancar també la via de `font_url`.
+  Queda comparar contingut: es reutilitza `comparaEsdeveniments()` sencer
+  —municipi normalitzat + `data_inici` com a clau dura, Jaccard dels títols com
+  a desempat— i s'hi posa un llindar **més exigent** al damunt.
+
+**La regla que mana el disseny: si dubtes, ENCUA.** Un duplicat a
+`pendents.json` és visible i el curador el resol en un clic; un acte descartat
+per error no el veurà mai ningú. Tot el que no sigui una coincidència clara
+surt com a `nova`.
+
+**El llindar de la capa 2 és 0,75, no el 0,55 del mòdul de dedup**, i són dos
+números perquè són dues decisions: allà fusionar deixa una fila a la cua, aquí
+passar el llindar vol dir que l'acte no arriba enlloc. Mesurat sobre els 92
+títols reals (84 de `pendents.json` + 8 d'`events.json`):
+
+- «El Taller de les Barques de Paulilles» i «El Taller de les Descobertes de
+  Paulilles», mateix poble i mateix dia, fan **0,500 i són dos tallers
+  diferents**. És el fals positiu més perillós del corpus i marca el terra.
+- La franja [0,55–0,75) és la de **«una paraula distintiva canviada»** (4 contra
+  4 compartint-ne 3 = 0,600; 5 contra 5 compartint-ne 4 = 0,667). N'hi ha prou
+  d'afegir el municipi als dos títols de Paulilles —el que fan els títols de
+  l'ADT66— per pujar aquell parell a 0,600 i ficar-lo dins de la franja.
+- Una substitució entre dos títols de n paraules dona (n−1)/(n+1), que no arriba
+  a 0,75 fins a **n = 7**; 88 dels 92 títols reals en tenen sis o menys (mediana:
+  tres). Per damunt de 0,75, doncs, gairebé només hi ha títols que **afegeixen**
+  paraules a un altre, que és la forma d'un duplicat de debò.
+- El cost acceptat: «5es Jornades d'Història Nacional» (publicat) i la seva
+  versió llarga (a la cua) són el mateix acte i fan **0,444** — s'encuen. És la
+  direcció bona de l'error.
+
+Un `estat` de `pendents.json` que no sigui cap dels tres **no s'endevina**: la
+capa 1 no diu res i l'oferta acaba a `nova`. El costat segur d'aquest mòdul és
+deixar-la ENTRAR, al contrari que a `curador.html`, on és deixar-la FORA de la
+cua. Als dos llocs el costat segur és el que no fa desaparèixer informació
+sense que ningú ho vegi. Decidit el 3 de setembre de 2026.
 
 **Regles pròpies de `nota_curador`** — és un camp de servei, no de contingut:
 

@@ -604,9 +604,29 @@ obligava a resoldre.
 
 ## 4. Fora d'abast en aquesta tasca
 
-No s'ha fet, i **no s'ha de suposar fet**: deduplicació contra `events.json` i
-`pendents.json`, filtre previ, classificació editorial, traducció, pujada de
-cartells a Cloudinary i qualsevol escriptura a `pendents.json`. Cada una és una
+**FET el 3 de setembre de 2026 — la deduplicació contra els dos fitxers.**
+`eines/dedup-contra-fitxers.js`, amb `classificaContraFitxers()`. Dues capes:
+la 1 exacta pel tag `[ADT66 id: …]` contra `pendents.json` (els tres estats,
+sense filtrar-ne cap abans de comparar), la 2 difusa contra `events.json`
+reutilitzant `comparaEsdeveniments()` amb un llindar propi de **0,75**. Torna
+una etiqueta per oferta —`ja_publicat` · `ja_a_la_cua` · `ja_rebutjat` ·
+`nova`— i **no escriu res**; `events.json` només es llegeix. El biaix és
+sempre cap a `nova`: si dubta, encua. El detall del llindar i d'on surt és al
+§4 ter de `CLAUDE.md` i al bàner del fitxer.
+
+Passat pel flux del 3 de setembre de 2026 (1 463 ofertes → 1 445 amb data)
+contra `pendents.json` (84 files) i `events.json` (8 files): **1 445 `nova`,
+0 a la resta**. Els dos zeros són reals i tenen causa: cap fila de
+`pendents.json` no porta encara el tag —cap oferta d'ADT66 no s'hi ha escrit
+mai—, i cap fila d'`events.json` no ve d'ADT66. A més, els títols del flux
+arriben en francès i els publicats són en català, o sigui que
+`titolsComparables()` refusa la comparació i la capa 2 no s'activarà per a
+aquesta font fins que la traducció s'apliqui abans. Comprovat també amb els
+títols declarats en català: només **4 ofertes** de 1 445 arriben a tenir clau
+dura igual amb una fila publicada, i la similitud més alta és **0**.
+
+Encara no fet, i **no s'ha de suposar fet**: filtre previ, classificació
+editorial, traducció i qualsevol escriptura a `pendents.json`. Cada una és una
 tasca pròpia.
 
 ## 5. Preguntes obertes per a la sessió següent
