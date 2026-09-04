@@ -1,24 +1,5 @@
 [
   {
-    "id": "2026-08-25-exposition-christian-vidal",
-    "titol": "EXPOSITION CHRISTIAN VIDAL – DE TOUTES LES COULEURS / PAVILLON DES ARTS",
-    "data_inici": "2026-08-25",
-    "data_fi": "2026-09-06",
-    "hora": "10:00",
-    "lloc": "",
-    "municipi": "Portvendres",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "",
-    "descripcio_fr": "Christian Vidal place la couleur au cœur de son travail. À travers des techniques variées et des supports innovants, il crée des œuvres où formes, matières et transparences se superposent pour offrir une grande richesse visuelle.\n\nOscillant entre abstraction géométrique et évocations poétiques, son univers invite le visiteur à une expérience contemplative où chaque composition révèle une nouvelle harmonie.\n\nVernissage le mardi 25 août à 18h30.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/expo-christian-vidal.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-04T19:16:06.169Z",
-    "nota_curador": "[ADT66 id: FMALAR066V52XSWN] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana."
-  },
-  {
     "id": "2026-09-04-brocante",
     "titol": "BROCANTE",
     "data_inici": "2026-09-04",
