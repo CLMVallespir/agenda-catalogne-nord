@@ -1,5 +1,23 @@
 [
   {
+    "id": "2026-09-04-excursio-a-les",
+    "titol": "Excursió a les Torres de Cabrenys",
+    "data_inici": "2026-09-04",
+    "data_fi": "2026-09-04",
+    "hora": "14:00",
+    "lloc": "Punt de trobada a La Menera",
+    "municipi": "La Menera",
+    "comarca": "Vallespir",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "S'organitza una excursió a les Torres de Cabrenys amb un pícnic a dalt de la torre. El punt de trobada és a La Menera per sortir tots junts. Es recomana portar el menjar per al pícnic.",
+    "descripcio_fr": "Une randonnée est organisée vers les tours de Cabrenys avec un pique-nique au sommet de la tour. Le point de rendez-vous est fixé à Le Tech pour partir ensemble. Il est conseillé d'apporter son propre repas pour le pique-nique.",
+    "associacio": "",
+    "imatge_url": "",
+    "font_url": "",
+    "estat": "pendent",
+    "data_entrada": "2026-09-05T05:43:56.795Z"
+  },
+  {
     "id": "2026-09-04-brocante",
     "titol": "BROCANTE",
     "data_inici": "2026-09-04",
