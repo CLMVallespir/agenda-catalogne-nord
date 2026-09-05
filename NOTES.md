@@ -6,6 +6,126 @@ resultin errònies s'esborren, no es maten a comentaris.*
 
 ---
 
+## El públic no és a `RechercheTYPE`: era a `COMMUNTHEME`, i mai no l'havíem mirat
+
+**Resum:** `Activitat infantil` sortia sempre a zero perquè es buscava el
+senyal al camp que diu la FORMA de l'acte; el públic viu en un altre camp del
+mateix flux, que el mapeig llençava a les metadades.
+
+Fins al 4 de setembre de 2026, `docs/HANDOFF-ADT66.md` §5 bis.3 donava per
+tancat que el flux de l'ADT66 no podia omplir `Activitat infantil`: cap dels
+41 valors de `RechercheTYPE` no parla de criatures, i és veritat. La conclusió
+—«el flux no ho porta»— no ho era. **`COMMUNTHEME` sí que ho porta**: dels 33
+temes distints, «Pour enfant» surt a 70 ofertes i «Conte» a 10. El camp hi era
+des del primer dia, i el mapeig l'enviava a `metadadades.descartats.tema` amb
+els altres tres vocabularis interns de l'ADT66.
+
+**La lliçó: quan un enum surt a zero, comprova que el buit sigui de la font i
+no del camp que has triat mirar.** Un vocabulari respon una pregunta i prou.
+`RechercheTYPE` respon «quina mena d'acte és» i no respon «per a qui és»; buscar
+el públic allà dins és buscar-hi una cosa que aquell camp no diu de cap manera.
+Els 35 camps del flux són quatre vocabularis diferents, i almenys un dels
+altres tres podria estar responent una pregunta que encara donem per
+impossible.
+
+**Com s'hi ha posat, i per què d'aquesta manera.** La regla és una funció sola,
+`categoriaPerTemaInfantil()` a `eines/mapeja-adt66.js`, que s'aplica DESPRÉS
+d'haver resolt la categoria per `RechercheTYPE`. Té una sola condició —el tema
+diu «Pour enfant» o «Conte»— i **cap precedència condicional**: no mira quina
+categoria hi havia abans i hi passa per damunt igual. És a posta: una regla amb
+excepcions segons el valor previ no es pot llegir d'un cop, i aquesta s'ha de
+poder llegir d'un cop.
+
+El que la fa acceptable és que sigui **reversible**: quan desplaça una
+categoria que deia alguna cosa, escriu a `nota_curador` el valor desplaçat
+(«Categoria per tema infantil; RechercheTYPE deia: Taller»), darrere del tag
+`[ADT66 id: …]`, que sempre és el primer. El curador veu què s'ha mogut i el
+torna a posar amb un clic. Si `RechercheTYPE` no donava res, no hi ha res
+desplaçat i no s'escriu cap avís: la regla omple un buit, no discuteix amb
+ningú.
+
+I «Cirque» i «Bande dessinée» **no** hi entren, tot i sortir a la mateixa
+llista de temes: són **gèneres, no públics**. Un circ el veu tothom i una
+exposició de còmic sovint és per a adults. La distinció que val és
+públic/forma, no infantil-per-associació.
+
+*Sobre 1 513 ofertes del 4 de setembre de 2026 la regla deixa 73 files a
+`Activitat infantil`, 66 de les quals desplacen una categoria (21 de Taller,
+12 de Teatre, 10 d'Esports…). `Concentració` continua a zero, i allà sí que el
+buit és de la font.*
+
+---
+
+## El dedup dins del lot de l'ADT66 en treu 25 de 1 373, i no és el tall que cal
+
+**Resum:** el flux de l'ADT66 gairebé no es repeteix a si mateix dins d'una
+mateixa descàrrega; la cua desmesurada no ve de duplicats interns, i buscar-los
+no la redueix de manera útil.
+
+Mesurat el 4 de setembre de 2026 sobre una descàrrega sencera del flux (1 513
+ofertes, 4 659 007 bytes): passant cada oferta ja mapejada per
+`comparaEsdeveniments()` contra les que ja s'havien conservat, només **25** en
+surten fusionades. La cua passa de 1 373 files noves a **1 348**: un 1,8 %.
+
+Per què n'hi ha tan poques: cada oferta del flux és una fitxa amb el seu
+`SyndicObjectID`, i el proveïdor ja no en publica dues per al mateix acte. Els
+duplicats que sí que hi ha són les fitxes bessones de la mateixa sèrie amb la
+data d'inici igual, i prou.
+
+Un detall que val més saber: les 18 files sense `data_inici` donen veredicte
+`dubtos` contra *totes* les altres —clau forta incompleta—, o sigui que la
+comparació de parells és sorda justament allà on més falta faria. El biaix és
+el correcte (`dubtos` no fusiona, totes dues es queden), però explica que el
+llindar de títol no arribi ni a entrar en joc en aquells casos.
+
+La lliçó: **mesura d'on ve el volum abans d'escriure el filtre.** Aquí el volum
+és la finestra de dates —851 de les 1 348 files comencen dins de 30 dies, 333
+dins de 7—, i la finestra d'aleshores era de 12 mesos, que no en descartava cap.
+*El 4 de setembre de 2026 es va estrènyer a 30 dies* (`DIES_DE_FINESTRA` a
+`eines/filtra-candidats.js`): és el tall que la mesura demanava.
+
+**Conseqüència del dedup intern:** la fila fusionada acaba amb dos tags
+`[ADT66 id: …]` i només se'n llegeix el primer. Té la seva nota, aquí sota:
+«La fuita del doble tag es deixa oberta a posta».
+
+---
+
+## La fuita del doble tag es deixa oberta a posta
+
+**Resum:** una fila fusionada dins del lot porta dos tags `[ADT66 id: …]`,
+`extreuIdentificador()` només llegeix el primer, i la segona oferta tornarà una
+vegada com a `nova` — es deixa així perquè l'error va cap al costat segur.
+
+El mecanisme, sencer i sense misteri. Quan `dedupDinsDelLot()`
+(`eines/sincronitza-programada.js`) fusiona dues ofertes bessones del mateix
+lot, `ajuntaNotes()` es queda **les dues** notes de curador —és la regla del §4
+de `CLAUDE.md`: `nota_curador` descriu la FILA, no l'acte, i per això en una
+fusió no mana la jerarquia de fonts sinó que es conserven totes dues. La fila
+resultant, doncs, porta dos tags. I `extreuIdentificador()`
+(`eines/adt66-identificador.js`) té el patró **sense la bandera `g`**: en torna
+un, el primer que troba.
+
+L'efecte, la setmana següent: la capa 1 de `eines/dedup-contra-fitxers.js`
+reconeix la fila per l'identificador que sap llegir, i l'oferta de l'altre tag
+—la que es va absorbir— no la troba enlloc. Surt com a `nova` i s'encua un
+altre cop. Un cop sol: la segona vegada ja hi és amb el seu tag propi i
+sencer.
+
+**I es deixa així.** Sobre el flux del 4 de setembre de 2026, la fusió interna
+n'absorbeix **19 de 1 283**: dinou files duplicades a la cua, una sola vegada
+cadascuna. El curador les veu, les rebutja d'un clic, i el rebuig ja queda
+recordat. L'alternativa —fer que `extreuIdentificador()` torni una llista i que
+la capa 1 compari contra totes— és més codi, més superfície, i canviaria el
+contracte d'una peça que tres mòduls criden, per guanyar dinou clics l'any.
+
+La lliçó, que val més enllà d'aquest cas: **una fuita que fa aparèixer feina
+visible no és el mateix que una que fa desaparèixer informació.** Aquesta empeny
+cap a encuar, que és la direcció que tot el §4 ter de `CLAUDE.md` demana; si
+empenyés cap a descartar, s'hauria d'arreglar el mateix dia. Val la pena
+comptar-les diferent en lloc de tractar-les totes com a errors iguals.
+
+---
+
 ## La memòria de rebuig és posició al fitxer, no un tercer magatzem
 
 **Resum:** rebutjar deixa la fila a `pendents.json` amb `estat = "rebutjat"`
@@ -1137,3 +1257,62 @@ La regla: **per exercitar les proves, executa els fitxers un per un, o passa
 executar la carpeta sencera de cop, el que cal canviar és el guió: que no
 escrigui res si no li ho demanes amb una bandera, en lloc d'escriure si no li
 demanes que no ho faci.
+
+---
+
+## Un workflow programat s'apaga sol als 60 dies, i s'emporta el botó manual
+
+**Resum:** GitHub desactiva el `schedule:` d'un repositori públic després de 60
+dies sense activitat, i la desactivació deixa mort també el
+`workflow_dispatch` del mateix fitxer.
+
+`.github/workflows/sincronitza-adt66.yml` és el primer camí del projecte que
+s'executa sol. GitHub desactiva els workflows programats dels repositoris
+públics quan passen **60 dies sense cap activitat** (cap commit, cap run). Fins
+aquí, previsible.
+
+El que no ho és: **la desactivació no afecta només el cron.** GitHub desactiva
+el *workflow sencer*, o sigui que el `workflow_dispatch` que hi ha al mateix
+fitxer també deixa de funcionar. Anar a la pestanya Actions a prémer «Run
+workflow» no és cap sortida d'emergència: el botó no hi serà. Cal tornar a
+activar el workflow a mà des d'aquella mateixa pestanya, i llavors ja va.
+
+Per què importa aquí: aquest projecte és d'una sola persona i pot passar-se
+mesos sense tocar-lo. Una temporada sense actes és exactament el període en què
+el repositori no rep commits, i és per tant quan el workflow s'apagarà — sense
+avisar, i sense deixar cap fila a `pendents.json` que ho faci notar. El símptoma
+serà una cua que no creix, que és el mateix aspecte que té una cua al dia.
+
+La regla: **una automatització que s'apaga sola per manca d'activitat no és una
+automatització de fons i s'ha de mirar de tant en tant.** Si es fa llarg, un
+commit qualsevol al repositori reinicia el compte de 60 dies.
+
+---
+
+## La quota de Gemini és per projecte, i dos camins que la comparteixen no ho veuen
+
+**Resum:** el límit de Gemini es compta **per projecte de Google, no per clau**,
+de manera que dues claus diferents del mateix projecte es trepitgen la quota
+sense que enlloc no ho digui.
+
+Ho diu la documentació dels límits, literalment: «Rate limits are applied per
+project, not per API key». La conseqüència aquí no és teòrica. El projecte té
+dos contextos que criden Gemini —el Worker, per correu i en directe, i l'Action,
+per lot i setmanalment (§7 bis de `CLAUDE.md`)— i cadascun té la clau en un
+magatzem de secrets diferent: Cloudflare l'un, els Secrets d'Actions de GitHub
+l'altre. **Dos magatzems separats fan pensar en dues quotes separades, i no ho
+són** si les dues claus surten del mateix projecte de Google.
+
+Per què importa: els dos camins no valen igual quan la quota s'acaba. Una fila
+de l'ADT66 que no es tradueix avui es torna a oferir la setmana que ve i no es
+perd res. **Un correu que arriba amb la quota exhaurida sí que es perd**: el
+remitent ja l'ha enviat i ningú no el tornarà a enviar. O sigui que el camí
+barat ha de deixar quota al camí car, no al contrari.
+
+La regla, i és la que hi ha al codi: **el camí per lot no gasta mai tota la
+quota del dia.** `PRESSUPOST_CRIDES_GEMINI = 300` sobre 500 RPD deixa 200 al
+Worker, i és una constant amb el perquè escrit al costat justament perquè el dia
+que algú la pugi a 500 sàpiga què està decidint. La protecció més neta seria un
+**projecte de Google separat per a cada camí** —quotes de debò independents, i
+no costa res—, i és la recomanació; el pressupost hi és perquè funcioni igual
+si no s'ha fet.

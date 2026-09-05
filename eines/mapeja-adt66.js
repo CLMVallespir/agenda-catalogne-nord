@@ -42,6 +42,12 @@
 //   COMMUNLIEU        -> `lloc`, net d'HTML i de l'etiqueta «Lieu :».
 //   Commune           -> `municipi`, normalitzat amb eines/pobles-alies.js.
 //   RechercheTYPE     -> `categoria`, traduïda del francès i coercida.
+//   COMMUNTHEME       -> `categoria` TAMBÉ, i és l'únic camp que en toca un
+//                        que ja havia decidit un altre: «Pour enfant» o
+//                        «Conte» la posen a Activitat infantil per damunt de
+//                        `RechercheTYPE`. Vegeu categoriaPerTemaInfantil().
+//                        El valor cru continua anant també a
+//                        metadadades.descartats.tema.
 //   DETAILDESCRIPTIF  -> `descripcio_fr`, net d'HTML i de l'etiqueta francesa.
 //   DETAILCONTACT     -> `associacio`, net d'HTML.
 //   LISTINGPHOTO      -> `imatge_url`, l'`src` de l'`<img>`.
@@ -79,10 +85,12 @@
 //   DETAILPHOTO       -> metadadades.descartats.foto_detall. Segona foto.
 //   DETAILPHOTO_DIAPO -> metadadades.descartats.foto_detall_diapo.
 //   LISTINGPHOTO_DIAPO-> metadadades.descartats.foto_llistat_diapo.
-//   COMMUNTHEME       -> metadadades.descartats.tema.      Vocabularis interns de
-//   COMMUNCATEGORIE   -> metadadades.descartats.categoria_adt66.  l'ADT66. La
-//   COMMUNTYPE        -> metadadades.descartats.tipus_adt66.  categoria bona és
-//   COMMUNNOM         -> metadadades.descartats.nom_comun.   `RechercheTYPE`.
+//   COMMUNCATEGORIE   -> metadadades.descartats.categoria_adt66. Vocabularis
+//   COMMUNTYPE        -> metadadades.descartats.tipus_adt66.  interns de
+//   COMMUNNOM         -> metadadades.descartats.nom_comun.    l'ADT66, cap dels
+//                        tres no diu la categoria. (`COMMUNTHEME`, el quart
+//                        d'aquesta família, ja és a la llista de dalt: des del
+//                        4 de setembre de 2026 sí que arriba a la fila.)
 //   CHAMPSYSTEME      -> metadadades.descartats.camp_sistema. Camp intern.
 //
 // **Els dos que falten dels 35.** El handoff n'enumera 25 pel seu nom i diu
@@ -314,6 +322,37 @@ var PATRO_FORUM = 'forum';
 var PATRO_ASSOCIACIONS = 'assoc';
 
 
+// --- Constants: el tema infantil --------------------------------------------
+
+// El públic infantil NO viu a `RechercheTYPE`: aquell vocabulari diu la FORMA
+// de l'acte («Spectacle», «Atelier», «Concert») i no per a qui és. Es va
+// comptar el flux sencer del 4 de setembre de 2026 —1 513 ofertes— i cap dels
+// 41 valors de `RechercheTYPE` no parla de criatures. El senyal viu a
+// `COMMUNTHEME`, que és un altre vocabulari de l'ADT66, amb valors separats
+// per comes («Artisanat, Pour enfant»). Dels 33 temes distints del flux,
+// «Pour enfant» surt a 70 ofertes i «Conte» a 10.
+//
+// Els DOS valors que mouen la regla d'aquí sota. Es comparen sobre el valor
+// sencer ja normalitzat —minúscules i sense accents—, tros a tros, i no com a
+// subcadena del text sencer: «Conte» ha de ser el tema, no una síl·laba d'una
+// altra paraula.
+var TEMES_INFANTILS = ['pour enfant', 'conte'];
+
+// Els dos que NO hi entren, i queda escrit perquè és la pregunta que
+// tornarà: «Cirque» (6 ofertes) i «Bande dessinée» (3) són GÈNERES, no
+// públics. Un circ el veu tothom i una exposició de còmic sovint és per a
+// adults. No hi ha cap constant per a aquests dos: no hi són a la llista de
+// dalt i prou.
+
+// La categoria a què porta el tema infantil. És una de les tretze de sempre
+// (§4 de CLAUDE.md): la regla no n'afegeix cap valor nou a l'enum.
+var CATEGORIA_INFANTIL = 'Activitat infantil';
+
+// El separador de valors de `COMMUNTHEME`. És el mateix caràcter que a
+// `RechercheTYPE`, però són dos camps i dos vocabularis: dues constants.
+var SEPARADOR_TEMES = ',';
+
+
 // --- Constants: les etiquetes franceses del flux ----------------------------
 
 // Els camps del flux porten una etiqueta en francès enganxada al davant del
@@ -393,6 +432,12 @@ function mapejaOfertaADT66(ofertaWCF) {
   // afegeixen un avís perquè el curador hi vagi a mirar.
   avisaDeNovaEra(titol, descripcio, avisos);
   avisaDePreuEsportiu(fila.categoria, descripcio, avisos);
+
+  // El tema infantil, l'ÚLTIMA cosa que toca la categoria. Va darrere dels dos
+  // senyals a posta: els senyals jutgen la FORMA de l'acte, que és el que diu
+  // `RechercheTYPE`, i un club esportiu de pagament ha de seguir avisant tant
+  // si és per a criatures com si no.
+  fila.categoria = categoriaPerTemaInfantil(fila.categoria, oferta.COMMUNTHEME, avisos);
 
   fila.nota_curador = notaCurador(oferta, avisos);
 
@@ -736,6 +781,12 @@ function comarcaDeProduccio(municipi, avisos) {
 // la fila va a revisió. ÉS UNA INTERPRETACIÓ, no la lletra: si es vol l'altra,
 // s'intercanvien els dos blocs i prou.
 //
+// I HI HA UN SETÈ PAS QUE NO ÉS AQUÍ. El tema infantil de `COMMUNTHEME`
+// s'aplica a sobre del que decideixi aquesta funció, i viu a part, a
+// categoriaPerTemaInfantil(): aquí es resol la FORMA de l'acte, allà el
+// PÚBLIC. Aquesta funció no sap res del tema, i és a posta —dues preguntes
+// diferents, dos camps del flux diferents, dues funcions.
+//
 // La categoria de producció és UNA, no una llista.
 // ------------------------------------------------------------
 function categoriaDeProduccio(valor, titol, avisos) {
@@ -863,6 +914,66 @@ function categoriaDunTros(tros) {
 }
 
 // ------------------------------------------------------------
+// El públic manda sobre la forma: si `COMMUNTHEME` diu «Pour enfant» o
+// «Conte», la categoria passa a Activitat infantil, tant se val què hagués
+// donat `RechercheTYPE`.
+//
+// UNA sola condició i cap excepció: la regla no mira quina categoria hi
+// havia abans. Si hi havia Taller, Música o Teatre, hi passa per damunt
+// igual. És a posta —una regla amb precedències condicionals no es pot
+// llegir d'un cop— i és REVERSIBLE: quan desplaça una categoria que deia
+// alguna cosa, ho escriu a la nota amb el valor desplaçat, i el curador el
+// torna a posar amb un clic si l'acte no era infantil.
+//
+// Si `RechercheTYPE` no donava res, no hi ha res desplaçat i no cal cap avís:
+// la regla omple un buit, no discuteix amb ningú.
+//
+// Torna la categoria que ha de quedar. No toca la fila: qui la crida hi
+// assigna el resultat.
+// ------------------------------------------------------------
+function categoriaPerTemaInfantil(categoria, campTema, avisos) {
+  if (!temaEsInfantil(campTema)) {
+    return categoria;
+  }
+
+  // Ja hi era: no s'ha desplaçat res i no hi ha res a dir.
+  if (categoria === CATEGORIA_INFANTIL) {
+    return CATEGORIA_INFANTIL;
+  }
+
+  if (categoria !== '') {
+    avisos.push('Categoria per tema infantil; RechercheTYPE deia: ' + categoria);
+  }
+
+  return CATEGORIA_INFANTIL;
+}
+
+// ------------------------------------------------------------
+// Si el `COMMUNTHEME` d'una oferta porta cap dels temes infantils. El camp ve
+// com a HTML i amb l'etiqueta francesa al davant («<strong><br />Thème
+// :</strong> Artisanat, Pour enfant»): textDeCamp() treu totes dues coses, i
+// després es parteix per comes i es compara TROS SENCER contra la llista.
+// ------------------------------------------------------------
+function temaEsInfantil(campTema) {
+  var text = textDeCamp(campTema);
+
+  if (text === '') {
+    return false;
+  }
+
+  var trossos = text.split(SEPARADOR_TEMES);
+
+  for (var i = 0; i < trossos.length; i++) {
+    var clau = normalitzaText(trossos[i]);
+    if (TEMES_INFANTILS.indexOf(clau) !== -1) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+// ------------------------------------------------------------
 // Si un text ja normalitzat conté algun dels patrons de la llista.
 // ------------------------------------------------------------
 function tePatro(text, patrons) {
@@ -916,23 +1027,48 @@ function municipiDeProduccio(valor, avisos) {
 }
 
 // ------------------------------------------------------------
-// La forma catalana d'un nom de poble, vingui en la llengua que vingui.
-// Torna '' si el poble no és a la taula.
+// La forma catalana d'un nom de poble, vingui en la llengüa que vingui.
+// Torna '' si el poble no és a cap de les dues taules.
+//
+// DUES FONTS, I L'ORDRE MANA. Primer pobles-alies.js, que és la taula que
+// existeix justament per dir quina forma es publica; després
+// comarca-per-poble.js, que en porta la forma catalana com a primer element de
+// cada entrada.
+//
+// PER QUÈ N'HI HA DUES, i no és cap descuit. Fins al 5 de setembre de 2026
+// aquesta funció només mirava la taula d'àlies, i 55 dels 131 municipis d'una
+// passada del flux de l'ADT66 hi arribaven en francès i en majúscules
+// —«SAINTE-MARIE-LA-MER», «LE BARCARES», «TAURINYA»— tot i que el
+// projecte ja en tenia la forma catalana escrita a l'altra taula
+// («Santa Maria la Mar», «El Barcarès», «Taurinyà»). No hi faltaven noms:
+// hi faltava la consulta.
+//
+// NO ES FUSIONA RES. Són dos diccionaris i es miren l'un darrere l'altre. Cap
+// nom no es copia d'una taula a l'altra, i no n'hi ha cap de tercera: qui
+// vulgui afegir un poble continua tenint dos llocs on mirar i un de sol on
+// escriure'l. Comprovat el 5 de setembre de 2026 que cap poble no surt a les
+// dues taules amb formes catalanes DIFERENTS, o sigui que avui la precedència
+// no tapa cap desacord; el dia que en tapi un, el que mana és pobles-alies.js.
 // ------------------------------------------------------------
 function formaCatalana(nom) {
   var clau = pobles.normalitzaNom(nom);
   if (clau === '') {
     return '';
   }
-  return MAPA_MUNICIPIS[clau] || '';
+
+  if (MAPA_ALIES[clau]) {
+    return MAPA_ALIES[clau];
+  }
+
+  return MAPA_COMARQUES[clau] || '';
 }
 
 // ------------------------------------------------------------
-// Munta el diccionari «forma normalitzada -> forma catalana que es publica».
-// Les dues llengües hi apunten, i totes dues porten a la primera columna de
-// la taula, que és la catalana.
+// Munta el diccionari «forma normalitzada -> forma catalana que es publica»
+// a partir de pobles-alies.js. Les dues llengües hi apunten, i totes dues
+// porten a la primera columna de la taula, que és la catalana.
 // ------------------------------------------------------------
-function construeixMapaDeMunicipis() {
+function construeixMapaDAlies() {
   var mapa = {};
 
   for (var i = 0; i < pobles.POBLES_ALIES.length; i++) {
@@ -944,8 +1080,35 @@ function construeixMapaDeMunicipis() {
   return mapa;
 }
 
-// El diccionari es munta un sol cop, en carregar el fitxer.
-var MAPA_MUNICIPIS = construeixMapaDeMunicipis();
+// ------------------------------------------------------------
+// El mateix diccionari, però a partir de la taula de comarca-per-poble.js.
+// Allà cada entrada és una llista de formes del mateix poble i la PRIMERA és
+// la catalana: n'hi ha que en porten dues —el francès, quan el poble no és a
+// pobles-alies.js— i alguna que en porta tres, de comunes reanomenades.
+// Totes les formes hi apunten, i totes porten a la primera.
+// ------------------------------------------------------------
+function construeixMapaDeComarques() {
+  var mapa = {};
+  var comarquesAmbPobles = Object.keys(comarques.POBLES_PER_COMARCA);
+
+  for (var i = 0; i < comarquesAmbPobles.length; i++) {
+    var llista = comarques.POBLES_PER_COMARCA[comarquesAmbPobles[i]];
+
+    for (var j = 0; j < llista.length; j++) {
+      var formes = llista[j];
+
+      for (var k = 0; k < formes.length; k++) {
+        mapa[pobles.normalitzaNom(formes[k])] = formes[0];
+      }
+    }
+  }
+
+  return mapa;
+}
+
+// Els dos diccionaris es munten un sol cop, en carregar el fitxer.
+var MAPA_ALIES = construeixMapaDAlies();
+var MAPA_COMARQUES = construeixMapaDeComarques();
 
 
 // --- Les peces: treure l'adreça d'un camp HTML ------------------------------
@@ -1739,6 +1902,92 @@ function casosDeProva() {
       comprova: function (fila, problemes) {
         if (fila.nota_curador.indexOf('comercial') === -1) {
           problemes.push('la nota no diu que sembla una activitat comercial');
+        }
+      }
+    },
+    {
+      nom: 'Tema «Pour enfant»: sobreescriu Taller i ho diu a la nota',
+      entrada: {
+        SyndicObjectID: 'FMALAR066INF1',
+        SyndicObjectName: 'ATELIER CREATIF DES PETITS',
+        TRI: '10/05/2026', Commune: 'PRADES',
+        RechercheTYPE: 'Atelier',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Artisanat, Pour enfant'
+      },
+      espera: { categoria: 'Activitat infantil' },
+      comprova: function (fila, problemes) {
+        if (fila.nota_curador.indexOf('RechercheTYPE deia: Taller') === -1) {
+          problemes.push('la nota no diu quina categoria s\'ha desplaçat');
+        }
+      }
+    },
+    {
+      nom: 'Tema «Conte»: sobreescriu Teatre igual, sense excepcions',
+      entrada: {
+        SyndicObjectID: 'FMALAR066INF2',
+        SyndicObjectName: 'CONTES AU JARDIN',
+        TRI: '10/05/2026', Commune: 'PRADES',
+        RechercheTYPE: 'Theatre',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Conte, Danse'
+      },
+      espera: { categoria: 'Activitat infantil' },
+      comprova: function (fila, problemes) {
+        if (fila.nota_curador.indexOf('RechercheTYPE deia: Teatre') === -1) {
+          problemes.push('la nota no diu quina categoria s\'ha desplaçat');
+        }
+      }
+    },
+    {
+      nom: 'Tema infantil amb RechercheTYPE buit: omple el buit i no avisa',
+      entrada: {
+        SyndicObjectID: 'FMALAR066INF3',
+        SyndicObjectName: 'SALON DU JOUET',
+        TRI: '10/05/2026', Commune: 'PRADES',
+        RechercheTYPE: '',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Pour enfant'
+      },
+      espera: { categoria: 'Activitat infantil' },
+      comprova: function (fila, problemes) {
+        if (fila.nota_curador.indexOf('RechercheTYPE deia') !== -1) {
+          problemes.push('avisa d\'una categoria desplaçada que no existia');
+        }
+      }
+    },
+    {
+      nom: '«Cirque» i «Bande dessinée» NO són tema infantil',
+      entrada: {
+        SyndicObjectID: 'FMALAR066INF4',
+        SyndicObjectName: 'EXPO BD ET ARTS DU CIRQUE',
+        TRI: '10/05/2026', Commune: 'PRADES',
+        RechercheTYPE: 'Exposition',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Bande dessin&eacute;e, Cirque'
+      },
+      espera: { categoria: 'Exposició' }
+    },
+    {
+      nom: '«Conte» dins d\'una altra paraula del tema no compta',
+      entrada: {
+        SyndicObjectID: 'FMALAR066INF5',
+        SyndicObjectName: 'DANSE CONTEMPORAINE',
+        TRI: '10/05/2026', Commune: 'PRADES',
+        RechercheTYPE: 'Danse',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Danse contemporaine'
+      },
+      espera: { categoria: 'Dansa i ball' }
+    },
+    {
+      nom: 'Sense COMMUNTHEME la categoria de RechercheTYPE no es toca',
+      entrada: {
+        SyndicObjectID: 'FMALAR066INF6',
+        SyndicObjectName: 'CONCERT DE PRINTEMPS',
+        TRI: '10/05/2026', Commune: 'PRADES',
+        RechercheTYPE: 'Concert',
+        COMMUNTHEME: '<font></font>'
+      },
+      espera: { categoria: 'Música' },
+      comprova: function (fila, problemes) {
+        if (fila.nota_curador.indexOf('tema infantil') !== -1) {
+          problemes.push('la regla del tema infantil ha saltat sense tema');
         }
       }
     },

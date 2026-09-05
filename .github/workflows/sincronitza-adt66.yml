@@ -1,0 +1,93 @@
+# ---------------------------------------------------------------------------
+# SINCRONITZACIÓ ADT66 -> pendents.json
+#
+# El segon context d'execució del projecte, al costat del Worker: aquell
+# treballa per esdeveniment i en directe, aquest per lot i periòdicament.
+#
+# Executa `eines/sincronitza-programada.js`, que baixa el flux de l'ADT66, el
+# mapeja, el compara amb el que ja tenim i escriu les files noves a
+# `pendents.json` per l'API de continguts de GitHub.
+#
+#   - CRIDA GEMINI, i li cal un secret propi. El pas 7 bis del guió tradueix
+#     cada fila al català abans d'encuar-la, i la clau surt del secret
+#     `GEMINI_API_KEY` d'AQUEST repositori (Settings -> Secrets and variables
+#     -> Actions), que és un magatzem DIFERENT dels Secrets de Cloudflare on
+#     viu la del Worker. Si el secret no hi és, la passada NO s'atura: les
+#     files s'encuen en francès i el registre del run ho diu amb un ATENCIÓ.
+#     RES DE CLOUDINARY: aquest camí continua sense pujar cap cartell.
+#   - CAP `git commit` NI `git push`. El curador pot estar publicant al mateix
+#     moment i un push del runner li trepitjaria el fitxer sencer. El token que
+#     es fa servir és el `GITHUB_TOKEN` efímer del propi run.
+#   - NOMÉS ESCRIU A `pendents.json`. `events.json` només es llegeix.
+#
+# EL CRON ESTÀ COMENTAT A POSTA, I ÉS SETMANAL. Les primeres execucions han de
+# ser manuals (pestanya Actions -> aquest workflow -> «Run workflow»). Per
+# activar-lo, treure el coixinet de les dues línies de sota `schedule:`.
+#
+# NO S'HA DE PASSAR A DIARI. L'endarreriment de la primera vegada —712 files
+# contra un pressupost de 300 crides— es drena amb TRES execucions manuals, i
+# després el règim de creuer (135-165 files noves per setmana) cap de sobres
+# dins d'una sola passada setmanal.
+#
+# AVÍS DE CADUCITAT: GitHub desactiva sol els workflows programats després de
+# 60 dies sense cap activitat al repositori, i la desactivació s'emporta també
+# el `workflow_dispatch` d'aquest mateix fitxer. Vegeu NOTES.md.
+# ---------------------------------------------------------------------------
+
+name: Sincronitza ADT66
+
+on:
+  # Execució manual, sempre disponible.
+  workflow_dispatch:
+    inputs:
+      en_sec:
+        description: "En sec (no escriu res a pendents.json)"
+        type: boolean
+        default: true
+
+  # Setmanal, dimarts de matinada (04:00 UTC). Comentat fins que les
+  # execucions manuals hagin anat bé unes quantes vegades.
+  # schedule:
+  #   - cron: "0 4 * * 2"
+
+# L'únic permís que li cal: escriure `pendents.json`. Res més.
+permissions:
+  contents: write
+
+jobs:
+  sincronitza:
+    name: Baixa el flux i encua el que sigui nou
+    runs-on: ubuntu-latest
+    # El gruix del temps és la traducció, no el flux: 300 crides a 4,5 s de
+    # pausa són 22 minuts i mig, i amb la latència de cada crida un run ple
+    # ronda els 25-30. Els 40 hi deixen marge i tallen si penja. Si es canvia
+    # PRESSUPOST_CRIDES_GEMINI o PAUSA_ENTRE_CRIDES_MS, s'ha de canviar aquí.
+    timeout-minutes: 40
+
+    steps:
+      - name: Recull el repositori
+        uses: actions/checkout@v4
+
+      - name: Prepara Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+        # Cap `npm install`: el projecte no té cap dependència (§3 de CLAUDE.md).
+
+      - name: Sincronitza
+        env:
+          # El token efímer del run. No és cap secret que hàgiu de crear:
+          # GitHub el posa sol, i amb `permissions: contents: write` de dalt ja
+          # pot escriure `pendents.json`.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Aquesta sí que s'ha de crear a mà, un sol cop, als Secrets d'Actions
+          # d'aquest repositori. Sense ella el run va igual i encua en francès.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ "${{ inputs.en_sec }}" = "true" ]; then
+            node eines/sincronitza-programada.js --en-sec
+          else
+            node eines/sincronitza-programada.js
+          fi
+        # En una execució programada, `inputs.en_sec` és buit i s'escriu de
+        # debò, que és el que ha de fer el cron quan s'activi.

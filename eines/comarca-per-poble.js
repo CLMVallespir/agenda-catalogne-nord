@@ -307,7 +307,12 @@ var POBLES_PER_COMARCA = {
     ['Èguet'],
     ['La Tor de Querol'],
     ['Angostrina'],
-    ['Targasona'],
+    // Dues esses a pobles-alies.js i una de sola al flux de l'ADT66, que
+    // l'escriu «TARGASONNE». Les dues grafies circulen i normalitzaNom()
+    // no plega lletres doblades —ni ha de fer-ho—, o sigui que la variant
+    // s'escriu aquí. La parella ['Targasona', 'Targassonne'] d'allà no es
+    // toca.
+    ['Targasona', 'Targasonne'],
     ['Vilanova de les Escaldes'],
     // La comuna fusionada: l'ADT66 la dona amb el nom llarg, i cap de les
     // dues meitats de dalt no l'atrapa.

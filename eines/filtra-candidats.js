@@ -37,10 +37,21 @@
 
 // --- Constants: la finestra de dates ----------------------------------------
 
-// Fins a quants mesos vista s'accepta un acte. Un acte que comença d'aquí a més
+// Fins a quants DIES vista s'accepta un acte. Un acte que comença d'aquí a més
 // temps no és soroll, però tampoc no és agenda: quan s'acosti tornarà a entrar
 // per la mateixa porta, i mentrestant no ha d'ocupar la cua del curador.
-var MESOS_DE_FINESTRA = 12;
+//
+// Es compta en DIES i no en mesos —abans era `DIES_DE_FINESTRA` i valia 12—
+// perquè trenta dies no són cap mes concret, i sumar dies no té cap vora rara
+// mentre que sumar mesos sí que en tenia una (el 31 de gener més un mes queia
+// al març).
+//
+// PER QUÈ TRENTA I NO UN ANY: la sincronització del flux és SETMANAL. El que
+// avui cau fora de la finestra hi tornarà a entrar tot sol la setmana que
+// s'acosti, per la mateixa porta i sense que ningú hi hagi de fer res. No es
+// perd res; només s'endarrereix fins que l'acte és a tocar, que és quan el
+// curador el pot mirar amb sentit.
+var DIES_DE_FINESTRA = 30;
 
 // La vora de sota NO mira `data_inici` sinó l'últim dia de l'acte: un acte és
 // passat només quan ja s'ha acabat.
@@ -132,7 +143,7 @@ var CAMPS_DE_TEXT = ['nom_original', 'nom_altra_llengua', 'organitzador'];
 function filtraCandidats(candidatsRecerca, avui) {
   var llista = candidatsRecerca || [];
   var dia = diaDeReferencia(avui);
-  var final = finalDeFinestra(dia, MESOS_DE_FINESTRA);
+  var final = finalDeFinestra(dia, DIES_DE_FINESTRA);
 
   var passen = [];
   var descartats = [];
@@ -230,20 +241,18 @@ function diaDeReferencia(avui) {
 
 // ------------------------------------------------------------
 // L'últim dia que accepta la finestra: el dia de referència més uns quants
-// mesos.
+// dies. Es compta en UTC, com totes les dates del projecte.
 //
-// Detall que val més dir que amagar: si el dia no existeix al mes de destí
-// —el 31 de gener més un mes— JavaScript l'empeny al mes següent. Amb una
-// finestra de mesos sencers això és un dia de diferència a la vora, i no
-// canvia cap decisió que importi.
+// Sumar dies no té cap cas especial: el canvi de mes i el d'any els arregla
+// sol el constructor de Date.
 // ------------------------------------------------------------
-function finalDeFinestra(dia, mesos) {
+function finalDeFinestra(dia, dies) {
   var parts = dia.split('-');
   var any = Number(parts[0]);
   var mes = Number(parts[1]) - 1;
   var numero = Number(parts[2]);
 
-  var data = new Date(Date.UTC(any, mes + mesos, numero));
+  var data = new Date(Date.UTC(any, mes, numero + dies));
   return data.toISOString().slice(0, 10);
 }
 
@@ -375,8 +384,10 @@ module.exports = {
 var AVUI_DE_PROVA = '2026-08-29';
 
 // ------------------------------------------------------------
-// El lot de prova: vuit candidats fets a mà. Els sis que demana la tasca, més
-// dos que exerciten les dues decisions que aquest filtre ha hagut de prendre.
+// El lot de prova: deu candidats fets a mà. Els sis que demana la tasca, dos
+// que exerciten les dues decisions que aquest filtre ha hagut de prendre, i els
+// dos dies de la vora de dalt —el trentè i el trenta-unè—, que amb una finestra
+// de dies és el que cal fixar perquè un canvi de la constant es vegi de seguida.
 // ------------------------------------------------------------
 function lotDeProva() {
   return [
@@ -430,8 +441,8 @@ function lotDeProva() {
       candidat: {
         nom_original: 'Soirée découverte',
         llengua_nom_original: 'fr',
-        data_inici: '2026-10-10',
-        data_fi: '2026-10-10',
+        data_inici: '2026-09-10',
+        data_fi: '2026-09-10',
         municipi: 'Elna',
         organitzador: 'Chambres d\'hôtes Le Mas Vell'
       }
@@ -459,14 +470,36 @@ function lotDeProva() {
       }
     },
     {
+      nom: 'Vora de dalt: avui més trenta, el darrer dia que hi cap',
+      espera: '',
+      candidat: {
+        nom_original: 'Concert de tardor',
+        llengua_nom_original: 'ca',
+        data_inici: '2026-09-28',
+        data_fi: '2026-09-28',
+        municipi: 'Elna'
+      }
+    },
+    {
+      nom: 'El primer dia que ja no hi cap: avui més trenta-un',
+      espera: 'fora de finestra',
+      candidat: {
+        nom_original: 'Concert de tardor, segona part',
+        llengua_nom_original: 'ca',
+        data_inici: '2026-09-29',
+        data_fi: '2026-09-29',
+        municipi: 'Elna'
+      }
+    },
+    {
       nom: 'Normal, embolcallat amb la seva font',
       espera: '',
       candidat: {
         registre: {
           nom_original: 'Fira del bestiar',
           llengua_nom_original: 'ca',
-          data_inici: '2027-03-06',
-          data_fi: '2027-03-06',
+          data_inici: '2026-09-20',
+          data_fi: '2026-09-20',
           municipi: 'Prada'
         },
         font: { tipus: 'organitzador' }
@@ -490,8 +523,8 @@ function principal() {
 
   console.log('LOT DE PROVA: ' + casos.length + ' candidats, avui = ' + AVUI_DE_PROVA);
   console.log('finestra: ' + AVUI_DE_PROVA + ' … ' +
-              finalDeFinestra(AVUI_DE_PROVA, MESOS_DE_FINESTRA) +
-              '  (' + MESOS_DE_FINESTRA + ' mesos)');
+              finalDeFinestra(AVUI_DE_PROVA, DIES_DE_FINESTRA) +
+              '  (' + DIES_DE_FINESTRA + ' dies)');
   console.log('');
 
   for (var c = 0; c < casos.length; c++) {

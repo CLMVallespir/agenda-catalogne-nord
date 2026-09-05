@@ -39,6 +39,58 @@ la sessió següent.*
 > El §5 bis també tanca el punt 3 del §«El que queda obert»: la taula
 > `CATEGORIES_ADT66` **ja està mesurada** contra el flux real.
 
+> **CORRECCIÓ DEL 4 DE SETEMBRE DE 2026 — `Structure.Name` NO EXISTEIX.** La
+> taula del §2 bis deia que, quan `DETAILCONTACT` és buit, «`Structure.Name` és
+> l'oficina». **És fals: el payload no porta cap camp `Structure`.** Comprovat
+> sobre el flux sencer baixat el 4 de setembre de 2026 (1 513 ofertes): les 35
+> claus de cada oferta són literalment
+>
+> ```
+> SyndicObjectID · Published · Updated · SyndicObjectName · SyndicStructureId ·
+> GmapLatitude · GmapLongitude · ObjectTypeFix · ObjectTypeName ·
+> SyndicObjectOrder · DETAILPROGRAMME · COMMUNTHEME · DETAILADRESSE ·
+> LISTINGACCROCHE · DETAILTELEPHONE · ACCROCHE150 · Commune · DETAILCONTACT ·
+> COMMUNCATEGORIE · TRI · DETAILPHOTO · DETAILPHOTO_DIAPO · COMMUNDATE ·
+> DETAILCOURRIEL · CHAMPSYSTEME · LISTINGPHOTO · LISTINGPHOTO_DIAPO ·
+> DETAILDESCRIPTIF · DETAILCOMMUNE · COMMUNTYPE · COMMUNLIEU ·
+> DETAILFETEPAYANTE · DETAILSITEWEB · RechercheTYPE · COMMUNNOM
+> ```
+>
+> `Structure` no hi és enlloc. El que hi ha és **`SyndicStructureId`**, un GUID
+> sense cap nom al costat: hi és a les 1 513 ofertes i té **29 valors
+> distints** —les oficines de turisme que alimenten el flux—, però el flux no
+> diu de cap manera com es diu cadascuna. Un identificador no és un nom.
+>
+> *De passada, això tanca la pregunta dels «dos camps que falten dels 35» que
+> el bàner de `eines/mapeja-adt66.js` deixava oberta: són `ObjectTypeFix` i
+> `SyndicObjectOrder`, tots dos interns i tots dos sense cap ús.*
+>
+> **LA CONSEQÜÈNCIA, I NO ÉS PETITA.** Sense `Structure.Name` no hi ha cap
+> recanvi per a `associacio`: queda `DETAILCONTACT` sol, **buit a 1 213 de les
+> 1 513 ofertes del 4 de setembre de 2026 — quatre de cada cinc**. O sigui que
+> per a la gran majoria de les ofertes **el flux no diu qui organitza l'acte**.
+>
+> Tres regles de `docs/CRITERI-EDITORIAL.md` demanen justament això i, per
+> tant, **no es poden mecanitzar des del flux**:
+>
+> - **R3** (fora el que és atracció turística, i el país hi fa de decorat) —
+>   distingir el productor que ven al seu poble de l'oficina de turisme que ven
+>   un tast demana saber qui ho organitza.
+> - **R4** (una visita comentada és discurs, fora si no és en català) — el flux
+>   no declara mai la llengua, i l'organitzador era l'altra via per deduir-la.
+>   El que sí que es pot fer és el retall de `eines/sincronitza-programada.js`,
+>   que treballa amb el senyal textual i amb l'excepció de «Portes ouvertes» i
+>   no pregunta mai qui organitza.
+> - **R7** (davant d'un dubte, investiga l'organitzador) — literalment
+>   impossible: no hi ha organitzador a investigar. És feina del curador, una
+>   fila cada vegada.
+>
+> La conclusió pràctica: aquestes tres regles es queden **al criteri del
+> curador**, no al codi, i cap agent automàtic no les ha d'intentar. La
+> `nota_curador` és el lloc on avisar-lo que la fila no en porta.
+
+---
+
 ## 0. Què hi havia abans d'això
 
 No hi havia cap fase a `FASES.md` ni cap `HANDOFF-*.md`. El que sí que hi havia,
@@ -236,12 +288,12 @@ publica una agenda sense dates. El senyal hi era.
 | `lloc` | `COMMUNLIEU`, i `DETAILADRESSE` per al carrer | 1 527/1 543 |
 | `municipi` | `Commune` (i `DETAILCOMMUNE` amb codi postal) | 1 543/1 543 |
 | `comarca` | del municipi, no de les coordenades | — |
-| `categoria` | `RechercheTYPE` («Concert», «Théâtre», «Exposition»…) | 1 412/1 543 |
+| `categoria` | `RechercheTYPE` («Concert», «Théâtre», «Exposition»…), **i `COMMUNTHEME` per damunt** quan el tema és «Pour enfant» o «Conte» (§5 bis.3, correcció del 4 de setembre) | 1 412/1 543 |
 | `descripcio_fr` | `DETAILDESCRIPTIF`; `ACCROCHE150` com a resum curt | 1 543/1 543 |
 | `descripcio_ca` | traducció — feina de Gemini, com sempre | — |
 | `imatge_url` | `LISTINGPHOTO` porta l'`<img src>` sencer a `cdt66.media.tourinsoft.eu` | 1 514/1 543 |
 | `font_url` | `DETAILSITEWEB` — **el web de l'organitzador**, no cap fitxa de l'ADT66 (§2 ter) | 623/1 543 el 29 d'agost; **606/1 504** el 30 |
-| `associacio` | `DETAILCONTACT` quan hi és; si no, `Structure.Name` és l'oficina | 294/1 543 |
+| `associacio` | **`DETAILCONTACT` i prou.** No hi ha cap recanvi: `Structure.Name` **no existeix** al payload (vegeu la correcció del 4 de setembre, aquí sota) | 294/1 543 el 29 d'agost; **300/1 513** el 4 de setembre |
 
 Un registre sencer, retallat:
 
@@ -853,6 +905,35 @@ El flux de l'ADT66 no porta cap valor que hi porti: no hi ha ni «Jeune public»
 ni res que ho digui, i `Rassemblement / réunion` va a revisió per la raó del
 §5 bis.2. Les dues categories les omplen les altres vies d'entrada —el correu,
 el Typebot, el curador a mà— no aquesta.
+
+> **CORRECCIÓ DEL 4 DE SETEMBRE DE 2026: `Activitat infantil` ja no és zero.**
+> El paràgraf de dalt tenia raó a mitges. És cert que `RechercheTYPE` no diu
+> mai res del públic —els seus 41 valors diuen la FORMA de l'acte—, però el
+> senyal sí que hi és al flux, en un altre camp: **`COMMUNTHEME`**, que aquest
+> apartat no havia mirat perquè el mapeig el deixava anar a
+> `metadadades.descartats.tema`.
+>
+> Dels 33 temes distints del flux, **«Pour enfant» surt a 70 ofertes i «Conte»
+> a 10**. Des del 4 de setembre de 2026, `categoriaPerTemaInfantil()`
+> (`eines/mapeja-adt66.js`) fa que qualsevol dels dos posi la categoria a
+> `Activitat infantil` **per damunt** del que hagués donat `RechercheTYPE`:
+> és la decisió editorial del propietari —el públic manda sobre la forma—, i
+> és reversible perquè, quan desplaça una categoria que deia alguna cosa, ho
+> escriu a `nota_curador` amb el valor desplaçat («Categoria per tema
+> infantil; RechercheTYPE deia: Taller»).
+>
+> «Cirque» (6 ofertes) i «Bande dessinée» (3) **NO** hi entren: són gèneres,
+> no públics.
+>
+> Sobre una descàrrega sencera del 4 de setembre de 2026 —**1 513 ofertes**, o
+> sigui que aquesta xifra no es compara amb la taula de dalt, que és de
+> 1 463—, la regla deixa **73 ofertes** a `Activitat infantil`: 66 desplacen
+> una categoria que `RechercheTYPE` havia donat (21 Taller, 12 Teatre,
+> 10 Esports, 6 Patrimoni i tradicions, 5 Vida associativa, 4 Exposició,
+> 3 Música, 3 Mercat, 1 Dansa i ball, 1 Conferència) i 7 omplen un buit.
+>
+> **`Concentració` continua a zero**, i per aquell apartat sí que val el
+> paràgraf de dalt sencer: cap camp del flux no la diu.
 
 ### 5 bis.4 El que el flux NO porta: cap preu
 

@@ -1,7 +1,7 @@
 # CLAUDE.md — «Què fas?» · Agenda de Catalunya Nord
 
 *Constitució del projecte per a l'agent de codi. Sempre en context. Les fases de
-treball són a `FASES.md`. Última revisió: 27 d'agost de 2026.*
+treball són a `FASES.md`. Última revisió: 4 de setembre de 2026.*
 
 ---
 
@@ -13,7 +13,10 @@ Una agenda cultural automatitzada i de cost gairebé zero per a **Catalunya Nord
 **no és desenvolupador professional**: tot ha de continuar sent reparable per ell,
 sol, al cap de sis mesos.
 
-L'arquitectura — tota, i l'única:
+L'arquitectura — tota, i l'única. Són **dos contextos d'execució**, no un: el
+Worker, que treballa **per esdeveniment** i en directe, i l'Action, que treballa
+**per lot** i periòdicament. Els dos escriuen al mateix `pendents.json` i cap
+dels dos no toca mai `events.json`.
 
 ```
 associació ──correu──► agenda@clm.cat ──► Cloudflare Email Routing
@@ -22,6 +25,12 @@ associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Clou
                                             ├─ email():     parseja → Gemini → Cloudinary → pendents.json → reenvia l'original a Gmail (arxiu)
                                             ├─ fetch():     mapa determinista del formulari → pendents.json
                                             └─ scheduled(): digest setmanal per comarca via Brevo
+                                                │
+flux ADT66 ──────────────────────────────►  UNA SOLA ACTION (GitHub Actions)
+                                            └─ .github/workflows/sincronitza-adt66.yml
+                                                 └─ eines/sincronitza-programada.js
+                                                      sincronitza → mapeja → classifica → filtra → tradueix (Gemini) → pendents.json
+                                                      (Gemini sí, una crida per fila; Cloudinary no)
                                                 │
                               curador.html (GitHub Pages) ──valida──► events.json
                                                 │
@@ -381,6 +390,55 @@ publicitària.
   l'altra buida (el curador completa la traducció en revisar). El cartell ja puja
   del navegador a Cloudinary dins el flux del Typebot: l'URL arriba fet, guarda'l
   tal qual.
+
+## 7 bis. Els dos contextos d'execució, i quina configuració viu a cadascun
+
+El projecte ja no és «un Worker, tres portes». Des del 4 de setembre de 2026 hi
+ha **dos** llocs on s'executa codi sol, i no es poden configurar al mateix lloc.
+
+| | **El Worker** (Cloudflare) | **L'Action** (GitHub Actions) |
+|---|---|---|
+| Unitat de treball | un esdeveniment, en directe | un lot sencer, periòdicament |
+| Què el dispara | un correu, un POST del Typebot, el cron del digest | el cron setmanal del workflow, o el botó «Run workflow» |
+| Crida models? | **sí** — Gemini i Cloudinary | **sí, Gemini i prou** — una crida per fila per traduir-la al català abans d'encuar-la (pas 7 bis). Cloudinary, mai |
+| Escriu | `pendents.json` | `pendents.json`, i res més |
+| Es desplega | enganxant el codi al tauler de Cloudflare | fent commit del `.yml`; no hi ha res a desplegar |
+| Fitxers | `worker/worker.js`, `worker/worker-concatenat.js` | `.github/workflows/sincronitza-adt66.yml` + `eines/sincronitza-programada.js` |
+
+**On viu cada configuració — i no es comparteixen mai:**
+
+- **Secrets del Worker** (tauler de Cloudflare → Settings → Variables):
+  `GEMINI_API_KEY`, `GITHUB_TOKEN` (el de gra fi, §3), `BREVO_API_KEY`,
+  `TYPEBOT_SECRET` i els IDs de llistes de Brevo. El `CLOUDINARY_CLOUD_NAME`
+  hi és com a variable, no com a secret.
+- **Secrets de l'Action** (GitHub → Settings → Secrets and variables →
+  Actions del repositori), i n'hi ha dos, de naturalesa ben diferent:
+    - `GITHUB_TOKEN` **no s'hi ha de posar**: és el token efímer que GitHub posa
+      sol a cada run, amb `permissions: contents: write` declarat al `.yml`;
+      neix i mor amb el run.
+    - `GEMINI_API_KEY` **sí que s'hi ha de posar a mà, un sol cop**. Aquest
+      magatzem és **diferent** del dels Secrets de Cloudflare, on viu la clau
+      del Worker: posar-la en un lloc no la posa a l'altre. Aquest fitxer ja
+      deia que el dia que aquest camí cridés un model el secret aniria aquí;
+      des del 4 de setembre de 2026, aquest dia ja ha arribat.
+    - **Recomanació, no requisit: que sigui una clau d'un projecte de Google
+      NOU**, no la mateixa del Worker. La quota de Gemini és **per projecte, no
+      per clau**, i amb projectes separats una passada de 300 crides de l'Action
+      no pot deixar sense quota el correu que arribi aquella tarda. Amb el
+      mateix projecte també funciona, i per això el pressupost de l'Action és
+      300 i no 500: els altres 200 es deixen expressament per al Worker.
+    - **Si `GEMINI_API_KEY` no hi és, el run NO s'atura**: les files s'encuen en
+      francès, com abans que el pas 7 bis existís, i el registre del run ho diu
+      amb un ATENCIÓ. És una configuració incompleta que es veu, no una fallada
+      silenciosa.
+- **Les coordenades del repositori** (`propietari/repositori`, branca, noms dels
+  dos fitxers) són constants dins de cada fitxer de codi, com sempre. A l'Action,
+  el repositori el dona `GITHUB_REPOSITORY`, que ve del propi run.
+
+**Per què això no trenca el §3** («cap servidor més enllà de l'únic Worker»): un
+runner d'Actions no és cap servidor. No escolta res, no té adreça, no és
+accessible des de fora i no existeix entre execucions. La restricció era contra
+tenir una màquina engegada a mantenir; això és un guió que s'executa i para.
 
 ## 8. Fora d'abast — no ho construeixis, ni si t'ho demanen de passada (confirma primer)
 
