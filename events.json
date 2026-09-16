@@ -772,5 +772,23 @@
     "font_url": "https://www.vallespir-tourisme.fr/offres/conference-des-artistes-en-bord-de-mediterranee-le-boulou-fr-6410734/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-09-26-festival-de-la",
+    "titol": "Festival de la Mar",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "09:00",
+    "lloc": "Maison de l’Eau et de la Méditerranée",
+    "municipi": "El Voló",
+    "comarca": "Vallespir",
+    "categoria": "Conferència",
+    "descripcio_ca": "La Maison de l’Eau et de la Méditerranée dedica una jornada a donar a conèixer les estructures i els oficis lligats a la mar. Diverses associacions locals compromeses amb el desenvolupament sostenible i l’educació ambiental hi tenen parades i tallers, per a petits i grans. Entrada gratuïta.",
+    "descripcio_fr": "La Maison de l’Eau et de la Méditerranée consacre une journée à faire connaître les structures et les métiers liés à la mer. Plusieurs associations locales engagées dans le développement durable et l’éducation à l’environnement y tiennent des stands et des ateliers, pour les petits et les grands. Entrée gratuite.",
+    "associacio": "Maison de l’Eau et de la Méditerranée (MEM)",
+    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/26-sep-AFFICHE-FESTIVAL-DE-LA-MER.jpg",
+    "font_url": "https://www.mairie-leboulou.fr/agenda/47381/3454-festival-de-la-mer-2026.htm",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
