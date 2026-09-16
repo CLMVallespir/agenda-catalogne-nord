@@ -502,5 +502,23 @@
     "font_url": "https://www.mairie-leboulou.fr/agenda/47620/3454-les-invisibles-les-tirailleurs-senegalais.-warren-sare-association-ecole-sans-frontieres-visa-off-2025.htm",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-09-04-exposicio-de-pintura",
+    "titol": "Exposició de pintura de l’associació Colorine",
+    "data_inici": "2026-09-04",
+    "data_fi": "2026-09-28",
+    "hora": "14:30",
+    "lloc": "Musée du liège",
+    "municipi": "Morellàs i les Illes",
+    "comarca": "Vallespir",
+    "categoria": "Exposició",
+    "descripcio_ca": "El Museu del Suro i el municipi de Morellàs i les Illes acullen l’associació de pintura Colorine, amb seu al Voló. Diversos dels seus membres són de Morellàs i presenten les seves darreres creacions. L’exposició es pot veure durant tot el mes de setembre.",
+    "descripcio_fr": "Le Musée du liège et la commune de Maureillas-las-Illas accueillent l’association de peinture Colorine, dont le siège est au Boulou. Plusieurs de ses adhérents sont maureillanais et présentent leurs dernières créations. L’exposition est visible tout le mois de septembre.",
+    "associacio": "Association Colorine; Commune de Maureillas-Las Illas et Musée du liège (hosts)",
+    "imatge_url": "https://files.appli-intramuros.com/img/events/5092/b335de5d40e1c84c08ae1a772d50225a_exposition.jpg",
+    "font_url": "https://www.maureillaslasillas.fr/agenda/845490",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
