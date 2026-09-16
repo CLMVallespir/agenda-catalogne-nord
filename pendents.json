@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-08-02-exposicio-col-lectiva",
-    "titol": "Exposició col·lectiva d’artistes arlesencs",
-    "data_inici": "2026-08-02",
-    "data_fi": "2026-09-30",
-    "hora": "",
-    "lloc": "Le Palau",
-    "municipi": "Arles de Tec",
-    "comarca": "Vallespir",
-    "categoria": "Exposició",
-    "descripcio_ca": "El Palau d’Arles de Tec acull una exposició col·lectiva d’artistes del poble i dels voltants. Hi participen Anaïs Guerrero, Christian D’Agostino, María Periánez, Jacques Maurin, Jean-Luc Aspart, Mors i Xylo. Set mirades diferents reunides en un mateix espai.",
-    "descripcio_fr": "Le Palau d’Arles-sur-Tech accueille une exposition collective d’artistes du village et des environs. Y participent Anaïs Guerrero, Christian D’Agostino, María Periánez, Jacques Maurin, Jean-Luc Aspart, Mors et Xylo. Sept regards différents réunis dans un même espace.",
-    "associacio": "Abbaye Sainte-Marie",
-    "imatge_url": "https://files.appli-intramuros.com/img/events/6388/ff08de1a950a50cf828e36b724a0018b_exposition.jpg",
-    "font_url": "https://www.intramuros.org/arles-sur-tech/agenda/843434",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-08-18-convivencia-dels-sagrats",
     "titol": "Convivència dels sagrats",
     "data_inici": "2026-08-18",
