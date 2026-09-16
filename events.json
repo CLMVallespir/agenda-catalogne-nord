@@ -340,5 +340,23 @@
     "font_url": "https://www.tourisme-pyreneesorientales.com/agenda/exposition-nourrir-la-planete-musee-de-cerdagne-visa-pour-limage-sainte-leocadie-fr-6707779/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-08-01-exposicio-de-michele",
+    "titol": "Exposició de Michèle Reby",
+    "data_inici": "2026-08-01",
+    "data_fi": "2026-09-30",
+    "hora": "09:30",
+    "lloc": "Cloître d'Elne",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L’artista plàstica Michèle Reby exposa les seves obres al Claustre d’Elna. La mostra es pot visitar de l’1 d’agost al 30 de setembre, dins l’horari d’obertura del claustre. Una ocasió de veure creació contemporània en un marc romànic.",
+    "descripcio_fr": "L’artiste plasticienne Michèle Reby expose ses œuvres au Cloître d’Elne. La présentation est visible du 1er août au 30 septembre, aux heures d’ouverture du cloître. Une occasion de voir de la création contemporaine dans un cadre roman.",
+    "associacio": "Mairie d'Elne",
+    "imatge_url": "https://ville-elne.fr/wp-content/uploads/2026/07/Affiche-Exposition-Musee-Moderne-Professionnelle-Sobre-scaled.png",
+    "font_url": "https://ville-elne.fr/agenda/exposition-de-michele-reby/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
