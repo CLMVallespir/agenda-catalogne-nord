@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-06-27-picabia-mediterrania",
-    "titol": "Picabia, Mediterrània",
-    "data_inici": "2026-06-27",
-    "data_fi": "2026-11-29",
-    "hora": "",
-    "lloc": "Musée d'Art moderne de Céret",
-    "municipi": "Ceret",
-    "comarca": "Vallespir",
-    "categoria": "Exposició",
-    "descripcio_ca": "El Museu d’Art Modern de Ceret dedica una exposició a Francis Picabia (1879-1953), figura central de les avantguardes del començament del segle XX. Nodrit dels seus viatges entre Nova York i Barcelona, l’artista va elaborar un llenguatge audaç i irreverent. El recorregut el situa al costat de Picasso, Delaunay i Laurencin.",
-    "descripcio_fr": "Le Musée d’Art moderne de Céret consacre une exposition à Francis Picabia (1879-1953), figure centrale des avant-gardes du début du XXe siècle. Nourri de ses voyages entre New York et Barcelone, l’artiste a élaboré un langage audacieux et irrévérencieux. Le parcours le situe aux côtés de Picasso, Delaunay et Laurencin.",
-    "associacio": "Musée d'Art moderne de Céret (EPCC)",
-    "imatge_url": "https://www.musee-ceret.com/content/uploads/2026/05/dp-picabia-musee-dart-moderne-de-ceret.pdf",
-    "font_url": "https://www.musee-ceret.com/expositions/exposition-en-cours/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-07-31-alimentar-el-planeta",
     "titol": "Alimentar el planeta",
     "data_inici": "2026-07-31",
