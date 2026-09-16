@@ -1006,5 +1006,23 @@
     "font_url": "https://www.agly-tourisme.com/agenda/journees-medievales/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-10-24-fira-de-sant",
+    "titol": "Fira de Sant Martí",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-11-22",
+    "hora": "14:00",
+    "lloc": "FIRA DE SANT MARTÍ",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "La Fira de Sant Martí torna a Perpinyà durant prop d’un mes. S’hi troben atraccions, parades i parcs infantils, del 24 d’octubre al 22 de novembre. Una cita per venir en família o amb amics.",
+    "descripcio_fr": "La Foire Saint-Martin revient à Perpignan pendant près d’un mois. On y trouve attractions, stands et parcs pour enfants, du 24 octobre au 22 novembre. Un rendez-vous pour venir en famille ou entre amis.",
+    "associacio": "",
+    "imatge_url": "https://www.mairie-perpignan.fr/sites/default/files/styles/originale/public/images/foire-saint-martin--affiche.jpg?itok=6S2YZllG",
+    "font_url": "https://www.perpignantourisme.com/ca/agenda/foire-saint-martin/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
