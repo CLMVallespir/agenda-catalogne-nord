@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-08-18-del-camp-i",
-    "titol": "Del camp i de la terra: els vells masos catalans",
-    "data_inici": "2026-08-18",
-    "data_fi": "2026-09-19",
-    "hora": "",
-    "lloc": "Espace Martin Vivès",
-    "municipi": "Prada",
-    "comarca": "Conflent",
-    "categoria": "Exposició",
-    "descripcio_ca": "L’associació Terra Nostra presenta una exposició sobre el patrimoni vernacle dels masos catalans a l’Espai Martin Vivès. La mostra s’inscriu en la Universitat Catalana d’Estiu i s’acompanya de conferències conduïdes per Ramon Gual, en català i en francès. Una mirada a l’arquitectura de la pagesia.",
-    "descripcio_fr": "L’association Terra Nostra présente une exposition sur le patrimoine vernaculaire des mas catalans à l’Espace Martin Vivès. Elle s’inscrit dans l’Université Catalane d’Été et s’accompagne de conférences menées par Ramon Gual, en catalan et en français. Un regard sur l’architecture paysanne.",
-    "associacio": "Association Terra Nostra",
-    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/Affiche---Les-vieux-mas-Catalans--2-.jpg",
-    "font_url": "https://www.tourisme-canigo.com/agenda/del-camp-i-de-la-terra-les-vieux-mas-catalans-fmalar066v52xo5v/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-08-24-el-mercat-setmanal",
     "titol": "El mercat setmanal de Ribesaltes",
     "data_inici": "2026-08-24",
