@@ -628,5 +628,23 @@
     "font_url": "https://www.ceret.fr/cms_viewFile.php?idtf=243684&path=9.pdf",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-09-18-la-tartaruca",
+    "titol": "La Tartaruca",
+    "data_inici": "2026-09-18",
+    "data_fi": "2026-09-18",
+    "hora": "18:00",
+    "lloc": "Église de Saint Martin de Palaldà",
+    "municipi": "Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Música",
+    "descripcio_ca": "L’ensemble Orfeo Futuro toca a l’església de Sant Martí de Palaldà dins el Festival Vallespir Barroc. Format el 2010, reuneix músics italians i internacionals especialitzats en instruments històrics, en una formació que va del quartet a l’orquestra. Els seus programes creuen sovint repertori antic i música contemporània.",
+    "descripcio_fr": "L’ensemble Orfeo Futuro joue en l’église Saint-Martin de Palalda dans le cadre du Festival Vallespir Barroc. Fondé en 2010, il réunit des musiciens italiens et internationaux spécialisés dans les instruments historiques, en une formation allant du quatuor à l’orchestre. Ses programmes croisent souvent répertoire ancien et musique contemporaine.",
+    "associacio": "Festival Vallespir Barroc / BARROC.CAT",
+    "imatge_url": "",
+    "font_url": "https://www.vallespirbarroc.fr/copie-de-ensemble-orfeo-futuro",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
