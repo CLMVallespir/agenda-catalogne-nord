@@ -90,24 +90,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-19-visita-lliure-de",
-    "titol": "Visita lliure de les muralles de Vilafranca de Conflent",
-    "data_inici": "2026-09-19",
-    "data_fi": "2026-09-20",
-    "hora": "10:00",
-    "lloc": "Remparts de Villefranche-de-Conflent",
-    "municipi": "Vilafranca de Conflent",
-    "comarca": "Conflent",
-    "categoria": "Patrimoni i tradicions",
-    "descripcio_ca": "Per les Jornades Europees del Patrimoni, les muralles de Vilafranca de Conflent obren excepcionalment en visita lliure i gratuïta. Es poden recórrer els camins de ronda i mirar el paisatge des de les garites. Al llarg del recorregut hi ha diverses exposicions.",
-    "descripcio_fr": "À l’occasion des Journées européennes du patrimoine, les remparts de Villefranche-de-Conflent ouvrent exceptionnellement en visite libre et gratuite. On peut parcourir les chemins de ronde et regarder le paysage depuis les échauguettes. Plusieurs expositions jalonnent le parcours.",
-    "associacio": "Mairie de Villefranche-de-Conflent",
-    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/JEP-2026.jpg",
-    "font_url": "https://www.tourisme-pyreneesorientales.com/agenda/visite-libre-des-remparts-de-villefranche-de-conflent-villefranche-de-conflent-fr-6727504/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-22-conferencia-artistes-a",
     "titol": "Conferència: artistes a la vora de la Mediterrània",
     "data_inici": "2026-09-22",
