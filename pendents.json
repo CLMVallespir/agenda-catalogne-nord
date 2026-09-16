@@ -126,24 +126,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-10-07-el-llibre-vivent",
-    "titol": "El Llibre Vivent de passejada: «De l’autre côté»",
-    "data_inici": "2026-10-07",
-    "data_fi": "2026-10-07",
-    "hora": "10:00",
-    "lloc": "Médiathèque Municipale",
-    "municipi": "Tuïr",
-    "comarca": "Rosselló",
-    "categoria": "Activitat infantil",
-    "descripcio_ca": "El Llibre Vivent surt de passejada pels Pirineus Orientals amb espectacles gratuïts per al públic infantil en disset municipis. La mediateca municipal de Tuïr acull la creació «De l’autre côté». Entrada gratuïta.",
-    "descripcio_fr": "Le Livre Vivant part « en balade » dans les Pyrénées-Orientales avec des spectacles jeune public gratuits dans dix-sept communes. La médiathèque municipale de Thuir accueille la création « De l’autre côté ». Entrée gratuite.",
-    "associacio": "Médiathèque départementale Claude Simon / Département des Pyrénées-Orientales",
-    "imatge_url": "https://cdn-cloud.fra1.digitaloceanspaces.com/po66/wp-content/uploads/2025/09/Affiche-GENERIQUE-LVENB-A3_22juillet26.jpg",
-    "font_url": "https://www.ledepartement66.fr/agenda/livre-vivant-en-balade/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-10-09-conferencia-lart-de",
     "titol": "Conferència: l’art de la restauració",
     "data_inici": "2026-10-09",
