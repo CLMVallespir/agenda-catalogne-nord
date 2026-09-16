@@ -284,6 +284,16 @@ Cap fitxer del projecte no té `require.main === module` fora d'
 `pipeline-offline`, `processa-lot`, `puja-cartell`, `verifica-esdeveniment`,
 `verifica-enum`. (Més `sondes-fonts` i `proves-7bis`, que surten a la xarxa.)
 
+> **Precisió del 16 de setembre de 2026, comprovada llegint el fitxer.**
+> `proves-7bis` és **bateria de xarxa** i no compta entre les offline, tot i que
+> el seu bàner comença dient «proves en sec»: el «en sec» vol dir que no fa cap
+> crida a Gemini i que no escriu res, no que no toqui la xarxa. Es baixa el flux
+> sencer de l'ADT66 i el desa en memòria cau al directori temporal del sistema
+> (`quefas-flux-adt66.json`, uns 4,5 MB), de manera que **surt a la xarxa la
+> primera vegada i les següents no**, fins que algú esborri la cau. Aquesta
+> classificació ja era la bona en aquesta taula; el que s'hi afegeix és el
+> perquè, perquè el nom del bàner convida a col·locar-la a l'altra llista.
+
 **Les 3 que fallen de seguida**, perquè comparen les claus de la fila amb la
 llista de camps i s'aturen si no coincideixen exactament i en ordre:
 
