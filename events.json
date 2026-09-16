@@ -574,5 +574,23 @@
     "font_url": "https://66.agendaculturel.fr/festival/16eme-ecofestiv-arles-et-marche-des-producteurs-au-moulin-de.html",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-09-16-projeccio-esperanza-i",
+    "titol": "Projecció: «Esperanza» i «Mardochi»",
+    "data_inici": "2026-09-16",
+    "data_fi": "2026-09-16",
+    "hora": "18:00",
+    "lloc": "Maison de l'Action Sociale et des Associations (MASA)",
+    "municipi": "Arles de Tec",
+    "comarca": "Vallespir",
+    "categoria": "Cinema",
+    "descripcio_ca": "Carta Blanca porta a la MASA d’Arles de Tec dos itineraris i dos personatges. «Esperanza», documental de David Bravo, i «Mardochi», ficció de Lucas Gloppe, formen un programa curt de quaranta-cinc minuts. Entrada gratuïta.",
+    "descripcio_fr": "Carte Blanche porte à la MASA d’Arles-sur-Tech deux itinéraires et deux personnages. « Esperanza », documentaire de David Bravo, et « Mardochi », fiction de Lucas Gloppe, composent un programme court de quarante-cinq minutes. Entrée gratuite.",
+    "associacio": "Carte Blanche (attribution inferred only from the source text; direct organiser confirmation pending)",
+    "imatge_url": "",
+    "font_url": "https://www.lepetitagenda.com/evenements/fete-de-la-musique/projection-esperanza-dbravo-et-mardochi-lgloppe-9053326/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
