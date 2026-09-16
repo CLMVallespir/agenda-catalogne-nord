@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-05-23-els-insectes-un",
-    "titol": "Els insectes, un poble no tan minúscul",
-    "data_inici": "2026-05-23",
-    "data_fi": "2027-03-21",
-    "hora": "11:00",
-    "lloc": "MUSEUM D’HISTOIRE NATURELLE",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "El Museu d’Història Natural de Perpinyà dedica una exposició als insectes, omnipresents i tanmateix poc coneguts. Pol·linitzen, reciclen i mantenen l’equilibri del món viu. Entre bellesa, estranyesa i fragilitat, una invitació a canviar de mirada.",
-    "descripcio_fr": "Le Muséum d’Histoire Naturelle de Perpignan consacre une exposition aux insectes, omniprésents et pourtant méconnus. Ils pollinisent, recyclent et maintiennent l’équilibre du vivant. Entre beauté, étrangeté et fragilité, une invitation à changer de regard.",
-    "associacio": "",
-    "imatge_url": "https://www.mairie-perpignan.fr/sites/default/files/styles/originale/public/images/les-insectes--un-peuple-pas-si-minuscule.jpg?itok=1coXGuem",
-    "font_url": "https://www.mairie-perpignan.fr/fetes-et-manifestations/les-insectes-un-peuple-pas-si-minuscule",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-05-23-mites-i-llegendes",
     "titol": "Mites i llegendes",
     "data_inici": "2026-05-23",
