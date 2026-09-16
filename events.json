@@ -268,5 +268,23 @@
     "font_url": "https://www.tourisme-pyrenees-mediterranee.com/agenda/exposition-couleurs-catalanes-site-de-paulilles/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-06-08-elisabeth-eidenbenz-un",
+    "titol": "Elisabeth Eidenbenz: un deure de memòria",
+    "data_inici": "2026-06-08",
+    "data_fi": "2026-09-30",
+    "hora": "09:30",
+    "lloc": "Cloître d'Elne",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "La Maternitat Suïssa d’Elna és tancada per obres de seguretat durant prop d’un any i mig. Per mantenir viu aquest lloc de memòria, el Claustre d’Elna acull una exposició que repassa la seva història i la tasca d’Elisabeth Eidenbenz. Un relat d’acollida en temps de guerra.",
+    "descripcio_fr": "La Maternité Suisse d’Elne est fermée pour des travaux de mise en sécurité pendant près d’un an et demi. Afin de maintenir vivant ce lieu de mémoire, le Cloître d’Elne accueille une exposition qui retrace son histoire et le travail d’Elisabeth Eidenbenz. Un récit d’accueil en temps de guerre.",
+    "associacio": "Mairie d'Elne",
+    "imatge_url": "https://ville-elne.fr/wp-content/uploads/2026/05/IMG_3207-scaled.jpg",
+    "font_url": "https://ville-elne.fr/agenda/elisabeth-eidenbenz-un-devoir-de-memoire/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
