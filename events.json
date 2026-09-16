@@ -322,5 +322,23 @@
     "font_url": "https://www.musee-ceret.com/expositions/exposition-en-cours/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-07-31-alimentar-el-planeta",
+    "titol": "Alimentar el planeta",
+    "data_inici": "2026-07-31",
+    "data_fi": "2027-02-14",
+    "hora": "",
+    "lloc": "Musée de Cerdagne - Ferme Cal Mateu",
+    "municipi": "Santa Llocaia",
+    "comarca": "Cerdanya",
+    "categoria": "Exposició",
+    "descripcio_ca": "Per primera vegada, Visa pour l’Image surt de Perpinyà i s’instal·la al Museu de Cerdanya. L’exposició «Nourrir la planète» presenta el treball d’un fotoperiodista de renom internacional sobre com es menja al món. Es pot veure a la granja de Cal Mateu fins al febrer.",
+    "descripcio_fr": "Pour la première fois, Visa pour l’Image quitte Perpignan et s’installe au Musée de Cerdagne. L’exposition « Nourrir la planète » présente le travail d’un photojournaliste de renommée internationale sur la manière dont le monde se nourrit. Elle est visible à la ferme Cal Mateu jusqu’en février.",
+    "associacio": "Musée de Cerdagne - Ferme Cal Mateu; Centre International du Photojournalisme - Visa pour l'Image-Perpignan",
+    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/affiche-Visa-pour-l-Image-1-pour-communication.jpg",
+    "font_url": "https://www.tourisme-pyreneesorientales.com/agenda/exposition-nourrir-la-planete-musee-de-cerdagne-visa-pour-limage-sainte-leocadie-fr-6707779/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
