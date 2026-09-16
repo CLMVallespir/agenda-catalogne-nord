@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-12-tallers-de-reparacio",
-    "titol": "Tallers de reparació",
-    "data_inici": "2026-09-12",
-    "data_fi": "2026-10-10",
-    "hora": "14:00",
-    "lloc": "Espace Catalunya",
-    "municipi": "Morellàs i les Illes",
-    "comarca": "Vallespir",
-    "categoria": "Taller",
-    "descripcio_ca": "La Recyclerie du Vallespir proposa reparar objectes trencats o espatllats amb l’ajuda de voluntaris. Els tallers es fan el segon dissabte de cada mes, de dues a cinc de la tarda, a l’espai Catalunya. Una manera pràctica d’allargar la vida de les coses.",
-    "descripcio_fr": "La Recyclerie du Vallespir propose de réparer les objets cassés ou en panne avec l’aide de bénévoles. Les ateliers ont lieu le deuxième samedi de chaque mois, de quatorze à dix-sept heures, à l’espace Catalunya. Une manière concrète d’allonger la vie des objets.",
-    "associacio": "La Recyclerie du Vallespir",
-    "imatge_url": "https://files.appli-intramuros.com/img/events/5092/2a79c4b51a5d9cddc12f78d075f1f381_ateliers-r.jpg",
-    "font_url": "https://www.maureillaslasillas.fr/agenda/504820?start_date=2026-09-12&end_date=2026-09-12",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-16-16e-ecofestivarles-i",
     "titol": "16è Ecofestiv’Arles i mercat de productors",
     "data_inici": "2026-09-16",
