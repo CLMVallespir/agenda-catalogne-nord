@@ -36,24 +36,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-19-jornades-europees-del",
-    "titol": "Jornades Europees del Patrimoni a Illa",
-    "data_inici": "2026-09-19",
-    "data_fi": "2026-09-20",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Illa",
-    "comarca": "Rosselló",
-    "categoria": "Patrimoni i tradicions",
-    "descripcio_ca": "Illa obre i fa visitar l’església de Sant Esteve, la capella dels Carmes, l’església de Casesnoves, l’ermita de Sant Maurici i el vell Illa. Les visites són gratuïtes. El programa detallat es publica més endavant.",
-    "descripcio_fr": "Ille-sur-Têt ouvre et fait visiter l’église Saint-Étienne, la chapelle des Carmes, l’église de Casesnoves, l’ermitage de Saint-Maurice et le vieil Ille. Les visites sont gratuites. Le programme détaillé est publié ultérieurement.",
-    "associacio": "",
-    "imatge_url": "",
-    "font_url": "https://www.tourisme-roussillon-conflent.fr/destinations/fetes-et-manifestations/journees-europeennes-du-patrimoine-3/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-19-el-taller-de",
     "titol": "El Taller de les Barques de Paulilles",
     "data_inici": "2026-09-19",
