@@ -952,5 +952,23 @@
     "font_url": "https://www.vallespirbarroc.fr/copie-de-copie-de-copie-de-la-fenice-avenire",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-10-11-concert-dorgue-lorgue",
+    "titol": "Concert d’orgue: «L’orgue dans tous ses éclats»",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "17:00",
+    "lloc": "Abbaye Sainte-Marie",
+    "municipi": "Arles de Tec",
+    "comarca": "Vallespir",
+    "categoria": "Música",
+    "descripcio_ca": "Suzan Woodson toca l’orgue de l’abadia de Santa Maria d’Arles de Tec. El concert és organitzat pels Amics de l’Orgue. Entrada gratuïta.",
+    "descripcio_fr": "Suzan Woodson joue l’orgue de l’abbaye Sainte-Marie d’Arles-sur-Tech. Le concert est organisé par les Amis de l’Orgue. Entrée gratuite.",
+    "associacio": "Les Amis de l'Orgue",
+    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/concert-orgue-9.jpeg",
+    "font_url": "https://www.tourisme-pyreneesorientales.com/agenda/concert-dorgue-arles-sur-tech-fr-6228266/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
