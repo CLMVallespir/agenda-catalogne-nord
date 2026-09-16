@@ -412,5 +412,23 @@
     "font_url": "https://www.tourisme-canigo.com/agenda/del-camp-i-de-la-terra-les-vieux-mas-catalans-fmalar066v52xo5v/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-08-24-el-mercat-setmanal",
+    "titol": "El mercat setmanal de Ribesaltes",
+    "data_inici": "2026-08-24",
+    "data_fi": "2026-12-31",
+    "hora": "08:00",
+    "lloc": "Allées Joffre / Marché de Rivesaltes",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Cada dilluns al matí, el mercat de Ribesaltes s’instal·la a les Allées Joffre, davant de l’oficina de turisme. Hi ha productors locals, productors ecològics i artesans del poble i dels voltants. Una cita per omplir el cistell i trobar-se.",
+    "descripcio_fr": "Chaque lundi matin, le marché de Rivesaltes s’installe sur les Allées Joffre, face à l’Office de Tourisme. On y trouve des producteurs locaux, des producteurs bio et des artisans du village et des environs. Un rendez-vous pour remplir son panier et se retrouver.",
+    "associacio": "",
+    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/Rivesaltes-marche-1-copyright-Office-de-tourisme-Rivesaltes.png",
+    "font_url": "https://www.rivesaltes-tourisme.com/agenda/marche-hebdomadaire/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
