@@ -178,5 +178,23 @@
     "font_url": "https://www.tourisme-pyreneesorientales.com/agenda/troubadours-roussillonnais-belesta-fr-6274421/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-05-09-de-la-pols",
+    "titol": "De la pols a la llum: 40 anys de col·leccions",
+    "data_inici": "2026-05-09",
+    "data_fi": "2026-10-31",
+    "hora": "",
+    "lloc": "Musée de Cerdagne - Ferme Cal Mateu",
+    "municipi": "Santa Llocaia",
+    "comarca": "Cerdanya",
+    "categoria": "Exposició",
+    "descripcio_ca": "El Museu de Cerdanya celebra quaranta anys de feina obrint les seves reserves. Objectes excepcionals, recollits i estudiats durant dècades, surten a la llum per explicar la història comuna de la Cerdanya. Una exposició d’aniversari a la granja de Cal Mateu.",
+    "descripcio_fr": "Le Musée de Cerdagne célèbre quarante ans de travail en ouvrant ses réserves. Des objets exceptionnels, recueillis et étudiés pendant des décennies, sortent à la lumière pour raconter l’histoire commune de la Cerdagne. Une exposition anniversaire à la ferme Cal Mateu.",
+    "associacio": "Musée de Cerdagne - Ferme Cal Mateu",
+    "imatge_url": "https://api.cloudly.space/resize/crop/1200/627/60/aHR0cHM6Ly9jZHQ2Ni5tZWRpYS50b3VyaW5zb2Z0LmV1L3VwbG9hZC9FWFBPLU1EQy5qcGc=/image.jpg",
+    "font_url": "https://www.pyrenees-cerdagne.com/planifier/activites/agenda/exposition-40-ans-de-collections-de-la-poussiere-a-la-lumiere-musee-de-cerdagne-6418838",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
