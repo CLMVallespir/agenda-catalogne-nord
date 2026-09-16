@@ -934,5 +934,23 @@
     "font_url": "https://www.instagram.com/p/DZP6M00DKuL/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-10-10-gioia",
+    "titol": "Gioia",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "18:00",
+    "lloc": "Église de Saint Martin de Palaldà",
+    "municipi": "Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Música",
+    "descripcio_ca": "El Festival Vallespir Barroc proposa un programa dedicat al poder de la música per suscitar emocions profundes. És una qüestió estudiada per autors, compositors, filòsofs i poetes, de Descartes en endavant. Concert a l’església de Sant Martí de Palaldà.",
+    "descripcio_fr": "Le Festival Vallespir Barroc propose un programme consacré au pouvoir de la musique de susciter des émotions profondes. C’est une question étudiée par des auteurs, compositeurs, philosophes et poètes, depuis Descartes. Concert en l’église Saint-Martin de Palalda.",
+    "associacio": "Festival Vallespir Barroc / BARROC.CAT",
+    "imatge_url": "",
+    "font_url": "https://www.vallespirbarroc.fr/copie-de-copie-de-copie-de-la-fenice-avenire",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
