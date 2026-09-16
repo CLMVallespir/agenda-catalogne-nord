@@ -376,5 +376,23 @@
     "font_url": "https://www.intramuros.org/arles-sur-tech/agenda/843434",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-08-18-convivencia-dels-sagrats",
+    "titol": "Convivència dels sagrats",
+    "data_inici": "2026-08-18",
+    "data_fi": "2026-10-31",
+    "hora": "08:00",
+    "lloc": "Hôtel de Ville de Prades",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Exposició",
+    "descripcio_ca": "L’Ajuntament de Prada acull l’exposició del fotògraf Martial Lambert dedicada al patrimoni religiós dels Pirineus Orientals. Entre allò sagrat i les escenes de carrer, les imatges proposen una mirada nova sobre els edificis que jalonen el país. Es pot veure del 18 d’agost al 31 d’octubre.",
+    "descripcio_fr": "L’Hôtel de Ville de Prades accueille l’exposition du photographe Martial Lambert consacrée au patrimoine religieux des Pyrénées-Orientales. Entre le sacré et les scènes de rue, les images proposent un regard neuf sur les édifices qui jalonnent le pays. Elle est visible du 18 août au 31 octobre.",
+    "associacio": "Mairie de Prades / Service Patrimoine Culturel Mairie de Prades",
+    "imatge_url": "",
+    "font_url": "https://www.facebook.com/mairiedeprades/posts/-entre-sacr%C3%A9s-et-sc%C3%A8nes-de-rue-du-18-ao%C3%BBt-au-31-octobre-2026-lh%C3%B4tel-de-ville-de-/1475117721316669/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
