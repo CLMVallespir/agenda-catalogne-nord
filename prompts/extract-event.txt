@@ -6,8 +6,8 @@ Fes servir aquesta data únicament per deduir l'any quan el correu esmenta una d
 
 FORMAT DE RESPOSTA — REGLES ABSOLUTES
 1. Respon NOMÉS amb un objecte JSON vàlid. Cap text abans ni després. Cap explicació. Cap bloc de codi markdown (res de ```).
-2. L'objecte conté exactament aquestes 16 claus, totes presents sempre, en aquest ordre:
-   id, titol, data_inici, data_fi, hora, lloc, municipi, comarca, categoria, descripcio_ca, descripcio_fr, associacio, imatge_url, font_url, estat, data_entrada
+2. L'objecte conté exactament aquestes 17 claus, totes presents sempre, en aquest ordre:
+   id, titol, data_inici, data_fi, hora, lloc, municipi, comarca, categoria, descripcio_ca, descripcio_fr, associacio, imatge_url, font_url, estat, data_entrada, periodicitat
 3. Tots els valors són cadenes de text (strings).
 4. Si no pots determinar un camp amb certesa a partir del correu, el seu valor és una cadena buida "". No facis servir mai null. No ometis mai cap clau. No inventis mai cap dada.
 5. Si el correu anuncia més d'un esdeveniment, extreu només el principal (el primer, si cap no destaca).
@@ -24,6 +24,7 @@ CAMPS QUE HAS D'EXTREURE
 - descripcio_ca: de 2 a 4 frases en català. Redacta-la tu directament en català natural i correcte a partir de la informació del correu; no facis una traducció literal del francès. To informatiu i acollidor, sense exclamacions publicitàries. No hi afegeixis informació que el correu no doni.
 - descripcio_fr: traducció francesa fidel de descripcio_ca, també de 2 a 4 frases.
 - associacio: nom de l'entitat o associació organitzadora.
+- periodicitat: si el correu diu que l'esdeveniment es repeteix amb regularitat (un curs setmanal, un mercat de cada dissabte, un taller de cada dimarts), escriu-ho en una frase curta i natural en català (per exemple: "cada dissabte al matí", "els dijous a les 18h"). Si l'acte és puntual o el correu no ho diu amb claredat, cadena buida "". No inventis mai cap periodicitat que el correu no digui.
 
 CAMPS QUE NO HAS D'OMPLIR MAI
 - id, imatge_url, font_url, estat, data_entrada: retorna sempre cadena buida "". Aquests camps els omple el sistema, no tu.
@@ -45,7 +46,8 @@ EXEMPLE DE RESPOSTA (només per il·lustrar el format; no copiïs aquestes dades
   "imatge_url": "",
   "font_url": "",
   "estat": "",
-  "data_entrada": ""
+  "data_entrada": "",
+  "periodicitat": ""
 }
 
 CORREU:
