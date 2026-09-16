@@ -1316,3 +1316,70 @@ que algú la pugi a 500 sàpiga què està decidint. La protecció més neta ser
 **projecte de Google separat per a cada camí** —quotes de debò independents, i
 no costa res—, i és la recomanació; el pressupost hi és perquè funcioni igual
 si no s'ha fet.
+
+---
+
+## L'`id` no és únic: `creaId()` es queda tres paraules i xoca entre actes del mateix dia
+
+**Resum:** `creaId()` fa el slug amb les **tres primeres paraules** del títol,
+articles i preposicions incloses, i dos actes diferents del mateix dia que
+comencin igual acaben amb el mateix `id`.
+
+La línia és `var paraulesCurtes = paraules.slice(0, 3);` (`worker/worker.js:880`
+i les altres sis còpies: `curador.html`, `eines/dedup-esdeveniments.js`,
+`eines/mapeja-adt66.js`, `eines/mapeja-recerca.js`, `importa-csv.js`,
+`worker/worker-concatenat.js`). Les paraules buides compten, i per això «Fòrum
+de les associacions de Ceret» gasta el pressupost sencer en «forum de les» i la
+part que distingeix l'acte —el poble— no arriba mai a l'`id`.
+
+A la cua del 16 de setembre de 2026 hi havia quatre grups xocats, i cap no era
+cap duplicat:
+
+- `2026-09-05-forum-de-les` × 6 — els fòrums d'associacions de Ceret, el Voló,
+  Illa, Ribesaltes, Sant Pau de Fenollet i Tuïr
+- `2026-09-19-jornades-del-patrimoni` × 2 — Elna i Portvendres
+- `2026-09-19-el-taller-de` × 2 — els dos tallers de Paulilles (els mateixos que
+  el §4 ter de `CLAUDE.md` posa d'exemple de fals positiu de la dedup)
+- `2026-12-01-prova-amb-secret` × 2 — aquests sí que eren còpies, i eren brossa
+
+Per què importa: afecta `pendents.json`, `events.json` i **qualsevol cosa que
+faci servir l'`id` com a clau**. Avui no trenca res perquè cap dels dos fitxers
+no s'indexa per `id` —són llistes, i `app.js` no llegeix mai el camp—, però és
+una bomba de rellotgeria per a tot el que vingui després: un mapa per `id`, una
+àncora `#id` al web públic o una dedup que hi confiï es menjarien actes reals
+sense dir res.
+
+La regla mentre no es toqui: **per identificar una fila, `id` tot sol no val.**
+La clau bona és `id` + `titol` + `municipi`, que és la que fa servir
+`verificaCopiesReals()` a `eines/neteja-cua.js`. Arreglar `creaId()` vol dir
+tocar set còpies i reescriure ids ja publicats a `events.json`: és una feina
+apart, no un retoc.
+
+---
+
+## Després de la neteja, la capa 1 de la dedup treballa sobre un conjunt buit
+
+**Resum:** `pendents.json` ja no conté cap tag `[ADT66 id: …]`, perquè les 39
+files que en portaven eren totes passades i van sortir a la neteja del 16 de
+setembre de 2026.
+
+Les 39 files de l'ADT66 es van encuar el 4 de setembre amb `data_inici` =
+`data_fi` = aquell mateix dia (el límit de 40 files ordenades per data va agafar
+tot el que passava el dia de la passada), i el 16 ja eren totes passades.
+
+Per què importa: la capa 1 de `eines/dedup-contra-fitxers.js` és la comparació
+**exacta** per identificador contra `pendents.json`, i ara no hi ha res amb què
+comparar. A la propera passada de la sincronització, tota oferta de l'ADT66 que
+hi torni sortirà com a `nova` per la capa 1 i només la capa 2 —la difusa, contra
+`events.json`, amb llindar 0,75— la podrà aturar. És el resultat volgut: aquelles
+39 files no tenien català perquè es van encuar abans que existís el pas 7 bis, i
+volem que tornin a entrar ja traduïdes.
+
+El que NO s'ha de deduir d'això: que la memòria de rebuig no funcioni. El matí
+mateix de la neteja, el curador havia marcat 13 d'aquelles files com a
+`rebutjat` des de `curador.html`, i van quedar ben marcades al fitxer: el
+`marcaRebutjadaALaCua()` desplegat fa la seva feina. Totes 13 eren del 4 de
+setembre, o sigui passades, i han sortit amb la neteja com hauria fet sola
+`podaRebutjatsCaducats()` a la propera sincronització —la poda treu justament
+les rebutjades amb `data_fi` passada. La memòria de rebuig és per a les ofertes
+que poden tornar, i una de passada no torna.
