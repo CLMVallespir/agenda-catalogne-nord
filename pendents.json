@@ -36,24 +36,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-19-jornades-del-patrimoni",
-    "titol": "Jornades del Patrimoni: teatre amb Les Fourberies du Canigou",
-    "data_inici": "2026-09-19",
-    "data_fi": "2026-09-19",
-    "hora": "18:30",
-    "lloc": "Place de l'Église",
-    "municipi": "Elna",
-    "comarca": "Rosselló",
-    "categoria": "Teatre",
-    "descripcio_ca": "La plaça de l’Església d’Elna acull la companyia Les Fourberies du Canigou a dos quarts de set del vespre. L’espectacle s’inscriu en el programa municipal de les Jornades del Patrimoni. Organitza el servei de cultura, patrimoni i esdeveniments.",
-    "descripcio_fr": "La place de l’Église d’Elne accueille la Cie « Les Fourberies du Canigou » à dix-huit heures trente. Le spectacle s’inscrit dans le programme municipal des Journées du Patrimoine. Organisation : service culture, patrimoine et évènementiel.",
-    "associacio": "Commune d'Elne — Service culture, patrimoine & évènementiel",
-    "imatge_url": "https://ville-elne.fr/wp-content/uploads/2026/07/IMG_4656-retouchee-30-juin-2026.png",
-    "font_url": "https://ville-elne.fr/agenda/journees-du-patrimoine-theatre-avec-la-cie-les-fourberies-du-canigou/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-19-jornades-europees-del",
     "titol": "Jornades Europees del Patrimoni a Illa",
     "data_inici": "2026-09-19",
