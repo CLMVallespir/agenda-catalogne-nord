@@ -826,5 +826,23 @@
     "font_url": "https://www.calameo.com/read/007004164e493bf285c3c",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-10-04-festa-del-bolet",
+    "titol": "Festa del Bolet",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "10:00",
+    "lloc": "Villefranche-de-Conflent",
+    "municipi": "Vilafranca de Conflent",
+    "comarca": "Conflent",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "Vilafranca de Conflent dedica una jornada als bolets. Hi ha exposicions, descoberta de les plantes, venda i menús gastronòmics al voltant dels bolets. Una cita de tardor dins les muralles.",
+    "descripcio_fr": "Villefranche-de-Conflent consacre une journée aux champignons. Au programme : expositions, découverte des plantes, vente et menus gourmands autour des champignons. Un rendez-vous d’automne à l’intérieur des remparts.",
+    "associacio": "",
+    "imatge_url": "",
+    "font_url": "https://www.tourisme-canigo.com/agenda/fete-du-champignon-fmalar066v52tz1u/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
