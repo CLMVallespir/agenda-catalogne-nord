@@ -610,5 +610,23 @@
     "font_url": "https://www.tourisme-roussillon-conflent.fr/destinations/fetes-et-manifestations/jeux-de-societe-3/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-09-18-festa-de-sant",
+    "titol": "Festa de Sant Ferriol",
+    "data_inici": "2026-09-18",
+    "data_fi": "2026-09-18",
+    "hora": "06:00",
+    "lloc": "Ermitage Saint Ferréol",
+    "municipi": "Ceret",
+    "comarca": "Vallespir",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "L’ermita de Sant Ferriol acull la festa amb misses i sardanes. A les sis del matí hi ha la missa de l’alba; a les deu, la processó al voltant de l’ermita i la missa solemne. A dos quarts de dotze, sardanes amb la Principal del Rosselló i aperitiu ofert per la municipalitat.",
+    "descripcio_fr": "L’ermitage Saint-Ferréol accueille la fête avec messes et sardanes. À six heures a lieu la messe de l’aube ; à dix heures, la procession autour de l’ermitage et la grand-messe. À onze heures trente, sardanes par la Principal del Rosselló et apéritif offert par la municipalité.",
+    "associacio": "",
+    "imatge_url": "",
+    "font_url": "https://www.ceret.fr/cms_viewFile.php?idtf=243684&path=9.pdf",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
