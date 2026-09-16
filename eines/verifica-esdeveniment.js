@@ -127,6 +127,20 @@ var RESULTATS = ['ok', 'dubte', 'sospitós'];
 // surten mai a la font original: preguntar-ho donaria «sospitós» a totes les
 // files. `estat`, `data_entrada`, `id` i `nota_curador` els omple el sistema, i
 // `imatge_url` és una pujada nostra a Cloudinary.
+//
+// `periodicitat` TAMPOC no hi és, i és una decisió del 16 de setembre de 2026
+// (§5 de docs/DECISIO-ACTIVITATS-PERMANENTS.md, «Un cas a part»). La font sí
+// que el sol dir —«chaque samedi matin»—, o sigui que semblava contrastable;
+// el que el deixa fora són dues coses del codi d'aquí sota:
+//
+//   1. fitxaPerAlModel() ensenya al model TOTS els contrastables, buits
+//      inclosos. La regla conservadora de la Q1 fa que arribi buit a gairebé
+//      totes les files de l'ADT66 per un motiu NOSTRE i no de la font, o sigui
+//      que preguntar-ho donaria «sospitós» a munts de files correctes.
+//   2. textPerVerificar() decideix si val la pena gastar una crida a Gemini.
+//      Amb `periodicitat` a la llista, una fila que només tingués aquest camp
+//      —sense títol, ni dates, ni lloc, ni descripcions— passaria per
+//      verificable, i la crida es gastaria per no contrastar res.
 var CAMPS_CONTRASTABLES = [
   'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'descripcio_ca', 'descripcio_fr', 'associacio'
@@ -602,7 +616,7 @@ function textPerVerificar(fila) {
 
 // ------------------------------------------------------------
 // Una còpia de la fila, per no tocar mai la que ens han donat. Es copien les
-// claus que porti, en el seu ordre: reordenar-la o completar-la als disset
+// claus que porti, en el seu ordre: reordenar-la o completar-la als divuit
 // camps no és feina d'aquesta peça, que només n'escriu un.
 // ------------------------------------------------------------
 function copiaFila(fila) {
@@ -694,15 +708,16 @@ module.exports = {
 // Tot el que ve a partir d'aquí és per poder exercitar la funció a mà. No forma
 // part de la peça i no s'ha de copiar enlloc.
 
-// Els disset camps, per muntar files de prova senceres.
+// Els divuit camps, per muntar files de prova senceres.
 var CAMPS = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
 ];
 
 // ------------------------------------------------------------
-// Una fila de prova: els disset camps, buits, amb els que interessin a sobre.
+// Una fila de prova: els divuit camps, buits, amb els que interessin a sobre.
 // ------------------------------------------------------------
 function filaDeProva(extres) {
   var fila = {};

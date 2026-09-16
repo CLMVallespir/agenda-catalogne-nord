@@ -183,7 +183,7 @@ var FONT_PUBLICADA = { tipus: '', llengua: 'ca' };
 //
 // `entrants` és una llista d'elements que poden ser:
 //
-//   - { fila: <els disset camps>, font: { tipus, llengua } }, o
+//   - { fila: <els divuit camps>, font: { tipus, llengua } }, o
 //   - una fila tal qual, i llavors s'hi aplica `fontDelLot`.
 //
 // `filesPendents` són les files de `pendents.json` senceres, sense filtrar-ne
@@ -559,7 +559,7 @@ module.exports = {
 // els títols i les dates que porten de debò.
 
 // ------------------------------------------------------------
-// Una fila dels disset camps amb el mínim per poder comparar-la, més el que
+// Una fila dels divuit camps amb el mínim per poder comparar-la, més el que
 // se li vulgui posar a sobre.
 // ------------------------------------------------------------
 function filaDeProva(titol, dataInici, municipi, extres) {
@@ -567,7 +567,8 @@ function filaDeProva(titol, dataInici, municipi, extres) {
     id: '', titol: titol, data_inici: dataInici, data_fi: dataInici, hora: '',
     lloc: '', municipi: municipi, comarca: '', categoria: '',
     descripcio_ca: '', descripcio_fr: '', associacio: '', imatge_url: '',
-    font_url: '', estat: 'pendent', data_entrada: '', nota_curador: ''
+    font_url: '', estat: 'pendent', data_entrada: '', periodicitat: '',
+    nota_curador: ''
   };
 
   if (extres) {

@@ -435,7 +435,7 @@ function textPerClassificar(fila) {
 
 // ------------------------------------------------------------
 // Una còpia de la fila, per no tocar mai la que ens han donat. Es copien les
-// claus que porti, en el seu ordre: reordenar-la o completar-la als disset
+// claus que porti, en el seu ordre: reordenar-la o completar-la als divuit
 // camps no és feina d'aquesta peça, que només n'escriu un.
 // ------------------------------------------------------------
 function copiaFila(fila) {
@@ -528,15 +528,16 @@ module.exports = {
 // Tot el que ve a partir d'aquí és per poder exercitar la funció a mà. No forma
 // part de la peça i no s'ha de copiar enlloc.
 
-// Els disset camps, per muntar files de prova senceres.
+// Els divuit camps, per muntar files de prova senceres.
 var CAMPS = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
 ];
 
 // ------------------------------------------------------------
-// Una fila de prova: els disset camps, buits, amb els que interessin a sobre.
+// Una fila de prova: els divuit camps, buits, amb els que interessin a sobre.
 // ------------------------------------------------------------
 function filaDeProva(extres) {
   var fila = {};

@@ -497,7 +497,7 @@ function dominiCoincideix(domini, buscat) {
 
 // ------------------------------------------------------------
 // Una còpia de la fila, per no tocar mai la que ens han donat. Es copien les
-// claus que porti, en el seu ordre: reordenar-la o completar-la als disset
+// claus que porti, en el seu ordre: reordenar-la o completar-la als divuit
 // camps no és feina d'aquesta peça, que només n'escriu dos.
 // ------------------------------------------------------------
 function copiaFila(fila) {
@@ -586,11 +586,12 @@ module.exports = {
 // part de la peça i no s'ha de copiar enlloc. Cap prova no toca la xarxa:
 // `funcioPujada` sempre és una funció de mentida.
 
-// Els disset camps, per muntar files de prova senceres.
+// Els divuit camps, per muntar files de prova senceres.
 var CAMPS = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
 ];
 
 // Una URL de Cloudinary tal com queda després d'una pujada bona, amb el preset
@@ -622,7 +623,7 @@ var NOTA_VERIFICACIO = '[Verificació: dubte — hora] La citació no dona cap h
 var NOTA_CLASSIFICACIO = '[Suggeriment editorial: NUCLI — R6] Mercat setmanal que sosté els petits productors.';
 
 // ------------------------------------------------------------
-// Una fila de prova: els disset camps, buits, amb els que interessin a sobre.
+// Una fila de prova: els divuit camps, buits, amb els que interessin a sobre.
 // ------------------------------------------------------------
 function filaDeProva(extres) {
   var fila = {};

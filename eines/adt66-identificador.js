@@ -202,14 +202,15 @@ module.exports = {
 var retirades = require('./deteccio-retirades.js');
 
 // ------------------------------------------------------------
-// Una fila de producció de prova, amb els disset camps buits menys els que
+// Una fila de producció de prova, amb els divuit camps buits menys els que
 // interessen al cas.
 // ------------------------------------------------------------
 function filaDeProva(extres) {
   var camps = [
     'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
     'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-    'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+    'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+    'nota_curador'
   ];
 
   var fila = {};

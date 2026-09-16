@@ -1412,3 +1412,18 @@ Cridant-lo amb un CSV real i una data (l'ús normal, no la bateria) funciona bé
 específicament `bateriaSenseAgents()`, dins de la pròpia bateria de proves. Una
 bateria que falla sense causa coneguda deixa de ser útil com a senyal —no es
 mira ara, per instrucció explícita.
+
+---
+
+## `dedup-contra-fitxers.js` podria fer servir el `filaDeProva()` del seu veí, i no ho fa
+
+**Resum:** els dos mòduls de dedup tenen un `filaDeProva(titol, dataInici,
+municipi, extres)` de signatura idèntica, però el de `dedup-esdeveniments.js`
+es munta sol sobre `CAMPS` i el de `dedup-contra-fitxers.js` escriu els camps un
+per un; aquest segon és l’únic dels set llocs del §5 sense cap llista.
+
+Reutilitzar-lo voldria dir **exportar una funció que viu a la secció de proves**
+—avui `dedup-esdeveniments.js` només exporta `comparaEsdeveniments()` i
+`ajuntaNotes()`—, i això és una decisió de disseny, no una neteja: queda
+anotada com a reutilització possible i **no feta** (sessió 4 del §7 de
+`docs/DECISIO-ACTIVITATS-PERMANENTS.md`, 16 de setembre de 2026).
