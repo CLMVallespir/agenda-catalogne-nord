@@ -142,5 +142,23 @@
     "font_url": "http://www.torreilles-tourisme.com",
     "estat": "publicat",
     "data_entrada": "2026-09-04T19:16:06.106Z"
+  },
+  {
+    "id": "2026-01-15-i-la-llum",
+    "titol": "I la llum va ser",
+    "data_inici": "2026-01-15",
+    "data_fi": "2026-12-31",
+    "hora": "11:00",
+    "lloc": "CASA PAIRAL - CASTILLET",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "La Casa Pairal del Castellet dedica una exposició a la història de l’enllumenat i al lloc que ocupa la llum en la vida quotidiana. El recorregut mostra com l’electricitat ha transformat les cases, els carrers i la manera de viure. Una mirada sobre un progrés tan present que gairebé no es veu.",
+    "descripcio_fr": "La Casa Pairal du Castillet consacre une exposition à l’histoire de l’éclairage et à la place qu’occupe la lumière dans la vie quotidienne. Le parcours montre comment l’électricité a transformé les maisons, les rues et les manières de vivre. Un regard sur un progrès si présent qu’on ne le voit presque plus.",
+    "associacio": "",
+    "imatge_url": "https://www.mairie-perpignan.fr/sites/default/files/styles/originale/public/images/expo-et-la-lumiere-fut-2026.jpg?itok=NW_W1X76",
+    "font_url": "https://www.mairie-perpignan.fr/fetes-et-manifestations/et-la-lumiere-fut",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
