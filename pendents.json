@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-06-20-maria-lluis-art",
-    "titol": "Maria Lluis, art contemporani al Museu Terrus",
-    "data_inici": "2026-06-20",
-    "data_fi": "2026-11-01",
-    "hora": "09:30",
-    "lloc": "Musée Terrus",
-    "municipi": "Elna",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "Nascuda a Perpinyà el 1931, Maria Lluis presenta pintures, tintes i carbonets al Museu Terrus. És considerada una de les pintores més discretes i alhora més sòlides de la història de l’art dels Pirineus Orientals des de fa mig segle. Una obra de colors mediterranis.",
-    "descripcio_fr": "Née à Perpignan en 1931, Maria Lluis présente peintures, encres et fusains au Musée Terrus. Elle est considérée comme l’une des peintres les plus discrètes et pourtant les plus solides de l’histoire de l’art des Pyrénées-Orientales depuis un demi-siècle. Une œuvre aux couleurs méditerranéennes.",
-    "associacio": "Mairie d'Elne",
-    "imatge_url": "https://ville-elne.fr/wp-content/uploads/2026/05/Maria-LLUIS-Perpignan-2017.jpg",
-    "font_url": "https://ville-elne.fr/agenda/exposition-dart-contemporain-maria-lluis/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-06-27-picabia-mediterrania",
     "titol": "Picabia, Mediterrània",
     "data_inici": "2026-06-27",
