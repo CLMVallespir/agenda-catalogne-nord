@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-07-taller-de-mitja",
-    "titol": "Taller de mitja i ganxet",
-    "data_inici": "2026-09-07",
-    "data_fi": "2026-11-02",
-    "hora": "14:00",
-    "lloc": "Espace de Vie Sociale Maison pour Tous",
-    "municipi": "Morellàs i les Illes",
-    "comarca": "Vallespir",
-    "categoria": "Taller",
-    "descripcio_ca": "L’Espai de Vida Social Maison pour Tous obre un taller de mitja i ganxet el primer i el tercer dilluns de cada mes. Es pot venir a compartir una estona o a aprendre a manejar les agulles. És gratuït i obert a tothom.",
-    "descripcio_fr": "L’Espace de Vie Sociale Maison pour Tous ouvre un atelier tricot et crochet les premier et troisième lundis de chaque mois. On peut venir partager un moment ou apprendre à manier les aiguilles. Il est gratuit et ouvert à tous.",
-    "associacio": "Espace de Vie Sociale Maison pour Tous",
-    "imatge_url": "https://files.appli-intramuros.com/img/events/5092/bc4ac2a231a5f4ed9a037607a0394b16_atelier-tr.jpg",
-    "font_url": "https://www.maureillaslasillas.fr/agenda/718588?start_date=2026-09-07&end_date=2026-09-07",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-12-tallers-de-reparacio",
     "titol": "Tallers de reparació",
     "data_inici": "2026-09-12",
