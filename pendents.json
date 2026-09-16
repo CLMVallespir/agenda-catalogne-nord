@@ -151,25 +151,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52H763] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 6 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana."
   },
   {
-    "id": "2026-09-04-marche-hebdomadaire-du",
-    "titol": "MARCHÉ HEBDOMADAIRE DU VILLAGE",
-    "data_inici": "2026-09-04",
-    "data_fi": "2026-09-04",
-    "hora": "08:00",
-    "lloc": "Au village, devant le Cube",
-    "municipi": "Torrelles de la Salanca",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "",
-    "descripcio_fr": "Plutôt considérés comme de proximité, ils ont lieu sur la place des souvenirs d’enfance toute l'année, les mardis et vendredis matin.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Marche-placesouvenirs-ete2025-Ce.jpg?width=150&height=120",
-    "font_url": "http://www.torreilles-tourisme.com",
-    "estat": "pendent",
-    "data_entrada": "2026-09-04T19:16:06.106Z",
-    "nota_curador": "[ADT66 id: FMALAR066V52OUCH] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 193 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana."
-  },
-  {
     "id": "2026-09-04-aperitif-vigneron-mas",
     "titol": "APERITIF VIGNERON \"MAS GREGORI\"",
     "data_inici": "2026-09-04",
