@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-19-la-ronda-ceretana",
-    "titol": "La Ronda Ceretana",
-    "data_inici": "2026-09-19",
-    "data_fi": "2026-09-20",
-    "hora": "17:00",
-    "lloc": "Centre-ville de Céret; Avenue Clémenceau; Avenue d’Espagne; Rue des Capucins",
-    "municipi": "Ceret",
-    "comarca": "Vallespir",
-    "categoria": "Patrimoni i tradicions",
-    "descripcio_ca": "La Ronda Ceretana ocupa el centre de Ceret durant dos dies. El dissabte hi ha la cursa de cinc quilòmetres «La Festive»; el diumenge, la caminada de vuit quilòmetres «L’Esmorzar» i les curses de vint-i-un quilòmetres «La Mystique», deu quilòmetres «L’Endiablée» i la infantil «Els Nens». La jornada acaba amb el lliurament de premis i el dinar Festa i Bandas.",
-    "descripcio_fr": "La Ronde Cérétane occupe le centre de Céret pendant deux jours. Le samedi a lieu la course de cinq kilomètres « La Festive » ; le dimanche, la randonnée de huit kilomètres « L’Esmorzar » et les courses de vingt-et-un kilomètres « La Mystique », dix kilomètres « L’Endiablée » et enfants « Els Nens ». La journée se termine par la remise des prix et le repas Festa i Bandas.",
-    "associacio": "La Ronde Cérétane",
-    "imatge_url": "https://rondeceretane.com/wp-content/uploads/2025/12/RONDE-CERETANE-2026.jpg",
-    "font_url": "https://rondeceretane.com/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-19-festa-de-les",
     "titol": "Festa de les Bombolles",
     "data_inici": "2026-09-19",
