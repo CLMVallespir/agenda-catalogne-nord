@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-04-passejada-comentada-a",
-    "titol": "Passejada comentada a la capella de Sant Llorenç del Mont",
-    "data_inici": "2026-09-04",
-    "data_fi": "2026-10-16",
-    "hora": "09:00",
-    "lloc": "Chapelle Saint-Laurent-du-Mont",
-    "municipi": "Argelers",
-    "comarca": "Rosselló",
-    "categoria": "Patrimoni i tradicions",
-    "descripcio_ca": "Cada divendres al matí, una passejada comentada convida a descobrir el bosc del massís de les Alberes d’una altra manera. El recorregut mena fins a la capella de Sant Llorenç del Mont, amb explicacions sobre el medi natural. Una invitació a alentir el pas.",
-    "descripcio_fr": "Chaque vendredi matin, une balade commentée invite à découvrir la forêt du massif des Albères autrement. Le parcours mène jusqu’à la chapelle Saint-Laurent-du-Mont, avec des explications sur le milieu naturel. Une invitation à ralentir.",
-    "associacio": "Mairie d’Argelès-sur-Mer",
-    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/CHAPELLE-ST-LAURENT-DU-MONT.jpeg",
-    "font_url": "https://www.argeles-sur-mer.com/offres/balade-commentee-nature-randonnee-a-la-chapelle-saint-laurent-du-mont-argeles-sur-mer-fr-6398529/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-04-els-invisibles-els",
     "titol": "Els invisibles: els tiradors senegalesos",
     "data_inici": "2026-09-04",
