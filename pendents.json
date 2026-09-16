@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-06-01-colors-catalans",
-    "titol": "Colors catalans",
-    "data_inici": "2026-06-01",
-    "data_fi": "2026-09-30",
-    "hora": "09:00",
-    "lloc": "Site de Paulilles",
-    "municipi": "Portvendres",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "Els membres del Photo Club de Banyuls han recorregut el departament per captar els colors del país català. Paisatges, patrimoni, ambients i detalls del dia a dia formen aquesta exposició al lloc de Paulilles. Una invitació a mirar el territori amb calma.",
-    "descripcio_fr": "Les membres du Photo Club de Banyuls ont parcouru le département pour capter les couleurs du pays catalan. Paysages, patrimoine, ambiances et détails du quotidien composent cette exposition sur le site de Paulilles. Une invitation à regarder le territoire avec calme.",
-    "associacio": "Photo Club de Banyuls",
-    "imatge_url": "https://cdn.iris-etourism.io/media/pyrenees_mediterranee_v3/FMALAR066V52WFSP/a3c003f9eb7bd416-800x520.webp",
-    "font_url": "https://www.tourisme-pyrenees-mediterranee.com/agenda/exposition-couleurs-catalanes-site-de-paulilles/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-06-08-elisabeth-eidenbenz-un",
     "titol": "Elisabeth Eidenbenz: un deure de memòria",
     "data_inici": "2026-06-08",
