@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-16-jocs-de-taula",
-    "titol": "Jocs de taula a la mediateca",
-    "data_inici": "2026-09-16",
-    "data_fi": "2026-09-16",
-    "hora": "15:00",
-    "lloc": "Médiathèque d'Ille sur Têt",
-    "municipi": "Illa",
-    "comarca": "Rosselló",
-    "categoria": "Activitat infantil",
-    "descripcio_ca": "La mediateca d’Illa proposa una tarda de jocs de taula, de tres a cinc. L’activitat és oberta a tots els públics i gratuïta. Una estona per jugar plegats.",
-    "descripcio_fr": "La médiathèque d’Ille-sur-Têt propose un après-midi autour des jeux de société, de quinze à dix-sept heures. L’activité est ouverte à tout public et gratuite. Un moment pour jouer ensemble.",
-    "associacio": "",
-    "imatge_url": "",
-    "font_url": "https://www.tourisme-roussillon-conflent.fr/destinations/fetes-et-manifestations/jeux-de-societe-3/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-18-festa-de-sant",
     "titol": "Festa de Sant Ferriol",
     "data_inici": "2026-09-18",
