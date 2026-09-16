@@ -90,24 +90,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-22-conferencia-artistes-a",
-    "titol": "Conferència: artistes a la vora de la Mediterrània",
-    "data_inici": "2026-09-22",
-    "data_fi": "2026-09-22",
-    "hora": "18:00",
-    "lloc": "Maison de l’Eau et de la Méditerranée",
-    "municipi": "El Voló",
-    "comarca": "Vallespir",
-    "categoria": "Conferència",
-    "descripcio_ca": "Pauline raconte l’art proposa una conferència sobre els artistes fascinats pels paisatges mediterranis. La trobada es fa a la Maison de l’Eau et de la Méditerranée del Voló. Una manera accessible d’acostar-se a l’art, entre mar, llum i creació.",
-    "descripcio_fr": "Pauline raconte l’art propose une conférence sur les artistes fascinés par les paysages méditerranéens. La rencontre a lieu à la Maison de l’Eau et de la Méditerranée du Boulou. Une manière accessible de s’approcher de l’art, entre mer, lumière et création.",
-    "associacio": "Maison de l’Eau et de la Méditerranée / Pauline raconte l’art",
-    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/Affiche---Conference-22-Sept---Pauline-raconte-l-art-MEM-2026.jpg",
-    "font_url": "https://www.vallespir-tourisme.fr/offres/conference-des-artistes-en-bord-de-mediterranee-le-boulou-fr-6410734/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-26-festival-de-la",
     "titol": "Festival de la Mar",
     "data_inici": "2026-09-26",
