@@ -646,5 +646,23 @@
     "font_url": "https://www.vallespirbarroc.fr/copie-de-ensemble-orfeo-futuro",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-09-18-courts-circuit-66",
+    "titol": "Courts Circuit 66: sessió «Courts en mémoire»",
+    "data_inici": "2026-09-18",
+    "data_fi": "2026-09-18",
+    "hora": "18:00",
+    "lloc": "Centre Hospitalier de Thuir",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "L’associació Courts Circuit 66 porta una sessió de projeccions al Centre Hospitalari de Tuïr. Forma part de la setena edició del seu festival itinerant, que recorre els Pirineus Orientals i alguns municipis del sud. Entrada gratuïta.",
+    "descripcio_fr": "L’association Courts Circuit 66 propose une séance de projections au Centre Hospitalier de Thuir. Elle fait partie de la septième édition de son festival itinérant, qui parcourt les Pyrénées-Orientales et quelques communes du sud. Entrée gratuite.",
+    "associacio": "Association Courts Circuit 66",
+    "imatge_url": "https://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-courmetrage6626.jpg",
+    "font_url": "https://aspres-thuir.com/evenement/festival-courts-circuit-66-4/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
