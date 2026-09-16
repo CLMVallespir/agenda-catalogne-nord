@@ -126,24 +126,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-11-04-festa-del-centenari",
-    "titol": "Festa del Centenari a la Casa Macià",
-    "data_inici": "2026-11-04",
-    "data_fi": "2026-11-04",
-    "hora": "07:30",
-    "lloc": "Casa Macià (Vil·la Denise)",
-    "municipi": "Prats de Molló",
-    "comarca": "Vallespir",
-    "categoria": "Patrimoni i tradicions",
-    "descripcio_ca": "La Casa Macià commemora el centenari de la detenció de Francesc Macià i el seu estat major a la Vil·la Denise. A dos quarts de vuit del matí hi ha pirotècnia aèria i repic de campanes. La jornada continua amb la Festa del Centenari.",
-    "descripcio_fr": "La Casa Macià commémore le centenaire de l’arrestation de Francesc Macià et de son état-major à la Villa Denise. À sept heures trente ont lieu une pyrotechnie aérienne et une sonnerie de cloches. La journée se poursuit avec la Fête du Centenaire.",
-    "associacio": "Associació Amics de la Casa Macià",
-    "imatge_url": "",
-    "font_url": "https://www.casamacia.cat/programa-centenari-fets-prats-mollo/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-11-08-inauguracio-oficial-de",
     "titol": "Inauguració oficial de la Casa Macià",
     "data_inici": "2026-11-08",
