@@ -232,5 +232,23 @@
     "font_url": "https://www.mairie-perpignan.fr/fetes-et-manifestations/les-insectes-un-peuple-pas-si-minuscule",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-05-23-mites-i-llegendes",
+    "titol": "Mites i llegendes",
+    "data_inici": "2026-05-23",
+    "data_fi": "2026-12-31",
+    "hora": "13:30",
+    "lloc": "MUSÉE DES MONNAIES ET MÉDAILLES JOSEPH PUIG",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "El Museu de Monedes i Medalles Joseph Puig presenta un panorama dels mites i les llegendes representats a les monedes. D’Hèrcules al drac de sant Jordi, les peces expliquen com cada època ha volgut representar els seus relats. Entrada lliure.",
+    "descripcio_fr": "Le Musée des Monnaies et Médailles Joseph Puig présente un panorama des mythes et des légendes représentés sur les monnaies. D’Hercule au dragon de saint Georges, les pièces racontent comment chaque époque a voulu représenter ses récits. Entrée libre.",
+    "associacio": "",
+    "imatge_url": "https://www.mairie-perpignan.fr/sites/default/files/styles/originale/public/images/musee-puig-3.jpg?itok=hUbp1msg",
+    "font_url": "https://www.mairie-perpignan.fr/fetes-et-manifestations/mythes-et-legendes",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
