@@ -718,5 +718,23 @@
     "font_url": "https://www.tourisme-roussillon-conflent.fr/destinations/fetes-et-manifestations/journees-europeennes-du-patrimoine-3/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-09-19-el-taller-de",
+    "titol": "El Taller de les Barques de Paulilles",
+    "data_inici": "2026-09-19",
+    "data_fi": "2026-09-20",
+    "hora": "10:00",
+    "lloc": "Atelier des Barques, Site de Paulilles",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "El Taller de les Barques, al lloc classificat de Paulilles, obre per les Jornades Europees del Patrimoni. Hi ha visites comentades a les deu, dos quarts de dotze, dos quarts de quatre i cinc de la tarda. Es pot veure també l’exposició «Carnets de chantier du pailebot Miguel Caldentey», de deu a cinc.",
+    "descripcio_fr": "L’Atelier des Barques, sur le site classé de Paulilles, ouvre pour les Journées européennes du patrimoine. Des visites commentées sont proposées à dix heures, onze heures trente, quinze heures trente et dix-sept heures. On peut également voir l’exposition « Carnets de chantier du pailebot Miguel Caldentey », de dix à dix-sept heures.",
+    "associacio": "",
+    "imatge_url": "https://cdn.iris-etourism.io/media/pyrenees_mediterranee_v3/FMALAR066V52YEMG/85e9baea0da6aeb6-800x520.webp",
+    "font_url": "https://www.tourisme-pyrenees-mediterranee.com/agenda/journees-du-patrimoine-atelier-des-barques-paulilles/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
