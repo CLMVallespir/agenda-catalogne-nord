@@ -988,5 +988,23 @@
     "font_url": "https://www.tourisme-roussillon-conflent.fr/destinations/fetes-et-manifestations/jeux-de-societe-12/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-10-18-jornades-medievals-de",
+    "titol": "Jornades medievals de Bellestar",
+    "data_inici": "2026-10-18",
+    "data_fi": "2026-10-18",
+    "hora": "",
+    "lloc": "Château-Musée de Bélesta",
+    "municipi": "Bellestar",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "El Castell-Museu de Bellestar celebra les jornades medievals amb cants i espectacles d’època. L’historiador Michel Adroher hi fa una conferència sobre els trobadors rossellonesos. Una jornada dins els murs del castell.",
+    "descripcio_fr": "Le Château-Musée de Bélesta célèbre les Journées médiévales avec chants et spectacles d’époque. L’historien Michel Adroher y donne une conférence sur les troubadours roussillonnais. Une journée dans les murs du château.",
+    "associacio": "Château-Musée de Bélesta",
+    "imatge_url": "",
+    "font_url": "https://www.agly-tourisme.com/agenda/journees-medievales/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
