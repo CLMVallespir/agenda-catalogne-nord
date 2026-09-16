@@ -790,5 +790,23 @@
     "font_url": "https://www.mairie-leboulou.fr/agenda/47381/3454-festival-de-la-mer-2026.htm",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-10-03-tast-de-vins",
+    "titol": "Tast de vins i dinar per la Casa Macià",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "12:00",
+    "lloc": "Casa Macià (Vil·la Denise)",
+    "municipi": "Prats de Molló",
+    "comarca": "Vallespir",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "L’Associació Amics de la Casa Macià proposa un tast de vins acompanyat d’un dinar a la Vil·la Denise. És més que un àpat: sensacions, aromes, sabors, matisos, històries i bones converses. Places limitades amb reserva.",
+    "descripcio_fr": "L’association des Amis de la Casa Macià propose une dégustation de vins accompagnée d’un repas à la Villa Denise. C’est plus qu’un repas : sensations, arômes, saveurs, nuances, histoires et bonnes conversations. Places limitées sur réservation.",
+    "associacio": "Associació Amics de la Casa Macià",
+    "imatge_url": "https://www.casamacia.cat/wp-content/uploads/2026/08/Tast-de-vins.jpg",
+    "font_url": "https://www.casamacia.cat/tast-de-vins-i-dinar-per-la-casa-macia/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
