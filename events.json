@@ -1042,5 +1042,23 @@
     "font_url": "https://www.casamacia.cat/programa-centenari-fets-prats-mollo/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-11-08-inauguracio-oficial-de",
+    "titol": "Inauguració oficial de la Casa Macià",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "10:00",
+    "lloc": "Casa Macià (Vil·la Denise)",
+    "municipi": "Prats de Molló",
+    "comarca": "Vallespir",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La Casa Macià s’inaugura oficialment amb parlaments institucionals i un homenatge als familiars dels conjurats. Hi ha intervencions musicals de Manel Camp al piano, Jordi Molina a la tenora i Lluís Ribalta a les percussions. S’inauguren també l’exposició permanent i l’audiovisual sobre Francesc Macià i els Fets de Prats de Molló.",
+    "descripcio_fr": "La Casa Macià est officiellement inaugurée avec des allocutions institutionnelles et un hommage aux familles des conjurés. Des interventions musicales sont assurées par Manel Camp au piano, Jordi Molina à la tenora et Lluís Ribalta aux percussions. Sont également inaugurées l’exposition permanente et l’audiovisuel sur Francesc Macià et les Faits de Prats-de-Mollo.",
+    "associacio": "Associació Amics de la Casa Macià",
+    "imatge_url": "",
+    "font_url": "https://www.casamacia.cat/programa-centenari-fets-prats-mollo/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
