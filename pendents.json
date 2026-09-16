@@ -18,24 +18,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-09-01-taller-de-costura",
-    "titol": "Taller de costura del cor",
-    "data_inici": "2026-09-01",
-    "data_fi": "2026-09-22",
-    "hora": "09:00",
-    "lloc": "Espace de Vie Sociale Maison pour Tous",
-    "municipi": "Morellàs i les Illes",
-    "comarca": "Vallespir",
-    "categoria": "Taller",
-    "descripcio_ca": "L’Espai de Vida Social Maison pour Tous organitza un taller de costura solidària animat per una voluntària. L’objectiu és passar un moment junts i confeccionar maniguets per a persones en quimioteràpia, en col·laboració amb l’hospital de Perpinyà. És gratuït i obert a tothom, principiants inclosos.",
-    "descripcio_fr": "L’Espace de Vie Sociale Maison pour Tous organise un atelier couture solidaire animé par une bénévole. L’objectif est de passer un moment ensemble et de confectionner des manchons pour des personnes en chimiothérapie, en collaboration avec l’hôpital de Perpignan. Il est gratuit et ouvert à tous, débutants compris.",
-    "associacio": "Espace de Vie Sociale Maison pour Tous",
-    "imatge_url": "https://files.appli-intramuros.com/img/events/5092/b4977fad6e19e1a84c9e8e74e10270e2_atelier-co.jpg",
-    "font_url": "https://www.maureillaslasillas.fr/agenda/710079?start_date=2026-09-01&end_date=2026-09-01",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-09-01-els-15-anys",
     "titol": "Els 15 anys de l’AECT Les Valls Catalanes",
     "data_inici": "2026-09-01",
