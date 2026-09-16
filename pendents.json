@@ -124,23 +124,5 @@
     "font_url": "https://www.casamacia.cat/jornades-historia-2026/",
     "estat": "rebutjat",
     "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
-    "id": "2026-11-28-fira-de-sant",
-    "titol": "Fira de Sant Andreu",
-    "data_inici": "2026-11-28",
-    "data_fi": "2026-11-29",
-    "hora": "",
-    "lloc": "FOIRE SAINT ANDRÉ",
-    "municipi": "Vinçà",
-    "comarca": "Conflent",
-    "categoria": "Mercat",
-    "descripcio_ca": "Cada any, durant tot un cap de setmana, Vinçà acull la fira de Sant Andreu amb productors i artesans locals. És també una ocasió de retrobar les tradicions catalanes, amb sardanes, correfocs i castellers. Dos dies de trobada al poble.",
-    "descripcio_fr": "Chaque année, pendant tout un week-end, Vinça accueille la foire Saint-André avec des producteurs et artisans locaux. C’est aussi l’occasion de retrouver les traditions catalanes, avec sardanes, correfocs et castellers. Deux jours de rencontre au village.",
-    "associacio": "Commune de Vinça",
-    "imatge_url": "",
-    "font_url": "https://www.tourisme-canigo.com/sit/foire-saint-andre-fmalar066v52v5t7/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
