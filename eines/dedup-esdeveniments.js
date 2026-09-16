@@ -76,11 +76,12 @@ var RANG_DESCONEGUT = 0;
 
 // --- Constants: l'esquema ---------------------------------------------------
 
-// Els disset camps, amb el nom i l'ordre del §4 de CLAUDE.md.
+// Els divuit camps, amb el nom i l'ordre del §4 de CLAUDE.md.
 var CAMPS = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
 ];
 
 var COMARQUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
@@ -476,6 +477,18 @@ function fusionaFiles(candidatA, candidatB) {
   // potser tenia el problema. Es queden totes dues.
   fusionada.nota_curador = ajuntaNotes(filaA.nota_curador, filaB.nota_curador);
 
+  // Q3 (§6 de DECISIO-ACTIVITATS-PERMANENTS.md): el bucle de dalt ja aplica
+  // «la plena guanya la buida»; l'únic que hi falta és l'avís quan totes
+  // dues són plenes i diferents, perquè el curador sàpiga que n'hi havia
+  // una altra i quina s'ha descartat.
+  var periodicitatA = cadena(filaA.periodicitat);
+  var periodicitatB = cadena(filaB.periodicitat);
+  if (periodicitatA !== '' && periodicitatB !== '' && periodicitatA !== periodicitatB) {
+    var periodicitatDescartada = (guanyadora === 'A') ? periodicitatB : periodicitatA;
+    fusionada.nota_curador = ajuntaNotes(fusionada.nota_curador,
+      'Periodicitat en conflicte en fusionar: es descarta «' + periodicitatDescartada + '»');
+  }
+
   // Les mateixes garanties de sempre (§4 de CLAUDE.md): enums coercits i
   // l'id reconstruït, mai heretat.
   fusionada.comarca = valorPermes(fusionada.comarca, COMARQUES);
@@ -654,8 +667,8 @@ module.exports = {
 // forma part de la peça i no s'ha de copiar enlloc.
 
 // ------------------------------------------------------------
-// Una fila de prova: els setze camps, tots cadenes, amb els que no interessen
-// buits. Estalvia repetir l'esquema sencer a cada cas.
+// Una fila de prova: els divuit camps, tots cadenes, amb els que no
+// interessen buits. Estalvia repetir l'esquema sencer a cada cas.
 // ------------------------------------------------------------
 function filaDeProva(titol, dataInici, municipi, extres) {
   var fila = {};
@@ -886,6 +899,43 @@ function casosDeProva() {
       },
       espera: 'mateix-esdeveniment',
       esperaEstat: 'publicat'
+    },
+    {
+      nom: 'Q3: periodicitat plena guanya la buida, sense avís',
+      a: {
+        fila: filaDeProva('Mercat de Ceret', '2026-09-05', 'Ceret', {
+          periodicitat: 'cada setmana',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Mercat de Ceret', '2026-09-05', 'Ceret', {
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaNota: ''
+    },
+    {
+      nom: 'Q3: totes dues plenes i diferents — mana el rang més alt i avisa',
+      a: {
+        fila: filaDeProva('Mercat de Ceret', '2026-09-05', 'Ceret', {
+          periodicitat: 'cada dissabte al matí',
+          data_entrada: '2026-08-01T10:00:00.000Z'
+        }),
+        font: { tipus: 'organitzador', llengua: 'ca' }
+      },
+      b: {
+        fila: filaDeProva('Mercat de Ceret', '2026-09-05', 'Ceret', {
+          periodicitat: 'cada setmana',
+          data_entrada: '2026-08-20T10:00:00.000Z'
+        }),
+        font: { tipus: 'agregador', llengua: 'ca' }
+      },
+      espera: 'mateix-esdeveniment',
+      esperaNota: 'Periodicitat en conflicte en fusionar: es descarta «cada setmana»'
     },
     {
       nom: 'Fusió: «rebutjat» guanya «pendent», rebutjada primera',

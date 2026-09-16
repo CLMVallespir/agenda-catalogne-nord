@@ -179,12 +179,13 @@ var dedup = require('./dedup-esdeveniments.js');
 
 // --- Constants: els esquemes ------------------------------------------------
 
-// Els disset camps de producció, amb el nom i l'ordre del §4 de CLAUDE.md. La
-// fila que surt d'aquí té sempre aquests disset i cap més, en aquest ordre.
+// Els divuit camps de producció, amb el nom i l'ordre del §4 de CLAUDE.md. La
+// fila que surt d'aquí té sempre aquests divuit i cap més, en aquest ordre.
 var CAMPS_PRODUCCIO = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
 ];
 
 var COMARQUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
@@ -352,6 +353,20 @@ var CATEGORIA_INFANTIL = 'Activitat infantil';
 // `RechercheTYPE`, però són dos camps i dos vocabularis: dues constants.
 var SEPARADOR_TEMES = ',';
 
+// La regla conservadora de la Q1 (§6 de DECISIO-ACTIVITATS-PERMANENTS.md).
+// Mesurats els 31 temes reals de `COMMUNTHEME` (16 de setembre de 2026, 1 652
+// ofertes), un sol valor diu explícitament una freqüència: «Marché
+// hebdomadaire». Cap no diu «mensuel» ni equivalent, o sigui que aquesta
+// llista en té UN de sol i la regla no s'activa mai per a cap altre tema. Res
+// no s'infereix del salt de `TRI`, ni ara ni mai (Q1): la ZUMBA de Santa
+// Maria la Mar és setmanal amb un salt mesurat de 3 dies, i cap heurística de
+// dates no ho hauria endevinat sense mentir alguna vegada.
+var TEMES_PERIODICITAT_SETMANAL = ['marche hebdomadaire'];
+
+// El text lliure que produeix la regla. Cap dia, cap hora: només ho diu
+// «Marché hebdomadaire», no quin dia és el mercat.
+var PERIODICITAT_SETMANAL = 'cada setmana';
+
 
 // --- Constants: les etiquetes franceses del flux ----------------------------
 
@@ -420,6 +435,10 @@ function mapejaOfertaADT66(ofertaWCF) {
     // Els dos camps que omple el sistema i que la font no toca mai.
     estat: 'pendent',
     data_entrada: new Date().toISOString(),
+    // La regla conservadora de la Q1: buida sempre, tret del sol tema que
+    // diu explícitament una freqüència. Neix ja en català —el pas 7 bis no
+    // l'ha de tocar quan ja porta «cada setmana» (fora d'abast aquí, §8).
+    periodicitat: periodicitatDeProduccio(oferta.COMMUNTHEME),
     // S'omple al final, quan ja s'han recollit tots els avisos.
     nota_curador: ''
   };
@@ -971,6 +990,32 @@ function temaEsInfantil(campTema) {
   }
 
   return false;
+}
+
+// ------------------------------------------------------------
+// La regla conservadora de la Q1: `periodicitat` de la fila. Mateix
+// mecanisme que temaEsInfantil() —es parteix `COMMUNTHEME` per comes i es
+// compara TROS SENCER, mai com a subcadena—, però amb una llista d'un sol
+// valor i sense tocar la categoria. Si cap tros no hi coincideix, buida: la
+// omple el curador (regla 3 del §2 de DECISIO-ACTIVITATS-PERMANENTS.md).
+// ------------------------------------------------------------
+function periodicitatDeProduccio(campTema) {
+  var text = textDeCamp(campTema);
+
+  if (text === '') {
+    return '';
+  }
+
+  var trossos = text.split(SEPARADOR_TEMES);
+
+  for (var i = 0; i < trossos.length; i++) {
+    var clau = normalitzaText(trossos[i]);
+    if (TEMES_PERIODICITAT_SETMANAL.indexOf(clau) !== -1) {
+      return PERIODICITAT_SETMANAL;
+    }
+  }
+
+  return '';
 }
 
 // ------------------------------------------------------------
@@ -2191,14 +2236,68 @@ function casosDeProva() {
       espera: { titol: 'FESTIVAL : LES NUITS DE LA GUITARE' }
     },
     {
-      nom: 'Oferta buida del tot: els disset camps hi són igualment, tots ""',
+      nom: 'Oferta buida del tot: els divuit camps hi són igualment, tots ""',
       entrada: {},
       espera: {
         id: '', titol: '', data_inici: '', data_fi: '', hora: '', lloc: '',
         municipi: '', comarca: '', categoria: '', descripcio_ca: '',
         descripcio_fr: '', associacio: '', imatge_url: '', font_url: '',
-        estat: 'pendent'
+        estat: 'pendent', periodicitat: ''
       }
+    },
+    {
+      nom: 'Q1: «Marché hebdomadaire» sol dona «cada setmana»',
+      entrada: {
+        SyndicObjectID: 'FMALARMARCHE1',
+        SyndicObjectName: 'MARCHÉ DE CÉRET',
+        TRI: '05/09/2026',
+        Commune: 'CERET',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Marché hebdomadaire'
+      },
+      espera: { periodicitat: 'cada setmana' }
+    },
+    {
+      nom: 'Q1: «Marché hebdomadaire» amb un altre tema al costat, igual',
+      entrada: {
+        SyndicObjectID: 'FMALARMARCHE2',
+        SyndicObjectName: 'MARCHÉ FERMIER',
+        TRI: '05/09/2026',
+        Commune: 'CERET',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Gastronomie, Marché hebdomadaire'
+      },
+      espera: { periodicitat: 'cada setmana' }
+    },
+    {
+      nom: 'Q1: cap altre tema no activa la regla — «Artisanat» queda buit',
+      entrada: {
+        SyndicObjectID: 'FMALARMARCHE3',
+        SyndicObjectName: 'MARCHÉ ARTISANAL',
+        TRI: '05/09/2026',
+        Commune: 'CERET',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Artisanat'
+      },
+      espera: { periodicitat: '' }
+    },
+    {
+      nom: 'Q1: «marché» dins d\'un altre tema no compta com a subcadena',
+      entrada: {
+        SyndicObjectID: 'FMALARMARCHE4',
+        SyndicObjectName: 'FOIRE',
+        TRI: '05/09/2026',
+        Commune: 'CERET',
+        COMMUNTHEME: '<strong><br />Th&egrave;me :</strong> Grand marché de Noël'
+      },
+      espera: { periodicitat: '' }
+    },
+    {
+      nom: 'Q1: sense COMMUNTHEME, periodicitat buida',
+      entrada: {
+        SyndicObjectID: 'FMALARMARCHE5',
+        SyndicObjectName: 'FIRA',
+        TRI: '05/09/2026',
+        Commune: 'CERET'
+      },
+      espera: { periodicitat: '' }
     },
     {
       nom: 'Structure no va a associacio: l\'oficina no organitza l\'acte',
@@ -2291,7 +2390,7 @@ function comprovacionsDeSempre(resultat, cas) {
 
   var claus = Object.keys(fila);
   if (claus.join('|') !== CAMPS_PRODUCCIO.join('|')) {
-    problemes.push('els camps no són els disset de l\'esquema, en ordre');
+    problemes.push('els camps no són els divuit de l\'esquema, en ordre');
   }
   for (var k = 0; k < claus.length; k++) {
     if (typeof fila[claus[k]] !== 'string') {

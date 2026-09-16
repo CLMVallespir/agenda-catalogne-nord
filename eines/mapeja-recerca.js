@@ -46,12 +46,13 @@ var comarques = require('./comarca-per-poble.js');
 
 // --- Constants: els dos esquemes --------------------------------------------
 
-// Els disset camps de producció, amb el nom i l'ordre del §4 de CLAUDE.md. La
-// fila que surt d'aquí té sempre aquests disset i cap més, en aquest ordre.
+// Els divuit camps de producció, amb el nom i l'ordre del §4 de CLAUDE.md. La
+// fila que surt d'aquí té sempre aquests divuit i cap més, en aquest ordre.
 var CAMPS_PRODUCCIO = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
 ];
 
 // Els trenta-un camps de l'esquema de recerca, en l'ordre de la capçalera del
@@ -185,6 +186,9 @@ function mapejaAProduccio(candidatRecerca) {
     // Els dos camps que omple el sistema i que la recerca no toca mai.
     estat: 'pendent',
     data_entrada: new Date().toISOString(),
+    // Cap regla per a aquesta font (no hi ha cap Q que ho decideixi): buida
+    // sempre, i l'omple el curador com qualsevol altra activitat puntual.
+    periodicitat: '',
     // S'omple al final, quan ja s'han recollit tots els avisos.
     nota_curador: ''
   };

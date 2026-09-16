@@ -196,7 +196,7 @@ var cartells = require('./puja-cartell.js');
 //
 // Torna sempre les mateixes tres llistes, sempre presents:
 //
-//   llestos      [fila, ...]  els disset camps, a punt per a la cua
+//   llestos      [fila, ...]  els divuit camps, a punt per a la cua
 //   dubtosos     [{ motiu, clau, similitud, opcions: [filaA, filaB] }, ...]
 //   metadadades  Map<fila, [metadada, ...]>  la procedència, per referència de
 //                fila; una fila fusionada en porta tantes com candidats l'han
@@ -208,7 +208,7 @@ async function processaLot(candidatsRecerca, fontDelLot, crides) {
   var comparables = [];
   var incomparables = [];
 
-  // 1. Cada candidat, pel mapeig. D'aquí surten ja les files de disset camps.
+  // 1. Cada candidat, pel mapeig. D'aquí surten ja les files de divuit camps.
   for (var i = 0; i < llista.length; i++) {
     var unitat = unitatDeCandidat(llista[i], fontDelLot, i);
 
@@ -304,7 +304,7 @@ function fontDeclarada(candidat, fontDelLot) {
 
 // ------------------------------------------------------------
 // La llengua en què ha quedat escrit el TÍTOL de la fila, que és l'única cosa
-// que el dedup compara i que els disset camps no saben dir.
+// que el dedup compara i que els divuit camps no saben dir.
 //
 // No és sempre `llengua_nom_original`, i el detall importa: quan l'original és
 // francès i la recerca porta `nom_altra_llengua`, el mapeig publica la versió
@@ -507,7 +507,7 @@ function filesEnDubte(dubtosos) {
 // La procedència de cada fila, indexada per la fila mateixa.
 //
 // És un Map amb la fila com a clau —l'objecte, no cap còpia ni cap id— justament
-// perquè no hi hagi cap manera que la procedència acabi dins dels disset camps:
+// perquè no hi hagi cap manera que la procedència acabi dins dels divuit camps:
 // són dues estructures separades i qui vulgui l'una ha de demanar l'altra a
 // posta. Una fila fusionada en porta una per cada candidat que l'ha format.
 //
@@ -830,13 +830,14 @@ function lotDeProva() {
 }
 
 // ------------------------------------------------------------
-// Els disset camps, per comprovar que cap fila del resultat no se n'ha inventat
+// Els divuit camps, per comprovar que cap fila del resultat no se n'ha inventat
 // cap ni n'ha perdut cap.
 // ------------------------------------------------------------
 var CAMPS_PRODUCCIO = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
 ];
 
 // ------------------------------------------------------------
@@ -933,7 +934,7 @@ function comprovacions(resultat) {
     var claus = Object.keys(fila);
 
     if (claus.join('|') !== CAMPS_PRODUCCIO.join('|')) {
-      problemes.push('una fila no porta els disset camps en ordre');
+      problemes.push('una fila no porta els divuit camps en ordre');
     }
     for (var c = 0; c < claus.length; c++) {
       if (typeof fila[claus[c]] !== 'string') {
@@ -947,7 +948,7 @@ function comprovacions(resultat) {
       problemes.push('la fila «' + fila.titol + '» no té metadada indexada');
     }
     if (fila.procedencia !== undefined || fila.metadadades !== undefined) {
-      problemes.push('la procedència s\'ha colat dins dels disset camps');
+      problemes.push('la procedència s\'ha colat dins dels divuit camps');
     }
     // Sense classificador connectat, ni suggeriment ni excusa de suggeriment.
     if (fila.nota_curador.indexOf(MARCA_SUGGERIMENT) !== -1) {
@@ -1166,11 +1167,11 @@ async function comprovacionsAmbClassificador() {
     problemes.push('la fila fusionada hauria de conservar les 3 procedències');
   }
 
-  // Els disset camps, intactes: la classificació n'escriu un i prou.
+  // Els divuit camps, intactes: la classificació n'escriu un i prou.
   for (var f = 0; f < resultat.llestos.length; f++) {
     var claus = Object.keys(resultat.llestos[f]);
     if (claus.join('|') !== CAMPS_PRODUCCIO.join('|')) {
-      problemes.push('després de classificar, una fila no porta els disset camps en ordre');
+      problemes.push('després de classificar, una fila no porta els divuit camps en ordre');
     }
     for (var c = 0; c < claus.length; c++) {
       if (typeof resultat.llestos[f][claus[c]] !== 'string') {
@@ -1336,11 +1337,11 @@ async function comprovacionsAmbTotsDosAgents() {
     problemes.push('sense pujador, alguna `imatge_url` s\'ha mogut');
   }
 
-  // Els disset camps, intactes: entre tots dos agents n'escriuen un i prou.
+  // Els divuit camps, intactes: entre tots dos agents n'escriuen un i prou.
   for (var f = 0; f < resultat.llestos.length; f++) {
     var claus = Object.keys(resultat.llestos[f]);
     if (claus.join('|') !== CAMPS_PRODUCCIO.join('|')) {
-      problemes.push('després dels agents, una fila no porta els disset camps en ordre');
+      problemes.push('després dels agents, una fila no porta els divuit camps en ordre');
     }
     for (var c = 0; c < claus.length; c++) {
       if (typeof resultat.llestos[f][claus[c]] !== 'string') {
@@ -1475,11 +1476,11 @@ async function comprovacionsAmbTotsTresAgents() {
     problemes.push('la fila fusionada hauria de conservar les 3 procedències');
   }
 
-  // Els disset camps, intactes: entre els tres agents n'escriuen dos i prou.
+  // Els divuit camps, intactes: entre els tres agents n'escriuen dos i prou.
   for (var f = 0; f < resultat.llestos.length; f++) {
     var claus = Object.keys(resultat.llestos[f]);
     if (claus.join('|') !== CAMPS_PRODUCCIO.join('|')) {
-      problemes.push('després dels tres agents, una fila no porta els disset camps en ordre');
+      problemes.push('després dels tres agents, una fila no porta els divuit camps en ordre');
     }
     for (var c = 0; c < claus.length; c++) {
       if (typeof resultat.llestos[f][claus[c]] !== 'string') {

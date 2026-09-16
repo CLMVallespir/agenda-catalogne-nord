@@ -26,7 +26,7 @@
 
 var fs = require('fs');
 
-// L'esquema canònic: els 16 noms, en l'ordre exacte. El CSV ha de
+// L'esquema canònic: els 17 noms, en l'ordre exacte. El CSV ha de
 // portar aquesta capçalera i prou; si no, val més aturar-se.
 var ESQUEMA = [
   'id',
@@ -44,7 +44,8 @@ var ESQUEMA = [
   'imatge_url',
   'font_url',
   'estat',
-  'data_entrada'
+  'data_entrada',
+  'periodicitat'
 ];
 
 // Els valors permesos dels dos camps d'enumeració (docs/arxiu-google/utils.gs).
@@ -173,7 +174,7 @@ function creaId(dataInici, titol) {
 }
 
 // ------------------------------------------------------------
-// Converteix una fila del CSV en un esdeveniment de 16 camps. Tot
+// Converteix una fila del CSV en un esdeveniment de 17 camps. Tot
 // passa tal com ve, llevat de l'id (reconstruït), els dos enums
 // (coercits) i l'estat (sempre pendent).
 // ------------------------------------------------------------
@@ -197,7 +198,8 @@ function construeixFila(filaCsv) {
     imatge_url: valorCsv(filaCsv, 'imatge_url'),
     font_url: valorCsv(filaCsv, 'font_url'),
     estat: 'pendent',
-    data_entrada: valorCsv(filaCsv, 'data_entrada')
+    data_entrada: valorCsv(filaCsv, 'data_entrada'),
+    periodicitat: valorCsv(filaCsv, 'periodicitat')
   };
 }
 
@@ -221,7 +223,7 @@ function main() {
   // Si la capçalera no és exactament l'esquema, res del que ve
   // després és de fiar. Val més aturar-se que endevinar.
   if (capcalera.join('|') !== ESQUEMA.join('|')) {
-    console.error('La capçalera del CSV no és l\'esquema canònic de 16 camps.');
+    console.error('La capçalera del CSV no és l\'esquema canònic de 17 camps.');
     console.error('  esperada: ' + ESQUEMA.join(','));
     console.error('  trobada:  ' + capcalera.join(','));
     process.exit(1);

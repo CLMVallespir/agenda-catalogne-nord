@@ -511,6 +511,23 @@ clic. La informació que hi posa una persona és la bona.
 > fer, si això passa, és anar a buscar el senyal a `TRI`, a `COMMUNDATE` o a la
 > descripció — perquè és exactament el que Q1 prohibeix.
 
+> **MESURAT DE NOU el 16 de setembre de 2026, sessió 3 del §7, contra el flux en
+> directe: 31 temes distints, no 33** (1 652 ofertes, 1 571 amb el camp —el flux
+> canvia entre passades; no és cap error de comptatge de l'11 de setembre). **I,
+> contra el que aquest apartat preveia com a possible, un valor SÍ diu
+> explícitament una freqüència: «Marché hebdomadaire».** Cap altre diu «mensuel»
+> ni equivalent. La regla, doncs, **s'activa** —no queda inactiva—, però només per
+> a aquest sol valor, amb igualtat exacta i mai com a subcadena («Grand marché de
+> Noël» no compta). Text que produeix: **«cada setmana»**, sense dia ni hora,
+> perquè és tot el que «Marché hebdomadaire» diu. Implementat a
+> `eines/mapeja-adt66.js`, `periodicitatDeProduccio()`, al costat de
+> `categoriaPerTemaInfantil()` com estava previst. **El pas 7 bis** (fora
+> d'abast, §8) **no ha de traduir aquest camp quan ja arriba en català**: la Q5
+> ja ho cobreix en dir «si el camp arriba buit, no es tradueix res», però ara cal
+> afegir-hi que un `periodicitat` no buit vingut de l'ADT66 **ja neix en
+> català** i tampoc no s'ha de tocar — és la sessió que toqui `PROMPT_TRADUCCIO`
+> qui ho ha de saber, no aquesta.
+
 ### Q2 — La franja de llarga durada es queda tal com és · **RESOLTA**
 
 **La decisió.** `DIES_LLARGA_DURADA = 5` **no es toca**. `esLlargaDurada()` **no
@@ -655,7 +672,7 @@ l'ha complerta.
 | ~~**0**~~ | ~~Decidir el nom del camp i les 5 preguntes obertes.~~ | **FETA el 8 de setembre de 2026.** El nom és `periodicitat` (§2) i les cinc respostes són al §6. |
 | **1** | Escriure `eines/verifica-camps.js`, germà de `verifica-enum.js`: llegeix la llista bona de `prompts/extract-event.txt` i la compara amb els 24 llocs del §4 **i amb els ajudants de prova del §5**. **Encara amb 17 camps**, abans de tocar res més. | `node eines/verifica-camps.js` torna **0** sobre el repositori intacte, i torna **1** si se li treu un camp a mà d'un sol dels llocs. **Les dues sortides, mostrades.** — **FETA el 16 de setembre de 2026**: 26 comprovacions, 24 llocs, 16 fitxers. |
 | **2** | El prompt: les 3 còpies del §4.A. | `node eines/verifica-camps.js` torna **1** i assenyala **exactament els llocs restants**, ni un més ni un menys. |
-| **3** | Els constructors del §4.B (punts 4–15) i els consumidors de dades (16–18, i el **45** del §4.C bis). Inclou la **regla conservadora de la Q1** al punt 13 —amb la comprovació dels 33 valors de `COMMUNTHEME` **primer de tot**— i **l'avís de la Q3** al punt 17. | `node eines/verifica-camps.js` torna **0**. Les 3 bateries del §4.D que fallen —`mapeja-adt66`, `mapeja-recerca`, `processa-lot`— passen, amb el recompte de casos i de fallades mostrat. **Si els 33 temes no porten cap paraula de freqüència, es diu i la regla es deixa inactiva** (§6, Q1). |
+| **3** | Els constructors del §4.B (punts 4–15) i els consumidors de dades (16–18, i el **45** del §4.C bis). Inclou la **regla conservadora de la Q1** al punt 13 —amb la comprovació dels 33 valors de `COMMUNTHEME` **primer de tot**— i **l'avís de la Q3** al punt 17. | `node eines/verifica-camps.js` torna **1, amb exactament 6 llocs restants**: `eines/adt66-identificador.js`, `eines/classifica-editorial.js`, `eines/deteccio-retirades.js`, `eines/puja-cartell.js`, `eines/verifica-esdeveniment.js` i `eines/dedup-contra-fitxers.js` —sis dels set ajudants de prova del §5 (punts 38–44, sessió 4). El setè, `eines/dedup-esdeveniments.js` (`fusionaFiles()`), ja queda tancat aquí perquè comparteix la mateixa constant `CAMPS` que el punt 16. **No 0: el «torna 0» que aquesta fila deia abans del 16 de setembre de 2026 era un error de redacció**, perquè l'abast de la sessió 3 mai no ha inclòs els punts del §5 —són de la sessió 4— i `verifica-camps.js` (sessió 1) sí que els comprova. Enumerats abans i després de la implementació, els 6 restants són sempre els mateixos. Les 3 bateries del §4.D que fallen —`mapeja-adt66`, `mapeja-recerca`, `processa-lot`— passen, amb el recompte de casos i de fallades mostrat. **Si els 33 temes no porten cap paraula de freqüència, es diu i la regla es deixa inactiva** (§6, Q1) — **mesurat el 16 de setembre de 2026: en porten un, «Marché hebdomadaire», i la regla s'activa** (vegeu l'apèndix del §6, Q1). |
 | **4** | Els 7 ajudants de prova (punts 38–44 = els set del §5), i la **decisió sobre `CAMPS_CONTRASTABLES`** (§5, «Un cas a part»). | **Les 17 bateries offline passen** (16 el 5 de setembre, més `verifica-camps`). Sortida de cadascuna, mostrada. |
 | **5** | El frontend: punts 25–31 (`app.js`, `index.html`, `style.css`). **`esLlargaDurada()` i `DIES_LLARGA_DURADA` no es toquen** (§6, Q2). | Amb `prova-local.html`: una permanent surt a la secció nova; els 3 filtres l'amaguen; amb la secció buida, la `<section>` queda `hidden`. Verificat a ull, amb descripció o captura. **Si el rutatge de `pintaTot()` xoca de debò: la sessió s'atura i ho reporta** (§6, Q2) — i això compta com a sortida vàlida. |
 | **6** | El mirall offline: `prova-local.html` (punts 32–37), amb files de prova permanents. | `prova-local.html` i `app.js` fan **el mateix**. La diferència entre els dos, mostrada i buida. |

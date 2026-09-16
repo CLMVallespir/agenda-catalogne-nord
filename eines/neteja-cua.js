@@ -64,7 +64,8 @@ var IDS_DE_BROSSA = [
 var CAMPS_CANONICS = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'nota_curador'
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
 ];
 
 // El principi del tag que `mapejaOfertaADT66()` deixa a `nota_curador`. La

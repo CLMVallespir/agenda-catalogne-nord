@@ -1383,3 +1383,32 @@ setembre, o sigui passades, i han sortit amb la neteja com hauria fet sola
 `podaRebutjatsCaducats()` a la propera sincronització —la poda treu justament
 les rebutjades amb `data_fi` passada. La memòria de rebuig és per a les ofertes
 que poden tornar, i una de passada no torna.
+
+---
+
+## `eines/pipeline-offline.js` falla en executar-se sense arguments
+
+**Resum:** `node eines/pipeline-offline.js` (la seva pròpia bateria de proves,
+sense CSV ni data) llança i no s'arregla aquí — motiu desconegut, sense
+diagnosticar.
+
+Executat el 16 de setembre de 2026, sessió 3 del §7 de
+`docs/DECISIO-ACTIVITATS-PERMANENTS.md`:
+
+```
+C:\Users\samsu\Claude\Projects\Quefas2\eines\pipeline-offline.js:552
+  if (resultat.llestos[0].imatge_url !== URL_CARTELL_FORA) {
+                          ^
+
+TypeError: Cannot read properties of undefined (reading 'imatge_url')
+    at bateriaSenseAgents (C:\Users\samsu\Claude\Projects\Quefas2\eines\pipeline-offline.js:552:27)
+    at async passaLaBateria (C:\Users\samsu\Claude\Projects\Quefas2\eines\pipeline-offline.js:920:32)
+    at async principal (C:\Users\samsu\Claude\Projects\Quefas2\eines\pipeline-offline.js:984:5)
+```
+
+Cridant-lo amb un CSV real i una data (l'ús normal, no la bateria) funciona bé:
+`node eines/pipeline-offline.js docs/arxiu-google/esdeveniments-importacio.csv
+2026-09-16` torna 103 candidats, 61 llestos, cap de perdut. El trencat és
+específicament `bateriaSenseAgents()`, dins de la pròpia bateria de proves. Una
+bateria que falla sense causa coneguda deixa de ser útil com a senyal —no es
+mira ara, per instrucció explícita.

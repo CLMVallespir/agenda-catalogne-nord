@@ -507,7 +507,7 @@ async function respostaDelFormulari(request, env) {
 }
 
 // ------------------------------------------------------------
-// Munta la fila de 16 camps a partir del cos del formulari. Mapa
+// Munta la fila de 17 camps a partir del cos del formulari. Mapa
 // determinista, camp a camp, sense cap crida a Gemini: el formulari
 // ja dona la informació separada. Torna l'objecte de la fila.
 // ------------------------------------------------------------
@@ -561,7 +561,10 @@ function construeixFilaFormulari(cos) {
     // --- Els camps que omple el sistema, mai el formulari ---
     font_url: '',                             // el formulari no demana cap enllaç d'origen
     estat: 'pendent',                         // sempre: espera el curador
-    data_entrada: new Date().toISOString()    // quan s'ha creat la fila
+    data_entrada: new Date().toISOString(),   // quan s'ha creat la fila
+    // El Typebot encara no demana aquesta pregunta (sessió 8 del §7 de
+    // DECISIO-ACTIVITATS-PERMANENTS.md): buida fins que hi sigui.
+    periodicitat: campText(cos, 'periodicitat')
   };
 }
 
@@ -801,7 +804,7 @@ function analitzaJsonResposta(text) {
 // ============================================================
 
 // ------------------------------------------------------------
-// Munta la fila de 16 camps, cadascun pel seu nom i en l'ordre de
+// Munta la fila de 17 camps, cadascun pel seu nom i en l'ordre de
 // l'esquema (CLAUDE.md §4). Tot són cadenes; cap valor buit no és
 // mai null. Torna l'objecte de la fila.
 // ------------------------------------------------------------
@@ -835,7 +838,8 @@ function construeixFila(dadesExtretes, imatgeUrl) {
     imatge_url: imatgeUrl,                    // Cloudinary, o "" si no n'hi ha
     font_url: '',                             // un correu no porta cap enllaç de font
     estat: 'pendent',                         // sempre: espera el curador
-    data_entrada: new Date().toISOString()    // quan s'ha creat la fila
+    data_entrada: new Date().toISOString(),   // quan s'ha creat la fila
+    periodicitat: campText(dadesExtretes, 'periodicitat')
   };
 }
 

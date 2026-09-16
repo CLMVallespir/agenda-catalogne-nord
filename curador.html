@@ -761,6 +761,7 @@ function creaFitxa(esdeveniment) {
   graella.appendChild(creaCamp('associacio', 'Associació', esdeveniment.associacio, true));
   graella.appendChild(creaCamp('imatge_url', 'URL del cartell', esdeveniment.imatge_url, true));
   graella.appendChild(creaCamp('font_url', 'URL de la font', esdeveniment.font_url, true));
+  graella.appendChild(creaCamp('periodicitat', 'Periodicitat', esdeveniment.periodicitat, true));
   cos.appendChild(graella);
 
   var identificador = document.createElement('p');
@@ -819,7 +820,7 @@ function creaFitxa(esdeveniment) {
 
 // ------------------------------------------------------------
 // Llegeix els camps editats d'una fitxa i els torna com un
-// esdeveniment complet de 16 camps. Els camps que el sistema omple
+// esdeveniment complet de 17 camps. Els camps que el sistema omple
 // (estat, data_entrada) es queden com eren; l'id es reconstrueix.
 // ------------------------------------------------------------
 function recullFitxa(fitxa, original) {
@@ -846,7 +847,8 @@ function recullFitxa(fitxa, original) {
     imatge_url: editat.imatge_url,
     font_url: editat.font_url,
     estat: original.estat,
-    data_entrada: original.data_entrada
+    data_entrada: original.data_entrada,
+    periodicitat: editat.periodicitat
   };
 }
 
