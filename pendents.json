@@ -126,24 +126,6 @@
     "data_entrada": "2026-08-20T12:00:00Z"
   },
   {
-    "id": "2026-10-10-trumfesta-run",
-    "titol": "Trumfesta’ Run",
-    "data_inici": "2026-10-10",
-    "data_fi": "2026-10-10",
-    "hora": "16:00",
-    "lloc": "Place de la mairie",
-    "municipi": "Matemala",
-    "comarca": "Capcir",
-    "categoria": "Patrimoni i tradicions",
-    "descripcio_ca": "L’associació Les Pieds sur Terre organitza una cursa atípica de set quilòmetres al voltant de Matemala. Es fa durant la Festa de la Patata i surt de la plaça de l’ajuntament a les quatre de la tarda. Una cursa pensada per fer-la amb bon humor.",
-    "descripcio_fr": "L’association Les Pieds sur Terre organise une course atypique d’environ sept kilomètres autour de Matemale. Elle se déroule pendant la Fête de la Patate et part de la place de la mairie à seize heures. Une course pensée pour être faite avec bonne humeur.",
-    "associacio": "Association Les Pieds sur Terre",
-    "imatge_url": "https://matemale.fr/wp-content/uploads/formidable/12/Trumfesta-run.jpg",
-    "font_url": "https://www.instagram.com/p/DZP6M00DKuL/",
-    "estat": "pendent",
-    "data_entrada": "2026-08-20T12:00:00Z"
-  },
-  {
     "id": "2026-10-10-gioia",
     "titol": "Gioia",
     "data_inici": "2026-10-10",
