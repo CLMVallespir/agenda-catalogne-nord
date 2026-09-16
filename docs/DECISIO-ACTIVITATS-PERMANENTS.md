@@ -188,22 +188,39 @@ funció per funció.
 
 | | Quants |
 |---|---|
-| Fitxers de codi i d'actius a tocar | **19** |
-| Punts d'edició dins d'aquests fitxers | **44**, dels quals **6 són codi o marcatge nou** |
-| Llocs on el joc de camps s'escriu **literalment** | **23**, en **14 fitxers** — 10 llistes constants, 10 constructors de fila en línia, 3 còpies del prompt |
-| Bateries de proves offline que existeixen avui | **16** (més 2 que surten a la xarxa) |
+| Fitxers de codi i d'actius a tocar | **20** |
+| Punts d'edició dins d'aquests fitxers | **45**, dels quals **6 són codi o marcatge nou** |
+| Llocs on el joc de camps s'escriu **literalment** | **24**, en **16 fitxers** — 11 llistes constants, 10 constructors de fila en línia, 3 còpies del prompt |
+| Bateries de proves offline que existeixen avui | **17** (més 2 que surten a la xarxa) |
 | Bateries que **fallen de seguida** en afegir el camp | **3** |
 | Llocs que **construeixen files incompletes en silenci** | **7** — i **ja falla avui**: §5 |
 | Fitxers de dades a reomplir | **2** — i **0 files a tocar** (§4.F) |
 | Documents que queden desfasats | **14** |
-| Verificador que enxampi un camp que falti | **cap** (§4.G) |
+| Verificador que enxampi un camp que falti | `eines/verifica-camps.js`, des del 16 de setembre de 2026 (§4.G) |
+
+> **CORRECCIÓ DE COMPTABILITAT DEL 16 DE SETEMBRE DE 2026.** Els números de
+> dalt no són els que el document va escriure el 5 de setembre. Cap decisió no
+> ha canviat; el que ha canviat és el recompte, i per dos motius:
+>
+> - **El compte de fitxers era erroni.** Deia «23 llocs en **14** fitxers» i en
+>   són **15**: `eines/dedup-contra-fitxers.js` porta un dels 10 constructors de
+>   fila en línia (la `filaDeProva()` de la 562, punt 42 del §5) i no s'havia
+>   comptat entre els fitxers. Els 23 llocs, en canvi, eren correctes.
+> - **Hi ha un lloc que l'inventari no podia conèixer.** `eines/neteja-cua.js`
+>   és posterior a `041d0e8` i porta `CAMPS_CANONICS`, una onzena llista
+>   constant. És el **punt 45** (§4.C bis). D'aquí surten el 24è lloc, el 16è
+>   fitxer, el 20è fitxer a tocar i el 45è punt d'edició.
+>
+> La bateria offline número 17 és `verifica-camps` mateix (§4.D), escrita a la
+> sessió 1 del §7.
 
 > **La comparació que importa.** L'enum de `categoria` viu a **14 còpies en 9
 > fitxers**, i el §4 bis de `CLAUDE.md` existeix perquè una vegada se'n van tocar
 > 2 de 14 i hi va haver dies amb una fila publicada amb la categoria buidada en
-> silenci. El **joc de camps** viu a **23 llocs en 14 fitxers** i **no té cap
-> `verifica-*.js` que el vigili**. Per això el §7 posa el verificador primer de
-> tot i no l'últim.
+> silenci. El **joc de camps** viu a **24 llocs en 16 fitxers** i **no tenia cap
+> `verifica-*.js` que el vigilés**. Per això el §7 posa el verificador primer de
+> tot i no l'últim — i per això, des del 16 de setembre de 2026, ja n'hi ha un:
+> `eines/verifica-camps.js`.
 
 ### 4.A — El prompt d'extracció (3 còpies literals)
 
@@ -271,18 +288,33 @@ llista de verificació i va al §4.E.
 | **36** | `prova-local.html:1185` | `pintaFranjaLlarga()` + la germana nova | mirall |
 | **37** | `prova-local.html:807–889` | les **10 files de prova en línia** | cap no és permanent avui |
 
+### 4.C bis — Posterior a l'inventari
+
+Afegit el **16 de setembre de 2026**. `eines/neteja-cua.js` és de després de
+`041d0e8` i l'inventari del 5 de setembre no el podia conèixer. Va numerat 45
+perquè els punts 38–44 són els set del §5 i renumerar-los trencaria totes les
+referències de la resta del document.
+
+| # | Fitxer:línia | Funció o constant | Què cal fer-hi |
+|---|---|---|---|
+| **45** | `eines/neteja-cua.js:64` | `CAMPS_CANONICS` (17) | l'**onzena** llista constant. L'eina no construeix cap fila: la llista li serveix només per verificar que a `pendents.json` no hi ha aparegut ni desaparegut cap camp, o sigui que si es queda curta la verificació deixa passar el camp nou sense dir res |
+
 ### 4.D — Les proves i els ajudants de prova
 
 Cap fitxer del projecte no té `require.main === module` fora d'
 `eines/sincronitza-programada.js:1744`: les bateries s'executen amb
 `node eines/<fitxer>.js` i s'aturen amb `process.exitCode = 1`.
 
-**Les 16 bateries offline que existeixen avui:** `adt66-identificador`,
+**Les 17 bateries offline que existeixen avui:** `adt66-identificador`,
 `classifica-editorial`, `cloudinary-adapter`, `comarca-per-poble`,
 `dedup-contra-fitxers`, `dedup-esdeveniments`, `deteccio-retirades`,
 `filtra-candidats`, `mapeja-adt66`, `mapeja-recerca`, `neteja-text`,
-`pipeline-offline`, `processa-lot`, `puja-cartell`, `verifica-esdeveniment`,
-`verifica-enum`. (Més `sondes-fonts` i `proves-7bis`, que surten a la xarxa.)
+`pipeline-offline`, `processa-lot`, `puja-cartell`, `verifica-camps`,
+`verifica-esdeveniment`, `verifica-enum`. (Més `sondes-fonts` i `proves-7bis`,
+que surten a la xarxa.)
+
+*`verifica-camps` és la 17a i és del 16 de setembre de 2026: el document en
+deia 16 perquè aleshores encara no existia.*
 
 > **Precisió del 16 de setembre de 2026, comprovada llegint el fitxer.**
 > `proves-7bis` és **bateria de xarxa** i no compta entre les offline, tot i que
@@ -363,15 +395,21 @@ L'única raó per tocar-los seria voler que `git diff` ensenyi l'esquema nou de
 seguida, i no la val: 135 files remenades per res, i un conflicte de SHA amb el
 curador que estigui publicant en aquell moment.
 
-### 4.G — El forat: no hi ha cap verificador de camps
+### 4.G — El forat: no hi havia cap verificador de camps
+
+> **TANCAT EL 16 DE SETEMBRE DE 2026.** `eines/verifica-camps.js` existeix, i
+> aquest apartat es queda tal com estava perquè explica per què calia. Fa 26
+> comprovacions sobre els 24 llocs en 16 fitxers, llegeix la llista bona del
+> mestre i torna 1 si un sol lloc no hi quadra.
 
 `eines/verifica-enum.js` comprova **només** les llistes de `comarca` i de
 `categoria`, a les 14 còpies del §4 bis, llegint-ne la bona de
 `prompts/extract-event.txt`. **No mira els noms de camp.**
 
-Res, avui, no enxamparia una fila que hagi perdut el camp nou en un dels 23 llocs
-del §4. I un camp que falta és **més silenciós** que una categoria dolenta: no hi
-ha cap `valorPermes()` que el buidi amb un rastre — simplement no hi és.
+Res, el 5 de setembre, no enxampava una fila que hagués perdut el camp nou en un
+dels 24 llocs del §4. I un camp que falta és **més silenciós** que una categoria
+dolenta: no hi ha cap `valorPermes()` que el buidi amb un rastre — simplement no
+hi és.
 
 **Un `eines/verifica-camps.js`, germà de `verifica-enum.js`, és la primera cosa
 que s'ha d'escriure.** El §7 el posa a la sessió 1 precisament per això.
@@ -615,10 +653,10 @@ l'ha complerta.
 | Sessió | Tasca | Condició de sortida |
 |---|---|---|
 | ~~**0**~~ | ~~Decidir el nom del camp i les 5 preguntes obertes.~~ | **FETA el 8 de setembre de 2026.** El nom és `periodicitat` (§2) i les cinc respostes són al §6. |
-| **1** | Escriure `eines/verifica-camps.js`, germà de `verifica-enum.js`: llegeix la llista bona de `prompts/extract-event.txt` i la compara amb els 23 llocs del §4 **i amb els ajudants de prova del §5**. **Encara amb 17 camps**, abans de tocar res més. | `node eines/verifica-camps.js` torna **0** sobre el repositori intacte, i torna **1** si se li treu un camp a mà d'un sol dels llocs. **Les dues sortides, mostrades.** |
+| **1** | Escriure `eines/verifica-camps.js`, germà de `verifica-enum.js`: llegeix la llista bona de `prompts/extract-event.txt` i la compara amb els 24 llocs del §4 **i amb els ajudants de prova del §5**. **Encara amb 17 camps**, abans de tocar res més. | `node eines/verifica-camps.js` torna **0** sobre el repositori intacte, i torna **1** si se li treu un camp a mà d'un sol dels llocs. **Les dues sortides, mostrades.** — **FETA el 16 de setembre de 2026**: 26 comprovacions, 24 llocs, 16 fitxers. |
 | **2** | El prompt: les 3 còpies del §4.A. | `node eines/verifica-camps.js` torna **1** i assenyala **exactament els llocs restants**, ni un més ni un menys. |
-| **3** | Els constructors del §4.B (punts 4–15) i els consumidors de dades (16–18). Inclou la **regla conservadora de la Q1** al punt 13 —amb la comprovació dels 33 valors de `COMMUNTHEME` **primer de tot**— i **l'avís de la Q3** al punt 17. | `node eines/verifica-camps.js` torna **0**. Les 3 bateries del §4.D que fallen —`mapeja-adt66`, `mapeja-recerca`, `processa-lot`— passen, amb el recompte de casos i de fallades mostrat. **Si els 33 temes no porten cap paraula de freqüència, es diu i la regla es deixa inactiva** (§6, Q1). |
-| **4** | Els 7 ajudants de prova (punts 38–44 = els set del §5), i la **decisió sobre `CAMPS_CONTRASTABLES`** (§5, «Un cas a part»). | **Les 16 bateries offline passen.** Sortida de cadascuna, mostrada. |
+| **3** | Els constructors del §4.B (punts 4–15) i els consumidors de dades (16–18, i el **45** del §4.C bis). Inclou la **regla conservadora de la Q1** al punt 13 —amb la comprovació dels 33 valors de `COMMUNTHEME` **primer de tot**— i **l'avís de la Q3** al punt 17. | `node eines/verifica-camps.js` torna **0**. Les 3 bateries del §4.D que fallen —`mapeja-adt66`, `mapeja-recerca`, `processa-lot`— passen, amb el recompte de casos i de fallades mostrat. **Si els 33 temes no porten cap paraula de freqüència, es diu i la regla es deixa inactiva** (§6, Q1). |
+| **4** | Els 7 ajudants de prova (punts 38–44 = els set del §5), i la **decisió sobre `CAMPS_CONTRASTABLES`** (§5, «Un cas a part»). | **Les 17 bateries offline passen** (16 el 5 de setembre, més `verifica-camps`). Sortida de cadascuna, mostrada. |
 | **5** | El frontend: punts 25–31 (`app.js`, `index.html`, `style.css`). **`esLlargaDurada()` i `DIES_LLARGA_DURADA` no es toquen** (§6, Q2). | Amb `prova-local.html`: una permanent surt a la secció nova; els 3 filtres l'amaguen; amb la secció buida, la `<section>` queda `hidden`. Verificat a ull, amb descripció o captura. **Si el rutatge de `pintaTot()` xoca de debò: la sessió s'atura i ho reporta** (§6, Q2) — i això compta com a sortida vàlida. |
 | **6** | El mirall offline: `prova-local.html` (punts 32–37), amb files de prova permanents. | `prova-local.html` i `app.js` fan **el mateix**. La diferència entre els dos, mostrada i buida. |
 | **7** | El digest: punts 19–24. `llegeixEsdevenimentsDeLaSetmana()` passa a tornar **dues llistes d'una sola lectura** (§6, Q4). | `respostaDigestDeProva()` (`worker/worker.js:1526`) genera un digest amb el bloc de resum, **sense cartell i sense línia per ocurrència**, i que **hi surt també quan cap permanent no té ocurrència aquella setmana**. Una sola crida a l'API de continguts al registre. **Cap desplegament**: el Worker es desplega quan el propietari ho digui. |
