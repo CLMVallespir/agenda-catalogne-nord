@@ -196,5 +196,23 @@
     "font_url": "https://www.pyrenees-cerdagne.com/planifier/activites/agenda/exposition-40-ans-de-collections-de-la-poussiere-a-la-lumiere-musee-de-cerdagne-6418838",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-05-11-la-terra-i",
+    "titol": "La terra i la mar, amb el cor",
+    "data_inici": "2026-05-11",
+    "data_fi": "2027-01-03",
+    "hora": "",
+    "lloc": "Place Gambetta",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "Una exposició fotogràfica a l’aire lliure dedicada als pagesos, ramaders, pescadors, viticultors i artesans d’Argelers. Els retrats són obra del fotoperiodista Stéphane Ferrer Yulianti i entren en el dia a dia d’aquestes dones i homes. La plaça Gambetta es converteix en galeria oberta a tothom.",
+    "descripcio_fr": "Une exposition photographique en plein air consacrée aux agriculteurs, éleveurs, pêcheurs, viticulteurs et artisans argelésiens. Les portraits sont l’œuvre du photojournaliste Stéphane Ferrer Yulianti et entrent dans le quotidien de ces femmes et de ces hommes. La place Gambetta devient une galerie ouverte à tous.",
+    "associacio": "",
+    "imatge_url": "",
+    "font_url": "https://www.ville-argelessurmer.fr/s-informer/agenda-complet/la-terre-et-la-mer-avec-le-coeur",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
