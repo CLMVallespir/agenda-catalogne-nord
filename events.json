@@ -844,5 +844,23 @@
     "font_url": "https://www.tourisme-canigo.com/agenda/fete-du-champignon-fmalar066v52tz1u/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-10-07-verema-en-festa",
+    "titol": "Verema en Festa",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-11",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "Durant cinc dies, Banyuls convida a descobrir el vinyar del Cru Banyuls i Cotlliure i els seus vinyaters. El programa reuneix tasts, palau dels terrers, animacions musicals, visites de cellers, tallers del gust, poble vinyater, exposicions, cinema, teatre i àpats de vinyater. El programa detallat es publica més endavant.",
+    "descripcio_fr": "Pendant cinq jours, Banyuls invite à découvrir le vignoble du Cru Banyuls & Collioure et ses vignerons. Le programme réunit dégustations, palais des terroirs, animations musicales, visites de caves, ateliers du goût, village vigneron, expositions, cinéma, théâtre et repas vignerons. Le programme détaillé est publié ultérieurement.",
+    "associacio": "Ville de Banyuls-sur-Mer / Office de Tourisme de Banyuls-sur-Mer",
+    "imatge_url": "",
+    "font_url": "https://www.vendangesenfete.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-08-20T12:00:00Z"
   }
 ]
