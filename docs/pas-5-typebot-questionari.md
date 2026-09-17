@@ -17,6 +17,8 @@ Les variables que recull aquest formulari són exactament les que espera `respos
 | `es_un_sol_dia` | (control intern) | Botons Sí/No | Sí |
 | `data_fi` | `data_fi` | Data | Només si dura més d'un dia |
 | `hora` | `hora` | Text (HH:MM) + validació | Sí |
+| `es_permanent` | (control intern) | Botons Sí/No | Sí |
+| `periodicitat` | `periodicitat` | Text | Només si es repeteix |
 | `comarca` | `comarca` | Botons (5 opcions) | Sí |
 | `municipi` | `municipi` | Text | Sí |
 | `lloc` | `lloc` | Text | Sí |
@@ -26,7 +28,9 @@ Les variables que recull aquest formulari són exactament les que espera `respos
 | `associacio` | `associacio` | Text | Sí |
 | `imatge_url` | `imatge_url` | Càrrega Cloudinary (botó) | No |
 
-`es_un_sol_dia` i `idioma_descripcio` només serveixen per guiar el formulari; no s'escriuen al full. El que decideix on va la descripció és `idioma_descripcio`: si val `fr`, el text va a `descripcio_fr`; en qualsevol altre cas, a `descripcio_ca`. La traducció que falti l'omple el curador durant la revisió setmanal.
+`es_un_sol_dia`, `es_permanent` i `idioma_descripcio` només serveixen per guiar el formulari; no s'escriuen al full.
+
+El camp `periodicitat` és per a **activitats permanents**: cursos, tallers o mercats que es repeteixen setmana rere setmana, no per a un acte d'un sol dia (vegeu `docs/DECISIO-ACTIVITATS-PERMANENTS.md`). És text lliure i **es pot deixar en blanc**: el blanc vol dir «és un acte puntual», no «no ho sabem». El que decideix on va la descripció és `idioma_descripcio`: si val `fr`, el text va a `descripcio_fr`; en qualsevol altre cas, a `descripcio_ca`. La traducció que falti l'omple el curador durant la revisió setmanal.
 
 El camp `imatge_url` ara **sí** que es recull al formulari: la càrrega del cartell es fa directament del navegador a Cloudinary (vegeu el Pas 13 i `docs/pas-5-typebot-cartell-cloudinary.md`). Si l'usuari no carrega cap cartell, arriba com a cadena buida `""`.
 
@@ -135,6 +139,27 @@ Aquest pas és **obligatori** i valida el format `HH:MM` (24 h). Si l'usuari esc
 
 - Si la condició es compleix (la regla *Does not match* és certa), vol dir que el format és incorrecte: connecta la sortida d'aquest *Match* de tornada al bloc de la pregunta **Hora**, per obligar l'usuari a corregir-ho.
 - Si no es compleix (el format és vàlid), continua cap al Pas 6.
+
+---
+
+## Pas 5bis — Activitat permanent?
+
+> És una activitat que es repeteix regularment —un curs, un taller setmanal, un mercat de cada setmana—, i no un acte d'un sol dia?
+>
+> *Est-ce une activité qui se répète régulièrement — un cours, un atelier hebdomadaire, un marché chaque semaine —, et non un événement d'une seule journée ?*
+
+Pas de tria (botons) → desa a `es_permanent`:
+
+- **Sí, es repeteix · Oui, elle se répète** → continua al pas de periodicitat, a sota.
+- **No, és un acte puntual · Non, c'est un événement ponctuel** → salta al Pas 6 (Comarca). Deixa `periodicitat` buit.
+
+### Pas de text (només si la resposta és «Sí»)
+
+> Digue'ns cada quan té lloc, amb les teves paraules. Per exemple: «cada dissabte al matí», «els dijous de 18 a 20 h, fora vacances escolars».
+>
+> *Dites-nous à quelle fréquence, avec vos mots. Par exemple : « chaque samedi matin », « les jeudis de 18h à 20h, hors vacances scolaires ».*
+
+Pas d'entrada: **Text** → desa a `periodicitat`. Text lliure, tal com el redacta l'associació; no hi ha cap validació de format ni cap tria tancada.
 
 ---
 

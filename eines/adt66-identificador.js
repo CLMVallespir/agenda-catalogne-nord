@@ -9,7 +9,8 @@
 // quina fila ve de quina oferta. I avui no ho sap ningú, perquè el
 // `SyndicObjectID` no viatja enlloc. El §2 quater de docs/HANDOFF-ADT66.md
 // tanca la porta a resoldre-ho amb un camp nou —l'esquema del §4 de CLAUDE.md
-// són 16 camps públics + `nota_curador`, i no en creix cap divuitè— i el §2
+// són 16 camps públics + `periodicitat` (17 a events.json) + `nota_curador`
+// (18 a pendents.json), i no en creix cap dinovè— i el §2
 // ter demostra que `font_url` tampoc no el pot portar de manera útil.
 //
 // Queda `nota_curador`, i hi encaixa per disseny, no per manca de lloc millor.

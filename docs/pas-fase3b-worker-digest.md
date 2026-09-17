@@ -75,6 +75,18 @@ Si algun dia les llistes creixen més, el registre avisa quan el dia s'acosta al
 no tenen aquest sostre — però són una altra manera d'enviar i s'ha de decidir a
 posta.
 
+### 4. Les activitats permanents: passatgeres, no motor
+
+**Afegit el 17 de setembre de 2026** (`docs/DECISIO-ACTIVITATS-PERMANENTS.md`
+§3 i §6 Q4). El bloc de resum de les activitats permanents (`periodicitat` no
+buida, `data_fi >= avui`) **no fa enviar cap digest que altrament no
+s'enviaria**. Viatja de passatger: si una comarca ja té algun acte puntual dins
+de la finestra de set dies i, per tant, ja envia digest, el bloc de permanents
+hi va al damunt; si cap acte puntual no en desencadena cap, **no s'envia cap
+correu només per les permanents vigents**. `DIES_FINESTRA = 7` continua
+governant qui rep correu; només deixa de governar què hi ha dins del bloc de
+permanents un cop el correu ja surt.
+
 ---
 
 ## 1. Les llistes de Brevo (les crees tu, a mà)
@@ -257,8 +269,10 @@ enviaDigestSetmanal(): 0 correus en aquesta despertada, 12 en tot el dia.
   ningú no vegi l'adreça de ningú.
 - **No mira `pendents.json`.** Només surt al digest el que el curador ja ha
   publicat.
-- **No mira `data_fi`.** La finestra es decideix amb `data_inici`: una exposició
-  que va començar abans d'aquesta setmana i que encara dura **no** hi surt. Era
-  així a l'Apps Script i s'ha mantingut. Si algun dia es vol canviar, és una sola
-  condició a `llegeixEsdevenimentsDeLaSetmana`.
+- **La llista de la setmana no mira `data_fi`.** La finestra es decideix amb
+  `data_inici`: una exposició que va començar abans d'aquesta setmana i que
+  encara dura **no** hi surt. Era així a l'Apps Script i s'ha mantingut.
+  **Excepció, des del 17 de setembre de 2026:** el bloc de permanents (§4 de
+  dalt) sí que mira `data_fi`, perquè és l'únic senyal de vigència que
+  `periodicitat` té.
 - **No escriu res enlloc.** Cap commit, cap fila, cap fitxer.

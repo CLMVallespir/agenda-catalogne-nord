@@ -59,12 +59,13 @@ Pages). Els esdeveniments pendents són actes públics; que es puguin veure aban
 d'hora és acceptable. Escriure-hi, en canvi, exigeix el token.
 
 **Decisió presa el 29 d'agost de 2026 — `nota_curador` no arriba a
-`events.json`.** El camp 17è es pinta a la fitxa com a avís groc, no editable, i
-es queda a `pendents.json`: `recullFitxa()` segueix construint els 16 camps
-canònics exactes i la nota s'hi perd a posta en publicar. `events.json` es
-serveix sencer al públic i una nota de treball intern no hi pinta res; la traça
-queda a l'historial de git de `pendents.json`. **Tancat: no s'ha de tornar a
-obrir.**
+`events.json`.** El camp, ara el 18è des que `periodicitat` s'hi va afegir
+(`docs/DECISIO-ACTIVITATS-PERMANENTS.md`, 17 de setembre de 2026), es pinta a
+la fitxa com a avís groc, no editable, i es queda a `pendents.json`:
+`recullFitxa()` segueix construint els 17 camps públics exactes i la nota s'hi
+perd a posta en publicar. `events.json` es serveix sencer al públic i una nota
+de treball intern no hi pinta res; la traça queda a l'historial de git de
+`pendents.json`. **Tancat: no s'ha de tornar a obrir.**
 
 **Llavor de dades (fet).** El `pendents.json` inicial va sortir de l'exportació
 en CSV del full de càlcul antic, passada per `importa-csv.js` —una eina d'un sol
@@ -93,8 +94,9 @@ al Gmail d'arxiu.
 - Cos de text → Gemini amb el prompt mestre (mecànica exacta al §7 de `CLAUDE.md`).
 - Primer adjunt d'imatge o PDF → Cloudinary (pujada *unsigned*; el PDF es
   transforma sol). L'URL retornat va a `imatge_url`.
-- Construeix la fila: 16 cadenes, `estat = "pendent"`, `data_entrada` = ara,
-  `id` reconstruït amb `creaId`, enums coercits amb `valorPermes`.
+- Construeix la fila: 17 cadenes públiques (§4 de `CLAUDE.md`, des del 17 de
+  setembre de 2026), `estat = "pendent"`, `data_entrada` = ara, `id`
+  reconstruït amb `creaId`, enums coercits amb `valorPermes`.
 - Afegeix la fila a `pendents.json` (API GitHub, SHA, un reintent).
 - **`message.forward()` cap al Gmail d'arxiu sempre, també quan alguna cosa
   falla.** Un correu que no s'ha pogut analitzar no es perd mai: queda a l'arxiu i
@@ -380,7 +382,9 @@ connectar a res**. La taula camp a camp és a `docs/HANDOFF-MAPEIG-RECERCA.md`.
 Quinze casos de prova (`node eines/mapeja-recerca.js`), tots passats, i les 103
 files reals del CSV de recerca passades pel mapeig sense perdre'n cap.
 
-**L'esquema passa a disset camps.** El dissetè és `nota_curador`: els avisos que
+**L'esquema passa a disset camps, el 29 d'agost de 2026** (des del 17 de
+setembre de 2026 en són divuit: `periodicitat`, vegeu §4 de `CLAUDE.md`).
+El dissetè d'aleshores és `nota_curador`: els avisos que
 genera aquest mapeig —títol per traduir, categoria sense calaix, comarca fora de
 l'enum— viatgen dins de la fila fins a `pendents.json`, perquè el seu
 destinatari és el curador. Les regles del camp són al §4 de `CLAUDE.md`; el

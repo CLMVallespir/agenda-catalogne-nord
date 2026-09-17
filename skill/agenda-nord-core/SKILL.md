@@ -140,7 +140,11 @@ server-side runtime · any CSS framework (Tailwind/Bootstrap) · any JS framewor
 
 ## 3. The event schema — canonical, exact — SETTLED
 
-Sixteen fields. The **exact names and order** are used identically in the Sheet
+Sixteen fields, as of this Sheets-era snapshot. **Stale as of 2026-09-17: the
+live schema is eighteen fields** (`nota_curador` added 2026-08-29,
+`periodicitat` added 2026-09-17 — see `CLAUDE.md` §4, the current source of
+truth; this skill still hasn't been rewritten for the Worker, per the banner
+above). The **exact names and order** are used identically in the Sheet
 columns, the extraction prompt, `events.json`, and the frontend. Never rename,
 reorder, or add fields without updating all four places together.
 

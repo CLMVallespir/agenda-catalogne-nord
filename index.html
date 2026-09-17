@@ -103,6 +103,20 @@
       <!-- Els esdeveniments es generen a app.js -->
     </div>
 
+    <!-- Activitats permanents: els actes amb `periodicitat` no buida surten
+         de la llista cronològica i de la franja de llarga durada, i es
+         mostren aquí, independentment de la durada de `data_fi`. -->
+    <section id="franja-permanents" class="franja-llarga"
+             aria-labelledby="titol-permanents" hidden>
+      <h2 id="titol-permanents" class="titol-dia titol-franja">
+        <span class="dia-ca">Activitats permanents</span>
+        <span class="dia-fr" lang="fr">· Activités permanentes</span>
+      </h2>
+      <div id="llista-permanents">
+        <!-- Les targetes es generen a app.js -->
+      </div>
+    </section>
+
     <!-- Franja de llarga durada: els actes que duren més de 5 dies
          (típicament exposicions) surten de la llista cronològica i es
          mostren aquí, al peu. Si no, una exposició de dos mesos encalla

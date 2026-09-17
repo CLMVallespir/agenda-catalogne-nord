@@ -751,6 +751,16 @@ body.visor-obert { overflow: hidden; }
     <p id="missatge-estat" class="missatge-estat" hidden></p>
     <div id="llista-esdeveniments"></div>
 
+    <!-- Franja de permanents (mirall de l'index.html). -->
+    <section id="franja-permanents" class="franja-llarga"
+             aria-labelledby="titol-permanents" hidden>
+      <h2 id="titol-permanents" class="titol-dia titol-franja">
+        <span class="dia-ca">Activitats permanents</span>
+        <span class="dia-fr" lang="fr">· Activités permanentes</span>
+      </h2>
+      <div id="llista-permanents"></div>
+    </section>
+
     <!-- Franja de llarga durada (mirall de l'index.html). -->
     <section id="franja-llarga-durada" class="franja-llarga"
              aria-labelledby="titol-llarga-durada" hidden>
@@ -887,6 +897,35 @@ var DADES_DE_PROVA = [
     "descripcio_ca": "Espectacle de titelles en català per a infants a partir de 3 anys. La companyia adapta la llegenda de Sant Jordi amb música en directe. Després de la funció, els infants podran conèixer els titelles de prop.",
     "descripcio_fr": "Spectacle de marionnettes en catalan pour les enfants à partir de 3 ans. La compagnie adapte la légende de Sant Jordi avec musique en direct. Après la représentation, les enfants pourront découvrir les marionnettes de près.",
     "associacio": "Titelles del Nord", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-06-12"
+  },
+  {
+    "id": "2026-01-01-grup-conversa-catala-ceret",
+    "titol": "Grup de conversa en català",
+    "data_inici": "2026-01-01", "data_fi": "2026-12-31", "hora": "18:00",
+    "lloc": "Casal Català", "municipi": "Ceret", "comarca": "Vallespir", "categoria": "Vida associativa",
+    "descripcio_ca": "Trobada setmanal per practicar el català parlat, oberta a tots els nivells. No cal inscripció, només ganes de xerrar.",
+    "descripcio_fr": "Rencontre hebdomadaire pour pratiquer le catalan parlé, ouverte à tous les niveaux. Pas d'inscription nécessaire, juste l'envie de discuter.",
+    "associacio": "CLM", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-01-01",
+    "periodicitat": "cada dimarts"
+  },
+  {
+    "id": "2026-01-01-taller-permanent-caducat-prada",
+    "titol": "Taller permanent de proves (caducat — no s'ha de veure)",
+    "data_inici": "2026-01-01", "data_fi": "2026-06-30", "hora": "17:00",
+    "lloc": "Casa de la Vila", "municipi": "Prada", "comarca": "Conflent", "categoria": "Taller",
+    "descripcio_ca": "Activitat permanent de prova amb data de fi ja passada: serveix per comprovar que la periodicitat no eximeix del filtre de vigència.",
+    "descripcio_fr": "Activité permanente de test dont la date de fin est déjà passée : elle vérifie que la périodicité n'exempte pas du filtre de validité.",
+    "associacio": "Associació de proves", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-01-01",
+    "periodicitat": "cada dijous"
+  },
+  {
+    "id": "2026-09-20-xerrada-control-prats",
+    "titol": "Xerrada de control (puntual, sense periodicitat)",
+    "data_inici": "2026-09-20", "data_fi": "2026-09-20", "hora": "19:00",
+    "lloc": "Biblioteca municipal", "municipi": "Prats de Molló", "comarca": "Vallespir", "categoria": "Conferència",
+    "descripcio_ca": "Acte puntual de control, sense periodicitat, per contrastar amb les activitats permanents del mateix joc de dades.",
+    "descripcio_fr": "Événement ponctuel de contrôle, sans périodicité, pour contraster avec les activités permanentes du même jeu de données.",
+    "associacio": "Associació de proves", "imatge_url": "", "font_url": "", "estat": "publicat", "data_entrada": "2026-09-01"
   }
 ];
 
@@ -1108,11 +1147,13 @@ function passaFiltreDates(e) {
   return true;
 }
 
-// Pinta la pàgina sencera: la llista per dies i la franja de llarga durada.
+// Pinta la pàgina sencera: la llista per dies, la franja de llarga durada
+// i la franja de permanents.
 function pintaTot() {
   var llista = document.getElementById('llista-esdeveniments');
   llista.textContent = '';
   buidaFranjaLlarga();
+  buidaFranjaPermanents();
 
   if (esdeveniments.length === 0) {
     mostraMissatge('Encara no hi ha esdeveniments publicats. · Aucun événement publié pour le moment.');
@@ -1127,10 +1168,15 @@ function pintaTot() {
 
   amagaMissatge();
 
+  // Reparteix en tres bandes, per aquest ordre exacte i excloent: una
+  // permanent hi va sempre encara que també tingués una durada llarga.
   var curts = [];
   var llargs = [];
+  var permanents = [];
   filtrats.forEach(function (e) {
-    if (esLlargaDurada(e)) {
+    if (e.periodicitat) {
+      permanents.push(e);
+    } else if (esLlargaDurada(e)) {
       llargs.push(e);
     } else {
       curts.push(e);
@@ -1139,6 +1185,7 @@ function pintaTot() {
 
   pintaLlistaPerDies(curts, llista);
   pintaFranjaLlarga(llargs);
+  pintaFranjaPermanents(permanents);
 }
 
 // Diu si un acte dura més de DIES_LLARGA_DURADA dies.
@@ -1211,6 +1258,39 @@ function pintaFranjaLlarga(llargs) {
 
   var comptador = 0;
   ordenats.forEach(function (e) {
+    llista.appendChild(creaTargeta(e, comptador));
+    comptador++;
+  });
+
+  franja.hidden = false;
+}
+
+// Buida la franja de permanents i l'amaga. Mateix patró que
+// buidaFranjaLlarga(): es crida al principi de cada pintat.
+function buidaFranjaPermanents() {
+  var franja = document.getElementById('franja-permanents');
+  var llista = document.getElementById('llista-permanents');
+  if (franja === null || llista === null) {
+    return;
+  }
+  llista.textContent = '';
+  franja.hidden = true;
+}
+
+// Pinta la franja de permanents, en el mateix ordre que arriben (ja
+// cronològic per preparaEsdeveniments). Si no hi ha res, no es mostra.
+function pintaFranjaPermanents(permanents) {
+  var franja = document.getElementById('franja-permanents');
+  var llista = document.getElementById('llista-permanents');
+  if (franja === null || llista === null) {
+    return;
+  }
+  if (permanents.length === 0) {
+    return;
+  }
+
+  var comptador = 0;
+  permanents.forEach(function (e) {
     llista.appendChild(creaTargeta(e, comptador));
     comptador++;
   });
@@ -1424,6 +1504,16 @@ function creaMeta(e) {
     var nomLloc = document.createElement('span');
     nomLloc.textContent = lloc;
     meta.appendChild(nomLloc);
+  }
+
+  if (e.periodicitat) {
+    if (meta.childNodes.length > 0) {
+      meta.appendChild(document.createTextNode(' · '));
+    }
+    var periodicitat = document.createElement('span');
+    periodicitat.className = 'quan';
+    periodicitat.textContent = e.periodicitat;
+    meta.appendChild(periodicitat);
   }
 
   if (e.data_fi && e.data_fi !== e.data_inici) {

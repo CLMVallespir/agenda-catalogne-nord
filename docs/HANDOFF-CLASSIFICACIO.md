@@ -245,7 +245,7 @@ Sense clau i sense xarxa, amb el mateix mock canònic de la bateria de la peça
 | Bateria | Comprovacions noves | Què comprova |
 |---|---|---|
 | `processa-lot.js`, sense classificador | 1 | cap fila no porta cap nota de classificació: el lot surt idèntic al d'abans |
-| `processa-lot.js`, amb classificador | 10 | el repartiment no es mou; 3 crides per 3 files llestes; totes en porten el suggeriment; l'ordre de les dues notes és el d'`ajuntaNotes()`; cap fila de `dubtosos` no en porta; les metadadades segueixen indexades per la fila nova i la fusionada conserva les 3 procedències; els disset camps, intactes |
+| `processa-lot.js`, amb classificador | 10 | el repartiment no es mou; 3 crides per 3 files llestes; totes en porten el suggeriment; l'ordre de les dues notes és el d'`ajuntaNotes()`; cap fila de `dubtosos` no en porta; les metadadades segueixen indexades per la fila nova i la fusionada conserva les 3 procedències; els camps intactes (disset el 30 d'agost de 2026, divuit des del 17 de setembre — `periodicitat`, `docs/DECISIO-ACTIVITATS-PERMANENTS.md`) |
 | `processa-lot.js`, classificador que peta | 2 | el lot no s'atura i les tres files surten amb la nota que ho diu |
 | `pipeline-offline.js`, sense classificador | 5 | el repartiment (1 llest, 1 parella dubtosa, 1 descartat per la finestra) i cap nota de classificació enlloc |
 | `pipeline-offline.js`, amb classificador | 8 | el mateix repartiment; 1 sola crida —ni la dubtosa ni la descartada no en gasten cap—; la fila llesta porta el suggeriment; les dues dubtoses no; el rastre de metadadades no s'ha trencat |

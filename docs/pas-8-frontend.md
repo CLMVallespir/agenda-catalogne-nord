@@ -18,6 +18,14 @@ Estat: **fet** (construït el 12-06-2026). No depèn de Google: funciona amb el 
 - **Esdeveniments de diversos dies**: mostren «Fins al … · Jusqu'au …».
 - **Sense data d'inici vàlida**: l'esdeveniment no es mostra (no es pot situar a la llista).
 - **Imatge**: només si `imatge_url` no és buida. **Enllaç al títol**: només si `font_url` no és buida.
+- **Activitats permanents** (afegit el 17 de setembre de 2026,
+  `docs/DECISIO-ACTIVITATS-PERMANENTS.md`): les files amb `periodicitat` no
+  buida es pinten en una secció a part, identificades com a tals, obeeixen els
+  mateixos tres filtres que la resta i s'amaguen soles quan `data_fi` caduca.
+  Si el filtratge no en deixa cap, la secció es queda `hidden`. Aquest apartat
+  encara descriu la resta del comportament tal com era el 12-06-2026 (inclòs
+  el disseny «sang i or», ja substituït pel blanc-i-negre — vegeu §9 de
+  `CLAUDE.md`); només aquest punt reflecteix l'estat actual.
 
 ## Com provar-ho
 

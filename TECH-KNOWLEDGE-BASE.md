@@ -134,7 +134,7 @@ The backend automation (layers 1–5 and 7) is written in **Google Apps Script**
 **What it does in this project.** The prompt defines the entire data contract for the AI extraction step. Before the email body is appended (after the `CORREU:` line), the prompt:
 - Identifies the model's role ("you are a data extractor for the North Catalonia cultural agenda").
 - Provides the reference date (`{{AVUI}}`, replaced at runtime) for inferring missing years.
-- Lists the exact 16 JSON keys in the exact required order.
+- Lists the exact 17 public JSON keys in the exact required order (16 original + `periodicitat`, added 2026-09-17 — see `CLAUDE.md` §4 and `docs/DECISIO-ACTIVITATS-PERMANENTS.md`).
 - Specifies value constraints (enum values for `comarca` and `categoria`, date formats, string-only types, the `""` convention for unknowns).
 - Instructs the model on which fields to leave empty (the system-filled ones: `imatge_url`, `font_url`, `estat`, `data_entrada`).
 - Gives a worked example (format only — the data is fictional).

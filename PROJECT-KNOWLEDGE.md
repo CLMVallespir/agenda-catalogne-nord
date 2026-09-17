@@ -80,7 +80,7 @@ Repository file map (flat and documented):
 
 ## 4. The event schema — canonical and exact
 
-Sixteen fields. The **exact names and order** are used identically in the Sheet columns, the extraction prompt, `events.json`, and the frontend. Never rename, reorder or add fields without updating all four places together.
+Sixteen fields, as of this Sheets-era snapshot. **Stale as of 2026-09-17: the live schema is eighteen fields** (`nota_curador` added 2026-08-29, `periodicitat` added 2026-09-17 — see `CLAUDE.md` §4, the current source of truth). The **exact names and order** are used identically in the Sheet columns, the extraction prompt, `events.json`, and the frontend. Never rename, reorder or add fields without updating all four places together.
 
 | # | field | type | notes |
 |---|---|---|---|

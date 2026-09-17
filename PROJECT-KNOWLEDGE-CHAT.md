@@ -213,7 +213,10 @@ under `img/logo/`. The project constitution is `CLAUDE.md`, the phase plan is
 
 ## 4. The event schema — canonical and exact
 
-Sixteen fields. The **exact names and order** are used identically in the extraction
+Sixteen fields as of this document's last reconciliation (2026-08-29). **Stale as
+of 2026-09-17: the live schema is eighteen fields** (`nota_curador` added
+2026-08-29, `periodicitat` added 2026-09-17 — see `CLAUDE.md` §4, the current
+source of truth). The **exact names and order** are used identically in the extraction
 prompt, `pendents.json`, `events.json`, and the frontend. Never propose renaming,
 reordering, or adding a field without updating all four places together.
 

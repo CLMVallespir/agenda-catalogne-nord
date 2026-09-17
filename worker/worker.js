@@ -562,8 +562,9 @@ function construeixFilaFormulari(cos) {
     font_url: '',                             // el formulari no demana cap enllaç d'origen
     estat: 'pendent',                         // sempre: espera el curador
     data_entrada: new Date().toISOString(),   // quan s'ha creat la fila
-    // El Typebot encara no demana aquesta pregunta (sessió 8 del §7 de
-    // DECISIO-ACTIVITATS-PERMANENTS.md): buida fins que hi sigui.
+    // El Typebot ho demana al pas 5bis (docs/pas-5-typebot-questionari.md):
+    // si l'usuari diu que és puntual, o el pas no s'ha configurat encara al
+    // servei, arriba buida — mai s'inventa ni es dedueix d'altres camps.
     periodicitat: campText(cos, 'periodicitat')
   };
 }
@@ -1123,8 +1124,10 @@ async function enviaDigestSetmanal(env, ara) {
   var final = dataMesDies(avui, DIES_FINESTRA);
   var setmanaText = dataLlegibleCatala(avui);
 
-  var esdeveniments = await llegeixEsdevenimentsDeLaSetmana(env.GITHUB_TOKEN, avui, final);
-  if (esdeveniments.length === 0) {
+  var llistes = await llegeixEsdevenimentsDeLaSetmana(env.GITHUB_TOKEN, avui, final);
+  var setmana = llistes.setmana;
+  var permanents = llistes.permanents;
+  if (setmana.length === 0) {
     console.log('enviaDigestSetmanal(): cap acte publicat entre ' + avui + ' i ' + final + '. No s\'envia res.');
     return;
   }
@@ -1139,9 +1142,10 @@ async function enviaDigestSetmanal(env, ara) {
 
   for (var i = 0; i < COMARQUES_BREVO.length; i++) {
     var fila = COMARQUES_BREVO[i];
-    var actes = actesDeLaComarca(esdeveniments, fila.comarca);
+    var actes = actesDeLaComarca(setmana, fila.comarca);
+    var actesPermanents = actesDeLaComarca(permanents, fila.comarca);
     if (actes.length === 0) {
-      continue; // una comarca sense actes aquesta setmana no envia res
+      continue; // una comarca sense actes aquesta setmana no envia res; les permanents no fan enviar cap digest per si soles
     }
     if (pressupost <= 0) {
       console.log('enviaDigestSetmanal(): pressupost exhaurit. La propera despertada continuarà per ' + fila.comarca + '.');
@@ -1151,7 +1155,7 @@ async function enviaDigestSetmanal(env, ara) {
     // Una comarca que peta —un id de llista dolent, Brevo caigut— no
     // ha d'endur-se el digest de les altres quatre.
     try {
-      var enviats = await enviaDigestComarca(fila, actes, env, apiKey, jaEnviats, avui, setmanaText, pressupost);
+      var enviats = await enviaDigestComarca(fila, actes, actesPermanents, env, apiKey, jaEnviats, avui, setmanaText, pressupost);
       pressupost = pressupost - enviats;
       totalEnviats = totalEnviats + enviats;
     } catch (error) {
@@ -1169,12 +1173,15 @@ async function enviaDigestSetmanal(env, ara) {
 }
 
 // ------------------------------------------------------------
-// Els actes d'events.json que ja són publicats i que comencen entre
-// dues dates, totes dues incloses, ordenats per data i hora. Es
-// llegeix SEMPRE per l'API de continguts de GitHub, mai de Pages, que
-// serveix còpies de CDN endarrerides. Cada acte es torna a muntar
-// camp a camp perquè tots els valors siguin cadenes. Torna una
-// llista, potser buida.
+// Una sola lectura d'events.json, SEMPRE per l'API de continguts de
+// GitHub (mai de Pages, que serveix còpies de CDN endarrerides), que
+// en treu DUES llistes (§6, Q4 de docs/DECISIO-ACTIVITATS-PERMANENTS.md):
+// «setmana» — els actes publicats que comencen entre dues dates, totes
+// dues incloses — i «permanents» — els actes publicats amb
+// `periodicitat` no buida i `data_fi >= avui`, tinguin o no ocurrència
+// aquella setmana. Cada acte es torna a muntar camp a camp perquè tots
+// els valors siguin cadenes. Totes dues llistes, ordenades per data i
+// hora, potser buides. Torna { setmana, permanents }.
 // ------------------------------------------------------------
 async function llegeixEsdevenimentsDeLaSetmana(token, avui, final) {
   if (!token) {
@@ -1187,7 +1194,9 @@ async function llegeixEsdevenimentsDeLaSetmana(token, avui, final) {
     throw new Error(FITXER_EVENTS + ' no conté una llista.');
   }
 
-  var triats = [];
+  var setmana = [];
+  var permanents = [];
+
   for (var i = 0; i < tots.length; i++) {
     var acte = tots[i];
 
@@ -1196,19 +1205,13 @@ async function llegeixEsdevenimentsDeLaSetmana(token, avui, final) {
     }
 
     var dataInici = campText(acte, 'data_inici');
-    // Una data buida és "" i queda per sota d'avui: els actes sense
-    // data cauen aquí, que és exactament on han de caure.
-    if (dataInici < avui) {
-      continue;
-    }
-    if (dataInici > final) {
-      continue;
-    }
+    var dataFi = campText(acte, 'data_fi');
+    var periodicitat = campText(acte, 'periodicitat');
 
-    triats.push({
+    var muntat = {
       titol: campText(acte, 'titol'),
       data_inici: dataInici,
-      data_fi: campText(acte, 'data_fi'),
+      data_fi: dataFi,
       hora: campText(acte, 'hora'),
       lloc: campText(acte, 'lloc'),
       municipi: campText(acte, 'municipi'),
@@ -1216,12 +1219,24 @@ async function llegeixEsdevenimentsDeLaSetmana(token, avui, final) {
       categoria: campText(acte, 'categoria'),
       descripcio_ca: campText(acte, 'descripcio_ca'),
       descripcio_fr: campText(acte, 'descripcio_fr'),
-      associacio: campText(acte, 'associacio')
-    });
+      associacio: campText(acte, 'associacio'),
+      periodicitat: periodicitat
+    };
+
+    if (periodicitat !== '' && dataFi >= avui) {
+      permanents.push(muntat);
+    }
+
+    // Una data buida és "" i queda per sota d'avui: els actes sense
+    // data cauen aquí, que és exactament on han de caure.
+    if (dataInici >= avui && dataInici <= final) {
+      setmana.push(muntat);
+    }
   }
 
-  triats.sort(comparaPerDataIHora);
-  return triats;
+  setmana.sort(comparaPerDataIHora);
+  permanents.sort(comparaPerDataIHora);
+  return { setmana: setmana, permanents: permanents };
 }
 
 // ------------------------------------------------------------
@@ -1347,11 +1362,11 @@ async function paginaHistorialBrevo(apiKey, avui, desplacament) {
 // configuració de la comarca és dolenta o si no pot llegir la
 // llista; un destinatari que falla, en canvi, només es registra.
 // ------------------------------------------------------------
-async function enviaDigestComarca(fila, actes, env, apiKey, jaEnviats, avui, setmanaText, pressupost) {
+async function enviaDigestComarca(fila, actes, actesPermanents, env, apiKey, jaEnviats, avui, setmanaText, pressupost) {
   var llistaId = idDeLlistaBrevo(env, fila);
   var etiqueta = 'digest-' + avui + '-' + fila.etiqueta;
   var assumpte = construeixAssumpte(fila.comarca, setmanaText);
-  var html = construeixHtmlDigest(fila.comarca, actes, setmanaText);
+  var html = construeixHtmlDigest(fila.comarca, actes, setmanaText, actesPermanents);
 
   var destinataris = await contactesDeLlista(llistaId, apiKey);
   var enviats = 0;
@@ -1558,13 +1573,15 @@ async function respostaDigestDeProva(request, env) {
   var final = dataMesDies(avui, DIES_FINESTRA);
   var setmanaText = dataLlegibleCatala(avui);
 
-  var esdeveniments = null;
+  var llistes = null;
   try {
-    esdeveniments = await llegeixEsdevenimentsDeLaSetmana(env.GITHUB_TOKEN, avui, final);
+    llistes = await llegeixEsdevenimentsDeLaSetmana(env.GITHUB_TOKEN, avui, final);
   } catch (error) {
     console.log('respostaDigestDeProva(): no he pogut llegir ' + FITXER_EVENTS + ': ' + error.message);
     return respostaJson(500, { ok: false, error: 'no he pogut llegir ' + FITXER_EVENTS });
   }
+  var setmana = llistes.setmana;
+  var permanents = llistes.permanents;
 
   var enviats = 0;
   var comarques = [];
@@ -1575,13 +1592,14 @@ async function respostaDigestDeProva(request, env) {
       continue;
     }
 
-    var actes = actesDeLaComarca(esdeveniments, fila.comarca);
+    var actes = actesDeLaComarca(setmana, fila.comarca);
+    var actesPermanents = actesDeLaComarca(permanents, fila.comarca);
     if (actes.length === 0) {
       continue;
     }
 
     var assumpte = '[PROVA] ' + construeixAssumpte(fila.comarca, setmanaText);
-    var html = construeixHtmlDigest(fila.comarca, actes, setmanaText);
+    var html = construeixHtmlDigest(fila.comarca, actes, setmanaText, actesPermanents);
 
     try {
       await enviaCorreuTransaccional(apiKey, adreca, assumpte, html, 'digest-prova-' + avui);
@@ -1596,7 +1614,8 @@ async function respostaDigestDeProva(request, env) {
   return respostaJson(200, {
     ok: true,
     finestra: avui + ' … ' + final,
-    actes: esdeveniments.length,
+    actes: setmana.length,
+    permanents: permanents.length,
     enviats: enviats,
     comarques: comarques
   });
@@ -1646,10 +1665,11 @@ function construeixAssumpte(comarca, setmanaText) {
 
 // ------------------------------------------------------------
 // L'HTML sencer del correu d'una comarca: una targeta blanca amb la
-// capçalera, els actes agrupats per dia i el peu de baixa. Torna la
-// cadena d'HTML.
+// capçalera, els actes agrupats per dia, el bloc compacte de
+// permanents (fora del bucle de dies, i sí quan la setmana és buida)
+// i el peu de baixa. Torna la cadena d'HTML.
 // ------------------------------------------------------------
-function construeixHtmlDigest(comarca, esdeveniments, setmanaText) {
+function construeixHtmlDigest(comarca, esdeveniments, setmanaText, permanents) {
   var contextLinia = escapaHtml(comarca + ' · setmana del ' + setmanaText);
 
   var cos = '';
@@ -1662,6 +1682,8 @@ function construeixHtmlDigest(comarca, esdeveniments, setmanaText) {
     }
     cos = cos + construeixBlocEsdeveniment(esdeveniment);
   }
+
+  cos = cos + construeixBlocPermanents(permanents);
 
   var peu = construeixPeuBaixa();
 
@@ -1755,6 +1777,53 @@ function construeixBlocEsdeveniment(esdeveniment) {
 
   bloc = bloc + '</td></tr></table>';
   return bloc;
+}
+
+// ------------------------------------------------------------
+// El bloc compacte de les activitats permanents (§3 i §6 Q4 de
+// docs/DECISIO-ACTIVITATS-PERMANENTS.md): germana de
+// construeixBlocEsdeveniment(), però sense cartell, sense categoria i
+// amb la periodicitat escrita tal com és —una línia per acte, mai una
+// línia per ocurrència. Surt també quan la finestra de la setmana és
+// buida. Torna "" si no hi ha cap permanent vigent per a la comarca.
+// ------------------------------------------------------------
+function construeixBlocPermanents(permanents) {
+  if (permanents.length === 0) {
+    return '';
+  }
+
+  var files = '';
+  for (var i = 0; i < permanents.length; i++) {
+    files = files + construeixLiniaPermanent(permanents[i]);
+  }
+
+  return (
+    '<div style="margin:22px 0 4px;padding:12px 14px;background-color:' + COLOR_FONS + ';border:1px solid ' + COLOR_VORA + ';">' +
+    '<div style="font-family:Georgia,\'Times New Roman\',serif;font-weight:bold;font-size:13px;color:' + COLOR_TINTA + ';text-transform:uppercase;letter-spacing:0.04em;">Activitats permanents</div>' +
+    '<div lang="fr" style="font-family:Georgia,\'Times New Roman\',serif;font-style:italic;font-size:11px;color:' + COLOR_TINTA_SUAU + ';padding-bottom:8px;">Activités permanentes</div>' +
+    files +
+    '</div>'
+  );
+}
+
+// ------------------------------------------------------------
+// Una línia d'UNA activitat permanent: el títol, la periodicitat tal
+// com s'ha escrit (en vermell, com la resta de dades) i el lloc, si en
+// té. Sense cartell, sense categoria, sense descripció. Torna la
+// cadena d'HTML.
+// ------------------------------------------------------------
+function construeixLiniaPermanent(esdeveniment) {
+  var titol = escapaHtml(esdeveniment.titol);
+  var lloc = escapaHtml(textLloc(esdeveniment));
+
+  var linia =
+    '<div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:' + COLOR_TINTA + ';padding:4px 0;line-height:1.4;">' +
+    '<strong>' + titol + '</strong> — ' + spanAccent(esdeveniment.periodicitat);
+  if (lloc !== '') {
+    linia = linia + ' · ' + lloc;
+  }
+  linia = linia + '</div>';
+  return linia;
 }
 
 // ------------------------------------------------------------

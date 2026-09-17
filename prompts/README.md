@@ -2,7 +2,7 @@
 
 ## extract-event.txt
 
-Prompt enviat a l'API de Gemini (`gemini-3.5-flash-lite`) pel gestor `email()` del Worker. Converteix el cos d'un correu en un objecte JSON amb els 16 camps de l'esquema.
+Prompt enviat a l'API de Gemini (`gemini-3.5-flash-lite`) pel gestor `email()` del Worker. Converteix el cos d'un correu en un objecte JSON amb els 17 camps públics de l'esquema (16 de sempre + `periodicitat`, afegit el 17 de setembre de 2026 — vegeu §4 de `CLAUDE.md` i `docs/DECISIO-ACTIVITATS-PERMANENTS.md`).
 
 > **Còpia mestra:** la mestra és **aquest `extract-event.txt`**. La constant `EXTRACTION_PROMPT` de `worker/worker.js` n'és una còpia que ha de ser-hi idèntica, byte a byte (verificada el 27 d'agost de 2026: 3 773 bytes, iguals). Es compara **tal com Git els guarda**, amb salts LF: al disc, a Windows, aquest `.txt` es veu amb CRLF i fa 3 824 bytes, que és cosa de `core.autocrlf` i no cap diferència de text. Si en canvies una, canvia l'altra.
 >
@@ -24,7 +24,7 @@ Prompt enviat a l'API de Gemini (`gemini-3.5-flash-lite`) pel gestor `email()` d
 ### Llista de verificació (per a cada un dels 3 correus)
 
 - [ ] La resposta és només JSON: cap text al voltant, cap bloc ```.
-- [ ] Hi ha exactament les 16 claus de l'esquema, totes presents.
+- [ ] Hi ha exactament les 17 claus públiques de l'esquema, totes presents.
 - [ ] Els camps desconeguts són `""` (mai `null`, mai absents).
 - [ ] `comarca` i `categoria` són exactament un dels valors permesos, o `""`.
 - [ ] Dates en AAAA-MM-DD, hora en HH:MM.

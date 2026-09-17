@@ -93,7 +93,7 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 
 ## 4. L'esquema — canònic i exacte
 
-**Disset camps** — el recompte real des del 29 d'agost de 2026 —, amb aquests
+**Divuit camps** — el recompte real des del 17 de setembre de 2026 —, amb aquests
 noms i aquest ordre, idèntics a tot arreu. No en canviïs mai cap sense tocar
 **tots** els llocs de la llista del §4 bis alhora.
 
@@ -107,13 +107,28 @@ noms i aquest ordre, idèntics a tot arreu. No en canviïs mai cap sense tocar
 > via `valorPermes()`. La llista del §4 bis existeix perquè això no torni a
 > passar.
 
-*Per què disset i no setze:* els setze primers són els de sempre i no n'ha
-canviat cap. El dissetè, `nota_curador`, és nou i és de naturalesa diferent: no
-descriu l'acte, sinó que diu al curador què ha d'anar a mirar abans d'aprovar la
-fila. Es va afegir quan la canonada d'ingestió externa va començar a produir
-files amb problemes coneguts —títol per traduir, categoria sense calaix, municipi
-que no consta— que fins llavors no tenien on dir-se. Si algun document del
-projecte encara diu «setze camps», és anterior a aquesta data.
+> **CORRECCIÓ DEL 17 DE SETEMBRE DE 2026.** Aquest paràgraf deia «disset
+> camps», i des de la implementació de `docs/DECISIO-ACTIVITATS-PERMANENTS.md`
+> (sessions 1–8 del seu §7, entre el 8 i el 16 de setembre de 2026) és fals: hi
+> ha un divuitè camp, `periodicitat`. **A diferència de `nota_curador`, és
+> públic**: arriba a `events.json` i el llegeix el web i el digest. Si algun
+> document del projecte encara diu «disset camps» o «setze camps» sense
+> aquesta data, és anterior a aquesta correcció.
+
+*Per què disset i no setze, primer:* els setze primers són els de sempre i no
+n'ha canviat cap. El dissetè d'aleshores, `nota_curador`, és de naturalesa
+diferent: no descriu l'acte, sinó que diu al curador què ha d'anar a mirar
+abans d'aprovar la fila. Es va afegir quan la canonada d'ingestió externa va
+començar a produir files amb problemes coneguts —títol per traduir, categoria
+sense calaix, municipi que no consta— que fins llavors no tenien on dir-se.
+
+*Per què divuit i no disset, després:* `periodicitat` cobreix un fenomen que no
+té res a veure amb `nota_curador` —descriu l'**acte** (si es repeteix
+setmanalment), no la fila— i que fins al 8 de setembre de 2026 no tenia on
+dir-se. Text lliure; `""` vol dir «acte puntual», no «no ho sabem». El detall
+sencer —el nom triat, les cinc decisions de disseny i l'inventari de cada lloc
+tocat— és a `docs/DECISIO-ACTIVITATS-PERMANENTS.md`, que no es rediscuteix
+aquí.
 
 1. `id` — `YYYY-MM-DD-slug` (ex.: `2026-09-14-ball-prats`); buit si no hi ha data
 2. `titol` — títol, en català
@@ -131,7 +146,10 @@ projecte encara diu «setze camps», és anterior a aquesta data.
 14. `font_url` — enllaç a la font original; `""` si no n'hi ha
 15. `estat` — `pendent` · `publicat` · `rebutjat`
 16. `data_entrada` — marca de temps ISO de creació de la fila
-17. `nota_curador` — avisos per a qui revisa la fila; `""` per defecte
+17. `periodicitat` — activitat permanent: frase lliure en català («cada
+    dissabte al matí»); `""` si l'acte és puntual (`docs/DECISIO-ACTIVITATS-PERMANENTS.md`)
+18. `nota_curador` — avisos per a qui revisa la fila; `""` per defecte, i
+    l'únic dels divuit que **no** arriba a `events.json` (vegeu més avall)
 
 **Comarques:** Rosselló · Conflent · Vallespir · Capcir · Cerdanya
 **Categories (13):** Música · Teatre · Dansa i ball · Conferència · Exposició ·
@@ -253,9 +271,10 @@ sense que ningú ho vegi. Decidit el 3 de setembre de 2026.
 - **Només es mostra a `curador.html`**, com un avís groc a dalt de la fitxa, i
   **no és editable**: no porta `data-camp`, de manera que `recullFitxa()` ni el
   veu. El curador el llegeix, no el toca.
-- **Es descarta en publicar, i és deliberat.** És el camp 17è: viu a
+- **Es descarta en publicar, i és deliberat.** És el camp 18è: viu a
   `pendents.json` i a `curador.html` i s'atura allà. `recullFitxa()` construeix
-  els **16 camps canònics exactes** i la nota no hi entra, o sigui que
+  els **17 camps públics exactes** (els setze de sempre més `periodicitat`,
+  que sí que és públic) i la nota no hi entra, o sigui que
   `events.json` no en porta mai cap. El motiu: `events.json` és l'arxiu públic i
   es serveix sencer a qualsevol navegador, i una nota de treball intern
   («municipi que no consta», «títol per traduir») no hi pinta res; si mai cal
@@ -371,8 +390,8 @@ publicitària.
   el Worker ha de ser-hi **idèntica, al peu de la lletra**. `{{AVUI}}` se
   substitueix per la data d'avui (`YYYY-MM-DD`), serveix només per inferir un any
   absent; el text del correu s'afegeix després de la línia `CORREU:`. El prompt
-  exigeix només JSON, sense preàmbul ni tanques markdown, amb les 16 claus sempre
-  presents com a cadenes.
+  exigeix només JSON, sense preàmbul ni tanques markdown, amb les 17 claus
+  públiques (§4) sempre presents com a cadenes.
 - **Cloudinary** — pujada *unsigned*: preset `agenda-posters`, carpeta
   `clm-agenda/posters`, transformació d'entrada `w_800,c_limit,q_80,f_webp`. Només
   cal el nom del cloud, cap signatura. El preset ja converteix un PDF en WebP de la

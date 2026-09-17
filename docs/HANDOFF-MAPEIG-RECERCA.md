@@ -1,8 +1,11 @@
-# HANDOFF-MAPEIG-RECERCA.md — de l'esquema de recerca als 16 camps de producció
+# HANDOFF-MAPEIG-RECERCA.md — de l'esquema de recerca als camps de producció
 
 *29 d'agost de 2026. La taula camp a camp que explica `eines/mapeja-recerca.js`:
 què entra, què surt, i què es descarta pel camí. Font de veritat del mapeig.
-La funció és codi pur, cap crida a Gemini, i **no està connectada a res**.*
+La funció és codi pur, cap crida a Gemini, i **no està connectada a res**.
+**Nota del 17 de setembre de 2026:** els «camps de producció» eren setze el 29
+d'agost i en són divuit des de `docs/DECISIO-ACTIVITATS-PERMANENTS.md` (el
+títol es deixa sense xifra per no haver de tornar-lo a tocar cada vegada).*
 
 ---
 
@@ -152,7 +155,8 @@ versió catalana, sense data d'inici, la cadena `"null"`, una fila neta que ha d
 deixar `nota_curador` buida, i una fila amb quatre problemes alhora que els ha
 de portar tots quatre a `nota_curador`.
 
-Cada cas comprova a més, per a tots: que hi ha els disset camps en ordre, que
+Cada cas comprova a més, per a tots: que hi ha els divuit camps en ordre (disset
+fins al 16 de setembre de 2026; vegeu la nota de capçalera), que
 tots són cadenes, que **cap no val el text `"null"` ni `"n/a"`**, que
 `data_entrada` és una marca ISO i que l'id de la recerca no ha sobreviscut. Com
 que `registreDeProva()` omple els trenta-un camps d'origen amb `"null"`, aquella

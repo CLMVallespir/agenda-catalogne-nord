@@ -639,7 +639,8 @@ escriu—, la decisió no és «diferents» sinó **dubtós**: cap al curador am
 dues files visibles.
 
 D'aquí surt la forma de l'entrada de la funció, que si no semblaria estranya:
-no rep dues files de setze camps, rep dues **candidates**
+no rep dues files de l'esquema (setze camps quan es va escriure, divuit des
+del 17 de setembre de 2026), rep dues **candidates**
 `{ fila, font: { tipus, llengua } }`. Ni la procedència ni la llengua del títol
 són camps de l'esquema, i no s'hi han d'afegir: són informació sobre **d'on ve**
 la fila, no sobre l'acte. Qui la crida ja les sap totes dues.
@@ -807,8 +808,9 @@ decidit — qui vegi que `recullFitxa()` en torna només 16 no ha trobat cap err
 
 **Decidit el 29 d'agost de 2026**, el mateix dia que l'avís es va començar a
 pintar a `curador.html`. `nota_curador` viu a `pendents.json`, surt a la fitxa
-com una franja groga no editable, i s'acaba allà: `recullFitxa()` construeix els
-16 camps canònics exactes i la nota no hi entra.
+com una franja groga no editable, i s'acaba allà: `recullFitxa()` construeix
+aleshores 16 camps canònics exactes (17 des del 17 de setembre de 2026, amb
+`periodicitat`; vegeu §4 de `CLAUDE.md`) i la nota no hi entra.
 
 El perquè és d'on va a parar cada fitxer, no de l'esquema. `pendents.json` és
 una cua de treball; `events.json` és l'arxiu **públic**, i el web el descarrega
@@ -917,7 +919,8 @@ de reindexar-lo o la procedència es queda penjada de la fila vella.
 
 `processaLot()` guarda la procedència de cada fila en un `Map` amb **la fila
 mateixa com a clau** —l'objecte, no cap còpia ni cap `id`— i és a posta: així no
-hi ha manera que la metadada acabi dins dels disset camps. La contrapartida no
+hi ha manera que la metadada acabi dins dels camps de l'esquema (disset quan es
+va escriure, divuit des del 17 de setembre de 2026). La contrapartida no
 es veu fins que algú substitueix una fila.
 
 `classificaEditorial()` no toca mai la fila que li donen; en torna una de nova
@@ -1427,3 +1430,20 @@ Reutilitzar-lo voldria dir **exportar una funció que viu a la secció de proves
 `ajuntaNotes()`—, i això és una decisió de disseny, no una neteja: queda
 anotada com a reutilització possible i **no feta** (sessió 4 del §7 de
 `docs/DECISIO-ACTIVITATS-PERMANENTS.md`, 16 de setembre de 2026).
+
+---
+
+## El guard de `finsAl()` és a `app.js` i no al seu mirall `prova-local.html`
+
+**Resum:** `app.js:665-679` calcula `finsAl(e.data_fi)` abans d'afegir el
+separador « · », per no deixar-lo orfe si la data és malformada; `prova-local.html:1519-1527`
+encara afegeix el separador primer i crida `finsAl()` directament dins de
+`textContent`, l'ordre vell que l'auditoria (`docs/auditoria/08-taula-consolidada-codi.md`,
+troballa 36) ja havia marcat com a resolt **només a `app.js`**.
+
+És una divergència **pre-existent**, trobada en repassar els dos fitxers durant
+la implementació de `periodicitat` (sessions 5–6 del §7 de
+`docs/DECISIO-ACTIVITATS-PERMANENTS.md`), no causada per aquell camp ni per
+aquesta sèrie de sessions. **No s'ha tocat**: corregir-la és fora de l'abast
+d'aquesta sèrie i queda anotada perquè no es doni per fet que els dos fitxers
+«fan el mateix» en aquest punt concret (16–17 de setembre de 2026).

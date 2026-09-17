@@ -440,21 +440,38 @@ l'`href` de `DETAILSITEWEB` quan n'hi hagi, `""` quan no. I prou.
 
 *Escrit expressament perquè no s'hagi de tornar a preguntar.*
 
+> **SUPERAT EL 17 DE SETEMBRE DE 2026.** L'esquema **sí que ha crescut** des
+> d'aquest paràgraf: `docs/DECISIO-ACTIVITATS-PERMANENTS.md` hi ha afegit
+> `periodicitat` (implementat entre el 8 i el 16 de setembre de 2026), i el §4
+> de `CLAUDE.md` és ara de **divuit** camps, no disset. L'argument de sota
+> —«l'esquema no admet camps nous, per tant el `SyndicObjectID` ha d'anar a
+> `nota_curador`»— hi perd força: la premissa ja no és certa en general. El
+> que **no** canvia és la conclusió pràctica d'aquest apartat, i per un motiu
+> propi i no reciclat: `periodicitat` és un fenomen de calendari humà (activitats
+> que es repeteixen), el `SyndicObjectID` és un identificador tècnic d'una font
+> concreta, i cap de les cinc decisions de `DECISIO-ACTIVITATS-PERMANENTS.md`
+> n'obre la porta. **El `SyndicObjectID` continua sense camp propi i continua
+> anant al tag `[ADT66 id: …]` dins de `nota_curador`.** Els recomptes de sota
+> es deixen tal com eren escrits, amb aquesta nota al davant, perquè la resta
+> del document hi fa referència per número.
+
 **El `SyndicObjectID` NO s'afegeix mai com a camp de l'esquema.** Ni ara ni
 més endavant. Si algun dia ha de viatjar amb la fila, ha de ser dins d'un camp
 que ja existeix —i el §2 ter acaba de demostrar que `font_url` no el pot
-portar de manera útil—, mai com a camp divuitè.
+portar de manera útil—, mai com a camp nou.
 
-L'esquema és, exactament, el que diu el **§4 de `CLAUDE.md`** i res més:
+L'esquema, en el moment d'escriure això, era exactament el que deia el **§4 de
+`CLAUDE.md`** i res més:
 
-- **16 camps canònics** — els que van a `events.json` i al web públic.
+- **16 camps canònics** — els que anaven a `events.json` i al web públic.
 - **+ `nota_curador`**, el 17è, que viu només a `pendents.json` i a
   `curador.html` i es descarta en publicar (decidit el 29 d'agost de 2026).
 
-O sigui: **16 camps públics, 17 al total de la cua.** Les dues xifres són
-correctes i no es contradiuen; el que seria fals és una divuitena. Si en
-algun informe d'aquest canal es llegeix «disset camps», parla del `nota_curador`
-del §4 de `CLAUDE.md`, **mai** d'un camp afegit per l'ADT66.
+O sigui, **aleshores**: 16 camps públics, 17 al total de la cua. Des del 17 de
+setembre de 2026 el §4 de `CLAUDE.md` en té **divuit**: els setze de sempre +
+`periodicitat` (públic, el 17è) + `nota_curador` (només de cua, ara el 18è).
+Si en algun informe d'aquest canal es llegeix «disset camps» sense aquesta
+data, és anterior a la correcció.
 
 
 ## 3. Què s'ha escrit
@@ -628,11 +645,21 @@ casos de la taula de dalt passen a periòdics, i el d'Argelès, que va acabar el
 
 ### El que això costa, dit clar
 
+> **SUPERAT EL 17 DE SETEMBRE DE 2026** (`docs/DECISIO-ACTIVITATS-PERMANENTS.md`
+> §1). L'«alternativa descartada» del paràgraf de sota **és la que s'ha triat**:
+> el camp `periodicitat` existeix des de la implementació del 8–16 de setembre
+> de 2026. La diferència amb aquí: la Q1 d'aquell document fa que l'ADT66
+> l'ompli **només** quan `COMMUNTHEME` diu «hebdomadaire»/«mensuel» o
+> equivalent —mesurat: només «Marché hebdomadaire» ho fa—, mai deduint-ho del
+> calendari disperses que descriu aquest apartat. La pèrdua d'aquí baix, doncs,
+> continua sent real per a la immensa majoria de les ofertes periòdiques
+> d'aquesta font, encara que l'esquema ja no ho prohibeixi en principi.
+
 Una exposició llarga de debò —oberta cada dia durant tres mesos— també cau al
 costat periòdic i es publica com un sol dia: el d'avui. **És una pèrdua real i
 és deliberada.** L'alternativa era afegir un camp a l'esquema o escriure la
-periodicitat dins de `descripcio_ca`, i totes dues coses toquen els setze camps
-canònics, que no es toquen.
+periodicitat dins de `descripcio_ca`, i totes dues coses tocaven els setze camps
+canònics d'aleshores, que no es tocaven.
 
 > **CORRECCIÓ DEL 30 D'AGOST DE 2026.** Aquí hi deia: «`font_url` apunta a la
 > fitxa de l'ADT66, que porta el calendari sencer: qui vulgui saber tots els
@@ -689,8 +716,10 @@ descripcions— ha deixat de ser pregunta: del `TRI` i del `DETAILDESCRIPTIF`,
 nova: és la mateixa, llegida per l'altra porta.*
 
 *I la segona, què fer amb les ofertes de moltes dates disperses, tampoc no hi
-és: està decidida, mesurada i implementada al **§3 bis**. Els setze camps no
-s'han tocat.*
+és: està decidida, mesurada i implementada al **§3 bis**. Els setze camps
+d'aleshores no es van tocar per això — vegeu la nota de superació del 17 de
+setembre de 2026 més amunt sobre `periodicitat`, que és un camp diferent i
+arribat per un motiu diferent.*
 
 1. **On viu la marca de temps.** Un tercer fitxer JSON trencaria el §3 de
    `CLAUDE.md`. Val la pena mirar primer si es pot derivar del que ja tenim

@@ -282,11 +282,13 @@ function passaFiltreDates(e) {
 
 // ------------------------------------------------------------------ pintat
 
-// Pinta la pàgina sencera: la llista per dies i la franja de llarga durada.
+// Pinta la pàgina sencera: la llista per dies, la franja de llarga durada
+// i la franja de permanents.
 function pintaTot() {
   var llista = document.getElementById('llista-esdeveniments');
   llista.textContent = '';
   buidaFranjaLlarga();
+  buidaFranjaPermanents();
 
   if (esdeveniments.length === 0) {
     mostraMissatge('Encara no hi ha esdeveniments publicats. · Aucun événement publié pour le moment.');
@@ -301,11 +303,15 @@ function pintaTot() {
 
   amagaMissatge();
 
-  // Els actes llargs surten de la llista del dia i van a la franja.
+  // Reparteix en tres bandes, per aquest ordre exacte i excloent: una
+  // permanent hi va sempre encara que també tingués una durada llarga.
   var curts = [];
   var llargs = [];
+  var permanents = [];
   filtrats.forEach(function (e) {
-    if (esLlargaDurada(e)) {
+    if (e.periodicitat) {
+      permanents.push(e);
+    } else if (esLlargaDurada(e)) {
       llargs.push(e);
     } else {
       curts.push(e);
@@ -314,6 +320,7 @@ function pintaTot() {
 
   pintaLlistaPerDies(curts, llista);
   pintaFranjaLlarga(llargs);
+  pintaFranjaPermanents(permanents);
 }
 
 // Diu si un acte dura més de DIES_LLARGA_DURADA dies. Un acte sense
@@ -390,6 +397,39 @@ function pintaFranjaLlarga(llargs) {
 
   var comptador = 0;
   ordenats.forEach(function (e) {
+    llista.appendChild(creaTargeta(e, comptador));
+    comptador++;
+  });
+
+  franja.hidden = false;
+}
+
+// Buida la franja de permanents i l'amaga. Mateix patró que
+// buidaFranjaLlarga(): es crida al principi de cada pintat.
+function buidaFranjaPermanents() {
+  var franja = document.getElementById('franja-permanents');
+  var llista = document.getElementById('llista-permanents');
+  if (franja === null || llista === null) {
+    return; // pàgines sense franja (p. ex. una versió reduïda)
+  }
+  llista.textContent = '';
+  franja.hidden = true;
+}
+
+// Pinta la franja de permanents, en el mateix ordre que arriben (ja
+// cronològic per preparaEsdeveniments). Si no hi ha res, no es mostra.
+function pintaFranjaPermanents(permanents) {
+  var franja = document.getElementById('franja-permanents');
+  var llista = document.getElementById('llista-permanents');
+  if (franja === null || llista === null) {
+    return;
+  }
+  if (permanents.length === 0) {
+    return; // buidaFranjaPermanents ja l'ha amagada
+  }
+
+  var comptador = 0;
+  permanents.forEach(function (e) {
     llista.appendChild(creaTargeta(e, comptador));
     comptador++;
   });
@@ -610,6 +650,16 @@ function creaMeta(e) {
     var nomLloc = document.createElement('span');
     nomLloc.textContent = lloc;
     meta.appendChild(nomLloc);
+  }
+
+  if (e.periodicitat) {
+    if (meta.childNodes.length > 0) {
+      meta.appendChild(document.createTextNode(' · '));
+    }
+    var periodicitat = document.createElement('span');
+    periodicitat.className = 'quan';
+    periodicitat.textContent = e.periodicitat;
+    meta.appendChild(periodicitat);
   }
 
   // Calcula "Fins al ..." ABANS d'afegir el separador: si finsAl torna ''
