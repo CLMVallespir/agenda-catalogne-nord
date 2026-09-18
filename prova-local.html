@@ -419,7 +419,7 @@ main { padding-top: 1rem; padding-bottom: 2rem; min-height: 50vh; }
   font-style: italic;
   font-size: 0.95em;
 }
-#franja-permanents {
+#franja-llarga-durada {
   padding: 1.4rem 0 1.6rem;
   box-shadow: 0 0 0 100vmax var(--fons-recurrents);
   clip-path: inset(0 -100vmax);
@@ -772,10 +772,10 @@ body.visor-obert { overflow: hidden; }
     <p id="missatge-estat" class="missatge-estat" hidden></p>
     <div id="llista-esdeveniments"></div>
 
-    <!-- Franja de permanents (mirall de l'index.html). -->
-    <section id="franja-permanents" class="franja-llarga"
-             aria-labelledby="titol-permanents" hidden>
-      <h2 id="titol-permanents" class="titol-dia titol-franja">
+    <!-- Franja de llarga durada (mirall de l'index.html). -->
+    <section id="franja-llarga-durada" class="franja-llarga"
+             aria-labelledby="titol-llarga-durada" hidden>
+      <h2 id="titol-llarga-durada" class="titol-dia titol-franja">
         <span class="dia-ca">Activitats recurrents</span>
         <span class="dia-fr" lang="fr">· Activités récurrentes</span>
       </h2>
@@ -783,16 +783,6 @@ body.visor-obert { overflow: hidden; }
         <span class="dia-ca">Cursos, tallers i mercats que es repeteixen</span>
         <span class="dia-fr" lang="fr">· Cours, ateliers et marchés qui se répètent</span>
       </p>
-      <div id="llista-permanents"></div>
-    </section>
-
-    <!-- Franja de llarga durada (mirall de l'index.html). -->
-    <section id="franja-llarga-durada" class="franja-llarga"
-             aria-labelledby="titol-llarga-durada" hidden>
-      <h2 id="titol-llarga-durada" class="titol-dia titol-franja">
-        <span class="dia-ca">De llarga durada</span>
-        <span class="dia-fr" lang="fr">· De longue durée</span>
-      </h2>
       <div id="llista-llarga-durada"></div>
     </section>
   </main>
@@ -1172,13 +1162,12 @@ function passaFiltreDates(e) {
   return true;
 }
 
-// Pinta la pàgina sencera: la llista per dies, la franja de llarga durada
-// i la franja de permanents.
+// Pinta la pàgina sencera: la llista per dies i la franja de llarga durada
+// (que també acull les activitats recurrents).
 function pintaTot() {
   var llista = document.getElementById('llista-esdeveniments');
   llista.textContent = '';
   buidaFranjaLlarga();
-  buidaFranjaPermanents();
 
   if (esdeveniments.length === 0) {
     mostraMissatge('Encara no hi ha esdeveniments publicats. · Aucun événement publié pour le moment.');
@@ -1193,15 +1182,12 @@ function pintaTot() {
 
   amagaMissatge();
 
-  // Reparteix en tres bandes, per aquest ordre exacte i excloent: una
-  // permanent hi va sempre encara que també tingués una durada llarga.
+  // Reparteix en dues bandes: llarga durada o recurrent hi va, la resta a
+  // la llista per dies.
   var curts = [];
   var llargs = [];
-  var permanents = [];
   filtrats.forEach(function (e) {
-    if (e.periodicitat) {
-      permanents.push(e);
-    } else if (esLlargaDurada(e)) {
+    if (esLlargaDurada(e) || e.periodicitat) {
       llargs.push(e);
     } else {
       curts.push(e);
@@ -1210,7 +1196,6 @@ function pintaTot() {
 
   pintaLlistaPerDies(curts, llista);
   pintaFranjaLlarga(llargs);
-  pintaFranjaPermanents(permanents);
 }
 
 // Diu si un acte dura més de DIES_LLARGA_DURADA dies.
@@ -1283,39 +1268,6 @@ function pintaFranjaLlarga(llargs) {
 
   var comptador = 0;
   ordenats.forEach(function (e) {
-    llista.appendChild(creaTargeta(e, comptador));
-    comptador++;
-  });
-
-  franja.hidden = false;
-}
-
-// Buida la franja de permanents i l'amaga. Mateix patró que
-// buidaFranjaLlarga(): es crida al principi de cada pintat.
-function buidaFranjaPermanents() {
-  var franja = document.getElementById('franja-permanents');
-  var llista = document.getElementById('llista-permanents');
-  if (franja === null || llista === null) {
-    return;
-  }
-  llista.textContent = '';
-  franja.hidden = true;
-}
-
-// Pinta la franja de permanents, en el mateix ordre que arriben (ja
-// cronològic per preparaEsdeveniments). Si no hi ha res, no es mostra.
-function pintaFranjaPermanents(permanents) {
-  var franja = document.getElementById('franja-permanents');
-  var llista = document.getElementById('llista-permanents');
-  if (franja === null || llista === null) {
-    return;
-  }
-  if (permanents.length === 0) {
-    return;
-  }
-
-  var comptador = 0;
-  permanents.forEach(function (e) {
     llista.appendChild(creaTargeta(e, comptador));
     comptador++;
   });

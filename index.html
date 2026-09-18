@@ -103,12 +103,15 @@
       <!-- Els esdeveniments es generen a app.js -->
     </div>
 
-    <!-- Activitats permanents: els actes amb `periodicitat` no buida surten
-         de la llista cronològica i de la franja de llarga durada, i es
-         mostren aquí, independentment de la durada de `data_fi`. -->
-    <section id="franja-permanents" class="franja-llarga"
-             aria-labelledby="titol-permanents" hidden>
-      <h2 id="titol-permanents" class="titol-dia titol-franja">
+    <!-- Franja de llarga durada: els actes que duren més de 5 dies
+         (típicament exposicions) o que tenen `periodicitat` no buida
+         surten de la llista cronològica i es mostren aquí, al peu. Si no,
+         una exposició de dos mesos encalla la llista sota la capçalera
+         del dia en què va començar, que al cap d'unes setmanes ja és una
+         data passada. -->
+    <section id="franja-llarga-durada" class="franja-llarga"
+             aria-labelledby="titol-llarga-durada" hidden>
+      <h2 id="titol-llarga-durada" class="titol-dia titol-franja">
         <span class="dia-ca">Activitats recurrents</span>
         <span class="dia-fr" lang="fr">· Activités récurrentes</span>
       </h2>
@@ -116,22 +119,6 @@
         <span class="dia-ca">Cursos, tallers i mercats que es repeteixen</span>
         <span class="dia-fr" lang="fr">· Cours, ateliers et marchés qui se répètent</span>
       </p>
-      <div id="llista-permanents">
-        <!-- Les targetes es generen a app.js -->
-      </div>
-    </section>
-
-    <!-- Franja de llarga durada: els actes que duren més de 5 dies
-         (típicament exposicions) surten de la llista cronològica i es
-         mostren aquí, al peu. Si no, una exposició de dos mesos encalla
-         la llista sota la capçalera del dia en què va començar, que al
-         cap d'unes setmanes ja és una data passada. -->
-    <section id="franja-llarga-durada" class="franja-llarga"
-             aria-labelledby="titol-llarga-durada" hidden>
-      <h2 id="titol-llarga-durada" class="titol-dia titol-franja">
-        <span class="dia-ca">De llarga durada</span>
-        <span class="dia-fr" lang="fr">· De longue durée</span>
-      </h2>
       <div id="llista-llarga-durada">
         <!-- Les targetes es generen a app.js -->
       </div>
