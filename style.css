@@ -386,13 +386,11 @@ main { padding-top: 1rem; padding-bottom: 2rem; min-height: 50vh; }
 /* --------------------------------------------------------------------
    Franja de llarga durada: els actes de més de 5 dies (exposicions)
    surten de la llista cronològica i es recullen aquí, al peu. Es
-   distingeix de la llista amb un filet de separació més marcat a dalt,
-   no amb cap color nou: la pàgina continua sent monocroma.
+   distingeix de la llista amb el mateix marge que separa un dia del
+   següent — el bloc invers de la capçalera ja és prou separació.
 -------------------------------------------------------------------- */
 .franja-llarga {
-  margin-top: 2.5rem;
-  padding-top: 0.5rem;
-  border-top: 2px solid var(--vora);
+  margin-top: 1.85rem;
 }
 
 /* Capçalera de la franja: bloc de colors invertits a tota l'amplada de la
