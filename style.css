@@ -37,7 +37,6 @@
   --placeholder-icona: #7a5f12;      /* or fosc, llegible sobre el groc suau */
   --capcalera-fons: #ffffff;
   --capcalera-text: #1a1a1a;
-  --fons-recurrents: #f6f3ee;        /* fons de la franja d'activitats recurrents, en clar */
 
   --tipo-titol: 'Fraunces', Georgia, 'Times New Roman', serif;
   --tipo-ui: 'Montserrat', system-ui, 'Segoe UI', Arial, sans-serif;
@@ -58,7 +57,6 @@
   --placeholder-icona: #c2a23a;
   --capcalera-fons: #121110;
   --capcalera-text: #f2efe9;
-  --fons-recurrents: #1c1a17;        /* fons de la franja d'activitats recurrents, en fosc */
 }
 
 * { box-sizing: border-box; }
@@ -397,34 +395,43 @@ main { padding-top: 1rem; padding-bottom: 2rem; min-height: 50vh; }
   border-top: 2px solid var(--vora);
 }
 
+/* Capçalera de la franja: bloc de colors invertits a tota l'amplada de la
+   finestra (fons/tinta bescanviats), amb el text alineat a l'amplada del
+   contingut. El bloc ell mateix és la separació visual de la secció. */
+.franja-capcalera-inversa {
+  background: var(--tinta);
+  box-shadow: 0 0 0 100vmax var(--tinta);
+  clip-path: inset(0 -100vmax);
+  padding: 1.75rem 0 1.6rem;
+}
+.franja-capcalera-inversa .titol-dia {
+  color: var(--fons);
+  border-bottom: none;
+  margin-top: 0;
+}
+.franja-capcalera-inversa .titol-dia::before { background: var(--fons); }
+.franja-capcalera-inversa .titol-dia .dia-fr { color: var(--fons); opacity: 0.75; }
+
 /* La capçalera de la franja reutilitza .titol-dia (mateixa tipografia,
    mateix punt d'accent), però es llegeix com un títol de secció: mida
    clarament superior i més aire a sobre. */
 .titol-franja {
-  margin-top: 1.4rem;
   font-size: 1.55rem;
 }
 
-/* Subtítol de la franja: una línia petita sota el títol de secció. */
+/* Subtítol de la franja: una línia petita sota el títol de secció, dins
+   del mateix bloc invertit. */
 .subtitol-franja {
-  margin: 0 0 1.1rem;
+  margin: 0;
   font-family: var(--tipo-ui);
   font-size: 0.85rem;
-  color: var(--tinta-suau);
+  color: var(--fons);
+  opacity: 0.75;
 }
 .subtitol-franja .dia-fr {
   font-family: var(--tipo-serif);
   font-style: italic;
   font-size: 0.95em;
-}
-
-/* Franja de llarga durada / activitats recurrents: fons a tota l'amplada
-   de la finestra, perceptible però proper al fons de la pàgina — la
-   senyera segueix sent l'únic accent i els cartells l'únic color de debò. */
-#franja-llarga-durada {
-  padding: 1.4rem 0 1.6rem;
-  box-shadow: 0 0 0 100vmax var(--fons-recurrents);
-  clip-path: inset(0 -100vmax);
 }
 
 /* --------------------------------------------------------------------
