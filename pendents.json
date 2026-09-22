@@ -1460,26 +1460,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YZ6R] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-25-upcycling-atelier-de",
-    "titol": "Upcycling: taller de teixit en ràfia",
-    "data_inici": "2026-09-25",
-    "data_fi": "2026-09-25",
-    "hora": "17:00",
-    "lloc": "",
-    "municipi": "Portvendres",
-    "comarca": "Rosselló",
-    "categoria": "Taller",
-    "descripcio_ca": "L'entitat Ode aux Couleurs convida a descobrir l'art de l'upcycling mitjançant un taller dedicat al teixit en ràfia. L'activitat permet aprendre a transformar i personalitzar objectes quotidians mitjançant tècniques artesanals, tot fomentant una manera de consumir més sostenible.",
-    "descripcio_fr": "L'entité Ode aux Couleurs invite à découvrir l'art de l'upcycling à travers un atelier consacré au tissage en raphia. L'activité permet d'apprendre à transformer et personnaliser des objets du quotidien grâce à des techniques artisanales, tout en encourageant un mode de consommation plus durable.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Tissage-en-raphia--Pexels---Manuel-Camacho-Navarro.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.903Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YZ8I] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-25-fete-des-vendanges",
     "titol": "Festa de la Verema",
     "data_inici": "2026-09-25",
