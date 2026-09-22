@@ -1800,5 +1800,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.800Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-tot-daqui-apat",
+    "titol": "Tot d'Aquí - Àpat festiu amb sabors locals",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Aquest àpat festiu posa en valor els productors i les riqueses de la terra mitjançant una cuina elaborada amb ingredients del territori. Els assistents poden gaudir d'una vetllada amb animació musical, en un ambient orientat a la qualitat, la proximitat i l'autenticitat.",
+    "descripcio_fr": "Ce repas festif met à l'honneur les producteurs et les richesses du terroir à travers une cuisine élaborée avec des ingrédients du territoire. Les convives peuvent profiter d'une soirée avec animation musicale, dans une ambiance axée sur la qualité, la proximité et l'authenticité.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/tot.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.800Z",
+    "periodicitat": ""
   }
 ]
