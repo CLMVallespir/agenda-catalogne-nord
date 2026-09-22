@@ -2800,26 +2800,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52WQ3K] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-09-27-tot-daqui-repas",
-    "titol": "Tot d'Aquí - Àpat festiu amb sabors locals",
-    "data_inici": "2026-09-27",
-    "data_fi": "2026-09-27",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Sureda",
-    "comarca": "Rosselló",
-    "categoria": "",
-    "descripcio_ca": "Aquest àpat festiu posa en valor els productors i les riqueses de la terra mitjançant una cuina elaborada amb ingredients del territori. Els assistents poden gaudir d'una vetllada amb animació musical, en un ambient orientat a la qualitat, la proximitat i l'autenticitat.",
-    "descripcio_fr": "Ce repas festif met à l'honneur les producteurs et les richesses du terroir à travers une cuisine élaborée avec des ingrédients du territoire. Les convives peuvent profiter d'une soirée avec animation musicale, dans une ambiance axée sur la qualité, la proximité et l'authenticité.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/tot.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.800Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52WY9A] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. La categoria queda buida a posta: «Repas spectacle» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-27-rando-accompagnee-le",
     "titol": "Ruta acompanyada: el canal de Bohère i la vida als contraforts del Canigó",
     "data_inici": "2026-09-27",
