@@ -1078,5 +1078,24 @@
     "font_url": "https://www.tourisme-canigo.com/sit/foire-saint-andre-fmalar066v52v5t7/",
     "estat": "publicat",
     "data_entrada": "2026-08-20T12:00:00Z"
+  },
+  {
+    "id": "2026-09-22-mercat-de-la",
+    "titol": "Mercat de la plaça de la República i la plaça dels Poilus",
+    "data_inici": "2026-09-22",
+    "data_fi": "2026-09-22",
+    "hora": "07:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat alimentari té lloc a la plaça de la República, al cor del centre històric. També es pot trobar el mercat a la plaça dels Poilus. Els dissabtes, l'oferta s'amplia amb productes ecològics.",
+    "descripcio_fr": "Le marché alimentaire se tient sur la Place de la République, au cœur du centre historique. Vous pouvez également retrouver le marché sur la Place des Poilus. Le samedi, l'offre est complétée par des produits bio.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-republique-1.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.718Z",
+    "periodicitat": "cada setmana"
   }
 ]
