@@ -2080,26 +2080,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Y7VU] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-rendez-vous-du",
-    "titol": "Rendez-vous del país d'art i d'història insòlit: La chambre des certitudes",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "15:00",
-    "lloc": "",
-    "municipi": "Arboçols",
-    "comarca": "Conflent",
-    "categoria": "Patrimoni i tradicions",
-    "descripcio_ca": "Aquesta visita acompanyada convida a descobrir La chambre des certitudes, una obra contemplativa de l'artista Wolfgang Laib situada a Marcevol. L'espai, realitzat amb cera d'abella, proposa una experiència immersiva que juga amb la llum, l'olfacte i el silenci en un entorn natural. L'acte és organitzat per l'Association pour l’Ermitage de Wolfgang Laib amb la participació d'Eduardo Rodrigues.",
-    "descripcio_fr": "Cette visite accompagnée invite à découvrir La chambre des certitudes, une œuvre contemplative de l'artiste Wolfgang Laib située à Marcevol. L'espace, réalisé en cire d'abeille, propose une expérience immersive qui joue sur la lumière, l'odeur et le silence dans un écrin naturel. L'événement est organisé par l'Association pour l’Ermitage de Wolfgang Laib avec la participation d'Eduardo Rodrigues.",
-    "associacio": "Contacter Madame BONNAL Gwenaëlle",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/03-Affiche-RDV-Automne-2026-Arboussols.jpg?width=150&height=120",
-    "font_url": "https://www.tourisme-canigo.com/pays-dart-et-dhistoire-conflent-canigo/#rdv",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.847Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YBWC] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-karaoke",
     "titol": "KARAOKÉ",
     "data_inici": "2026-09-26",
