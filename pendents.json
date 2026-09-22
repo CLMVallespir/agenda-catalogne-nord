@@ -2080,26 +2080,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Y7VU] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-karaoke",
-    "titol": "KARAOKÉ",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Rodès",
-    "comarca": "Conflent",
-    "categoria": "",
-    "descripcio_ca": "",
-    "descripcio_fr": "KARAOKÉ au foyer communal de Rodès à partir de 20h",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/3-47.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.852Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YD3T] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
-  },
-  {
     "id": "2026-09-26-conference-upc-olympe",
     "titol": "Conferència sobre Olympe de Gouges",
     "data_inici": "2026-09-26",
