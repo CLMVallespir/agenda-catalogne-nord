@@ -300,26 +300,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YXQJ] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-22-centro-espagnol-conference",
-    "titol": "Centro Espagnol - Conferència de Thérèse Cau",
-    "data_inici": "2026-09-22",
-    "data_fi": "2026-09-22",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Conferència",
-    "descripcio_ca": "El Centro Espagnol de Perpinyà organitza una conferència a càrrec de la novel·lista Thérèse Cau, centrada en el paper dels poetes espanyols durant la Segona República. La sessió analitza la influència de la poesia en un context de canvis polítics, socials i culturals, i finalitza amb una signatura del llibre Plumes brisées per part de l'autora.",
-    "descripcio_fr": "Le Centro Espagnol de Perpinyà organise une conférence animée par la romancière Thérèse Cau, consacrée au rôle des poètes espagnols sous la Seconde République. La session analyse l'influence de la poésie dans un contexte de changements politiques, sociaux et culturels, et se termine par une séance de dédicaces du livre Plumes brisées par l'autrice.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Conference-2-2.png?width=150&height=120",
-    "font_url": "https://centroespagnol.fr/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.928Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Z5IA] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-22-tara-letoile-filante",
     "titol": "Tara, l’étoile filante en voyage",
     "data_inici": "2026-09-22",
