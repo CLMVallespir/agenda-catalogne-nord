@@ -1382,5 +1382,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.763Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-24-bamboche-par-rombeau",
+    "titol": "Bamboche par Rombeau",
+    "data_inici": "2026-09-24",
+    "data_fi": "2026-09-24",
+    "hora": "19:00",
+    "lloc": "",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Aquest cicle de vetllades musicals ofereix concerts en directe acompanyats d'una oferta gastronòmica de food trucks. Les sessions compten amb la participació de diversos artistes i músics al llarg de tota la temporada.",
+    "descripcio_fr": "Ce cycle de soirées musicales propose des concerts en live accompagnés d'une offre gastronomique de food trucks. Les sessions comptent avec la participation de divers artistes et musiciens tout au long de la saison.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Bamboche-par-Rombeau.jpg?width=150&height=120",
+    "font_url": "https://domaine-de-rombeau.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.808Z",
+    "periodicitat": ""
   }
 ]
