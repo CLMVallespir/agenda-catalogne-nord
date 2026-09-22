@@ -3160,26 +3160,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z7J2] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. El municipi «SALEILLES» no és a la taula de pobles: el deixo tal com ve. Descripció en francès: falta la traducció catalana. El municipi «SALEILLES» no és a la taula de comarques: cal posar la comarca a mà, o la fila no sortirà al filtre per comarca. La categoria queda buida a posta: «Portes ouvertes», «Rassemblement / réunion» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-27-concert-de-la",
-    "titol": "Concert de la coral Les Cantarels",
-    "data_inici": "2026-09-27",
-    "data_fi": "2026-09-27",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Banyuls de la Marenda",
-    "comarca": "Rosselló",
-    "categoria": "Música",
-    "descripcio_ca": "La coral Les Cantarels presenta un repertori de cants occitans i del món. L'acte ha estat organitzat amb la col·laboració de l'entitat Aventuri(è)res de Banyuls.",
-    "descripcio_fr": "La chorale Les Cantarels présente un répertoire de chants occitans et du monde. L'événement a été organisé avec la collaboration de l'entité Aventuri(è)res de Banyuls.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/29-09-2026-Concert-Empistae.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.936Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Z7JJ] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-28-jeux-de-cartes",
     "titol": "Jocs de cartes (tarot)",
     "data_inici": "2026-09-28",
