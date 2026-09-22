@@ -2199,5 +2199,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.910Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-concert-amb-el",
+    "titol": "Concert amb el duo Canticel",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "16:00",
+    "lloc": "",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "L'associació Les Amis de Fil-Harmonie organitza un concert solidari a l'església abacial, en col·laboració amb la municipalitat de Sant Andreu de Sureda i la parròquia. Els artistes Catherine Dagois i Edgar Teufel presenten un programa que inclou obres de Bach, Purcell i composicions d'inspiració religiosa i popular. Els fons recaptats es destinen a donar suport als joves amb pluridiscapacitat atesos per la Maison d’Accueil Spécialisée d’Argelès.",
+    "descripcio_fr": "L'association Les Amis de Fil-Harmonie organise un concert solidaire à l'abbatiale, en collaboration avec la municipalité de Sant Andreu de Sureda et la paroisse. Les artistes Catherine Dagois et Edgar Teufel présentent un programme qui inclut des œuvres de Bach, Purcell et des compositions d'inspiration religieuse et populaire. Les fonds récoltés sont destinés à soutenir les jeunes polyhandicapés accompagnés par la Maison d’Accueil Spécialisée d’Argelès.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/12-02-Hd-presse-Toulouges--2.jpg?width=150&height=120",
+    "font_url": "http://canticel.wix.com/duocanticel",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.721Z",
+    "periodicitat": ""
   }
 ]
