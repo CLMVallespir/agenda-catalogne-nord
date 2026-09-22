@@ -1705,5 +1705,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.847Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-karaoke",
+    "titol": "KARAOKÉ",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "20:00",
+    "lloc": "",
+    "municipi": "Rodès",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "KARAOKE al foyer comunal de Rodes a partir de les vuit del vespre",
+    "descripcio_fr": "KARAOKÉ au foyer communal de Rodès à partir de 20h",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/3-47.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.852Z",
+    "periodicitat": ""
   }
 ]
