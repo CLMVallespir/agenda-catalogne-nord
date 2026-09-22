@@ -1971,5 +1971,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.762Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-28-visita-guiada-historia",
+    "titol": "Visita guiada «Història d'un territori català»",
+    "data_inici": "2026-09-28",
+    "data_fi": "2026-09-28",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Palau del Vidre",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "Aquesta visita permet conèixer la història agrícola mil·lenària de Palau del Vidre i la riquesa dels seus conreus. El recorregut aprofundeix en l'origen del topònim local i desvetlla els vincles del municipi amb els templers, les arts del foc i les llegendes subterrànies. L'activitat està recomanada a partir dels deu anys.",
+    "descripcio_fr": "Cette visite permet de découvrir l'histoire agricole millénaire de Palau-del-Vidre et la richesse de ses vergers. Le parcours approfondit l'origine du toponyme local et dévoile les liens de la commune avec les Templiers, les arts du feu et les légendes souterraines. L'activité est conseillée à partir de dix ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Visite-guidee-par-Philippe-Hugo-Pages-25476-1200px-2.JPG?width=150&height=120",
+    "font_url": "https://www.tourisme-pyrenees-mediterranee.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.779Z",
+    "periodicitat": ""
   }
 ]
