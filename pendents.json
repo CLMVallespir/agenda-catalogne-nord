@@ -340,26 +340,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z5MK] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Categoria per tema infantil; RechercheTYPE deia: Teatre Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-22-ondulations-conte-en",
-    "titol": "Ondulations: conte en mode somieig",
-    "data_inici": "2026-09-22",
-    "data_fi": "2026-09-22",
-    "hora": "09:30",
-    "lloc": "",
-    "municipi": "Cotlliure",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "La mediateca i el museu col·laboren en un cicle de sessions a la Galerie du Tenyidor i a la mediateca de Cotlliure. Es tracta d'activitats centrades en els contes i el moviment que s'adrecen a tot el públic.",
-    "descripcio_fr": "La médiathèque et le musée collaborent pour un cycle de sessions à la Galerie du Tenyidor et à la médiathèque de Collioure. Il s'agit d'activités centrées sur les contes et le mouvement qui s'adressent à tout le public.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Ondulations.jpg?width=150&height=120",
-    "font_url": "https://museecollioure.com/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.938Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Z81E] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-23-conference-saventurieres",
     "titol": "Conferència: Savanturières",
     "data_inici": "2026-09-23",
