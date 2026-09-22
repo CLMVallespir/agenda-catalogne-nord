@@ -740,26 +740,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52K1OI] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. La categoria queda buida a posta: «Portes ouvertes» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-24-atelier-bebes-lecteurs",
-    "titol": "Taller de nadons lectors",
-    "data_inici": "2026-09-24",
-    "data_fi": "2026-09-24",
-    "hora": "09:30",
-    "lloc": "Médiathèque Claude Blazy",
-    "municipi": "Torrelles de la Salanca",
-    "comarca": "Rosselló",
-    "categoria": "Activitat infantil",
-    "descripcio_ca": "Aquest taller és un moment privilegiat al voltant del llibre i la lectura, dissenyat per a infants de zero a tres anys acompanyats d'un adult. Les sessions tenen lloc a la mediateca i requereixen inscripció prèvia.",
-    "descripcio_fr": "Cet atelier est un moment privilégié autour du livre et de la lecture, conçu pour les enfants de zéro à trois ans accompagnés d'un adulte. Les séances ont lieu à la médiathèque et nécessitent une inscription préalable.",
-    "associacio": "Contacter Madame BLASI Mathilde",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/flyer-bebes-lecteurs-2024-borne--1-.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.763Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52TZ3B] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 20 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Categoria per tema infantil; RechercheTYPE deia: Taller Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-24-visite-guidee-la",
     "titol": "Visita guiada «La medieval de Sant Andreu»",
     "data_inici": "2026-09-24",
