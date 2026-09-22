@@ -2120,26 +2120,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YFB7] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-marche-mediterraneen-en",
-    "titol": "Mercat mediterrani al centre de la vila",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "09:00",
-    "lloc": "",
-    "municipi": "Ceret",
-    "comarca": "Vallespir",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat tradicional s'instal·la arreu del centre històric de Ceret. L'espai ofereix un ventall de productes i permet passejar pels carrers de la vila.",
-    "descripcio_fr": "Le marché traditionnel s'installe dans tout le centre historique de Céret. L'espace propose un éventail de produits et permet de flâner dans les rues de la ville.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/DSC03114.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.862Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YKLC] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-ceretart",
     "titol": "Céret'Art",
     "data_inici": "2026-09-26",
