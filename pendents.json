@@ -1,25 +1,5 @@
 [
   {
-    "id": "2026-09-22-marche-place-de",
-    "titol": "Mercat de la plaça de la República i la plaça dels Poilus",
-    "data_inici": "2026-09-22",
-    "data_fi": "2026-09-22",
-    "hora": "07:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat alimentari té lloc a la plaça de la República, al cor del centre històric. També es pot trobar el mercat a la plaça dels Poilus. Els dissabtes, l'oferta s'amplia amb productes ecològics.",
-    "descripcio_fr": "Le marché alimentaire se tient sur la Place de la République, au cœur du centre historique. Vous pouvez également retrouver le marché sur la Place des Poilus. Le samedi, l'offre est complétée par des produits bio.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-republique-1.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.718Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V51ER70] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 86 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-22-marche-place-cassanyes",
     "titol": "Mercat de la plaça Cassanyes",
     "data_inici": "2026-09-22",
