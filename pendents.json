@@ -380,26 +380,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52AYMI] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 5 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-23-petit-marche-du",
-    "titol": "Mercat del dimecres",
-    "data_inici": "2026-09-23",
-    "data_fi": "2026-09-23",
-    "hora": "05:30",
-    "lloc": "",
-    "municipi": "Sant Pau de Fenollet",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat s'instal·la cada dimecres a la plaça del Foyer Rural de Sant Pau de Fenollet. Hi ha servei de venda de fruites i verdures, subjecte a les condicions meteorològiques.",
-    "descripcio_fr": "Le marché s'installe chaque mercredi sur la place du Foyer Rural de Saint-Paul-de-Fenouillet. Il y a un service de vente de fruits et légumes, sous réserve des conditions météorologiques.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-mercredi.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.735Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V52GOKQ] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 52 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-23-session-jeux",
     "titol": "Sessió de jocs",
     "data_inici": "2026-09-23",
