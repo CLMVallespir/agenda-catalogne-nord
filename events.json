@@ -2142,5 +2142,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.881Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-loto-de-pernil",
+    "titol": "Loto de pernil",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "14:15",
+    "lloc": "",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Aquest loto està obert a tothom i consta de vint partides amb cinc quines cadascuna. Els premis consisteixen en lots de productes com pernils, salsitxes, embotits variats i aus, a més de vals de compra per a supermercats de Ribesaltes.",
+    "descripcio_fr": "Ce loto est ouvert à tous et se compose de vingt parties avec cinq quines chacune. Les lots consistent en des paniers garnis avec jambons, saucisses, charcuteries variées et volailles, ainsi que des bons d'achat pour des supermarchés de Rivesaltes.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/RIFLE-4.jpg?width=150&height=120",
+    "font_url": "http://www.club3rivesaltes.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.885Z",
+    "periodicitat": ""
   }
 ]
