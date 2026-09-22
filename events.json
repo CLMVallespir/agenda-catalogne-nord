@@ -1857,5 +1857,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.870Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-la-festa-del",
+    "titol": "La Festa del Parc",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Oleta",
+    "comarca": "Conflent",
+    "categoria": "Conferència",
+    "descripcio_ca": "El Parc naturel régional des Pyrénées catalanes organitza la quarta edició de la Festa del Parc a la Maison du Parc, situada a La Bastide – Oleta. La jornada celebra la natura, els coneixements i la cultura local amb un programa que inclou parades de productors, tallers, espectacles per al públic jove, conferències i música amb La Grande Fanfare i el concert de Cornelius, en col·laboració amb el festival Jazzèbre.",
+    "descripcio_fr": "Le Parc naturel régional des Pyrénées catalanes organise la quatrième édition de la Fête du Parc à la Maison du Parc, située à La Bastide – Olette. La journée célèbre la nature, les savoir-faire et la culture locale avec un programme qui inclut des stands de producteurs, des ateliers, des spectacles pour le jeune public, des conférences et de la musique avec La Grande Fanfare et le concert de Cornelius, en partenariat avec le festival Jazzèbre.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/PNRPC-2026-avec-texte-1-640x905.jpg?width=150&height=120",
+    "font_url": "https://www.parc-pyrenees-catalanes.fr/agenda/la-fete-du-parc-4-arrive-reservez-votre-dimanche",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.872Z",
+    "periodicitat": ""
   }
 ]
