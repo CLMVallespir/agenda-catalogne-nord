@@ -3080,26 +3080,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YVKA] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-27-vide-grenier",
-    "titol": "Buidatge de golfes",
-    "data_inici": "2026-09-27",
-    "data_fi": "2026-09-27",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Els Masos",
-    "comarca": "Conflent",
-    "categoria": "Mercat",
-    "descripcio_ca": "L'associació \"Vivre à Los Masos\" organitza un buidatge de golfes. Aquesta activitat permet als particulars vendre i comprar objectes de segona mà.",
-    "descripcio_fr": "L'association \"Vivre à Los Masos\" organise un vide-grenier. Cette activité permet aux particuliers de vendre et d'acheter des objets de seconde main.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/IMG-6523.JPG?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.878Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YVXO] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-27-festa-gegantera",
     "titol": "Festa gegantera",
     "data_inici": "2026-09-27",
