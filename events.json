@@ -1838,5 +1838,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.869Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-mercat-de-segona",
+    "titol": "Mercat de segona mà de l'EHPAD Coste Baills",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Els beneficis d'aquest acte es destinen a l'associació de residents per finançar activitats, sortides i visites. Es pot participar reservant una parada o bé visitant el mercat per fer compres i contribuir al benestar dels residents.",
+    "descripcio_fr": "Les bénéfices de cet événement sont reversés à l'association des résidents pour financer des animations, des sorties et des visites. Il est possible de participer en réservant un stand ou en visitant le marché pour faire des affaires tout en contribuant au bien-être des résidents.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/vide-grenier-43.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.870Z",
+    "periodicitat": ""
   }
 ]
