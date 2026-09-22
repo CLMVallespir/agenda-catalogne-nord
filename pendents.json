@@ -1620,26 +1620,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ETAE] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Títol escrit per un model a partir del francès de l'ADT66. L'oferta no porta cap text descriptiu i no se n'ha inventat cap: les dues descripcions queden buides."
   },
   {
-    "id": "2026-09-26-marche-du-samedi",
-    "titol": "Mercat dels dissabtes",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "05:30",
-    "lloc": "",
-    "municipi": "Sant Pau de Fenollet",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Cada dissabte, la plaça del Foyer Rural de Sant Pau de Fenollet acull diversos comerciants ambulants com ara venedors de fruites seques, peixaters, sastres i productors locals de formatges i mel. L'activitat està subjecta a les condicions meteorològiques.",
-    "descripcio_fr": "Chaque samedi, la place du Foyer Rural de Saint-Paul-de-Fenouillet accueille divers commerçants ambulants tels que des vendeurs de fruits secs, poissonniers, couturiers et des producteurs locaux de fromages et de miel. L'activité est soumise aux conditions météorologiques.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-samedi-st-paul.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.734Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V52GLHD] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 51 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-marche-a-la",
     "titol": "Mercat de brocanteria",
     "data_inici": "2026-09-26",
