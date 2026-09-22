@@ -2600,26 +2600,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52XP8M] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-27-feriarros",
-    "titol": "Feriarròs",
-    "data_inici": "2026-09-27",
-    "data_fi": "2026-09-27",
-    "hora": "11:00",
-    "lloc": "",
-    "municipi": "Canet de Rosselló",
-    "comarca": "Rosselló",
-    "categoria": "Teatre",
-    "descripcio_ca": "L'Arboretum de Canet de Rosselló acull la primera edició del festival Feriarròs, una jornada dedicada a la gastronomia mediterrània. L'acte compta amb la participació de diversos xefs que ofereixen masterclasses, demostracions culinàries i degustacions centrades en l'arròs, tot acompanyat d'animació musical amb bandes i DJ. El festival ofereix diferents opcions gastronòmiques i un espai de convivència a l'aire lliure on els assistents poden gaudir d'una jornada festiva en família o amb amics.",
-    "descripcio_fr": "L'Arboretum de Canet-en-Roussillon accueille la première édition du festival Feriarròs, une journée dédiée à la gastronomie méditerranéenne. L'événement propose la participation de plusieurs chefs qui offrent des masterclasses, des démonstrations culinaires et des dégustations axées sur l'arròs, le tout accompagné d'animations musicales avec bandas et DJ. Le festival propose différentes options gastronomiques et un espace de convivialité en plein air où les participants peuvent profiter d'une journée festive en famille ou entre amis.",
-    "associacio": "Contacter Madame DEPOUES VIRGINIE",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-2026--002-.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.829Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52XPHW] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Ve marcada només «Festival», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-27-the-dansant",
     "titol": "THÉ DANSANT",
     "data_inici": "2026-09-27",
