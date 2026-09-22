@@ -320,26 +320,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YXXX] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-22-conference-byrrh",
-    "titol": "Conferència Byrrh",
-    "data_inici": "2026-09-22",
-    "data_fi": "2026-09-22",
-    "hora": "19:00",
-    "lloc": "",
-    "municipi": "El Soler",
-    "comarca": "Rosselló",
-    "categoria": "Conferència",
-    "descripcio_ca": "Aquesta conferència tracta sobre els cellers Byrrh i la família Violet. L'acte permet aprofundir en la història d'aquesta emblemàtica empresa.",
-    "descripcio_fr": "Cette conférence porte sur les caves Byrrh et la famille Violet. L'événement permet d'approfondir l'histoire de cette entreprise emblématique.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/conference-Byrrh.png?width=150&height=120",
-    "font_url": "https://www.lesoler.fr",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.897Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YYF5] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-22-centro-espagnol-conference",
     "titol": "Centro Espagnol - Conferència de Thérèse Cau",
     "data_inici": "2026-09-22",
