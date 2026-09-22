@@ -1287,5 +1287,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.754Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-23-mercat-setmanal-de",
+    "titol": "Mercat setmanal de productors",
+    "data_inici": "2026-09-23",
+    "data_fi": "2026-09-23",
+    "hora": "08:00",
+    "lloc": "Parc de la Mairie",
+    "municipi": "Arles de Tec",
+    "comarca": "Vallespir",
+    "categoria": "Mercat",
+    "descripcio_ca": "El Parc de la Mairie acull cada dimecres al matí aquest mercat de productors. L'espai ofereix un ambient acollidor i permet conèixer els productes locals de la zona.",
+    "descripcio_fr": "Le Parc de la Mairie accueille chaque mercredi matin ce marché de producteurs. L'espace offre une ambiance conviviale et permet de découvrir les produits locaux de la région.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-15-2.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.787Z",
+    "periodicitat": ""
   }
 ]
