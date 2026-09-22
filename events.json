@@ -1724,5 +1724,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.852Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-jazzebre-a-portvendres",
+    "titol": "Jazzèbre a Portvendres",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "El festival Jazzèbre s'instal·la a Portvendres per oferir una jornada dedicada a la música en totes les seves formes. La programació inclou actuacions i propostes diverses com les de Mélanie Loisel, Borguefül, La Grande Fanfare, Marie Grollier i Muriel Sapinho, que combinen el violoncel, la literatura i la veu. L'esdeveniment convida el públic a descobrir l'esperit del festival a través de l'escolta, l'experimentació i la poesia.",
+    "descripcio_fr": "Le festival Jazzèbre s'installe à Port-Vendres pour proposer une journée dédiée à la musique sous toutes ses formes. La programmation inclut des prestations et des propositions diverses telles que celles de Mélanie Loisel, Borguefül, La Grande Fanfare, Marie Grollier et Muriel Sapinho, qui allient le violoncelle, la littérature et la voix. L'événement invite le public à découvrir l'esprit du festival à travers l'écoute, l'expérimentation et la poésie.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Festival-Jazzebre-2026.jpg?width=150&height=120",
+    "font_url": "https://www.jazzebre.com",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.861Z",
+    "periodicitat": ""
   }
 ]
