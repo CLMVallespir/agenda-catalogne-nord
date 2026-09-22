@@ -1840,26 +1840,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52VSU2] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-concours-de-petanque",
-    "titol": "Concurs de petanca per parelles formades",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "14:30",
-    "lloc": "",
-    "municipi": "Torrelles de la Salanca",
-    "comarca": "Rosselló",
-    "categoria": "Vida associativa",
-    "descripcio_ca": "Es celebra un concurs de petanca per parelles formades. L'activitat permet practicar aquest esport en un entorn competitiu, amb la possibilitat d'ajustar l'horari d'inici en cas d'onada de calor.",
-    "descripcio_fr": "Un concours de pétanque en doublettes formées est organisé. L'activité permet de pratiquer ce sport dans un cadre compétitif, avec la possibilité d'ajuster l'horaire de début en cas de canicule.",
-    "associacio": "Contacter Madame LARREGUY Anne-Marie",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Petanque-9.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.790Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52W28H] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 37 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-appel-a-participation",
     "titol": "Convocatòria de participació per a l'espectacle intergeneracional «C'est vrai que c'est bien quand c'est réussi»",
     "data_inici": "2026-09-26",
