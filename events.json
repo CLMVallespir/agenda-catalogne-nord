@@ -1610,5 +1610,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.738Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-26-concurs-de-petanca",
+    "titol": "Concurs de petanca per parelles formades",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Es celebra un concurs de petanca per parelles formades. L'activitat permet practicar aquest esport en un entorn competitiu, amb la possibilitat d'ajustar l'horari d'inici en cas d'onada de calor.",
+    "descripcio_fr": "Un concours de pétanque en doublettes formées est organisé. L'activité permet de pratiquer ce sport dans un cadre compétitif, avec la possibilité d'ajuster l'horaire de début en cas de canicule.",
+    "associacio": "Contacter Madame LARREGUY Anne-Marie",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Petanque-9.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.790Z",
+    "periodicitat": ""
   }
 ]
