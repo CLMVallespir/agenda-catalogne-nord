@@ -1300,26 +1300,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YPO4] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Títol escrit per un model a partir del francès de l'ADT66. L'oferta no porta cap text descriptiu i no se n'ha inventat cap: les dues descripcions queden buides."
   },
   {
-    "id": "2026-09-25-don-de-sang",
-    "titol": "Don de sang",
-    "data_inici": "2026-09-25",
-    "data_fi": "2026-09-25",
-    "hora": "15:00",
-    "lloc": "",
-    "municipi": "Elna",
-    "comarca": "Rosselló",
-    "categoria": "",
-    "descripcio_ca": "Es convoca la població a una jornada de donació de sang a la sala de festes d'Elna. Per participar-hi, cal ser major d'edat, tenir bona salut i presentar un document d'identitat.",
-    "descripcio_fr": "La population est invitée à une journée de don du sang à la salle des fêtes d'Elne. Pour participer, il faut être majeur, être en bonne santé et présenter une pièce d'identité.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-177738-ELNE-JEDONNE-RDV-A3P-20260824104708-page-0001.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.870Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YSPO] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-25-es-festa-major",
     "titol": "Festa Major",
     "data_inici": "2026-09-25",
