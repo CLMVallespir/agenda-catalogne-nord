@@ -1819,5 +1819,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.800Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-taller-descriptura-poesie",
+    "titol": "Taller d'escriptura «Poésie & Mouvement»",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "09:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest taller d'escriptura proposa una experiència creativa basada en suports poètics, filosòfics, musicals i artístics, dirigida a un públic adult i adolescent. L'activitat està conduïda per Audrey Avarello i Blandine Margoux, i no requereix cap nivell previ ni coneixements específics.",
+    "descripcio_fr": "Cet atelier d'écriture propose une expérience créative basée sur des supports poétiques, philosophiques, musicaux et artistiques, s'adressant à un public adulte et adolescent. L'activité est animée par Audrey Avarello et Blandine Margoux, et ne nécessite aucun niveau préalable ni connaissances spécifiques.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Poesie---Mouvement---Eau---27-Septembre-2026.jpg?width=150&height=120",
+    "font_url": "https://www.audreyavarello.com",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.869Z",
+    "periodicitat": ""
   }
 ]
