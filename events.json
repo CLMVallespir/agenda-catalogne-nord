@@ -1249,5 +1249,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.938Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-23-mercat-del-dimecres",
+    "titol": "Mercat del dimecres",
+    "data_inici": "2026-09-23",
+    "data_fi": "2026-09-23",
+    "hora": "05:30",
+    "lloc": "",
+    "municipi": "Sant Pau de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat s'instal·la cada dimecres a la plaça del Foyer Rural de Sant Pau de Fenollet. Hi ha servei de venda de fruites i verdures, subjecte a les condicions meteorològiques.",
+    "descripcio_fr": "Le marché s'installe chaque mercredi sur la place du Foyer Rural de Saint-Paul-de-Fenouillet. Il y a un service de vente de fruits et légumes, sous réserve des conditions météorologiques.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-mercredi.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.735Z",
+    "periodicitat": "cada setmana"
   }
 ]
