@@ -1933,5 +1933,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.909Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-concert-de-la",
+    "titol": "Concert de la coral Les Cantarels",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "La coral Les Cantarels presenta un repertori de cants occitans i del món. L'acte ha estat organitzat amb la col·laboració de l'entitat Aventuri(è)res de Banyuls.",
+    "descripcio_fr": "La chorale Les Cantarels présente un répertoire de chants occitans et du monde. L'événement a été organisé avec la collaboration de l'entité Aventuri(è)res de Banyuls.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/29-09-2026-Concert-Empistae.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.936Z",
+    "periodicitat": ""
   }
 ]
