@@ -2080,26 +2080,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Y7VU] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-octubre-festa",
-    "titol": "Octubre Festa",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "14:00",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "",
-    "descripcio_ca": "La vetllada convida a descobrir les cerveseries artesanals catalanes i les seves creacions en una trobada que combina gastronomia, música i animació. Els assistents poden gaudir de tastos, actuacions musicals amb diversos artistes i DJ, així com d'una oferta gastronòmica variada amb productes locals.",
-    "descripcio_fr": "La soirée invite à découvrir les brasseries artisanales catalanes et leurs créations lors d'une rencontre mêlant gastronomie, musique et animation. Les participants peuvent profiter de dégustations, de prestations musicales avec divers artistes et DJ, ainsi que d'une offre gastronomique variée composée de produits locaux.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Octubre-Festa.jpg?width=150&height=120",
-    "font_url": "https://www.congres-perpignan.com/parc-des-expositions/agenda-parc-des-expositions/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.844Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Y83B] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-rendez-vous-du",
     "titol": "Rendez-vous del país d'art i d'història insòlit: La chambre des certitudes",
     "data_inici": "2026-09-26",
