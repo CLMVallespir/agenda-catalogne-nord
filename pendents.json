@@ -2160,26 +2160,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YRFZ] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Ve marcada només «Festival», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-vide-grenier-nocturne",
-    "titol": "Mercat de segona mà nocturn",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "17:00",
-    "lloc": "",
-    "municipi": "Sant Hipòlit de la Salanca",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "L'esdeveniment acull paradistes i visitants al vespre. S'ofereix servei de bar als assistents durant la jornada.",
-    "descripcio_fr": "L'événement accueille des exposants et des visiteurs en soirée. Un service de buvette est proposé aux participants durant la journée.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/VIDE-GRENIER-68.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.873Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YTQI] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-grand-vide-atelier",
     "titol": "Gran buidatge d'estudi de final de temporada estiuenca",
     "data_inici": "2026-09-26",
