@@ -1477,5 +1477,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.870Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-25-festa-major",
+    "titol": "Festa Major",
+    "data_inici": "2026-09-25",
+    "data_fi": "2026-09-27",
+    "hora": "21:00",
+    "lloc": "",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "Argelers celebra la seva Festa Major amb tres dies d'activitats populars en honor als sants patrons Côme i Damien. El programa inclou espectacles de cabaret, un mercat tradicional, desfilades, sardanes, castells, gegants i una missa musical a l'església Notre-Dame-del-Prat. L'esdeveniment es clou amb un concert i una sessió d'esquetxos al cinema Jaurès.",
+    "descripcio_fr": "Argelès célèbre sa Festa Major avec trois jours d'activités populaires en l'honneur des saints patrons Côme et Damien. Le programme comprend des spectacles de cabaret, un marché traditionnel, des défilés, des sardanes, des castells, des géants et une messe musicale à l'église Notre-Dame-del-Prat. L'événement se clôture avec un concert et une séance de sketches au cinéma Jaurès.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/A3-Festa-Major-2026.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.872Z",
+    "periodicitat": ""
   }
 ]
