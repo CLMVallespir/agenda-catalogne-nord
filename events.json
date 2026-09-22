@@ -2123,5 +2123,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.879Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-concert-de-pyrene",
+    "titol": "Concert de Pyrène Pelayo-Domingo",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Vivers",
+    "comarca": "Vallespir",
+    "categoria": "Música",
+    "descripcio_ca": "L'artista Pyrène Pelayo-Domingo torna a Vivers per oferir un recital que combina peces de música clàssica i barroca de compositors com Bach, Vivaldi, Satie, Purcell, Chopin o Massenet. A més del repertori clàssic, l'intèrpret presentarà composicions pròpies i una versió personal de la cançó tradicional «La nina encantada». El concert tindrà lloc a l'església de Vivers com a acte previ a les festes de Sant Miquel.",
+    "descripcio_fr": "L'artiste Pyrène Pelayo-Domingo revient à Vivès pour offrir un récital qui mêle des pièces de musique classique et baroque de compositeurs tels que Bach, Vivaldi, Satie, Purcell, Chopin ou Massenet. En plus du répertoire classique, l'interprète présentera ses propres compositions ainsi qu'une version personnelle de la chanson traditionnelle «La nina encantada». Le concert aura lieu à l'église de Vivès en tant qu'événement prélude aux fêtes de la Saint-Michel.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/247b21e6-04a7-4526-a5ab-22b1b80447ba.jpeg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.881Z",
+    "periodicitat": ""
   }
 ]
