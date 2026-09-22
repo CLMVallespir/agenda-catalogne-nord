@@ -1515,5 +1515,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.902Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-25-upcycling-taller-de",
+    "titol": "Upcycling: taller de teixit en ràfia",
+    "data_inici": "2026-09-25",
+    "data_fi": "2026-09-25",
+    "hora": "17:00",
+    "lloc": "",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'entitat Ode aux Couleurs convida a descobrir l'art de l'upcycling mitjançant un taller dedicat al teixit en ràfia. L'activitat permet aprendre a transformar i personalitzar objectes quotidians mitjançant tècniques artesanals, tot fomentant una manera de consumir més sostenible.",
+    "descripcio_fr": "L'entité Ode aux Couleurs invite à découvrir l'art de l'upcycling à travers un atelier consacré au tissage en raphia. L'activité permet d'apprendre à transformer et personnaliser des objets du quotidien grâce à des techniques artisanales, tout en encourageant un mode de consommation plus durable.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Tissage-en-raphia--Pexels---Manuel-Camacho-Navarro.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.903Z",
+    "periodicitat": ""
   }
 ]
