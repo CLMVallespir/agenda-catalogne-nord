@@ -2066,5 +2066,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.873Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-partit-de-futbol",
+    "titol": "Partit de futbol femení R1: FC Sussargues - Berange",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "20:30",
+    "lloc": "STADE ST-MICHEL",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "El partit de futbol femení enfronta el club local CRFC contra el FC Sussargues - Berange. Aquesta competició esportiva és oberta al públic en general.",
+    "descripcio_fr": "Le match de football féminin oppose le club local CRFC au FC Sussargues - Berange. Cette compétition sportive est ouverte au grand public.",
+    "associacio": "Contacter SECRÉTARIAT DU CLUB",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/CRFC-Feminines.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.875Z",
+    "periodicitat": ""
   }
 ]
