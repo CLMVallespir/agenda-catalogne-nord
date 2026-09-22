@@ -1040,26 +1040,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z5OK] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 15 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-25-marche-des-embruns",
-    "titol": "Mercat dels Embruns",
-    "data_inici": "2026-09-25",
-    "data_fi": "2026-09-25",
-    "hora": "07:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Cada divendres al matí, el barri de Las Cobas acull el mercat dels Embruns amb diversos paradistes. Els visitants hi poden trobar des de flors i fruites i verdures ecològiques fins a embotits, mel, creacions artesanals i plats cuinats.",
-    "descripcio_fr": "Chaque vendredi matin, le quartier de Las Cobas accueille le marché des Embruns avec divers commerçants. Les visiteurs peuvent y trouver des fleurs et des fruits et légumes bios, ainsi que de la charcuterie, du miel, des créations artisanales et des plats cuisinés.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-des-embruns-2-2.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.723Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V520Y2J] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 14 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-25-aperitif-vigneron-au",
     "titol": "Aperitiu de vinicultor al Domaine Claire Mayol",
     "data_inici": "2026-09-25",
