@@ -1401,5 +1401,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.808Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-24-rifle-del-club",
+    "titol": "Rifle del Club de la Bonne Humeur",
+    "data_inici": "2026-09-24",
+    "data_fi": "2026-09-24",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "El Soler",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "El Club de la Bonne Humeur organitza sessions de rifle dirigides a la gent gran cada dijous a la tarda a la sala de festes. Aquesta activitat està oberta a totes les persones sènior que vulguin participar-hi.",
+    "descripcio_fr": "Le Club de la Bonne Humeur organise des séances de loto tous les jeudis après-midi à la salle des fêtes. Cette activité est ouverte à toutes les personnes seniors souhaitant y participer.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/pexels-margaret-neuhaus-26649387-6802741-2.jpg?width=150&height=120",
+    "font_url": "https://www.lesoler.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.897Z",
+    "periodicitat": ""
   }
 ]
