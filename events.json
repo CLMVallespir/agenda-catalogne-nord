@@ -1306,5 +1306,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.787Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-23-eveil-musical",
+    "titol": "Eveil musical",
+    "data_inici": "2026-09-23",
+    "data_fi": "2026-09-23",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Marqueixanes",
+    "comarca": "Conflent",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Els ateliers Sankofa animen una sessió d'iniciació musical dirigida a infants de 5 a 11 anys. Per participar en l'activitat és obligatori fer reserva prèvia.",
+    "descripcio_fr": "Les ateliers Sankofa animent une séance d'éveil musical destinée aux enfants de 5 à 11 ans. Pour participer à l'activité, il est obligatoire de réserver.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Marquixanes---Animations-mediatheque-Marquixanes-1788937483.jpeg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.904Z",
+    "periodicitat": ""
   }
 ]
