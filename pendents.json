@@ -3180,26 +3180,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52CQUQ] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-28-visite-guidee-histoire",
-    "titol": "Visita guiada «Història d'un territori català»",
-    "data_inici": "2026-09-28",
-    "data_fi": "2026-09-28",
-    "hora": "10:00",
-    "lloc": "",
-    "municipi": "Palau del Vidre",
-    "comarca": "Rosselló",
-    "categoria": "Patrimoni i tradicions",
-    "descripcio_ca": "Aquesta visita permet conèixer la història agrícola mil·lenària de Palau del Vidre i la riquesa dels seus conreus. El recorregut aprofundeix en l'origen del topònim local i desvetlla els vincles del municipi amb els templers, les arts del foc i les llegendes subterrànies. L'activitat està recomanada a partir dels deu anys.",
-    "descripcio_fr": "Cette visite permet de découvrir l'histoire agricole millénaire de Palau-del-Vidre et la richesse de ses vergers. Le parcours approfondit l'origine du toponyme local et dévoile les liens de la commune avec les Templiers, les arts du feu et les légendes souterraines. L'activité est conseillée à partir de dix ans.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Visite-guidee-par-Philippe-Hugo-Pages-25476-1200px-2.JPG?width=150&height=120",
-    "font_url": "https://www.tourisme-pyrenees-mediterranee.com/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.779Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52V8GG] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-28-atelier-decriture",
     "titol": "Taller d'escriptura",
     "data_inici": "2026-09-28",
