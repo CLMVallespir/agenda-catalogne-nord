@@ -300,26 +300,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YXQJ] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-22-cinema-osseja-cycle",
-    "titol": "Cicle de cinema en versió original: Dégel",
-    "data_inici": "2026-09-22",
-    "data_fi": "2026-09-22",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Osseja",
-    "comarca": "Cerdanya",
-    "categoria": "Cinema",
-    "descripcio_ca": "La projecció del film Dégel, dirigit per Manuela Martelli, narra la història de l'Inès, una nena de nou anys que viu al Xile de 1992. Durant la seva estada en un hotel d'esquí, estableix una amistat amb l'Hanna, una jove esportista alemanya la misteriosa desaparició de la qual desencadena la recerca de la protagonista.",
-    "descripcio_fr": "La projection du film Dégel, réalisé par Manuela Martelli, raconte l'histoire d'Inès, une fillette de neuf ans vivant dans le Chili de 1992. Lors de son séjour dans un hôtel de ski, elle noue une amitié avec Hanna, une jeune sportive allemande dont la disparition mystérieuse déclenche les recherches de la protagoniste.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/DEGEL.jpg?width=150&height=120",
-    "font_url": "https://www.pyrenees-cerdagne.com",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.894Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YXXX] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-22-centro-espagnol-conference",
     "titol": "Centro Espagnol - Conferència de Thérèse Cau",
     "data_inici": "2026-09-22",
