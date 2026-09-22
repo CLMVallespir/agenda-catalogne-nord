@@ -2740,26 +2740,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Q16E] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-27-vide-greniers-des",
-    "titol": "Buidaclosques de les veremes",
-    "data_inici": "2026-09-27",
-    "data_fi": "2026-09-27",
-    "hora": "08:00",
-    "lloc": "",
-    "municipi": "Pollestres",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "L'associació Anim'Ta Ville organitza un buidaclosques amb servei de bar i restauració a disposició dels assistents. Els interessats a posar una parada poden fer la inscripció presencialment segons el calendari establert per l'entitat.",
-    "descripcio_fr": "L'association Anim'Ta Ville organise un vide-greniers avec buvette et restauration à disposition des participants. Les personnes souhaitant tenir un stand peuvent s'inscrire sur place selon le calendrier établi par l'association.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/vide-grenier-66.jpg?width=150&height=120",
-    "font_url": "https://www.pollestres.com/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.759Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52RS33] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-27-fete-du-miel",
     "titol": "Festa de la mel i les abelles",
     "data_inici": "2026-09-27",
