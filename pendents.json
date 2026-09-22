@@ -20,26 +20,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52GPZB] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 86 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-22-marche-hebdomadaire-du",
-    "titol": "Mercat setmanal",
-    "data_inici": "2026-09-22",
-    "data_fi": "2026-09-22",
-    "hora": "08:00",
-    "lloc": "Au village, devant le Cube",
-    "municipi": "Torrelles de la Salanca",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat de proximitat s'organitza durant tot l'any a la plaça des souvenirs d’enfance. L'activitat té lloc cada dimarts i divendres al matí.",
-    "descripcio_fr": "Le marché de proximité est organisé toute l'année sur la place des souvenirs d’enfance. L'activité a lieu chaque mardi et vendredi matin.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Marche-placesouvenirs-ete2025-Ce.jpg?width=150&height=120",
-    "font_url": "http://www.torreilles-tourisme.com",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.746Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V52OUCH] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 193 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-22-espace-vie-sociale",
     "titol": "Programa de setembre de l'Espace Vie Sociale des Aspres",
     "data_inici": "2026-09-22",
