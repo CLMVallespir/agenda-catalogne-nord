@@ -2740,26 +2740,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Q16E] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-27-fete-du-miel",
-    "titol": "Festa de la mel i les abelles",
-    "data_inici": "2026-09-27",
-    "data_fi": "2026-09-27",
-    "hora": "09:00",
-    "lloc": "",
-    "municipi": "Sant Miquel de Llotes",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Sant Miquel de Llotes celebra la 22a edició de la festa dedicada a l'apicultura amb un mercat de productors i activitats per a totes les edats. S'hi inclouen passejades a poni amb les écuries des orgues, jocs de fusta amb l'Association les enfants du Lude i tallers amb la Croix blanche i l'USAR. L'esdeveniment vol donar a conèixer la importància de les abelles i dels pol·linitzadors tot promocionant els productes del territori.",
-    "descripcio_fr": "Sant Miquel de Llotes célèbre la 22ème édition de la fête dédiée à l'apiculture avec un marché de producteurs et des activités pour tous les âges. Le programme comprend des promenades à poney avec les écuries des orgues, des jeux en bois avec l'Association les enfants du Lude et des ateliers avec la Croix blanche et l'USAR. L'événement vise à faire connaître l'importance des abeilles et des pollinisateurs tout en promouvant les produits du terroir.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/27-09.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.760Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52S4HH] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-27-tournoi-de-bitlles",
     "titol": "Torneig de bitlles catalanes",
     "data_inici": "2026-09-27",
