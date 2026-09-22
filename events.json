@@ -2180,5 +2180,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.909Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-concert-de-violi",
+    "titol": "Concert de violí i piano",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "17:30",
+    "lloc": "",
+    "municipi": "Serdinyà",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "L'església de Serdinyà acull un concert de música clàssica a càrrec de Johan Van Hulle al violí i Michel Prezman al piano. El programa inclou obres de Mozart, Beethoven i Dvorak, oferint un moment musical dedicat a grans compositors.",
+    "descripcio_fr": "L'église de Serdinyà accueille un concert de musique classique avec Johan Van Hulle au violon et Michel Prezman au piano. Le programme inclut des œuvres de Mozart, Beethoven et Dvorak, offrant un moment musical dédié à de grands compositeurs.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Serdinya-Joncet---Concert-violon-et-piano-1789021048-page-0001.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.910Z",
+    "periodicitat": ""
   }
 ]
