@@ -2047,5 +2047,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.863Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-mercat-de-segona",
+    "titol": "Mercat de segona mà nocturn",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "17:00",
+    "lloc": "",
+    "municipi": "Sant Hipòlit de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "L'esdeveniment acull paradistes i visitants al vespre. S'ofereix servei de bar als assistents durant la jornada.",
+    "descripcio_fr": "L'événement accueille des exposants et des visiteurs en soirée. Un service de buvette est proposé aux participants durant la journée.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/VIDE-GRENIER-68.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.873Z",
+    "periodicitat": ""
   }
 ]
