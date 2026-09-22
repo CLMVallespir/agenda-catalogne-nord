@@ -1895,5 +1895,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.878Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-festa-gegantera",
+    "titol": "Festa gegantera",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La jornada està dedicada als gegants de Ribesaltes, uns personatges inspirats en la tradició i les llegendes catalanes. El programa inclou la plantada de gegants, una cercavila pels carrers de la vila, una ballada final i una exhibició de castellers.",
+    "descripcio_fr": "La journée est dédiée aux géants de Ribesaltes, des personnages inspirés de la tradition et des légendes catalanes. Le programme comprend la plantada de géants, un défilé dans les rues de la ville, une danse finale et une exhibition de castellers.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Gegants-Rivesaltes.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.885Z",
+    "periodicitat": ""
   }
 ]
