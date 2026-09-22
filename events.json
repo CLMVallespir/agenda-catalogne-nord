@@ -2028,5 +2028,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.863Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-concert",
+    "titol": "Concert",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Vernet",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "L'esdeveniment presenta un concert de mandolina i acordió.",
+    "descripcio_fr": "L'événement présente un concert de mandoline et d'accordéon.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Concert-mandoline-et-accordeon--2.jpg?width=150&height=120",
+    "font_url": "http://www.follieadeux.webnode.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.863Z",
+    "periodicitat": ""
   }
 ]
