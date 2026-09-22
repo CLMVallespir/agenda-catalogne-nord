@@ -1268,5 +1268,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.735Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-23-descobriment-i-iniciacio",
+    "titol": "Descobriment i iniciació a l'ofici de bufador de vidre",
+    "data_inici": "2026-09-23",
+    "data_fi": "2026-09-23",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Palau del Vidre",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquesta activitat permet descobrir l'ofici de bufador de vidre i iniciar-s'hi amb la creació d'una bola de vidre pròpia. L'experiència es desenvolupa en l'obrador, on els participants poden emportar-se la seva peça gravada després d'un procés de refredament. L'oferta està oberta a tothom a partir dels tres anys d'edat.",
+    "descripcio_fr": "Cette activité permet de découvrir le métier de souffleur de verre et de s'y initier avec la création d'une boule de verre personnalisée. L'expérience se déroule dans l'atelier, où les participants peuvent repartir avec leur pièce gravée après un processus de refroidissement. L'offre est ouverte à tous à partir de trois ans.",
+    "associacio": "Contacter MATEUS",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/mateus-verre-palau-Hugo-Pages.jpg?width=150&height=120",
+    "font_url": "https://www.tourisme-pyrenees-mediterranee.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.754Z",
+    "periodicitat": ""
   }
 ]
