@@ -2800,26 +2800,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52WQ3K] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-09-27-concert-duo-arpacello",
-    "titol": "Concert del duo Arpacello",
-    "data_inici": "2026-09-27",
-    "data_fi": "2026-09-27",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Oms",
-    "comarca": "Rosselló",
-    "categoria": "Música",
-    "descripcio_ca": "Es proposa un concert a l'església de Saint-Jean en col·laboració amb l'associació de lleure d'Oms. L'activitat presenta l'actuació musical del duo Arpacello.",
-    "descripcio_fr": "Un concert est proposé à l'église de Saint-Jean en collaboration avec l'association de loisirs d'Oms. L'activité présente la performance musicale du duo Arpacello.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-oms-duoparcella.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.800Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52WX07] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-27-tot-daqui-repas",
     "titol": "Tot d'Aquí - Àpat festiu amb sabors locals",
     "data_inici": "2026-09-27",
