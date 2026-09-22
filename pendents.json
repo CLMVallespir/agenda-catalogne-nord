@@ -2220,26 +2220,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YUWN] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-salon-bien-etre",
-    "titol": "Saló del benestar i la natura",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "10:00",
-    "lloc": "",
-    "municipi": "Prada",
-    "comarca": "Conflent",
-    "categoria": "",
-    "descripcio_ca": "Aquest esdeveniment immersiu i sensorial es dedica al benestar, les pràctiques naturals i les teràpies holístiques. El programa inclou tallers pràctics amb els expositors, així com sessions de teràpies holístiques i cures energètiques. També s'hi ofereixen activitats com una rifa i jocs per al públic assistent.",
-    "descripcio_fr": "Cet événement immersif et sensoriel est dédié au bien-être, aux pratiques naturelles et aux thérapies holistiques. Le programme comprend des ateliers pratiques avec les exposants, ainsi que des séances de thérapies holistiques et de soins énergétiques. Des activités telles qu'une tombola et des jeux sont également proposées au public.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-raya-terra-logo-prades.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.875Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YV1X] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. La categoria queda buida a posta: «Salon» no s'autoclassifica i l'ha de decidir el curador. Possible nova era o guia espiritual («holistiques», «soins energetiques»): comproveu de qui és l'acte i si hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-enseignement-a-la",
     "titol": "Ensenyament de la sardana",
     "data_inici": "2026-09-26",
