@@ -2220,26 +2220,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YUWN] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-crfc-feminine-r1",
-    "titol": "Partit de futbol femení R1: FC Sussargues - Berange",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "20:30",
-    "lloc": "STADE ST-MICHEL",
-    "municipi": "Canet de Rosselló",
-    "comarca": "Rosselló",
-    "categoria": "Esports",
-    "descripcio_ca": "El partit de futbol femení enfronta el club local CRFC contra el FC Sussargues - Berange. Aquesta competició esportiva és oberta al públic en general.",
-    "descripcio_fr": "Le match de football féminin oppose le club local CRFC au FC Sussargues - Berange. Cette compétition sportive est ouverte au grand public.",
-    "associacio": "Contacter SECRÉTARIAT DU CLUB",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/CRFC-Feminines.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.875Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YUZQ] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-salon-bien-etre",
     "titol": "Saló del benestar i la natura",
     "data_inici": "2026-09-26",
