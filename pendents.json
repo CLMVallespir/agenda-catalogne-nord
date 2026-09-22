@@ -440,26 +440,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52VECG] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Categoria per tema infantil; RechercheTYPE deia: Taller Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-23-marche-hebdomadaire-de",
-    "titol": "Mercat setmanal de productors",
-    "data_inici": "2026-09-23",
-    "data_fi": "2026-09-23",
-    "hora": "08:00",
-    "lloc": "Parc de la Mairie",
-    "municipi": "Arles de Tec",
-    "comarca": "Vallespir",
-    "categoria": "Mercat",
-    "descripcio_ca": "El Parc de la Mairie acull cada dimecres al matí aquest mercat de productors. L'espai ofereix un ambient acollidor i permet conèixer els productes locals de la zona.",
-    "descripcio_fr": "Le Parc de la Mairie accueille chaque mercredi matin ce marché de producteurs. L'espace offre une ambiance conviviale et permet de découvrir les produits locaux de la région.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-15-2.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.787Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52VT75] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 92 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-23-atelier-pas-a",
     "titol": "Atelier pas a pas",
     "data_inici": "2026-09-23",
