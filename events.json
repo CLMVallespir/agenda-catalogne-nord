@@ -1914,5 +1914,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.885Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-festa-catalana-al",
+    "titol": "Festa catalana al parc Sant Vicens",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Aquesta jornada festiva al parc Sant Vicens aplega tradicions, música, gastronomia i activitats artesanes. El programa inclou cercaviles de gegants, audicions i iniciació a la sardana amb la Cobla Mil·lenària i la Fédération Sardaniste du Roussillon, així com jocs infantils i passejades en ruc. També s'hi presenten demostracions del llançament d'espardenyes amb Payote i tastos proposats per la Cave Banyuls L’Étoile, a més d'una xerrada sobre la història del Rosselló a càrrec de l'associació Le Temps du costume roussillonnais.",
+    "descripcio_fr": "Cette journée festive au parc Sant Vicens réunit traditions, musique, gastronomie et activités artisanales. Le programme comprend des défilés de géants, des auditions et une initiation à la sardane avec la Cobla Mil·lenària et la Fédération Sardaniste du Roussillon, ainsi que des jeux pour enfants et des balades à dos d’âne. Des démonstrations de lancer d'espadrilles avec Payote et des dégustations proposées par la Cave Banyuls L’Étoile sont également au rendez-vous, en plus d'une présentation sur l'histoire du Roussillon par l'association Le Temps du costume roussillonnais.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/La-Fete-Catalane---2026.jpg?width=150&height=120",
+    "font_url": "https://www.perpignantourisme.com/agenda/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.909Z",
+    "periodicitat": ""
   }
 ]
