@@ -1781,5 +1781,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.760Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-27-concert-del-duo",
+    "titol": "Concert del duo Arpacello",
+    "data_inici": "2026-09-27",
+    "data_fi": "2026-09-27",
+    "hora": "17:00",
+    "lloc": "",
+    "municipi": "Oms",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Es proposa un concert a l'església de Saint-Jean en col·laboració amb l'associació de lleure d'Oms. L'activitat presenta l'actuació musical del duo Arpacello.",
+    "descripcio_fr": "Un concert est proposé à l'église de Saint-Jean en collaboration avec l'association de loisirs d'Oms. L'activité présente la performance musicale du duo Arpacello.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-oms-duoparcella.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.800Z",
+    "periodicitat": ""
   }
 ]
