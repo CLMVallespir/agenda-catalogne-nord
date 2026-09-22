@@ -1620,26 +1620,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ETAE] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Títol escrit per un model a partir del francès de l'ADT66. L'oferta no porta cap text descriptiu i no se n'ha inventat cap: les dues descripcions queden buides."
   },
   {
-    "id": "2026-09-26-marche-a-la",
-    "titol": "Mercat de brocanteria",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "07:00",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Els antiquaris s'instal·len cada dissabte a les allées Maillol per a la venda de brocanteria. L'espai permet als visitants cercar objectes d'antiguitat i peces de col·leccionisme.",
-    "descripcio_fr": "Les antiquaires s'installent chaque samedi aux allées Maillol pour la vente de brocante. L'espace permet aux visiteurs de chiner des objets d'antiquité et des pièces de collection.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/GRANDE-BROCANTE---ALLEES-MAILLOL-2.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.738Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V52H7UW] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 18 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-visite-de-la",
     "titol": "Visita a la cerveseria i destil·leria La Canya",
     "data_inici": "2026-09-26",
