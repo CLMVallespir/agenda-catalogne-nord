@@ -1060,26 +1060,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V526XFO] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 30 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-25-festa-major-fete",
-    "titol": "Festa major de Sant Miquel",
-    "data_inici": "2026-09-25",
-    "data_fi": "2026-09-25",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Sant Genís de Fontanes",
-    "comarca": "Rosselló",
-    "categoria": "Dansa i ball",
-    "descripcio_ca": "La festivitat compta amb un concert de corals a l'església de Saint-Michel i una rifa a la sala polivalent. També s'hi celebren una missa, un ball d'ofici a la plaça Jean Rolland i una ballada de sardanes amb la participació dels Casenoves i Sant Genis Sardanista.",
-    "descripcio_fr": "La fête comprend un concert de chorales à l'église Saint-Michel et une tombola à la salle polyvalente. On y célèbre également une messe, un bal d'ofici sur la place Jean Rolland et une sardane avec la participation des Casenoves et Sant Genis Sardanista.",
-    "associacio": "Contacter SERVICE CULTUREL",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/st-Michel.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.728Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52A68J] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-25-vernissage-exposition-bernard",
     "titol": "Inauguració de l'exposició de Bernard Delalaing",
     "data_inici": "2026-09-25",
