@@ -1553,5 +1553,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.906Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-26-mercat-setmanal-a",
+    "titol": "Mercat setmanal a la platja",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "08:00",
+    "lloc": "Parking Agora, devant l'Office de Tourisme, à Sainte Marie Plage",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat del front de mar de Santa Maria la Mar ofereix productes locals, sabors de la terra i artesania durant tot l'any els dissabtes al matí. Durant la temporada d'estiu, el mercat s'amplia els dimarts i els dijous per gaudir de l'ambient del litoral mediterrani.",
+    "descripcio_fr": "Le marché du front de mer de Sainte Marie la Mer propose des produits locaux, des saveurs du terroir et de l'artisanat toute l'année les samedis matin. Durant la saison estivale, le marché s'agrandit les mardis et jeudis pour profiter de l'ambiance du littoral méditerranéen.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Image-par-ruthieprasil-de-Pixabay.jpg?width=150&height=120",
+    "font_url": "www.saintemarielamer.com",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.716Z",
+    "periodicitat": "cada setmana"
   }
 ]
