@@ -1534,5 +1534,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.903Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-25-festa-de-la",
+    "titol": "Festa de la Verema",
+    "data_inici": "2026-09-25",
+    "data_fi": "2026-09-25",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Millars",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El Moulin à huile de Millars acull una vetllada festiva entorn de la verema per gaudir amb amics o en família. El programa inclou una variada oferta gastronòmica amb foodtrucks, graellades, tapes, ostres, caragols, formatges i pastissos, acompanyada per l'actuació del grup ECHO i DJ MTZ.",
+    "descripcio_fr": "Le Moulin à huile de Millars accueille une soirée festive autour des vendanges pour profiter entre amis ou en famille. Le programme inclut une offre gastronomique variée avec des foodtrucks, grillades, tapas, huîtres, escargots, fromages et pâtisseries, accompagnée par la prestation du groupe ECHO et DJ MTZ.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/25-09-millas.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.906Z",
+    "periodicitat": ""
   }
 ]
