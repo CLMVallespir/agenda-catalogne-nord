@@ -680,26 +680,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z7V4] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-24-marche-place-de",
-    "titol": "Mercat de la plaça de Bèlgica",
-    "data_inici": "2026-09-24",
-    "data_fi": "2026-09-24",
-    "hora": "07:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Aquest mercat ofereix una gran varietat de productes de qualitat, com ara fruites i verdures, pa, pastisseria, carn, embotits, rostisseria, peix, ostres, caragols, mel, vins i flors. Els comerciants ofereixen la possibilitat de fer comandes d'una setmana a l'altra.",
-    "descripcio_fr": "Ce marché propose une grande variété de produits de qualité, tels que des fruits et légumes, du pain, de la pâtisserie, de la viande, de la charcuterie, de la rôtisserie, du poisson, des huîtres, des escargots, du miel, des vins et des fleurs. Les commerçants offrent la possibilité de passer commande d'une semaine à l'autre.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Marche-place-de-Belgique.jpg?width=150&height=120",
-    "font_url": "https://www.perpigare.fr/notre-quartier/commercants-artisans-tpe/commercants-marche-place-de-belgique/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.718Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V51ER88] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 28 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-24-marche-hebdomadaire",
     "titol": "Mercat setmanal",
     "data_inici": "2026-09-24",
