@@ -1135,5 +1135,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.789Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-22-conferencia-dartistes-a",
+    "titol": "Conferència d'artistes a la vora del Mediterrani",
+    "data_inici": "2026-09-22",
+    "data_fi": "2026-09-22",
+    "hora": "",
+    "lloc": "",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'acte convida a gaudir d'una sessió amb Pauline raconte l’art sobre els creadors fascinats pels paisatges mediterranis. És una trobada accessible per descobrir l'art d'una manera diferent, a través de la relació entre la mar, la llum i la creació.",
+    "descripcio_fr": "L'événement invite à profiter d'une séance avec Pauline raconte l’art sur les créateurs fascinés par les paysages méditerranéens. C'est une rencontre accessible pour découvrir l'art d'une manière différente, à travers la relation entre la mer, la lumière et la création.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche---Conference-22-Sept---Pauline-raconte-l-art-MEM-2026.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.793Z",
+    "periodicitat": ""
   }
 ]
