@@ -680,26 +680,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z7V4] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-24-marche-hebdomadaire",
-    "titol": "Mercat setmanal",
-    "data_inici": "2026-09-24",
-    "data_fi": "2026-09-24",
-    "hora": "08:00",
-    "lloc": "",
-    "municipi": "Sant Llorenç de la Salanca",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat de Sant Llorenç de la Salanca anima el centre de la vila dues vegades per setmana amb prop de vuitanta paradistes a l'hivern i cent trenta a l'estiu. S'hi poden trobar productes de proximitat com fruites, verdures, formatges, carns i peixos, a més d'articles tèxtils i artesania.",
-    "descripcio_fr": "Le marché de Saint-Laurent de la Salanque anime le centre-ville deux fois par semaine avec près de quatre-vingts commerçants en hiver et cent trente en été. On y trouve des produits locaux tels que des fruits, des légumes, des fromages, des viandes et des poissons, ainsi que des articles textiles et de l'artisanat.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/MARCHE-1.jpg?width=150&height=120",
-    "font_url": "https://www.saintlaurentdelasalanque.fr/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.726Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V528GNT] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 61 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-24-le-marche-loco",
     "titol": "Mercat «Loco» de Maurí",
     "data_inici": "2026-09-24",
