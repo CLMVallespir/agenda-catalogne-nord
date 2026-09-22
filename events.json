@@ -1458,5 +1458,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.728Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-25-don-de-sang",
+    "titol": "Don de sang",
+    "data_inici": "2026-09-25",
+    "data_fi": "2026-09-25",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Es convoca la població a una jornada de donació de sang a la sala de festes d'Elna. Per participar-hi, cal ser major d'edat, tenir bona salut i presentar un document d'identitat.",
+    "descripcio_fr": "La population est invitée à une journée de don du sang à la salle des fêtes d'Elne. Pour participer, il faut être majeur, être en bonne santé et présenter une pièce d'identité.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-177738-ELNE-JEDONNE-RDV-A3P-20260824104708-page-0001.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.870Z",
+    "periodicitat": ""
   }
 ]
