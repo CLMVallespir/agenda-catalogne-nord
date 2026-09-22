@@ -2009,5 +2009,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.862Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-26-ceretart",
+    "titol": "Céret'Art",
+    "data_inici": "2026-09-26",
+    "data_fi": "2026-09-26",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Ceret",
+    "comarca": "Vallespir",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'exposició es duu a terme en el marc de Céret'Art. Aquesta mostra permet contemplar les obres seleccionades per a l'esdeveniment.",
+    "descripcio_fr": "L'exposition se déroule dans le cadre de Céret'Art. Cette présentation permet de contempler les œuvres sélectionnées pour l'événement.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/page-07-Ceret-Art.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.863Z",
+    "periodicitat": ""
   }
 ]
