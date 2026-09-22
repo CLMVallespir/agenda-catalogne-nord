@@ -1439,5 +1439,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.723Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-25-festa-major-de",
+    "titol": "Festa major de Sant Miquel",
+    "data_inici": "2026-09-25",
+    "data_fi": "2026-09-25",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Dansa i ball",
+    "descripcio_ca": "La festivitat compta amb un concert de corals a l'església de Saint-Michel i una rifa a la sala polivalent. També s'hi celebren una missa, un ball d'ofici a la plaça Jean Rolland i una ballada de sardanes amb la participació dels Casenoves i Sant Genis Sardanista.",
+    "descripcio_fr": "La fête comprend un concert de chorales à l'église Saint-Michel et une tombola à la salle polyvalente. On y célèbre également une messe, un bal d'ofici sur la place Jean Rolland et une sardane avec la participation des Casenoves et Sant Genis Sardanista.",
+    "associacio": "Contacter SERVICE CULTUREL",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/st-Michel.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.728Z",
+    "periodicitat": ""
   }
 ]
