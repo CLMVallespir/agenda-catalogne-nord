@@ -3180,26 +3180,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52CQUQ] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-28-marche-hebdomadaire",
-    "titol": "Mercat setmanal",
-    "data_inici": "2026-09-28",
-    "data_fi": "2026-09-28",
-    "hora": "08:00",
-    "lloc": "",
-    "municipi": "Ribesaltes",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Aquest mercat és una oportunitat per als veïns i els visitants per omplir els seus cistells amb productes de proximitat. Hi participen productors locals, productors ecològics i artesans.",
-    "descripcio_fr": "Ce marché est une occasion pour les locaux et les visiteurs de remplir leurs paniers avec des produits de proximité. Des producteurs locaux, des producteurs bio et des artisans y participent.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Rivesaltes-Marche-Sabine-Aiguaviva.jpg?width=150&height=120",
-    "font_url": "https://www.rivesaltes.fr/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.762Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V52TVD6] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 104 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-28-visite-guidee-histoire",
     "titol": "Visita guiada «Història d'un territori català»",
     "data_inici": "2026-09-28",
