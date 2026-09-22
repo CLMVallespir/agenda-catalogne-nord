@@ -1960,26 +1960,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52XIST] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Títol escrit per un model a partir del francès de l'ADT66. L'oferta no porta cap text descriptiu i no se n'ha inventat cap: les dues descripcions queden buides."
   },
   {
-    "id": "2026-09-26-howlin-jaws",
-    "titol": "Howlin' Jaws",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "20:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Teatre",
-    "descripcio_ca": "El Mediator enceta la temporada amb una vetllada que uneix música i il·lustració. El trio parisenc Howlin' Jaws hi presenta el seu nou treball de rock psicodèlic amb l'acompanyament visual de Frank Margerin. La programació es completa amb l'actuació de Supersonic Boy i el vernissatge de l'exposició d'Alexia Trs.",
-    "descripcio_fr": "Le Mediator ouvre sa saison avec une soirée où musique et illustration se rencontrent. Le trio parisien Howlin' Jaws y présente son nouvel album de rock psychédélique avec l'accompagnement visuel de Frank Margerin. La programmation est complétée par la prestation de Supersonic Boy et le vernissage de l'exposition d'Alexia Trs.",
-    "associacio": "Contacter BILLETTERIE",
-    "imatge_url": "",
-    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/fid-2026",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.822Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52XMZM] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-expo-fid-bd",
     "titol": "Expo FID&BD : Alexia Trs",
     "data_inici": "2026-09-26",
