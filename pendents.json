@@ -2220,26 +2220,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YUWN] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-enseignement-a-la",
-    "titol": "Ensenyament de la sardana",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "10:15",
-    "lloc": "",
-    "municipi": "Santa Maria la Mar",
-    "comarca": "Rosselló",
-    "categoria": "",
-    "descripcio_ca": "La mediateca, en col·laboració amb l'associació La Llevantina, organitza unes sessions d'aprenentatge de la sardana. Es tracta d'una dansa tradicional catalana per compartir en un ambient de convivència.",
-    "descripcio_fr": "La médiathèque, en partenariat avec l'association La Llevantina, organise un enseignement à la sardane. Il s'agit d'une danse traditionnelle catalane à partager dans une ambiance conviviale.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/STE-MARIE-SARDANE.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.879Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YW5Y] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-les-citrofolies",
     "titol": "Les Citro'Folies",
     "data_inici": "2026-09-26",
