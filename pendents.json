@@ -1860,26 +1860,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52W4RE] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-09-26-catalanexplorer-etape-a",
-    "titol": "Catalan’Explorer",
-    "data_inici": "2026-09-26",
-    "data_fi": "2026-09-26",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Banyuls de la Marenda",
-    "comarca": "Rosselló",
-    "categoria": "Esports",
-    "descripcio_ca": "La regata de barques catalanes amb vela llatina, organitzada per l'associació Facotem, recorre diversos punts de la costa. L'esdeveniment, obert al públic, és una competició que posa a prova les embarcacions durant uns dies de mar i vent.",
-    "descripcio_fr": "La régate de barques catalanes à voile latine, organisée par l'association Facotem, parcourt plusieurs points de la côte. L'événement, ouvert au public, est une compétition qui met à l'épreuve les embarcations durant quelques jours de mer et de vent.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/barques-2.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.793Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52W7DI] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-26-gravel-tour",
     "titol": "Gravel Tour",
     "data_inici": "2026-09-26",
