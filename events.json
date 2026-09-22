@@ -1116,5 +1116,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-22T20:25:04.746Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-22-concurs-de-petanca",
+    "titol": "Concurs de petanca a la mêlée",
+    "data_inici": "2026-09-22",
+    "data_fi": "2026-09-22",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "El concurs de petanca a la mêlée es divideix en tres partides. L'organització es reserva el dret de retardar l'inici en cas de temperatures extremes.",
+    "descripcio_fr": "Le concours de pétanque à la mêlée se divise en trois parties. L'organisation se réserve le droit de retarder le début en cas de fortes chaleurs.",
+    "associacio": "Contacter Madame LARREGUY Anne-Marie",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/petanque-pixabay-jackmac34.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.789Z",
+    "periodicitat": ""
   }
 ]
