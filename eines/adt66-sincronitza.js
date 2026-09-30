@@ -212,33 +212,20 @@ function aIso(data) {
 }
 
 // ------------------------------------------------------------
-// Les hores d'una oferta, treballades sobre COMMUNDATE: { inici, fi }, totes
-// dues en HH:MM. L'inici és la primera hora que apareix, ja sigui «De HH:MM»
-// o «à HH:MM» sol (la «à» pot venir com a lletra o com a `&agrave;`; no es fa
-// servir `\b` al voltant de la «à» perquè JS no la té per lletra de paraula).
-// La fi només surt d'un «De HH:MM à HH:MM» explícit; si no, cadena buida:
-// mai una hora suposada. L'esquema no té camp d'hora de fi, així que avui
-// només hi arriba l'inici (vegeu horaDeLoferta).
-// ------------------------------------------------------------
-function horesDeLoferta(oferta) {
-  var text = String((oferta && oferta.COMMUNDATE) || '').replace(/&agrave;/g, 'à');
-  var trobada = text.match(/(?:\bDe|à) (\d{2}:\d{2})(?!\d)(?: à (\d{2}:\d{2})(?!\d))?/);
-  if (trobada === null) {
-    return { inici: '', fi: '' };
-  }
-  var fi = '';
-  if (trobada[0].indexOf('De ') === 0 && trobada[2] !== undefined) {
-    fi = trobada[2];
-  }
-  return { inici: trobada[1], fi: fi };
-}
-
-// ------------------------------------------------------------
-// L'hora d'inici, HH:MM, de l'oferta. Torna cadena buida si no en diu cap:
-// l'esquema del projecte vol una cadena buida, mai una hora suposada.
+// L'hora d'inici, HH:MM, de l'oferta, de COMMUNDATE. És la primera hora que
+// apareix, ja sigui «De HH:MM» o «à HH:MM» sol (la «à» pot venir com a lletra
+// o com a `&agrave;`; no es fa servir `\b` al voltant de la «à» perquè JS no
+// la té per lletra de paraula). Torna cadena buida si no en diu cap: l'esquema
+// vol una cadena buida, mai una hora suposada. L'esquema no té camp d'hora de
+// fi, així que l'hora de fi d'un «De HH:MM à HH:MM» simplement s'ignora.
 // ------------------------------------------------------------
 function horaDeLoferta(oferta) {
-  return horesDeLoferta(oferta).inici;
+  var text = String((oferta && oferta.COMMUNDATE) || '').replace(/&agrave;/g, 'à');
+  var trobada = text.match(/(?:\bDe|à) (\d{2}:\d{2})(?!\d)/);
+  if (trobada === null) {
+    return '';
+  }
+  return trobada[1];
 }
 
 // ------------------------------------------------------------
@@ -376,7 +363,6 @@ module.exports = {
   sincronitzaADT66: sincronitzaADT66,
   datesDeLoferta: datesDeLoferta,
   horaDeLoferta: horaDeLoferta,
-  horesDeLoferta: horesDeLoferta,
   classificaDates: classificaDates
 };
 

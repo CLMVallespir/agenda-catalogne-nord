@@ -1847,7 +1847,7 @@ function titolsDe(files) {
 
 // ------------------------------------------------------------
 // La bateria de proves. Cada cas diu què comprova i torna '' si passa, o el
-// problema si no. Les cinc primeres cauen totes si es treu el tall per quota.
+// problema si no. Les quatre primeres cauen totes si es treu el tall per quota.
 // ------------------------------------------------------------
 function bateria() {
   return [
@@ -1980,54 +1980,8 @@ function bateria() {
         var esperat = 'p-sense-fi-futura,p-avui,p-sense-dates,pub-passada,raro-passada';
         return titols === esperat ? '' : 'esperava ' + esperat + ', tinc «' + titols + '»';
       }
-    },
-
-    {
-      nom: 'hora: «Le 08/10/2026 à 18:00» dona inici 18:00 i cap fi',
-      comprova: async function () {
-        var hores = adt66.horesDeLoferta({ COMMUNDATE: 'Le 08/10/2026 à 18:00' });
-        return horesEsperades(hores, '18:00', '');
-      }
-    },
-
-    {
-      nom: 'hora: «à» com a `&agrave;` dins l\'HTML real dona inici 18:00 i cap fi',
-      comprova: async function () {
-        var hores = adt66.horesDeLoferta({ COMMUNDATE: '<strong>Le 08/10/2026 &agrave; 18:00</strong><br />' });
-        return horesEsperades(hores, '18:00', '');
-      }
-    },
-
-    {
-      nom: 'hora: «De 10:00 à 12:00» dona inici 10:00 i fi 12:00, amb «à» o `&agrave;`',
-      comprova: async function () {
-        var literal = adt66.horesDeLoferta({ COMMUNDATE: 'Le 16/10/2026 De 10:00 à 12:00' });
-        var entitat = adt66.horesDeLoferta({ COMMUNDATE: '<strong>Le 16/10/2026 De 10:00 &agrave; 12:00</strong><br />' });
-        return horesEsperades(literal, '10:00', '12:00') || horesEsperades(entitat, '10:00', '12:00');
-      }
-    },
-
-    {
-      nom: 'hora: sense hora, camp buit o absent, inici i fi són cadena buida',
-      comprova: async function () {
-        var senseHora = adt66.horesDeLoferta({ COMMUNDATE: 'Le 08/10/2026' });
-        var buit = adt66.horesDeLoferta({ COMMUNDATE: '' });
-        var absent = adt66.horesDeLoferta({});
-        return horesEsperades(senseHora, '', '') || horesEsperades(buit, '', '') ||
-          horesEsperades(absent, '', '');
-      }
     }
   ];
-}
-
-// ------------------------------------------------------------
-// Compara un { inici, fi } amb el que s'espera; '' si quadra, el problema si no.
-// ------------------------------------------------------------
-function horesEsperades(hores, inici, fi) {
-  if (hores.inici === inici && hores.fi === fi) {
-    return '';
-  }
-  return 'esperava inici «' + inici + '» i fi «' + fi + '», tinc «' + hores.inici + '» i «' + hores.fi + '»';
 }
 
 // ------------------------------------------------------------

@@ -39,7 +39,8 @@
 //                        no es tradueix ni es canvia de caixa aquí.
 //   TRI               -> `data_inici` i `data_fi`, per classificaDates().
 //   COMMUNDATE        -> `hora`, el primer «De HH:MM» o «à HH:MM».
-//   COMMUNLIEU        -> `lloc`, net d'HTML i de l'etiqueta «Lieu :».
+//   COMMUNLIEU        -> `lloc`, net d'HTML i de l'etiqueta «Lieu :»; si ve
+//                        buit, de recanvi DETAILADRESSE (vegeu més avall).
 //   Commune           -> `municipi`, normalitzat amb eines/pobles-alies.js.
 //   RechercheTYPE     -> `categoria`, traduïda del francès i coercida.
 //   COMMUNTHEME       -> `categoria` TAMBÉ, i és l'únic camp que en toca un
@@ -67,10 +68,10 @@
 //                        l'oficina de turisme que ha entrat l'oferta, no
 //                        l'organitzador. NO va a `associacio`: posar-hi
 //                        l'oficina seria dir que l'acte és seu.
-//   DETAILADRESSE     -> metadadades.descartats.adreca. NO es fusiona dins de
-//                        `lloc`: mateixa raó que al CSV de recerca (§2 de
-//                        docs/HANDOFF-MAPEIG-RECERCA.md) — `lloc` és el nom del
-//                        local i una adreça postal no ho és.
+//   DETAILADRESSE     -> metadadades.descartats.adreca (sempre, tal com ve) i,
+//                        només si COMMUNLIEU ve buit, també de recanvi a `lloc`
+//                        (vegeu llocDeProduccio()). Quan COMMUNLIEU hi és, no
+//                        s'hi fusiona: `lloc` és el nom del local.
 //   DETAILCOMMUNE     -> metadadades.descartats.municipi_amb_codi. És `Commune`
 //                        amb el codi postal enganxat; el codi no és cap camp.
 //   ACCROCHE150       -> metadadades.descartats.resum_curt. Un resum de 150
@@ -719,12 +720,18 @@ function datesDeProduccio(oferta, avisos) {
 }
 
 // ------------------------------------------------------------
-// El nom del local, de `COMMUNLIEU`. Ve amb HTML i amb l'etiqueta «Lieu :»
-// al davant; totes dues coses fora. L'adreça postal de `DETAILADRESSE` NO
-// s'hi fusiona: `lloc` és el nom del local i una adreça no ho és.
+// El lloc de l'acte. Primer el nom del local, de `COMMUNLIEU`; si ve buit
+// (l'ADT66 hi posa sovint un espai sol), l'adreça postal de `DETAILADRESSE`
+// de recanvi; si tampoc n'hi ha, cadena buida. Tots dos camps passen per
+// textDeCamp(): fora l'HTML, les entitats, l'etiqueta «Lieu :» i els espais
+// de sobra. No s'hi afegeix mai ni el poble ni el codi postal.
 // ------------------------------------------------------------
 function llocDeProduccio(oferta) {
-  return textDeCamp(oferta.COMMUNLIEU);
+  var lloc = textDeCamp(oferta.COMMUNLIEU);
+  if (lloc !== '') {
+    return lloc;
+  }
+  return textDeCamp(oferta.DETAILADRESSE);
 }
 
 // ------------------------------------------------------------
@@ -2220,6 +2227,54 @@ function casosDeProva() {
           problemes.push('hi ha entitats sense desxifrar a la descripció');
         }
       }
+    },
+    {
+      nom: 'Lloc: COMMUNLIEU ple es manté, encara que hi hagi adreça',
+      entrada: {
+        SyndicObjectID: 'FMALAR066LLOC1',
+        SyndicObjectName: 'CONCERT A LA SALLE',
+        TRI: '10/10/2026',
+        Commune: 'CERET',
+        COMMUNLIEU: '<strong>Lieu :</strong> Salle des f&ecirc;tes',
+        DETAILADRESSE: '12 rue de la Mairie'
+      },
+      espera: { lloc: 'Salle des fêtes' }
+    },
+    {
+      nom: 'Lloc: COMMUNLIEU és un espai sol i l\'adreça és plena, lloc = adreça',
+      entrada: {
+        SyndicObjectID: 'FMALAR066LLOC2',
+        SyndicObjectName: 'CONCERT AU VILLAGE',
+        TRI: '10/10/2026',
+        Commune: 'CERET',
+        COMMUNLIEU: ' ',
+        DETAILADRESSE: '12 rue de la Mairie'
+      },
+      espera: { lloc: '12 rue de la Mairie' }
+    },
+    {
+      nom: 'Lloc: COMMUNLIEU és un espai sol i l\'adreça és buida, lloc = ""',
+      entrada: {
+        SyndicObjectID: 'FMALAR066LLOC3',
+        SyndicObjectName: 'CONCERT SANS LIEU',
+        TRI: '10/10/2026',
+        Commune: 'CERET',
+        COMMUNLIEU: ' ',
+        DETAILADRESSE: ''
+      },
+      espera: { lloc: '' }
+    },
+    {
+      nom: 'Lloc: l\'adreça de recanvi surt sense espais sobrants',
+      entrada: {
+        SyndicObjectID: 'FMALAR066LLOC4',
+        SyndicObjectName: 'CONCERT A LA PLACE',
+        TRI: '10/10/2026',
+        Commune: 'CERET',
+        COMMUNLIEU: '',
+        DETAILADRESSE: '  Place de la République   '
+      },
+      espera: { lloc: 'Place de la République' }
     },
     {
       nom: 'Títol amb dos punts: no s\'escapça com si fos una etiqueta',
