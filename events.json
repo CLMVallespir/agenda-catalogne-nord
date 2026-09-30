@@ -2959,5 +2959,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.004Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-despertar-musical",
+    "titol": "Despertar musical",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "10:30",
+    "lloc": "",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "Céline Bertault organitza un taller de música i instruments per a infants de zero a tres anys. L'activitat ofereix una primera aproximació a la música per als més menuts.",
+    "descripcio_fr": "Céline Bertault organise un atelier de musique et d'instruments pour les enfants de zéro à trois ans. L'activité offre une première approche de la musique pour les tout-petits.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026.10.eveilmusical.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.030Z",
+    "periodicitat": ""
   }
 ]
