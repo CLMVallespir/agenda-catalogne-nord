@@ -4080,26 +4080,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZBSD] [ADT66 id: FMALAR066V52ZBSP] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-07-fete-des-vendanges",
-    "titol": "Festa de les veremes 1996-2026",
-    "data_inici": "2026-10-07",
-    "data_fi": "2026-10-07",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Banyuls de la Marenda",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Aquesta celebració permet descobrir les vinyes del Cru Banyuls & Collioure i els seus vinyaters. El programa inclou degustacions, animacions musicals, visites de cellers, tallers gastronòmics, un poble vinyater, exposicions, àpats, visites guiades, la cursa de les veremes, concerts de corals i una regata de Llaguts de mer.",
-    "descripcio_fr": "Cette fête permet de découvrir le vignoble du Cru Banyuls & Collioure et ses vignerons. Le programme inclut des dégustations, des animations musicales, des visites de caves, des ateliers gastronomiques, un village vigneron, des expositions, des repas, des visites guidées, la course des vendanges, des concerts de chorales et une régate de Llaguts de mer.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/07-11Oct-FDV2026-AFFICHES-A4.jpg?width=150&height=120",
-    "font_url": "https://www.banyuls-sur-mer.com/fetedesvendanges/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.874Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V51HKL6] Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-07-don-du-sang",
     "titol": "Don de sang Octobre Rose",
     "data_inici": "2026-10-07",
