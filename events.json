@@ -2712,5 +2712,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.021Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-autorecollida-de-pomes",
+    "titol": "Autorecollida de pomes",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "09:00",
+    "lloc": "",
+    "municipi": "Estoer",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "Els assistents poden collir pomes directament als camps de fruiters del Conflent. Cal portar les pròpies bosses i cistelles per a la recollida.",
+    "descripcio_fr": "Les participants peuvent cueillir des pommes directement dans les vergers du Conflent. Il est conseillé de venir avec ses propres sacs et paniers pour la récolte.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Red-White-Simple-Modern-Photo-Apple-Picking-Orchard-Farm-Poster---1.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.025Z",
+    "periodicitat": ""
   }
 ]
