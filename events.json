@@ -3244,5 +3244,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.064Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-02-mercat-dels-embruns",
+    "titol": "Mercat dels Embruns",
+    "data_inici": "2026-10-02",
+    "data_fi": "2026-10-02",
+    "hora": "07:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Cada divendres al matí, el mercat dels Embruns aplega comerciants al barri de Las Cobas. S'hi poden trobar flors, plantes, productes hortofructícoles ecològics, xarcuteria, mel, melmelades, sucs, sucs de fruita, creacions artesanes i plats cuinats.",
+    "descripcio_fr": "Chaque vendredi matin, le marché des Embruns réunit des commerçants dans le quartier de Las Cobas. Vous y trouverez des fleurs, des plantes, des fruits et légumes bio, de la charcuterie, du miel, des confitures, des jus de fruits, des créations artisanales et des plats cuisinés.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766116/marche-des-embruns-2-2_trcgcy.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.878Z",
+    "periodicitat": "cada setmana"
   }
 ]
