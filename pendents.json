@@ -940,26 +940,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52O6JU] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-02-marche-hebdomadaire-du",
-    "titol": "Mercat setmanal del poble",
-    "data_inici": "2026-10-02",
-    "data_fi": "2026-10-02",
-    "hora": "08:00",
-    "lloc": "Au village, devant le Cube",
-    "municipi": "Torrelles de la Salanca",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat setmanal s'instal·la durant tot l'any a la plaça des souvenirs d'enfance. S'hi poden trobar productes de proximitat tots els dimarts i divendres al matí.",
-    "descripcio_fr": "Le marché hebdomadaire s'installe toute l'année sur la place des souvenirs d'enfance. Vous pourrez y trouver des produits de proximité tous les mardis et vendredis matin.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Marche-placesouvenirs-ete2025-Ce.jpg?width=150&height=120",
-    "font_url": "http://www.torreilles-tourisme.com",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.902Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V52OUCH] L'acte es fa 193 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-02-theatre-des-aspres",
     "titol": "Théâtre des Aspres - Temporada cultural 26/27: Nom de code Marichiweu",
     "data_inici": "2026-10-02",
