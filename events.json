@@ -3776,5 +3776,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.949Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-braderia-de-la",
+    "titol": "Braderia de la primera infància",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "08:00",
+    "lloc": "",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Aquesta braderia dedicada a la primera infància tindrà lloc a Illa. L'esdeveniment està obert al públic general.",
+    "descripcio_fr": "Cette braderie dédiée à la petite enfance se tiendra à Ille-sur-Têt. L'événement est ouvert au grand public.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766230/04-10-braderie-ille_wxdk8t.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.998Z",
+    "periodicitat": ""
   }
 ]
