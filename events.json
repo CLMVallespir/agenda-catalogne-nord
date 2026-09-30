@@ -4118,5 +4118,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.916Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-08-zamdane",
+    "titol": "Zamdane",
+    "data_inici": "2026-10-08",
+    "data_fi": "2026-10-08",
+    "hora": "20:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "L'artista franco-marroquí, avalat per l'èxit de SOLSAD, enceta una nova etapa més introspectiva. Després d'haver venut prop de 200.000 àlbums, Zamdane emprèn una gira que el durà per França, Bèlgica i Luxemburg per presentar un nou espectacle.",
+    "descripcio_fr": "Porté par le succès de SOLSAD, l’artiste franco-marocain ouvre à présent un nouveau chapitre plus introspectif que jamais. Avec près de 200 000 albums vendus, Zamdane sera en tournée à travers toute la France, la Belgique et le Luxembourg pour y présenter un tout nouveau show.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766328/ZAMDANE_y6w8oi.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/zamdane",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.943Z",
+    "periodicitat": ""
   }
 ]
