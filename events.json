@@ -3947,5 +3947,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.893Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-06-taller-de-pastisseria",
+    "titol": "Taller de pastisseria per a adults",
+    "data_inici": "2026-10-06",
+    "data_fi": "2026-10-06",
+    "hora": "18:30",
+    "lloc": "",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Arrenca una nova temporada dedicada a la pastisseria amb tallers pensats per a adults. Durant les sessions, una xef comparteix els seus secrets i tècniques per elaborar des de tartes de temporada fins a postres refinats.",
+    "descripcio_fr": "Une nouvelle saison dédiée à la pâtisserie débute avec des ateliers conçus pour les adultes. Durant les sessions, une cheffe partage ses secrets et techniques pour réaliser aussi bien des tartes de saison que des entremets raffinés.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766278/Programme-A3-2026-2027-ateliers-patisserie-adultes-page-0001_y4tynd.webp",
+    "font_url": "https://caves-byrrh-boutique.fr/ateliers-culinaires/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.896Z",
+    "periodicitat": ""
   }
 ]
