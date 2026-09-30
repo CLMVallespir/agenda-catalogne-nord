@@ -1,25 +1,5 @@
 [
   {
-    "id": "2026-09-30-petit-marche-du",
-    "titol": "Mercat del dimecres",
-    "data_inici": "2026-09-30",
-    "data_fi": "2026-09-30",
-    "hora": "05:30",
-    "lloc": "",
-    "municipi": "Sant Pau de Fenollet",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Cada dimecres, el mercat situat a la plaça del Foyer Rural de Sant Pau de Fenollet acull la parada del venedor de fruites i verdures. Aquesta activitat està subjecta a les condicions meteorològiques.",
-    "descripcio_fr": "Chaque mercredi, le marché situé sur la place du Foyer Rural de Saint-Paul-de-Fenouillet accueille le stand du marchand de fruits et légumes. Cette activité est soumise aux conditions météorologiques.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-mercredi.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.889Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V52GOKQ] L'acte es fa 52 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-30-octobre-rose-a",
     "titol": "Octobre Rose a Cotlliure",
     "data_inici": "2026-09-30",
