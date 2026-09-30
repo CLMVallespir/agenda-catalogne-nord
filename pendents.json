@@ -1300,26 +1300,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52XP4O] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-03-le-salon-des",
-    "titol": "Le Salon des oubliées",
-    "data_inici": "2026-10-03",
-    "data_fi": "2026-10-03",
-    "hora": "15:00",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "Aquesta exposició ret homenatge a les obres rarament prestades dels fons del Frac Occitanie Montpellier. Amb la complicitat d'una vintena d'artistes d'orígens diversos, la mostra s'inspira en l'univers literari d'Enrique Vila-Matas i es presenta al centre d'art àcentmètresducentredumonde.",
-    "descripcio_fr": "Cette exposition rend hommage aux œuvres rarement empruntées des réserves du Frac Occitanie Montpellier. Avec la complicité d'une vingtaine d'artistes d'origines diverses, la présentation s'inspire de l'univers littéraire d'Enrique Vila-Matas et se tient au centre d'art àcentmètresducentredumonde.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766168/Le-Salon-des-Oublies-2026-2027_yzsusw.webp",
-    "font_url": "https://www.acentmetresducentredumonde.com/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.983Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Y23U] L'acte es fa 3 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-03-salon-animalier",
     "titol": "Saló d'animals",
     "data_inici": "2026-10-03",
