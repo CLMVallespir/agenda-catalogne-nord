@@ -2750,5 +2750,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.074Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-mercat-de-segona",
+    "titol": "Mercat de segona mà",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "07:00",
+    "lloc": "",
+    "municipi": "Sant Joan la Cella",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El Foyer Rural de Saint-Jean-Lasseille organitza una jornada de mercat de segona mà a Sant Joan la Cella. L'activitat està reservada exclusivament a particulars i disposa de servei de bar i restauració a les instal·lacions.",
+    "descripcio_fr": "Le Foyer Rural de Saint-Jean-Lasseille organise une journée vide-grenier à Sant Joan la Cella. L'activité est réservée exclusivement aux particuliers et dispose d'un service de buvette et de restauration sur place.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-sjl-videgreneiroctobre.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.910Z",
+    "periodicitat": ""
   }
 ]
