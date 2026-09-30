@@ -3491,5 +3491,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.892Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-rifle-de-lescola",
+    "titol": "Rifle de l'escola",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "16:00",
+    "lloc": "Antiga Escola",
+    "municipi": "Terrats",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "L'escola organitza un rifle amb nombrosos premis per a guanyar. S'hi ofereix servei de restauració i, en cas de mal temps, l'acte es trasllada a la sala de festes de Terrats.",
+    "descripcio_fr": "L'école organise un loto avec de nombreux lots à gagner. Un service de restauration est proposé et, en cas d'intempéries, l'événement est déplacé à la salle des fêtes de Terrats.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766161/Aspres-terrats-rifle3octobre_jppsns.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.896Z",
+    "periodicitat": ""
   }
 ]
