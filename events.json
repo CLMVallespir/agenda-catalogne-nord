@@ -3833,5 +3833,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.028Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-concert",
+    "titol": "Concert",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "17:300",
+    "lloc": "Espai Merimée",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'ensemble vocal DabaJazz ofereix un recorregut per diversos estàndards musicals, des de Duke Ellington fins a Stevie Wonder. Sota la direcció de Chantal Joubert i amb l'acompanyament al piano de Gabriel Rigaud, la formació presenta un repertori d'harmonies vocals i ritmes swing.",
+    "descripcio_fr": "L'ensemble vocal DabaJazz propose un parcours à travers divers standards musicaux, de Duke Ellington à Stevie Wonder. Sous la direction de Chantal Joubert et avec l'accompagnement au piano de Gabriel Rigaud, la formation présente un répertoire d'harmonies vocales et de rythmes swing.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766255/04-10K_uxepvw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.075Z",
+    "periodicitat": ""
   }
 ]
