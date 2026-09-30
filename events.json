@@ -3035,5 +3035,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.947Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-30-cap-sur-leurope",
+    "titol": "Cap sur l'Europe",
+    "data_inici": "2026-09-30",
+    "data_fi": "2026-09-30",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "El Mediator i la Casa Musicale proposen sessions d'intercanvi mensuals amb professionals del sector de les músiques actuals per tractar temes clau com el finançament, el màrqueting i els drets dels artistes. També s'ofereixen tallers per explorar les oportunitats que ofereixen els programes europeus, com Erasmus+, per al desenvolupament de projectes i la creació d'intercanvis culturals.",
+    "descripcio_fr": "Le Mediator et la Casa Musicale proposent des sessions d'échange mensuelles avec des professionnels du secteur des musiques actuelles pour aborder des thématiques clés telles que le financement, le marketing et les droits des artistes. Des ateliers sont également proposés pour explorer les opportunités offertes par les programmes européens, notamment Erasmus+, pour le développement de projets et la création d'échanges culturels.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766075/connexion_endige.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.969Z",
+    "periodicitat": ""
   }
 ]
