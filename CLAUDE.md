@@ -502,6 +502,9 @@ Ja fets, en producció, al mateix repositori:
 - **`fonts/`** (woff2 autoallotjats) i **`img/logo/`**.
 - **`docs/`** — guies i informes, inclòs `CRITERI-EDITORIAL.md` (el criteri de què
   entra a l'agenda i què no: és del curador, no del codi).
+  Les exclusions per criteri polític (1 d'octubre de 2026) són a la seva secció
+  «Exclusions per criteri polític» i l'eina que aplica la de lloc és
+  `eines/exclusions-editorials.js`.
 - **`docs/arxiu-google/`** — **codi mort, no el toquis.** El sistema anterior
   (full de càlcul + Apps Script), retirat de l'ús viu el 29 d'agost de 2026 amb
   la Fase 4, i les guies que el descrivien. Es conserva perquè diverses notes de

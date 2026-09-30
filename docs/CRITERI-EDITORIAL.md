@@ -151,3 +151,20 @@ d'esquema.
 > que no tinguin cap dimensió catalana». Si un cas de mèrit (R5) té a més un
 > lligam català explícit per R7, puja a NUCLI — és el cas de l'orgue d'Arles
 > de Tec.
+
+---
+
+## Exclusions per criteri polític (1 d'octubre de 2026)
+
+Tres punts, i cap més:
+
+- **(a) Per lloc, automàtic.** La programació del cinema d'Elna no entra a
+  l'agenda. Ho aplica `eines/exclusions-editorials.js` a la ingestió de l'ADT66,
+  sense cap intervenció del curador: l'oferta no arriba a `pendents.json` ni
+  gasta cap crida a Gemini.
+- **(b) Per contingut, cas per cas, decidit pel curador.** Per exemple, els
+  actes de l'agermanament Perpinyà–Palma, les visites al patrimoni militar i
+  les exposicions municipals sobre la Sanch. No hi ha cap regla automàtica: el
+  curador rebutja la fila a `curador.html`.
+- **(c) No s'exclou per organitzador.** Els serveis municipals que sostenen la
+  cultura catalana, com la Mediateca de Perpinyà, es continuen publicant.

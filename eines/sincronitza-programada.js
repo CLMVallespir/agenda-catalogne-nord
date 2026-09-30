@@ -5,13 +5,15 @@
 // en surti a `pendents.json`. Res més.
 //
 //   sincronitzaADT66()  ->  mapejaOfertaADT66()  ->  apartaVisitesGuiades()
+//                                                ->  aplicaExclusionsEditorials()
 //                                                ->  dedupDinsDelLot()
 //                                                ->  classificaContraFitxers()
 //                                                ->  filtraCandidats()
 //                                                ->  aplicaLimit()
 //                                                ->  tradueixLot()
 //
-//   Les que vénen d'un altre fitxer són les quatre primeres.
+//   Les que vénen d'un altre fitxer són les quatre primeres, i les exclusions
+//   editorials (eines/exclusions-editorials.js).
 //   apartaVisitesGuiades() viu aquí perquè és l'única regla del §«La visita
 //   comentada» d'aquest fitxer i l'única decisió editorial de tot el camí;
 //   tradueixLot() també, perquè és l'única crida a un model de tot el camí.
@@ -52,6 +54,20 @@
 // que ja tenim ha de ser el lot ja net. Si anés després, dues ofertes bessones
 // del mateix lot entrarien totes dues a la cua i el curador les hauria de
 // resoldre a mà, una per una.
+//
+// LES EXCLUSIONS EDITORIALS (aplicaExclusionsEditorials()) van just DESPRÉS de
+// la visita comentada i ABANS de tota deduplicació i classificació. Abans de la
+// classificació perquè una oferta exclosa no ha de ser mai «ja rebutjada» ni
+// «nova»: si la classificació la veiés primer, l'oferta del cinema d'Elna, que
+// ja és a pendents.json com a rebutjada, sortiria com a ja_rebutjada i
+// l'exclusió no s'aplicaria mai —es va veure en la primera passada en sec. El
+// recompte del registre és així el de TOTES les ofertes del flux que cauen en
+// una exclusió, sense mirar dates ni estat. I és on encara es té l'oferta crua,
+// de la qual l'exclusió mira camps. Una oferta exclosa no gasta cap crida a
+// Gemini ni entra a pendents.json. Cap estat no es posa enlloc: l'oferta
+// simplement no entra. Com la visita comentada, el flux la torna a oferir cada
+// setmana i cada setmana cau igual. Les decisions viuen a
+// eines/exclusions-editorials.js.
 //
 // LA PODA. Abans d'escriure, i dins de la mateixa escriptura, es treuen de la
 // cua les files `rebutjat` i `pendent` que ja han passat: l'últim dia de l'acte
@@ -174,6 +190,7 @@ var mapeig = require('./mapeja-adt66.js');
 var dedup = require('./dedup-esdeveniments.js');
 var contraFitxers = require('./dedup-contra-fitxers.js');
 var filtre = require('./filtra-candidats.js');
+var exclusions = require('./exclusions-editorials.js');
 
 // I la neteja de text del flux, que la regla de la visita comentada necessita:
 // «català» arriba escrit «catal&agrave;» dins de l'HTML del camp, i sense
@@ -460,6 +477,8 @@ var AVIS_RESCAT_PORTES_OBERTES =
 //   fusionades   quantes ofertes del lot eren duplicats d'una altra del lot
 //   recompte     { ja_publicat, ja_a_la_cua, ja_rebutjat, nova, total }
 //   descartats   [{ motiu, quantes }, ...]  el que ha tret el filtre previ
+//   exclosesPerCriteri  [{ nom, id, titol }, ...] les ofertes del flux que una
+//                exclusió editorial ha deixat fora, abans de tota classificació
 //   candidates   quantes files han passat TOTS els filtres i tota la
 //                deduplicació, abans del límit i del pressupost
 //   limit        el límit que s'ha aplicat (0 vol dir cap)
@@ -495,8 +514,15 @@ async function sincronitzaProgramada(opcions) {
   //    `RechercheTYPE` i dels tres camps de text ja no en quedaria res.
   var visites = apartaVisitesGuiades(mapejades);
 
+  // 3 bis. Les exclusions editorials. Van aquí pel mateix motiu que la visita
+  //        comentada (encara es té l'oferta crua) i abans de tota
+  //        classificació: una oferta exclosa no és ni «nova» ni «ja rebutjada»,
+  //        no es compta enlloc més i no entra mai a la cua ni gasta cap crida
+  //        a Gemini.
+  var exclusio = aplicaExclusionsEditorials(visites.passen);
+
   // 4. La deduplicació dins del mateix lot, abans de comparar-lo amb res.
-  var intern = dedupDinsDelLot(visites.passen);
+  var intern = dedupDinsDelLot(exclusio.passen);
   var entrants = intern.lot;
 
   // 5. La classificació contra els dos fitxers.
@@ -544,6 +570,7 @@ async function sincronitzaProgramada(opcions) {
     fusionades: intern.fusionades,
     recompte: classificat.recompte,
     descartats: motiusDeDescart(filtrat.descartats),
+    exclosesPerCriteri: exclusio.excloses,
     candidates: candidates.length,
     limit: config.limit,
     retalladesPerLimit: limitat.retallades,
@@ -893,6 +920,42 @@ function motiusDeDescart(descartats) {
 
   llista.sort(function (a, b) { return b.quantes - a.quantes; });
   return llista;
+}
+
+
+// --- Les peces: les exclusions editorials -----------------------------------
+
+// ------------------------------------------------------------
+// Treu dels candidats mapejats (els que encara porten l'oferta crua) els que una
+// exclusió editorial deixa fora (eines/exclusions-editorials.js). Un candidat
+// sense oferta (les proves en fan) no s'exclou mai.
+//
+// No posa cap estat a res: l'exclosa no entra. Torna dues coses:
+//
+//   passen   [candidat, ...]            el que continua el camí
+//   excloses [{ nom, id, titol }, ...]  les que queden fora: nom de l'entrada,
+//                                       SyndicObjectID de l'oferta i títol
+// ------------------------------------------------------------
+function aplicaExclusionsEditorials(candidats) {
+  var llista = Array.isArray(candidats) ? candidats : [];
+  var passen = [];
+  var excloses = [];
+
+  for (var i = 0; i < llista.length; i++) {
+    var entrada = exclusions.trobaExclusio(llista[i].oferta);
+
+    if (entrada === null) {
+      passen.push(llista[i]);
+    } else {
+      excloses.push({
+        nom: entrada.nom,
+        id: String(llista[i].oferta.SyndicObjectID || ''),
+        titol: llista[i].fila.titol
+      });
+    }
+  }
+
+  return { passen: passen, excloses: excloses };
 }
 
 
@@ -1745,6 +1808,7 @@ module.exports = {
   sincronitzaProgramada: sincronitzaProgramada,
   apartaVisitesGuiades: apartaVisitesGuiades,
   dedupDinsDelLot: dedupDinsDelLot,
+  aplicaExclusionsEditorials: aplicaExclusionsEditorials,
   aplicaLimit: aplicaLimit,
   tradueixLot: tradueixLot,
   podaCaducades: podaCaducades
@@ -1843,6 +1907,96 @@ function titolsDe(files) {
     titols.push(files[i].titol);
   }
   return titols.join(',');
+}
+
+// ------------------------------------------------------------
+// Un candidat com el que surt de filtraCandidats(): l'embolcall amb l'oferta
+// crua i la fila mapejada (de la fila, només el títol hi fa falta).
+// ------------------------------------------------------------
+function candidatDeProva(oferta, titol) {
+  return { oferta: oferta, fila: { titol: titol } };
+}
+
+// ------------------------------------------------------------
+// L'oferta del cinema d'Elna tal com va sortir del flux el 30 de setembre de
+// 2026. ATENCIÓ: el flux no és desat enlloc del repositori, de manera que això
+// NO és l'oferta crua sencera sinó la reconstrucció amb els valors literals que
+// `Claude outputs/elna-cinema-identificacio.txt` va copiar del flux. Hi són tots
+// els camps que miren les exclusions (Commune, DETAILADRESSE, RechercheTYPE) i
+// els d'identificació; no hi són els 35 camps.
+// ------------------------------------------------------------
+function ofertaDelCinemaDElna() {
+  return {
+    SyndicObjectID: 'FMALAR066V52Z8V7',
+    SyndicObjectName: 'INAUGURATION ET MISE EN SERVICE DU CINÉMA D\'ELNE',
+    Commune: 'ELNE',
+    DETAILADRESSE: '13 Boulevard Voltaire',
+    DETAILCOMMUNE: '66200 ELNE',
+    COMMUNLIEU: ' ',
+    RechercheTYPE: 'Projection, cinéma',
+    COMMUNCATEGORIE: '<strong><br />Cat&eacute;gorie :</strong> Projection, cinéma',
+    COMMUNTYPE: '<strong>Type :</strong> Culturelle, Loisirs',
+    TRI: '03/10/2026'
+  };
+}
+
+// ------------------------------------------------------------
+// Una oferta sintètica mínima: només els tres camps que miren les exclusions.
+// ------------------------------------------------------------
+function ofertaDeProvaExclusio(commune, adreca, tipus) {
+  return {
+    SyndicObjectID: 'PROVA-' + commune,
+    Commune: commune,
+    DETAILADRESSE: adreca,
+    RechercheTYPE: tipus
+  };
+}
+
+// ------------------------------------------------------------
+// Passa sincronitzaProgramada() en sec, sencera, amb un flux d'una sola oferta
+// (la del cinema d'Elna) i amb un pendents.json que ja la porta com a
+// rebutjada: és el cas real del 30 de setembre de 2026. Comprova que surt com a
+// exclosa i que la classificació no la veu (ni ja_rebutjat ni nova). Substitueix
+// temporalment el flux i la lectura dels dos fitxers, i ho deixa tot com estava.
+// ------------------------------------------------------------
+async function provaExclosaJaRebutjada() {
+  var oferta = ofertaDelCinemaDElna();
+  var filaRebutjada = mapeig.mapejaOfertaADT66(oferta).fila;
+  filaRebutjada.estat = 'rebutjat';
+
+  var fluxOriginal = adt66.sincronitzaADT66;
+  var lecturaOriginal = fs.readFileSync;
+  var resultat;
+
+  adt66.sincronitzaADT66 = function () {
+    return Promise.resolve({ ofertes: [oferta] });
+  };
+  fs.readFileSync = function (nomFitxer, codificacio) {
+    if (nomFitxer === FITXER_PENDENTS) {
+      return JSON.stringify([filaRebutjada]);
+    }
+    if (nomFitxer === FITXER_EVENTS) {
+      return '[]';
+    }
+    return lecturaOriginal.call(fs, nomFitxer, codificacio);
+  };
+
+  try {
+    resultat = await sincronitzaProgramada({ enSec: true, avui: '2026-10-01', pausaMs: 0 });
+  } finally {
+    adt66.sincronitzaADT66 = fluxOriginal;
+    fs.readFileSync = lecturaOriginal;
+  }
+
+  if (resultat.exclosesPerCriteri.length !== 1) {
+    return 'excloses ' + resultat.exclosesPerCriteri.length + ' (esperava 1)';
+  }
+  if (resultat.recompte.ja_rebutjat !== 0 || resultat.recompte.nova !== 0 ||
+      resultat.recompte.total !== 0) {
+    return 'la classificació l\'ha vist: ja_rebutjat ' + resultat.recompte.ja_rebutjat +
+      ', nova ' + resultat.recompte.nova + ', total ' + resultat.recompte.total + ' (esperava 0)';
+  }
+  return '';
 }
 
 // ------------------------------------------------------------
@@ -1980,6 +2134,83 @@ function bateria() {
         var esperat = 'p-sense-fi-futura,p-avui,p-sense-dates,pub-passada,raro-passada';
         return titols === esperat ? '' : 'esperava ' + esperat + ', tinc «' + titols + '»';
       }
+    },
+
+    {
+      nom: 'exclusió: la inauguració del cinema d\'Elna (FMALAR066V52Z8V7) queda exclosa',
+      comprova: function () {
+        var candidat = candidatDeProva(ofertaDelCinemaDElna(), 'Inauguració del cinema d\'Elna');
+        var resultat = aplicaExclusionsEditorials([candidat]);
+        if (resultat.passen.length === 0 && resultat.excloses.length === 1 &&
+            resultat.excloses[0].id === 'FMALAR066V52Z8V7' &&
+            resultat.excloses[0].nom === 'Cinema d\'Elna') {
+          return '';
+        }
+        return 'passen ' + resultat.passen.length + ', excloses ' + resultat.excloses.length +
+          ' (esperava 0 i 1, amb id FMALAR066V52Z8V7)';
+      }
+    },
+
+    {
+      nom: 'exclusió: una oferta d\'Elna en una altra adreça i sense tipus cinema passa',
+      comprova: function () {
+        var oferta = ofertaDeProvaExclusio('ELNE', '4 Place de la République', 'Concert, spectacle');
+        var resultat = aplicaExclusionsEditorials([candidatDeProva(oferta, 'Concert a Elna')]);
+        return resultat.passen.length === 1 && resultat.excloses.length === 0 ? '' :
+          'passen ' + resultat.passen.length + ', excloses ' + resultat.excloses.length +
+          ' (esperava 1 i 0)';
+      }
+    },
+
+    {
+      nom: 'exclusió: «13, Bd Voltaire» a ELNE coincideix, i «113 Bd Voltaire» no',
+      comprova: function () {
+        var ambBd = ofertaDeProvaExclusio('ELNE', '13, Bd Voltaire', 'Conférence');
+        var veina = ofertaDeProvaExclusio('ELNE', '113 Bd Voltaire', 'Conférence');
+        if (exclusions.trobaExclusio(ambBd) === null) {
+          return '«13, Bd Voltaire» a ELNE no ha coincidit';
+        }
+        return exclusions.trobaExclusio(veina) === null ? '' :
+          '«113 Bd Voltaire» ha coincidit i no havia';
+      }
+    },
+
+    {
+      nom: 'exclusió: un cinema d\'un altre municipi (Perpinyà, «Cinéma») passa',
+      comprova: function () {
+        var oferta = ofertaDeProvaExclusio('PERPIGNAN', '1 Rue du Cinéma', 'Projection, cinéma');
+        var resultat = aplicaExclusionsEditorials([candidatDeProva(oferta, 'Sessió a Perpinyà')]);
+        return resultat.passen.length === 1 && resultat.excloses.length === 0 ? '' :
+          'passen ' + resultat.passen.length + ', excloses ' + resultat.excloses.length +
+          ' (esperava 1 i 0)';
+      }
+    },
+
+    {
+      nom: 'exclusió: una oferta d\'Elna amb RechercheTYPE cinéma en una altra adreça s\'exclou',
+      comprova: function () {
+        var oferta = ofertaDeProvaExclusio('ELNE', 'Salle polyvalente', 'Projection, cinéma');
+        return exclusions.trobaExclusio(oferta) !== null ? '' :
+          'la via del tipus «cinéma» no ha coincidit';
+      }
+    },
+
+    {
+      nom: 'exclusió: una oferta exclosa que ja és a pendents.json com a rebutjada es compta com a exclosa, no com a ja_rebutjada',
+      comprova: function () { return provaExclosaJaRebutjada(); }
+    },
+
+    {
+      nom: 'exclusió: l\'exclosa no arriba a les files a traduir; les altres hi arriben',
+      comprova: function () {
+        var candidats = [
+          candidatDeProva(ofertaDelCinemaDElna(), 'Inauguració del cinema d\'Elna'),
+          candidatDeProva(ofertaDeProvaExclusio('ELNE', '4 Place de la République', 'Concert'), 'Concert')
+        ];
+        var resultat = aplicaExclusionsEditorials(candidats);
+        var titols = titolsDe(filesDeCandidats(resultat.passen));
+        return titols === 'Concert' ? '' : 'esperava només «Concert», tinc «' + titols + '»';
+      }
     }
   ];
 }
@@ -2060,6 +2291,12 @@ function informe(resultat, enSec) {
   }
   if (resultat.descartats.length === 0) {
     console.log('    cap descartada');
+  }
+  console.log('');
+  console.log('  excloses per criteri editorial ' + resultat.exclosesPerCriteri.length);
+  for (var x = 0; x < resultat.exclosesPerCriteri.length; x++) {
+    var exclosa = resultat.exclosesPerCriteri[x];
+    console.log('    - ' + exclosa.nom + '  ' + exclosa.id + '  ' + exclosa.titol);
   }
   console.log('');
   console.log('  candidates després del filtre' + ' ' + resultat.candidates);
