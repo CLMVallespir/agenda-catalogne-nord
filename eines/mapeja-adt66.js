@@ -38,7 +38,7 @@
 //   SyndicObjectName  -> `titol`, tal qual. Ve en francès i en MAJÚSCULES;
 //                        no es tradueix ni es canvia de caixa aquí.
 //   TRI               -> `data_inici` i `data_fi`, per classificaDates().
-//   COMMUNDATE        -> `hora`, el primer «De HH:MM».
+//   COMMUNDATE        -> `hora`, el primer «De HH:MM» o «à HH:MM».
 //   COMMUNLIEU        -> `lloc`, net d'HTML i de l'etiqueta «Lieu :».
 //   Commune           -> `municipi`, normalitzat amb eines/pobles-alies.js.
 //   RechercheTYPE     -> `categoria`, traduïda del francès i coercida.
