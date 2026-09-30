@@ -1,25 +1,5 @@
 [
   {
-    "id": "2026-09-30-ateliers-creatifs",
-    "titol": "Tallers creatius",
-    "data_inici": "2026-09-30",
-    "data_fi": "2026-09-30",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Tuïr",
-    "comarca": "Rosselló",
-    "categoria": "Taller",
-    "descripcio_ca": "La Médiathèque de Thuir proposa un taller de creació amb argila autodurescible. Durant dues sessions, els participants poden modelar i pintar les seves pròpies peces. L'activitat està oberta a persones a partir de 10 anys, amb inscripció prèvia per a ambdues jornades.",
-    "descripcio_fr": "La Médiathèque de Thuir propose un atelier de création avec de l'argile autodurcissante. Durant deux séances, les participants peuvent modeler et peindre leurs propres pièces. L'activité est ouverte aux personnes à partir de 10 ans, sur inscription pour les deux journées.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-atlier.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.910Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52QF5P] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-30-marche-hebdomadaire-de",
     "titol": "Mercat setmanal de productors",
     "data_inici": "2026-09-30",
