@@ -2522,5 +2522,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.917Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-01-conferencia-les-barques",
+    "titol": "Conferència: les barques catalanes i l'Atelier des Barques al cor del patrimoni marítim",
+    "data_inici": "2026-10-01",
+    "data_fi": "2026-10-01",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La conferència presenta l'Atelier des Barques, creat pel Departament per a la conservació, la restauració i la valoració d'una col·lecció de vaixells mediterranis. S'hi tractaran les barques catalanes, les tècniques de pesca i la cultura marítima heretada dels avantpassats a través d'una rica iconografia. L'acte té com a objectiu donar a conèixer les activitats de l'Atelier des Barques a Paulilles.",
+    "descripcio_fr": "La conférence présente l'Atelier des Barques, créé par le Département pour la conservation, la restauration et la valorisation d'une collection de bateaux méditerranéens. Les barques catalanes, les techniques de pêche et la culture maritime héritée des anciens seront abordées à travers une riche iconographie. L'événement a pour but de faire découvrir les activités de l'Atelier des Barques à Paulilles.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/0110-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.917Z",
+    "periodicitat": ""
   }
 ]
