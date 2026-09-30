@@ -2693,5 +2693,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.002Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-marius",
+    "titol": "Marius",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "20:30",
+    "lloc": "",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Jean-Philippe Daguerre i set actors de la branca meridional del Grenier de Babouchka interpreten l'obra de Marcel Pagnol. L'espectacle presenta la història de Marius, un jove apassionat per la mar que es debat entre el seu desig d'explorar el món, l'amor per la Fanny i l'estimació pel seu pare César.",
+    "descripcio_fr": "Jean-Philippe Daguerre et sept comédiens de la branche méridionale du Grenier de Babouchka interprètent l'œuvre de Marcel Pagnol. Le spectacle présente l'histoire de Marius, un jeune homme passionné par la mer qui est tiraillé entre son désir d'explorer le monde, son amour pour Fanny et l'affection pour son père César.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marius-dossier-de-diffusion-1-copie.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.021Z",
+    "periodicitat": ""
   }
 ]
