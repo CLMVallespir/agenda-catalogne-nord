@@ -760,26 +760,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YWRE] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-02-concert",
-    "titol": "Concert",
-    "data_inici": "2026-10-02",
-    "data_fi": "2026-10-02",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Sant Feliu d'Amunt",
-    "comarca": "Rosselló",
-    "categoria": "",
-    "descripcio_ca": "L'acte presenta les cançons de Bruyère, que es basen en melodies per narrar travessies interiors. Es tracta d'una proposta d'univers electro poètic, que combina intimitat i força amb la participació de Jeanne Simtob, Studio Sendra, Alice Echaroux, Clarisse Phelut i Jeep Manzanares.",
-    "descripcio_fr": "L'événement présente les chansons de Bruyère, qui s'appuient sur des mélodies pour raconter des traversées intérieures. Il s'agit d'une proposition d'univers électro poétique, qui allie intimité et puissance avec la participation de Jeanne Simtob, Studio Sendra, Alice Echaroux, Clarisse Phelut et Jeep Manzanares.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766130/02-10-im_xialy6.webp",
-    "font_url": "https://www.youtube.com/watch?v=zTF7zf2H1NA",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:09.019Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YYNF] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-02-spectacle-echo-de",
     "titol": "Espectacle Echo de Polynésie",
     "data_inici": "2026-10-02",
