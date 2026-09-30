@@ -4042,5 +4042,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.909Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-lhora-del-joc",
+    "titol": "L'hora del joc",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "16:30",
+    "lloc": "Médiathèque Claude Blazy",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquesta activitat està dirigida a infants a partir de 8 anys i a adults. És una ocasió per divertir-se i descobrir nous jocs.",
+    "descripcio_fr": "Ce rendez-vous est destiné aux enfants dès 8 ans et aux adultes. C'est l'occasion de s'amuser et de découvrir de nouveaux jeux.",
+    "associacio": "Contacter Madame BLASI Mathilde",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766306/-1049008_vqlk4f.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.915Z",
+    "periodicitat": ""
   }
 ]
