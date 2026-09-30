@@ -4061,5 +4061,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.915Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-sism-lart-per",
+    "titol": "SISM - L'art per trobar-nos d'una altra manera",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "Amb motiu de la setmana d'informació sobre la salut mental, el CCAS organitza una jornada de sensibilització al teatre Jean Piat de Canet de Rosselló. S'ofereixen tallers de mandala, pintura i música, seguits de visites a l'exposició Escultors de Catalunya i a la Galerie des Hospices. L'acte vol desestigmatitzar la salut mental i inclou un espai de diàleg i reflexió per al públic general.",
+    "descripcio_fr": "À l'occasion de la semaine d'information sur la santé mentale, le CCAS organise une journée de sensibilisation au théâtre Jean Piat de Canet de Rosselló. Des ateliers de mandala, peinture et musique sont proposés, suivis de visites de l'exposition Escultors de Catalunya et de la Galerie des Hospices. L'événement vise à déstigmatiser la santé mentale et inclut un espace d'échange et de réflexion pour le grand public.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766308/Capture-d-ecran-2026-09-14-170720_fp9t8w.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.974Z",
+    "periodicitat": ""
   }
 ]
