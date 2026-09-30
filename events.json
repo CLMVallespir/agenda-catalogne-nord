@@ -3263,5 +3263,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.878Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-02-exposicio-fotografica-grandeur",
+    "titol": "Exposició fotogràfica «Grandeur Nature»",
+    "data_inici": "2026-10-02",
+    "data_fi": "2026-10-02",
+    "hora": "09:00",
+    "lloc": "",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'exposició fotogràfica «Grandeur Nature» és una proposta d'E. GARROS. S'hi presenten diverses obres de l'autor.",
+    "descripcio_fr": "L'exposition photographique «Grandeur Nature» est une proposition d'E. GARROS. Plusieurs œuvres de l'auteur y sont présentées.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766122/expo-3_gh1rs4.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.940Z",
+    "periodicitat": ""
   }
 ]
