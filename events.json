@@ -3092,5 +3092,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.047Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-30-poesia-heroica",
+    "titol": "Poesia heroica",
+    "data_inici": "2026-09-30",
+    "data_fi": "2026-09-30",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "El Barcarès",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "En el marc dels tallers «Il était une fois», els participants poden imaginar i crear una poesia heroica sobre una fulla de vinya. L'activitat proposa la invenció d'històries i la creació de personatges, permetent que els infants s'expressin amb el dibuix o s'iniciïn en l'escriptura. En acabar, cada nen s'emporta el seu treball i participa en una sessió fotogràfica per a una futura exposició a la mediateca.",
+    "descripcio_fr": "Dans le cadre des ateliers « Il était une fois », les participants peuvent imaginer et créer une poésie héroïque sur une feuille de vigne. L'activité propose l'invention d'histoires et la création de personnages, permettant aux enfants de s'exprimer par le dessin ou de s'initier à l'écriture. À l'issue, chaque enfant repart avec son travail et participe à une séance photo pour une future exposition à la médiathèque.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766087/Capture-d-ecran-2026-09-27-102423_tucptv.webp",
+    "font_url": "https://www.lebarcares.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.074Z",
+    "periodicitat": ""
   }
 ]
