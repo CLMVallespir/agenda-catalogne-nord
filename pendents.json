@@ -3740,26 +3740,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52NAN6] L'acte es fa 9 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-06-decouverte-du-numerique",
-    "titol": "Descobriment del digital: iniciació a Windows 11",
-    "data_inici": "2026-10-06",
-    "data_fi": "2026-10-06",
-    "hora": "10:00",
-    "lloc": "",
-    "municipi": "Canet de Rosselló",
-    "comarca": "Rosselló",
-    "categoria": "Taller",
-    "descripcio_ca": "L'artista i conseller digital Sébastien Noé imparteix un taller sobre el sistema operatiu Windows 11. Els assistents poden aprendre a navegar pel sistema, gestionar fitxers, personalitzar l'entorn i utilitzar les eines bàsiques per dominar l'ordinador en el dia a dia.",
-    "descripcio_fr": "L'artiste et conseiller numérique Sébastien Noé anime un atelier sur le système d'exploitation Windows 11. Les participants peuvent apprendre à naviguer dans le système, gérer les fichiers, personnaliser l'environnement et utiliser les outils de base pour maîtriser l'ordinateur au quotidien.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Conseiller-numerique-Canet-3.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.909Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52PQHC] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-06-les-balades-du",
     "titol": "Les passejades del Conflent: visita de l'Abadia de Sant Miquel de Cuixà",
     "data_inici": "2026-10-06",
