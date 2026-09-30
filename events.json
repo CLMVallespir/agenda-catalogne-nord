@@ -4080,5 +4080,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.974Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-festa-de-la",
+    "titol": "Festa de la ciència",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquesta jornada inclou una xerrada sobre l'alimentació sostenible basada en els productes del mar, adreçada a infants a partir de sis anys. També es proposa un escape game titulat La colère de Téthys per investigar l'origen, l'impacte i les solucions de la contaminació per plàstics, per a majors de catorze anys.",
+    "descripcio_fr": "Cette journée inclut une conférence sur l'alimentation durable basée sur les produits de la mer, destinée aux enfants à partir de six ans. Un escape game intitulé La colère de Téthys est également proposé pour enquêter sur l'origine, l'impact et les solutions de la pollution plastique, pour les personnes âgées de quatorze ans et plus.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766323/Goutte-eau_brdtkk.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.069Z",
+    "periodicitat": ""
   }
 ]
