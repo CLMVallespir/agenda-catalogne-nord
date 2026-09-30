@@ -1160,26 +1160,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52H4GS] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-03-marche-a-la",
-    "titol": "Mercat de brocanteria",
-    "data_inici": "2026-10-03",
-    "data_fi": "2026-10-03",
-    "hora": "07:00",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat de brocanteria s'instal·la cada dissabte a les allées Maillol. Els antiquaris hi presenten les seves peces al públic.",
-    "descripcio_fr": "Le marché à la brocante s'installe chaque samedi aux allées Maillol. Les antiquaires y présentent leurs pièces au public.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766159/GRANDE-BROCANTE---ALLEES-MAILLOL-2_vcyfdu.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.892Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V52H7UW] L'acte es fa 18 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-03-rifle-en-plein",
     "titol": "Rifle a l'aire lliure",
     "data_inici": "2026-10-03",
