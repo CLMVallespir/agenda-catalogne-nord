@@ -4004,5 +4004,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.888Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-les-petites-scenes",
+    "titol": "Les petites scènes: La flûte sans chanter",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'espectacle revisita l'òpera de Mozart amb una proposta poc convencional en la qual intervenen una actriu i un guitarrista. Aquesta versió, plena de màgia i aventures, s'adreça al públic infantil i combina l'aprenentatge amb l'humor. La mainada hi trobarà diversió i els acompanyants hi gaudiran d'una experiència compartida. Es requereix que els infants vagin acompanyats d'un adult, que s'ha d'inscriure prèviament.",
+    "descripcio_fr": "Le spectacle revisite l'opéra de Mozart avec une proposition peu conventionnelle dans laquelle interviennent une comédienne et un guitariste. Cette version, pleine de magie et d'aventures, s'adresse au jeune public et allie apprentissage et humour. Les enfants y trouveront du divertissement et les accompagnateurs profiteront d'une expérience partagée. Il est nécessaire que les enfants soient accompagnés d'un adulte, qui doit s'inscrire au préalable.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766303/2026-les-petites-scenes-OTI-10-07-la-flute-sans-chanter.jpg-800px_pd8ti3.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.904Z",
+    "periodicitat": ""
   }
 ]
