@@ -2370,5 +2370,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.897Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-30-rencontres-cinematographiques-des",
+    "titol": "Rencontres Cinématographiques des Belvédères",
+    "data_inici": "2026-09-30",
+    "data_fi": "2026-09-30",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "El cinema Le Mondial de Cotlliure acull una nova edició de les Rencontres Cinématographiques des Belvédères. Durant uns quants dies, s'hi projecta una programació variada de pel·lícules i curtmetratges per al públic amant del cinema.",
+    "descripcio_fr": "Le cinéma Le Mondial de Collioure accueille une nouvelle édition des Rencontres Cinématographiques des Belvédères. Durant plusieurs jours, une programmation variée de films et de courts-métrages est projetée pour le public amateur de cinéma.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-rencontres-belvedere-2026.webp?width=150&height=120",
+    "font_url": "https://www.rencontrescinebelvederes.fr/tous-les-films-2026/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.898Z",
+    "periodicitat": ""
   }
 ]
