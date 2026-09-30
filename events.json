@@ -2598,5 +2598,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.017Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-01-taller-de-cuina",
+    "titol": "Taller de cuina i nutrició",
+    "data_inici": "2026-10-01",
+    "data_fi": "2026-10-01",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquests tallers s'adrecen a tots els cuidadors familiars que tinguin cura de persones afectades per la malaltia d'Alzheimer o malalties similars. Les sessions proposen pautes d'alimentació i cuina per donar suport als assistents.",
+    "descripcio_fr": "Ces ateliers s'adressent à tous les aidants familiaux qui s'occupent de personnes atteintes de la maladie d'Alzheimer ou de maladies apparentées. Les sessions proposent des conseils en alimentation et en cuisine pour apporter un soutien aux participants.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-atelier-cuisine-et-nutrition.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.026Z",
+    "periodicitat": ""
   }
 ]
