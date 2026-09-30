@@ -3928,5 +3928,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.086Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-06-cafe-literari",
+    "titol": "Cafè literari",
+    "data_inici": "2026-10-06",
+    "data_fi": "2026-10-06",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Sant Martí de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Aquesta trobada a la biblioteca de Sant Martí de Fenollet ofereix un espai per compartir lectures, pel·lícules o exposicions. Els assistents poden presentar obres que els han marcat, com és el cas de la sessió dedicada als llibres destacats de l'any. L'activitat és oberta a tothom, tant als lectors habituals com a les persones que vulguin descobrir noves propostes.",
+    "descripcio_fr": "Cette rencontre à la bibliothèque de Sant Martí de Fenollet offre un espace pour partager des lectures, des films ou des expositions. Les participants peuvent présenter des ouvrages qui les ont marqués, comme lors de la session consacrée aux livres marquants de l'année. L'activité est ouverte à tous, aussi bien aux lecteurs habituels qu'aux personnes souhaitant découvrir de nouvelles propositions.",
+    "associacio": "Contacter Madame BENET Brigitte",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766277/cafe-litteraire-ST-MARTIN_fdsg39.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.893Z",
+    "periodicitat": ""
   }
 ]
