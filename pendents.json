@@ -2080,26 +2080,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52UZ1R] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-04-piece-de-theatre",
-    "titol": "Voyage en Parodie",
-    "data_inici": "2026-10-04",
-    "data_fi": "2026-10-04",
-    "hora": "17:00",
-    "lloc": "Village",
-    "municipi": "Sant Cebrià de Rosselló",
-    "comarca": "Rosselló",
-    "categoria": "Teatre",
-    "descripcio_ca": "L'espectacle presenta una visió paròdica i humorística dels grans clàssics de la cançó francesa, amb l'acompanyament al piano de Victor Garriguenc. A través d'aquest muntatge d'Olivier Payré, el públic pot descobrir curiositats i històries divertides sobre diversos artistes i composicions musicals.",
-    "descripcio_fr": "Le spectacle présente une vision parodique et humoristique des grands classiques de la chanson française, avec l'accompagnement au piano de Victor Garriguenc. À travers cette pièce d'Olivier Payré, le public peut découvrir des curiosités et des histoires amusantes sur divers artistes et compositions musicales.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766229/540687171-632711576583970-2466159614190997310-n_kl5ztp.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.949Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52WUIP] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-04-braderie-petite-enfance",
     "titol": "Braderia de la primera infància",
     "data_inici": "2026-10-04",
