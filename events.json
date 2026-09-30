@@ -3814,5 +3814,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.010Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-a-que-serveix",
+    "titol": "A què serveix l'aigua de l'Aglí?",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Cassanyes",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La jornada inclou dos tallers diferenciats i una pausa per fer pícnic al molí d'Ansignan. El primer taller consisteix a explorar la presa de Cassanyes per entendre el seu paper en la protecció contra les riuades i l'energia hidroelèctrica, mentre que el segon convida a descobrir la fauna i la ripisilva pels voltants del pont aqüeducte romà d'Ansignan. L'activitat està oberta a partir dels 8 anys.",
+    "descripcio_fr": "La journée comprend deux ateliers distincts et une pause pique-nique au moulin d’Ansignan. Le premier atelier consiste à explorer le barrage de Cassagnes pour comprendre son rôle dans la protection contre les crues et l'énergie hydroélectrique, tandis que le second invite à découvrir la faune et la ripisylve aux abords du pont aqueduc romain d’Ansignan. L'activité est ouverte à partir de 8 ans.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766240/A-quoi-sert-l-eau-de-l-Agly-_qbkzxp.webp",
+    "font_url": "https://www.parc-corbieres-fenouilledes.fr/agenda/04-10/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.028Z",
+    "periodicitat": ""
   }
 ]
