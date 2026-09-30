@@ -3016,5 +3016,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.940Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-30-taller-de-creacio",
+    "titol": "Taller de creació de personatge",
+    "data_inici": "2026-09-30",
+    "data_fi": "2026-09-30",
+    "hora": "20:00",
+    "lloc": "",
+    "municipi": "Vilamulaca",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest curs proposa explorar dues metodologies complementàries per a la interpretació teatral, basades en l'obra d'Stanislavski i Michael Tchekhov. L'aprenentatge se centra en la construcció física i psicològica del personatge mitjançant el treball d'objectius, l'acció, la memòria sensorial i l'ús de l'imaginari. Els participants duran a terme exercicis pràctics d'improvisació i treball de textos directament sobre l'escenari.",
+    "descripcio_fr": "Ce stage propose d'explorer deux méthodologies complémentaires pour l'interprétation théâtrale, basées sur les travaux de Stanislavski et Michael Tchekhov. L'apprentissage se concentre sur la construction physique et psychologique du personnage à travers le travail des objectifs, l'action, la mémoire sensorielle et l'utilisation de l'imaginaire. Les participants réaliseront des exercices pratiques d'improvisation et un travail de scènes directement sur le plateau.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766074/Aspres-vilemolaque-stagetheatre_sxkz5l.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.947Z",
+    "periodicitat": ""
   }
 ]
