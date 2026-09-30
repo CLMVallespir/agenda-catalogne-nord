@@ -1,25 +1,5 @@
 [
   {
-    "id": "2026-09-30-marche-du-moulin",
-    "titol": "Mercat del Moulin-à-Vent",
-    "data_inici": "2026-09-30",
-    "data_fi": "2026-09-30",
-    "hora": "07:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Aquest mercat ofereix una gran varietat de productes i constitueix una cita setmanal imprescindible per als clients habituals. És un espai obert a tothom que vulgui fer les seves compres setmanals.",
-    "descripcio_fr": "Ce marché propose une grande variété de produits et constitue un rendez-vous hebdomadaire incontournable pour les habitués. C'est un espace ouvert à tous ceux qui souhaitent faire leurs achats hebdomadaires.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/FMA-Marche-Moulin-a-vent.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.874Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V51ERBH] L'acte es fa 16 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-30-quai-des-bouquinistes",
     "titol": "Quai des Bouquinistes - Mercat de llibres antics i d'ocasió",
     "data_inici": "2026-09-30",
