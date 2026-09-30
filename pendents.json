@@ -1,25 +1,5 @@
 [
   {
-    "id": "2026-09-30-marche-place-de",
-    "titol": "Mercat de la plaça de la República i la plaça dels Poilus",
-    "data_inici": "2026-09-30",
-    "data_fi": "2026-09-30",
-    "hora": "07:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Aquest mercat d'alimentació se celebra a la plaça de la República, al cor del centre històric, i també a la plaça dels Poilus. Els dissabtes, l'oferta s'amplia amb productes ecològics.",
-    "descripcio_fr": "Ce marché alimentaire se tient sur la Place de la République, au cœur du centre historique, ainsi que sur la Place des Poilus. Le samedi, l'offre est complétée par des produits bio.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-republique-1.jpg?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.873Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V51ER70] L'acte es fa 86 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-30-marche-du-moulin",
     "titol": "Mercat del Moulin-à-Vent",
     "data_inici": "2026-09-30",
