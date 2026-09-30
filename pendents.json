@@ -3740,26 +3740,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z7LB] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-01-et-la-lumiere",
-    "titol": "Et la lumière fut !",
-    "data_inici": "2026-10-01",
-    "data_fi": "2026-10-01",
-    "hora": "10:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "Aquesta exposició proposa una reflexió sobre la importància històrica de l'enllumenat en el progrés de la humanitat. També analitza el lloc central que ocupa l'electricitat en la nostra vida quotidiana actual.",
-    "descripcio_fr": "Cette exposition propose une réflexion sur l'importance historique de l'éclairage dans le progrès de l'humanité. Elle analyse également la place centrale qu'occupe l'électricité dans notre vie quotidienne actuelle.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766348/ET-LA-LUMIERE-FUT---photo-1_qrs3fy.webp",
-    "font_url": "https://www.perpignantourisme.com/le-castillet-et-le-musee-casa-pairal/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-22T20:25:04.762Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52TWNU] El títol ve del flux de l'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal. L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Descripció en francès: falta la traducció catalana. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-05-20-festival-natura-de",
     "titol": "Festival Natura de les reserves naturals catalanes",
     "data_inici": "2026-05-20",
