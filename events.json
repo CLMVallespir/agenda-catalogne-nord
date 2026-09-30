@@ -3890,5 +3890,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.937Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-05-els-amics-de",
+    "titol": "Els Amics de la Mediateca - Vetllada \"Au plaisir des mots\"",
+    "data_inici": "2026-10-05",
+    "data_fi": "2026-10-05",
+    "hora": "18:30",
+    "lloc": "",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "La vetllada consisteix en la lectura de textos en prosa o en vers, tant literaris com d'autoria pròpia dels participants. L'activitat es complementa amb cançons i música al voltant de la temàtica \"Rien à déclarer\".",
+    "descripcio_fr": "La soirée consiste en la lecture de textes en prose ou en vers, issus de la littérature ou écrits par les participants eux-mêmes. L'activité est complétée par des chansons et de la musique autour du thème \"Rien à déclarer\".",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766268/Au-plaisir-des-mots---Rien-a-declarer-5-10-26_z5pvdm.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.052Z",
+    "periodicitat": ""
   }
 ]
