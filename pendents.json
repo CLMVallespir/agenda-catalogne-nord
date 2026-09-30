@@ -940,26 +940,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z5T7] Ve marcada «Jeux» sense cap patró de joc de club al títol: la categoria queda buida. Si és un joc d'entitat, és Vida associativa; si és un negoci, la fila no hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-02-cafe-litteraire-des",
-    "titol": "Cafè literari dels Amics de la Mediateca: Paul Melun - Plouc Story",
-    "data_inici": "2026-10-02",
-    "data_fi": "2026-10-02",
-    "hora": "18:00",
-    "lloc": "",
-    "municipi": "Argelers",
-    "comarca": "Rosselló",
-    "categoria": "Conferència",
-    "descripcio_ca": "Aquesta trobada literària gira al voltant de l'obra Plouc Story, de Paul Melun. L'acte presenta l'itinerari d'un jove que, provinent d'un entorn rural, recorre a les xarxes socials per cercar la celebritat, amb un relat que mostra el seu èxit i posterior caiguda.",
-    "descripcio_fr": "Cette rencontre littéraire tourne autour de l'ouvrage Plouc Story, de Paul Melun. L'événement présente l'itinéraire d'un jeune homme qui, issu d'un milieu rural, utilise les réseaux sociaux pour chercher la célébrité, à travers un récit qui montre son ascension et sa chute ultérieure.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766141/Paul-Melun-02-10-26_rsuoxh.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:09.052Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Z7I6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-02-musee-numerique-la",
     "titol": "Museu digital «La biodiversitat»",
     "data_inici": "2026-10-02",
