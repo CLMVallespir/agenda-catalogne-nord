@@ -640,26 +640,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZA0E] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-02-marche-des-embruns",
-    "titol": "Mercat dels Embruns",
-    "data_inici": "2026-10-02",
-    "data_fi": "2026-10-02",
-    "hora": "07:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "Cada divendres al matí, el mercat dels Embruns aplega comerciants al barri de Las Cobas. S'hi poden trobar flors, plantes, productes hortofructícoles ecològics, xarcuteria, mel, melmelades, sucs, sucs de fruita, creacions artesanes i plats cuinats.",
-    "descripcio_fr": "Chaque vendredi matin, le marché des Embruns réunit des commerçants dans le quartier de Las Cobas. Vous y trouverez des fleurs, des plantes, des fruits et légumes bio, de la charcuterie, du miel, des confitures, des jus de fruits, des créations artisanales et des plats cuisinés.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766116/marche-des-embruns-2-2_trcgcy.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.878Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V520Y2J] L'acte es fa 14 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-02-les-veillees-dantan",
     "titol": "Les vetllades d'antany - Octubre",
     "data_inici": "2026-10-02",
