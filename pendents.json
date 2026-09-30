@@ -2720,26 +2720,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZBR4] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-06-atelier-patisserie-adulte",
-    "titol": "Taller de pastisseria per a adults",
-    "data_inici": "2026-10-06",
-    "data_fi": "2026-10-06",
-    "hora": "18:30",
-    "lloc": "",
-    "municipi": "Tuïr",
-    "comarca": "Rosselló",
-    "categoria": "Taller",
-    "descripcio_ca": "Arrenca una nova temporada dedicada a la pastisseria amb tallers pensats per a adults. Durant les sessions, una xef comparteix els seus secrets i tècniques per elaborar des de tartes de temporada fins a postres refinats.",
-    "descripcio_fr": "Une nouvelle saison dédiée à la pâtisserie débute avec des ateliers conçus pour les adultes. Durant les sessions, une cheffe partage ses secrets et techniques pour réaliser aussi bien des tartes de saison que des entremets raffinés.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766278/Programme-A3-2026-2027-ateliers-patisserie-adultes-page-0001_y4tynd.webp",
-    "font_url": "https://caves-byrrh-boutique.fr/ateliers-culinaires/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.896Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52NAN6] L'acte es fa 9 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-06-les-balades-du",
     "titol": "Les passejades del Conflent: visita de l'Abadia de Sant Miquel de Cuixà",
     "data_inici": "2026-10-06",
