@@ -3320,5 +3320,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.961Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-02-taller-descriptura",
+    "titol": "Taller d'escriptura",
+    "data_inici": "2026-10-02",
+    "data_fi": "2026-10-02",
+    "hora": "13:30",
+    "lloc": "",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "La llibreria Le Presse Papier de Tuïr organitza un nou taller d'escriptura obert a tothom, sense que calgui ser escriptor ni tenir experiència prèvia. L'activitat, conduïda per Laure Martinez, proposa exercicis lúdics per estimular la creativitat i gaudir de l'escriptura en un entorn convivial. Les sessions conviden a jugar amb els mots, crear històries i compartir un moment al voltant dels llibres.",
+    "descripcio_fr": "La librairie Le Presse Papier de Tuïr organise un nouvel atelier d'écriture ouvert à tous, sans besoin d'être écrivain ni d'avoir une expérience préalable. L'activité, animée par Laure Martinez, propose des exercices ludiques pour stimuler la créativité et profiter de l'écriture dans un environnement convivial. Les séances invitent à jouer avec les mots, créer des histoires et partager un moment autour des livres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766127/Aspres-thuir-atelierecriturepressepapier_md3579.webp",
+    "font_url": "https://skribi-web.fr/ateliers-ecriture/?fbclid=IwY2xjawUKX1lwZG9mBWV4dG4DYWVtAjEwAGJyaWQRMW5QYkdZUG9yWVpaUGhjRjBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEe8tyySja7EzuPUjdeyxcQ3WVHdIduCg4QmK73EER81e8ZG",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.966Z",
+    "periodicitat": ""
   }
 ]
