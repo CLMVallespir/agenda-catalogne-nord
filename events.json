@@ -2313,5 +2313,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.874Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-30-quai-des-bouquinistes",
+    "titol": "Quai des Bouquinistes - Mercat de llibres antics i d'ocasió",
+    "data_inici": "2026-09-30",
+    "data_fi": "2026-09-30",
+    "hora": "08:00",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Cada dimecres, el mercat de llibres s'instal·la al quai Vauban, estenent-se de vegades per les places Jean Jaurès i François Arago. És un espai ideal per buscar edicions originals, llibres antics, obres d'història, art i civilització, així com documents antics, temàtica regional i còmics.",
+    "descripcio_fr": "Chaque mercredi, le marché aux livres s'installe sur le quai Vauban, s'étendant parfois sur les places Jean Jaurès et François Arago. C'est un espace idéal pour rechercher des éditions originales, des livres anciens, des ouvrages d'histoire, d'art et de civilisation, ainsi que des vieux documents, des thématiques régionales et des bandes dessinées.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-aux-livres-quai-bouquinistes-2.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.875Z",
+    "periodicitat": "cada setmana"
   }
 ]
