@@ -4099,5 +4099,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.069Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-08-taller-de-nadons",
+    "titol": "Taller de nadons lectors",
+    "data_inici": "2026-10-08",
+    "data_fi": "2026-10-08",
+    "hora": "09:30",
+    "lloc": "Médiathèque Claude Blazy",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquest taller és un espai dedicat al llibre i a la lectura adreçat a infants de zero a tres anys acompanyats d'un adult. Les sessions tenen lloc a la mediateca i requereixen inscripció prèvia.",
+    "descripcio_fr": "Cet atelier est un espace dédié au livre et à la lecture destiné aux enfants de zéro à trois ans accompagnés d'un adulte. Les séances ont lieu à la médiathèque et nécessitent une inscription préalable.",
+    "associacio": "Contacter Madame BLASI Mathilde",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766327/flyer-bebes-lecteurs-2024-borne--1-_maj9bt.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.916Z",
+    "periodicitat": ""
   }
 ]
