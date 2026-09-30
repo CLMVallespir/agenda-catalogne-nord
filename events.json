@@ -2731,5 +2731,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.025Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-inauguracio-de-la",
+    "titol": "Inauguració de la Brasserie Nostra",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-04",
+    "hora": "17:00",
+    "lloc": "",
+    "municipi": "Trullars",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La Brasserie Nostra s'inaugura oficialment al Mas Déu de Trullars amb un cap de setmana festiu de presentació de les seves cerveses artesanes. Els visitants poden gaudir d'un ambient de guingueta a l'esplanada del mas, amb una oferta gastronòmica variada i música. L'esdeveniment permet descobrir les noves creacions cerveseres i compartir un moment de convivència.",
+    "descripcio_fr": "La Brasserie Nostra est inaugurée officiellement au Mas Déu de Trullars avec un week-end festif de présentation de ses bières artisanales. Les visiteurs peuvent profiter d'une ambiance guinguette sur l'esplanade du mas, avec une offre gastronomique variée et de la musique. L'événement permet de découvrir les nouvelles créations brassicoles et de partager un moment de convivialité.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-trouillas-nostra.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.074Z",
+    "periodicitat": ""
   }
 ]
