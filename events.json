@@ -3966,5 +3966,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.896Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-sessio-descacs-a",
+    "titol": "Sessió d'escacs a la mediateca",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "La mediateca organitza una sessió de joc d'escacs oberta a tothom. Tant els principiants com els jugadors experimentats hi poden participar per jugar diverses partides.",
+    "descripcio_fr": "La médiathèque organise une session de jeu d'échecs ouverte à tous. Les débutants comme les joueurs confirmés peuvent y participer pour jouer quelques parties.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766301/ChessSet-2_wwwdmp.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.884Z",
+    "periodicitat": ""
   }
 ]
