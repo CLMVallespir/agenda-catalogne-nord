@@ -3909,5 +3909,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.052Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-05-re-veillee-les",
+    "titol": "Ré-veillée les mémoires",
+    "data_inici": "2026-10-05",
+    "data_fi": "2026-10-09",
+    "hora": "",
+    "lloc": "Cinema",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Cinema",
+    "descripcio_ca": "Dins del marc de la setmana blava, el cinema le Lido acull una jornada intergeneracional dedicada a la sèrie de curtmetratges realitzada per Mariana Lhubac i Marc Cousin. L'activitat inclou la projecció dels films sobre Taurinya i Souanyas-Marians, acompanyats de música de Mathies Mazarico, així com una iniciació al joc de cartes el Truc i la inauguració d'una exposició fotogràfica de Louana Fernandez.",
+    "descripcio_fr": "Dans le cadre de la semaine bleue, le cinéma le Lido accueille une journée intergénérationnelle consacrée à la série de courts-métrages réalisée par Mariana Lhubac et Marc Cousin. L'activité comprend la projection des films sur Taurinya et Souanyas-Marians, accompagnés de la musique de Mathies Mazarico, ainsi qu'une initiation au jeu de cartes le Truc et le vernissage d'une exposition photographique de Louana Fernandez.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766276/Capture-219_yx9ods.webp",
+    "font_url": "https://lbdimage.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.086Z",
+    "periodicitat": ""
   }
 ]
