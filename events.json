@@ -3111,5 +3111,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.074Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-01-bebes-lectors",
+    "titol": "Bebès lectors",
+    "data_inici": "2026-10-01",
+    "data_fi": "2026-10-01",
+    "hora": "09:30",
+    "lloc": "",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La mediateca de Canet de Rosselló organitza sessions de lectura per a infants de zero a tres anys. L'activitat, que es realitza en col·laboració amb el Relais Assistantes-Maternelles de la vila, inclou la descoberta de llibres, la lectura d'històries i la interpretació de cançons. Les sessions estan obertes a qualsevol infant acompanyat d'un adult.",
+    "descripcio_fr": "La médiathèque de Canet-en-Roussillon propose des séances de lecture pour les enfants de zéro à trois ans. L'activité, qui est réalisée en collaboration avec le Relais Assistantes-Maternelles de la ville, comprend la découverte de livres, la lecture d'histoires et l'interprétation de comptines. Les séances sont ouvertes à tout enfant accompagné d'un adulte.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766088/image-22_jnirzz.webp",
+    "font_url": "https://www.mediatheques.perpignanmediterraneemetropole.fr/in/fr/coteradieuse/mediatheque-a-camus---canet-en-roussillon",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.879Z",
+    "periodicitat": ""
   }
 ]
