@@ -3080,26 +3080,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z1RR] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-04-26eme-ecofestival",
-    "titol": "26è Ecofestival",
-    "data_inici": "2026-10-04",
-    "data_fi": "2026-10-04",
-    "hora": "11:00",
-    "lloc": "",
-    "municipi": "Ceret",
-    "comarca": "Vallespir",
-    "categoria": "Teatre",
-    "descripcio_ca": "Aquesta edició de l'Ecofestival inclou parades, trobades, animacions i un àpat ecològic. S'hi programen mini-conferències i projeccions d'entrevistes en homenatge a Francis Hallé.",
-    "descripcio_fr": "Cette édition de l'Ecofestival comprend des stands, des rencontres, des animations et un repas bio. Des mini-conférences et des projections d'interviews en hommage à Francis Hallé sont au programme.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Ecofestival-4-octobre-nogarede-1.png?width=150&height=120",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:09.029Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Z26J] Ve marcada només «Festival», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-04-vide-greniers-et",
     "titol": "Mercat de segona mà i de productors",
     "data_inici": "2026-10-04",
