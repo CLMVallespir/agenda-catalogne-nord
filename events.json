@@ -2427,5 +2427,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.910Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-30-itinerari-catala-dels",
+    "titol": "Itinerari català dels trobadors i dels joglars",
+    "data_inici": "2026-09-30",
+    "data_fi": "2026-10-03",
+    "hora": "05:00",
+    "lloc": "",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Aquesta programació convida a submergir-se en l'edat mitjana a través de la música, la història i el patrimoni vinculats als trobadors, joglars i menestrals del Rosselló. L'esdeveniment inclou tallers pedagògics per a infants, jornades d'estudi amb especialistes universitaris, visites musicals nocturnes al castell i concerts a cappella de repertori medieval.",
+    "descripcio_fr": "Cette programmation invite à une immersion au cœur du Moyen Âge à travers la musique, l'histoire et le patrimoine liés aux troubadours, jongleurs et ménestrels du Roussillon. L'événement propose des ateliers pédagogiques pour les enfants, des journées d'études avec des spécialistes universitaires, des visites musicales nocturnes au château et des concerts a cappella de répertoire médiéval.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Capture-d-ecran-2026-09-12-145628.png?width=150&height=120",
+    "font_url": "https://web.digitick.com/index-css5-canetenroussillonjp-pg1.html",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.983Z",
+    "periodicitat": ""
   }
 ]
