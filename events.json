@@ -3852,5 +3852,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.075Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-05-mercat-setmanal",
+    "titol": "Mercat setmanal",
+    "data_inici": "2026-10-05",
+    "data_fi": "2026-10-05",
+    "hora": "08:00",
+    "lloc": "",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat és una oportunitat perquè els veïns i els visitants omplin els seus paners gràcies als productors locals, els productors ecològics i els artesans presents. L'activitat permet adquirir productes directament dels professionals del sector.",
+    "descripcio_fr": "Le marché est l'occasion pour les habitants et les visiteurs de remplir leurs paniers grâce aux producteurs locaux, aux producteurs bio et aux artisans présents. L'activité permet d'acquérir des produits directement auprès des professionnels du secteur.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766260/Rivesaltes-Marche-Sabine-Aiguaviva_vau1wi.webp",
+    "font_url": "https://www.rivesaltes.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.916Z",
+    "periodicitat": "cada setmana"
   }
 ]
