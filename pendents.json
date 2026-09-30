@@ -1740,26 +1740,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z8V7] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-03-fete-des-vendanges",
-    "titol": "Festa de la Verema",
-    "data_inici": "2026-10-03",
-    "data_fi": "2026-10-03",
-    "hora": "15:00",
-    "lloc": "",
-    "municipi": "Ribesaltes",
-    "comarca": "Rosselló",
-    "categoria": "Música",
-    "descripcio_ca": "La celebració aplega vinyataires, autors i editors en una jornada festiva amb activitats per a tots els públics. El programa inclou demostracions de pintura, una dictada gegant, tallers sobre vins dolços naturals, tastos i un concert de Rumba Coumo.",
-    "descripcio_fr": "La célébration rassemble vignerons, auteurs et éditeurs lors d'une journée festive avec des activités pour tous les publics. Le programme inclut des démonstrations de peinture, une dictée géante, des ateliers sur les vins doux naturels, des dégustations et un concert de Rumba Coumo.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766204/Visuel-Fete-des-Vendanges-Rivesaltes_lqltjd.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:09.064Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Z9F9] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-03-la-fete-des",
     "titol": "La festa dels emprenedors d'aquí",
     "data_inici": "2026-10-03",
