@@ -2826,5 +2826,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.029Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-concurs-de-petanca",
+    "titol": "Concurs de petanca",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Font-romeu",
+    "comarca": "Cerdanya",
+    "categoria": "",
+    "descripcio_ca": "El concurs de petanca solidari se celebra a Odeillo en el marc de la campanya d'Octobre Rose. Els beneficis obtinguts es destinen a l'associació Onco Parcours per donar suport a la lluita contra el càncer.",
+    "descripcio_fr": "Le concours de pétanque solidaire se déroule à Odeillo dans le cadre de la campagne d'Octobre Rose. Les bénéfices obtenus sont reversés à l'association Onco Parcours pour soutenir la lutte contre le cancer.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Preparer-une-affiche-petanque.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.050Z",
+    "periodicitat": ""
   }
 ]
