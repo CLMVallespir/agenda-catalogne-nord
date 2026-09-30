@@ -3282,5 +3282,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.940Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-02-concert-amb-al",
+    "titol": "Concert amb Al chemist",
+    "data_inici": "2026-10-02",
+    "data_fi": "2026-10-02",
+    "hora": "21:00",
+    "lloc": "",
+    "municipi": "Bulaternera",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La vila de Bulaternera organitza un concert gratuït a la plaça del poble amb el grup Al chemist. També s'ofereix un àpat amb reserva prèvia a la botiga d'alimentació local.",
+    "descripcio_fr": "La commune de Bulaternera organise un concert gratuit sur la place du village avec le groupe Al chemist. Un repas est également proposé sur réservation auprès de l'épicerie locale.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766124/02-10_fddk2c.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.949Z",
+    "periodicitat": ""
   }
 ]
