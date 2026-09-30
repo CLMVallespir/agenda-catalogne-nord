@@ -3586,5 +3586,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.013Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-festival-souffleurs-dimages",
+    "titol": "Festival Souffleurs d'images",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "11:00",
+    "lloc": "",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La tercera edició del festival Souffleurs d'images combina arts visuals, música i arts escèniques per oferir una experiència cultural variada. El programa inclou tallers, una exposició, actuacions, sessions de pintura en viu i un concert del grup Barrut. L'esdeveniment és obert a tots els públics i disposa de servei de restauració i bar.",
+    "descripcio_fr": "La troisième édition du festival Souffleurs d'images combine arts visuels, musique et spectacle vivant pour offrir une expérience culturelle variée. Le programme inclut des ateliers, une exposition, des performances, des sessions de live painting et un concert du groupe Barrut. L'événement est ouvert à tous les publics et dispose d'un service de restauration et buvette.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766176/SOUFFLEURS-D-IMAGES_zxiols.webp",
+    "font_url": "https://sdi.laumaeditions.fr/#expositions",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.019Z",
+    "periodicitat": ""
   }
 ]
