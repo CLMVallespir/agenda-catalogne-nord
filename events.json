@@ -3738,5 +3738,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.084Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-encants",
+    "titol": "Encants",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "08:00",
+    "lloc": "Espai del Mercat",
+    "municipi": "Castellnou dels Aspres",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "L'associació PINTURA – Couleurs sans frontières organitza una gran fira d'encants oberta a tothom. L'acte té lloc a l'espai del mercat, rere l'església, i serveix per finançar les accions culturals d'aquesta entitat dedicada a la promoció de la pintura a l'aire lliure.",
+    "descripcio_fr": "L'association PINTURA – Couleurs sans frontières organise un grand vide-grenier ouvert à tous. L'événement se déroule sur l'espace du marché, derrière l'église, et permet de financer les actions culturelles de cette entité dédiée à la promotion de la peinture en plein air.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766221/Aspres-castelnou-vide-grenier-4oct_a5jb0k.webp",
+    "font_url": "https://www.pintura66.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.895Z",
+    "periodicitat": ""
   }
 ]
