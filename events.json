@@ -2636,5 +2636,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.902Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-03-solann",
+    "titol": "Solann",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "20:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'artista Solann presenta el seu nou treball discogràfic, que inclou set temes inèdits com \"Thelma et Louise\" i \"Parfois\". L'espectacle permet endinsar-se en l'univers singular de la cantant, caracteritzat per una veu clara, lletres introspectives i una gran intensitat teatral.",
+    "descripcio_fr": "L'artiste Solann présente son nouvel ouvrage discographique, qui comprend sept titres inédits tels que \"Thelma et Louise\" et \"Parfois\". Le spectacle permet de plonger dans l'univers singulier de la chanteuse, caractérisé par une voix claire, des textes introspectifs et une grande intensité théâtrale.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/solann.jpg?width=150&height=120",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.943Z",
+    "periodicitat": ""
   }
 ]
