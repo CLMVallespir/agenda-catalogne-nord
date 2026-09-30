@@ -760,26 +760,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YWRE] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-02-spectacle-echo-de",
-    "titol": "Espectacle Echo de Polynésie",
-    "data_inici": "2026-10-02",
-    "data_fi": "2026-10-02",
-    "hora": "18:30",
-    "lloc": "",
-    "municipi": "Sant Esteve del Monestir",
-    "comarca": "Rosselló",
-    "categoria": "Teatre",
-    "descripcio_ca": "Aquest espectacle combina danses tradicionals, música polinèsia i actuacions captivadores que inclouen el famós Haka. L'activitat permet submergir-se en la cultura polinèsia i està oberta a tots els públics.",
-    "descripcio_fr": "Ce spectacle combine danses traditionnelles, musique polynésienne et performances captivantes incluant le célèbre Haka. L'activité permet de s'immerger dans la culture polynésienne et est ouverte à tous les publics.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766132/pexels-vincent-gerbouin-445991-1170827_ltkmfp.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:09.023Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YZV6] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-02-iaross-jazzebre",
     "titol": "iAROSS",
     "data_inici": "2026-10-02",
