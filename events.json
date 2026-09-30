@@ -2769,5 +2769,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.910Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-ball-de-tarda",
+    "titol": "Ball de tarda",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "14:30",
+    "lloc": "Hôtel de Ville",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Dansa i ball",
+    "descripcio_ca": "Diferents orquestres com Orchestre Baïlamor, Orchestre Jean-Pierre Laurens i Orchestre Alex Lorenzo amenitzen aquestes sessions de ball de saló amb gèneres com el vals, el tango i el pasdoble. L'acte es complementa amb una pausa dolça, begudes lliures i un servei de vestuari gratuït per a tots els assistents. Aquestes trobades convidades a ballar i a compartir una estona de convivència, ja sigui sol, en parella o amb amics.",
+    "descripcio_fr": "Différents orchestres comme l'Orchestre Baïlamor, l'Orchestre Jean-Pierre Laurens et l'Orchestre Alex Lorenzo animent ces séances de danse de salon avec des genres comme la valse, le tango et le paso doble. L'événement est complété par une pause gourmande, des boissons à volonté et un vestiaire gratuit pour tous les participants. Ces rencontres invitent à danser et à partager un moment de convivialité, que ce soit seul, en couple ou entre amis.",
+    "associacio": "Contacter TRADITIONS CATALANES",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ChatGPT-Image-1-sept.-2026--11-42-45.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.997Z",
+    "periodicitat": ""
   }
 ]
