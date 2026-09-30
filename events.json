@@ -3396,5 +3396,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.052Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-02-conferencia-secrets-de",
+    "titol": "Conferència: secrets de les plantes salvatges en la tradició catalana",
+    "data_inici": "2026-10-02",
+    "data_fi": "2026-10-02",
+    "hora": "17:00",
+    "lloc": "",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'entitat Amis de Collioure organitza una conferència a càrrec de Francis Manent. La sessió permet descobrir els secrets i els usos de les plantes salvatges en la tradició catalana.",
+    "descripcio_fr": "L'association Amis de Collioure organise une conférence animée par Francis Manent. La séance permet de découvrir les secrets et les usages des plantes sauvages dans la tradition catalane.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766147/Conferences-amis-de-Collioure-02-10-2026_rrzfge.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.070Z",
+    "periodicitat": ""
   }
 ]
