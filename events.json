@@ -2788,5 +2788,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.997Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-ballada-de-sardanes",
+    "titol": "Ballada de sardanes",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-04",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Ceret",
+    "comarca": "Vallespir",
+    "categoria": "",
+    "descripcio_ca": "La Colla Cireres ofereix una ballada de nou sardanes, amb l'acompanyament musical de la Cobla Sol de Banyuls. En cas de mal temps, l'acte es traslladarà al Gymnase des Tilleuls.",
+    "descripcio_fr": "La Colla Cireres propose une sardane de neuf danses, accompagnée musicalement par la Cobla Sol de Banyuls. En cas de mauvais temps, l'événement sera replié au Gymnase des Tilleuls.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-04-octobre-2026-ballada-colla-cireres-1-page-0001.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.028Z",
+    "periodicitat": ""
   }
 ]
