@@ -1383,8 +1383,8 @@ mateix de la neteja, el curador havia marcat 13 d'aquelles files com a
 `rebutjat` des de `curador.html`, i van quedar ben marcades al fitxer: el
 `marcaRebutjadaALaCua()` desplegat fa la seva feina. Totes 13 eren del 4 de
 setembre, o sigui passades, i han sortit amb la neteja com hauria fet sola
-`podaRebutjatsCaducats()` a la propera sincronització —la poda treu justament
-les rebutjades amb `data_fi` passada. La memòria de rebuig és per a les ofertes
+la poda (`podaCaducades()`, llavors `podaRebutjatsCaducats()`) a la propera
+sincronització —la poda treu justament les rebutjades amb `data_fi` passada. La memòria de rebuig és per a les ofertes
 que poden tornar, i una de passada no torna.
 
 ---

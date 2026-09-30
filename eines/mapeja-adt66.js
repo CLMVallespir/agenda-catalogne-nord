@@ -119,11 +119,11 @@
 //    qualsevol document del projecte, és anterior a aquella data.
 //
 // 2. **El títol no es tradueix ni es passa a caixa normal.** Ve
-//    «LES OCCASIONS DU MULTICOQUE & DU REFIT» i surt igual, amb un avís. La
-//    traducció és feina del curador a tot el projecte (§7 de CLAUDE.md, la
-//    regla del Typebot), i canviar la caixa a màquina espatlla els noms
-//    propis i les sigles. Val més un títol lleig i cert que un d'endreçat i
-//    inventat.
+//    «LES OCCASIONS DU MULTICOQUE & DU REFIT» i surt igual, sense avís. La
+//    traducció la fa després el pas 7 bis d'eines/sincronitza-programada.js,
+//    que és qui escriu l'avís de traducció quan ja sap com ha anat, i canviar
+//    la caixa a màquina aquí espatllaria els noms propis i les sigles. Val més
+//    un títol lleig i cert que un d'endreçat i inventat.
 //
 // 3. **L'`imatge_url` surt amb el `?width=150&height=120` que hi posa
 //    l'ADT66.** 150 px no serveix per a un cartell, i això ja se sap. Aquí
@@ -404,13 +404,12 @@ function mapejaOfertaADT66(ofertaWCF) {
   var oferta = ofertaWCF || {};
   var avisos = [];
 
-  var titol = titolDeProduccio(oferta, avisos);
+  var titol = titolDeProduccio(oferta);
   var quan = datesDeProduccio(oferta, avisos);
   var municipi = municipiDeProduccio(cadena(oferta.Commune), avisos);
   // La descripció es calcula aquí i no dins de la fila perquè els senyals
-  // de més avall també l'han de llegir. Cridar-la dues vegades duplicaria
-  // els avisos que empeny.
-  var descripcio = descripcioDeProduccio(oferta, avisos);
+  // de més avall també l'han de llegir.
+  var descripcio = descripcioDeProduccio(oferta);
 
   var fila = {
     // L'id no s'hereta MAI: el SyndicObjectID de l'oferta no hi entra.
@@ -666,21 +665,20 @@ function esLletra(caracter) {
 
 // ------------------------------------------------------------
 // El títol que va a producció. Ve de `SyndicObjectName`, en francès i en
-// majúscules, i surt tal qual amb un avís: la traducció i la caixa són feina
-// del curador (vegeu el §«QUATRE COSES» de la capçalera).
+// majúscules, i surt tal qual (vegeu el §«QUATRE COSES» de la capçalera).
 // ------------------------------------------------------------
 // Es neteja amb textDeHtml() i NO amb textDeCamp(): `SyndicObjectName` és un
 // camp de text pla, no en porta cap etiqueta francesa al davant, i passar-hi
 // el patró d'etiquetes escapçaria qualsevol títol que dugui dos punts
 // («FESTIVAL : LES NUITS DE…» es quedaria en «LES NUITS DE…»).
-function titolDeProduccio(oferta, avisos) {
-  var titol = textDeHtml(cadena(oferta.SyndicObjectName));
-
-  if (titol !== '') {
-    avisos.push('El títol ve del flux de l\'ADT66 en francès i en majúscules: cal traduir-lo i posar-lo en caixa normal.');
-  }
-
-  return titol;
+//
+// SENSE AVÍS DES DEL 30 DE SETEMBRE DE 2026. Abans en posava un («cal
+// traduir-lo»), escrit aquí, abans de la traducció, i que ningú no esborrava
+// després: sortia a totes les files, també a les ben traduïdes. Qui sap si la
+// fila s'ha traduït és el pas 7 bis d'eines/sincronitza-programada.js, i
+// l'avís que toca l'escriu posaAvisDeTraduccio(), quan ja ho ha intentat.
+function titolDeProduccio(oferta) {
+  return textDeHtml(cadena(oferta.SyndicObjectName));
 }
 
 // ------------------------------------------------------------
@@ -732,16 +730,11 @@ function llocDeProduccio(oferta) {
 // ------------------------------------------------------------
 // La descripció francesa, de `DETAILDESCRIPTIF`. Ve amb HTML i amb
 // «Descriptif de la manifestation :» al davant; totes dues coses fora. La
-// banda catalana queda buida i s'avisa, com al mapeig de recerca.
+// banda catalana queda buida, i SENSE AVÍS pel mateix motiu que el títol
+// (vegeu titolDeProduccio()): l'avís de traducció l'escriu el pas 7 bis.
 // ------------------------------------------------------------
-function descripcioDeProduccio(oferta, avisos) {
-  var text = textDeCamp(oferta.DETAILDESCRIPTIF);
-
-  if (text !== '') {
-    avisos.push('Descripció en francès: falta la traducció catalana.');
-  }
-
-  return text;
+function descripcioDeProduccio(oferta) {
+  return textDeCamp(oferta.DETAILDESCRIPTIF);
 }
 
 // ------------------------------------------------------------
@@ -1686,15 +1679,16 @@ function casosDeProva() {
     },
     {
       nom: 'El tag va primer, davant de tots els avisos',
+      // Sense TRI a posta: és el que fa sortir un avís darrere del tag. Fins al
+      // 30 de setembre de 2026 el feia sortir l'avís del títol, que ja no hi és.
       entrada: {
         SyndicObjectID: 'FMALAR066NOMES1',
         SyndicObjectName: 'CONCERT DE PRIMAVERA',
-        TRI: '01/07/2026',
         Commune: 'ELNE',
         RechercheTYPE: 'Concert'
       },
       comprova: function (fila, problemes) {
-        if (fila.nota_curador.indexOf('[ADT66 id: FMALAR066NOMES1] El títol ve') !== 0) {
+        if (fila.nota_curador.indexOf('[ADT66 id: FMALAR066NOMES1] L\'oferta de l\'ADT66 no porta cap data') !== 0) {
           problemes.push('el tag no és al davant de tot: «' + fila.nota_curador + '»');
         }
       },
@@ -1782,7 +1776,9 @@ function casosDeProva() {
     },
     {
       nom: 'Sense SyndicObjectID: cap tag, i no és cap error de forma',
-      entrada: { SyndicObjectName: 'CONCERT SENSE ID', TRI: '01/07/2026', Commune: 'ELNE' },
+      // Sense TRI a posta, pel mateix motiu que el cas del tag de dalt: cal
+      // algun avís del mapeig per veure que surt encara que no hi hagi tag.
+      entrada: { SyndicObjectName: 'CONCERT SENSE ID', Commune: 'ELNE' },
       comprova: function (fila, problemes) {
         if (fila.nota_curador.indexOf('[ADT66 id:') !== -1) {
           problemes.push('hi ha un tag i l\'oferta no porta cap identificador');

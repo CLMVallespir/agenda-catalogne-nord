@@ -132,9 +132,10 @@ programar**:
 
 - `preparaEsdeveniments()` (`app.js:112`) amaga el que ja s'ha acabat mirant
   `data_fi >= avui`. Un curs vigent hi passa; un de caducat desapareix sol.
-- `podaRebutjatsCaducats()` (`eines/sincronitza-programada.js:1311`) poda les
-  files rebutjades amb `data_fi < avui`. Una permanent rebutjada s'esborra de la
-  cua quan la seva vigència s'acaba, no abans.
+- `podaCaducades()` (`eines/sincronitza-programada.js`) poda les files
+  rebutjades —i, des del 30 de setembre de 2026, també les pendents— amb
+  `data_fi < avui`. Una permanent rebutjada s'esborra de la cua quan la seva
+  vigència s'acaba, no abans.
 - `passaFiltreDates()` (`app.js:260`) ja fa **tocar** el període
   `[data_inici, data_fi]` amb l'interval triat, que és exactament el
   comportament que la decisió demana del filtre de dates.

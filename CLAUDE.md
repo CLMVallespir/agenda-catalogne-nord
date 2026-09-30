@@ -181,6 +181,22 @@ Regles de què depèn el codi:
 - **Publicar no ha canviat:** dues escriptures, `events.json` primer i **treure**
   la fila de `pendents.json` després (vegeu `NOTES.md`). Publicar treu, rebutjar
   marca. Decidit el 3 de setembre de 2026.
+- **La poda de l'Action treu les `pendent` i les `rebutjat` que ja han
+  passat.** Ho fa `podaCaducades()` a `eines/sincronitza-programada.js`, dins
+  de cada escriptura: l'últim dia de l'acte —`data_fi`, o `data_inici` si
+  `data_fi` és buida— anterior a avui. `publicat`, qualsevol estat inesperat i
+  qualsevol fila sense cap data utilitzable no es poden mai. El registre del
+  run compta les dues per separat.
+  **Canviat el 30 de setembre de 2026.** Fins llavors la regla, escrita al
+  bàner d'aquell fitxer, deia que les `pendent` no es podaven mai «perquè la
+  cua és del curador». Dues coses l'han girada. La cua s'omplia d'actes
+  acabats: el 29 de setembre, 129 de les 167 pendents ja havien passat, i una
+  pendent passada ja no es pot publicar. I una pendent passada fa nosa: la capa
+  1 del §4 ter la troba pel tag i diu `ja_a_la_cua`, de manera que la data
+  següent d'una oferta que es repeteix no entra mai. No es perd cap memòria de
+  rebuig ni de cua: la vora és la mateixa de la finestra de `filtraCandidats()`,
+  o sigui que una oferta caducada el filtre ja la llença abans d'arribar
+  enlloc, i la fila podada queda a l'historial de git de `pendents.json`.
 - **En fusionar dues files duplicades, l'estat es resol per precedència i mai
   per posició.** L'ordre definitiu, de més fort a més fluix, és
   **`publicat` > `rebutjat` > `pendent`** (i, si cap dels dos no és cap dels
@@ -206,6 +222,9 @@ Regles de què depèn el codi:
   `eines/dedup-esdeveniments.js` tracta els tres estats i els resol per
   precedència; `eines/dedup-contra-fitxers.js` tracta els tres estats i en
   torna una etiqueta cadascun (§4 ter). Decidit el 3 de setembre de 2026.
+  `eines/sincronitza-programada.js` escriu només files `pendent` i en poda les
+  `pendent` i les `rebutjat` caducades (la regla de dalt, del 30 de setembre de
+  2026).
 
 ## 4 ter. Ancoratge contra el que ja tenim — dues capes, i el biaix cap a encuar
 

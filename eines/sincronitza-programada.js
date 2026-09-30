@@ -31,9 +31,9 @@
 //
 //   - Les files que ESCRIU són sempre `pendent`: surten de mapejaOfertaADT66().
 //   - Les files que JA HI HA no es toquen mai, amb una excepció comptada: la
-//     poda del §«La poda» d'aquí sota, que només mira `estat === 'rebutjat'`
-//     —comparació explícita, mai un `!== 'pendent'`— i mai `pendent` ni
-//     `publicat`.
+//     poda del §«La poda» d'aquí sota, que mira `estat === 'rebutjat'` i
+//     `estat === 'pendent'` —dues comparacions explícites, mai un
+//     `!== 'publicat'`— i mai `publicat` ni cap estat inesperat.
 //   - La deduplicació de la capa 1 mira els TRES estats sense filtrar-ne cap:
 //     ho fa eines/dedup-contra-fitxers.js i aquí no s'hi afegeix res.
 //
@@ -54,12 +54,20 @@
 // resoldre a mà, una per una.
 //
 // LA PODA. Abans d'escriure, i dins de la mateixa escriptura, es treuen de la
-// cua les files amb `estat === 'rebutjat'` i `data_fi` anterior a avui. És
-// segur perquè el flux de l'ADT66 només ofereix actes futurs: una oferta ja
-// passada no pot tornar, i per tant no cal recordar-ne el rebuig. Les files
-// `pendent` NO es poden mai, sigui quina sigui la data —la cua és del curador
-// i ningú més no en treu res—, i les `rebutjat` sense `data_fi` tampoc: no es
-// pot dir que hagin passat.
+// cua les files `rebutjat` i `pendent` que ja han passat: l'últim dia de l'acte
+// —`data_fi`, o `data_inici` si `data_fi` és buida— anterior a avui. És la
+// mateixa vora de sota que fa servir la finestra de filtraCandidats(), i
+// d'aquí ve que sigui segur: una oferta que ja ha passat, el filtre la
+// llença igualment, o sigui que no cal recordar-ne res. Una fila sense cap
+// data utilitzable es queda: no es pot dir que hagi passat.
+//
+// FINS AL 30 DE SETEMBRE DE 2026 AQUÍ DEIA que les `pendent` no es podaven
+// mai, «perquè la cua és del curador». Va canviar perquè la cua s'omplia
+// d'actes acabats: el 29 de setembre, 129 de les 167 pendents ja havien
+// passat. Una pendent passada ja no es pot publicar, i a més fa nosa: la capa
+// 1 la troba pel tag i diu `ja_a_la_cua`, de manera que la propera data d'una
+// oferta que es repeteix no entra. `publicat` i qualsevol estat inesperat no
+// es poden mai.
 //
 // EL LÍMIT `--limit=N` és un interruptor de mà i prou: talla el nombre de
 // files candidates després dels filtres i de tota la deduplicació. Ja no hi ha
@@ -81,24 +89,34 @@
 // docs/HANDOFF-ADT66.md §4: la capa 2 continua inerta per a aquesta font.
 // Traduir aquí NO l'activa, i no és cap descuit.
 //
-// DOS CASOS, I NO ES BARREGEN MAI:
+// TRES CASOS, I NO ES BARREGEN MAI:
 //
 //   PRESSUPOST EXHAURIT -> la fila NO s'escriu. Torna sola la propera passada:
 //     el flux la torna a oferir, la classificació la torna a dir `nova` i entra
 //     a la cua de la vegada següent. Cap tercer fitxer d'estat, cap marca, res
 //     a recordar (§3 de CLAUDE.md: l'estat viu en dos JSON i prou).
-//   CRIDA FALLIDA (xarxa, 429, JSON il·legible, model que torna buit) -> la
-//     fila S'ESCRIU igualment, amb el títol i el text francesos tal com
-//     arriben, i amb un avís a `nota_curador`. Un reintent per fila com a
-//     màxim; després, s'encua i se segueix. UNA FILA QUE PETA NO ATURA MAI EL
-//     RUN. El motiu és el biaix del §4 ter de CLAUDE.md —si dubtes, ENCUA—: si
-//     la fallada descartés, una fila que petés sempre no entraria mai a la cua,
-//     i un acte que ningú no veu és pitjor que un acte en francès.
+//   QUOTA EXHAURIDA (un 429 amb RESOURCE_EXHAUSTED) -> exactament igual que el
+//     pressupost exhaurit. El primer que arriba atura les crides, sense
+//     reintent: ni aquella fila ni cap de les que venen darrere no s'escriuen,
+//     i totes tornen la propera passada.
+//   CRIDA FALLIDA (qualsevol altra: xarxa, un altre codi, JSON il·legible,
+//     model que torna buit) -> la fila S'ESCRIU igualment, amb el títol i el
+//     text francesos tal com arriben, i amb un avís a `nota_curador`. Un
+//     reintent per fila com a màxim; després, s'encua i se segueix. UNA FILA
+//     QUE PETA NO ATURA MAI EL RUN. El motiu és el biaix del §4 ter de
+//     CLAUDE.md —si dubtes, ENCUA—: si la fallada descartés, una fila que
+//     petés sempre no entraria mai a la cua, i un acte que ningú no veu és
+//     pitjor que un acte en francès.
 //
-//   El 429 és, doncs, una crida fallida i no un cas a part. Si la quota del dia
-//   és morta, la passada encua el lot sencer en francès amb l'avís posat: és
-//   incòmode, es veu de seguida al registre del run i és la direcció bona de
-//   l'error.
+//   PER QUÈ LA QUOTA NO ÉS UNA CRIDA FALLIDA MÉS. Fins al 30 de setembre de
+//   2026 ho era, i el 22 de setembre ho va demostrar: 44 de les 46 últimes
+//   files de la passada van entrar en francès, totes seguides, quan la quota
+//   del dia es va acabar. El forat de «la fila que peta sempre» aquí no hi és:
+//   la quota no depèn de la fila i es refà l'endemà. Una cosa que val més saber
+//   que descobrir: Google també respon 429 RESOURCE_EXHAUSTED quan es passa del
+//   límit per minut. La pausa entre crides ho evita; si mai passés, la passada
+//   s'aturaria d'hora i la resta tornaria la setmana següent, que és la
+//   direcció bona de l'error.
 //
 // EL PRESSUPOST són 300 crides per passada, no les 500 del dia: els altres 200,
 // marge inclòs, són per al camí de correu del Worker, que comparteix la quota
@@ -115,6 +133,8 @@
 //
 // Ús des del terminal (Node 18 o superior, cap dependència):
 //
+//   node eines/sincronitza-programada.js --proves   -> passa la bateria de proves
+//                                                      (sense xarxa, no escriu)
 //   node eines/sincronitza-programada.js --en-sec   -> ho fa tot MENYS escriure
 //                                                      i sense cridar Gemini
 //   node eines/sincronitza-programada.js            -> tradueix i escriu
@@ -452,7 +472,8 @@ var AVIS_RESCAT_PORTES_OBERTES =
 //   noves        les files que s'escriuen (o s'escriurien, en sec). No és el
 //                mateix que `candidates`: el pressupost de crides n'hi pot
 //                haver deixat fora
-//   podades      les files rebutjades i caducades que s'han tret de la cua
+//   podadesRebutjades  les files `rebutjat` caducades que s'han tret de la cua
+//   podadesPendents    les files `pendent` caducades que s'han tret de la cua
 //   escrit       cert si s'ha escrit de debò a pendents.json
 //   reintents    quants cops ha calgut reintentar el PUT per conflicte de sha
 //                (0 = ha entrat de primera)
@@ -500,17 +521,19 @@ async function sincronitzaProgramada(opcions) {
   //        i no més amunt: la capa 2 de la deduplicació compara títols i el lot
   //        hi ha d'arribar en francès, que és el que declara FONT_ADT66. El
   //        §«La traducció a la ingestió» de dalt del fitxer hi té el perquè i
-  //        els dos casos —pressupost exhaurit i crida fallida— separats.
+  //        els tres casos —pressupost exhaurit, quota exhaurida i crida
+  //        fallida— separats.
   var traduit = await tradueixLot(limitat.files, config);
   var noves = traduit.files;
 
   // 8. La poda i l'escriptura, que són una sola operació sobre el fitxer.
-  var podat = podaRebutjatsCaducats(cua.dades, config.avui);
+  var podat = podaCaducades(cua.dades, config.avui);
+  var quantesPodades = podat.rebutjades.length + podat.pendents.length;
   var escrit = false;
   var reintents = 0;
 
-  if (!config.enSec && (noves.length > 0 || podat.podades.length > 0)) {
-    reintents = await escriuCua(noves, podat.podades.length, config);
+  if (!config.enSec && (noves.length > 0 || quantesPodades > 0)) {
+    reintents = await escriuCua(noves, podat.rebutjades.length, podat.pendents.length, config);
     escrit = true;
   }
 
@@ -526,7 +549,8 @@ async function sincronitzaProgramada(opcions) {
     retalladesPerLimit: limitat.retallades,
     traducio: traduit.informe,
     noves: noves,
-    podades: podat.podades,
+    podadesRebutjades: podat.rebutjades,
+    podadesPendents: podat.pendents,
     escrit: escrit,
     reintents: reintents
   };
@@ -940,8 +964,8 @@ function comparaPerDataInici(a, b) {
 // Tradueix el lot. Torna { files, informe }.
 //
 // `files` són les files que s'han d'escriure: totes les que han arribat a tenir
-// crida, tant si ha anat bé com si no. Les que s'han quedat sense pressupost NO
-// hi són, i tornaran soles la propera passada.
+// crida, tant si ha anat bé com si no. Les que s'han quedat sense pressupost o
+// sense quota NO hi són, i tornaran soles la propera passada.
 //
 // ES TRADUEIX PER ORDRE D'IMMINÈNCIA, no per l'ordre del flux. El que es queda
 // fora del pressupost ha de ser el que passa més tard, que encara serà dins la
@@ -963,15 +987,25 @@ function comparaPerDataInici(a, b) {
 //   motiusDeFallada  [{ motiu, quantes }, ...] per què han petat les crides
 //   retalladesPerPressupost  files que no s'escriuen perquè no han tingut
 //                crida. NO són cap descart: tornen a la propera passada
+//   exhauridesPerQuota  files que no s'escriuen perquè Gemini ha dit que la
+//                quota s'ha acabat: la que ha rebut el 429 i totes les que
+//                venien darrere. Tampoc no són cap descart, i es compten a
+//                part del pressupost: l'un és nostre, l'altra és de Google
+//   motiuDeQuota el 429 tal com l'ha dit Gemini, retallat, o '' si no n'hi ha
+//                hagut cap
+//   limitDeQuota quin límit diu Google que s'ha acabat —per minut o per dia, i
+//                de quin model—, llegit del cos sencer del 429 abans de
+//                retallar-lo; '' si no n'hi ha hagut cap. Vegeu
+//                descriuLimitDeQuota()
 //
 // PER QUÈ `fallades` I `senseMateria` VAN SEPARADES. La fila acaba igual —sense
 // text català i amb el mateix avís—, però la causa no té res a veure i el que
 // se n'ha de fer, tampoc. Un `senseMateria` alt vol dir que el flux porta
 // ofertes primes i que el curador hi haurà de escriure a mà: és una dada sobre
 // la font. Un `fallades` alt vol dir que alguna cosa NOSTRA no funciona —la
-// clau, el nom del model, la quota, la mida de la resposta— i s'ha d'arreglar
-// avui. Barrejar-les feia invisible la segona, que és l'única de les dues que
-// és un error.
+// clau, el nom del model, la mida de la resposta— i s'ha d'arreglar avui.
+// Barrejar-les feia invisible la segona, que és l'única de les dues que és un
+// error. La quota exhaurida ja no hi compta: va a `exhauridesPerQuota`.
 // ------------------------------------------------------------
 async function tradueixLot(files, config) {
   var llista = Array.isArray(files) ? files : [];
@@ -985,12 +1019,21 @@ async function tradueixLot(files, config) {
     fallades: 0,
     senseMateria: 0,
     motiusDeFallada: {},
-    retalladesPerPressupost: 0
+    retalladesPerPressupost: 0,
+    exhauridesPerQuota: 0,
+    motiuDeQuota: '',
+    limitDeQuota: ''
   };
 
-  // Sense crida no es tradueix res i les files surten tal com han entrat. No és
-  // cap error: en sec és el que ha de passar.
+  // Sense crida no es tradueix res i les files surten amb el títol i el text
+  // francesos tal com han entrat. No és cap error: en sec és el que ha de
+  // passar, i sense clau és el que diu el §7 bis de CLAUDE.md. Però l'avís hi
+  // va igualment: el mapeig ja no n'escriu cap de traducció, i una fila en
+  // francès sense avís no ho diria al curador.
   if (config.cridaGemini === null) {
+    for (var f = 0; f < llista.length; f++) {
+      posaAvisDeTraduccio(llista[f], AVIS_NO_TRADUIT);
+    }
     return { files: llista, informe: informe };
   }
 
@@ -1000,17 +1043,34 @@ async function tradueixLot(files, config) {
   ordenades.sort(comparaPerDataInici);
 
   var escrites = [];
+  var quotaExhaurida = false;
 
   for (var i = 0; i < ordenades.length; i++) {
+    // Un cop Gemini ha dit que la quota s'ha acabat, ja no es crida més: les
+    // files que queden no s'escriuen i tornaran la propera passada.
+    if (quotaExhaurida === true) {
+      informe.exhauridesPerQuota++;
+      continue;
+    }
+
     // El pressupost es mira ABANS de la crida. Una fila que no arriba a tenir
-    // crida no s'escriu: és l'únic cas de tot el fitxer en què una fila bona es
-    // queda fora, i el flux la tornarà a oferir.
+    // crida no s'escriu, i el flux la tornarà a oferir.
     if (informe.crides >= config.pressupost) {
       informe.retalladesPerPressupost++;
       continue;
     }
 
     var sortida = await tradueixUnaFila(ordenades[i], config, informe);
+
+    // La fila que ha rebut el 429 es tracta com si no hagués tingut crida.
+    if (sortida.quota === true) {
+      quotaExhaurida = true;
+      informe.exhauridesPerQuota++;
+      informe.motiuDeQuota = String(sortida.motiu).slice(0, MAX_MOTIU_FALLADA);
+      informe.limitDeQuota = descriuLimitDeQuota(sortida.motiu);
+      continue;
+    }
+
     aplicaTraduccio(ordenades[i], sortida, informe);
     escrites.push(ordenades[i]);
   }
@@ -1037,11 +1097,13 @@ function motiusOrdenats(comptes) {
 }
 
 // ------------------------------------------------------------
-// Fa la crida d'una fila i torna { ok, camps, motiu }:
+// Fa la crida d'una fila i torna { ok, camps, motiu, quota }:
 //
 //   ok      cert si el model ha respost amb un objecte llegible
 //   camps   l'objecte tal com l'ha dit el model, sense mirar-ne cap camp
 //   motiu   el missatge de l'últim error, quan `ok` és fals
+//   quota   cert si Gemini ha respost que la quota s'ha acabat. Llavors no es
+//           reintenta: el reintent tornaria a topar amb el mateix 429
 //
 // NO LLANÇA MAI. Una crida que peta és una fila amb avís, no un run aturat.
 //
@@ -1054,7 +1116,7 @@ async function tradueixUnaFila(fila, config, informe) {
 
   for (var intent = 0; intent < INTENTS_PER_FILA; intent++) {
     if (informe.crides >= config.pressupost) {
-      return { ok: false, camps: null, motiu: motiu };
+      return { ok: false, camps: null, motiu: motiu, quota: false };
     }
 
     // La pausa va ENTRE crides: abans de la primera de la passada no hi ha res
@@ -1067,13 +1129,120 @@ async function tradueixUnaFila(fila, config, informe) {
 
     try {
       var camps = await config.cridaGemini(fila);
-      return { ok: true, camps: camps, motiu: '' };
+      return { ok: true, camps: camps, motiu: '', quota: false };
     } catch (error) {
       motiu = error.message;
+      if (esQuotaExhaurida(motiu)) {
+        return { ok: false, camps: null, motiu: motiu, quota: true };
+      }
     }
   }
 
-  return { ok: false, camps: null, motiu: motiu };
+  return { ok: false, camps: null, motiu: motiu, quota: false };
+}
+
+// ------------------------------------------------------------
+// Diu si el missatge d'una crida fallida és el 429 de quota exhaurida. Calen
+// les dues coses: el codi, que el posa demanaTraduccioGemini(), i l'estat
+// RESOURCE_EXHAUSTED, que ve dins del cos de la resposta de Google.
+// ------------------------------------------------------------
+function esQuotaExhaurida(motiu) {
+  var text = String(motiu);
+  return text.indexOf('codi 429') !== -1 && text.indexOf('RESOURCE_EXHAUSTED') !== -1;
+}
+
+// ------------------------------------------------------------
+// Diu quin límit de Google s'ha acabat, llegit del cos del 429: per minut o per
+// dia, el valor i el model. NOMÉS ÉS PER AL REGISTRE DEL RUN: el tall per quota
+// fa el mateix sigui quin sigui el límit.
+//
+// Es llegeix del cos SENCER, no del motiu retallat: Google ho posa al final, a
+// `error.details`, dins de les `violations` d'un QuotaFailure, i els primers
+// MAX_MOTIU_FALLADA caràcters no hi arriben. El període surt del `quotaId`, que
+// porta «PerDay» o «PerMinute» al nom. Si el cos no es pot llegir o no ho diu,
+// ho diu així i no ho endevina.
+// ------------------------------------------------------------
+function descriuLimitDeQuota(motiu) {
+  var violacions = violacionsDeQuota(motiu);
+
+  if (violacions.length === 0) {
+    return 'Google no diu quin límit és';
+  }
+
+  var parts = [];
+  for (var i = 0; i < violacions.length; i++) {
+    parts.push(descriuViolacio(violacions[i]));
+  }
+
+  return parts.join(' | ');
+}
+
+// ------------------------------------------------------------
+// Les `violations` de tots els QuotaFailure del cos d'un 429, o [] si el cos
+// no és JSON o no en porta cap.
+// ------------------------------------------------------------
+function violacionsDeQuota(motiu) {
+  var text = String(motiu);
+  var inici = text.indexOf('{');
+  var fi = text.lastIndexOf('}');
+
+  if (inici === -1 || fi === -1 || fi < inici) {
+    return [];
+  }
+
+  var cos;
+  try {
+    cos = JSON.parse(text.substring(inici, fi + 1));
+  } catch (error) {
+    return [];
+  }
+
+  if (!cos || !cos.error || !Array.isArray(cos.error.details)) {
+    return [];
+  }
+
+  var violacions = [];
+  for (var i = 0; i < cos.error.details.length; i++) {
+    var detall = cos.error.details[i];
+    if (detall && Array.isArray(detall.violations)) {
+      violacions = violacions.concat(detall.violations);
+    }
+  }
+
+  return violacions;
+}
+
+// ------------------------------------------------------------
+// Una violació de quota en una línia llegible: «per dia, límit 500 · model
+// gemini-3.1-flash-lite · GenerateRequestsPerDayPerProjectPerModel-FreeTier».
+// ------------------------------------------------------------
+function descriuViolacio(violacio) {
+  var id = '';
+  if (violacio && typeof violacio.quotaId === 'string') {
+    id = violacio.quotaId;
+  }
+
+  var model = 'model no dit';
+  if (violacio && violacio.quotaDimensions && typeof violacio.quotaDimensions.model === 'string') {
+    model = 'model ' + violacio.quotaDimensions.model;
+  }
+
+  var periode = 'període no dit';
+  if (id.indexOf('PerDay') !== -1) {
+    periode = 'per dia';
+  } else if (id.indexOf('PerMinute') !== -1) {
+    periode = 'per minut';
+  }
+
+  if (violacio && typeof violacio.quotaValue === 'string') {
+    periode = periode + ', límit ' + violacio.quotaValue;
+  }
+
+  if (id === '') {
+    id = 'sense quotaId';
+  }
+
+  return periode + ' · ' + model + ' · ' + id;
 }
 
 // ------------------------------------------------------------
@@ -1296,34 +1465,73 @@ function analitzaJsonDeGemini(text) {
 // --- Les peces: la poda -----------------------------------------------------
 
 // ------------------------------------------------------------
-// Treu de la cua les files rebutjades que ja han passat. Les dues condicions
-// són explícites i totes dues han de ser certes:
+// Treu de la cua les files rebutjades i les pendents que ja han passat. Per
+// cada fila, dues condicions explícites que han de ser certes totes dues:
 //
-//   estat === 'rebutjat'   mai un `!== 'pendent'`: una fila amb un estat nou o
+//   estat === 'rebutjat' o estat === 'pendent'
+//                          mai un `!== 'publicat'`: una fila amb un estat nou o
 //                          inesperat s'ha de poder veure, no desaparèixer
-//   data_fi < avui         i `data_fi` ha de ser una data de debò: la fila
-//                          rebutjada sense data no es pot dir que hagi passat,
-//                          i es queda
+//   últim dia < avui       vegeu darrerDiaDeLActe(). Una fila sense cap data
+//                          utilitzable no es pot dir que hagi passat, i es
+//                          queda
 //
-// Torna { cua, podades } amb les files senceres, mai només els comptes: el
-// registre del run n'ha de poder dir els títols.
+// Torna { cua, rebutjades, pendents } amb les files senceres, mai només els
+// comptes: el registre del run n'ha de poder dir els títols. Les dues llistes
+// van separades perquè el registre les ha de comptar per separat.
 // ------------------------------------------------------------
-function podaRebutjatsCaducats(files, avui) {
+function podaCaducades(files, avui) {
   var llista = Array.isArray(files) ? files : [];
   var cua = [];
-  var podades = [];
+  var rebutjades = [];
+  var pendents = [];
 
   for (var i = 0; i < llista.length; i++) {
     var fila = llista[i];
+    var caducada = esCaducada(fila, avui);
 
-    if (fila.estat === 'rebutjat' && esData(fila.data_fi) && fila.data_fi < avui) {
-      podades.push(fila);
+    if (fila.estat === 'rebutjat' && caducada) {
+      rebutjades.push(fila);
+    } else if (fila.estat === 'pendent' && caducada) {
+      pendents.push(fila);
     } else {
       cua.push(fila);
     }
   }
 
-  return { cua: cua, podades: podades };
+  return { cua: cua, rebutjades: rebutjades, pendents: pendents };
+}
+
+// ------------------------------------------------------------
+// Diu si l'acte d'una fila ja ha passat. Una fila sense cap data utilitzable
+// no ha passat: no es pot dir.
+// ------------------------------------------------------------
+function esCaducada(fila, avui) {
+  var darrerDia = darrerDiaDeLActe(fila);
+
+  if (darrerDia === '') {
+    return false;
+  }
+
+  return darrerDia < avui;
+}
+
+// ------------------------------------------------------------
+// L'últim dia de l'acte: `data_fi`, o `data_inici` si `data_fi` és buida. És
+// la mateixa vora que mira la finestra de filtraCandidats(). Torna '' si la
+// data que toca no té la forma AAAA-MM-DD.
+// ------------------------------------------------------------
+function darrerDiaDeLActe(fila) {
+  var dataFi = fila.data_fi;
+
+  if (dataFi === undefined || dataFi === null || String(dataFi).trim() === '') {
+    dataFi = fila.data_inici;
+  }
+
+  if (!esData(dataFi)) {
+    return '';
+  }
+
+  return dataFi;
 }
 
 // ------------------------------------------------------------
@@ -1456,25 +1664,25 @@ async function llegeixFitxer(nomFitxer, config) {
 // moure; la poda es torna a aplicar sobre el que hi ha de debò. Si el PUT xoca
 // per sha, ho torna a provar un sol cop.
 //
-// `quantesPodades` serveix només per al missatge del commit, que és l'única
-// traça permanent de què va fer cada passada.
+// `quantesRebutjades` i `quantesPendents` serveixen només per al missatge del
+// commit, que és l'única traça permanent de què va fer cada passada.
 //
 // Torna quants REINTENTS ha calgut: 0 si el PUT ha entrat de primera, 1 si el
 // sha havia canviat i s'ha hagut de tornar a llegir. El registre del run ho ha
 // de poder dir —si no, no hi ha manera de saber si aquell camí s'ha exercitat.
 // ------------------------------------------------------------
-async function escriuCua(novesFiles, quantesPodades, config) {
+async function escriuCua(novesFiles, quantesRebutjades, quantesPendents, config) {
   if (config.token === '') {
     throw new Error('falta GITHUB_TOKEN: sense token no es pot escriure a ' + FITXER_PENDENTS + '.');
   }
 
   var missatge = 'Sincronització ADT66: ' + novesFiles.length + ' files noves, ' +
-    quantesPodades + ' rebutjades caducades podades';
+    quantesRebutjades + ' rebutjades i ' + quantesPendents + ' pendents caducades podades';
 
   var intents = 0;
   while (intents < 2) {
     var actual = await llegeixFitxer(FITXER_PENDENTS, config);
-    var podat = podaRebutjatsCaducats(actual.dades, config.avui);
+    var podat = podaCaducades(actual.dades, config.avui);
 
     try {
       await posaFitxer(novesFiles.concat(podat.cua), actual.sha, missatge, config);
@@ -1539,8 +1747,278 @@ module.exports = {
   dedupDinsDelLot: dedupDinsDelLot,
   aplicaLimit: aplicaLimit,
   tradueixLot: tradueixLot,
-  podaRebutjatsCaducats: podaRebutjatsCaducats
+  podaCaducades: podaCaducades
 };
+
+
+// --- Proves des del terminal ------------------------------------------------
+// `node eines/sincronitza-programada.js --proves`. Tot el que ve fins al
+// separador següent és per exercitar les peces a mà: no toca el flux, ni
+// GitHub, ni Gemini, i no escriu res. La crida a Gemini és una funció feta a
+// mà que respon el que cada cas necessita.
+
+// El dia de referència de la bateria. Fix a posta: una prova que depengui de
+// quin dia s'executi deixa de provar res.
+var AVUI_DE_PROVA = '2026-09-30';
+
+// Un 429 de quota tal com el construeix demanaTraduccioGemini(): el codi, i el
+// cos de Google amb RESOURCE_EXHAUSTED a dins.
+var MOTIU_QUOTA_DE_PROVA =
+  'Gemini ha respost amb codi 429. {"error":{"code":429,"status":"RESOURCE_EXHAUSTED"}}';
+
+// ------------------------------------------------------------
+// Una fila en francès, amb el tag del mapeig, d'un sol dia.
+// ------------------------------------------------------------
+function filaDeProva(data) {
+  return {
+    titol: 'T' + data,
+    data_inici: data,
+    data_fi: data,
+    descripcio_ca: '',
+    descripcio_fr: 'Texte',
+    nota_curador: '[ADT66 id: X' + data + ']'
+  };
+}
+
+// ------------------------------------------------------------
+// La configuració que tradueixLot() espera, sense pausa entre crides.
+// ------------------------------------------------------------
+function configDeProva(crida, motiu) {
+  return { cridaGemini: crida, pressupost: 300, pausaMs: 0, motiuSenseTraduccio: motiu };
+}
+
+// ------------------------------------------------------------
+// La passada que exerciten els cinc primers casos. Cinc files desordenades a
+// posta; per ordre d'imminència, la de l'1 es tradueix, la del 2 peta amb un
+// 503 dues vegades i s'encua en francès, la del 3 topa amb la quota, i la del 4
+// i la del 5 ja no han de tenir crida. Torna { resultat, crides }, amb les
+// crides que ha rebut de debò la funció.
+// ------------------------------------------------------------
+async function passadaAmbQuota() {
+  var comptador = { crides: 0 };
+
+  var crida = async function (fila) {
+    comptador.crides++;
+    if (fila.data_inici === '2026-10-02') {
+      throw new Error('Gemini ha respost amb codi 503. overloaded');
+    }
+    if (fila.data_inici === '2026-10-03') {
+      throw new Error(MOTIU_QUOTA_DE_PROVA);
+    }
+    return { titol: 'Títol', descripcio_ca: 'Text.', descripcio_fr: 'Texte.' };
+  };
+
+  var dates = ['2026-10-05', '2026-10-01', '2026-10-03', '2026-10-02', '2026-10-04'];
+  var files = [];
+  for (var i = 0; i < dates.length; i++) {
+    files.push(filaDeProva(dates[i]));
+  }
+
+  var resultat = await tradueixLot(files, configDeProva(crida, ''));
+  return { resultat: resultat, crides: comptador.crides };
+}
+
+// ------------------------------------------------------------
+// La cua que exerciten els tres casos de la poda: una fila per cada vora.
+// ------------------------------------------------------------
+function cuaDeProva() {
+  return [
+    { estat: 'pendent', data_inici: '2026-09-01', data_fi: '2026-09-29', titol: 'p-passada' },
+    { estat: 'pendent', data_inici: '2026-09-20', data_fi: '', titol: 'p-sense-fi-passada' },
+    { estat: 'pendent', data_inici: '2026-10-05', data_fi: '', titol: 'p-sense-fi-futura' },
+    { estat: 'pendent', data_inici: '2026-09-01', data_fi: '2026-09-30', titol: 'p-avui' },
+    { estat: 'pendent', data_inici: '', data_fi: '', titol: 'p-sense-dates' },
+    { estat: 'rebutjat', data_inici: '2026-09-01', data_fi: '2026-09-02', titol: 'r-passada' },
+    { estat: 'publicat', data_inici: '2026-09-01', data_fi: '2026-09-02', titol: 'pub-passada' },
+    { estat: 'raro', data_inici: '2026-09-01', data_fi: '2026-09-02', titol: 'raro-passada' }
+  ];
+}
+
+// ------------------------------------------------------------
+// Els títols d'una llista de files, separats per comes, per comparar-los.
+// ------------------------------------------------------------
+function titolsDe(files) {
+  var titols = [];
+  for (var i = 0; i < files.length; i++) {
+    titols.push(files[i].titol);
+  }
+  return titols.join(',');
+}
+
+// ------------------------------------------------------------
+// La bateria de proves. Cada cas diu què comprova i torna '' si passa, o el
+// problema si no. Les cinc primeres cauen totes si es treu el tall per quota.
+// ------------------------------------------------------------
+function bateria() {
+  return [
+    {
+      nom: 'quota a la tercera fila: només s\'escriuen la traduïda i la fallada normal',
+      comprova: async function () {
+        var passada = await passadaAmbQuota();
+        var dates = [];
+        for (var i = 0; i < passada.resultat.files.length; i++) {
+          dates.push(passada.resultat.files[i].data_inici);
+        }
+        return dates.join(',') === '2026-10-01,2026-10-02' ? '' :
+          'esperava 2026-10-01,2026-10-02, tinc «' + dates.join(',') + '»';
+      }
+    },
+
+    {
+      nom: 'quota: els comptadors separen quota, fallades i traduïdes',
+      comprova: async function () {
+        var informe = (await passadaAmbQuota()).resultat.informe;
+        if (informe.exhauridesPerQuota === 3 && informe.fallades === 1 &&
+            informe.traduides === 1 && informe.senseMateria === 0) {
+          return '';
+        }
+        return 'quota ' + informe.exhauridesPerQuota + ', fallades ' + informe.fallades +
+          ', traduïdes ' + informe.traduides + ', declinades ' + informe.senseMateria +
+          ' (esperava 3, 1, 1, 0)';
+      }
+    },
+
+    {
+      nom: 'quota: el 429 no es reintenta i darrere seu ja no es crida',
+      comprova: async function () {
+        var passada = await passadaAmbQuota();
+        // 1 (traduïda) + 2 (503 amb reintent) + 1 (429 sense reintent) = 4.
+        if (passada.crides === 4 && passada.resultat.informe.crides === 4) {
+          return '';
+        }
+        return 'esperava 4 crides, la funció n\'ha rebut ' + passada.crides +
+          ' i l\'informe en compta ' + passada.resultat.informe.crides;
+      }
+    },
+
+    {
+      nom: 'quota: el motiu de Google es desa a l\'informe',
+      comprova: async function () {
+        var informe = (await passadaAmbQuota()).resultat.informe;
+        return informe.motiuDeQuota.indexOf('RESOURCE_EXHAUSTED') !== -1 ? '' :
+          'motiuDeQuota no porta RESOURCE_EXHAUSTED: «' + informe.motiuDeQuota + '»';
+      }
+    },
+
+    {
+      nom: 'la fallada normal entra amb l\'avís de no traduïda',
+      comprova: async function () {
+        var files = (await passadaAmbQuota()).resultat.files;
+        if (files.length < 2) {
+          return 'esperava dues files escrites, en tinc ' + files.length;
+        }
+        return /No s'ha pogut escriure/.test(files[1].nota_curador) ? '' :
+          'la nota de la fila fallada no porta l\'avís: «' + files[1].nota_curador + '»';
+      }
+    },
+
+    {
+      nom: 'un 429 sense RESOURCE_EXHAUSTED és una fallada normal i s\'escriu',
+      comprova: async function () {
+        var crida = async function () {
+          throw new Error('Gemini ha respost amb codi 429. altre');
+        };
+        var resultat = await tradueixLot([filaDeProva('2026-10-01')], configDeProva(crida, ''));
+        if (resultat.files.length === 1 && resultat.informe.fallades === 1 &&
+            resultat.informe.exhauridesPerQuota === 0) {
+          return '';
+        }
+        return 'files ' + resultat.files.length + ', fallades ' + resultat.informe.fallades +
+          ', quota ' + resultat.informe.exhauridesPerQuota + ' (esperava 1, 1, 0)';
+      }
+    },
+
+    {
+      nom: 'el model declina: la fila s\'escriu en francès i compta com a declinada',
+      comprova: async function () {
+        var crida = async function () {
+          return { titol: 'T', descripcio_ca: '', descripcio_fr: '' };
+        };
+        var resultat = await tradueixLot([filaDeProva('2026-10-01')], configDeProva(crida, ''));
+        if (resultat.files.length === 1 && resultat.informe.senseMateria === 1) {
+          return '';
+        }
+        return 'files ' + resultat.files.length + ', declinades ' +
+          resultat.informe.senseMateria + ' (esperava 1 i 1)';
+      }
+    },
+
+    {
+      nom: 'sense crida: la fila surt amb el tag i l\'avís de no traduïda',
+      comprova: async function () {
+        var resultat = await tradueixLot([filaDeProva('2026-10-01')], configDeProva(null, 'x'));
+        if (resultat.files.length !== 1) {
+          return 'esperava una fila, en tinc ' + resultat.files.length;
+        }
+        var nota = resultat.files[0].nota_curador;
+        return /\[ADT66 id: X2026-10-01\] No s'ha pogut escriure/.test(nota) ? '' :
+          'la nota no porta el tag i l\'avís: «' + nota + '»';
+      }
+    },
+
+    {
+      nom: 'poda: les pendents passades se\'n van, amb data_fi o sense',
+      comprova: async function () {
+        var titols = titolsDe(podaCaducades(cuaDeProva(), AVUI_DE_PROVA).pendents);
+        return titols === 'p-passada,p-sense-fi-passada' ? '' :
+          'esperava p-passada,p-sense-fi-passada, tinc «' + titols + '»';
+      }
+    },
+
+    {
+      nom: 'poda: les rebutjades passades se\'n van',
+      comprova: async function () {
+        var titols = titolsDe(podaCaducades(cuaDeProva(), AVUI_DE_PROVA).rebutjades);
+        return titols === 'r-passada' ? '' : 'esperava r-passada, tinc «' + titols + '»';
+      }
+    },
+
+    {
+      nom: 'poda: es queden la futura, la d\'avui, la sense dates, la publicada i l\'estat estrany',
+      comprova: async function () {
+        var titols = titolsDe(podaCaducades(cuaDeProva(), AVUI_DE_PROVA).cua);
+        var esperat = 'p-sense-fi-futura,p-avui,p-sense-dates,pub-passada,raro-passada';
+        return titols === esperat ? '' : 'esperava ' + esperat + ', tinc «' + titols + '»';
+      }
+    }
+  ];
+}
+
+// ------------------------------------------------------------
+// Passa la bateria i n'escriu el resultat al terminal.
+// ------------------------------------------------------------
+async function provaBateria() {
+  var casos = bateria();
+  var fallades = 0;
+
+  console.log('SINCRONITZACIÓ PROGRAMADA — ' + casos.length + ' proves, avui = ' + AVUI_DE_PROVA);
+  console.log('');
+
+  for (var i = 0; i < casos.length; i++) {
+    var problema;
+    try {
+      problema = await casos[i].comprova();
+    } catch (error) {
+      problema = 'ha llançat: ' + error.message;
+    }
+
+    if (problema === '') {
+      console.log('BÉ   ' + casos[i].nom);
+    } else {
+      console.log('MAL  ' + casos[i].nom);
+      console.log('     ' + problema);
+      fallades = fallades + 1;
+    }
+  }
+
+  console.log('');
+  if (fallades === 0) {
+    console.log('BÉ   les ' + casos.length + ' proves passen.');
+  } else {
+    console.log(fallades + ' de ' + casos.length + ' proves fallades.');
+    process.exitCode = 1;
+  }
+}
 
 
 // --- Ús des del terminal ----------------------------------------------------
@@ -1594,10 +2072,8 @@ function informe(resultat, enSec) {
   informeDeTraduccio(resultat.traducio);
   console.log('');
   console.log('  files noves a la cua         ' + resultat.noves.length);
-  console.log('  rebutjades caducades podades ' + resultat.podades.length);
-  for (var j = 0; j < resultat.podades.length; j++) {
-    console.log('    - ' + resultat.podades[j].data_fi + '  ' + resultat.podades[j].titol);
-  }
+  informeDePoda('rebutjades caducades podades ', resultat.podadesRebutjades);
+  informeDePoda('pendents caducades podades   ', resultat.podadesPendents);
   console.log('');
   console.log('  escrit a pendents.json       ' + (resultat.escrit ? 'sí' : 'no'));
   console.log('  reintents per conflicte sha  ' + resultat.reintents);
@@ -1605,15 +2081,27 @@ function informe(resultat, enSec) {
 }
 
 // ------------------------------------------------------------
+// Una línia de la poda al registre del run: quantes files, i quines. Serveix
+// per a les rebutjades i per a les pendents, que es compten per separat.
+// ------------------------------------------------------------
+function informeDePoda(etiqueta, podades) {
+  console.log('  ' + etiqueta + podades.length);
+  for (var i = 0; i < podades.length; i++) {
+    console.log('    - ' + darrerDiaDeLActe(podades[i]) + '  ' + podades[i].titol);
+  }
+}
+
+// ------------------------------------------------------------
 // El bloc del pas 7 bis al registre del run. Cada xifra és comptable contra les
-// candidates: traduïdes + només títol + fallades + retallades pel pressupost.
+// candidates: traduïdes + només títol + declinades + fallades + retallades pel
+// pressupost + exhaurides per quota.
 // ------------------------------------------------------------
 function informeDeTraduccio(traducio) {
   console.log('  traducció a la ingestió (pas 7 bis):');
 
   if (!traducio.feta) {
     console.log('    NO S\'HA FET — ' + traducio.motiu);
-    console.log('    files encuades en francès, sense avís de traducció');
+    console.log('    files encuades en francès, amb l\'avís de no traduïdes');
     return;
   }
 
@@ -1637,6 +2125,14 @@ function informeDeTraduccio(traducio) {
 
   console.log('    retallades pel pressupost  ' + traducio.retalladesPerPressupost +
     '   (no descartades: tornaran a la propera passada)');
+  console.log('    EXHAURIDES PER QUOTA       ' + traducio.exhauridesPerQuota +
+    '   (Gemini ha dit prou: no escrites, tornaran a la propera passada)');
+  if (traducio.limitDeQuota !== '') {
+    console.log('      límit exhaurit: ' + traducio.limitDeQuota);
+  }
+  if (traducio.motiuDeQuota !== '') {
+    console.log('      ' + traducio.motiuDeQuota);
+  }
 }
 
 // ------------------------------------------------------------
@@ -1707,6 +2203,12 @@ function nombreDeLaLiniaDOrdres(argv, prefix) {
 // El punt d'entrada del terminal i del workflow.
 // ------------------------------------------------------------
 async function principal() {
+  // La bateria va sola: ni flux, ni GitHub, ni Gemini, ni cap escriptura.
+  if (process.argv.indexOf('--proves') !== -1) {
+    await provaBateria();
+    return;
+  }
+
   var enSec = process.argv.indexOf('--en-sec') !== -1;
 
   var opcions = {
