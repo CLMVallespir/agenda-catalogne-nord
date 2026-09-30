@@ -320,26 +320,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V525HQ1] L'acte es fa 3 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-01-marche-hebdomadaire",
-    "titol": "Mercat setmanal",
-    "data_inici": "2026-10-01",
-    "data_fi": "2026-10-01",
-    "hora": "08:00",
-    "lloc": "",
-    "municipi": "Sant Llorenç de la Salanca",
-    "comarca": "Rosselló",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat setmanal de Sant Llorenç de la Salanca anima el centre de la vila amb desenes de comerciants segons l'època de l'any. S'hi poden trobar fruites i verdures de la terra, productes frescos, espècies, roba, articles de marroquineria i productes d'artesania.",
-    "descripcio_fr": "Le marché hebdomadaire de Saint-Laurent de la Salanque anime le centre-ville avec des dizaines de commerçants selon la saison. On y trouve des fruits et légumes du terroir, des produits frais, des épices, des vêtements, de la maroquinerie ainsi que de l'artisanat.",
-    "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/MARCHE-1.jpg?width=150&height=120",
-    "font_url": "https://www.saintlaurentdelasalanque.fr/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.882Z",
-    "periodicitat": "cada setmana",
-    "nota_curador": "[ADT66 id: FMALAR066V528GNT] L'acte es fa 61 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-01-lhistoire-militaire-de",
     "titol": "L'història militar de Perpinyà",
     "data_inici": "2026-10-01",
