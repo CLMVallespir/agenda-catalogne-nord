@@ -3871,5 +3871,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.916Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-05-jocs-per-a",
+    "titol": "Jocs per a tothom",
+    "data_inici": "2026-10-05",
+    "data_fi": "2026-10-05",
+    "hora": "16:00",
+    "lloc": "",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquesta activitat és una proposta del xarxa de biblioteques de la CC ACVI. L'acte ofereix una estona de jocs oberta a tots els públics.",
+    "descripcio_fr": "Cette animation est une proposition du réseau des médiathèques de la CC ACVI. L'événement propose un moment de jeux ouvert à tous les publics.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766265/JEUX-SOCIETE-PIXABAY_whtlil.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.937Z",
+    "periodicitat": ""
   }
 ]
