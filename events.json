@@ -2674,5 +2674,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.982Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-els-constructors-de",
+    "titol": "Els constructors de l'art romànic català",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "16:30",
+    "lloc": "",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "Aquesta conferència, impartida per Lionel SANCHEZ, proposa una investigació sobre els abats, comitents, artistes i tallers que van donar forma a l'art romànic català a través de textos, inscripcions i obres. S'analitzarà la circulació d'artistes i models, així com les influències pirinenques i mediterrànies, per entendre la formació dels principals focus artístics de l'època.",
+    "descripcio_fr": "Cette conférence, donnée par Lionel SANCHEZ, propose une enquête sur les abbés, commanditaires, artistes et ateliers qui ont façonné l'art roman catalan à travers les textes, les inscriptions et les œuvres. La circulation des artistes et des modèles, ainsi que les influences pyrénéennes et méditerranéennes, seront analysées pour comprendre la formation des principaux foyers artistiques de l'époque.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Image1-8.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.002Z",
+    "periodicitat": ""
   }
 ]
