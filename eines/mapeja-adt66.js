@@ -2312,7 +2312,44 @@ function casosDeProva() {
         }
       }
     }
+  ].concat(casosDePalaldaIBanys());
+}
+
+// ------------------------------------------------------------
+// Els Banys i Palaldà (abans «Amèlia les Banys»): un cas per cada forma amb què
+// pot arribar el nom. Totes han de sortir com «Els Banys i Palaldà» a Vallespir,
+// i «Palalda» / «Palaldà» com «Palaldà» a Vallespir. Cap resultat no pot dur
+// «Banys d'Arles» sense «Palaldà», ni «Amèlia».
+// ------------------------------------------------------------
+function casosDePalaldaIBanys() {
+  var entrades = [
+    ['Amélie-les-Bains-Palalda', 'Els Banys i Palaldà'],
+    ['Amélie-les-Bains', 'Els Banys i Palaldà'],
+    ['Amelie-les-Bains', 'Els Banys i Palaldà'],
+    ['Els Banys d\'Arles i Palaldà', 'Els Banys i Palaldà'],
+    ['els Banys', 'Els Banys i Palaldà'],
+    ['Palalda', 'Palaldà'],
+    ['Palaldà', 'Palaldà']
   ];
+  var casos = [];
+
+  for (var i = 0; i < entrades.length; i++) {
+    casos.push({
+      nom: 'Palaldà i els Banys: «' + entrades[i][0] + '» -> «' + entrades[i][1] + '», Vallespir',
+      entrada: { SyndicObjectName: 'FIRA', TRI: '01/07/2026', Commune: entrades[i][0] },
+      espera: { municipi: entrades[i][1], comarca: 'Vallespir' },
+      comprova: function (fila, problemes) {
+        if (fila.municipi.indexOf('Banys d\'Arles') !== -1 && fila.municipi.indexOf('Palaldà') === -1) {
+          problemes.push('«Banys d\'Arles» sense «Palaldà»: «' + fila.municipi + '»');
+        }
+        if (fila.municipi.indexOf('Amèlia') !== -1) {
+          problemes.push('«Amèlia» ha tornat: «' + fila.municipi + '»');
+        }
+      }
+    });
+  }
+
+  return casos;
 }
 
 // ------------------------------------------------------------

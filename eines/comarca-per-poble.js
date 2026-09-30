@@ -262,7 +262,8 @@ var POBLES_PER_COMARCA = {
     ['Ceret'],
     ['Prats de Molló'],
     ['Arles de Tec'],
-    ['Amèlia les Banys'],
+    ['Els Banys i Palaldà', 'Amélie-les-Bains', 'Els Banys d\'Arles i Palaldà', 'Els Banys'],
+    ['Palaldà'],
     ['Sant Llorenç de Cerdans'],
     ['El Tec'],
     ['Costoja'],
@@ -500,6 +501,15 @@ function provesDeCoherencia() {
 
   var mostres = [
     ['CERET', 'Vallespir'],
+    // Els Banys i Palaldà (abans «Amèlia les Banys»): totes les formes d'entrada
+    // i les dues de Palaldà han de caure a Vallespir.
+    ['Amélie-les-Bains-Palalda', 'Vallespir'],
+    ['Amélie-les-Bains', 'Vallespir'],
+    ['Amelie-les-Bains', 'Vallespir'],
+    ['Els Banys d\'Arles i Palaldà', 'Vallespir'],
+    ['els Banys', 'Vallespir'],
+    ['Palalda', 'Vallespir'],
+    ['Palaldà', 'Vallespir'],
     ['PERPIGNAN', 'Rosselló'],
     ['ILLE-SUR-TET', 'Rosselló'],
     ['VINCA', 'Conflent'],
