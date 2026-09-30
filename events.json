@@ -3225,5 +3225,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.007Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-01-exposicio-picabia-mediterrania",
+    "titol": "Exposició: Picabia, Mediterrània. Picasso, Delaunay, Laurencin…",
+    "data_inici": "2026-10-01",
+    "data_fi": "2026-10-01",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Ceret",
+    "comarca": "Vallespir",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'exposició al museu d'art modern de Ceret explora la trajectòria de l'artista Francis Picabia amb un enfocament inèdit, analitzant la influència de la cultura ibèrica en la seva obra i la dels seus contemporanis. La mostra reuneix prop d'un centenar de peces de l'autor i del seu cercle artístic, amb obres d'autors com Marcel Duchamp, Albert Gleizes, Sonia Delaunay o Pablo Picasso.",
+    "descripcio_fr": "L'exposition au musée d'art moderne de Céret explore le parcours de l'artiste Francis Picabia sous un angle inédit, en analysant l'influence de la culture ibérique sur son œuvre et celle de ses contemporains. La présentation réunit près d'une centaine de pièces de l'auteur et de son cercle artistique, avec des œuvres d'auteurs tels que Marcel Duchamp, Albert Gleizes, Sonia Delaunay ou Pablo Picasso.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766107/Capture-d-ecran-2026-06-19-a-09.47.32-2_bswa9s.webp",
+    "font_url": "https://www.musee-ceret.com",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.064Z",
+    "periodicitat": ""
   }
 ]
