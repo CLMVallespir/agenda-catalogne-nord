@@ -2294,5 +2294,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.873Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-09-30-mercat-del-moulin",
+    "titol": "Mercat del Moulin-à-Vent",
+    "data_inici": "2026-09-30",
+    "data_fi": "2026-09-30",
+    "hora": "07:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Aquest mercat ofereix una gran varietat de productes i constitueix una cita setmanal imprescindible per als clients habituals. És un espai obert a tothom que vulgui fer les seves compres setmanals.",
+    "descripcio_fr": "Ce marché propose une grande variété de produits et constitue un rendez-vous hebdomadaire incontournable pour les habitués. C'est un espace ouvert à tous ceux qui souhaitent faire leurs achats hebdomadaires.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/FMA-Marche-Moulin-a-vent.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.874Z",
+    "periodicitat": "cada setmana"
   }
 ]
