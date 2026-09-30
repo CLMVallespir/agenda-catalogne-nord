@@ -1,25 +1,5 @@
 [
   {
-    "id": "2026-09-30-marche-hebdomadaire-de",
-    "titol": "Mercat setmanal de productors",
-    "data_inici": "2026-09-30",
-    "data_fi": "2026-09-30",
-    "hora": "08:00",
-    "lloc": "Parc de la Mairie",
-    "municipi": "Arles de Tec",
-    "comarca": "Vallespir",
-    "categoria": "Mercat",
-    "descripcio_ca": "El mercat de productors s'instal·la al Parc de la Mairie cada dimecres al matí, durant tot l'any. Aquest espai permet descobrir els productes locals en un ambient convivial i autèntic.",
-    "descripcio_fr": "Le marché de producteurs s'installe au Parc de la Mairie chaque mercredi matin, tout au long de l'année. Cet espace permet de découvrir les produits locaux dans une ambiance conviviale et authentique.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766070/marche-15-2_yrokte.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.940Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52VT75] L'acte es fa 92 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-09-30-exposition-st-cypart",
     "titol": "Exposició St-Cyp'Art",
     "data_inici": "2026-09-30",
