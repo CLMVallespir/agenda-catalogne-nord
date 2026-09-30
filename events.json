@@ -2978,5 +2978,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.030Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-08-converses-en-catala",
+    "titol": "Converses en català",
+    "data_inici": "2026-10-08",
+    "data_fi": "2026-10-08",
+    "hora": "18:00",
+    "lloc": "REZ-DE-CHAUSSEE DE LA MEDIATHEQUE",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'activitat proposa un espai per conversar en català en un ambient distès. Es tracta d'una proposta oberta a tothom.",
+    "descripcio_fr": "L'activité propose un espace pour converser en catalan dans une ambiance décontractée. Il s'agit d'une proposition ouverte à tous.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/naassomz1-people-6027028-640.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.073Z",
+    "periodicitat": ""
   }
 ]
