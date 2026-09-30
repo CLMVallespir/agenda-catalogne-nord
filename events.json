@@ -3510,5 +3510,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.896Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-sessio-de-signatures",
+    "titol": "Sessió de signatures amb Magdalena",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "09:30",
+    "lloc": "",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La llibreria Le Presse papier acull l'autora Magdalena per presentar la seva obra dedicada al públic infantil i juvenil. La trobada permet descobrir l'univers literari de l'escriptora i obtenir signatures dels seus títols publicats.",
+    "descripcio_fr": "La librairie Le Presse papier accueille l'autrice Magdalena pour présenter son œuvre dédiée au public enfantin et jeunesse. La rencontre permet de découvrir l'univers littéraire de l'écrivaine et d'obtenir des dédicaces de ses titres publiés.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766165/Aspres-thuir-dedicace--magdalena_mnagi9.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.913Z",
+    "periodicitat": ""
   }
 ]
