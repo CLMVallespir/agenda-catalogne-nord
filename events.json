@@ -3529,5 +3529,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.913Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-espectacle-polifonic",
+    "titol": "Espectacle polifònic",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "20:30",
+    "lloc": "Sala de Festes",
+    "municipi": "Trullars",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El grup vocal L’Art Scèn’ presenta l'espectacle polifònic «ÉMOTIONS_404», que situa l'espectador en un món futur on la humanitat ha renunciat a les emocions. A través d'una posada en escena original i coreografies a mida, els intèrprets revisiten temes d'artistes com Zazie, Gaël Faye, Juliette Armanet o Queen. La formació thuirinoise comparteix amb el públic el seu plaer de cantar en polifonia tot abordant qüestions actuals amb sensibilitat i audàcia.",
+    "descripcio_fr": "Le groupe vocal L’Art Scèn’ présente le spectacle polyphonique «ÉMOTIONS_404», qui plonge le spectateur dans un monde futur où l'humanité a renoncé aux émotions. À travers une mise en scène originale et des chorégraphies sur-mesure, les interprètes revisitent des titres d'artistes tels que Zazie, Gaël Faye, Juliette Armanet ou Queen. La formation thuirinoise partage avec le public son plaisir de chanter en polyphonie tout en abordant des sujets actuels avec sensibilité et audace.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766167/Aspres-trouillas-spectacle-plyphonique_sk1pmy.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.945Z",
+    "periodicitat": ""
   }
 ]
