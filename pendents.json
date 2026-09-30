@@ -200,26 +200,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52DHDC] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-01-dali-au-musee",
-    "titol": "Dalí al Musée d'art Hyacinthe Rigaud",
-    "data_inici": "2026-10-01",
-    "data_fi": "2026-10-01",
-    "hora": "10:30",
-    "lloc": "",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "El Musée d'art Hyacinthe Rigaud presenta per primer cop una obra cabdal de Salvador Dalí dins el seu recorregut permanent, gràcies a un préstec del Centre Pompidou. L'exposició se centra en el quadre \"Hallucination partielle. Six images de Lénine sur un piano\" i es complementa amb dos dibuixos i fotografies que reforcen els vincles de l'artista amb el Rosselló. Aquesta mostra serveix com a preàmbul per a la gran exposició Dalí prevista per al 2027 a Perpinyà.",
-    "descripcio_fr": "Le Musée d'art Hyacinthe Rigaud présente pour la première fois une œuvre majeure de Salvador Dalí au sein de son parcours permanent, grâce à un prêt du Centre Pompidou. L'exposition se concentre sur le tableau \"Hallucination partielle. Six images de Lénine sur un piano\" et est complétée par deux dessins et photographies qui renforcent les liens de l'artiste avec le Roussillon. Cette exposition sert de préambule à la grande exposition Dalí prévue pour 2027 à Perpignan.",
-    "associacio": "Contacter Madame LASSALLE Clémentine",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766089/EXPO---Dali-au-Musee-d-Art-Hyacinthe-Rigaud_ejw9bi.webp",
-    "font_url": "https://www.musee-rigaud.fr/",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:08.925Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52UT7D] L'acte es fa 3 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-01-joan-miro-majorque",
     "titol": "Joan Miró: Mallorca, l'atelier dels somnis",
     "data_inici": "2026-10-01",
