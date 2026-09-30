@@ -3073,5 +3073,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.046Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-09-30-vestiges-memoria-duna",
+    "titol": "Vestiges, memòria d'una guspira",
+    "data_inici": "2026-09-30",
+    "data_fi": "2026-09-30",
+    "hora": "08:00",
+    "lloc": "",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "Exposició",
+    "descripcio_ca": "La sala Pierre Gipulo de Vinçà acull una exposició sobre les restes i els records d'una guspira. Aquesta mostra està oberta a tot el públic interessat.",
+    "descripcio_fr": "La salle Pierre Gipulo de Vinçà accueille une exposition sur les vestiges et les souvenirs d'une étincelle. Cette exposition est ouverte à tout le public intéressé.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766084/IMG-6629_fktg8x.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.047Z",
+    "periodicitat": ""
   }
 ]
