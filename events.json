@@ -3453,5 +3453,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:08.871Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-03-mercat-de-brocanteria",
+    "titol": "Mercat de brocanteria",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "07:00",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat de brocanteria s'instal·la cada dissabte a les allées Maillol. Els antiquaris hi presenten les seves peces al públic.",
+    "descripcio_fr": "Le marché à la brocante s'installe chaque samedi aux allées Maillol. Les antiquaires y présentent leurs pièces au public.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766159/GRANDE-BROCANTE---ALLEES-MAILLOL-2_vcyfdu.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:08.892Z",
+    "periodicitat": "cada setmana"
   }
 ]
