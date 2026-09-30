@@ -1700,26 +1700,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z81L] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-03-la-tempete-bd",
-    "titol": "La Tempête: concert de còmic",
-    "data_inici": "2026-10-03",
-    "data_fi": "2026-10-03",
-    "hora": "",
-    "lloc": "",
-    "municipi": "Pollestres",
-    "comarca": "Rosselló",
-    "categoria": "Música",
-    "descripcio_ca": "L'espectacle presenta una història familiar ambientada al Far West, marcada per una tempesta espectacular. Sense paraules, els instruments musicals evoquen el vent, la calamarsa i les emocions dels personatges. Es tracta d'una experiència sensorial i poètica pensada tant per als infants com per als adults.",
-    "descripcio_fr": "Le spectacle présente une histoire familiale située dans le Far West, marquée par une tempête spectaculaire. Sans paroles, les instruments de musique évoquent le vent, la grêle et les émotions des personnages. Il s'agit d'une expérience sensorielle et poétique conçue aussi bien pour les enfants que pour les adultes.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766200/LA-TEMPETE-BD-CONCERT_krahdk.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-09-30T07:23:09.055Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52Z832] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-03-exposition-artistique-collective",
     "titol": "Exposició artística col·lectiva: Tot és possible",
     "data_inici": "2026-10-03",
