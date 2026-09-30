@@ -3605,5 +3605,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.019Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-taller-diniciacio-a",
+    "titol": "Taller d'iniciació a l'arqueologia: ceramologia",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "08:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'associació C.I.R.C.É. organitza un taller d'iniciació a l'arqueologia centrat en la ceramologia, una disciplina essencial per comprendre la història a través de l'estudi de les ceràmiques. L'activitat està oberta a totes les persones a partir de deu anys.",
+    "descripcio_fr": "L'association C.I.R.C.É. organise un atelier d'initiation à l'archéologie centré sur la céramologie, une discipline essentielle pour comprendre l'histoire à travers l'étude des céramiques. L'activité est ouverte à toutes les personnes à partir de dix ans.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766186/ruscino-11_dpi9rg.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-09-30T07:23:09.040Z",
+    "periodicitat": ""
   }
 ]
