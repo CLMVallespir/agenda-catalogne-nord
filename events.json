@@ -4156,5 +4156,24 @@
     "estat": "publicat",
     "data_entrada": "2026-09-30T07:23:09.006Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-01-et-la-lumiere",
+    "titol": "Et la lumière fut !",
+    "data_inici": "2026-10-01",
+    "data_fi": "2026-10-01",
+    "hora": "10:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "Aquesta exposició proposa una reflexió sobre la importància històrica de l'enllumenat en el progrés de la humanitat. També analitza el lloc central que ocupa l'electricitat en la nostra vida quotidiana actual.",
+    "descripcio_fr": "Cette exposition propose une réflexion sur l'importance historique de l'éclairage dans le progrès de l'humanité. Elle analyse également la place centrale qu'occupe l'électricité dans notre vie quotidienne actuelle.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790766348/ET-LA-LUMIERE-FUT---photo-1_qrs3fy.webp",
+    "font_url": "https://www.perpignantourisme.com/le-castillet-et-le-musee-casa-pairal/",
+    "estat": "publicat",
+    "data_entrada": "2026-09-22T20:25:04.762Z",
+    "periodicitat": ""
   }
 ]
