@@ -4308,5 +4308,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.807Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-02-festes-catalanes-2026",
+    "titol": "Festes catalanes 2026 - Iniciació al truc",
+    "data_inici": "2026-10-02",
+    "data_fi": "2026-10-02",
+    "hora": "15:00",
+    "lloc": "1 Rue des Abricotiers",
+    "municipi": "Cabestany",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Aquesta activitat permet descobrir o redescobrir el truc, un joc de cartes tradicional català, en un ambient distès. Es tracta d'una proposta adreçada a totes les famílies.",
+    "descripcio_fr": "Cette activité permet de découvrir ou redécouvrir le truc, un jeu de cartes traditionnel catalan, dans une ambiance conviviale. Il s'agit d'une proposition destinée à toutes les familles.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837634/Initiation-au-truc_ebipgn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.964Z",
+    "periodicitat": ""
   }
 ]
