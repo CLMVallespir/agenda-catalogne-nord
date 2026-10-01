@@ -5087,5 +5087,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.928Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-vernissatge-de-lexposicio",
+    "titol": "Vernissatge de l'exposició 40 anys al servei del vivent",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "17:00",
+    "lloc": "",
+    "municipi": "Jujols",
+    "comarca": "Conflent",
+    "categoria": "Exposició",
+    "descripcio_ca": "La Reserva natural de Jujols celebra el seu quarantè aniversari amb una exposició dedicada a la riquesa natural del territori. L'acte inclou una visita comentada, seguida d'un moment de convivència al voltant de la biodiversitat amb un bufet i pastissos d'aniversari.",
+    "descripcio_fr": "La Réserve naturelle de Jujols célèbre son quarantième anniversaire avec une exposition consacrée à la richesse naturelle du territoire. L'événement comprend une visite commentée, suivie d'un moment de convivialité autour de la biodiversité avec un buffet et des gâteaux d'anniversaire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837706/jujols-40-ans_cktwf7.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.919Z",
+    "periodicitat": ""
   }
 ]
