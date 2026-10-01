@@ -4213,5 +4213,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.812Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-01-concert-elgun-stone",
+    "titol": "Concert Elgun Stone",
+    "data_inici": "2026-10-01",
+    "data_fi": "2026-10-01",
+    "hora": "19:00",
+    "lloc": "Rue de la Neige",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'artista independent Elgun Stone ofereix un concert de música indie folk, caracteritzat per la seva veu planera i potent. La vetllada està dedicada íntegrament a aquest estil musical.",
+    "descripcio_fr": "L'artiste indépendant Elgun Stone propose un concert de musique indie folk, caractérisé par sa voix planante et puissante. La soirée est entièrement consacrée à ce style musical.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837612/01-10B_ocqpwy.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.902Z",
+    "periodicitat": ""
   }
 ]
