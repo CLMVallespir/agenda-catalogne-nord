@@ -5030,5 +5030,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.929Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-vesprada-de-cinema",
+    "titol": "Vesprada de cinema: dues obres d'universos singulars",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "17:30",
+    "lloc": "Côte de la place",
+    "municipi": "La Roca d'Albera",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Per cloure la Semaine Bleue 2026, la batllia i el CCAS de la Roca d'Albera organitzen una sessió de cinema a la Maison de la Culture. La programació presenta dos llargmetratges, Les Héros du Louvre d'Élie Chouraqui i Fjord de Cristian Mungiu, que s'ofereixen per separat o en sessió doble.",
+    "descripcio_fr": "Pour clôturer cette Semaine Bleue 2026, la mairie et le CCAS de la Roca d'Albera organisent une séance de cinéma à la Maison de la Culture. La programmation présente deux longs-métrages, Les Héros du Louvre d'Élie Chouraqui et Fjord de Cristian Mungiu, qui sont proposés séparément ou en double séance.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837770/cine-laroque-10-oct-2026_knuyqc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.930Z",
+    "periodicitat": ""
   }
 ]
