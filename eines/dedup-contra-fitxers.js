@@ -43,9 +43,15 @@
 // rebutjada tampoc —que és, en realitat, per què `pendents.json` guarda els
 // rebuigs en comptes de suprimir-los (§4 de `CLAUDE.md`).
 //
-// CAPA 2, DIFUSA, CONTRA `events.json`. Les files publicades no porten cap
-// identificador i no en portaran mai: `recullFitxa()` es queda els 16 camps
-// canònics i `nota_curador` —el tag inclòs— s'atura a la cua. El sondeig de
+// (Canviat l'1 d'octubre de 2026: en publicar, `curador.html` ja no treu la
+// fila de `pendents.json`, la deixa amb `estat = "publicat"` i la
+// `nota_curador` intacta. Per això la capa 1 també reconeix com a
+// `ja_publicat` una oferta publicada pel curador, i llegeix TOTS els tags
+// d'una nota, no només el primer.)
+//
+// CAPA 2, DIFUSA, CONTRA `events.json`. Les files d'`events.json` no porten cap
+// identificador i no en portaran mai: `recullFitxa()` es queda els camps
+// públics i `nota_curador` —el tag inclòs— només viu a `pendents.json`. El sondeig de
 // `docs/SONDEIG-FONT-URL-ADT66.md` va tancar també l'última porta: cap camp
 // del flux no porta URL de fitxa, o sigui que `font_url` tampoc no pot fer
 // d'ancoratge. Queda comparar el CONTINGUT, i comparar contingut és estimar.

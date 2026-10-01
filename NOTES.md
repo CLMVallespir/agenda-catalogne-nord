@@ -6,6 +6,24 @@ resultin errònies s'esborren, no es maten a comentaris.*
 
 ---
 
+## Publicar marca la fila com a `publicat` en comptes de treure-la (1 d'octubre de 2026)
+
+**Resum:** `events.json` no conserva `nota_curador`, on viu el tag
+`[ADT66 id: …]`; si publicar treu la fila, la sincronització ja no reconeix
+l'oferta i la torna a encuar.
+
+La regla anterior (3 de setembre de 2026) era «publicar treu, rebutjar marca».
+Era coherent amb la memòria de rebuig, però deixava un forat: una oferta
+publicada no deixava cap rastre que la capa 1 (§4 ter) pogués llegir, i la
+capa 2 és difusa i, per a l'ADT66, inerta (títols en francès). Ara
+`curador.html` substitueix la fila, a la mateixa posició, per la publicada
+(`estat = "publicat"`, `nota_curador` intacta); la capa 1 llegeix tots els tags
+d'una nota i diu `ja_publicat`; la poda de l'Action treu les `publicat` quan
+l'acte ja ha passat, amb la mateixa vora que les altres. La cua continua
+pintant només `estat === 'pendent'`.
+
+---
+
 ## El públic no és a `RechercheTYPE`: era a `COMMUNTHEME`, i mai no l'havíem mirat
 
 **Resum:** `Activitat infantil` sortia sempre a zero perquè es buscava el
@@ -156,21 +174,23 @@ té un camp on cabre.**
 un acte.
 
 Publicar un acte són dues crides separades a l'API de GitHub — afegir-lo a
-`events.json` i treure'l de `pendents.json` — i no hi ha manera de fer-les
-alhora. Sempre hi ha una finestra on la primera ha reeixit i la segona encara no.
+`events.json` i marcar la fila de `pendents.json` com a publicada (fins a l'1
+d'octubre de 2026, treure-la; vegeu l'entrada d'aquella data) — i no hi ha
+manera de fer-les alhora. Sempre hi ha una finestra on la primera ha reeixit i
+la segona encara no.
 
-Si es fes al revés (treure de la cua primer), una fallada enmig deixaria l'acte
-fora de la cua i fora d'`events.json`: perdut, i sense cap rastre a la pantalla
-que ho digués. Fent-ho en aquest ordre, la mateixa fallada deixa un **duplicat
-visible** a la cua: l'acte ja és publicat i encara surt per revisar. És lleig,
-però es veu i es pot arreglar rebutjant la fila.
+Si es fes al revés (marcar la fila primer), una fallada enmig deixaria l'acte
+marcat com a publicat i fora d'`events.json`: perdut, i sense cap rastre a la
+pantalla que ho digués. Fent-ho en aquest ordre, la mateixa fallada deixa un
+**duplicat visible** a la cua: l'acte ja és publicat i encara surt per revisar.
+És lleig, però es veu i es pot arreglar rebutjant la fila.
 
 La regla general que se'n treu: **quan dues escriptures no poden ser atòmiques,
 ordena-les perquè la fallada intermèdia dupliqui, mai perquè esborri.**
 
 `curador.html` ho fa així a `publica()`, amb dos `try` separats justament perquè
 el segon pugui donar un missatge diferent: «Publicat a events.json, però no l'he
-pogut treure de la cua».
+pogut marcar com a publicada a la cua».
 
 ---
 

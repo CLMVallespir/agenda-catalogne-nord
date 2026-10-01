@@ -109,8 +109,9 @@ l'anglès) sí que promet.
    són totes correctes sense tocar-les** (§4.F).
 4. **És una cadena, com tots** (§4 de `CLAUDE.md`): mai `null`, mai omès.
 5. **Aplica a `pendents.json` i a `events.json` per igual.** **No és cap segon
-   `nota_curador`.** `nota_curador` descriu **la fila** i mor en publicar (§4 de
-   `CLAUDE.md`, decidit el 29 d'agost de 2026); `periodicitat` descriu **l'acte**
+   `nota_curador`.** `nota_curador` descriu **la fila** i no arriba a `events.json` (§4 de
+   `CLAUDE.md`, decidit el 29 d'agost de 2026; des de l'1 d'octubre de 2026 la
+   fila publicada es queda a `pendents.json` amb la nota intacta); `periodicitat` descriu **l'acte**
    i ha d'arribar al web públic i al digest, o el camp no serveix de res. Aquesta
    diferència és la que fa que `recullFitxa()` de `curador.html` l'hagi
    d'incloure i que el 17è actual no hi sigui.
@@ -133,7 +134,8 @@ programar**:
 - `preparaEsdeveniments()` (`app.js:112`) amaga el que ja s'ha acabat mirant
   `data_fi >= avui`. Un curs vigent hi passa; un de caducat desapareix sol.
 - `podaCaducades()` (`eines/sincronitza-programada.js`) poda les files
-  rebutjades —i, des del 30 de setembre de 2026, també les pendents— amb
+  rebutjades —i, des del 30 de setembre de 2026, també les pendents, i des de
+  l'1 d'octubre de 2026 les publicades— amb
   `data_fi < avui`. Una permanent rebutjada s'esborra de la cua quan la seva
   vigència s'acaba, no abans.
 - `passaFiltreDates()` (`app.js:260`) ja fa **tocar** el període

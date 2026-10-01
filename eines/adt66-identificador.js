@@ -15,8 +15,8 @@
 //
 // Queda `nota_curador`, i hi encaixa per disseny, no per manca de lloc millor.
 // El §4 de CLAUDE.md diu que és un camp de servei: **l'escriuen només els
-// agents de darrere, el frontend públic no el llegeix mai, i es descarta en
-// publicar**. Un identificador intern de proveïdor vol exactament aquestes
+// agents de darrere, el frontend públic no el llegeix mai, i no arriba a
+// `events.json`**. Un identificador intern de proveïdor vol exactament aquestes
 // tres coses: que hi sigui mentre la fila és a la cua, que no arribi mai a
 // `events.json`, i que ningú de fora no el vegi.
 //
@@ -48,10 +48,18 @@
 // el tag acaba al mig, res no es trenca. L'ordre és una convenció per al
 // lector de l'avís groc de `curador.html`.
 //
-// ES DESCARTA EN PUBLICAR, I ÉS DELIBERAT. `recullFitxa()` construeix els 16
-// camps canònics i `nota_curador` no hi entra: `events.json` no porta mai
-// aquest tag. És exactament el que ha de passar —un identificador de
-// proveïdor no és informació pública— i no s'ha d'«arreglar».
+// NO ARRIBA MAI A `events.json`, I ÉS DELIBERAT. `recullFitxa()` construeix
+// els camps públics i `nota_curador` no hi entra. És exactament el que ha de
+// passar —un identificador de proveïdor no és informació pública— i no
+// s'ha d'«arreglar».
+//
+// PERÒ ES QUEDA A `pendents.json` (canviat l'1 d'octubre de 2026). En
+// publicar, `curador.html` ja no treu la fila de la cua: la substitueix per
+// una fila amb `estat = "publicat"` i la `nota_curador` intacta. Així el tag
+// continua protegint l'oferta, i la capa 1 de dedup-contra-fitxers.js la
+// reconeix com a `ja_publicat` en comptes de tornar-la a encuar. Per això
+// `construeixAncoratge()` llegeix TOTS els tags d'una nota
+// (`extreuIdentificadors()`) i recorre les files de tot estat.
 //
 // UNA FILA POT NO PORTAR-NE CAP, I NO ÉS CAP ERROR. Les files que vénen del
 // correu, del Typebot o del CSV de recerca no tenen cap oferta ADT66 darrere.
@@ -129,6 +137,31 @@ function extreuIdentificador(notaCurador) {
 }
 
 // ------------------------------------------------------------
+// TOTS els `SyndicObjectID` que hi hagi dins d'una `nota_curador`, com un
+// array (buit si no n'hi ha cap). Una fila publicada pot portar-ne més
+// d'un si en el futur s'hi fusionen notes; cal llegir-los tots perquè
+// cap no deixi de protegir la fila.
+// ------------------------------------------------------------
+function extreuIdentificadors(notaCurador) {
+  var nota = cadena(notaCurador);
+  var identificadors = [];
+
+  if (nota === '') {
+    return identificadors;
+  }
+
+  var patro = new RegExp(PATRO_IDENTIFICADOR.source, 'g');
+  var trobat = patro.exec(nota);
+
+  while (trobat !== null) {
+    identificadors.push(trobat[1]);
+    trobat = patro.exec(nota);
+  }
+
+  return identificadors;
+}
+
+// ------------------------------------------------------------
 // L'ancoratge oferta -> fila d'una llista de files, llegint el tag de cada
 // `nota_curador`.
 //
@@ -157,18 +190,22 @@ function construeixAncoratge(llistaDeFiles) {
       continue;
     }
 
-    var identificador = extreuIdentificador(fila.nota_curador);
+    var identificadors = extreuIdentificadors(fila.nota_curador);
 
-    if (identificador === null) {
-      continue;
+    for (var j = 0; j < identificadors.length; j++) {
+      var identificador = identificadors[j];
+
+      if (ancoratge.has(identificador) === true) {
+        // Si l'ancoratge ja el té de la mateixa fila (id repetit dins la
+        // mateixa nota), no és cap duplicat: és la mateixa fila.
+        if (ancoratge.get(identificador) !== fila) {
+          duplicats.push({ syndicObjectID: identificador, fila: fila });
+        }
+        continue;
+      }
+
+      ancoratge.set(identificador, fila);
     }
-
-    if (ancoratge.has(identificador) === true) {
-      duplicats.push({ syndicObjectID: identificador, fila: fila });
-      continue;
-    }
-
-    ancoratge.set(identificador, fila);
   }
 
   return { ancoratge: ancoratge, duplicats: duplicats };
@@ -191,6 +228,7 @@ function cadena(valor) {
 module.exports = {
   creaTagIdentificador: creaTagIdentificador,
   extreuIdentificador: extreuIdentificador,
+  extreuIdentificadors: extreuIdentificadors,
   construeixAncoratge: construeixAncoratge
 };
 
@@ -283,6 +321,51 @@ function bateria() {
         var tornada = extreuIdentificador(nota);
         return tornada === 'FMALAR066ZZZZZZZ' ? '' :
           'esperava FMALAR066ZZZZZZZ, tinc «' + tornada + '»';
+      }
+    },
+
+    {
+      nom: 'extreuIdentificadors: 0, 1 i 2 tags',
+      comprova: function () {
+        var zero = extreuIdentificadors('[Cartell: no pujat] Res.');
+        if (zero.length !== 0) {
+          return 'sense tag esperava un array buit, en tinc ' + zero.length;
+        }
+        if (extreuIdentificadors(null).length !== 0 || extreuIdentificadors('').length !== 0) {
+          return 'una nota nul·la o buida ha de donar un array buit';
+        }
+        var un = extreuIdentificadors('[ADT66 id: AAA] text');
+        if (un.length !== 1 || un[0] !== 'AAA') {
+          return 'amb un tag esperava [AAA], tinc ' + JSON.stringify(un);
+        }
+        var dos = extreuIdentificadors('[ADT66 id: AAA] mig [ADT66 id: BBB] final');
+        if (dos.length !== 2 || dos[0] !== 'AAA' || dos[1] !== 'BBB') {
+          return 'amb dos tags esperava [AAA,BBB], tinc ' + JSON.stringify(dos);
+        }
+        return '';
+      }
+    },
+
+    {
+      nom: 'construeixAncoratge indexa una fila per cadascun dels seus ids',
+      comprova: function () {
+        var doble = filaDeProva({
+          estat: 'publicat',
+          nota_curador: '[ADT66 id: AAA] [ADT66 id: BBB]'
+        });
+        var altra = filaDeProva({ nota_curador: '[ADT66 id: BBB]' });
+        var resultat = construeixAncoratge([doble, altra]);
+
+        if (resultat.ancoratge.get('AAA') !== doble ||
+            resultat.ancoratge.get('BBB') !== doble) {
+          return 'la fila de dos tags ha de manar a AAA i a BBB';
+        }
+        if (resultat.duplicats.length !== 1 ||
+            resultat.duplicats[0].syndicObjectID !== 'BBB' ||
+            resultat.duplicats[0].fila !== altra) {
+          return 'la segona fila amb BBB ha d\'anar a duplicats';
+        }
+        return '';
       }
     },
 

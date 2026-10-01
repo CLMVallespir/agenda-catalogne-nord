@@ -18,7 +18,12 @@
        darrere ha deixat dit sobre la fila, i el curador no el toca.
 
        Publica: posa estat = "publicat", afegeix la fila a
-                events.json i la treu de pendents.json.
+                events.json i, a pendents.json, la SUBSTITUEIX a la
+                mateixa posició per la fila publicada (amb la
+                nota_curador intacta). No la treu: la nota porta el
+                tag [ADT66 id: …], i sense ell la sincronització
+                tornaria a encuar l'oferta publicada. Canviat l'1
+                d'octubre de 2026.
        Rebutja: NO treu la fila. Hi posa estat = "rebutjat" i la
                 deixa on és. pendents.json és la memòria de rebuig
                 del projecte: la fila rebutjada hi queda perquè una
@@ -895,17 +900,53 @@ function idJaPublicat(events, id) {
 }
 
 // ------------------------------------------------------------
-// Torna una transformació que treu una fila de la cua. Si la fila ja
-// no hi és, peta: val més aturar-se que dir que s'ha fet una cosa que
-// no s'ha fet.
+// Torna una transformació que substitueix una fila de la cua, a la
+// mateixa posició, per la fila publicada. Si la fila ja no hi és, peta:
+// val més aturar-se que dir que s'ha fet una cosa que no s'ha fet.
 // ------------------------------------------------------------
-function treuDeLaCua(original) {
+function substitueixPerPublicada(original, publicada) {
   return function (pendents) {
     var posicio = trobaIndex(pendents, original);
     if (posicio === -1) {
       throw new Error(JA_NO_HI_ES);
     }
-    return pendents.slice(0, posicio).concat(pendents.slice(posicio + 1));
+
+    var nova = pendents.slice();
+    nova[posicio] = publicada;
+    return nova;
+  };
+}
+
+// ------------------------------------------------------------
+// Construeix la fila de pendents.json d'un acte publicat: els 17 camps
+// editats més la nota_curador de l'original, intacta (no és editable i
+// no passa per recullFitxa). Divuit camps, tots cadenes, en l'ordre del §4.
+// ------------------------------------------------------------
+function creaFilaPublicada(editat, original) {
+  var nota = '';
+  if (typeof original.nota_curador === 'string') {
+    nota = original.nota_curador;
+  }
+
+  return {
+    id: editat.id,
+    titol: editat.titol,
+    data_inici: editat.data_inici,
+    data_fi: editat.data_fi,
+    hora: editat.hora,
+    lloc: editat.lloc,
+    municipi: editat.municipi,
+    comarca: editat.comarca,
+    categoria: editat.categoria,
+    descripcio_ca: editat.descripcio_ca,
+    descripcio_fr: editat.descripcio_fr,
+    associacio: editat.associacio,
+    imatge_url: editat.imatge_url,
+    font_url: editat.font_url,
+    estat: 'publicat',
+    data_entrada: editat.data_entrada,
+    periodicitat: editat.periodicitat,
+    nota_curador: nota
   };
 }
 
@@ -920,7 +961,7 @@ function treuDeLaCua(original) {
 // de llegir no s'ha de modificar mai a mitja escriptura, perquè un
 // reintent el torna a llegir de zero.
 //
-// Si la fila ja no hi és, peta, igual que treuDeLaCua().
+// Si la fila ja no hi és, peta, igual que substitueixPerPublicada().
 // ------------------------------------------------------------
 function marcaRebutjadaALaCua(original) {
   return function (pendents) {
@@ -1010,12 +1051,13 @@ function potLlencarEdicions() {
 
 // ------------------------------------------------------------
 // Publica un acte: l'afegeix a events.json amb estat "publicat" i
-// després el treu de pendents.json.
+// després marca la fila de pendents.json com a publicada (la substitueix
+// a la mateixa posició, amb la nota_curador intacta; no la treu).
 //
 // L'ordre importa i no és casual. Són dues escriptures i no hi ha
-// manera de fer-les alhora: si primer s'esborrés de la cua i després
-// fallés events.json, l'acte es perdria. Fent-ho al revés, una
-// fallada deixa un duplicat visible a la cua, que és recuperable.
+// manera de fer-les alhora: si primer es marqués la fila i després
+// fallés events.json, l'acte no seria enlloc. Fent-ho al revés, una
+// fallada deixa la fila encara pendent a la cua, que és recuperable.
 //
 // Cap de les dues escriptures no és cega: la primera no afegeix un id
 // que ja hi sigui, i la segona diu en veu alta si la fila ja no era a
@@ -1062,16 +1104,17 @@ async function publica(fitxa, original) {
   var laCuaHaCanviat = false;
 
   try {
-    await desaAmbReintent(FITXER_PENDENTS, treuDeLaCua(original),
-      'Treu de la cua ' + editat.titol);
+    await desaAmbReintent(FITXER_PENDENTS,
+      substitueixPerPublicada(original, creaFilaPublicada(editat, original)),
+      'Marca com a publicada ' + editat.titol);
   } catch (error) {
     if (error.message !== JA_NO_HI_ES) {
-      avisaFitxa(fitxa, 'Publicat a events.json, però no l’he pogut treure de la cua: ' +
+      avisaFitxa(fitxa, 'Publicat a events.json, però no l’he pogut marcar com a publicada a la cua: ' +
         error.message + ' Torna a carregar la cua i rebutja aquesta fila.', 'error', false);
       mostraAvis('Publicat a mitges: mira el missatge de la fitxa.', 'error');
       return;
     }
-    // Algú altre l'ha tret de la cua mentre es publicava. L'acte s'ha
+    // Algú altre l'ha tocat a la cua mentre es publicava. L'acte s'ha
     // publicat igualment, però això no es pot dir en silenci: la cua ha
     // canviat sota els peus i val més que el curador ho sàpiga.
     laCuaHaCanviat = true;
@@ -1085,7 +1128,7 @@ async function publica(fitxa, original) {
 
   if (laCuaHaCanviat) {
     mostraAvis('Publicat: ' + editat.titol + ' (' + editat.id + '). La fila ja no era ' +
-      'a la cua: algú altre l’ha tret mentre es publicava. Torna a carregar la cua.', '');
+      'a la cua: algú altre l’ha tocada mentre es publicava. Torna a carregar la cua.', '');
     return;
   }
 
@@ -1097,8 +1140,8 @@ async function publica(fitxa, original) {
 // el deixa a pendents.json. La fila no se suprimeix mai; desapareix de
 // la pantalla perquè la cua només pinta les files pendents.
 //
-// Publicar sí que treu la fila (dues escriptures, events.json primer).
-// Rebutjar no: la fila rebutjada és justament el rastre que ha de quedar.
+// Publicar tampoc no treu la fila: la marca com a publicada (dues
+// escriptures, events.json primer). Cap de les dues no suprimeix res.
 // ------------------------------------------------------------
 async function rebutja(fitxa, original) {
   if (!potEscriure()) {

@@ -112,9 +112,10 @@ Cron Triggers.
 s'hi enganxa el testimoni de GitHub de gra fi i es treballa. Sense testimoni, la
 pàgina és només de lectura.
 
-Publicar escriu `events.json` **abans** de treure la fila de `pendents.json`.
-L'ordre no és casual: si falla enmig, deixa un duplicat visible a la cua i no un
-acte perdut.
+Publicar escriu `events.json` **abans** de marcar la fila de `pendents.json`
+com a `publicat` (no la treu, des de l'1 d'octubre de 2026: així la
+sincronització reconeix l'oferta). L'ordre no és casual: si falla enmig, deixa
+un duplicat visible a la cua i no un acte perdut.
 
 ### Rollback
 

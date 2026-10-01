@@ -45,6 +45,7 @@ a fer**, o sigui que si un altre escriptor publica l'acte enmig del conflicte de
 SHA, el segon intent el detecta i no escriu res. Llançar des de la transformació
 surt del bucle de `desaAmbReintent` sense fer cap `PUT`: és el mateix mecanisme
 que ja feia servir `treuDeLaCua()`.
+*Superat l'1 d'octubre de 2026: publicar ara marca la fila com a publicat (`substitueixPerPublicada()` ha substituït `treuDeLaCua()`); la resta de la mecànica no canvia.*
 
 **Què veu el curador en cada cas:**
 
@@ -54,7 +55,7 @@ que ja feia servir `treuDeLaCua()`.
 | L'`id` ja és a `events.json` | **cap `PUT`** | **es queda a la cua**, botons reactivats | `Aquest acte ja estava publicat, no s’ha duplicat. Identificador: <id>. Rebutja la fila si sobra.` (neutre) |
 | La fila ja no és a la cua | 1 `PUT` (l'acte es publica) | desapareix | `Publicat: <títol> (<id>). La fila ja no era a la cua: algú altre l’ha tret mentre es publicava. Torna a carregar la cua.` (neutre) |
 | GitHub rebutja l'escriptura | cap `PUT` reeixit | es queda, botons reactivats | `No s’ha publicat. …` (vermell) — sense canvis |
-| Publicat a mitges | 1 `PUT` | es queda | `Publicat a events.json, però no l’he pogut treure de la cua…` (vermell) — sense canvis |
+| Publicat a mitges | 1 `PUT` | es queda | `Publicat a events.json, però no l’he pogut treure de la cua…` (vermell) — sense canvis *(superat l'1 d'octubre de 2026: publicar ara marca la fila com a publicat; el missatge diu «marcar com a publicada»)* |
 
 El to dels dos avisos nous és neutre (`mena` buida, la caixa grisa), no negre:
 el negre és el de `Publicat: …` i confondre'ls seria pitjor que no dir res.

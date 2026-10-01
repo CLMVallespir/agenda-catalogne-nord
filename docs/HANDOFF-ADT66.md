@@ -466,6 +466,9 @@ L'esquema, en el moment d'escriure això, era exactament el que deia el **§4 de
 - **16 camps canònics** — els que anaven a `events.json` i al web públic.
 - **+ `nota_curador`**, el 17è, que viu només a `pendents.json` i a
   `curador.html` i es descarta en publicar (decidit el 29 d'agost de 2026).
+  *(Matís de l'1 d'octubre de 2026: no arriba mai a `events.json`, però la fila
+  publicada es queda a `pendents.json` amb la nota intacta, i la capa 1 la llegeix
+  per reconèixer l'oferta com a `ja_publicat`.)*
 
 O sigui, **aleshores**: 16 camps públics, 17 al total de la cua. Des del 17 de
 setembre de 2026 el §4 de `CLAUDE.md` en té **divuit**: els setze de sempre +
@@ -686,7 +689,10 @@ obligava a resoldre.
 **FET el 3 de setembre de 2026 — la deduplicació contra els dos fitxers.**
 `eines/dedup-contra-fitxers.js`, amb `classificaContraFitxers()`. Dues capes:
 la 1 exacta pel tag `[ADT66 id: …]` contra `pendents.json` (els tres estats,
-sense filtrar-ne cap abans de comparar), la 2 difusa contra `events.json`
+sense filtrar-ne cap abans de comparar; des de l'1 d'octubre de 2026 també
+llegeix tots els tags d'una nota, i les files publicades pel curador es queden
+a `pendents.json` com a `publicat` perquè la capa 1 les reconegui), la 2
+difusa contra `events.json`
 reutilitzant `comparaEsdeveniments()` amb un llindar propi de **0,75**. Torna
 una etiqueta per oferta —`ja_publicat` · `ja_a_la_cua` · `ja_rebutjat` ·
 `nova`— i **no escriu res**; `events.json` només es llegeix. El biaix és

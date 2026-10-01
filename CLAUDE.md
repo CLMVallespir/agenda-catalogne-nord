@@ -40,8 +40,9 @@ flux ADT66 ───────────────────────
 - **`events.json`** (arrel del repositori) és la font de veritat del que és públic.
 - **`pendents.json`** (arrel del repositori) és la cua de revisió del curador
   **i la memòria de rebuig del projecte**: rebutjar una fila no la suprimeix, li
-  posa `estat = "rebutjat"` i la deixa on és. Per això la cua del curador filtra
-  explícitament `estat === 'pendent'` en pintar.
+  posa `estat = "rebutjat"` i la deixa on és; publicar tampoc no la suprimeix, hi
+  posa `estat = "publicat"` (1 d'octubre de 2026). Per això la cua del curador
+  filtra explícitament `estat === 'pendent'` en pintar.
 - El **Gmail d'arxiu** només rep correu reenviat pel Worker. Cap script no hi viu.
   És el registre permanent de cada tramesa original.
 
@@ -182,15 +183,21 @@ Regles de què depèn el codi:
 - **La cua només pinta `estat === 'pendent'`**, i el filtre és literalment això,
   no `!== 'rebutjat'`: qualsevol estat nou o inesperat queda fora de la cua per
   defecte, que és el costat segur.
-- **Publicar no ha canviat:** dues escriptures, `events.json` primer i **treure**
-  la fila de `pendents.json` després (vegeu `NOTES.md`). Publicar treu, rebutjar
-  marca. Decidit el 3 de setembre de 2026.
-- **La poda de l'Action treu les `pendent` i les `rebutjat` que ja han
-  passat.** Ho fa `podaCaducades()` a `eines/sincronitza-programada.js`, dins
-  de cada escriptura: l'últim dia de l'acte —`data_fi`, o `data_inici` si
-  `data_fi` és buida— anterior a avui. `publicat`, qualsevol estat inesperat i
-  qualsevol fila sense cap data utilitzable no es poden mai. El registre del
-  run compta les dues per separat.
+- **Publicar marca, igual que rebutjar** (canviat l'1 d'octubre de 2026): dues
+  escriptures, `events.json` primer i després **substituir**, a la mateixa
+  posició de `pendents.json`, la fila per la publicada (`estat = "publicat"`,
+  `nota_curador` intacta, els 18 camps). Ja no es treu: `events.json` no conserva
+  `nota_curador`, on viu el tag `[ADT66 id: …]`, i sense la fila la passada
+  següent no reconeixia l'oferta publicada i la tornava a encuar (vegeu
+  `NOTES.md`). Fins aquesta data la regla, decidida el 3 de setembre de 2026, era
+  «publicar treu, rebutjar marca».
+- **La poda de l'Action treu les `pendent`, les `rebutjat` i les `publicat` que
+  ja han passat.** Ho fa `podaCaducades()` a `eines/sincronitza-programada.js`,
+  dins de cada escriptura: l'últim dia de l'acte —`data_fi`, o `data_inici` si
+  `data_fi` és buida— anterior a avui. Qualsevol estat inesperat i qualsevol
+  fila sense cap data utilitzable no es poden mai. El registre del run compta
+  les tres per separat. (`publicat` s'hi va afegir l'1 d'octubre de 2026, amb
+  la regla de dalt; abans no es podava mai.)
   **Canviat el 30 de setembre de 2026.** Fins llavors la regla, escrita al
   bàner d'aquell fitxer, deia que les `pendent` no es podaven mai «perquè la
   cua és del curador». Dues coses l'han girada. La cua s'omplia d'actes
@@ -211,7 +218,8 @@ Regles de què depèn el codi:
     - **`publicat` primer** perquè un esdeveniment publicat ja ha passat el
       filtre humà i cap fusió automàtica no pot revertir-ho. Hi arribarà el dia
       que es dedupliqui contra `events.json` (`docs/HANDOFF-ADT66.md` §4, tasca
-      encara per fer); avui cap camí no hi porta cap fila `publicat`.
+      encara per fer); des de l'1 d'octubre de 2026 `pendents.json` ja pot
+      portar files `publicat` (les que hi deixa `curador.html`).
     - **`rebutjat` abans que `pendent`** perquè un rebuig és una decisió sobre
       l'**esdeveniment**, no sobre la fila que el porta. Si manés la posició, la
       fusió perdria la memòria de rebuig (el curador tornaria a revisar el que ja
@@ -227,8 +235,9 @@ Regles de què depèn el codi:
   precedència; `eines/dedup-contra-fitxers.js` tracta els tres estats i en
   torna una etiqueta cadascun (§4 ter). Decidit el 3 de setembre de 2026.
   `eines/sincronitza-programada.js` escriu només files `pendent` i en poda les
-  `pendent` i les `rebutjat` caducades (la regla de dalt, del 30 de setembre de
-  2026).
+  `pendent`, les `rebutjat` i les `publicat` caducades (la regla de dalt, del 30
+  de setembre de 2026 i, per a `publicat`, de l'1 d'octubre de 2026).
+  `curador.html` hi marca com a `publicat` la fila que publica.
 
 ## 4 ter. Ancoratge contra el que ja tenim — dues capes, i el biaix cap a encuar
 
@@ -240,14 +249,17 @@ diferent**, i **no escriu res**: torna una etiqueta per oferta
 
 - **Capa 1, exacta, contra `pendents.json`.** El tag `[ADT66 id: …]` que
   `mapejaOfertaADT66()` deixa a `nota_curador` es torna a llegir amb
-  `extreuIdentificador()` d'`eines/adt66-identificador.js`. Igualtat
+  `extreuIdentificadors()` d'`eines/adt66-identificador.js`, que en llegeix
+  **tots** els tags d'una nota, no només el primer (1 d'octubre de 2026); l'oferta
+  entrant en porta un de sol i el llegeix amb `extreuIdentificador()`. Igualtat
   d'identificador, cap llindar. Mira **totes** les files del fitxer, sense
   filtrar-ne cap per estat abans de comparar: filtrar-hi «només les pendents»
   seria justament l'error que la memòria de rebuig del §4 vol evitar —l'oferta
-  rebutjada tornaria a entrar cada setmana.
-- **Capa 2, difusa, contra `events.json`.** Les files publicades no porten
-  identificador i no en portaran mai (`recullFitxa()` deixa `nota_curador` a la
-  cua), i `docs/SONDEIG-FONT-URL-ADT66.md` va tancar també la via de `font_url`.
+  rebutjada tornaria a entrar cada setmana—, i l'oferta publicada tampoc: la
+  seva fila `publicat` s'hi queda i la protegeix (`ja_publicat`).
+- **Capa 2, difusa, contra `events.json`.** Les files d'`events.json` no porten
+  identificador i no en portaran mai (`recullFitxa()` deixa `nota_curador` fora),
+  i `docs/SONDEIG-FONT-URL-ADT66.md` va tancar també la via de `font_url`.
   Queda comparar contingut: es reutilitza `comparaEsdeveniments()` sencer
   —municipi normalitzat + `data_inici` com a clau dura, Jaccard dels títols com
   a desempat— i s'hi posa un llindar **més exigent** al damunt.
@@ -294,8 +306,10 @@ sense que ningú ho vegi. Decidit el 3 de setembre de 2026.
 - **Només es mostra a `curador.html`**, com un avís groc a dalt de la fitxa, i
   **no és editable**: no porta `data-camp`, de manera que `recullFitxa()` ni el
   veu. El curador el llegeix, no el toca.
-- **Es descarta en publicar, i és deliberat.** És el camp 18è: viu a
-  `pendents.json` i a `curador.html` i s'atura allà. `recullFitxa()` construeix
+- **No arriba mai a `events.json`, i és deliberat.** És el camp 18è: viu a
+  `pendents.json` i a `curador.html` i s'atura allà (en publicar, la fila de
+  `pendents.json` es queda amb la nota intacta; l'1 d'octubre de 2026 va deixar
+  de ser «treta»). `recullFitxa()` construeix
   els **17 camps públics exactes** (els setze de sempre més `periodicitat`,
   que sí que és públic) i la nota no hi entra, o sigui que
   `events.json` no en porta mai cap. El motiu: `events.json` és l'arxiu públic i

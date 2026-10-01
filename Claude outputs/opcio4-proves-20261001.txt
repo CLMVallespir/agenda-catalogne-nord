@@ -1,0 +1,284 @@
+=== node eines/sincronitza-programada.js --proves ===
+SINCRONITZACIÓ PROGRAMADA — 22 proves, avui = 2026-09-30
+
+BÉ   quota a la tercera fila: només s'escriuen la traduïda i la fallada normal
+BÉ   quota: els comptadors separen quota, fallades i traduïdes
+BÉ   quota: el 429 no es reintenta i darrere seu ja no es crida
+BÉ   quota: el motiu de Google es desa a l'informe
+BÉ   la fallada normal entra amb l'avís de no traduïda
+BÉ   un 429 sense RESOURCE_EXHAUSTED és una fallada normal i s'escriu
+BÉ   el model declina: la fila s'escriu en francès i compta com a declinada
+BÉ   sense crida: la fila surt amb el tag i l'avís de no traduïda
+BÉ   poda: les pendents passades se'n van, amb data_fi o sense
+BÉ   poda: les rebutjades passades se'n van
+BÉ   poda: les publicades passades se'n van
+BÉ   poda: es queden la futura, la d'avui, la sense dates, la publicada viva i l'estat estrany
+BÉ   capa 1: una oferta amb l'id d'una fila publicada de pendents és ja_publicat
+BÉ   capa 1: un id en segona posició de la nota d'una fila publicada també protegeix
+BÉ   capa 1: un id que cap fila no porta continua sent nova
+BÉ   exclusió: la inauguració del cinema d'Elna (FMALAR066V52Z8V7) queda exclosa
+BÉ   exclusió: una oferta d'Elna en una altra adreça i sense tipus cinema passa
+BÉ   exclusió: «13, Bd Voltaire» a ELNE coincideix, i «113 Bd Voltaire» no
+BÉ   exclusió: un cinema d'un altre municipi (Perpinyà, «Cinéma») passa
+BÉ   exclusió: una oferta d'Elna amb RechercheTYPE cinéma en una altra adreça s'exclou
+BÉ   exclusió: una oferta exclosa que ja és a pendents.json com a rebutjada es compta com a exclosa, no com a ja_rebutjada
+BÉ   exclusió: l'exclosa no arriba a les files a traduir; les altres hi arriben
+
+BÉ   les 22 proves passen.
+exit code: 0
+=== node eines/mapeja-adt66.js ===
+BÉ  Dates contigües: el registre real del §2 bis del handoff
+BÉ  Dates contigües d'un sol dia: data_fi igual a data_inici
+BÉ  Dates disperses del tipus «470 dates»: mercat setmanal, 60 ocurrències
+BÉ  Dates disperses pel contraexemple del §3 bis: salt de 2, abast de 223
+BÉ  Dates disperses totes passades: no hi ha data, ni id
+BÉ  DETAILSITEWEB present: font_url és l'href de l'organitzador
+BÉ  DETAILSITEWEB a null (898 de 1 504): font_url coercit a ""
+BÉ  DETAILSITEWEB absent del tot: font_url també ""
+BÉ  El tag va primer, davant de tots els avisos
+BÉ  Oferta amb SyndicObjectID i quasi res més: el tag obre la nota igual
+BÉ  La comarca es deduïx del municipi: ELNE -> Rosselló, sense cap avís
+BÉ  Cada comarca per una mostra del flux real
+BÉ  Municipi de fora de la taula de comarques: queda "" i avisa
+BÉ  Tota la Fenolleda va a Rosselló, no només els dos pobles d'exemple
+BÉ  Sense SyndicObjectID: cap tag, i no és cap error de forma
+BÉ  Municipi amb àlies coneguda: es normalitza a la forma catalana
+BÉ  Municipi fora de la taula: passa tal qual i avisa
+BÉ  Randonnée ja no cau a "": des del mapeig mesurat és Esports
+BÉ  Categoria del tot desconeguda: cau a "" amb avís
+BÉ  La coma parteix «Projection, cinéma»: les dues meitats van a Cinema
+BÉ  La coma parteix «Randonnée, balade»: les dues meitats van a Esports
+BÉ  Co-etiqueta: «Spectacle,Théâtre» mana el Teatre de la taula
+BÉ  Co-etiqueta: «Concert,Spectacle» va a Música, no a Teatre
+BÉ  Co-etiqueta: «Festival,Projection, cinéma» va a Cinema
+BÉ  Co-etiqueta tota sola: «Spectacle» cau a Teatre i ho diu a la nota
+BÉ  Els vuit sense calaix manen sobre la co-etiqueta: «Salon,Spectacle»
+BÉ  Jeux amb joc de club al títol: Vida associativa, per damunt de la taula
+BÉ  Jeux amb escape game: buida amb nota, mai Vida associativa
+BÉ  Tema «Pour enfant»: sobreescriu Taller i ho diu a la nota
+BÉ  Tema «Conte»: sobreescriu Teatre igual, sense excepcions
+BÉ  Tema infantil amb RechercheTYPE buit: omple el buit i no avisa
+BÉ  «Cirque» i «Bande dessinée» NO són tema infantil
+BÉ  «Conte» dins d'una altra paraula del tema no compta
+BÉ  Sense COMMUNTHEME la categoria de RechercheTYPE no es toca
+BÉ  Jeux dins d'un concert: la taula mana i la fila no queda buida
+BÉ  Forum d'associacions: el títol mana sobre «Vide-grenier»
+BÉ  Forum d'associacions sense cap RechercheTYPE: igualment reconegut
+BÉ  Rifles: Vida associativa
+BÉ  Festa Major i Aplec van a Patrimoni i tradicions
+BÉ  Senyal de nova era: un terme fort tot sol ja avisa
+BÉ  Senyal de nova era: un sol terme feble NO avisa
+BÉ  Senyal de nova era: «aura» dins de «restaurant» no compta
+BÉ  Senyal de preu: un trail de 40 euros avisa
+BÉ  Senyal de preu: una balada de 5 euros no avisa
+BÉ  Senyal de preu: no toca cap fila que no sigui Esports
+BÉ  Categoria múltiple: mana el primer valor que té calaix
+BÉ  L'id no s'hereta: el SyndicObjectID no hi entra mai
+BÉ  Les entitats i l'etiqueta francesa surten del text
+BÉ  Lloc: COMMUNLIEU ple es manté, encara que hi hagi adreça
+BÉ  Lloc: COMMUNLIEU és un espai sol i l'adreça és plena, lloc = adreça
+BÉ  Lloc: COMMUNLIEU és un espai sol i l'adreça és buida, lloc = ""
+BÉ  Lloc: l'adreça de recanvi surt sense espais sobrants
+BÉ  Títol amb dos punts: no s'escapça com si fos una etiqueta
+BÉ  Oferta buida del tot: els divuit camps hi són igualment, tots ""
+BÉ  Q1: «Marché hebdomadaire» sol dona «cada setmana»
+BÉ  Q1: «Marché hebdomadaire» amb un altre tema al costat, igual
+BÉ  Q1: cap altre tema no activa la regla — «Artisanat» queda buit
+BÉ  Q1: «marché» dins d'un altre tema no compta com a subcadena
+BÉ  Q1: sense COMMUNTHEME, periodicitat buida
+BÉ  Structure no va a associacio: l'oficina no organitza l'acte
+BÉ  Palaldà i els Banys: «Amélie-les-Bains-Palalda» -> «Els Banys i Palaldà», Vallespir
+BÉ  Palaldà i els Banys: «Amélie-les-Bains» -> «Els Banys i Palaldà», Vallespir
+BÉ  Palaldà i els Banys: «Amelie-les-Bains» -> «Els Banys i Palaldà», Vallespir
+BÉ  Palaldà i els Banys: «Els Banys d'Arles i Palaldà» -> «Els Banys i Palaldà», Vallespir
+BÉ  Palaldà i els Banys: «els Banys» -> «Els Banys i Palaldà», Vallespir
+BÉ  Palaldà i els Banys: «Palalda» -> «Palaldà», Vallespir
+BÉ  Palaldà i els Banys: «Palaldà» -> «Palaldà», Vallespir
+
+67 casos, 0 fallades.
+exit code: 0
+=== node eines/mapeja-recerca.js ===
+BÉ  Els trenta-un camps plens (fila real del CSV de recerca)
+     · Descripció en francès: falta la traducció catalana.
+BÉ  Tot buit: els setze camps hi són igualment, tots ""
+     · Sense data d'inici: l'id queda buit i aquesta fila no es pot identificar.
+BÉ  Registre buit del tot (ni tan sols els trenta-un camps)
+     · Sense data d'inici: l'id queda buit i aquesta fila no es pot identificar.
+BÉ  Comarca fora de l'enum: «Alta Cerdanya» -> es deduïx del municipi
+     · La comarca «Alta Cerdanya» no és cap de les cinc: la deduïxo del municipi («Cerdanya»).
+BÉ  Sense comarca i amb municipi conegut: es deduïx (el cas de l'ADT66)
+BÉ  Sense comarca i amb municipi de fora de la taula: queda buida i avisa
+     · El municipi «NARBONNE» no és a la taula: el deixo tal com ve.
+     · Sense comarca, i el municipi «NARBONNE» no és a la taula de comarques: queda buida.
+BÉ  Categoria sense calaix entre les tretze: «sports» -> ""
+     · El títol ve en «fr» i no hi ha versió catalana: cal traduir-lo.
+     · La categoria «sports» no té equivalent entre les tretze: queda buida.
+BÉ  Categoria traduïble: «exhibition» -> «Exposició»
+BÉ  Categoria ja en català: passa directament
+BÉ  L'id que porta el candidat es descarta i es reconstrueix
+BÉ  Descripció en francès: va a descripcio_fr i el català queda buit
+     · El títol ve en «fr» i no hi ha versió catalana: cal traduir-lo.
+     · Descripció en francès: falta la traducció catalana.
+BÉ  Descripció en català: va a descripcio_ca i el francès queda buit
+     · Descripció en català: falta la traducció francesa.
+BÉ  Títol francès sense versió catalana: passa tal qual i avisa
+     · El títol ve en «fr» i no hi ha versió catalana: cal traduir-lo.
+BÉ  Sense data d'inici: l'id queda buit i la resta passa igual
+     · Sense data d'inici: l'id queda buit i aquesta fila no es pot identificar.
+BÉ  La cadena "null" de la recerca no arriba mai a producció
+BÉ  Una fila sense cap problema deixa nota_curador buida
+BÉ  Els avisos del mapeig viatgen dins de la fila, a nota_curador
+     · El títol ve en «fr» i no hi ha versió catalana: cal traduir-lo.
+     · Descripció en francès: falta la traducció catalana.
+     · La comarca «Alta Cerdanya» no és cap de les cinc: la deduïxo del municipi («Cerdanya»).
+     · La categoria «obstacle race» no té equivalent entre les tretze: queda buida.
+
+17 casos, 0 fallades.
+exit code: 0
+=== node eines/verifica-enum.js ===
+El mestre és prompts/extract-event.txt.
+  categoria: 13 valors — Música · Teatre · Dansa i ball · Conferència · Exposició · Mercat · Cinema · Taller · Activitat infantil · Patrimoni i tradicions · Concentració · Esports · Vida associativa
+  comarca: 5 valors — Rosselló · Conflent · Vallespir · Capcir · Cerdanya
+
+Els llocs que s'hi comparen:
+  BÉ   prompts/extract-event.txt — línia del prompt (categoria): 13 valors
+  BÉ   prompts/extract-event.txt — línia del prompt (comarca): 5 valors
+  BÉ   worker/worker.js — CATEGORIA_VALUES (categoria): 13 valors
+  BÉ   worker/worker.js — còpia del prompt (categoria): 13 valors
+  BÉ   worker/worker.js — COMARCA_VALUES (comarca): 5 valors
+  BÉ   worker/worker.js — còpia del prompt (comarca): 5 valors
+  BÉ   worker/worker.js — COMARQUES_BREVO (comarca): 5 valors
+  BÉ   worker/worker-concatenat.js — CATEGORIA_VALUES (categoria): 13 valors
+  BÉ   worker/worker-concatenat.js — còpia del prompt (categoria): 13 valors
+  BÉ   worker/worker-concatenat.js — COMARCA_VALUES (comarca): 5 valors
+  BÉ   worker/worker-concatenat.js — còpia del prompt (comarca): 5 valors
+  BÉ   worker/worker-concatenat.js — COMARQUES_BREVO (comarca): 5 valors
+  BÉ   app.js — CATEGORIES (filtre) (categoria): 13 valors
+  BÉ   app.js — CATEGORIA_ICONES (categoria): 13 valors
+  BÉ   app.js — COMARQUES (comarca): 5 valors
+  BÉ   curador.html — CATEGORIA_VALUES (categoria): 13 valors
+  BÉ   curador.html — COMARCA_VALUES (comarca): 5 valors
+  BÉ   importa-csv.js — CATEGORIA_VALUES (categoria): 13 valors
+  BÉ   importa-csv.js — COMARCA_VALUES (comarca): 5 valors
+  BÉ   eines/dedup-esdeveniments.js — CATEGORIES (categoria): 13 valors
+  BÉ   eines/dedup-esdeveniments.js — COMARQUES (comarca): 5 valors
+  BÉ   eines/mapeja-adt66.js — CATEGORIES (categoria): 13 valors
+  BÉ   eines/mapeja-adt66.js — COMARQUES (comarca): 5 valors
+  BÉ   eines/mapeja-recerca.js — CATEGORIES (categoria): 13 valors
+  BÉ   eines/mapeja-recerca.js — COMARQUES (comarca): 5 valors
+  BÉ   prova-local.html — CATEGORIES (filtre) (categoria): 13 valors
+  BÉ   prova-local.html — CATEGORIA_ICONES (categoria): 13 valors
+  BÉ   prova-local.html — COMARQUES (comarca): 5 valors
+
+Les còpies literals del prompt:
+  BÉ   worker/worker.js: idèntica al mestre (4185 caràcters)
+  BÉ   worker/worker-concatenat.js: idèntica al mestre (4185 caràcters)
+
+28 llocs comprovats, 0 problemes.
+exit code: 0
+=== node eines/verifica-camps.js ===
+El mestre és prompts/extract-event.txt.
+  públics (17): id · titol · data_inici · data_fi · hora · lloc · municipi · comarca · categoria · descripcio_ca · descripcio_fr · associacio · imatge_url · font_url · estat · data_entrada · periodicitat
+  de cua (18): els de dalt més «nota_curador»
+  editables (14): els públics menys «id», «estat», «data_entrada»
+
+Els llocs que s'hi comparen:
+  BÉ   [1] prompts/extract-event.txt — exemple de resposta: 17 camps (public)
+  BÉ   [2] worker/worker.js — còpia del prompt — línia de claus: 17 camps (public)
+  BÉ   [2] worker/worker.js — còpia del prompt — exemple: 17 camps (public)
+  BÉ   [3] worker/worker-concatenat.js — còpia del prompt — línia de claus: 17 camps (public)
+  BÉ   [3] worker/worker-concatenat.js — còpia del prompt — exemple: 17 camps (public)
+  BÉ   [4] worker/worker.js — construeixFila(): 17 camps (public)
+  BÉ   [5] worker/worker.js — construeixFilaFormulari(): 17 camps (public)
+  BÉ   [6] worker/worker-concatenat.js — construeixFila(): 17 camps (public)
+  BÉ   [7] worker/worker-concatenat.js — construeixFilaFormulari(): 17 camps (public)
+  BÉ   [8] curador.html — recullFitxa(): 17 camps (public)
+  BÉ   [9] curador.html — creaFitxa() — camps editables: 14 camps (editable)
+  BÉ   [10] importa-csv.js — ESQUEMA: 17 camps (public)
+  BÉ   [11] importa-csv.js — construeixFila(): 17 camps (public)
+  BÉ   [12] eines/mapeja-adt66.js — CAMPS_PRODUCCIO: 18 camps (cua)
+  BÉ   [13] eines/mapeja-adt66.js — mapejaOfertaADT66(): 18 camps (cua)
+  BÉ   [14] eines/mapeja-recerca.js — CAMPS_PRODUCCIO: 18 camps (cua)
+  BÉ   [15] eines/mapeja-recerca.js — mapejaAProduccio(): 18 camps (cua)
+  BÉ   [16] eines/dedup-esdeveniments.js — CAMPS: 18 camps (cua)
+  BÉ   [18] eines/processa-lot.js — CAMPS_PRODUCCIO: 18 camps (cua)
+  BÉ   [§5] eines/adt66-identificador.js — camps de filaDeProva(): 18 camps (cua)
+  BÉ   [§5] eines/classifica-editorial.js — CAMPS: 18 camps (cua)
+  BÉ   [§5] eines/deteccio-retirades.js — camps de filaDeProva(): 18 camps (cua)
+  BÉ   [§5] eines/puja-cartell.js — CAMPS: 18 camps (cua)
+  BÉ   [§5] eines/verifica-esdeveniment.js — CAMPS: 18 camps (cua)
+  BÉ   [§5] eines/dedup-contra-fitxers.js — filaDeProva(): 18 camps (cua)
+  BÉ   [nou] eines/neteja-cua.js — CAMPS_CANONICS: 18 camps (cua)
+
+26 comprovacions a 16 fitxers, 0 problemes.
+exit code: 0
+=== node eines/verifica-esdeveniment.js ===
+BÉ  Resultat ok: no s'escriu cap nota (criteri de silenci)
+BÉ  Resultat dubte: nota amb el camp que no es pot confirmar
+BÉ  Resultat sospitós: nota amb el camp que no surt a la font
+BÉ  Sospitós amb dos camps: tots dos surten a la nota
+BÉ  Sospitós sense cap camp assenyalat: la nota surt igualment
+BÉ  Tres notes seguides: mapeig, classificació i verificació, en ordre
+BÉ  Resultat ok amb notes prèvies: no s'hi toca res
+BÉ  Una fila sense nota_curador el rep, i queda l'últim camp
+BÉ  «sospitos» sense accent és «sospitós»
+BÉ  Camps inventats o del sistema: es descarten i no arriben a la nota
+BÉ  Camps repetits o massa nombrosos: la llista es retalla
+BÉ  Un motiu de tres paràgrafs es retalla a una línia
+BÉ  Un motiu buit no invalida el veredicte
+BÉ  La referència surt de «procedencia», la forma que munta processaLot()
+BÉ  Fila fusionada: es contrasta amb les citacions de totes dues fonts
+BÉ  Resultat inventat pel model: no s'escriu cap veredicte fals
+BÉ  El verificador peta: la fila surt igualment, amb la nota que ho diu
+BÉ  El verificador peta enmig d'un lot: les altres files continuen
+BÉ  Sense verificador connectat: la fila surt igualment
+BÉ  Candidat sense cap metadada: no verificable, i no es gasta cap crida
+BÉ  Metadada amb citació buida: un URL tot sol no és cap referència
+BÉ  Fila sense cap dada contrastable: no es gasta cap crida
+
+22 casos, 0 fallades.
+exit code: 0
+=== node eines/sincronitza-programada.js --en-sec ===
+
+--- SINCRONITZACIÓ ADT66 (EN SEC: no s'escriu res) ---
+
+  ofertes rebudes del flux     1478
+
+  visita comentada (R4):
+    descartades                167
+    rescatades                 22
+      per menció del català: 22
+
+  duplicats dins del mateix lot 13
+  lot després de fusionar-los  1298
+
+  classificació contra els dos fitxers:
+    ja publicades              0
+    ja a la cua                124
+    ja rebutjades              217
+    noves                      956
+    total classificat          1297
+
+  filtre previ sobre les noves:
+    descartades, fora de finestra: 569
+
+  excloses per criteri editorial 1
+    - Cinema d'Elna  FMALAR066V52Z8V7  INAUGURATION ET MISE EN SERVICE DU CINÉMA D'ELNE
+
+  candidates després del filtre 387
+
+  traducció a la ingestió (pas 7 bis):
+    NO S'HA FET — en sec: no es gasta quota de Gemini
+    files encuades en francès, amb l'avís de no traduïdes
+
+  files noves a la cua         387
+  rebutjades caducades podades 0
+  pendents caducades podades   0
+  publicades caducades podades 0
+
+  escrit a pendents.json       no
+  reintents per conflicte sha  0
+
+exit code: 0
+=== git status --short pendents.json events.json ===
+exit code: 0

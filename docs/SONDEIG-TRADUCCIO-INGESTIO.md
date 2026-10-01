@@ -407,9 +407,10 @@ un avís, com el cas de la crida fallada.
 `nota_curador`, darrere del tag `[ADT66 id: …]` i enganxat amb `ajuntaNotes()`
 —la regla compartida, no una concatenació a mà—, és correcte per tres motius:
 
-1. **És l'única traça possible.** El §4 de `CLAUDE.md` diu que `nota_curador` es
-   descarta en publicar i que la traça permanent és l'historial de git de
-   `pendents.json`. Ara bé: un camp que ha escrit un model i que una persona
+1. **És l'única traça possible.** El §4 de `CLAUDE.md` diu que `nota_curador` no
+   arriba a `events.json` i que la traça permanent és `pendents.json` i el seu
+   historial de git. *(Actualitzat l'1 d'octubre de 2026: la fila publicada es
+   queda a `pendents.json`; abans se'n treia.)* Ara bé: un camp que ha escrit un model i que una persona
    valida **ha de dir-ho a qui el valida**, i aquest és l'únic canal que hi ha.
 2. **Encaixa amb el que ja fa el camp.** `nota_curador` no descriu l'acte,
    descriu la fila; «aquests tres camps els ha escrit un model» és exactament

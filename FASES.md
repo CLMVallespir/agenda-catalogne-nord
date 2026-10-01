@@ -43,10 +43,12 @@ botons: **Publica** i **Rebutja**.
 
 - Llegeix `pendents.json` i escriu via l'API de GitHub segons la mecànica del
   §7 de `CLAUDE.md` (API sempre, SHA, un reintent).
-- **Publica:** posa `estat = "publicat"`, afegeix la fila a `events.json`, la treu
-  de `pendents.json`.
-- **Rebutja:** treu la fila de `pendents.json` i prou. No es guarda enlloc més: el
-  correu original al Gmail d'arxiu és el registre permanent.
+- **Publica:** posa `estat = "publicat"`, afegeix la fila a `events.json` i, a
+  `pendents.json`, la substitueix per la fila publicada (no la treu; canviat l'1
+  d'octubre de 2026, vegeu `NOTES.md`).
+- **Rebutja:** posa `estat = "rebutjat"` a la fila de `pendents.json` i la deixa
+  on és (memòria de rebuig, §4 de `CLAUDE.md`). El correu original al Gmail
+  d'arxiu és el registre permanent de la tramesa.
 - **El token no viu mai al codi.** Un camp de contrasenya a dalt de la pàgina; el
   token de gra fi s'hi enganxa, viu en una variable de JavaScript durant la sessió
   i mor en tancar la pestanya. Cap emmagatzematge, cap sessió, cap login.

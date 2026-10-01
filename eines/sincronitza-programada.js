@@ -33,9 +33,11 @@
 //
 //   - Les files que ESCRIU són sempre `pendent`: surten de mapejaOfertaADT66().
 //   - Les files que JA HI HA no es toquen mai, amb una excepció comptada: la
-//     poda del §«La poda» d'aquí sota, que mira `estat === 'rebutjat'` i
-//     `estat === 'pendent'` —dues comparacions explícites, mai un
-//     `!== 'publicat'`— i mai `publicat` ni cap estat inesperat.
+//     poda del §«La poda» d'aquí sota, que mira `estat === 'rebutjat'`,
+//     `estat === 'pendent'` i `estat === 'publicat'` —tres comparacions
+//     explícites, mai un `!==`— i mai cap estat inesperat. (`publicat` s'hi
+//     va afegir l'1 d'octubre de 2026: curador.html ja no treu la fila en
+//     publicar, la deixa a pendents.json marcada.)
 //   - La deduplicació de la capa 1 mira els TRES estats sense filtrar-ne cap:
 //     ho fa eines/dedup-contra-fitxers.js i aquí no s'hi afegeix res.
 //
@@ -70,7 +72,7 @@
 // eines/exclusions-editorials.js.
 //
 // LA PODA. Abans d'escriure, i dins de la mateixa escriptura, es treuen de la
-// cua les files `rebutjat` i `pendent` que ja han passat: l'últim dia de l'acte
+// cua les files `rebutjat`, `pendent` i `publicat` que ja han passat: l'últim dia de l'acte
 // —`data_fi`, o `data_inici` si `data_fi` és buida— anterior a avui. És la
 // mateixa vora de sota que fa servir la finestra de filtraCandidats(), i
 // d'aquí ve que sigui segur: una oferta que ja ha passat, el filtre la
@@ -82,8 +84,14 @@
 // d'actes acabats: el 29 de setembre, 129 de les 167 pendents ja havien
 // passat. Una pendent passada ja no es pot publicar, i a més fa nosa: la capa
 // 1 la troba pel tag i diu `ja_a_la_cua`, de manera que la propera data d'una
-// oferta que es repeteix no entra. `publicat` i qualsevol estat inesperat no
-// es poden mai.
+// oferta que es repeteix no entra. Qualsevol estat inesperat no es poda mai.
+//
+// L'1 D'OCTUBRE DE 2026 S'HI VA AFEGIR `publicat`. Abans curador.html treia la
+// fila de pendents.json en publicar, i events.json no conserva `nota_curador`
+// (on viu el tag `[ADT66 id: …]`): la passada següent no reconeixia l'oferta
+// publicada i la tornava a encuar. Ara la fila es queda com a `publicat`, i
+// la poda la treu quan l'acte ja ha passat, amb la mateixa vora que les altres
+// (una `publicat` sense cap data utilitzable es queda).
 //
 // EL LÍMIT `--limit=N` és un interruptor de mà i prou: talla el nombre de
 // files candidates després dels filtres i de tota la deduplicació. Ja no hi ha
@@ -493,6 +501,7 @@ var AVIS_RESCAT_PORTES_OBERTES =
 //                haver deixat fora
 //   podadesRebutjades  les files `rebutjat` caducades que s'han tret de la cua
 //   podadesPendents    les files `pendent` caducades que s'han tret de la cua
+//   podadesPublicades  les files `publicat` caducades que s'han tret de la cua
 //   escrit       cert si s'ha escrit de debò a pendents.json
 //   reintents    quants cops ha calgut reintentar el PUT per conflicte de sha
 //                (0 = ha entrat de primera)
@@ -554,12 +563,14 @@ async function sincronitzaProgramada(opcions) {
 
   // 8. La poda i l'escriptura, que són una sola operació sobre el fitxer.
   var podat = podaCaducades(cua.dades, config.avui);
-  var quantesPodades = podat.rebutjades.length + podat.pendents.length;
+  var quantesPodades = podat.rebutjades.length + podat.pendents.length +
+    podat.publicades.length;
   var escrit = false;
   var reintents = 0;
 
   if (!config.enSec && (noves.length > 0 || quantesPodades > 0)) {
-    reintents = await escriuCua(noves, podat.rebutjades.length, podat.pendents.length, config);
+    reintents = await escriuCua(noves, podat.rebutjades.length, podat.pendents.length,
+      podat.publicades.length, config);
     escrit = true;
   }
 
@@ -578,6 +589,7 @@ async function sincronitzaProgramada(opcions) {
     noves: noves,
     podadesRebutjades: podat.rebutjades,
     podadesPendents: podat.pendents,
+    podadesPublicades: podat.publicades,
     escrit: escrit,
     reintents: reintents
   };
@@ -1528,25 +1540,27 @@ function analitzaJsonDeGemini(text) {
 // --- Les peces: la poda -----------------------------------------------------
 
 // ------------------------------------------------------------
-// Treu de la cua les files rebutjades i les pendents que ja han passat. Per
-// cada fila, dues condicions explícites que han de ser certes totes dues:
+// Treu del fitxer les files rebutjades, les pendents i les publicades que ja
+// han passat. Per cada fila, dues condicions explícites que han de ser certes
+// totes dues:
 //
-//   estat === 'rebutjat' o estat === 'pendent'
-//                          mai un `!== 'publicat'`: una fila amb un estat nou o
+//   estat === 'rebutjat', 'pendent' o 'publicat'
+//                          mai un `!== …`: una fila amb un estat nou o
 //                          inesperat s'ha de poder veure, no desaparèixer
 //   últim dia < avui       vegeu darrerDiaDeLActe(). Una fila sense cap data
 //                          utilitzable no es pot dir que hagi passat, i es
 //                          queda
 //
-// Torna { cua, rebutjades, pendents } amb les files senceres, mai només els
-// comptes: el registre del run n'ha de poder dir els títols. Les dues llistes
-// van separades perquè el registre les ha de comptar per separat.
+// Torna { cua, rebutjades, pendents, publicades } amb les files senceres, mai
+// només els comptes: el registre del run n'ha de poder dir els títols. Les tres
+// llistes van separades perquè el registre les ha de comptar per separat.
 // ------------------------------------------------------------
 function podaCaducades(files, avui) {
   var llista = Array.isArray(files) ? files : [];
   var cua = [];
   var rebutjades = [];
   var pendents = [];
+  var publicades = [];
 
   for (var i = 0; i < llista.length; i++) {
     var fila = llista[i];
@@ -1556,12 +1570,14 @@ function podaCaducades(files, avui) {
       rebutjades.push(fila);
     } else if (fila.estat === 'pendent' && caducada) {
       pendents.push(fila);
+    } else if (fila.estat === 'publicat' && caducada) {
+      publicades.push(fila);
     } else {
       cua.push(fila);
     }
   }
 
-  return { cua: cua, rebutjades: rebutjades, pendents: pendents };
+  return { cua: cua, rebutjades: rebutjades, pendents: pendents, publicades: publicades };
 }
 
 // ------------------------------------------------------------
@@ -1727,20 +1743,22 @@ async function llegeixFitxer(nomFitxer, config) {
 // moure; la poda es torna a aplicar sobre el que hi ha de debò. Si el PUT xoca
 // per sha, ho torna a provar un sol cop.
 //
-// `quantesRebutjades` i `quantesPendents` serveixen només per al missatge del
-// commit, que és l'única traça permanent de què va fer cada passada.
+// `quantesRebutjades`, `quantesPendents` i `quantesPublicades` serveixen només
+// per al missatge del commit, que és l'única traça permanent de què va fer
+// cada passada.
 //
 // Torna quants REINTENTS ha calgut: 0 si el PUT ha entrat de primera, 1 si el
 // sha havia canviat i s'ha hagut de tornar a llegir. El registre del run ho ha
 // de poder dir —si no, no hi ha manera de saber si aquell camí s'ha exercitat.
 // ------------------------------------------------------------
-async function escriuCua(novesFiles, quantesRebutjades, quantesPendents, config) {
+async function escriuCua(novesFiles, quantesRebutjades, quantesPendents, quantesPublicades, config) {
   if (config.token === '') {
     throw new Error('falta GITHUB_TOKEN: sense token no es pot escriure a ' + FITXER_PENDENTS + '.');
   }
 
   var missatge = 'Sincronització ADT66: ' + novesFiles.length + ' files noves, ' +
-    quantesRebutjades + ' rebutjades i ' + quantesPendents + ' pendents caducades podades';
+    quantesRebutjades + ' rebutjades, ' + quantesPendents + ' pendents i ' +
+    quantesPublicades + ' publicades caducades podades';
 
   var intents = 0;
   while (intents < 2) {
@@ -1894,8 +1912,43 @@ function cuaDeProva() {
     { estat: 'pendent', data_inici: '', data_fi: '', titol: 'p-sense-dates' },
     { estat: 'rebutjat', data_inici: '2026-09-01', data_fi: '2026-09-02', titol: 'r-passada' },
     { estat: 'publicat', data_inici: '2026-09-01', data_fi: '2026-09-02', titol: 'pub-passada' },
+    { estat: 'publicat', data_inici: '2026-10-05', data_fi: '', titol: 'pub-futura' },
+    { estat: 'publicat', data_inici: '', data_fi: '', titol: 'pub-sense-dates' },
     { estat: 'raro', data_inici: '2026-09-01', data_fi: '2026-09-02', titol: 'raro-passada' }
   ];
+}
+
+// ------------------------------------------------------------
+// Una fila `publicat` de pendents.json amb la nota que es vol, i res més que
+// el que la capa 1 no mira (la capa 2 no hi intervé: events.json és buit).
+// ------------------------------------------------------------
+function filaPublicadaDeProva(nota) {
+  return {
+    id: '', titol: 'Acte publicat pel curador', data_inici: '2026-10-05',
+    data_fi: '2026-10-05', hora: '', lloc: '', municipi: 'Ceret', comarca: '',
+    categoria: '', descripcio_ca: '', descripcio_fr: '', associacio: '',
+    imatge_url: '', font_url: '', estat: 'publicat', data_entrada: '',
+    periodicitat: '', nota_curador: nota
+  };
+}
+
+// ------------------------------------------------------------
+// L'etiqueta que la classificació dona a una oferta entrant amb aquest id
+// contra una cua en memòria i un events.json buit.
+// ------------------------------------------------------------
+function etiquetaDeCapa1(syndicObjectID, cua) {
+  var entrant = {
+    fila: {
+      id: '', titol: 'Oferta entrant', data_inici: '2026-11-20', data_fi: '2026-11-20',
+      hora: '', lloc: '', municipi: 'Ceret', comarca: '', categoria: '',
+      descripcio_ca: '', descripcio_fr: '', associacio: '', imatge_url: '',
+      font_url: '', estat: 'pendent', data_entrada: '', periodicitat: '',
+      nota_curador: '[ADT66 id: ' + syndicObjectID + ']'
+    },
+    font: FONT_ADT66
+  };
+  var sortida = contraFitxers.classificaContraFitxers([entrant], cua, [], FONT_ADT66);
+  return sortida.classificacions[0].classificacio;
 }
 
 // ------------------------------------------------------------
@@ -2128,11 +2181,46 @@ function bateria() {
     },
 
     {
-      nom: 'poda: es queden la futura, la d\'avui, la sense dates, la publicada i l\'estat estrany',
+      nom: 'poda: les publicades passades se\'n van',
+      comprova: async function () {
+        var titols = titolsDe(podaCaducades(cuaDeProva(), AVUI_DE_PROVA).publicades);
+        return titols === 'pub-passada' ? '' : 'esperava pub-passada, tinc «' + titols + '»';
+      }
+    },
+
+    {
+      nom: 'poda: es queden la futura, la d\'avui, la sense dates, la publicada viva i l\'estat estrany',
       comprova: async function () {
         var titols = titolsDe(podaCaducades(cuaDeProva(), AVUI_DE_PROVA).cua);
-        var esperat = 'p-sense-fi-futura,p-avui,p-sense-dates,pub-passada,raro-passada';
+        var esperat = 'p-sense-fi-futura,p-avui,p-sense-dates,pub-futura,pub-sense-dates,raro-passada';
         return titols === esperat ? '' : 'esperava ' + esperat + ', tinc «' + titols + '»';
+      }
+    },
+
+    {
+      nom: 'capa 1: una oferta amb l\'id d\'una fila publicada de pendents és ja_publicat',
+      comprova: async function () {
+        var cua = [filaPublicadaDeProva('[ADT66 id: AAA111] Res a dir.')];
+        var etiqueta = etiquetaDeCapa1('AAA111', cua);
+        return etiqueta === 'ja_publicat' ? '' : 'esperava ja_publicat, tinc «' + etiqueta + '»';
+      }
+    },
+
+    {
+      nom: 'capa 1: un id en segona posició de la nota d\'una fila publicada també protegeix',
+      comprova: async function () {
+        var cua = [filaPublicadaDeProva('[ADT66 id: AAA111] mig [ADT66 id: BBB222] final')];
+        var etiqueta = etiquetaDeCapa1('BBB222', cua);
+        return etiqueta === 'ja_publicat' ? '' : 'esperava ja_publicat, tinc «' + etiqueta + '»';
+      }
+    },
+
+    {
+      nom: 'capa 1: un id que cap fila no porta continua sent nova',
+      comprova: async function () {
+        var cua = [filaPublicadaDeProva('[ADT66 id: AAA111] Res a dir.')];
+        var etiqueta = etiquetaDeCapa1('ZZZ999', cua);
+        return etiqueta === 'nova' ? '' : 'esperava nova, tinc «' + etiqueta + '»';
       }
     },
 
@@ -2311,6 +2399,7 @@ function informe(resultat, enSec) {
   console.log('  files noves a la cua         ' + resultat.noves.length);
   informeDePoda('rebutjades caducades podades ', resultat.podadesRebutjades);
   informeDePoda('pendents caducades podades   ', resultat.podadesPendents);
+  informeDePoda('publicades caducades podades ', resultat.podadesPublicades);
   console.log('');
   console.log('  escrit a pendents.json       ' + (resultat.escrit ? 'sí' : 'no'));
   console.log('  reintents per conflicte sha  ' + resultat.reintents);
@@ -2319,7 +2408,7 @@ function informe(resultat, enSec) {
 
 // ------------------------------------------------------------
 // Una línia de la poda al registre del run: quantes files, i quines. Serveix
-// per a les rebutjades i per a les pendents, que es compten per separat.
+// per a les rebutjades, les pendents i les publicades, que es compten per separat.
 // ------------------------------------------------------------
 function informeDePoda(etiqueta, podades) {
   console.log('  ' + etiqueta + podades.length);

@@ -81,6 +81,7 @@ repositori si es prem **Publica**. Rebutjar-la o recarregar la pàgina la perd.
 4. Si això falla: avís a la fitxa + avís global, la fila **es queda a la cua**,
    `return`. Res no s'ha perdut.
 5. `desaAmbReintent(FITXER_PENDENTS, treuDeLaCua(original), 'Treu de la cua …')`.
+   *Superat l'1 d'octubre de 2026: publicar ara marca la fila com a publicat (substitueix la fila a la mateixa posició) en comptes de treure-la.*
 6. Si això falla amb un error que **no** és `JA_NO_HI_ES`: avís «Publicat a
    events.json, però no l'he pogut treure de la cua… Torna a carregar la cua i
    rebutja aquesta fila.» — duplicat visible, tal com mana `NOTES.md`.
