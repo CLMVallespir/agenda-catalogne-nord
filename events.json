@@ -4897,5 +4897,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.919Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-claude-faber-i",
+    "titol": "Claude Faber i Sarah Dakhlaoui",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "16:00",
+    "lloc": "260 Avenue Maréchal Joffre",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Claude Faber i Sarah Dakhlaoui presenten una travessia musical basada en els textos de Claude Faber. A través del cant, la poesia i la música, acompanyada pel so del oud i la shruti-box, els artistes conviden el públic a reflexionar sobre la identitat amb l'espectacle \"Naître ce que nous sommes\".",
+    "descripcio_fr": "Claude Faber et Sarah Dakhlaoui présentent une traversée musicale basée sur les textes de Claude Faber. À travers le chant, la poésie et la musique, accompagnés par les sonorités du oud et du shruti-box, les artistes invitent le public à réfléchir sur l'identité avec le spectacle \"Naître ce que nous sommes\".",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837752/Claude-Faber_uehzbc.webp",
+    "font_url": "https://www.jazzebre.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.920Z",
+    "periodicitat": ""
   }
 ]
