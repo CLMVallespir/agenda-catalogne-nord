@@ -180,26 +180,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52R2NZ] L'acte es fa 23 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-01-et-la-lumiere",
-    "titol": "I la llum es va fer!",
-    "data_inici": "2026-10-01",
-    "data_fi": "2026-10-01",
-    "hora": "10:30",
-    "lloc": "CASA PAIRAL - CASTILLET\nPlace de Verdun",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "L'exposició explora la història de la humanitat i el paper essencial de la il·luminació en el desenvolupament del món. S'hi destaca la importància actual de l'electricitat en la vida quotidiana i la dificultat d'imaginar un món sense aquest recurs.",
-    "descripcio_fr": "L'exposition explore l'histoire de l'humanité et le rôle essentiel de l'éclairage dans le développement du monde. Elle souligne l'importance actuelle de l'électricité dans la vie quotidienne et la difficulté d'imaginer un monde sans cette ressource.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837604/ET-LA-LUMIERE-FUT---photo-1_pz4y9l.webp",
-    "font_url": "https://www.perpignantourisme.com/le-castillet-et-le-musee-casa-pairal/",
-    "estat": "pendent",
-    "data_entrada": "2026-10-01T05:49:29.837Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52TWNU] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-01-exposition-art-textile",
     "titol": "Exposició d'art tèxtil",
     "data_inici": "2026-10-01",
