@@ -2325,7 +2325,7 @@
     "data_inici": "2026-10-09",
     "data_fi": "2026-10-09",
     "hora": "19:00",
-    "lloc": "INSTITUT JEAN VIGO\n1 rue Jean Vieilledent",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Cinema",
@@ -2334,7 +2334,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837717/Frantz-Fanon--memoire-d-asile---Octobre-2026_ldepwz.webp",
     "font_url": "https://www.inst-jeanvigo.eu/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.934Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z5XY] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
