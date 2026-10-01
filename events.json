@@ -4973,5 +4973,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.928Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-festa-de-la",
+    "titol": "Festa de la castanya",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "08:00",
+    "lloc": "Place du 18 juin",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "L'associació de comerciants Prades Ville de Cœur organitza una jornada festiva dedicada a la castanya. S'hi poden trobar parades amb begudes, entrepans de raclette i castanyes torrades, així com una gimcana per trobar la castanya d'or als comerços participants. Els establiments de restauració també ofereixen menús i especialitats elaborades amb castanyes.",
+    "descripcio_fr": "L'association des commerçants Prades Ville de Cœur organise une journée festive dédiée à la châtaigne. On y trouve des stands avec buvette, sandwichs raclettes et marrons grillés, ainsi qu'une chasse au trésor pour trouver la châtaigne en or chez les commerçants partenaires. Les établissements de bouche proposent également des menus et spécialités à base de châtaignes.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837764/1000002934-2_dzhht9.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.929Z",
+    "periodicitat": ""
   }
 ]
