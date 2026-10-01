@@ -4916,5 +4916,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.920Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-soiree-carte-blanche",
+    "titol": "Soirée Carte Blanche Freddy Morezon - Jazzèbre",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "18:00",
+    "lloc": "La Casa Musicale1 Rue Jean Vielledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Aquesta proposta musical presenta els solos de tres guitarristes, Tatiana Paris, Nina Garcia i Zoe Heselton, que s'uneixen al final del concert per a una creació col·lectiva. La vetllada continua amb l'artista Andy Lévêque, que interpreta dues de les seves obres. Les tres músiques ofereixen peces d'improvisació que exploren des de les textures sonores fins al blues modern.",
+    "descripcio_fr": "Cette proposition musicale présente les solos de trois guitaristes, Tatiana Paris, Nina Garcia et Zoe Heselton, réunies en fin de concert pour une création collective. La soirée se poursuit avec l'artiste Andy Lévêque, qui interprète deux de ses projets. Les trois musiciennes proposent des pièces d'improvisation explorant les textures sonores jusqu'au blues moderne.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837754/Soiree-carte-blanche_jpxwdj.webp",
+    "font_url": "https://www.jazzebre.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.921Z",
+    "periodicitat": ""
   }
 ]
