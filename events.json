@@ -4593,5 +4593,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.874Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-jazzebre-darrifourq-hermia",
+    "titol": "Jazzèbre: Darrifourq - Hermia - Ceccaldi",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "20:30",
+    "lloc": "Carrer de l'Ajuntament",
+    "municipi": "Eus",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "Aquest trio presenta una proposta de free jazz que incorpora elements de rock, música contemporània, noise i world music. Les seves composicions ofereixen una experiència musical intensa i cinematogràfica, marcada per canvis inesperats, moments meditatius i un toc d'humor subtil.",
+    "descripcio_fr": "Ce trio propose une œuvre de free jazz intégrant des éléments de rock, de musique contemporaine, de noise et de world music. Leurs compositions offrent une expérience musicale intense et cinématographique, marquée par des rebondissements inattendus, des moments méditatifs et une pointe d'humour discret.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837704/jazzebre-9_opcnn6.webp",
+    "font_url": "https://billetterie.jazzebre.com/agenda/186-Darrifourq-Hermia-Ceccaldi-o-Maison-du-Temps-Libre-Eus",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.916Z",
+    "periodicitat": ""
   }
 ]
