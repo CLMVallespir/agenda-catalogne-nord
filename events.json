@@ -4878,5 +4878,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.902Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-sopar-de-musclos",
+    "titol": "Sopar de musclos amb patates fregides",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "19:00",
+    "lloc": "Espace Castellane",
+    "municipi": "Campome",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "El restaurant l'Ancienne Ecole organitza un sopar de musclos amb patates fregides en col·laboració amb l'ajuntament. El menú inclou els musclos amb patates i una pannacotta de postres.",
+    "descripcio_fr": "Le restaurant l'Ancienne Ecole organise une soirée moules frites en partenariat avec la mairie. Le menu comprend les moules frites et une pannacotta en dessert.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837750/Repas-spectacle_yymhgk.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.919Z",
+    "periodicitat": ""
   }
 ]
