@@ -4441,5 +4441,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.803Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-07-club-dscrabble",
+    "titol": "Club d'Scrabble",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "14:00",
+    "lloc": "rue de la sardane",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "L'associació Médialettres proposa un taller d'Scrabble. L'activitat és oberta a totes les persones interessades en aquest joc de paraules.",
+    "descripcio_fr": "L'association Médialettres propose un atelier de Scrabble. L'activité est ouverte à toutes les personnes intéressées par ce jeu de lettres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837679/game-2299097-1920_dii077.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.811Z",
+    "periodicitat": ""
   }
 ]
