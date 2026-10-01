@@ -4935,5 +4935,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.921Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-la-ligue-des",
+    "titol": "La Ligue des Objets + La Femme en Rouge - Jazzèbre",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "21:00",
+    "lloc": "LA CASA MUSICALE1 Rue Jean Vielledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Andy Lévêque transforma les seves composicions inicialment repetitives en una recreació salvatge i lliure amb la participació de diversos músics. La proposta combina instruments acústics, elèctrics i electrònics per oferir una mescla de jazz, pop i tocs avantguardistes. L'obra integra temàtiques quotidianes i es presenta com un espectacle dinàmic per a públics de totes les edats.",
+    "descripcio_fr": "Andy Lévêque transforme ses compositions initialement répétitives en une récréation sauvage et libre avec la participation de plusieurs musiciens. La proposition combine des instruments acoustiques, électriques et électroniques pour offrir un mélange de jazz, de pop et de touches avant-gardistes. L'œuvre intègre des thématiques quotidiennes et se présente comme un spectacle dynamique pour les publics de tous âges.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837756/La-Ligue-des-Objets_aqj7h4.webp",
+    "font_url": "https://www.jazzebre.com/evenement/autour-du-festival-repetitions-publiques-de-la-grande-fanfare/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.921Z",
+    "periodicitat": ""
   }
 ]
