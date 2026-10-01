@@ -2380,7 +2380,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z82N] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-09-concert-litteraire",
+    "id": "2026-10-09-concert-literari",
     "titol": "Concert literari",
     "data_inici": "2026-10-09",
     "data_fi": "2026-10-09",
@@ -2394,7 +2394,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837721/Concert-Fillols-5_gxjshq.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.946Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z9DB] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
