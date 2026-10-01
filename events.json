@@ -4536,5 +4536,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.832Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-taller-de-modelatge",
+    "titol": "Taller de modelatge d'argila «Frissons !»",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "14:00",
+    "lloc": "Place Charles de Gaulle",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Sota la guia de l'Elise, els participants descobreixen el modelatge de manera lúdica en un grup reduït. Durant una hora i mitja, cadascú crea la seva pròpia peça, que es cou per ser lliurada unes setmanes més tard com a record artesanal.",
+    "descripcio_fr": "Encadrés par Elise, les participants découvrent le modelage de manière ludique en petit groupe. Durant une heure et demie, chacun façonne sa propre œuvre, qui sera cuite puis remise quelques semaines plus tard en tant que souvenir artisanal.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837684/atelier-modelage-2_v6vjyk.webp",
+    "font_url": "https://www.tourisme-pyrenees-mediterranee.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.853Z",
+    "periodicitat": ""
   }
 ]
