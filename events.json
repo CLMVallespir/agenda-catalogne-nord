@@ -4707,5 +4707,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.934Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-obertura-del-club",
+    "titol": "Obertura del club de jocs de taula",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "18:30",
+    "lloc": "3 place du Souvenir,",
+    "municipi": "La Tor de Querol",
+    "comarca": "Cerdanya",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "S'inaugura el club de jocs de taula amb un aperitiu de benvinguda. L'activitat ofereix un moment de convivència al voltant dels jocs.",
+    "descripcio_fr": "Ouverture du club de jeux de société avec un apéritif inaugural. L'activité propose un moment de convivialité autour du jeu.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837718/9-oct-LATOUR-DE-CAROL_n25jyg.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.938Z",
+    "periodicitat": ""
   }
 ]
