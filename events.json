@@ -4574,5 +4574,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.856Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-jam-de-tornada",
+    "titol": "Jam de tornada",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "19:00",
+    "lloc": "ELMEDIATORAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "La tradicional Jam Session de tornada és una oportunitat per descobrir nous talents, retrobar antics alumnes que continuen la seva trajectòria musical i compartir un moment de convivència basat en la improvisació i la trobada. Aquesta vetllada està oberta a tothom, amb una escena que es converteix en un espai d'expressió i intercanvi.",
+    "descripcio_fr": "La traditionnelle Jam Session de rentrée est l'occasion de découvrir de nouveaux talents, de retrouver d'anciens élèves qui poursuivent leur parcours musical et de partager un moment de convivialité basé sur l'improvisation et la rencontre. Cette soirée est ouverte à tous, avec une scène qui devient un véritable espace d'expression et d'échange.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837686/Jam-de-rentree_tpkagm.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.874Z",
+    "periodicitat": ""
   }
 ]
