@@ -5106,5 +5106,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.919Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-conferencia-i-debat",
+    "titol": "Conferència i debat sobre el clima",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "18:30",
+    "lloc": "",
+    "municipi": "Oms",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La Comunitat de comunes dels Aspres organitza un cicle de conferències-debats en el marc de la revisió del Pla Climat-Air-Energie Territorial (PCAET). Aquestes sessions compten amb experts per analitzar temàtiques com la salut davant les altes temperatures, la gestió dels recursos hídrics i la qualitat de l'aire, fomentant la reflexió col·lectiva sobre el futur del territori.",
+    "descripcio_fr": "La Communauté de communes des Aspres organise un cycle de conférences-débats dans le cadre de la révision du Plan Climat-Air-Energie Territorial (PCAET). Ces sessions comptent sur la présence d'experts pour analyser des thématiques telles que la santé face aux fortes chaleurs, la gestion des ressources en eau et la qualité de l'air, favorisant la réflexion collective sur l'avenir du territoire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837702/Aspres-aspres-conferencedebatclimat_zayicy.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.914Z",
+    "periodicitat": ""
   }
 ]
