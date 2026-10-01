@@ -4840,5 +4840,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.897Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-la-fee-festa",
+    "titol": "La FÉE - Festa de l'educació al medi ambient",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "09:00",
+    "lloc": "Rue Arago",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Aquest esdeveniment proposa diverses trobades per tota la vila, així com als jardins i a la vora del Tech. La programació completa de la festa es pot consultar a través del lloc web de l'entitat organitzadora.",
+    "descripcio_fr": "Cet événement propose divers rendez-vous à travers la ville, ainsi que dans les jardins et au bord du Tech. Le programme complet de la fête peut être consulté sur le site internet de l'entité organisatrice.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837738/d4fa0c98-ed3e-421c-ad3c-c29544fc1614_pajyxg.webp",
+    "font_url": "https://tram66.org/la-fee-fete-de-leducation-lenvironnement",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.899Z",
+    "periodicitat": ""
   }
 ]
