@@ -5277,5 +5277,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.933Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-peau-dane",
+    "titol": "Peau d'âne",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "La pel·lícula Peau d'âne, dirigida per Jacques Demy, és una adaptació d'un conte de fades popular amb un repartiment que inclou Catherine Deneuve, Jacques Perrin i Jean Marais. El film explora temes com l'emancipació i el desig a través d'una posada en escena plena de color i música de Michel Legrand. Aquesta projecció s'organitza en col·laboració amb l'ajuntament de Perpinyà en el marc de les Trobades Médiévales.",
+    "descripcio_fr": "Le film Peau d'âne, réalisé par Jacques Demy, est une adaptation d'un conte de fées populaire avec une distribution comprenant Catherine Deneuve, Jacques Perrin et Jean Marais. Le film explore des thèmes comme l'émancipation et le désir à travers une mise en scène pleine de couleurs et la musique de Michel Legrand. Cette projection est organisée en partenariat avec la mairie de Perpignan dans le cadre des Trobades Médiévales.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837777/Peau-d-Ane---Octobre-2026_zdpefn.webp",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.934Z",
+    "periodicitat": ""
   }
 ]
