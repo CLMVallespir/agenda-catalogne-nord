@@ -4783,5 +4783,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.808Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-taller-creatiu-per",
+    "titol": "Taller creatiu per a infants",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "10:00",
+    "lloc": "rue des fabriques",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'activitat està oberta als membres de l'associació. Cal inscriure-s'hi prèviament per participar-hi.",
+    "descripcio_fr": "L'activité est ouverte aux adhérents de l'association. Une inscription préalable est nécessaire pour y participer.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837728/cothni3-ecureuil-6300320-1280_uwznnk.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.832Z",
+    "periodicitat": ""
   }
 ]
