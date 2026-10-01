@@ -10,7 +10,7 @@
 //     `pendents.json` (ni, per tant, gasta cap crida a Gemini): és el que fa
 //     eines/sincronitza-programada.js amb el que torna trobaExclusio().
 //   - Mira camps del flux TAL COM ARRIBEN (`Commune`, `DETAILADRESSE`,
-//     `RechercheTYPE`). Per això s'ha d'aplicar mentre es té l'oferta a
+//     `RechercheTYPE`, `SyndicObjectName`, `DETAILDESCRIPTIF`). Per això s'ha d'aplicar mentre es té l'oferta a
 //     sobre, i no sobre la fila ja mapejada.
 //
 // QUÈ NO ÉS AQUEST FITXER: no és el filtre previ (eines/filtra-candidats.js,
@@ -40,6 +40,18 @@
 var neteja = require('./neteja-text.js');
 
 
+// --- Constants: les paraules del tast comercial -----------------------------
+
+// Fragments que diuen «tast» o «visita de celler» (subcadena, ja normalitzats).
+var PARAULES_TAST = ['degust', 'visite de cave', 'visite de la cave', 'visite des caves', 'visite du domaine', 'caveau'];
+
+// Llocs vinícoles, com a paraula sencera en singular o plural (ja normalitzats).
+var PARAULES_LLOC_VINICOLA = ['domaine', 'cave', 'caveau', 'chateau', 'vignoble', 'cellier', 'vigneron'];
+
+// Fragments d'un títol de festa que salven l'oferta (subcadena, ja normalitzats).
+var PARAULES_FESTA = ['fete', 'festa', 'foire', 'fira', 'vendange', 'verema', 'festival'];
+
+
 // --- Constants: la llista ---------------------------------------------------
 
 // Les exclusions vigents. Una línia de comentari per entrada diu què fa.
@@ -55,6 +67,26 @@ var EXCLUSIONS_EDITORIALS = [
         return false;
       }
       return adrecaDelCinemaDElna(oferta) || tipusCinema(oferta);
+    }
+  },
+  {
+    // Tast comercial: parla de tast o de visita de cel·ler (A), hi surt un lloc
+    // vinícola com a paraula sencera (B) i el títol no és de festa (C).
+    nom: 'Tast comercial',
+    motiu: 'criteri editorial: activitat comercial, tastos i visites de caves (CRITERI-EDITORIAL.md)',
+    data: '2026-10-01',
+    coincideix: function (oferta) {
+      var titol = normalitzaPerExclusio(valorDelFlux(oferta, 'SyndicObjectName'));
+      var descripcio = normalitzaPerExclusio(valorDelFlux(oferta, 'DETAILDESCRIPTIF'));
+      var tot = titol + ' ' + descripcio;
+
+      if (!conteAlgunaSubcadena(tot, PARAULES_TAST)) {
+        return false;
+      }
+      if (!conteAlgunaParaulaSencera(tot, PARAULES_LLOC_VINICOLA)) {
+        return false;
+      }
+      return !conteAlgunaSubcadena(titol, PARAULES_FESTA);
     }
   }
 ];
@@ -144,11 +176,47 @@ function conteExpressio(text, expressio) {
   return (' ' + text + ' ').indexOf(' ' + expressio + ' ') !== -1;
 }
 
+// ------------------------------------------------------------
+// Diu si un text normalitzat conté, com a subcadena, algun element de la llista.
+// ------------------------------------------------------------
+function conteAlgunaSubcadena(text, llista) {
+  for (var i = 0; i < llista.length; i++) {
+    if (text.indexOf(llista[i]) !== -1) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// ------------------------------------------------------------
+// Diu si un text normalitzat conté, com a paraula sencera, algun element de la
+// llista, tal qual o en plural (+s): «cave» i «caves», però no «cavernes».
+// ------------------------------------------------------------
+function conteAlgunaParaulaSencera(text, llista) {
+  var paraules = text.split(' ');
+
+  for (var i = 0; i < paraules.length; i++) {
+    for (var j = 0; j < llista.length; j++) {
+      if (paraules[i] === llista[j] || paraules[i] === llista[j] + 's') {
+        return true;
+      }
+    }
+  }
+
+  // «chateaux» és el plural de «chateau», que no segueix la regla del +s.
+  return paraules.indexOf('chateaux') !== -1;
+}
+
 
 // --- El que surt d'aquest fitxer --------------------------------------------
 
 module.exports = {
   EXCLUSIONS_EDITORIALS: EXCLUSIONS_EDITORIALS,
+  PARAULES_TAST: PARAULES_TAST,
+  PARAULES_LLOC_VINICOLA: PARAULES_LLOC_VINICOLA,
+  PARAULES_FESTA: PARAULES_FESTA,
+  conteAlgunaSubcadena: conteAlgunaSubcadena,
+  conteAlgunaParaulaSencera: conteAlgunaParaulaSencera,
   trobaExclusio: trobaExclusio,
   normalitzaPerExclusio: normalitzaPerExclusio
 };

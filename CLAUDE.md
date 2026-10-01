@@ -522,7 +522,9 @@ Ja fets, en producció, al mateix repositori:
   entra a l'agenda i què no: és del curador, no del codi).
   Les exclusions per criteri polític (1 d'octubre de 2026) són a la seva secció
   «Exclusions per criteri polític» i l'eina que aplica la de lloc és
-  `eines/exclusions-editorials.js`.
+  `eines/exclusions-editorials.js`. Els tastos i les visites de caves (1
+  d'octubre de 2026) són a la secció «Activitat comercial: tastos i visites de
+  caves», i la regla «Tast comercial» també viu a `eines/exclusions-editorials.js`.
 - **`docs/arxiu-google/`** — **codi mort, no el toquis.** El sistema anterior
   (full de càlcul + Apps Script), retirat de l'ús viu el 29 d'agost de 2026 amb
   la Fase 4, i les guies que el descrivien. Es conserva perquè diverses notes de

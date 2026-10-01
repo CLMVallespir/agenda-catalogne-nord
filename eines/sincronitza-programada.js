@@ -2006,6 +2006,17 @@ function ofertaDeProvaExclusio(commune, adreca, tipus) {
 }
 
 // ------------------------------------------------------------
+// Una oferta sintètica mínima amb només el títol i la descripció francesos.
+// ------------------------------------------------------------
+function ofertaDeProvaTast(titol, descripcio) {
+  return {
+    SyndicObjectID: 'PROVA-TAST',
+    SyndicObjectName: titol,
+    DETAILDESCRIPTIF: descripcio
+  };
+}
+
+// ------------------------------------------------------------
 // Passa sincronitzaProgramada() en sec, sencera, amb un flux d'una sola oferta
 // (la del cinema d'Elna) i amb un pendents.json que ja la porta com a
 // rebutjada: és el cas real del 30 de setembre de 2026. Comprova que surt com a
@@ -2298,6 +2309,48 @@ function bateria() {
         var resultat = aplicaExclusionsEditorials(candidats);
         var titols = titolsDe(filesDeCandidats(resultat.passen));
         return titols === 'Concert' ? '' : 'esperava només «Concert», tinc «' + titols + '»';
+      }
+    },
+
+    {
+      nom: 'exclusió: un tast en un domaine («Dégustation au Domaine X») queda exclòs',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('Dégustation au Domaine X', 'Venez à la dégustation de vins du domaine.');
+        var entrada = exclusions.trobaExclusio(oferta);
+        return entrada !== null && entrada.nom === 'Tast comercial' ? '' :
+          'el tast al domaine no ha coincidit amb «Tast comercial»';
+      }
+    },
+
+    {
+      nom: 'exclusió: una «Fête du vin» amb dégustation i vignerons es manté',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('Fête du vin', 'Dégustation chez les vignerons et dans les caves du village.');
+        return exclusions.trobaExclusio(oferta) === null ? '' : 'la «Fête du vin» s\'ha exclòs i no havia';
+      }
+    },
+
+    {
+      nom: 'exclusió: una «Dégustation de produits du terroir» en un mercat, sense domaine ni cave, es manté',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('Dégustation de produits du terroir', 'Au marché de la place, producteurs locaux.');
+        return exclusions.trobaExclusio(oferta) === null ? '' : 'la dégustation del mercat s\'ha exclòs i no havia';
+      }
+    },
+
+    {
+      nom: 'exclusió: la «Visite de la cave coopérative» amb dégustation queda exclosa',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('Visite de la cave coopérative', 'Visite guidée suivie d\'une dégustation.');
+        return exclusions.trobaExclusio(oferta) !== null ? '' : 'la visita de la cave no ha coincidit';
+      }
+    },
+
+    {
+      nom: 'exclusió: «dégustation» amb «cavernes» (cap «cave» sencera) es manté',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('Sortie aux cavernes', 'Randonnée et dégustation de produits locaux dans la caverne.');
+        return exclusions.trobaExclusio(oferta) === null ? '' : '«cavernes» s\'ha llegit com a «cave» i no havia';
       }
     }
   ];

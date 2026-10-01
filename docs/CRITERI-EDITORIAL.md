@@ -168,3 +168,21 @@ Tres punts, i cap més:
   curador rebutja la fila a `curador.html`.
 - **(c) No s'exclou per organitzador.** Els serveis municipals que sostenen la
   cultura catalana, com la Mediateca de Perpinyà, es continuen publicant.
+
+---
+
+## Activitat comercial: tastos i visites de caves
+
+*1 d'octubre de 2026.* S'exclouen els tastos i les visites de caves o de
+domaines privats, perquè són activitat comercial; es mantenen les festes del
+vi organitzades per un municipi o una associació.
+
+La clau, que aplica `eines/exclusions-editorials.js` (regla «Tast comercial»)
+sobre el títol i la descripció francesos del flux de l'ADT66:
+
+- **A:** el títol o la descripció parlen de tast o de visita de cave/domaine;
+- **B:** i hi surt un lloc vinícola (domaine, cave, caveau, château, vignoble,
+  cellier, vigneron) com a paraula sencera;
+- **C:** i el títol no és de festa, fira, verema o festival.
+
+El log de cada passada llista cada exclusió, perquè el curador la pugui auditar.
