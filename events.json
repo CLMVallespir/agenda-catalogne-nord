@@ -4384,5 +4384,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.939Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-05-taller-digital",
+    "titol": "Taller digital",
+    "data_inici": "2026-10-05",
+    "data_fi": "2026-10-05",
+    "hora": "14:00",
+    "lloc": "Maison France Services6 place de la Poste",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest taller ofereix formació sobre l'ús d'eines com ara tauletes, telèfons intel·ligents i ordinadors. Es tracten temes com la gestió de contrasenyes, la seguretat digital i la detecció de fraus en línia. El material necessari per a l'activitat està a disposició dels assistents.",
+    "descripcio_fr": "Cet atelier propose une formation sur l'utilisation d'outils tels que les tablettes, les smartphones et les ordinateurs. Les thèmes abordés incluent la gestion des mots de passe, la sécurité numérique et la détection des fraudes en ligne. Le matériel nécessaire à l'activité est mis à disposition des participants.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837672/794097295-1636433928087026-37527_omgylz.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.912Z",
+    "periodicitat": ""
   }
 ]
