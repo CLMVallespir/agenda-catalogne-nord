@@ -4954,5 +4954,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.921Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-pluie-detoiles",
+    "titol": "Pluie d'étoiles",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "20:00",
+    "lloc": "6 Allée des Arts et des Lettres",
+    "municipi": "Sant Esteve del Monestir",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Aquest espectacle reflecteix la identitat de coreògraf clàssic i modern de François Mauduit. La primera part ofereix fragments emblemàtics del repertori com ara Le Lac des cygnes, Casse-Noisette i Carmen, mentre que la segona part presenta creacions contemporànies amb un llenguatge corporal refinat i una posada en escena gràfica.",
+    "descripcio_fr": "Ce spectacle reflète l'identité de chorégraphe classique et moderne de François Mauduit. La première partie propose des extraits emblématiques du répertoire comme Le Lac des cygnes, Casse-Noisette et Carmen, tandis que la seconde partie présente des créations contemporaines avec un langage corporel raffiné et une mise en scène graphique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837763/theatre-de-l-etang-4_ukstmt.webp",
+    "font_url": "https://www.st-esteve.com/evenement/pluie-detoiles/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.928Z",
+    "periodicitat": ""
   }
 ]
