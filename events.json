@@ -5353,5 +5353,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.949Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-descobriment-dels-tresors",
+    "titol": "Descobriment dels tresors del litoral",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "09:30",
+    "lloc": "Plage nord",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquesta jornada permet explorar la protecció del medi marí a través de diverses activitats de ciència participativa, com la recollida de residus amb Surfrider Foundation Europe i la descoberta de la deixa marina amb Label Bleu. S'hi inclouen tallers sobre el lloc Natura 2000, una sessió de contes a la Médiathèque Claude Blazy i una animació sobre les tortugues marines a càrrec de Nostramar. L'esdeveniment posa en valor la Plage Nord de Torreilles, candidata a la campanya «La Plage Préférée des Français».",
+    "descripcio_fr": "Cette journée permet d'explorer la protection du milieu marin à travers diverses activités de sciences participatives, comme la collecte de déchets avec Surfrider Foundation Europe et la découverte de la laisse de mer avec Label Bleu. Sont inclus des ateliers sur le site Natura 2000, une séance de contes à la Médiathèque Claude Blazy et une animation sur les tortues marines proposée par Nostramar. L'événement met en valeur la Plage Nord de Torreilles, candidate à la campagne «La Plage Préférée des Français».",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837782/Zayarts-Audiovisuel_ybgnii.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.950Z",
+    "periodicitat": ""
   }
 ]
