@@ -2885,7 +2885,7 @@
     "data_inici": "2026-10-10",
     "data_fi": "2026-10-10",
     "hora": "21:00",
-    "lloc": "LA CASA MUSICALE\n1 Rue Jean Vielledent",
+    "lloc": "LA CASA MUSICALE1 Rue Jean Vielledent",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Música",
@@ -2894,7 +2894,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837756/La-Ligue-des-Objets_aqj7h4.webp",
     "font_url": "https://www.jazzebre.com/evenement/autour-du-festival-repetitions-publiques-de-la-grande-fanfare/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.921Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z1W4] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
