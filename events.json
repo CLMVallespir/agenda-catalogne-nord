@@ -4631,5 +4631,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.919Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-el-misteri-de",
+    "titol": "El misteri de les torres de senyals dels Pirineus Orientals",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "18:00",
+    "lloc": "33 rue de l'Hospice",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Conferència",
+    "descripcio_ca": "Aquesta xerrada amb Jean Boissée gira al voltant de la temàtica del seu llibre «les tours à signaux ou dans les pas d'Anny de Pous». L'acte permet aprofundir en el coneixement d'aquestes construccions històriques.",
+    "descripcio_fr": "Cette rencontre avec Jean Boissée s'articule autour de la thématique de son ouvrage «les tours à signaux ou dans les pas d'Anny de Pous». L'événement permet d'approfondir la connaissance de ces constructions historiques.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837708/2026.10.Toursasignaux_efl3z3.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.922Z",
+    "periodicitat": ""
   }
 ]
