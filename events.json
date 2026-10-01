@@ -4555,5 +4555,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.853Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-mercat-setmanal-de",
+    "titol": "Mercat setmanal de productors",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "08:00",
+    "lloc": "Parc de la Mairie",
+    "municipi": "Arles de Tec",
+    "comarca": "Vallespir",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat de productors se celebra cada dimecres al matí durant tot l'any al Parc de la Mairie d'Arles de Tec. És una cita que permet descobrir productes locals en un ambient convivial i acollidor.",
+    "descripcio_fr": "Le marché de producteurs se tient tous les mercredis matin, toute l'année, au Parc de la Mairie d'Arles de Tec. C'est un rendez-vous qui permet de découvrir des produits locaux dans une ambiance conviviale et chaleureuse.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837685/marche-15-2_fkc1fh.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.856Z",
+    "periodicitat": ""
   }
 ]
