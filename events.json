@@ -4992,5 +4992,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.929Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-orchestre-symphonique-alenya",
+    "titol": "Orchestre Symphonique Alenya Roussillon: Opéra sans paroles",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "18:00",
+    "lloc": "Halle des sports",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "L'Orchestre Symphonique Alenya Roussillon presenta un concert simfònic sota la direcció de Bernard Salles. El programa inclou fragments d'òperes cèlebres interpretats exclusivament per l'orquestra.",
+    "descripcio_fr": "L'Orchestre Symphonique Alenya Roussillon présente un concert symphonique sous la direction de Bernard Salles. Le programme comprend des extraits d'opéras célèbres interprétés exclusivement par l'orchestre.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837767/affiche-prades--1--3_gewrih.webp",
+    "font_url": "https://www.osar66.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.929Z",
+    "periodicitat": ""
   }
 ]
