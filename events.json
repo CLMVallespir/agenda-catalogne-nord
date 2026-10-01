@@ -4365,5 +4365,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.822Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-03-la-tempete-bd",
+    "titol": "La tempête BD-concert",
+    "data_inici": "2026-10-03",
+    "data_fi": "2026-10-03",
+    "hora": "10:30",
+    "lloc": "66 Avenue de l'Hôtel de Ville",
+    "municipi": "Pollestres",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "En una petita granja al cor del Far West, una família viu una tempesta espectacular. A través de la música i sense paraules, els instruments evoquen el vent, la calamarsa, l'angoixa i, finalment, el alleujament. Una experiència sensorial i poètica pensada tant per a petits com per a grans.",
+    "descripcio_fr": "Dans une petite ferme au cœur du Far West, une famille vit une tempête spectaculaire. À travers la musique et sans paroles, les instruments évoquent le vent, la grêle, l'angoisse et, finalement, le soulagement. Une expérience sensorielle et poétique pensée tant pour les petits que pour les grands.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837651/LA-TEMPETE-BD-CONCERT_cklgvk.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.939Z",
+    "periodicitat": ""
   }
 ]
