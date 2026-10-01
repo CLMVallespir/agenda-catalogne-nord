@@ -4859,5 +4859,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.899Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-conferencia-alec-upc",
+    "titol": "Conferència ALEC / UPC: intel·ligència artificial, un ús crític",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "17:30",
+    "lloc": "rue Saint Jean de Porto Rico",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'ALEC / UPC organitza una conferència a càrrec d'E. Le Dantec sobre la intel·ligència artificial. L'acte analitza aquesta tecnologia des d'una perspectiva crítica.",
+    "descripcio_fr": "L'ALEC / UPC organise une conférence de E. Le Dantec sur l'intelligence artificielle. L'événement analyse cette technologie dans une perspective critique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837739/alec-UPC-2026-2027_ptxdmm.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.902Z",
+    "periodicitat": ""
   }
 ]
