@@ -2905,7 +2905,7 @@
     "data_inici": "2026-10-10",
     "data_fi": "2026-10-10",
     "hora": "10:15",
-    "lloc": "Médiathèque Centrale\n15 Rue Émile Zola",
+    "lloc": "Médiathèque Centrale15 Rue Émile Zola",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Activitat infantil",
@@ -2914,7 +2914,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837758/Tatiana-Paris-par-Pierrick-Page--3_hpezzf.webp",
     "font_url": "https://www.jazzebre.com/evenement/autour-du-festival-des-livres-et-nous/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.921Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z1WQ] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Categoria per tema infantil; RechercheTYPE deia: Teatre Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
