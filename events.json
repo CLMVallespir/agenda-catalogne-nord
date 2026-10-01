@@ -5334,5 +5334,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.936Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-festa-major",
+    "titol": "Festa major",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Vilamulaca",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La festa major de Vilamulaca inclou un àpat comunitari previst per al diumenge al migdia. El menú consta de tapes, fideuada i pastís de poma, i requereix inscripció prèvia a la casa de la vila.",
+    "descripcio_fr": "La fête patronale de Villemolaque inclut un repas communautaire prévu le dimanche midi. Le menu se compose de tapas, de fideua et de tarte aux pommes, et nécessite une inscription préalable à la mairie.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837782/Aspres-vilmeolaque-fetemajor_t92jwf.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.949Z",
+    "periodicitat": ""
   }
 ]
