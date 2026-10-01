@@ -320,26 +320,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Y7JG] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-01-concert-elgun-stone",
-    "titol": "Concert Elgun Stone",
-    "data_inici": "2026-10-01",
-    "data_fi": "2026-10-01",
-    "hora": "19:00",
-    "lloc": "Rue de la Neige",
-    "municipi": "Illa",
-    "comarca": "Rosselló",
-    "categoria": "",
-    "descripcio_ca": "L'artista independent Elgun Stone ofereix un concert de música indie folk, caracteritzat per la seva veu planera i potent. La vetllada està dedicada íntegrament a aquest estil musical.",
-    "descripcio_fr": "L'artiste indépendant Elgun Stone propose un concert de musique indie folk, caractérisé par sa voix planante et puissante. La soirée est entièrement consacrée à ce style musical.",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837612/01-10B_ocqpwy.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-10-01T05:49:29.902Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52YUSZ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
-  },
-  {
     "id": "2026-10-01-axiome-jean-yves",
     "titol": "Axiome - Jean-Yves Gargadennec",
     "data_inici": "2026-10-01",
