@@ -5049,5 +5049,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.930Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-solo-tatiana-paris",
+    "titol": "Solo Tatiana Paris - Jazzèbre",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "10:15",
+    "lloc": "Médiathèque Centrale15 Rue Émile Zola",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'artista Tatiana Paris presenta un espectacle en solitari per a infants de 6 a 36 mesos, basat en l'univers de T h a l l e. A través d'un paisatge de sons, materials i presències, es proposa una experiència poètica compartida entre els nadons i les famílies.",
+    "descripcio_fr": "L'artiste Tatiana Paris présente un spectacle en solo pour les tout-petits de 6 à 36 mois, inspiré de l'univers de T h a l l e. À travers un paysage de sons, de matières et de présences, une expérience poétique partagée est proposée aux bébés et à leurs parents.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837758/Tatiana-Paris-par-Pierrick-Page--3_hpezzf.webp",
+    "font_url": "https://www.jazzebre.com/evenement/autour-du-festival-des-livres-et-nous/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.921Z",
+    "periodicitat": ""
   }
 ]
