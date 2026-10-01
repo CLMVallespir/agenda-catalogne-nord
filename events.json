@@ -5239,5 +5239,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.903Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-jornades-intergeneracionals",
+    "titol": "Jornades intergeneracionals",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Oms",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquestes jornades s'organitzen en el marc de les «Rencontres bien vieillir» amb una programació d'animacions culturals, esportives i musicals, a més d'accions de prevenció. El projecte, impulsat per la Communauté de Communes des Aspres, el Contrat Local de Santé i el CDSMR 66, té com a objectiu posar en contacte el públic amb les institucions i facilitar el coneixement de diversos projectes locals.",
+    "descripcio_fr": "Ces journées sont organisées dans le cadre des «Rencontres bien vieillir» avec une programmation d'animations culturelles, sportives et musicales, ainsi que des actions de prévention. Le projet, porté par la Communauté de Communes des Aspres, le Contrat Local de Santé et le CDSMR 66, vise à mettre en relation le public avec les institutions et à faciliter la découverte de divers projets locaux.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837774/aSPRES-OMS-JOURNEESINERGENERATIONNELLES_ti9f8f.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.933Z",
+    "periodicitat": ""
   }
 ]
