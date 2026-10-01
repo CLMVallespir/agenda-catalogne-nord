@@ -720,26 +720,6 @@
     "nota_curador": "[ADT66 id: FMALAR066V52H7UW] L'acte es fa 18 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-03-rifle-en-plein",
-    "titol": "RIFLE EN PLEIN AIR",
-    "data_inici": "2026-10-03",
-    "data_fi": "2026-10-03",
-    "hora": "19:30",
-    "lloc": "rue de la tramontane",
-    "municipi": "Passà",
-    "comarca": "Rosselló",
-    "categoria": "Vida associativa",
-    "descripcio_ca": "",
-    "descripcio_fr": "Venez partager un bon moment à la Rifle de Passa \nAu programme : Quine, Double Quine et Carton plein, de jolis lots à gagner et surtout beaucoup de rires et de bonne humeur !\n\nQue vous soyez un habitué de la rifle ou simplement là pour passer une agréable soirée entre amis ou en famille, vos cartons n’attendent que vous ! \n\nSamedi 3 octobre à 19h30\n Salle des fêtes de Passa\n\nRamenez votre porte-bonheur… et laissez la malchance à la maison ! \n\nLe Comité des fêtes de Passa",
-    "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837636/Aspres-passa-rifleoct_kr0tfx.webp",
-    "font_url": "",
-    "estat": "pendent",
-    "data_entrada": "2026-10-01T05:49:29.819Z",
-    "periodicitat": "",
-    "nota_curador": "[ADT66 id: FMALAR066V52HUGU] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
-  },
-  {
     "id": "2026-10-03-rifle-des-ecoles",
     "titol": "Rifle de les escoles",
     "data_inici": "2026-10-03",
