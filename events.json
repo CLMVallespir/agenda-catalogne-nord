@@ -5296,5 +5296,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.934Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-mercat-dels-cervesers",
+    "titol": "Mercat dels cervesers disfressat",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "11:00",
+    "lloc": "Marcevol",
+    "municipi": "Arboçols",
+    "comarca": "Conflent",
+    "categoria": "Mercat",
+    "descripcio_ca": "El Prieuré de Marcevol acull una nova edició del mercat, que enguany celebra el desè aniversari de Fest’Arboussols. La jornada inclou la presència de cervesers locals i artesans, acompanyats per l'actuació musical de M. Leu and the Nyabhingers. Els assistents poden utilitzar disfresses cedides per La Costumerie de Mosset i gaudir d'una oferta gastronòmica amb begudes i menjar variat.",
+    "descripcio_fr": "Le Prieuré de Marcevol accueille une nouvelle édition du marché, qui célèbre cette année le dixième anniversaire de Fest’Arboussols. La journée comprend la présence de brasseurs locaux et d'artisans, accompagnés par la prestation musicale de M. Leu and the Nyabhingers. Les participants peuvent utiliser des costumes mis à disposition par La Costumerie de Mosset et profiter d'une offre gastronomique avec des boissons et de la restauration variée.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837780/marche-des-brasseurs-prieure-de-marcevol-du-10-octobre-2026_hmu3jw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.943Z",
+    "periodicitat": ""
   }
 ]
