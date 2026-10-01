@@ -4821,5 +4821,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.838Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-jornada-de-portes",
+    "titol": "Jornada de portes obertes al jardí intergeneracional",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "09:00",
+    "lloc": "Carrer del Molí Vell",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'associació Le Jardin Intergénérationnel du Boulou organitza una jornada de portes obertes al seu espai. S'hi ofereixen diversos tallers educatius, com ara descoberta de les plantes, jardineria en família, activitats sobre la vida de les abelles, jocs i una rifa.",
+    "descripcio_fr": "L'association Le Jardin Intergénérationnel du Boulou organise une journée portes ouvertes au sein de son espace. Divers ateliers pédagogiques y sont proposés, tels que la découverte des plantes, le jardinage en famille, des activités sur la vie des abeilles, des jeux et une tombola.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837737/010---portes-ouvertes-jardin_lxbbdp.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.897Z",
+    "periodicitat": ""
   }
 ]
