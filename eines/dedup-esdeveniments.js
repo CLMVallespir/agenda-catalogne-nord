@@ -658,7 +658,9 @@ function creaId(dataInici, titol) {
 
 module.exports = {
   comparaEsdeveniments: comparaEsdeveniments,
-  ajuntaNotes: ajuntaNotes
+  ajuntaNotes: ajuntaNotes,
+  similitudJaccard: similitudJaccard,
+  paraulesSignificatives: paraulesSignificatives
 };
 
 
