@@ -5011,5 +5011,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.929Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-torneig-de-les",
+    "titol": "Torneig de les Mediterrànies de Roller Derby",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "09:00",
+    "lloc": "Plaine Saint Martin",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "El club de Roller Derby des Pyrénées Orientales, les Coccyx lexis, organitza el seu torneig anual a Prada. Quatre equips d'Albi, Badalona, Mallorca i Perpignan s'enfronten en vuit partits durant tot el cap de setmana. L'esdeveniment permet descobrir el roller derby, un esport de contacte femení i inclusiu en patins a rodes.",
+    "descripcio_fr": "Le club de Roller Derby des Pyrénées Orientales, les Coccyx lexis, organise son tournoi annuel à Prada. Quatre équipes d'Albi, Badalona, Mallorca et Perpignan s'affrontent lors de huit matchs tout au long du week-end. L'événement permet de découvrir le roller derby, un sport de contact féminin et inclusif en patins à roulettes.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837769/AFFICHE-MARIMUNT-RDPO_algfgh.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.929Z",
+    "periodicitat": ""
   }
 ]
