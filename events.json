@@ -5144,5 +5144,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.909Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-histories-de-familia",
+    "titol": "Històries de família en escena",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "18:30",
+    "lloc": "3 Rue Joseph Lafon",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'espace parentalité 66 i la Compagnie Ricochet proposen una sessió de teatre d'improvisació centrada en la parentalitat. A partir d'experiències quotidianes i del tema del desballestament, les actrius creen escenes interactives que conviden a la reflexió i al diàleg en un entorn musical i acollidor.",
+    "descripcio_fr": "L'espace parentalité 66 et la Compagnie Ricochet proposent une séance de théâtre d'improvisation centrée sur la parentalité. À partir d'expériences quotidiennes et du thème du harcèlement, les comédiennes créent des scènes interactives qui invitent à la réflexion et au dialogue dans un cadre musical et bienveillant.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837699/compagnie-Ricochet-2_vjolca.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.899Z",
+    "periodicitat": ""
   }
 ]
