@@ -4194,5 +4194,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.837Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-01-taller-de-scrapbook",
+    "titol": "Taller de scrapbook",
+    "data_inici": "2026-10-01",
+    "data_fi": "2026-10-01",
+    "hora": "13:30",
+    "lloc": "Rue de la Gabarre",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquesta activitat està oberta exclusivament als membres de l'associació. S'hi realitzen treballs de scrapbook.",
+    "descripcio_fr": "Cette activité est ouverte exclusivement aux membres de l'association. Des travaux de scrapbooking y sont réalisés.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837601/IMG-7395_tvdwqh.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.812Z",
+    "periodicitat": ""
   }
 ]
