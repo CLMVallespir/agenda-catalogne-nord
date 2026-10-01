@@ -4479,5 +4479,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.812Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-conseller-digital-a",
+    "titol": "Conseller digital a la mediateca",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "10:00",
+    "lloc": "4 Avenue de Perpignan",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Un cop al mes, el conseller digital Sébastien ofereix acompanyament en les tasques digitals de la vida quotidiana. L'atenció inclou suport en tràmits en línia, programari, aplicacions o l'ús de dispositius informàtics com ordinadors, tauletes i telèfons intel·ligents. Aquest servei no inclou l'ajuda en gestions administratives.",
+    "descripcio_fr": "Une fois par mois, le conseiller numérique Sébastien propose un accompagnement dans les tâches numériques du quotidien. L'aide porte sur les démarches en ligne, les logiciels, les applications ou l'utilisation d'appareils informatiques tels que les ordinateurs, tablettes et smartphones. Ce service ne comprend pas l'aide aux démarches administratives.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837680/image-10_mum7qy.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.815Z",
+    "periodicitat": ""
   }
 ]
