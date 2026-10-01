@@ -4498,5 +4498,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.815Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-petit-mercat-dels",
+    "titol": "Petit mercat dels dimecres",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "05:30",
+    "lloc": "1 Place Léo Lagrange",
+    "municipi": "Sant Pau de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat de productes de l'horta s'instal·la cada dimecres a la plaça del Foyer Rural de Sant Pau de Fenollet. L'activitat està subjecta a les condicions meteorològiques.",
+    "descripcio_fr": "Le marché de produits maraîchers s'installe chaque mercredi sur la place du Foyer Rural de Saint-Paul-de-Fenouillet. L'activité est soumise aux conditions météorologiques.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837681/marche-mercredi_nth8yh.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.816Z",
+    "periodicitat": "cada setmana"
   }
 ]
