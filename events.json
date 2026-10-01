@@ -4422,5 +4422,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.937Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-mercat-del-moulin",
+    "titol": "Mercat del Moulin-à-Vent",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "07:30",
+    "lloc": "Place de la Sardane",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat del Moulin-à-Vent és una cita setmanal que aplega una gran varietat de comerços i venedors. És un punt de trobada habitual per als veïns de la zona.",
+    "descripcio_fr": "Le marché du Moulin-à-Vent est un rendez-vous hebdomadaire qui rassemble une grande variété de commerces et de vendeurs. C'est un point de rencontre habituel pour les habitants du quartier.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837676/FMA-Marche-Moulin-a-vent_utpwmn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.803Z",
+    "periodicitat": "cada setmana"
   }
 ]
