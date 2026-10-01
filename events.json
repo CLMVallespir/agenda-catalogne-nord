@@ -5125,5 +5125,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.914Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-saison-cerdane-sous",
+    "titol": "Saison Cerdane: Sous la surface amb Delf",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "20:30",
+    "lloc": "",
+    "municipi": "Sallagosa",
+    "comarca": "Cerdanya",
+    "categoria": "Música",
+    "descripcio_ca": "Delf presenta un concert de música pop i electro que explora el món de les emocions a través de textos meticulosos i una atmosfera acústica. L'artista està acompanyada per Tristan Perrin al teclat i Cyril Malé a la bateria, oferint un espectacle amb influències franceses i espanyoles.",
+    "descripcio_fr": "Delf présente un concert de musique pop et électro qui explore le monde des émotions à travers des textes ciselés et une atmosphère acoustique. L'artiste est accompagnée par Tristan Perrin au clavier et Cyril Malé à la batterie, offrant un spectacle aux influences françaises et espagnoles.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837701/affiche-9-octobre-Sous-la-surface-copie-3_c7jumy.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.909Z",
+    "periodicitat": ""
   }
 ]
