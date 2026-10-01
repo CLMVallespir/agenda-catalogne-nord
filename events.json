@@ -5201,5 +5201,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.886Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-le-livre-vivant",
+    "titol": "Le Livre Vivant en balade",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "20:00",
+    "lloc": "17 B RUE DES ECOLES",
+    "municipi": "Passà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Aquest cicle de representacions recorre les biblioteques de diferents municipis del territori amb espectacles de teatre, música, dansa i contes basats en llibres infantils. Les propostes, creades per companyies locals a partir de les obres seleccionades per al Prix du livre vivant, s'adrecen a famílies i infants de totes les edats.",
+    "descripcio_fr": "Ce cycle de représentations parcourt les médiathèques de différentes communes du territoire avec des spectacles de théâtre, musique, danse et contes basés sur des livres pour la jeunesse. Les créations, conçues par des compagnies locales à partir des ouvrages sélectionnés pour le Prix du livre vivant, s'adressent aux familles et aux enfants de tous âges.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837693/Aspres-aspres--livre-vivant-balade_gibiew.webp",
+    "font_url": "https://www.ledepartement66.fr/agenda/livre-vivant-en-balade/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.883Z",
+    "periodicitat": ""
   }
 ]
