@@ -4612,5 +4612,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.916Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-salo-de-tardor",
+    "titol": "Saló de tardor",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "",
+    "lloc": "104 Avenue du Haut Vernet",
+    "municipi": "Bompàs",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "Aquesta exposició artística aplega diverses obres amb motiu del Saló de tardor. La mostra és oberta a tots els públics.",
+    "descripcio_fr": "Cette exposition artistique rassemble diverses œuvres à l'occasion du Salon d'automne. L'exposition est ouverte à tous les publics.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837705/modern-art-studio-composition_kevmk6.webp",
+    "font_url": "https://bompas.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.919Z",
+    "periodicitat": ""
   }
 ]
