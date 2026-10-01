@@ -1820,12 +1820,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52VT75] L'acte es fa 92 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-07-jam-de-rentree",
+    "id": "2026-10-07-jam-de-tornada",
     "titol": "Jam de tornada",
     "data_inici": "2026-10-07",
     "data_fi": "2026-10-07",
     "hora": "19:00",
-    "lloc": "ELMEDIATOR\nAvenue Maréchal Leclerc",
+    "lloc": "ELMEDIATORAvenue Maréchal Leclerc",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Música",
@@ -1834,7 +1834,7 @@
     "associacio": "Contacter BILLETTERIE",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837686/Jam-de-rentree_tpkagm.webp",
     "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.874Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52XN11] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
