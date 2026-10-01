@@ -2352,6 +2352,38 @@ function bateria() {
         var oferta = ofertaDeProvaTast('Sortie aux cavernes', 'Randonnée et dégustation de produits locaux dans la caverne.');
         return exclusions.trobaExclusio(oferta) === null ? '' : '«cavernes» s\'ha llegit com a «cave» i no havia';
       }
+    },
+
+    {
+      nom: 'exclusió: «VIGNOBLE EN SCÈNE» amb dégustation i domaine es manté (paraula d\'espectacle)',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('VIGNOBLE EN SCÈNE', 'Spectacle suivi d\'une dégustation au domaine.');
+        return exclusions.trobaExclusio(oferta) === null ? '' : '«VIGNOBLE EN SCÈNE» s\'ha exclòs i no havia';
+      }
+    },
+
+    {
+      nom: 'exclusió: «BALADE GOURMANDE AU DOMAINE BISCONTE» queda exclosa («conte» dins de «bisconte» no és paraula de festa)',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('BALADE GOURMANDE AU DOMAINE BISCONTE', 'Balade suivie d\'une dégustation au domaine.');
+        return exclusions.trobaExclusio(oferta) !== null ? '' : '«bisconte» s\'ha llegit com a «conte» i l\'oferta no s\'ha exclòs';
+      }
+    },
+
+    {
+      nom: 'exclusió: una «MANIFESTATION» de tast en un domaine queda exclosa («festa» dins de «manifestation» no és paraula de festa)',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('MANIFESTATION AU DOMAINE', 'Une dégustation de vins au domaine.');
+        return exclusions.trobaExclusio(oferta) !== null ? '' : '«manifestation» s\'ha llegit com a «festa» i l\'oferta no s\'ha exclòs';
+      }
+    },
+
+    {
+      nom: 'exclusió: «CONTES AU DOMAINE» amb dégustation i domaine es manté (plural de «conte»)',
+      comprova: function () {
+        var oferta = ofertaDeProvaTast('CONTES AU DOMAINE', 'Contes suivis d\'une dégustation au domaine.');
+        return exclusions.trobaExclusio(oferta) === null ? '' : '«CONTES» s\'ha exclòs i no havia';
+      }
     }
   ];
 }
@@ -2435,6 +2467,19 @@ function informe(resultat, enSec) {
   }
   console.log('');
   console.log('  excloses per criteri editorial ' + resultat.exclosesPerCriteri.length);
+  var recomptePerRegla = {};
+  var nomsDeRegla = [];
+  for (var r = 0; r < resultat.exclosesPerCriteri.length; r++) {
+    var nomRegla = resultat.exclosesPerCriteri[r].nom;
+    if (recomptePerRegla[nomRegla] === undefined) {
+      recomptePerRegla[nomRegla] = 0;
+      nomsDeRegla.push(nomRegla);
+    }
+    recomptePerRegla[nomRegla] = recomptePerRegla[nomRegla] + 1;
+  }
+  for (var n = 0; n < nomsDeRegla.length; n++) {
+    console.log('    - ' + nomsDeRegla[n] + ': ' + recomptePerRegla[nomsDeRegla[n]]);
+  }
   for (var x = 0; x < resultat.exclosesPerCriteri.length; x++) {
     var exclosa = resultat.exclosesPerCriteri[x];
     console.log('    - ' + exclosa.nom + '  ' + exclosa.id + '  ' + exclosa.titol);

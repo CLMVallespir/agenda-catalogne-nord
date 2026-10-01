@@ -48,8 +48,8 @@ var PARAULES_TAST = ['degust', 'visite de cave', 'visite de la cave', 'visite de
 // Llocs vinícoles, com a paraula sencera en singular o plural (ja normalitzats).
 var PARAULES_LLOC_VINICOLA = ['domaine', 'cave', 'caveau', 'chateau', 'vignoble', 'cellier', 'vigneron'];
 
-// Fragments d'un títol de festa que salven l'oferta (subcadena, ja normalitzats).
-var PARAULES_FESTA = ['fete', 'festa', 'foire', 'fira', 'vendange', 'verema', 'festival'];
+// Paraules de festa o d'espectacle al títol, com a paraula sencera en singular o plural (ja normalitzades): si n'hi ha una, l'oferta no s'exclou.
+var PARAULES_FESTA = ['fete', 'festa', 'foire', 'fira', 'vendange', 'verema', 'festival', 'spectacle', 'theatre', 'scene', 'concert', 'conte'];
 
 
 // --- Constants: la llista ---------------------------------------------------
@@ -86,7 +86,7 @@ var EXCLUSIONS_EDITORIALS = [
       if (!conteAlgunaParaulaSencera(tot, PARAULES_LLOC_VINICOLA)) {
         return false;
       }
-      return !conteAlgunaSubcadena(titol, PARAULES_FESTA);
+      return !conteAlgunaParaulaDeLlista(titol, PARAULES_FESTA);
     }
   }
 ];
@@ -205,6 +205,25 @@ function conteAlgunaParaulaSencera(text, llista) {
 
   // «chateaux» és el plural de «chateau», que no segueix la regla del +s.
   return paraules.indexOf('chateaux') !== -1;
+}
+
+
+// ------------------------------------------------------------
+// Diu si un text normalitzat conté, com a paraula sencera, algun element de la
+// llista, tal qual o en plural (+s): «conte» i «contes», però no «bisconte».
+// ------------------------------------------------------------
+function conteAlgunaParaulaDeLlista(text, llista) {
+  var paraules = text.split(' ');
+
+  for (var i = 0; i < paraules.length; i++) {
+    for (var j = 0; j < llista.length; j++) {
+      if (paraules[i] === llista[j] || paraules[i] === llista[j] + 's') {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 
