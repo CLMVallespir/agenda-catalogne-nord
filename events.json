@@ -4650,5 +4650,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.922Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-castanyada",
+    "titol": "Castanyada",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "17:00",
+    "lloc": "",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "L'associació Mainatges i la Bressola organitzen una castanyada amb balls i cançons interpretats per infants a la plaça de la República. L'esdeveniment s'adreça al públic familiar.",
+    "descripcio_fr": "L'association Mainatges et la Bressola organisent une castanyada avec des danses et des chants interprétés par les enfants sur la place de la République. L'événement s'adresse au public familial.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837714/Castagnade-3_etxbqj.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.929Z",
+    "periodicitat": ""
   }
 ]
