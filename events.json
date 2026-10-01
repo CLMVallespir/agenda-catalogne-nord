@@ -5068,5 +5068,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.921Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-regards-paysans",
+    "titol": "Regards paysans",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "17:30",
+    "lloc": "2 rue du Foirail",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Cinema",
+    "descripcio_ca": "L'associació Ciné-Rencontres de Prades organitza una vetllada dedicada al món de la ramaderia. La jornada inclou la projecció d'un documental sobre el pastoralisme al Conflent seguida d'un debat, un sopar i la presentació d'una pel·lícula de ficció.",
+    "descripcio_fr": "L'association Ciné-Rencontres de Prades organise une soirée consacrée au monde de l'élevage. La journée comprend la projection d'un documentaire sur le pastoralisme en Conflent suivie d'un débat, un repas et la présentation d'un film de fiction.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837712/Affiche-A3-Regards-Paysans-2026_sdub78.webp",
+    "font_url": "https://www.cine-rencontres.org/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.928Z",
+    "periodicitat": ""
   }
 ]
