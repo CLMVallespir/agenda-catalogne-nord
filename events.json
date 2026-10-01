@@ -4745,5 +4745,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.946Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-guitares-en-agly",
+    "titol": "Guitares en Agly",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "",
+    "lloc": "Rue Camille Desmoulins",
+    "municipi": "Estagell",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "L'organització va a càrrec de l'office Estagellois de la culture. L'esdeveniment proposa tres dies de descoberta, d'intercanvi i de tallers.",
+    "descripcio_fr": "L'organisation est assurée par l'office Estagellois de la culture. L'événement propose trois jours de découverte, d'échange et d'ateliers.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837724/GUITARES-EN-AGLY_re80gz.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.961Z",
+    "periodicitat": ""
   }
 ]
