@@ -5258,5 +5258,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.933Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-les-oiseaux-de",
+    "titol": "Les Oiseaux de Nuit",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "21:00",
+    "lloc": "24 Avenue Molière",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Aquest espectacle de cabaret destaca per una posada en escena plena de plomes, lluentons i emoció. Es tracta d'un xou de caràcter màgic obert a tots els públics.",
+    "descripcio_fr": "Ce spectacle de cabaret se distingue par une mise en scène faite de plumes, de paillettes et d'émotion. Il s'agit d'un show féerique ouvert à tous les publics.",
+    "associacio": "Contacter RAOULT Jean-Claude",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837776/Les-oiseaux-de-nuit-jpg-2_wvqvta.webp",
+    "font_url": "https://www.restosducoeur.org/associations-departementales/les-restos-du-coeur-des-pyrennees-orientales/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.933Z",
+    "periodicitat": ""
   }
 ]
