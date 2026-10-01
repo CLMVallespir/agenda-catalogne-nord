@@ -458,6 +458,8 @@ function mapejaOfertaADT66(ofertaWCF) {
   // si és per a criatures com si no.
   fila.categoria = categoriaPerTemaInfantil(fila.categoria, oferta.COMMUNTHEME, avisos);
 
+  avisaDeTotElDia(oferta, avisos);
+
   fila.nota_curador = notaCurador(oferta, avisos);
 
   return {
@@ -538,6 +540,19 @@ var EUROS_QUE_FAN_MIRAR = 25;
 // Els imports en euros escrits dins d'un text. Accepta «12 €», «12&euro;»,
 // «12 euros» i «12 EUR», amb decimals o sense.
 var PATRO_EUROS = /(\d{1,4})(?:[.,]\d{1,2})?\s*(?:€|&euro;|euros?|eur)(?![a-z])/gi;
+
+// L'avís que s'afegeix quan l'hora s'ha buidat perquè la franja és de tot el dia.
+var AVIS_TOT_EL_DIA = 'Horari: tot el dia segons l\'ADT66.';
+
+// ------------------------------------------------------------
+// Afegeix l'avís de «tot el dia» quan la franja de l'oferta ho és.
+// ------------------------------------------------------------
+function avisaDeTotElDia(oferta, avisos) {
+  var franja = sincronitza.franjaDeLoferta(oferta);
+  if (sincronitza.esTotElDia(franja.inici, franja.final)) {
+    avisos.push(AVIS_TOT_EL_DIA);
+  }
+}
 
 // ------------------------------------------------------------
 // Marca una fila que fa olor de nova era o de guia espiritual. Mira el títol
@@ -1462,7 +1477,8 @@ function creaId(dataInici, titol) {
 // encara.
 
 module.exports = {
-  mapejaOfertaADT66: mapejaOfertaADT66
+  mapejaOfertaADT66: mapejaOfertaADT66,
+  AVIS_TOT_EL_DIA: AVIS_TOT_EL_DIA
 };
 
 
@@ -1700,6 +1716,48 @@ function casosDeProva() {
         }
       },
       espera: { municipi: 'Elna', categoria: 'Música' }
+    },
+    {
+      nom: 'Hora: «De 05:00 à 23:59» és tot el dia, hora buida',
+      entrada: { TRI: '01/07/2026', COMMUNDATE: 'Le 30/09/2026 De 05:00 à 23:59' },
+      espera: { hora: '' }
+    },
+    {
+      nom: 'Hora: «De 00:00 à 23:59» és tot el dia, hora buida',
+      entrada: { TRI: '01/07/2026', COMMUNDATE: 'Le 30/09/2026 De 00:00 à 23:59' },
+      espera: { hora: '' }
+    },
+    {
+      nom: 'Hora: «De 06:30 à 12:00» és una franja real, es queda 06:30',
+      entrada: { TRI: '01/07/2026', COMMUNDATE: 'Le 30/09/2026 De 06:30 à 12:00' },
+      espera: { hora: '06:30' }
+    },
+    {
+      nom: 'Hora: «De 07:00 à 23:59» és una franja real, es queda 07:00',
+      entrada: { TRI: '01/07/2026', COMMUNDATE: 'Le 30/09/2026 De 07:00 à 23:59' },
+      espera: { hora: '07:00' }
+    },
+    {
+      nom: 'Hora: «à 05:00» sense franja es queda 05:00',
+      entrada: { TRI: '01/07/2026', COMMUNDATE: 'Le 30/09/2026 à 05:00' },
+      espera: { hora: '05:00' }
+    },
+    {
+      nom: 'Tot el dia: l\'avís va al final de la nota i el tag continua primer',
+      entrada: {
+        SyndicObjectID: 'FMALAR066TOTDIA', TRI: '01/07/2026', Commune: 'ELNE',
+        COMMUNDATE: 'Le 30/09/2026 De 05:00 à 23:59'
+      },
+      comprova: function (fila, problemes) {
+        var final = 'Horari: tot el dia segons l\'ADT66.';
+        if (fila.nota_curador.indexOf('[ADT66 id: FMALAR066TOTDIA]') !== 0) {
+          problemes.push('el tag no obre la nota: «' + fila.nota_curador + '»');
+        }
+        if (fila.nota_curador.slice(-final.length) !== final) {
+          problemes.push('la nota no acaba amb l\'avís de tot el dia: «' + fila.nota_curador + '»');
+        }
+      },
+      espera: { hora: '' }
     },
     {
       nom: 'Oferta amb SyndicObjectID i quasi res més: el tag obre la nota igual',

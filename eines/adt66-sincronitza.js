@@ -211,6 +211,11 @@ function aIso(data) {
   return parts[3] + '-' + parts[2] + '-' + parts[1];
 }
 
+// L'ADT66 diu «tot el dia» amb una franja que acaba a 23:59 (o 00:00) i que
+// comença abans de les 07:00 (p. ex. «De 05:00 à 23:59»): no és cap hora real.
+var HORA_INICI_MINIMA = '07:00';
+var HORES_FINAL_TOT_EL_DIA = ['23:59', '00:00'];
+
 // ------------------------------------------------------------
 // L'hora d'inici, HH:MM, de l'oferta, de COMMUNDATE. És la primera hora que
 // apareix, ja sigui «De HH:MM» o «à HH:MM» sol (la «à» pot venir com a lletra
@@ -220,12 +225,31 @@ function aIso(data) {
 // fi, així que l'hora de fi d'un «De HH:MM à HH:MM» simplement s'ignora.
 // ------------------------------------------------------------
 function horaDeLoferta(oferta) {
-  var text = String((oferta && oferta.COMMUNDATE) || '').replace(/&agrave;/g, 'à');
-  var trobada = text.match(/(?:\bDe|à) (\d{2}:\d{2})(?!\d)/);
-  if (trobada === null) {
+  var franja = franjaDeLoferta(oferta);
+  if (esTotElDia(franja.inici, franja.final)) {
     return '';
   }
-  return trobada[1];
+  return franja.inici;
+}
+
+// ------------------------------------------------------------
+// La franja { inici, final } de COMMUNDATE: la primera hora, i la de fi si el
+// text és «De HH:MM à HH:MM». Cadenes buides quan no hi ha hora.
+// ------------------------------------------------------------
+function franjaDeLoferta(oferta) {
+  var text = String((oferta && oferta.COMMUNDATE) || '').replace(/&agrave;/g, 'à');
+  var trobada = text.match(/(?:\bDe|à) (\d{2}:\d{2})(?!\d)(?: à (\d{2}:\d{2})(?!\d))?/);
+  if (trobada === null) {
+    return { inici: '', final: '' };
+  }
+  return { inici: trobada[1], final: trobada[2] || '' };
+}
+
+// ------------------------------------------------------------
+// Certa si la franja és la que l'ADT66 fa servir per dir «tot el dia».
+// ------------------------------------------------------------
+function esTotElDia(inici, final) {
+  return HORES_FINAL_TOT_EL_DIA.indexOf(final) !== -1 && inici !== '' && inici < HORA_INICI_MINIMA;
 }
 
 // ------------------------------------------------------------
@@ -363,6 +387,8 @@ module.exports = {
   sincronitzaADT66: sincronitzaADT66,
   datesDeLoferta: datesDeLoferta,
   horaDeLoferta: horaDeLoferta,
+  franjaDeLoferta: franjaDeLoferta,
+  esTotElDia: esTotElDia,
   classificaDates: classificaDates
 };
 

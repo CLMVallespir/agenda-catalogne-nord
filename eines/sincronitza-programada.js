@@ -2450,6 +2450,7 @@ function informe(resultat, enSec) {
   informeDeTraduccio(resultat.traducio);
   console.log('');
   console.log('  files noves a la cua         ' + resultat.noves.length);
+  console.log('  hores de tot el dia buidades ' + comptaHoresBuidades(resultat.noves));
   informeDePoda('rebutjades caducades podades ', resultat.podadesRebutjades);
   informeDePoda('pendents caducades podades   ', resultat.podadesPendents);
   informeDePoda('publicades caducades podades ', resultat.podadesPublicades);
@@ -2457,6 +2458,20 @@ function informe(resultat, enSec) {
   console.log('  escrit a pendents.json       ' + (resultat.escrit ? 'sí' : 'no'));
   console.log('  reintents per conflicte sha  ' + resultat.reintents);
   console.log('');
+}
+
+// ------------------------------------------------------------
+// Quantes files tenen la nota acabada amb l'avís de «tot el dia» (hora buidada).
+// ------------------------------------------------------------
+function comptaHoresBuidades(files) {
+  var quantes = 0;
+  for (var i = 0; i < files.length; i++) {
+    var nota = String(files[i].nota_curador || '');
+    if (nota.slice(-mapeig.AVIS_TOT_EL_DIA.length) === mapeig.AVIS_TOT_EL_DIA) {
+      quantes = quantes + 1;
+    }
+  }
+  return quantes;
 }
 
 // ------------------------------------------------------------
