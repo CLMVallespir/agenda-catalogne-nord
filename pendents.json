@@ -2480,7 +2480,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZBS4] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-10-loto-unrpa",
+    "id": "2026-10-10-loto-de-lunrpa",
     "titol": "Loto de l'UNRPA",
     "data_inici": "2026-10-10",
     "data_fi": "2026-10-10",
@@ -2494,7 +2494,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837726/boule-loto_cudh1o.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.808Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V525WRG] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
