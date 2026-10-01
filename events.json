@@ -5220,5 +5220,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.883Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-nature-en-tete",
+    "titol": "Nature en tête: al cor de la vida dels ocells",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "14:30",
+    "lloc": "33 rue de l'Hospice",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "L'activitat convida a descobrir el món dels ocells i a desxifrar el significat dels seus cants. La proposta, pensada per a infants d'entre 6 i 12 anys, inclou exercicis per aprendre a reconèixer les diferents vocalitzacions dels ocells.",
+    "descripcio_fr": "L'activité invite à découvrir le monde des oiseaux et à déchiffrer la signification de leurs chants. La proposition, destinée aux enfants de 6 à 12 ans, inclut des exercices pour apprendre à reconnaître les différents chants des oiseaux.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837688/Capture-d-ecran-2026-09-03-095445_hi50vr.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.903Z",
+    "periodicitat": ""
   }
 ]
