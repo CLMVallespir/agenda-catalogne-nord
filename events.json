@@ -5163,5 +5163,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.899Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-vetllada-anual-les",
+    "titol": "Vetllada anual «Les Étoiles d'Hanoï»",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "19:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'associació Les Étoiles d'Hanoï organitza una vetllada festiva amb un àpat i ball per compartir en família o amb amics. L'acte compta amb l'animació musical del grup Kapass Variétés.",
+    "descripcio_fr": "L'association Les Étoiles d'Hanoï organise une soirée festive avec un repas dansant à partager en famille ou entre amis. L'événement est animé par le groupe Kapass Variétés.",
+    "associacio": "Contacter Madame GROLLIER Virginia",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837697/event-FMALAR066V52Y6EJ-1785856604171_ttsndj.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.888Z",
+    "periodicitat": ""
   }
 ]
