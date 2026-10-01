@@ -4802,5 +4802,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.832Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-dia-mundial-de",
+    "titol": "Dia mundial de la neteja",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "09:00",
+    "lloc": "Rue Saint-Antoine",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'activitat està oberta a tothom, si bé els infants han d'anar acompanyats. Durant la jornada, els participants netejaran diversos punts del municipi de Sant Genís de Fontanes, com el carrer de l'Estadi i l'eix de la RD 618. L'organització facilita les bosses d'escombraries i es recomana l'ús de guants i armilles reflectors.",
+    "descripcio_fr": "L'activité est ouverte à tous, les enfants devant toutefois être accompagnés. Au cours de la journée, les participants nettoieront divers points de la commune de Sant Genís de Fontanes, comme la rue du Stade et l'axe de la RD 618. L'organisation fournit les sacs poubelles et le port de gants et de gilets réfléchissants est recommandé.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837730/nettoyage-nature-01_l77a81.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.838Z",
+    "periodicitat": ""
   }
 ]
