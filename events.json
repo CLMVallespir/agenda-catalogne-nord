@@ -4726,5 +4726,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.938Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-concert-literari",
+    "titol": "Concert literari",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "21:00",
+    "lloc": "",
+    "municipi": "Fillols",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "Aquest espectacle combina la veu de Florence Jou amb la guitarra de Serge Teyssot-Gay. La proposta consisteix en una actuació on s'entrellacen el recital i la música.",
+    "descripcio_fr": "Ce spectacle associe la voix de Florence Jou à la guitare de Serge Teyssot-Gay. La proposition consiste en une performance où se mêlent la lecture et la musique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837721/Concert-Fillols-5_gxjshq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.946Z",
+    "periodicitat": ""
   }
 ]
