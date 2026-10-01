@@ -4688,5 +4688,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.929Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-film-frantz-fanon",
+    "titol": "Film « Frantz Fanon, mémoire d’asile »",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Aquest muntatge d’arxius, creat a partir del fons fílmic de l’hospital de St Alban, ret homenatge a l’experiència psiquiàtrica que s'hi va desenvolupar sota la direcció del psiquiatre català Francesc Tosquelles. El film explora la trajectòria de Frantz Fanon, destacant com la seva pràctica mèdica el va portar a comprometre's amb la lluita per la llibertat i contra el colonialisme. L’obra combina imatges d’arxiu i testimonis actuals per acostar-se a la realitat vital del protagonista.",
+    "descripcio_fr": "Ce montage d’archives, créé à partir du fonds filmique de l’hôpital de St Alban, rend hommage à l’expérience psychiatrique qui y a été développée sous la direction du psychiatre catalan Francesc Tosquelles. Le film explore le parcours de Frantz Fanon, soulignant comment sa pratique médicale l’a conduit à s'engager dans la lutte pour la liberté et contre le colonialisme. L'œuvre combine des images d'archives et des témoignages actuels pour s'approcher au plus près de la réalité vécue du protagoniste.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1790837717/Frantz-Fanon--memoire-d-asile---Octobre-2026_ldepwz.webp",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-01T05:49:29.934Z",
+    "periodicitat": ""
   }
 ]
