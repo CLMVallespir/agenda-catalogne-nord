@@ -1,6 +1,6 @@
 {
   "2026-10-06": {
-    "ofertes": 42,
+    "ofertes": 44,
     "visitesDescartades": [
       {
         "titol": "APERITIFS VIGNERONS"
@@ -55,6 +55,16 @@
         "nom": "Tast comercial",
         "id": "FMALAR066V52GPL7",
         "titol": "MATINÉE GOURMANDE"
+      },
+      {
+        "nom": "Cinema d'Elna",
+        "id": "SINTETICA-ELNA-CINEMA-ADRECA",
+        "titol": "SÉANCE SYNTHÉTIQUE AU CINÉMA D'ELNE"
+      },
+      {
+        "nom": "Cinema d'Elna",
+        "id": "SINTETICA-ELNA-CINEMA-ALTRA-ADRECA",
+        "titol": "PROJECTION SYNTHÉTIQUE D'UNE ASSOCIATION À ELNE"
       }
     ],
     "candidates": 13,
@@ -344,7 +354,7 @@
     "reintents": 0
   },
   "2026-11-15": {
-    "ofertes": 42,
+    "ofertes": 44,
     "visitesDescartades": [
       {
         "titol": "APERITIFS VIGNERONS"
@@ -399,6 +409,16 @@
         "nom": "Tast comercial",
         "id": "FMALAR066V52GPL7",
         "titol": "MATINÉE GOURMANDE"
+      },
+      {
+        "nom": "Cinema d'Elna",
+        "id": "SINTETICA-ELNA-CINEMA-ADRECA",
+        "titol": "SÉANCE SYNTHÉTIQUE AU CINÉMA D'ELNE"
+      },
+      {
+        "nom": "Cinema d'Elna",
+        "id": "SINTETICA-ELNA-CINEMA-ALTRA-ADRECA",
+        "titol": "PROJECTION SYNTHÉTIQUE D'UNE ASSOCIATION À ELNE"
       }
     ],
     "candidates": 12,
