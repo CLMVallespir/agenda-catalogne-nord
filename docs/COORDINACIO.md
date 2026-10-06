@@ -164,7 +164,7 @@ palanca (*leverage*), localitat. **Vocabulari de domini:** `CLAUDE.md` §4, §4 
 2. **Comportament idèntic, demostrat.** Una refactorització no canvia cap sortida:
    les mateixes proves en verd, `verifica-enum.js` i `verifica-camps.js` en verd i,
    si toca la ingestió ADT66, la passada en sec sobre un flux congelat amb una
-   sortida idèntica a la d'abans.
+   sortida idèntica a la d'abans (`node --test proves/passada-action.test.js`).
 3. **Un candidat per encàrrec.** Mai una refactorització barrejada amb un arranjament
    d'error o amb una funcionalitat.
 4. **El Worker es desplega enganxant.** Tot canvi a `worker/worker.js` regenera
@@ -194,4 +194,4 @@ l'encàrrec.
 | 000 | 2026-10-03 | Posada en marxa del protocol | fet | 3 edicions + `git mv` de l'auditoria de juliol; verifica-enum i verifica-camps en verd (INF-000) |
 | 001 | 2026-10-03 | Auditoria d'arquitectura | fet | 7 candidats (ARQ-01–ARQ-07); recomanació principal ARQ-01, la passada en sec de l'Action reproduïble (INF-001) |
 | 002 | 2026-10-06 | Protocol v1.2 i verificador del Worker enganxable (ARQ-03) | fet | protocol v1.2; `verifica-worker-concatenat.js` en verd (A 4950, bàner 25, B 2064) i primera prova `node:test`, 5/5 en verd (INF-002) |
-| 003 | 2026-10-06 | La xarxa de la passada de l'Action (ARQ-01, primera part) | pendent | — |
+| 003 | 2026-10-06 | La xarxa de la passada de l'Action (ARQ-01, primera part) | fet | `proves/passada-action.test.js`, 2/2 en verd sobre 42 ofertes de les 1.425 del flux del 2026-10-06; les dues mutacions la posen en vermell; 2 branques sense cobrir perquè el flux no en porta (INF-003) |

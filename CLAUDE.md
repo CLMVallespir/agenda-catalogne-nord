@@ -78,6 +78,11 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 - **Proves:** amb `node:test` i `node:assert`, que venen amb Node (zero
   dependències). Viuen a `proves/` i s'executen una per una:
   `node --test proves/<nom>.test.js`.
+  Un fitxer de `proves/` que fa `require` d'un mòdul d'`eines/` no pot dur al nom
+  el nom de cap mòdul d'`eines/`: les guardes de les bateries miren
+  `process.argv[1]` per subcadena i s'engegarien. `proves/passada-action.test.js`
+  és la xarxa de la passada de l'Action: una refactorització no en pot canviar la
+  sortida.
 
 ## 3. Restriccions innegociables
 

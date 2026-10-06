@@ -21,3 +21,17 @@ Revisió: el 31 de desembre de 2026, o abans si acaba la prova de
 Jev o Clef (pas 5 de l'episodi 3). Si la prova no compleix els criteris
 del pas 4, s'arxiven tots cinc. Si els compleix, es mira quins fa servir
 la integració, i la resta s'arxiva.
+
+---
+
+## D-02 · 2026-10-06 · La passada de l'Action es prova des de fora, sense costura nova
+
+ARQ-01 proposava dues parts: una prova de caracterització i, després, obrir la
+interfície de `sincronitzaProgramada()` perquè hi entressin el flux, la lectura dels
+fitxers i el rellotge. Només es fa la primera. La prova congela el rellotge amb els
+temporitzadors simulats de `node:test` i substitueix el flux des de fora: la
+interfície no creix (criteri C3 de `docs/COORDINACIO.md`) i el codi de producció no
+canvia.
+
+Es reobre si la simulació del rellotge deixa de funcionar en una versió de Node o si
+una refactorització la torna trencadissa.

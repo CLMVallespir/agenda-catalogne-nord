@@ -1486,3 +1486,49 @@ DEPENDÈNCIA VENDORITZADA`. S'executa abans de fer commit d'un canvi a
 
 `proves/` és on viuran les proves amb `node:test`, una per fitxer, executades
 una per una amb `node --test proves/<nom>.test.js` (6 d'octubre de 2026).
+
+---
+
+## La xarxa de la passada de l'Action i el seu joc de dades
+
+**Resum:** `proves/passada-action.test.js` fixa la sortida de la passada en sec
+de l'Action sobre un flux congelat de 42 ofertes, la cua i els publicats d'un
+dia concret, i dos dies de referència.
+
+Captura: el flux sencer es va baixar el 6 d'octubre de 2026 (D) i tenia 1.425
+ofertes; el subconjunt de `proves/dades/flux-adt66.json` en té 42, en l'ordre
+del flux. `proves/dades/pendents.json` i `proves/dades/events.json` són les
+còpies de `main` d'aquell dia.
+
+Regla de tria: per a cada branca de la passada, les tres primeres ofertes per
+`SyndicObjectID` (ordre de text); una oferta pot comptar a més d'una branca, i
+les ofertes d'una fusió hi entren totes. Les branques: visita comentada
+descartada per R4; rescatada per R4 (per motiu); exclosa per criteri (per
+regla); fusionada dins el lot; `ja_a_la_cua`, `ja_publicat` i `ja_rebutjat`
+(per capa); nova fora de finestra per dalt i per sota; nova que passa a 0–15
+dies, a 16–30 dies i sense data; sèrie dispersa; i les branques de nova també
+a D + 40.
+
+La xarxa no cobreix les branques que el flux d'aquell dia no portava:
+l'exclusió del Cinema d'Elna, el descart per paraula clau del filtre previ, el
+rescat d'R4 per portes obertes i el `ja_publicat` de la capa 2.
+
+Dades personals: `DETAILTELEPHONE` no buit passa a `04 68 00 00 00` (32
+ofertes) i `DETAILCOURRIEL` no buit a `contacte@exemple.cat` (9);
+`LISTINGACCROCHE`, que la passada no llegeix, es buida si porta un telèfon o
+un correu (1); a `ACCROCHE150` (2 correus) i `DETAILDESCRIPTIF` (3 telèfons i
+2 correus), que la passada sí que llegeix, només se substitueix el tros pels
+mateixos dos valors, i cap oferta no canvia de branca per això.
+`DETAILCONTACT` es queda com és: és el que es converteix en `associacio`.
+
+Escenaris: el 6 d'octubre de 2026 (D) i el 15 de novembre de 2026 (D + 40), el
+segon perquè hi hagi files podades.
+
+Referència local, fora del repositori: el flux sencer i la passada sobre el
+flux sencer són a `coordinacio/dades/flux-adt66-2026-10-06.json` i
+`coordinacio/dades/informe-flux-sencer-2026-10-06.json`, per a les
+refactoritzacions que vulguin comparar també sobre el flux sencer.
+
+L'esperat es torna a generar (`node proves/regenera-esperat-passada.js`) només
+en un encàrrec que canvia el comportament a posta, i el commit ho diu; mai en
+una refactorització (6 d'octubre de 2026).
