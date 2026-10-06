@@ -75,6 +75,9 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 - **Coordinació amb Claude Chat:** encàrrecs (`ENC`) i informes (`INF`) segons
   `docs/COORDINACIO.md`, que diu també quin criteri guanya quan *Clean Code* i els
   mòduls profunds no diuen el mateix.
+- **Proves:** amb `node:test` i `node:assert`, que venen amb Node (zero
+  dependències). Viuen a `proves/` i s'executen una per una:
+  `node --test proves/<nom>.test.js`.
 
 ## 3. Restriccions innegociables
 
@@ -88,6 +91,8 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
   l'editor del tauler de Cloudflare. Si el tauler fa difícil un Worker de dos
   mòduls, la sortida acceptada és concatenar el fitxer vendoritzat dins el Worker,
   un sol cop, dins d'un bloc marcat amb bàner clar. Mai `wrangler` com a requisit.
+  Abans d'enganxar-lo, `node eines/verifica-worker-concatenat.js` ha de sortir en
+  verd.
 - **Cap base de dades.** L'estat viu en dos fitxers JSON al repositori
   (`events.json`, `pendents.json`) i prou.
 - **Cap compte d'usuari, cap login, cap servidor més enllà de l'únic Worker.**

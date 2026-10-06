@@ -478,9 +478,9 @@ al tauler de Cloudflare, que des de la desconnexió del Git Build és l'única v
 (vegeu la nota de més amunt sobre les dues vies actives alhora). Això obliga a
 un fitxer únic, perquè la vista Quick Edit no sap què fer amb dos mòduls:
 `worker-concatenat.js` són les 4.950 primeres línies de `postal-mime.js` —fora
-el seu `export default`— més `worker.js` sense la línia de l'`import`. 6.962
-línies en total, i **cap `import`**; l'únic `export` que hi queda és el punt
-d'entrada del Worker.
+el seu `export default`— més `worker.js` sense la línia de l'`import` ni les dues
+en blanc que l'envolten (`eines/verifica-worker-concatenat.js` ho comprova), i
+**cap `import`**; l'únic `export` que hi queda és el punt d'entrada del Worker.
 
 El parany no és muntar-lo, que és mecànic: és **recordar que és generat**. Un
 pedaç fet directament al fitxer concatenat es perd la propera vegada que es
@@ -1467,3 +1467,22 @@ la implementació de `periodicitat` (sessions 5–6 del §7 de
 aquesta sèrie de sessions. **No s'ha tocat**: corregir-la és fora de l'abast
 d'aquesta sèrie i queda anotada perquè no es doni per fet que els dos fitxers
 «fan el mateix» en aquest punt concret (16–17 de setembre de 2026).
+
+---
+
+## El verificador del Worker concatenat i la carpeta `proves/`
+
+**Resum:** `eines/verifica-worker-concatenat.js` comprova que el concatenat és
+`postal-mime.js` + bàner + `worker.js`, i les proves del projecte viuen a
+`proves/` amb `node:test`.
+
+La convenció que comprova, en aquest ordre: **A**, el concatenat comença amb
+`postal-mime.js` sense `export default PostalMime;`; **B**, acaba amb
+`worker.js` sense l'`import` ni les dues línies en blanc que l'envolten; **C**,
+entre les dues només hi ha comentaris o línies en blanc, i una diu `FI DE LA
+DEPENDÈNCIA VENDORITZADA`. S'executa abans de fer commit d'un canvi a
+`worker/worker.js` i abans d'enganxar el concatenat al tauler de Cloudflare:
+`node eines/verifica-worker-concatenat.js`.
+
+`proves/` és on viuran les proves amb `node:test`, una per fitxer, executades
+una per una amb `node --test proves/<nom>.test.js` (6 d'octubre de 2026).

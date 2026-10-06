@@ -167,6 +167,8 @@ palanca (*leverage*), localitat. **Vocabulari de domini:** `CLAUDE.md` §4, §4 
    d'error o amb una funcionalitat.
 4. **El Worker es desplega enganxant.** Tot canvi a `worker/worker.js` regenera
    `worker/worker-concatenat.js` al mateix commit. Desplegar és decisió de Miquel.
+   Abans del commit i abans d'enganxar, `node eines/verifica-worker-concatenat.js`
+   en verd.
 
 ---
 
@@ -189,4 +191,4 @@ l'encàrrec.
 |---|---|---|---|---|
 | 000 | 2026-10-03 | Posada en marxa del protocol | fet | 3 edicions + `git mv` de l'auditoria de juliol; verifica-enum i verifica-camps en verd (INF-000) |
 | 001 | 2026-10-03 | Auditoria d'arquitectura | fet | 7 candidats (ARQ-01–ARQ-07); recomanació principal ARQ-01, la passada en sec de l'Action reproduïble (INF-001) |
-| 002 | 2026-10-06 | Protocol v1.2 i verificador del Worker enganxable (ARQ-03) | pendent | — |
+| 002 | 2026-10-06 | Protocol v1.2 i verificador del Worker enganxable (ARQ-03) | fet | protocol v1.2; `verifica-worker-concatenat.js` en verd (A 4950, bàner 25, B 2064) i primera prova `node:test`, 5/5 en verd (INF-002) |

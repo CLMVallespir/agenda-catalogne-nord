@@ -4960,9 +4960,10 @@ class PostalMime {
 //   a generar aquest fitxer sencer, no es pedaça aquí.
 //
 //   Tot el que hi ha a SOTA és worker/worker.js, idèntic llevat
-//   d'una sola línia: se n'ha tret l'`import PostalMime from
-//   './postal-mime.js'`, que aquí no cal perquè la classe ja és
-//   definida més amunt, al mateix fitxer.
+//   de tres línies: se n'ha tret l'`import PostalMime from
+//   './postal-mime.js'` i les dues línies en blanc que l'envolten.
+//   L'import no cal perquè la classe ja és definida més amunt, al
+//   mateix fitxer. Ho comprova eines/verifica-worker-concatenat.js.
 //
 //   AQUEST FITXER ÉS EL QUE S'ENGANXA AL TAULER DE CLOUDFLARE.
 //   És generat, no escrit a mà: no és la font de veritat. Els
