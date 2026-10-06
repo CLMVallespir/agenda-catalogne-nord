@@ -3,8 +3,8 @@
 > Protocol de treball entre els dos cervells del projecte. Viu a `docs/` perquè el
 > coordinador de Claude Code el llegeixi a cada sessió. Els intercanvis (encàrrecs i
 > informes) **no** van al repositori: viuen a `coordinacio/`, ignorat per git.
-> Versió 1.2 · 6 d'octubre de 2026 — paràgraf 5 de la capçalera (pressupost de
-> context), `git pull --rebase` al punt de partida i tres lliçons de l'ENC-001.
+> Versió 1.3 · 6 d'octubre de 2026 — el paràgraf 4 de la capçalera comença
+> comprovant el model de la sessió.
 
 ---
 
@@ -70,11 +70,13 @@ Un encàrrec, un informe, el mateix número. Una feina que es reprèn porta núm
      i ho escrius a l'informe.
   3. Cada pas diu quin perfil de sub-agent el fa, amb quin model i quin esforç; no
      en facis servir cap altre.
-  4. Punt de partida: `git status --short --untracked-files=no` ha de ser buit; si
-     no, atura't. Després, `git pull --rebase`: el curador i l'Action fan commits
-     a `main` cada dia. Els fitxers no seguits no t'aturen i no els llegeixes: els
-     llistes a l'informe. Tots els commits es fan amb rutes explícites, mai amb
-     `git add -A` ni `git add .`.
+  4. Primer de tot, el model: si el d'aquesta sessió no és el que diu l'encàrrec,
+     atura't i digues-ho. Punt de partida:
+     `git status --short --untracked-files=no` ha de ser buit; si no, atura't.
+     Després, `git pull --rebase`: el curador i l'Action fan commits a `main` cada
+     dia. Els fitxers no seguits no t'aturen i no els llegeixes: els llistes a
+     l'informe. Tots els commits es fan amb rutes explícites, mai amb `git add -A`
+     ni `git add .`.
   5. Pressupost: cap sub-agent no passa de 150.000 tokens de context. Una tasca de
      lectura que no hi cap es parteix en tasques tancades per grups de fitxers,
      una darrere l'altra, cadascuna amb un sub-agent nou. Les verificacions que
@@ -192,3 +194,4 @@ l'encàrrec.
 | 000 | 2026-10-03 | Posada en marxa del protocol | fet | 3 edicions + `git mv` de l'auditoria de juliol; verifica-enum i verifica-camps en verd (INF-000) |
 | 001 | 2026-10-03 | Auditoria d'arquitectura | fet | 7 candidats (ARQ-01–ARQ-07); recomanació principal ARQ-01, la passada en sec de l'Action reproduïble (INF-001) |
 | 002 | 2026-10-06 | Protocol v1.2 i verificador del Worker enganxable (ARQ-03) | fet | protocol v1.2; `verifica-worker-concatenat.js` en verd (A 4950, bàner 25, B 2064) i primera prova `node:test`, 5/5 en verd (INF-002) |
+| 003 | 2026-10-06 | La xarxa de la passada de l'Action (ARQ-01, primera part) | pendent | — |
