@@ -180,4 +180,4 @@ l'encàrrec.
 | ENC | Data | Tema | Estat | Resultat |
 |---|---|---|---|---|
 | 000 | 2026-10-03 | Posada en marxa del protocol | fet | 3 edicions + `git mv` de l'auditoria de juliol; verifica-enum i verifica-camps en verd (INF-000) |
-| 001 | 2026-10-03 | Auditoria d'arquitectura | pendent | — |
+| 001 | 2026-10-03 | Auditoria d'arquitectura | fet | 7 candidats (ARQ-01–ARQ-07); recomanació principal ARQ-01, la passada en sec de l'Action reproduïble (INF-001) |
