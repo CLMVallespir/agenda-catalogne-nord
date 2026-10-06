@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-10-04-cinema-osseja-la",
+    "id": "2026-10-04-cinema-a-osseja",
     "titol": "Cinema a Osseja: La Vie d'une femme",
     "data_inici": "2026-10-04",
     "data_fi": "2026-10-06",
@@ -14,7 +14,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/FEMME.jpg?width=150&height=120",
     "font_url": "https://www.pyrenees-cerdagne.com",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.859Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZCIB] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
