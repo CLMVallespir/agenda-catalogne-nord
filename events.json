@@ -5144,5 +5144,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.859Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-06-conferencia-le-role",
+    "titol": "Conferència «Le rôle des poètes espagnols sous la Seconde République»",
+    "data_inici": "2026-10-06",
+    "data_fi": "2026-10-06",
+    "hora": "18:00",
+    "lloc": "1 Rue Henri Dunant",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La conferenciant Thérèse Cau analitza el paper dels poetes espanyols durant la Segona República i com la creació poètica s'integra en el seu context històric. L'acte es vincula amb l'exposició «Comprendre le passé pour éclairer l'avenir» i inclou la presentació de la novel·la «Plumes brisées». La trobada es clou amb un torn de preguntes i una sessió de signatures amb l'autora.",
+    "descripcio_fr": "La conférencière Thérèse Cau analyse le rôle des poètes espagnols durant la Seconde République et comment la création poétique s'intègre dans son contexte historique. L'événement est lié à l'exposition «Comprendre le passé pour éclairer l'avenir» et inclut la présentation du roman «Plumes brisées». La rencontre se termine par un temps d'échange et une séance de dédicaces avec l'auteure.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026-09-PORT-VENDRES-exposition-memorial-rivesaltes-WEB.jpg?width=150&height=120",
+    "font_url": "https://www.memorialcamprivesaltes.eu/la-programmation/le-memorial-itinerant",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.864Z",
+    "periodicitat": ""
   }
 ]
