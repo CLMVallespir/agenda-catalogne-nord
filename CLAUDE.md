@@ -431,8 +431,8 @@ publicitària.
   juntes**: al Worker, `GEMINI_MODEL` = `gemini-3.5-flash-lite` amb
   `maxOutputTokens: 4096`; a l'Action, `GEMINI_MODEL_TRADUCCIO` =
   `gemini-3.1-flash-lite` (des del 5 de setembre de 2026, per qualitat de
-  llengua) amb `GEMINI_MAX_TOKENS` = 1024. El perquè és damunt la constant, a
-  `eines/sincronitza-programada.js:257-270`. Mai la gamma Pro (és de pagament).
+  llengua) amb `GEMINI_MAX_TOKENS` = 1024. El perquè és damunt la constant, al bloc
+  «Constants: la traducció a la ingestió (pas 7 bis)» d'`eines/sincronitza-programada.js`. Mai la gamma Pro (és de pagament).
   Clau a la
   capçalera `x-goog-api-key`. `generationConfig` (idèntica als dos contextos, llevat
   dels tokens): `responseMimeType: 'application/json'`,
