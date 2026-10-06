@@ -161,7 +161,9 @@ Tres punts, i cap més:
 - **(a) Per lloc, automàtic.** La programació del cinema d'Elna no entra a
   l'agenda. Ho aplica `eines/exclusions-editorials.js` a la ingestió de l'ADT66,
   sense cap intervenció del curador: l'oferta no arriba a `pendents.json` ni
-  gasta cap crida a Gemini.
+  gasta cap crida a Gemini. A la pràctica, el codi exclou tota oferta d'Elna que
+  té l'adreça del cinema **o** el tipus «cinéma»: una projecció d'un altre
+  organitzador a Elna, si el flux la marca com a cinema, també queda fora.
 - **(b) Per contingut, cas per cas, decidit pel curador.** Per exemple, els
   actes de l'agermanament Perpinyà–Palma, les visites al patrimoni militar i
   les exposicions municipals sobre la Sanch. No hi ha cap regla automàtica: el
@@ -185,7 +187,8 @@ sobre el títol i la descripció francesos del flux de l'ADT66:
   cellier, vigneron) com a paraula sencera;
 - **C:** i el títol no té cap paraula de festa o d'espectacle com a paraula
   sencera, en singular o plural (festa, fira, verema, festival, spectacle,
-  theatre, scene, concert, conte).
+  theatre, scene, concert, conte, i les formes franceses fete, foire i
+  vendange, perquè el flux de l'ADT66 és en francès).
 
 En cas de dubte, l'oferta entra a la cua: una exclusió silenciosa és pitjor que una fila de més per al curador.
 

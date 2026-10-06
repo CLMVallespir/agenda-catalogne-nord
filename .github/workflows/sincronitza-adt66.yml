@@ -60,7 +60,8 @@ jobs:
     runs-on: ubuntu-latest
     # El gruix del temps és la traducció, no el flux: 300 crides a 4,5 s de
     # pausa són 22 minuts i mig, i amb la latència de cada crida un run ple
-    # ronda els 25-30. Els 40 hi deixen marge i tallen si penja. Si es canvia
+    # ronda els 25-30. Els 90 (des del 22 de setembre de 2026; abans 40) hi
+    # deixen marge de sobres i tallen si penja. Si es canvia
     # PRESSUPOST_CRIDES_GEMINI o PAUSA_ENTRE_CRIDES_MS, s'ha de canviar aquí.
     timeout-minutes: 90
 

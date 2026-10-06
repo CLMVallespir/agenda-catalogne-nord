@@ -22,7 +22,7 @@ dels dos no toca mai `events.json`.
 associació ──correu──► agenda@clm.cat ──► Cloudflare Email Routing
                                                 │
 associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Cloudflare)
-                                            ├─ email():     parseja → Gemini → Cloudinary → pendents.json → reenvia l'original a Gmail (arxiu)
+                                            ├─ email():     reenvia l'original a Gmail (arxiu) → parseja → Gemini → Cloudinary → pendents.json
                                             ├─ fetch():     mapa determinista del formulari → pendents.json
                                             └─ scheduled(): digest setmanal per comarca via Brevo
                                                 │
@@ -30,7 +30,7 @@ flux ADT66 ───────────────────────
                                             └─ .github/workflows/sincronitza-adt66.yml
                                                  └─ eines/sincronitza-programada.js
                                                       sincronitza → mapeja → classifica → filtra → tradueix (Gemini) → pendents.json
-                                                      (Gemini sí, una crida per fila; Cloudinary no)
+                                                      (Gemini sí, fins a dos intents per fila; Cloudinary no)
                                                 │
                               curador.html (GitHub Pages) ──valida──► events.json
                                                 │
@@ -381,10 +381,9 @@ un enum, i abans de desplegar el Worker.**
 | 13 | `prova-local.html` | `CATEGORIES` (mirall offline d'`app.js`) |
 | 14 | `prova-local.html` | `CATEGORIA_ICONES` (ídem) |
 
-**Els cinc documents que també l'escriuen** i que queden desfasats si no es
-toquen: aquest fitxer (§4), `skill/agenda-nord-core/SKILL.md`,
-`PROJECT-KNOWLEDGE.md` (l'enum **i** el recompte d'icones),
-`PROJECT-KNOWLEDGE-CHAT.md` i `docs/pas-5-typebot-questionari.md`.
+**Els dos documents que també l'escriuen** i que queden desfasats si no es
+toquen: aquest fitxer (§4) i `docs/pas-5-typebot-questionari.md`. Les còpies que
+n'hi havia a `docs/arxiu/` no es toquen (D-03).
 
 **Dues còpies congelades que NO s'han de sincronitzar mai**, i per què:
 
@@ -428,10 +427,16 @@ publicitària.
 
 ## 7. Mecànica dels serveis (fets, no decisions)
 
-- **Gemini** — model a una única constant `GEMINI_MODEL`, ara
-  `gemini-3.5-flash-lite` (mai la gamma Pro: és de pagament). Clau a la capçalera
-  `x-goog-api-key`. `generationConfig`: `responseMimeType: 'application/json'`,
-  `maxOutputTokens: 4096`, `thinkingConfig: { thinkingLevel: 'minimal' }` — **cap
+- **Gemini** — **dues constants de model, una per context, que no es mouen
+  juntes**: al Worker, `GEMINI_MODEL` = `gemini-3.5-flash-lite` amb
+  `maxOutputTokens: 4096`; a l'Action, `GEMINI_MODEL_TRADUCCIO` =
+  `gemini-3.1-flash-lite` (des del 5 de setembre de 2026, per qualitat de
+  llengua) amb `GEMINI_MAX_TOKENS` = 1024. El perquè és damunt la constant, a
+  `eines/sincronitza-programada.js:257-270`. Mai la gamma Pro (és de pagament).
+  Clau a la
+  capçalera `x-goog-api-key`. `generationConfig` (idèntica als dos contextos, llevat
+  dels tokens): `responseMimeType: 'application/json'`,
+  `maxOutputTokens`, `thinkingConfig: { thinkingLevel: 'minimal' }` — **cap
   `temperature`** (ignorada als models 3.x) i **cap `thinkingBudget`** (llegat,
   incompatible amb `thinkingLevel`). Resposta parsejada defensivament del primer
   `{` a l'últim `}`. Si mai retorna 404 amb el nom del model, és cicle de vida
@@ -470,7 +475,7 @@ ha **dos** llocs on s'executa codi sol, i no es poden configurar al mateix lloc.
 |---|---|---|
 | Unitat de treball | un esdeveniment, en directe | un lot sencer, periòdicament |
 | Què el dispara | un correu, un POST del Typebot, el cron del digest | el cron setmanal del workflow, o el botó «Run workflow» |
-| Crida models? | **sí** — Gemini i Cloudinary | **sí, Gemini i prou** — una crida per fila per traduir-la al català abans d'encuar-la (pas 7 bis). Cloudinary, mai |
+| Crida models? | **sí** — Gemini i Cloudinary | **sí, Gemini i prou** — fins a dos intents per fila (`INTENTS_PER_FILA`), i cada intent gasta pressupost, per traduir-la al català abans d'encuar-la (pas 7 bis). Cloudinary, mai |
 | Escriu | `pendents.json` | `pendents.json`, i res més |
 | Es desplega | enganxant el codi al tauler de Cloudflare | fent commit del `.yml`; no hi ha res a desplegar |
 | Fitxers | `worker/worker.js`, `worker/worker-concatenat.js` | `.github/workflows/sincronitza-adt66.yml` + `eines/sincronitza-programada.js` |

@@ -35,3 +35,15 @@ canvia.
 
 Es reobre si la simulació del rellotge deixa de funcionar en una versió de Node o si
 una refactorització la torna trencadissa.
+
+## D-03 · 2026-10-06 · `CLAUDE.md`, única descripció del projecte
+
+El projecte es descrivia en cinc llocs més: `PROJECT-KNOWLEDGE.md`,
+`TECH-KNOWLEDGE-BASE.md`, `PROJECT-KNOWLEDGE-CHAT.md`, `PROJECT-INSTRUCTIONS.md` i
+una còpia de l'skill a `skill/`. Cap no s'havia tocat des de setembre, i el 6
+d'octubre contradeien el codi. Decisió (Miquel): s'arxiven a `docs/arxiu/` i no es
+corregeixen. La descripció vigent és només `CLAUDE.md`; Claude Chat la llegeix
+directament del repositori públic.
+
+Una còpia nova de la descripció (per a una eina, un skill o un projecte de Claude)
+es genera a partir de `CLAUDE.md` quan cal, i no es desa al repositori.

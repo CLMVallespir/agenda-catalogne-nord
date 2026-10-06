@@ -226,8 +226,11 @@ function foraDeFinestra(registre, dia, final) {
 
 // ------------------------------------------------------------
 // El dia de referència, en AAAA-MM-DD. Sense argument, avui. Es fa servir el
-// calendari UTC, com a tot arreu del projecte: les dates de l'esquema són dies,
-// no instants, i barrejar-hi fus horari només afegeix maneres d'equivocar-se.
+// calendari UTC. No és així a tot arreu: el digest del Worker,
+// `eines/adt66-sincronitza.js` i `eines/deteccio-retirades.js` fan servir el dia
+// de París, i entre la mitjanit i la 1 h o les 2 h de París els dos dies no
+// coincideixen. Aquí les dates de l'esquema són dies, no instants, i barrejar-hi
+// fus horari només afegeix maneres d'equivocar-se.
 // ------------------------------------------------------------
 function diaDeReferencia(avui) {
   var donat = textDeRecerca(avui);

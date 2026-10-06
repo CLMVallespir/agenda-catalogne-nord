@@ -310,8 +310,8 @@ var INTENTS_PER_FILA = 2;
 // passada va a uns 10 per minut.
 //
 // D'AQUÍ SURT EL `timeout-minutes` DEL WORKFLOW: 300 crides a 4,5 s de pausa
-// són 22 minuts i mig, més la latència de cada crida, i el `.yml` en demana 40
-// per tenir marge. Si es canvia aquesta xifra o el pressupost, s'ha de canviar
+// són 22 minuts i mig, més la latència de cada crida, i el `.yml` en demana 90
+// (abans 40) per tenir marge. Si es canvia aquesta xifra o el pressupost, s'ha de canviar
 // allà també.
 var PAUSA_ENTRE_CRIDES_MS = 4500;
 
