@@ -28,11 +28,11 @@
     ],
     "fusionades": 3,
     "recompte": {
-      "total": 33,
+      "total": 34,
       "ja_publicat": 3,
       "ja_a_la_cua": 3,
       "ja_rebutjat": 3,
-      "nova": 24
+      "nova": 25
     },
     "descartats": [
       {
@@ -60,14 +60,9 @@
         "nom": "Cinema d'Elna",
         "id": "SINTETICA-ELNA-CINEMA-ADRECA",
         "titol": "SÉANCE SYNTHÉTIQUE AU CINÉMA D'ELNE"
-      },
-      {
-        "nom": "Cinema d'Elna",
-        "id": "SINTETICA-ELNA-CINEMA-ALTRA-ADRECA",
-        "titol": "PROJECTION SYNTHÉTIQUE D'UNE ASSOCIATION À ELNE"
       }
     ],
-    "candidates": 13,
+    "candidates": 14,
     "limit": 0,
     "retalladesPerLimit": 0,
     "traducio": {
@@ -345,6 +340,26 @@
         "data_entrada": "2026-10-06T08:00:00.000Z",
         "periodicitat": "",
         "nota_curador": "[ADT66 id: FMALAR066V52TH1F] [ADT66 id: FMALAR066V52YEO6] [ADT66 id: FMALAR066V52YP9A] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
+      },
+      {
+        "id": "2026-10-10-projection-synthetique-dune",
+        "titol": "PROJECTION SYNTHÉTIQUE D'UNE ASSOCIATION À ELNE",
+        "data_inici": "2026-10-10",
+        "data_fi": "2026-10-10",
+        "hora": "08:00",
+        "lloc": "Parking Agora, devant l'Office de Tourisme, à Sainte Marie Plage",
+        "municipi": "Elna",
+        "comarca": "Rosselló",
+        "categoria": "Cinema",
+        "descripcio_ca": "",
+        "descripcio_fr": "Marché du Front de Mer – Toute l'année les samedis matin\nToute l’année, le marché du front de mer de Sainte Marie la Mer vous accueille chaque samedi matin dans une ambiance conviviale et authentique. Entre produits locaux, saveurs du terroir, artisanat et commerces de proximité, profitez d’une agréable balade en bord de mer pour découvrir les richesses de notre région.\n\nMarchés d’été du Front de Mer – Mardis et jeudis matin\nPendant la saison estivale, le front de mer s’anime davantage avec les marchés des mardis et jeudis matin. Vacanciers et habitants s’y retrouvent pour flâner entre les étals colorés, découvrir des produits régionaux, des créations artisanales et profiter de l’ambiance chaleureuse du bord de mer sous le soleil méditerranéen. Une sortie incontournable de l’été à Sainte Marie la Mer.",
+        "associacio": "",
+        "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Image-par-ruthieprasil-de-Pixabay.jpg?width=150&height=120",
+        "font_url": "www.saintemarielamer.com",
+        "estat": "pendent",
+        "data_entrada": "2026-10-06T08:00:00.000Z",
+        "periodicitat": "cada setmana",
+        "nota_curador": "[ADT66 id: SINTETICA-ELNA-CINEMA-ALTRA-ADRECA] L'acte es fa 79 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
       }
     ],
     "podadesRebutjades": [],
@@ -382,11 +397,11 @@
     ],
     "fusionades": 3,
     "recompte": {
-      "total": 33,
+      "total": 34,
       "ja_publicat": 3,
       "ja_a_la_cua": 3,
       "ja_rebutjat": 3,
-      "nova": 24
+      "nova": 25
     },
     "descartats": [
       {
@@ -414,14 +429,9 @@
         "nom": "Cinema d'Elna",
         "id": "SINTETICA-ELNA-CINEMA-ADRECA",
         "titol": "SÉANCE SYNTHÉTIQUE AU CINÉMA D'ELNE"
-      },
-      {
-        "nom": "Cinema d'Elna",
-        "id": "SINTETICA-ELNA-CINEMA-ALTRA-ADRECA",
-        "titol": "PROJECTION SYNTHÉTIQUE D'UNE ASSOCIATION À ELNE"
       }
     ],
-    "candidates": 12,
+    "candidates": 13,
     "limit": 0,
     "retalladesPerLimit": 0,
     "traducio": {
@@ -679,6 +689,26 @@
         "data_entrada": "2026-11-15T08:00:00.000Z",
         "periodicitat": "",
         "nota_curador": "[ADT66 id: FMALAR066V52PQF7] Totes les 215 dates de l'acte són passades. Sense data futura: l'id queda buit i aquesta fila no es pot identificar. No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
+      },
+      {
+        "id": "2026-11-21-projection-synthetique-dune",
+        "titol": "PROJECTION SYNTHÉTIQUE D'UNE ASSOCIATION À ELNE",
+        "data_inici": "2026-11-21",
+        "data_fi": "2026-11-21",
+        "hora": "08:00",
+        "lloc": "Parking Agora, devant l'Office de Tourisme, à Sainte Marie Plage",
+        "municipi": "Elna",
+        "comarca": "Rosselló",
+        "categoria": "Cinema",
+        "descripcio_ca": "",
+        "descripcio_fr": "Marché du Front de Mer – Toute l'année les samedis matin\nToute l’année, le marché du front de mer de Sainte Marie la Mer vous accueille chaque samedi matin dans une ambiance conviviale et authentique. Entre produits locaux, saveurs du terroir, artisanat et commerces de proximité, profitez d’une agréable balade en bord de mer pour découvrir les richesses de notre région.\n\nMarchés d’été du Front de Mer – Mardis et jeudis matin\nPendant la saison estivale, le front de mer s’anime davantage avec les marchés des mardis et jeudis matin. Vacanciers et habitants s’y retrouvent pour flâner entre les étals colorés, découvrir des produits régionaux, des créations artisanales et profiter de l’ambiance chaleureuse du bord de mer sous le soleil méditerranéen. Une sortie incontournable de l’été à Sainte Marie la Mer.",
+        "associacio": "",
+        "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Image-par-ruthieprasil-de-Pixabay.jpg?width=150&height=120",
+        "font_url": "www.saintemarielamer.com",
+        "estat": "pendent",
+        "data_entrada": "2026-11-15T08:00:00.000Z",
+        "periodicitat": "cada setmana",
+        "nota_curador": "[ADT66 id: SINTETICA-ELNA-CINEMA-ALTRA-ADRECA] L'acte es fa 79 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
       }
     ],
     "podadesRebutjades": [

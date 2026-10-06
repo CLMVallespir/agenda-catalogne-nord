@@ -161,9 +161,9 @@ Tres punts, i cap més:
 - **(a) Per lloc, automàtic.** La programació del cinema d'Elna no entra a
   l'agenda. Ho aplica `eines/exclusions-editorials.js` a la ingestió de l'ADT66,
   sense cap intervenció del curador: l'oferta no arriba a `pendents.json` ni
-  gasta cap crida a Gemini. A la pràctica, el codi exclou tota oferta d'Elna que
-  té l'adreça del cinema **o** el tipus «cinéma»: una projecció d'un altre
-  organitzador a Elna, si el flux la marca com a cinema, també queda fora.
+  gasta cap crida a Gemini. El cinema s'identifica per l'adreça (13, boulevard
+  Voltaire): una projecció d'un altre organitzador a Elna, en una altra adreça,
+  entra a la cua com qualsevol oferta (decisió del 6 d'octubre de 2026).
 - **(b) Per contingut, cas per cas, decidit pel curador.** Per exemple, els
   actes de l'agermanament Perpinyà–Palma, les visites al patrimoni militar i
   les exposicions municipals sobre la Sanch. No hi ha cap regla automàtica: el

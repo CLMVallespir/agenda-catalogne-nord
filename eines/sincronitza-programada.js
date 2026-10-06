@@ -2286,11 +2286,11 @@ function bateria() {
     },
 
     {
-      nom: 'exclusió: una oferta d\'Elna amb RechercheTYPE cinéma en una altra adreça s\'exclou',
+      nom: 'exclusió: una oferta d\'Elna amb RechercheTYPE cinéma en una altra adreça passa',
       comprova: function () {
         var oferta = ofertaDeProvaExclusio('ELNE', 'Salle polyvalente', 'Projection, cinéma');
-        return exclusions.trobaExclusio(oferta) !== null ? '' :
-          'la via del tipus «cinéma» no ha coincidit';
+        return exclusions.trobaExclusio(oferta) === null ? '' :
+          'una oferta d\'Elna fora de l\'adreça del cinema encara s\'exclou';
       }
     },
 

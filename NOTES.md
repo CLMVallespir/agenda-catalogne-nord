@@ -1532,3 +1532,23 @@ refactoritzacions que vulguin comparar també sobre el flux sencer.
 L'esperat es torna a generar (`node proves/regenera-esperat-passada.js`) només
 en un encàrrec que canvia el comportament a posta, i el commit ho diu; mai en
 una refactorització (6 d'octubre de 2026).
+
+---
+
+## La regla del Cinema d'Elna és només l'adreça
+
+**Resum:** el Cinema d'Elna s'exclou només per l'adreça (13, boulevard
+Voltaire); `tipusCinema()` s'ha esborrat i la branca ja és coberta per la xarxa
+de la passada.
+
+Decisió de Miquel del 6 d'octubre de 2026: una exclusió silenciosa és pitjor que
+una fila de més per al curador (`docs/CRITERI-EDITORIAL.md`), de manera que una
+projecció d'un altre organitzador a Elna, en una altra adreça, entra a la cua
+encara que el flux la marqui com a cinema.
+
+La xarxa de la passada de l'Action porta dues ofertes sintètiques d'Elna,
+clonades de l'oferta real `FMALAR066V50KQBR` de `proves/dades/flux-adt66.json`:
+`SINTETICA-ELNA-CINEMA-ADRECA` (adreça del cinema, s'exclou) i
+`SINTETICA-ELNA-CINEMA-ALTRA-ADRECA` (`Salle polyvalente`, passa i entra a la
+cua). Per això la branca «Cinema d'Elna», que l'entrada de l'ENC-003 donava per
+no coberta, ara ho és.

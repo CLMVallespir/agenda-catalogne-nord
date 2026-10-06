@@ -57,8 +57,9 @@ var PARAULES_FESTA = ['fete', 'festa', 'foire', 'fira', 'vendange', 'verema', 'f
 // Les exclusions vigents. Una línia de comentari per entrada diu què fa.
 var EXCLUSIONS_EDITORIALS = [
   {
-    // Cinema d'Elna: l'oferta és d'Elna i l'adreça és la del cinema, o bé el
-    // tipus diu «cinéma». Les dues vies són independents; n'hi ha prou amb una.
+    // Cinema d'Elna: l'oferta és d'Elna i l'adreça és la del cinema (13,
+    // boulevard Voltaire). Només el lloc: una projecció d'un altre organitzador
+    // a Elna, en una altra adreça, passa (decisió de Miquel, 6 d'octubre de 2026).
     nom: 'Cinema d\'Elna',
     motiu: 'criteri polític: exclusió per lloc (CRITERI-EDITORIAL.md)',
     data: '2026-10-01',
@@ -66,7 +67,7 @@ var EXCLUSIONS_EDITORIALS = [
       if (normalitzaPerExclusio(valorDelFlux(oferta, 'Commune')) !== 'elne') {
         return false;
       }
-      return adrecaDelCinemaDElna(oferta) || tipusCinema(oferta);
+      return adrecaDelCinemaDElna(oferta);
     }
   },
   {
@@ -123,15 +124,6 @@ function trobaExclusio(oferta) {
 function adrecaDelCinemaDElna(oferta) {
   var adreca = normalitzaPerExclusio(valorDelFlux(oferta, 'DETAILADRESSE'));
   return conteExpressio(adreca, '13 boulevard voltaire');
-}
-
-// ------------------------------------------------------------
-// Diu si `RechercheTYPE` esmenta «cinéma», dins de qualsevol dels seus valors
-// («Projection, cinéma», «Cinéma», …). Sense accents ni majúscules.
-// ------------------------------------------------------------
-function tipusCinema(oferta) {
-  var tipus = normalitzaPerExclusio(valorDelFlux(oferta, 'RechercheTYPE'));
-  return conteExpressio(tipus, 'cinema');
 }
 
 
