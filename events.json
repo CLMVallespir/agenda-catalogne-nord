@@ -5125,5 +5125,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-01T05:49:29.950Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-04-cinema-a-osseja",
+    "titol": "Cinema a Osseja: La Vie d'une femme",
+    "data_inici": "2026-10-04",
+    "data_fi": "2026-10-06",
+    "hora": "17:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "La projecció de la comèdia dramàtica La Vie d'une femme, dirigida per Charline Bourgeois-Tacquet, s'adreça a tots els públics. La pel·lícula relata la història d'una cirurgiana que es veu obligada a qüestionar el seu equilibri personal davant l'arribada d'una escriptora al seu servei hospitalari.",
+    "descripcio_fr": "La projection de la comédie dramatique La Vie d'une femme, réalisée par Charline Bourgeois-Tacquet, s'adresse à tout public. Le film raconte l'histoire d'une chirurgienne contrainte de remettre en question son équilibre personnel face à l'arrivée d'une romancière dans son service hospitalier.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/FEMME.jpg?width=150&height=120",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.859Z",
+    "periodicitat": ""
   }
 ]
