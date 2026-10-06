@@ -68,9 +68,13 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 - Si una petició xoca amb una restricció del §3, **fes aflorar la tensió** i
   proposa l'alternativa més simple dins l'esperit — no trenquis el patró en silenci.
 - **Perfils de sub-agent a `.claude/agents/`:** `agenda-lector` (només lectura:
-  anàlisi i verificacions, sense git ni escriptures) i `agenda-implementador`
+  anàlisi i verificacions, sense git ni escriptures), `agenda-auditor` (només
+  lectura: evidències d'arquitectura, sense judici) i `agenda-implementador`
   (canvis de codi amb una especificació completa, sense git ni fitxers d'estat).
   Git i l'escriptura de `pendents.json`/`events.json` són només del coordinador.
+- **Coordinació amb Claude Chat:** encàrrecs (`ENC`) i informes (`INF`) segons
+  `docs/COORDINACIO.md`, que diu també quin criteri guanya quan *Clean Code* i els
+  mòduls profunds no diuen el mateix.
 
 ## 3. Restriccions innegociables
 

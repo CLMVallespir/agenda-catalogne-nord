@@ -1458,7 +1458,7 @@ anotada com a reutilització possible i **no feta** (sessió 4 del §7 de
 **Resum:** `app.js:665-679` calcula `finsAl(e.data_fi)` abans d'afegir el
 separador « · », per no deixar-lo orfe si la data és malformada; `prova-local.html:1519-1527`
 encara afegeix el separador primer i crida `finsAl()` directament dins de
-`textContent`, l'ordre vell que l'auditoria (`docs/auditoria/08-taula-consolidada-codi.md`,
+`textContent`, l'ordre vell que l'auditoria (`docs/arxiu-google/auditoria-2026-07/08-taula-consolidada-codi.md`,
 troballa 36) ja havia marcat com a resolt **només a `app.js`**.
 
 És una divergència **pre-existent**, trobada en repassar els dos fitxers durant

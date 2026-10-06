@@ -1,2 +1,8 @@
 # Preferències locals de l'agent de codi — no van al repositori públic.
 .claude/settings.local.json
+
+# Encàrrecs i informes Claude Chat ⇄ Claude Code — locals: poden dur troballes
+# de seguretat i el repositori és públic.
+coordinacio/
+# Sortides llargues dels sub-agents — locals.
+Claude outputs/
