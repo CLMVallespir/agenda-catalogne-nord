@@ -5364,6 +5364,50 @@ async function reenviaAArxiu(message, env) {
 }
 
 // ------------------------------------------------------------
+// Afegeix un text a la nota_curador de la fila, separat per un espai.
+// ------------------------------------------------------------
+function afegeixNota(fila, text) {
+  if (typeof fila.nota_curador === 'string' && fila.nota_curador !== '') {
+    fila.nota_curador = fila.nota_curador + ' ' + text;
+  } else {
+    fila.nota_curador = text;
+  }
+}
+
+// ------------------------------------------------------------
+// Diu si l'URL és del Cloudinary de l'agenda (el nom del cloud).
+// ------------------------------------------------------------
+function esDelNostreCloudinary(url, nomCloud) {
+  if (typeof nomCloud !== 'string' || nomCloud === '') {
+    return false;
+  }
+  if (typeof url !== 'string') {
+    return false;
+  }
+  return url.indexOf('https://res.cloudinary.com/' + nomCloud + '/') === 0;
+}
+
+// ------------------------------------------------------------
+// L'amfitrió d'una URL per al registre; mai l'URL sencer.
+// ------------------------------------------------------------
+function amfitrioDeLUrl(url) {
+  try {
+    return new URL(url).hostname;
+  } catch (error) {
+    return 'URL no vàlid';
+  }
+}
+
+// ------------------------------------------------------------
+// Si la data de fi és anterior a la d'inici, avisa el curador.
+// ------------------------------------------------------------
+function avisaDatesInvertides(fila) {
+  if (fila.data_inici !== '' && fila.data_fi !== '' && fila.data_fi < fila.data_inici) {
+    afegeixNota(fila, 'Atenció: la data de fi és anterior a la d\'inici. Corregeix-la abans de publicar.');
+  }
+}
+
+// ------------------------------------------------------------
 // El correu, de MIME cru a fila a la cua. Llança si res del camí
 // falla; qui el crida ja ho recull. No torna res.
 // ------------------------------------------------------------
@@ -5397,6 +5441,7 @@ async function processaCorreu(message, env) {
   }
 
   var fila = construeixFila(dadesExtretes, imatgeUrl);
+  avisaDatesInvertides(fila);
   await afegeixAPendents(fila, env.GITHUB_TOKEN, 'correu');
   console.log('processaCorreu(): fila afegida a la cua. id: "' + fila.id + '".');
 }
@@ -5460,12 +5505,23 @@ async function respostaDelFormulari(request, env) {
   var fila = construeixFilaFormulari(cos);
 
   // Una tramesa sense títol ni data no és cap esdeveniment: seria
-  // una fila buida per revisar. És el mateix criteri del camí del
-  // correu, que tampoc no fa fila d'un correu sense text.
+  // una fila buida per revisar. El correu fa servir un llindar més
+  // baix (només rebutja un correu sense text): les portes manuals
+  // són permissives a posta (D-04).
   if (fila.titol === '' && fila.data_inici === '') {
     console.log('respostaDelFormulari(): tramesa sense títol ni data. Cap fila.');
     return respostaJson(400, { ok: false, error: 'cal com a mínim un títol o una data' });
   }
+
+  // Només es fia d'una imatge del nostre Cloudinary: qualsevol
+  // altra URL es descarta i el curador en queda avisat a la nota.
+  if (fila.imatge_url !== '' && !esDelNostreCloudinary(fila.imatge_url, env.CLOUDINARY_CLOUD_NAME)) {
+    console.log('respostaDelFormulari(): imatge descartada, amfitrió: ' + amfitrioDeLUrl(fila.imatge_url) + '.');
+    fila.imatge_url = '';
+    afegeixNota(fila, 'Imatge descartada: l\'URL del formulari no era del Cloudinary de l\'agenda.');
+  }
+
+  avisaDatesInvertides(fila);
 
   try {
     await afegeixAPendents(fila, env.GITHUB_TOKEN, 'formulari');
@@ -5688,7 +5744,7 @@ async function pujaCartellCloudinary(adjunt, cloudName) {
 
 // ------------------------------------------------------------
 // Envia el text del correu a Gemini amb el prompt d'extracció i
-// torna la resposta ja convertida en objecte (els 16 camps de
+// torna la resposta ja convertida en objecte (els 17 camps de
 // l'esquema). Llança si la crida falla o la resposta no és JSON.
 // La clau només viatja a la capçalera, mai al registre.
 // ------------------------------------------------------------
