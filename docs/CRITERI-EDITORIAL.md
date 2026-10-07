@@ -50,7 +50,9 @@ producte que es ven és el relat, i un relat en francès sobre patrimoni català
 el país explicat als altres. **Excepció: una OBERTURA de patrimoni no és discurs.**
 Una visita lliure, unes muralles obertes gratuïtament per les Jornades del
 Patrimoni, un taller que es pot recórrer sol — això és la comunitat obrint el seu
-patrimoni a ella mateixa, i queda.
+patrimoni a ella mateixa, i queda. A la ingestió de l'ADT66 l'aplica
+`eines/exclusions-editorials.js`, amb els dos rescats (menció del català,
+«portes ouvertes»).
 
 **R5 — Clàusula de mèrit.** La música clàssica i antiga, i les exposicions de
 museu, entren pel seu valor propi, encara que no tinguin cap dimensió catalana. La

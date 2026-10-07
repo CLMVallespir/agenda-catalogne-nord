@@ -1552,3 +1552,29 @@ clonades de l'oferta real `FMALAR066V50KQBR` de `proves/dades/flux-adt66.json`:
 `SINTETICA-ELNA-CINEMA-ALTRA-ADRECA` (`Salle polyvalente`, passa i entra a la
 cua). Per això la branca «Cinema d'Elna», que l'entrada de l'ENC-003 donava per
 no coberta, ara ho és.
+
+---
+
+## R4 viu ara amb la llista d'exclusions, i una sola crida dona el veredicte
+
+**Resum:** R4 (la visita comentada, amb els seus dos rescats) s'ha traslladat a
+`eines/exclusions-editorials.js`, que ofereix `aplicaCriteriAutomatic(lot)`; el
+trasllat no canvia el comportament.
+
+ENC-006, pas 2, 6 d'octubre de 2026. Tot el criteri editorial automàtic de
+l'Action és ara en un sol mòdul: `aplicaCriteriAutomatic(lot)` aplica R4 primer
+i la llista d'exclusions després, i dona un sol veredicte per lot
+(`passen`, `visitesDescartades`, `visitesRescatades`, `excloses`).
+`sincronitza-programada.js` el crida en un sol pas, just darrere del mapeig i
+abans de tota classificació.
+
+`normalitzaPerVisita()` (abans `normalitzaText()`) NO s'ha unificat amb
+`normalitzaPerExclusio()`. Aquesta llegeix «bd» com a «boulevard», perquè les
+adreces ho necessiten; unificar-les canviaria què compara R4 (el tipus i el
+català, on «bd» no vol dir res), i això seria un canvi de comportament, no un
+trasllat. Les altres còpies de `normalitzaText()` (`filtra-candidats.js`,
+`mapeja-adt66.js`) són ARQ-02 i no s'han tocat.
+
+La branca «portes ouvertes» d'R4, que fins ara no tenia cap oferta a la xarxa,
+ara és coberta per S3 (`SINTETICA-VISITA-PORTES-OBERTES`, clonada de
+`FMALAR066V52AXC3`, a `proves/dades/flux-adt66.json`).

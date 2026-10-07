@@ -4,20 +4,19 @@
 // Una sola feina: encadenar les peces que ja existien soltes i escriure el que
 // en surti a `pendents.json`. Res més.
 //
-//   sincronitzaADT66()  ->  mapejaOfertaADT66()  ->  apartaVisitesGuiades()
-//                                                ->  aplicaExclusionsEditorials()
+//   sincronitzaADT66()  ->  mapejaOfertaADT66()  ->  aplicaCriteriAutomatic()
 //                                                ->  dedupDinsDelLot()
 //                                                ->  classificaContraFitxers()
 //                                                ->  filtraCandidats()
 //                                                ->  aplicaLimit()
 //                                                ->  tradueixLot()
 //
-//   Les que vénen d'un altre fitxer són les quatre primeres, i les exclusions
-//   editorials (eines/exclusions-editorials.js).
-//   apartaVisitesGuiades() viu aquí perquè és l'única regla del §«La visita
-//   comentada» d'aquest fitxer i l'única decisió editorial de tot el camí;
-//   tradueixLot() també, perquè és l'única crida a un model de tot el camí.
-//   Vegeu-hi tots dos el perquè.
+//   Les que vénen d'un altre fitxer són sincronitzaADT66(), mapejaOfertaADT66(),
+//   classificaContraFitxers(), filtraCandidats() i el criteri editorial
+//   automàtic, aplicaCriteriAutomatic() (eines/exclusions-editorials.js: R4 i la
+//   llista d'exclusions, en un sol veredicte per lot).
+//   tradueixLot() viu aquí perquè és l'única crida a un model de tot el camí.
+//   Vegeu-hi el perquè.
 //
 //   - CRIDA GEMINI, i NOMÉS Gemini. Una crida per fila, al pas 7 bis, per
 //     escriure el títol i les dues descripcions en català abans d'encuar-les.
@@ -46,9 +45,11 @@
 // escriu el mapeig, i la capa 2 compara títols, que abans del mapeig encara
 // són el camp cru del flux. Abans del mapeig no hi hauria res a comparar.
 //
-// LA VISITA COMENTADA (R4) va just darrere del mapeig, i no podria anar més
-// tard: mira `RechercheTYPE` i tres camps de text del flux, i la fusió del pas
-// següent construeix files noves que ja no porten l'oferta crua a sobre.
+// EL CRITERI EDITORIAL AUTOMÀTIC (R4 i la llista d'exclusions) va just darrere
+// del mapeig i abans de la deduplicació i de tota classificació: és l'únic lloc
+// del camí on encara es té l'oferta crua. Una oferta descartada o exclosa no
+// entra a pendents.json ni gasta cap crida a Gemini. El perquè i l'ordre
+// intern són al bàner d'eines/exclusions-editorials.js.
 //
 // I la deduplicació DINS DEL LOT va entremig, pel mateix motiu i per un de
 // seu: després del mapeig perquè abans no hi ha ni títol ni municipi a
@@ -56,20 +57,6 @@
 // que ja tenim ha de ser el lot ja net. Si anés després, dues ofertes bessones
 // del mateix lot entrarien totes dues a la cua i el curador les hauria de
 // resoldre a mà, una per una.
-//
-// LES EXCLUSIONS EDITORIALS (aplicaExclusionsEditorials()) van just DESPRÉS de
-// la visita comentada i ABANS de tota deduplicació i classificació. Abans de la
-// classificació perquè una oferta exclosa no ha de ser mai «ja rebutjada» ni
-// «nova»: si la classificació la veiés primer, l'oferta del cinema d'Elna, que
-// ja és a pendents.json com a rebutjada, sortiria com a ja_rebutjada i
-// l'exclusió no s'aplicaria mai —es va veure en la primera passada en sec. El
-// recompte del registre és així el de TOTES les ofertes del flux que cauen en
-// una exclusió, sense mirar dates ni estat. I és on encara es té l'oferta crua,
-// de la qual l'exclusió mira camps. Una oferta exclosa no gasta cap crida a
-// Gemini ni entra a pendents.json. Cap estat no es posa enlloc: l'oferta
-// simplement no entra. Com la visita comentada, el flux la torna a oferir cada
-// setmana i cada setmana cau igual. Les decisions viuen a
-// eines/exclusions-editorials.js.
 //
 // LA PODA. Abans d'escriure, i dins de la mateixa escriptura, es treuen de la
 // cua les files `rebutjat`, `pendent` i `publicat` que ja han passat: l'últim dia de l'acte
@@ -200,11 +187,6 @@ var contraFitxers = require('./dedup-contra-fitxers.js');
 var filtre = require('./filtra-candidats.js');
 var exclusions = require('./exclusions-editorials.js');
 
-// I la neteja de text del flux, que la regla de la visita comentada necessita:
-// «català» arriba escrit «catal&agrave;» dins de l'HTML del camp, i sense
-// desfer l'entitat el senyal textual no s'hi veu.
-var neteja = require('./neteja-text.js');
-
 var fs = require('fs');
 
 
@@ -236,8 +218,8 @@ var FONT_ADT66 = { tipus: 'oficina-turisme', llengua: 'fr' };
 // posta —un limita files candidates, l'altre limita crides a un servei extern
 // amb quota compartida— i mai no s'han de fondre en un sol nombre.
 //
-// EL LÍMIT S'APLICA AL FINAL, mai al principi. Va després del mapeig, de la
-// regla de la visita comentada, de la deduplicació dins del lot, de la
+// EL LÍMIT S'APLICA AL FINAL, mai al principi. Va després del mapeig, del
+// criteri editorial automàtic, de la deduplicació dins del lot, de la
 // classificació contra els dos fitxers i del filtre previ: és l'últim pas abans
 // de traduir. Si retallés abans, les files que quedessin no serien
 // representatives del que el camí produeix de debò —serien les primeres del
@@ -428,34 +410,6 @@ var PROMPT_TRADUCCIO = [
 ].join('\n');
 
 
-// --- Constants: la visita comentada (R4) ------------------------------------
-
-// Els dos valors de `RechercheTYPE` que mou la regla d'aquí sota. Es comparen
-// sobre el valor ja normalitzat —minúscules i sense accents—, perquè al flux
-// venen «Visite guidée» i «Portes ouvertes» amb l'accent posat.
-var TIPUS_VISITA_GUIADA = 'visite guidee';
-var TIPUS_PORTES_OBERTES = 'portes ouvertes';
-
-// Els tres camps del flux on es busca la menció del català. Són els que porten
-// text lliure escrit per qui va entrar l'oferta; la resta o són codis interns o
-// són el títol, que ve sempre en francès i en majúscules.
-var CAMPS_DE_LLENGUA = ['DETAILDESCRIPTIF', 'COMMUNNOM', 'ACCROCHE150'];
-
-// El senyal textual, un i prou. Sobre el text ja normalitzat, «catala» surt
-// igualment de «català», de «catalan», de «catalane» i de «catalanes»: totes
-// quatre comencen igual un cop tret l'accent. No enganxa «Catalogne», que
-// segueix per o.
-var SENYAL_CATALA = 'catala';
-
-// Els dos avisos que s'enganxen darrere del tag [ADT66 id: …] quan una visita
-// comentada es rescata. Diuen per quin dels dos motius s'ha quedat, perquè el
-// curador pugui comprovar-ho: cap dels dos senyals no és una prova.
-var AVIS_RESCAT_CATALA =
-  'Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català.';
-var AVIS_RESCAT_PORTES_OBERTES =
-  'Visita comentada (R4): es queda perquè hi consta també «Portes ouvertes», que és obertura de patrimoni i no discurs. Comprova-ho.';
-
-
 // --- La funció --------------------------------------------------------------
 
 // ------------------------------------------------------------
@@ -517,21 +471,17 @@ async function sincronitzaProgramada(opcions) {
   // 2. El mapeig. Ha d'anar davant de la classificació: és qui escriu el tag.
   var mapejades = mapejaOfertes(resposta.ofertes);
 
-  // 3. La regla de la visita comentada (R4). Va aquí, just darrere del mapeig,
-  //    perquè és l'ÚNIC lloc del camí on encara es té l'oferta crua: la fusió
-  //    del pas següent construeix una fila nova i deixa caure l'oferta, i de
-  //    `RechercheTYPE` i dels tres camps de text ja no en quedaria res.
-  var visites = apartaVisitesGuiades(mapejades);
-
-  // 3 bis. Les exclusions editorials. Van aquí pel mateix motiu que la visita
-  //        comentada (encara es té l'oferta crua) i abans de tota
-  //        classificació: una oferta exclosa no és ni «nova» ni «ja rebutjada»,
-  //        no es compta enlloc més i no entra mai a la cua ni gasta cap crida
-  //        a Gemini.
-  var exclusio = aplicaExclusionsEditorials(visites.passen);
+  // 3. El criteri editorial automàtic: la visita comentada (R4) i la llista
+  //    d'exclusions, en un sol veredicte (eines/exclusions-editorials.js). Va
+  //    aquí, just darrere del mapeig, perquè és l'ÚNIC lloc del camí on encara
+  //    es té l'oferta crua: la fusió del pas següent construeix una fila nova i
+  //    deixa caure l'oferta. I va abans de tota classificació: una oferta
+  //    descartada o exclosa no és ni «nova» ni «ja rebutjada», no es compta
+  //    enlloc més i no entra mai a la cua ni gasta cap crida a Gemini.
+  var criteri = exclusions.aplicaCriteriAutomatic(mapejades);
 
   // 4. La deduplicació dins del mateix lot, abans de comparar-lo amb res.
-  var intern = dedupDinsDelLot(exclusio.passen);
+  var intern = dedupDinsDelLot(criteri.passen);
   var entrants = intern.lot;
 
   // 5. La classificació contra els dos fitxers.
@@ -576,12 +526,12 @@ async function sincronitzaProgramada(opcions) {
 
   return {
     ofertes: resposta.ofertes.length,
-    visitesDescartades: visites.descartades,
-    visitesRescatades: visites.rescatades,
+    visitesDescartades: criteri.visitesDescartades,
+    visitesRescatades: criteri.visitesRescatades,
     fusionades: intern.fusionades,
     recompte: classificat.recompte,
     descartats: motiusDeDescart(filtrat.descartats),
-    exclosesPerCriteri: exclusio.excloses,
+    exclosesPerCriteri: criteri.excloses,
     candidates: candidates.length,
     limit: config.limit,
     retalladesPerLimit: limitat.retallades,
@@ -611,197 +561,12 @@ function mapejaOfertes(ofertes) {
 
   for (var i = 0; i < llista.length; i++) {
     var mapejada = mapeig.mapejaOfertaADT66(llista[i]);
-    // `oferta` viatja només fins a apartaVisitesGuiades(), que és l'única peça
+    // `oferta` viatja només fins a aplicaCriteriAutomatic(), que és l'única peça
     // que ha de mirar camps del flux. De la fusió endavant ja no hi és.
     entrants.push({ fila: mapejada.fila, font: FONT_ADT66, oferta: llista[i] });
   }
 
   return entrants;
-}
-
-
-// --- Les peces: la visita comentada (R4) ------------------------------------
-// Aquesta secció fa UNA regla editorial i prou, i és l'única del fitxer. No és
-// el filtre previ: filtraCandidats() mira dates i soroll mecànic i no sap res
-// de criteri. Això és R4 de docs/CRITERI-EDITORIAL.md, aplicada de la manera
-// més estreta possible —només al valor «Visite guidée» de `RechercheTYPE`— i
-// escrita a part perquè es vegi que hi és i es pugui treure d'una peça.
-//
-// R4 diu: una visita comentada és DISCURS, i per tant queda fora si no es fa
-// en català. El problema pràctic és que el flux de l'ADT66 no declara enlloc la
-// llengua de l'acte: no hi ha cap camp que ho digui. Per tant no es pot
-// comprovar, i la regla s'aplica al revés —una visita que no esmenta enlloc el
-// català es dona per francesa i queda fora.
-//
-// I es rescata per dos motius, tots dos de la mateixa R4:
-//
-//   (a) el text esmenta el català. És el senyal que hi ha, i és feble: dir
-//       «catalane» dins d'una descripció no vol dir que la visita es faci en
-//       català. Per això la fila rescatada entra amb un avís que demana al
-//       curador que ho comprovi.
-//   (b) l'oferta porta TAMBÉ «Portes ouvertes». És l'excepció literal d'R4:
-//       una OBERTURA de patrimoni no és discurs.
-//
-// PER QUÈ AQUESTA REGLA SÍ QUE DESCARTA, quan a tot arreu el biaix del projecte
-// és encuar. El §4 ter de CLAUDE.md diu «si dubtes, ENCUA», i és per a la
-// deduplicació: allà el dubte és sobre si un acte JA HI ÉS, i equivocar-se vol
-// dir perdre un acte que ningú no ha vist mai. Aquí el dubte no hi és: R4 és una
-// decisió ja presa pel propietari sobre una classe sencera d'actes, i el que es
-// descarta no és un acte desconegut sinó una visita comentada en francès, que el
-// criteri diu que no ha d'entrar. La memòria de rebuig del §4 no hi perd res:
-// aquestes ofertes no arriben mai a `pendents.json`, o sigui que no hi ha cap
-// rebuig a recordar —el flux les tornarà a oferir cada setmana i cada setmana
-// cauran igual, que és exactament el que ha de passar.
-
-// ------------------------------------------------------------
-// Aparta del lot les visites comentades que R4 deixa fora, i deixa passar les
-// que rescata. Torna tres coses:
-//
-//   passen       [{ fila, font, oferta }, ...]  el lot que continua el camí
-//   descartades  [{ titol }, ...]               les que no hi entren
-//   rescatades   [{ titol, motiu }, ...]        les que s'hi queden, i per què
-//
-// `motiu` és 'menció del català' o 'portes obertes'. Es miren en aquest ordre i
-// el primer que enganxa és el que es diu: una oferta que compleixi els dos surt
-// com a 'menció del català', que és el senyal més fort dels dos.
-//
-// La fila rescatada surt amb un avís enganxat DARRERE del que ja portés, que és
-// sempre el tag [ADT66 id: …] del mapeig (§«La nota del curador» de
-// eines/mapeja-adt66.js: el tag va primer). S'ajunta amb la regla compartida
-// d'encadenar notes, no amb una concatenació a mà.
-// ------------------------------------------------------------
-function apartaVisitesGuiades(entrants) {
-  var llista = Array.isArray(entrants) ? entrants : [];
-  var passen = [];
-  var descartades = [];
-  var rescatades = [];
-
-  for (var i = 0; i < llista.length; i++) {
-    var candidat = llista[i];
-
-    if (!esVisitaGuiada(candidat.oferta)) {
-      passen.push(candidat);
-      continue;
-    }
-
-    var motiu = motiuDeRescat(candidat.oferta);
-
-    if (motiu === '') {
-      descartades.push({ titol: candidat.fila.titol });
-      continue;
-    }
-
-    candidat.fila.nota_curador = dedup.ajuntaNotes(
-      candidat.fila.nota_curador, avisDeRescat(motiu)
-    );
-    rescatades.push({ titol: candidat.fila.titol, motiu: motiu });
-    passen.push(candidat);
-  }
-
-  return { passen: passen, descartades: descartades, rescatades: rescatades };
-}
-
-// ------------------------------------------------------------
-// Diu si una oferta del flux és una visita comentada, mirant `RechercheTYPE`.
-// ------------------------------------------------------------
-function esVisitaGuiada(oferta) {
-  return tipusDeLoferta(oferta).indexOf(TIPUS_VISITA_GUIADA) !== -1;
-}
-
-// ------------------------------------------------------------
-// El motiu pel qual una visita comentada es rescata, o '' si no se'n rescata
-// cap. Els dos motius es miren en ordre i el primer que enganxa mana.
-// ------------------------------------------------------------
-function motiuDeRescat(oferta) {
-  if (esmentaElCatala(oferta)) {
-    return 'menció del català';
-  }
-
-  if (tipusDeLoferta(oferta).indexOf(TIPUS_PORTES_OBERTES) !== -1) {
-    return 'portes obertes';
-  }
-
-  return '';
-}
-
-// ------------------------------------------------------------
-// L'avís que li toca a cada motiu de rescat. Una sola feina: triar el text.
-// ------------------------------------------------------------
-function avisDeRescat(motiu) {
-  if (motiu === 'menció del català') {
-    return AVIS_RESCAT_CATALA;
-  }
-
-  return AVIS_RESCAT_PORTES_OBERTES;
-}
-
-// ------------------------------------------------------------
-// Els valors de `RechercheTYPE` d'una oferta, normalitzats i un per un. Es
-// parteix per comes, igual que fa eines/mapeja-adt66.js, i amb el mateix efecte
-// lateral conegut: dos valors del vocabulari de l'ADT66 porten una coma a dins
-// («Projection, cinéma» i «Randonnée, balade») i es parteixen per la meitat. No
-// molesta aquí: cap dels dos valors que aquesta regla mira no en porta.
-// ------------------------------------------------------------
-function tipusDeLoferta(oferta) {
-  var brut = '';
-  if (oferta && typeof oferta.RechercheTYPE === 'string') {
-    brut = oferta.RechercheTYPE;
-  }
-
-  var trossos = brut.split(',');
-  var tipus = [];
-
-  for (var i = 0; i < trossos.length; i++) {
-    var net = normalitzaText(trossos[i]);
-    if (net !== '') {
-      tipus.push(net);
-    }
-  }
-
-  return tipus;
-}
-
-// ------------------------------------------------------------
-// Diu si algun dels tres camps de text lliure de l'oferta esmenta el català. El
-// text es passa primer per netejaTextFont(), que desfà l'HTML i les entitats: al
-// flux «català» arriba escrit «catal&agrave;», i sense desfer l'entitat el
-// senyal no s'hi veuria.
-// ------------------------------------------------------------
-function esmentaElCatala(oferta) {
-  if (!oferta) {
-    return false;
-  }
-
-  for (var i = 0; i < CAMPS_DE_LLENGUA.length; i++) {
-    var brut = oferta[CAMPS_DE_LLENGUA[i]];
-
-    if (typeof brut === 'string' && brut !== '') {
-      var text = normalitzaText(neteja.netejaTextFont(brut));
-      if (text.indexOf(SENYAL_CATALA) !== -1) {
-        return true;
-      }
-    }
-  }
-
-  return false;
-}
-
-// ------------------------------------------------------------
-// Un text reduït a lletres comparables: minúscules, sense accents, i tot el que
-// no sigui lletra o xifra convertit en un sol espai. És la mateixa normalització
-// que fa eines/filtra-candidats.js, i a posta: dues peces que comparen text del
-// mateix flux l'han de comparar igual.
-// ------------------------------------------------------------
-function normalitzaText(text) {
-  if (typeof text !== 'string' || text === '') {
-    return '';
-  }
-
-  var net = text.toLowerCase();
-  net = net.normalize('NFD').replace(/[̀-ͯ]/g, '');
-  net = net.replace(/[^a-z0-9]+/g, ' ');
-
-  return net.trim();
 }
 
 
@@ -932,42 +697,6 @@ function motiusDeDescart(descartats) {
 
   llista.sort(function (a, b) { return b.quantes - a.quantes; });
   return llista;
-}
-
-
-// --- Les peces: les exclusions editorials -----------------------------------
-
-// ------------------------------------------------------------
-// Treu dels candidats mapejats (els que encara porten l'oferta crua) els que una
-// exclusió editorial deixa fora (eines/exclusions-editorials.js). Un candidat
-// sense oferta (les proves en fan) no s'exclou mai.
-//
-// No posa cap estat a res: l'exclosa no entra. Torna dues coses:
-//
-//   passen   [candidat, ...]            el que continua el camí
-//   excloses [{ nom, id, titol }, ...]  les que queden fora: nom de l'entrada,
-//                                       SyndicObjectID de l'oferta i títol
-// ------------------------------------------------------------
-function aplicaExclusionsEditorials(candidats) {
-  var llista = Array.isArray(candidats) ? candidats : [];
-  var passen = [];
-  var excloses = [];
-
-  for (var i = 0; i < llista.length; i++) {
-    var entrada = exclusions.trobaExclusio(llista[i].oferta);
-
-    if (entrada === null) {
-      passen.push(llista[i]);
-    } else {
-      excloses.push({
-        nom: entrada.nom,
-        id: String(llista[i].oferta.SyndicObjectID || ''),
-        titol: llista[i].fila.titol
-      });
-    }
-  }
-
-  return { passen: passen, excloses: excloses };
 }
 
 
@@ -1824,9 +1553,7 @@ function capcaleresGitHub(token) {
 
 module.exports = {
   sincronitzaProgramada: sincronitzaProgramada,
-  apartaVisitesGuiades: apartaVisitesGuiades,
   dedupDinsDelLot: dedupDinsDelLot,
-  aplicaExclusionsEditorials: aplicaExclusionsEditorials,
   aplicaLimit: aplicaLimit,
   tradueixLot: tradueixLot,
   podaCaducades: podaCaducades
@@ -2239,7 +1966,7 @@ function bateria() {
       nom: 'exclusió: la inauguració del cinema d\'Elna (FMALAR066V52Z8V7) queda exclosa',
       comprova: function () {
         var candidat = candidatDeProva(ofertaDelCinemaDElna(), 'Inauguració del cinema d\'Elna');
-        var resultat = aplicaExclusionsEditorials([candidat]);
+        var resultat = exclusions.aplicaCriteriAutomatic([candidat]);
         if (resultat.passen.length === 0 && resultat.excloses.length === 1 &&
             resultat.excloses[0].id === 'FMALAR066V52Z8V7' &&
             resultat.excloses[0].nom === 'Cinema d\'Elna') {
@@ -2254,7 +1981,7 @@ function bateria() {
       nom: 'exclusió: una oferta d\'Elna en una altra adreça i sense tipus cinema passa',
       comprova: function () {
         var oferta = ofertaDeProvaExclusio('ELNE', '4 Place de la République', 'Concert, spectacle');
-        var resultat = aplicaExclusionsEditorials([candidatDeProva(oferta, 'Concert a Elna')]);
+        var resultat = exclusions.aplicaCriteriAutomatic([candidatDeProva(oferta, 'Concert a Elna')]);
         return resultat.passen.length === 1 && resultat.excloses.length === 0 ? '' :
           'passen ' + resultat.passen.length + ', excloses ' + resultat.excloses.length +
           ' (esperava 1 i 0)';
@@ -2278,7 +2005,7 @@ function bateria() {
       nom: 'exclusió: un cinema d\'un altre municipi (Perpinyà, «Cinéma») passa',
       comprova: function () {
         var oferta = ofertaDeProvaExclusio('PERPIGNAN', '1 Rue du Cinéma', 'Projection, cinéma');
-        var resultat = aplicaExclusionsEditorials([candidatDeProva(oferta, 'Sessió a Perpinyà')]);
+        var resultat = exclusions.aplicaCriteriAutomatic([candidatDeProva(oferta, 'Sessió a Perpinyà')]);
         return resultat.passen.length === 1 && resultat.excloses.length === 0 ? '' :
           'passen ' + resultat.passen.length + ', excloses ' + resultat.excloses.length +
           ' (esperava 1 i 0)';
@@ -2306,7 +2033,7 @@ function bateria() {
           candidatDeProva(ofertaDelCinemaDElna(), 'Inauguració del cinema d\'Elna'),
           candidatDeProva(ofertaDeProvaExclusio('ELNE', '4 Place de la République', 'Concert'), 'Concert')
         ];
-        var resultat = aplicaExclusionsEditorials(candidats);
+        var resultat = exclusions.aplicaCriteriAutomatic(candidats);
         var titols = titolsDe(filesDeCandidats(resultat.passen));
         return titols === 'Concert' ? '' : 'esperava només «Concert», tinc «' + titols + '»';
       }
