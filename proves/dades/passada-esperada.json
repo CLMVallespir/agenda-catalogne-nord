@@ -1,6 +1,6 @@
 {
   "2026-10-06": {
-    "ofertes": 44,
+    "ofertes": 45,
     "visitesDescartades": [
       {
         "titol": "APERITIFS VIGNERONS"
@@ -24,15 +24,19 @@
       {
         "titol": "APERITIF VIGNERON \"MAS GREGORI\"",
         "motiu": "menció del català"
+      },
+      {
+        "titol": "VISITE SYNTHÉTIQUE AVEC PORTES OUVERTES",
+        "motiu": "portes obertes"
       }
     ],
     "fusionades": 3,
     "recompte": {
-      "total": 34,
+      "total": 35,
       "ja_publicat": 3,
       "ja_a_la_cua": 3,
       "ja_rebutjat": 3,
-      "nova": 25
+      "nova": 26
     },
     "descartats": [
       {
@@ -62,7 +66,7 @@
         "titol": "SÉANCE SYNTHÉTIQUE AU CINÉMA D'ELNE"
       }
     ],
-    "candidates": 14,
+    "candidates": 15,
     "limit": 0,
     "retalladesPerLimit": 0,
     "traducio": {
@@ -360,6 +364,26 @@
         "data_entrada": "2026-10-06T08:00:00.000Z",
         "periodicitat": "cada setmana",
         "nota_curador": "[ADT66 id: SINTETICA-ELNA-CINEMA-ALTRA-ADRECA] L'acte es fa 79 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
+      },
+      {
+        "id": "2026-10-17-visite-synthetique-avec",
+        "titol": "VISITE SYNTHÉTIQUE AVEC PORTES OUVERTES",
+        "data_inici": "2026-10-17",
+        "data_fi": "2026-10-17",
+        "hora": "",
+        "lloc": "",
+        "municipi": "Portvendres",
+        "comarca": "Rosselló",
+        "categoria": "Activitat infantil",
+        "descripcio_ca": "",
+        "descripcio_fr": "Quand l’automne colore les paysages, les Pyrénées Méditerranée deviennent un formidable terrain de découvertes !\n\nPour sa 7ᵉ édition, la \"Semaine Mar i Munt d’automne\" invite petits et grands à multiplier les expériences : s’émerveiller lors d’une visite contée, mettre la main à la pâte dans un atelier créatif, partir sur les sentiers à la rencontre de la faune et de la flore, pousser la porte de sites chargés d’histoire ou encore rencontrer celles et ceux qui font vivre les savoir-faire et les saveurs du territoire.\n\nEntre Méditerranée et massif des Albères, chaque animation offre une nouvelle façon de découvrir les richesses locales et de vivre les vacances d’automne au rythme du territoire. Une programmation variée, propice à la curiosité, au partage et aux beaux souvenirs !\n\nDécouvrir la programmation --> \nhttps://www.tourisme-pyrenees-mediterranee.com/blog/temps-fort/semaine-mar-i-munt-dautomne/",
+        "associacio": "",
+        "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-smn-Mar-i-Munt-automne-2.png?width=150&height=120",
+        "font_url": "https://www.tourisme-pyrenees-mediterranee.com/blog/temps-fort/semaine-mar-i-munt-dautomne/",
+        "estat": "pendent",
+        "data_entrada": "2026-10-06T08:00:00.000Z",
+        "periodicitat": "",
+        "nota_curador": "[ADT66 id: SINTETICA-VISITA-PORTES-OBERTES] Categoria per tema infantil; RechercheTYPE deia: Esports Visita comentada (R4): es queda perquè hi consta també «Portes ouvertes», que és obertura de patrimoni i no discurs. Comprova-ho. No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
       }
     ],
     "podadesRebutjades": [],
@@ -369,7 +393,7 @@
     "reintents": 0
   },
   "2026-11-15": {
-    "ofertes": 44,
+    "ofertes": 45,
     "visitesDescartades": [
       {
         "titol": "APERITIFS VIGNERONS"
@@ -393,20 +417,24 @@
       {
         "titol": "APERITIF VIGNERON \"MAS GREGORI\"",
         "motiu": "menció del català"
+      },
+      {
+        "titol": "VISITE SYNTHÉTIQUE AVEC PORTES OUVERTES",
+        "motiu": "portes obertes"
       }
     ],
     "fusionades": 3,
     "recompte": {
-      "total": 34,
+      "total": 35,
       "ja_publicat": 3,
       "ja_a_la_cua": 3,
       "ja_rebutjat": 3,
-      "nova": 25
+      "nova": 26
     },
     "descartats": [
       {
         "motiu": "fora de finestra",
-        "quantes": 12
+        "quantes": 13
       }
     ],
     "exclosesPerCriteri": [
