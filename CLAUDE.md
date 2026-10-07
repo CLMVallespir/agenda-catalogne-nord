@@ -152,7 +152,9 @@ aquí.
 1. `id` — `YYYY-MM-DD-slug` (ex.: `2026-09-14-ball-prats`); buit si no hi ha data
 2. `titol` — títol, en català
 3. `data_inici` — `YYYY-MM-DD`
-4. `data_fi` — `YYYY-MM-DD`; igual a `data_inici` si és d'un sol dia
+4. `data_fi` — `YYYY-MM-DD`; igual a `data_inici` si és d'un sol dia.
+    Mai anterior a `data_inici` (D-05): a l'ADT66 no es pot produir; a les portes
+    manuals el Worker ho avisa a `nota_curador`.
 5. `hora` — `HH:MM` 24 h; buit si tot el dia o desconegut
 6. `lloc` — nom del local
 7. `municipi` — poble, en forma catalana quan es coneix (Perpinyà, Prada, Ceret)
@@ -161,7 +163,8 @@ aquí.
 10. `descripcio_ca` — 2–4 frases, català natural
 11. `descripcio_fr` — traducció francesa fidel de `descripcio_ca`
 12. `associacio` — entitat organitzadora
-13. `imatge_url` — URL de Cloudinary; `""` si no n'hi ha
+13. `imatge_url` — URL de Cloudinary; `""` si no n'hi ha.
+    La del formulari només s'accepta si és del Cloudinary de l'agenda.
 14. `font_url` — enllaç a la font original; `""` si no n'hi ha
 15. `estat` — `pendent` · `publicat` · `rebutjat`
 16. `data_entrada` — marca de temps ISO de creació de la fila

@@ -47,3 +47,24 @@ directament del repositori públic.
 
 Una còpia nova de la descripció (per a una eina, un skill o un projecte de Claude)
 es genera a partir de `CLAUDE.md` quan cal, i no es desa al repositori.
+
+---
+
+## D-04 · 2026-10-07 · Les portes manuals són permissives a posta; ARQ-04 no es fa
+
+Qui omple el formulari o escriu a agenda@ s'ha pres la molèstia de fer-ho: llevat
+del filtre d'espam i d'un bon motiu, la seva activitat es publica (decisió de
+Miquel). El correu només rebutja un text buit, i el formulari una tramesa sense
+títol ni data. ARQ-04 proposava una sola admissió per a les dues portes: es tanca
+sense fer-se, perquè l'asimetria és petita i a posta, i el Worker no té cap xarxa
+de proves que faci segur el canvi.
+
+---
+
+## D-05 · 2026-10-07 · Una data de fi anterior a la d'inici és un error
+
+A l'ADT66 no es pot produir: `datesDeLoferta()` torna les dates ordenades i
+`classificaDates()` en pren la primera i l'última. A les portes manuals no es
+descarta (D-04): el Worker hi posa un avís a `nota_curador`, i el curador la
+corregeix o la rebutja. La poda i la finestra no en fan cap cas especial: la
+contradicció 6 de l'INF-001 queda tancada.

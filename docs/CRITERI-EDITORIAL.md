@@ -195,3 +195,13 @@ sobre el títol i la descripció francesos del flux de l'ADT66:
 En cas de dubte, l'oferta entra a la cua: una exclusió silenciosa és pitjor que una fila de més per al curador.
 
 El log de cada passada llista cada exclusió, perquè el curador la pugui auditar.
+
+---
+
+## Les portes manuals: correu i formulari
+
+Qui escriu a agenda@clm.cat o omple el formulari s'ha pres la molèstia de fer-ho.
+Llevat del filtre d'espam, aquestes trameses no passen per cap descart automàtic:
+el curador les accepta si no hi ha un bon motiu per no fer-ho. Si la data de fi és
+anterior a la d'inici, la fila arriba igualment, amb un avís perquè el curador la
+corregeixi.

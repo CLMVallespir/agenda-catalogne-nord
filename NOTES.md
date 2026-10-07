@@ -1578,3 +1578,21 @@ trasllat. Les altres còpies de `normalitzaText()` (`filtra-candidats.js`,
 La branca «portes ouvertes» d'R4, que fins ara no tenia cap oferta a la xarxa,
 ara és coberta per S3 (`SINTETICA-VISITA-PORTES-OBERTES`, clonada de
 `FMALAR066V52AXC3`, a `proves/dades/flux-adt66.json`).
+
+---
+
+## Les portes manuals no descarten: avisen a `nota_curador`
+
+**Resum:** el correu i el formulari no tenen descarts agressius; una data de fi
+anterior a la d'inici arriba igualment, amb un avís a `nota_curador`.
+
+Decisió de Miquel del 7 d'octubre de 2026 (D-04, D-05). `afegeixNota()` a
+`worker/worker.js` separa les notes amb un sol espai, igual que `ajuntaNotes()`
+d'`eines/dedup-esdeveniments.js`. El Worker només accepta la `imatge_url` del
+formulari si comença per `https://res.cloudinary.com/<CLOUDINARY_CLOUD_NAME>/`;
+si no, la buida i ho diu a la nota, i el registre només diu l'amfitrió, mai
+l'URL sencer. El comentari «els 16 camps» de `demanaExtraccioGemini()` era un
+residu: el prompt en demana 17.
+
+Els canvis són a `worker/worker.js` i `worker/worker-concatenat.js`, però no
+tenen efecte fins que Miquel torni a desplegar el Worker enganxant el concatenat.
