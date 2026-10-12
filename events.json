@@ -6151,5 +6151,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.806Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-13-don-de-sang",
+    "titol": "Don de sang",
+    "data_inici": "2026-10-13",
+    "data_fi": "2026-10-13",
+    "hora": "15:00",
+    "lloc": "Salle des FêtesPlace Louis Blasi",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Aquesta jornada de donació de sang permet contribuir a tractar tres pacients diferents. Els participants han de tenir entre 18 i 70 anys, pesar més de 50 kg, gaudir d'un bon estat de salut i no haver rebut mai transfusions.",
+    "descripcio_fr": "Cette journée de don du sang permet de contribuer à soigner trois patients différents. Les participants doivent être âgés de 18 à 70 ans, peser plus de 50 kg, être en bonne santé et ne jamais avoir été transfusés.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/CarreVertical-1-OctobreRose-EFS-2026.jpg?width=150&height=120",
+    "font_url": "http://dondesang.efs.sante.fr/don-de-sang",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.811Z",
+    "periodicitat": ""
   }
 ]
