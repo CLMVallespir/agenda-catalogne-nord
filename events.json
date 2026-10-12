@@ -5942,5 +5942,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.821Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-ballada-de-sardanes",
+    "titol": "Ballada de sardanes",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "11:00",
+    "lloc": "",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "L'associació Amistat Sardanista organitza un dinar espectacle al voltant de la sardana, amenitzat per la Cobla Principal del Rossello. El programa inclou un concert, un dinar amb un menú complet i, a la tarda, una ballada de sardanes.",
+    "descripcio_fr": "L'association Amistat Sardanista propose un repas spectacle autour de la sardane, animé par la Cobla Principal del Rossello. Le programme comprend un concert, un repas avec un menu complet et, l'après-midi, une ballada de sardanes.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ballada-vinca-3.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.846Z",
+    "periodicitat": ""
   }
 ]
