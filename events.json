@@ -6018,5 +6018,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.860Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-robes-et-volants",
+    "titol": "Robes et Volants 66",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "09:00",
+    "lloc": "Place de la Victoireau pied du Castillet",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El ral·li «Robes et Volants» aplega una seixantena d'equips totalment femenins a la plaça de la Victòria, davant el Castillet. La jornada té per objectiu donar suport a les associacions La Tête et les Jambes, La Maison Entre Parenthèses i Onco Parcours mitjançant els fons recaptats.",
+    "descripcio_fr": "Le rallye «Robes et Volants» réunit une soixantaine d'équipages 100 % féminins sur la place de la Victoire, devant le Castillet. La journée a pour objectif de soutenir les associations La Tête et les Jambes, La Maison Entre Parenthèses et Onco Parcours grâce aux fonds collectés.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Octobre-Rose---Course---2026.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.862Z",
+    "periodicitat": ""
   }
 ]
