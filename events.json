@@ -5885,5 +5885,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.808Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-concurs-del-carbasso",
+    "titol": "Concurs del carbassó",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "10:00",
+    "lloc": "Route de Fillols",
+    "municipi": "Vernet",
+    "comarca": "Conflent",
+    "categoria": "Esports",
+    "descripcio_ca": "Aquesta jornada inclou diversos estands informatius amb entitats com Nature et Progrès i ASPRO-PNP, així com un racó de lectura. S'hi presenten solucions per a la preparació natural de plantes mitjançant purins d'ortiga i consolda, a més d'oferir una iniciació a la lombricultura i una explicació sobre l'interès del BRF. L'activitat permet aprofundir en el coneixement dels extractes vegetals.",
+    "descripcio_fr": "Cette journée comprend divers stands d'information avec des entités comme Nature et Progrès et ASPRO-PNP, ainsi qu'un coin lecture. On y présente des solutions pour la préparation naturelle de plantes à base de purins d'ortie et de consoude, en plus d'offrir une initiation au lombricompostage et une explication sur l'intérêt du BRF. L'activité permet d'approfondir la connaissance des extraits végétaux.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Fete-du-potiron.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.813Z",
+    "periodicitat": ""
   }
 ]
