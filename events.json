@@ -6189,5 +6189,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.812Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-13-centenari-de-la",
+    "titol": "Centenari de la coronació de la Mare de Déu de Font-Romeu",
+    "data_inici": "2026-10-13",
+    "data_fi": "2026-10-13",
+    "hora": "18:30",
+    "lloc": "Hôtel Pams18 Rue Emile Zola",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La xerrada se centra en una obra d'orfebreria perpinyanenca amb motiu del centenari de la coronació de la Mare de Déu de Font-Romeu. La sessió va a càrrec de Laurent Fonquernie, guia conférencier i historiador.",
+    "descripcio_fr": "La conférence se concentre sur une œuvre d'orfèvrerie perpignanaise à l'occasion du centenaire du couronnement de la Vierge de Font-Romeu. La séance est présentée par Laurent Fonquernie, guide-conférencier et historien.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/CENTENAIRE-DU-COURONNEMENT-DE-LA-VIERGE-DE-FONT-ROMEU.jpg?width=150&height=120",
+    "font_url": "https://www.perpignantourisme.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.819Z",
+    "periodicitat": ""
   }
 ]
