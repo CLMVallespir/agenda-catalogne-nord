@@ -6284,5 +6284,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.860Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-13-les-4-saisons",
+    "titol": "Les 4 saisons de la petite enfance",
+    "data_inici": "2026-10-13",
+    "data_fi": "2026-10-13",
+    "hora": "19:00",
+    "lloc": "Couvent des MinimesRue François Rabelais",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "En el marc de les « 4 saisons de la petite enfance », la formadora en treball social Malika Lecler imparteix una conferència sobre la importància d'escoltar per comunicar millor. L'acte s'adreça a pares, futurs pares i professionals del sector que vulguin intercanviar experiències sobre la comunicació amb els infants petits.",
+    "descripcio_fr": "Dans le cadre des « 4 saisons de la petite enfance », la formatrice en travail social Malika Lecler anime une conférence sur l'importance d'écouter pour mieux communiquer. L'événement s'adresse aux parents, futurs parents et professionnels du secteur souhaitant échanger sur la communication avec les tout-petits.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/LES-4-SAISONS-DE-LA-PETITE-ENFANCE.jpg?width=150&height=120",
+    "font_url": "https://www.perpignantourisme.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.865Z",
+    "periodicitat": ""
   }
 ]
