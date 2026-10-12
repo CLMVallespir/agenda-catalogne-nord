@@ -5771,5 +5771,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.729Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-cine-club-canet",
+    "titol": "Cinè-club Canet-Oiles: Phantom Thread i Le temps de l'innocence",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "16:30",
+    "lloc": "Avenue Guy Drut",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "El Cinè-club Canet-Oiles presenta una jornada doble de cinema amb la projecció de les pel·lícules Phantom Thread, de Paul Thomas Anderson, i Le temps de l'innocence, de Martin Scorsese. La primera obra narra la vida del prestigiós modista Reynolds Woodcock a Londres durant els anys 50, mentre que la segona ofereix un retrat de l'aristocràcia novaiorquesa de la dècada de 1870 a partir de l'adaptació de l'obra d'Edith Wharton.",
+    "descripcio_fr": "Le Cinè-club Canet-Oiles présente une double séance de cinéma avec la projection des films Phantom Thread, de Paul Thomas Anderson, et Le temps de l'innocence, de Martin Scorsese. La première œuvre relate la vie du prestigieux couturier Reynolds Woodcock à Londres durant les années 50, tandis que la seconde propose un portrait de l'aristocratie new-yorkaise des années 1870 à travers l'adaptation de l'œuvre d'Edith Wharton.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-phantom-thread.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.731Z",
+    "periodicitat": ""
   }
 ]
