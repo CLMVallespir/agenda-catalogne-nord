@@ -5277,5 +5277,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.870Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-09-soudain",
+    "titol": "Soudain",
+    "data_inici": "2026-10-09",
+    "data_fi": "2026-10-09",
+    "hora": "19:30",
+    "lloc": "17 Avenue Général Joseph Santraille",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "La pel·lícula narra la història de la Marie-Lou, la directora d'un centre per a gent gran que intenta introduir una filosofia de cures innovadora. La seva trobada amb la Mari, una directora de teatre japonesa, transforma la seva vida i dona lloc a una profunda amistat. Juntes inicien una lluita personal per fer possible allò que sembla impossible.",
+    "descripcio_fr": "Le film raconte l'histoire de Marie-Lou, directrice d'un établissement pour personnes âgées, qui tente d'instaurer une philosophie de soins innovante. Sa rencontre avec Mari, une metteuse en scène japonaise, bouleverse sa trajectoire et donne naissance à une amitié profonde. Ensemble, elles engagent un combat pour rendre possible l'impossible.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cinema-affiche-seance-9-octobre.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.858Z",
+    "periodicitat": ""
   }
 ]
