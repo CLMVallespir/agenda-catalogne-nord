@@ -1620,7 +1620,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52V8GH] Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-12-seance-cinetoiles",
+    "id": "2026-10-12-cinetoiles",
     "titol": "Cinétoiles",
     "data_inici": "2026-10-12",
     "data_fi": "2026-10-12",
@@ -1634,7 +1634,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Cinetoiles-1-page-0001-2.jpg?width=150&height=120",
     "font_url": "https://www.cinetoiles66.net",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.806Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z2L1] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
