@@ -1205,7 +1205,7 @@
     "data_inici": "2026-10-11",
     "data_fi": "2026-10-11",
     "hora": "17:30",
-    "lloc": "Chapelle de Juhègues\nChemin de Juhègues",
+    "lloc": "Chapelle de JuhèguesChemin de Juhègues",
     "municipi": "Torrelles de la Salanca",
     "comarca": "Rosselló",
     "categoria": "Música",
@@ -1214,7 +1214,7 @@
     "associacio": "Contacter OFFICE DE TOURISME DE TORREILLES",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/quatuor-Opale-affiche--1-.png?width=150&height=120",
     "font_url": "http://www.torreilles-tourisme.com",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.821Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z5P1] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
