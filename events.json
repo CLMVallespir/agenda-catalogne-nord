@@ -5410,5 +5410,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.849Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-conferencia-sobre-leonard",
+    "titol": "Conferència sobre Léonard de Vinci",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "18:00",
+    "lloc": "",
+    "municipi": "Rodès",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "Aquesta conferència sobre Léonard de Vinci és presentada per Alexandre Charret-Dykes. L'acte té lloc a la Salle Cornet de Bosc i l'accés és lliure i gratuït.",
+    "descripcio_fr": "Cette conférence sur Léonard de Vinci est présentée par Alexandre Charret-Dykes. L'événement se déroule à la Salle Cornet de Bosc et l'entrée est libre et gratuite.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/10-10-rodes.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.851Z",
+    "periodicitat": ""
   }
 ]
