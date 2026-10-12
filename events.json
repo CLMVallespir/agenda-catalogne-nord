@@ -6227,5 +6227,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.841Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-13-miro-en-la",
+    "titol": "Miró en la seva illa",
+    "data_inici": "2026-10-13",
+    "data_fi": "2026-10-13",
+    "hora": "14:45",
+    "lloc": "LIBRAIRIE TORCATIS10 Rue Mailly",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest taller d'escriptura convida els participants a explorar la seva vessant poètica, les emocions i l'espai creatiu en un entorn sense judicis. L'activitat proposa compartir lectures, reflexions i debats, posant l'accent en el plaer de l'escriptura i el descobriment d'autors i artistes. En aquesta sessió, l'eix central s'inspira en l'exposició «Joan Miró - Majorque, l'atelier des rêves» del museu Hyacinthe Rigaud de Perpinyà, tot explorant temàtiques com la insularitat, D.H. Lawrence i Alfred Jarry.",
+    "descripcio_fr": "Cet atelier d'écriture invite les participants à explorer leur versant poétique, leurs émotions et leur espace créatif dans un environnement sans jugement. L'activité propose de partager des lectures, des réflexions et des débats, en mettant l'accent sur le plaisir d'écrire et la découverte d'auteurs et d'artistes. Lors de cette séance, l'axe central s'inspire de l'exposition «Joan Miró - Majorque, l'atelier des rêves» du musée Hyacinthe Rigaud de Perpignan, en explorant des thématiques comme l'insularité, D.H. Lawrence et Alfred Jarry.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Miro-en-son-ile---Octobre-2026--1-.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.847Z",
+    "periodicitat": ""
   }
 ]
