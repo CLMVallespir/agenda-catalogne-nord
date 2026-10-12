@@ -5220,5 +5220,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.859Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-cinema-histoires-de",
+    "titol": "Cinema: Histoires de la Nuit",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "20:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "Projecció de la pel·lícula Histoires de la Nuit, un drama amb tocs de thriller dirigit per Léa Mysius i interpretat per Hafsia Herzi, Benoît Magimel i Bastien Bouillon. La trama presenta una família que viu en una granja aïllada i veu alterada la seva celebració d'aniversari per l'aparició de tres desconeguts. L'obra està prohibida per a menors de dotze anys i inclou un avís per al públic.",
+    "descripcio_fr": "Projection du film Histoires de la Nuit, un drame aux accents de thriller réalisé par Léa Mysius avec Hafsia Herzi, Benoît Magimel et Bastien Bouillon. L'intrigue suit une famille vivant dans une ferme isolée dont la fête d'anniversaire est perturbée par l'arrivée de trois inconnus. L'œuvre est interdite aux moins de douze ans et comporte un avertissement pour le public.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/nuit-2.jpg?width=150&height=120",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.859Z",
+    "periodicitat": ""
   }
 ]
