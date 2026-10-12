@@ -5201,5 +5201,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.865Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-cinema-ma-famille",
+    "titol": "Cinema - Ma famille de samouraïs",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "17:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "La projecció presenta el film d'animació «Ma famille de samouraïs», una pel·lícula que explora la recerca de les arrels japoneses d'un jove estudiant a través dels relats del seu avi sobre l'emigració al Brasil. L'obra està recomanada per a tots els públics a partir de vuit anys.",
+    "descripcio_fr": "La projection présente le film d'animation «Ma famille de samouraïs», un film qui explore la recherche des racines japonaises d'un jeune étudiant à travers les récits de son grand-père sur l'émigration au Brésil. L'œuvre est recommandée pour tout public à partir de huit ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/samourai.jpg?width=150&height=120",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.859Z",
+    "periodicitat": ""
   }
 ]
