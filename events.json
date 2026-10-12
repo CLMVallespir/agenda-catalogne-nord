@@ -5239,5 +5239,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.859Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-07-torneig-de-petanca",
+    "titol": "Torneig de petanca",
+    "data_inici": "2026-10-07",
+    "data_fi": "2026-10-07",
+    "hora": "14:00",
+    "lloc": "5 bis Rue du Stade",
+    "municipi": "La Roca d'Albera",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "La Mairie i el CCAS de La Roca d'Albera, amb els Boulistes de Laroque, el Point Jeunes i el centre de loisirs de Sorède, organitzen un torneig de petanca intergeneracional. L'activitat fomenta la trobada entre totes les generacions per compartir jocs i moments de convivència. En acabar, els infants ofereixen un berenar a tots els participants.",
+    "descripcio_fr": "La Mairie et le CCAS de La Roca d'Albera, avec les Boulistes de Laroque, le Point Jeunes et le centre de loisirs de Sorède, organisent un tournoi de pétanque intergénérationnel. L'activité favorise la rencontre entre toutes les générations pour partager des jeux et des moments de convivialité. À la fin, les enfants offrent un goûter à tous les participants.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/809386670-1766396288022079-6288831022311260490-n.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.870Z",
+    "periodicitat": ""
   }
 ]
