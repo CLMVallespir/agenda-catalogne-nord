@@ -5676,5 +5676,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.655Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-mercat-de-segona",
+    "titol": "Mercat de segona mà",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "07:00",
+    "lloc": "",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat de segona mà s'organitza als carrers del centre del poble. Les persones interessades a participar-hi com a expositors han de formalitzar la inscripció i el pagament al claustre.",
+    "descripcio_fr": "Le vide-grenier se tiendra dans les rues du centre du village. Les personnes souhaitant y participer en tant qu'exposants doivent formaliser l'inscription et le paiement au cloître.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Vide-grenier-4.JPG?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.657Z",
+    "periodicitat": ""
   }
 ]
