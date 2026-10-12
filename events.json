@@ -5961,5 +5961,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.846Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-mercat-de-productors",
+    "titol": "Mercat de productors locals",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Corbera",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'ASP2C organitza un mercat de productors i artesans a l'aparcament de l'ajuntament de Corbera. Els visitants hi trobaran servei de bar i l'opció de dinar amb boles de picolat.",
+    "descripcio_fr": "L'ASP2C organise un marché de producteurs et d'artisans sur le parking de la mairie de Corbera. Les visiteurs y trouveront un service de buvette et la possibilité de déjeuner avec des boles de picolat.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/11-10.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.847Z",
+    "periodicitat": ""
   }
 ]
