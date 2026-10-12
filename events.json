@@ -5163,5 +5163,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.864Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-06-obrim-nos-a",
+    "titol": "Obrim-nos a les arts",
+    "data_inici": "2026-10-06",
+    "data_fi": "2026-10-06",
+    "hora": "18:00",
+    "lloc": "7 passage jeantet violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "En el marc de les Semaines d'information sur la santé mentale, es presenta l'exposició «ON EXISTE – SCHIZO-OUI» que aplega les pintures de Lys Bertolo, Yamina Hamoudi i Ariel Guerrier, juntament amb les escultures de Daniel Casenove. La jornada inclou una trobada amb el testimoni de l'escriptora Yamina Plouviez sobre les seves obres «Voix intérieures, la ruée vers soi» i «Mémoire d'une voix», així com la conferència «Mélancoliques, les artistes ?» a càrrec de l'historiador de l'art Zénon Mézinski.",
+    "descripcio_fr": "Dans le cadre des Semaines d'information sur la santé mentale, est présentée l'exposition «ON EXISTE – SCHIZO-OUI» qui rassemble les peintures de Lys Bertolo, Yamina Hamoudi et Ariel Guerrier, ainsi que les sculptures de Daniel Casenove. La journée comprend une rencontre-témoignage avec l'écrivaine Yamina Plouviez autour de ses ouvrages «Voix intérieures, la ruée vers soi» et «Mémoire d'une voix», ainsi que la conférence «Mélancoliques, les artistes ?» donnée par l'historien de l'art Zénon Mézinski.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-ouvrons-nosu-aux-arts.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.737Z",
+    "periodicitat": ""
   }
 ]
