@@ -6398,5 +6398,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.806Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-14-espectacle-de-magia",
+    "titol": "Espectacle de màgia",
+    "data_inici": "2026-10-14",
+    "data_fi": "2026-10-14",
+    "hora": "15:00",
+    "lloc": "Place de la République",
+    "municipi": "Ceret",
+    "comarca": "Vallespir",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'il·lusionista Darcy presenta l'espectacle de màgia titulat «Bienvenue à Poudlard». La proposta està oberta a tot el públic interessat en el món de la il·lusió.",
+    "descripcio_fr": "L'illusionniste Darcy présente le spectacle de magie intitulé «Bienvenue à Poudlard». La proposition est ouverte à tout le public intéressé par le monde de l'illusion.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-spectacle-magie-14-octobre-26-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.806Z",
+    "periodicitat": ""
   }
 ]
