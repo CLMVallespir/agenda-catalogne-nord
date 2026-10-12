@@ -5752,5 +5752,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.728Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-teatre-homenatge-a",
+    "titol": "Teatre homenatge a Edith Piaf \"Je t'ai dans la peau\"",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "17:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Aquesta peça teatral és un homenatge a la figura d'Édith Piaf, tot recorrent els records, les anècdotes i les cançons més emblemàtiques de la cantant. L'actuació de Patricia Di Fraja es combina amb l'acompanyament al piano de Victor Garriguenc per evocar la força i la joia de viure de l'artista.",
+    "descripcio_fr": "Cette pièce de théâtre est un hommage à la figure d'Édith Piaf, retraçant les souvenirs, les anecdotes et les chansons les plus emblématiques de la chanteuse. L'interprétation de Patricia Di Fraja se combine à l'accompagnement au piano de Victor Garriguenc pour évoquer la force et la joie de vivre de l'artiste.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-Spectacle-Patricia--1-.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.729Z",
+    "periodicitat": ""
   }
 ]
