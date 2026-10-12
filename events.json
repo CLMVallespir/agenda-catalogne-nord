@@ -5619,5 +5619,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.862Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-10-chercheurs-dart",
+    "titol": "Chercheurs d'Art",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El festival Chercheurs d'Art aplega propostes culturals i artístiques dissenyades específicament per a infants de zero a sis anys i les seves famílies. Durant una setmana, es programen tallers creatius, espectacles, concerts i espais immersius que exploren l'art i la ciència mitjançant l'experimentació. L'esdeveniment és fruit de la col·laboració entre la Communauté de communes Albères-Côte Vermeille-Illibéris i diversos artistes i professionals de la primera infància.",
+    "descripcio_fr": "Le festival Chercheurs d'Art rassemble des propositions culturelles et artistiques conçues spécifiquement pour les enfants de zéro à six ans et leurs familles. Pendant une semaine, sont programmés des ateliers créatifs, des spectacles, des concerts et des espaces immersifs qui explorent l'art et la science à travers l'expérimentation. L'événement est le fruit de la collaboration entre la Communauté de communes Albères-Côte Vermeille-Illibéris et divers artistes et professionnels de la petite enfance.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026-10-festival-chercheurs-d-art-A3-WEB.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.864Z",
+    "periodicitat": ""
   }
 ]
