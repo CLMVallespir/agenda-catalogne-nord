@@ -1005,7 +1005,7 @@
     "data_inici": "2026-10-11",
     "data_fi": "2026-10-11",
     "hora": "18:00",
-    "lloc": "Théâtre de l'Archipel\nAvenue Maréchal Leclerc",
+    "lloc": "Théâtre de l'ArchipelAvenue Maréchal Leclerc",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Teatre",
@@ -1014,7 +1014,7 @@
     "associacio": "Contacter BILLETTERIE",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Souad-Massi-zagat-11-10-26.jpg?width=150&height=120",
     "font_url": "https://www.theatredelarchipel.org/souad-massi",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.738Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52XHF1] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
