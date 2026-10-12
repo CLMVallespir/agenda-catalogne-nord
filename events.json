@@ -5638,5 +5638,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.864Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-art-i-terra",
+    "titol": "Art i terra",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "10:00",
+    "lloc": "SAINTE-COLOMBE-DE-LA-COMMANDERIE",
+    "municipi": "Santa Coloma de Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'esdeveniment aplega artistes, artesans i productors a Santa Coloma de Tuïr. La jornada es dedica a les creacions artesanes, la gastronomia, les animacions i la convivència.",
+    "descripcio_fr": "L'événement réunit des artistes, des artisans et des producteurs à Sainte Colombe de la Commanderie. La journée est consacrée aux créations artisanales, à la gastronomie, aux animations et à la convivialité.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ASpres-SCC-artetterroir26.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.653Z",
+    "periodicitat": ""
   }
 ]
