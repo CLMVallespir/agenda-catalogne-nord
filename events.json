@@ -6170,5 +6170,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.811Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-13-riflette",
+    "titol": "Riflette",
+    "data_inici": "2026-10-13",
+    "data_fi": "2026-10-13",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "Cornellà de Conflent",
+    "comarca": "Conflent",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "El concurs s'estructura en quinze partides i una de consolació, amb vals de compra com a premis. L'activitat està oberta a tothom.",
+    "descripcio_fr": "Le concours s'articule en quinze parties et une consolante, avec des bons d'achat à gagner. L'activité est ouverte à tous.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Vide-grenier-3.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.812Z",
+    "periodicitat": ""
   }
 ]
