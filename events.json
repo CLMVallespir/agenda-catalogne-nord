@@ -5581,5 +5581,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.859Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-cicle-de-cinema",
+    "titol": "Cicle de cinema de terror: Résident Evil",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "20:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "La projecció de la pel·lícula Résident Evil s'emmarca en un cicle dedicat al cinema de terror. La trama segueix el Bryan, un missatger mèdic que ha de lluitar per la seva supervivència en un món immers en un caos total.",
+    "descripcio_fr": "La projection du film Résident Evil s'inscrit dans un cycle dédié au cinéma d'épouvante. L'intrigue suit Bryan, un coursier médical qui doit lutter pour sa survie dans un monde plongé dans un chaos total.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/EVIL.jpg?width=150&height=120",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.860Z",
+    "periodicitat": ""
   }
 ]
