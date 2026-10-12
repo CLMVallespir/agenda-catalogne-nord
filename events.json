@@ -5923,5 +5923,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.813Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-concert-a-la",
+    "titol": "Concert a la bugia amb el Quatuor Opale",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "17:30",
+    "lloc": "Chapelle de JuhèguesChemin de Juhègues",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Justine Vicens, Cécile Teixidor, Charlotte Chollet i Shani Mégret, intèrprets del Conservatoire de Perpignan, presenten un programa de música de cambra amb obres que van des dels grans clàssics fins a músiques de pel·lícules, passant pel tango i melodies populars. El concert té un caràcter solidari, ja que la totalitat de la recaptació es destina a la Ligue Contre le Cancer des Pyrénées-Orientales en el marc d'Octobre Rose.",
+    "descripcio_fr": "Justine Vicens, Cécile Teixidor, Charlotte Chollet et Shani Mégret, interprètes du Conservatoire de Perpignan, présentent un programme de musique de chambre avec des œuvres allant des grands classiques aux musiques de films, en passant par le tango et des mélodies populaires. Le concert a un caractère solidaire, puisque la totalité de la recette est reversée à la Ligue Contre le Cancer des Pyrénées-Orientales dans le cadre d'Octobre Rose.",
+    "associacio": "Contacter OFFICE DE TOURISME DE TORREILLES",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/quatuor-Opale-affiche--1-.png?width=150&height=120",
+    "font_url": "http://www.torreilles-tourisme.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.821Z",
+    "periodicitat": ""
   }
 ]
