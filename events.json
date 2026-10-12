@@ -5524,5 +5524,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.855Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-neteja-ciutadana",
+    "titol": "Neteja ciutadana",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "09:30",
+    "lloc": "6 RUE DU CANIGOU",
+    "municipi": "Passà",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'acte convida els veïns de totes les edats a participar en una jornada de neteja col·lectiva. Es tracta d'un moment de convivència per actuar en favor del medi ambient i cuidar l'entorn de Passà.",
+    "descripcio_fr": "L'événement invite les habitants de tous âges à participer à une journée de nettoyage collectif. Il s'agit d'un moment de convivialité pour agir en faveur de l'environnement et prendre soin du cadre de vie de Passà.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aSPRES-PASSA-NETOYAGECITOIEN.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.857Z",
+    "periodicitat": ""
   }
 ]
