@@ -5429,5 +5429,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.851Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-teatre-une-belle",
+    "titol": "Teatre: Une belle embrouille",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "20:30",
+    "lloc": "Rue de la Salle",
+    "municipi": "Bages de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "La companyia Vigatanes i Barretina representa l'obra «Une belle embrouille», una comèdia de Viviane Auger i Bernard Gimbernat plena de malentesos i situacions divertides. Els personatges s'enfronten a un embolic que es complica contínuament en aquesta peça teatral interpretada per actors amateurs.",
+    "descripcio_fr": "La troupe Vigatanes i Barretina présente la pièce «Une belle embrouille», une comédie de Viviane Auger et Bernard Gimbernat pleine de quiproquos et de situations cocasses. Les personnages font face à un imbroglio qui ne cesse de se compliquer dans cette pièce interprétée par des comédiens amateurs.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-octobre-scaled-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.852Z",
+    "periodicitat": ""
   }
 ]
