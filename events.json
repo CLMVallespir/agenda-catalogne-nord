@@ -5695,5 +5695,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.657Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-rifle-del-football",
+    "titol": "Rifle del Football Club Thuir",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "15:00",
+    "lloc": "Boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "El Football Club Thuir organitza un rifle amb quaranta partides i una rifa. S'hi poden guanyar vals de compra i participar en un bingo especial. L'activitat disposa de servei de bar a la mateixa sala.",
+    "descripcio_fr": "Le Football Club Thuir organise un loto avec quarante parties et une tombola. Il est possible d'y gagner des bons d'achat et de participer à un bingo spécial. L'activité dispose d'une buvette sur place.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-riflefcthuiroct.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.662Z",
+    "periodicitat": ""
   }
 ]
