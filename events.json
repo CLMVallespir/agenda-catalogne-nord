@@ -5828,5 +5828,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.789Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-run-bike",
+    "titol": "Run & Bike",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "08:45",
+    "lloc": "Rue du Canigou",
+    "municipi": "Catllar",
+    "comarca": "Conflent",
+    "categoria": "Esports",
+    "descripcio_ca": "El Run & Bike permet practicar esport en un ambient distès. Es tracta d'una cursa per parelles a partir dels cinc anys, amb dos recorreguts i quatre distàncies possibles.",
+    "descripcio_fr": "Le Run & Bike permet de pratiquer du sport dans une ambiance conviviale. Il s'agit d'une course par équipes à partir de cinq ans, avec deux parcours et quatre distances possibles.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/IMG-6527.JPG?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.789Z",
+    "periodicitat": ""
   }
 ]
