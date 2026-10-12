@@ -5467,5 +5467,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.853Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-octobre-rose-concert",
+    "titol": "Octobre Rose: concert",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "20:00",
+    "lloc": "20 Rue du Château",
+    "municipi": "Ortafà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "La localitat d'Ortafà organitza una vetllada solidària a benefici del Comité de la Ligue contre le cancer des Pyrénées-Orientales. La programació inclou un karaoke amb Sam’Anim, un concert de rock amb AEROGUNS i música per ballar amb Disc’Joncté. Durant la nit, hi haurà servei de restauració i beguda a l'Espace Jean LATROBE.",
+    "descripcio_fr": "La commune d'Ortaffa organise une soirée solidaire au profit du Comité de la Ligue contre le cancer des Pyrénées-Orientales. La programmation comprend un karaoké avec Sam’Anim, un concert de rock avec AEROGUNS et de la musique pour danser avec Disc’Joncté. Durant la soirée, un service de restauration et une buvette seront disponibles à l'Espace Jean LATROBE.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/806687284-1082519218022731-2600818174710968424-n.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.853Z",
+    "periodicitat": ""
   }
 ]
