@@ -5733,5 +5733,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.690Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-11-rifle",
+    "titol": "Rifle",
+    "data_inici": "2026-10-11",
+    "data_fi": "2026-10-11",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Forques",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "El Club Rencontres et Loisirs organitza una gran rifa al Foyer Rural de Forques. L'activitat inclou el sorteig de nombrosos premis i ofereix cafè i berenar als assistents.",
+    "descripcio_fr": "Le Club Rencontres et Loisirs organise une grande rifle au Foyer Rural de Forques. L'activité comprend le tirage au sort de nombreux lots et offre café et goûter aux participants.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-fourques-rifleoct.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.728Z",
+    "periodicitat": ""
   }
 ]
