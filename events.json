@@ -5562,5 +5562,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.859Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-lupin-dins-la",
+    "titol": "Lupin dins la ciutat - Joc de pistes",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "13:30",
+    "lloc": "Place de VerdunAu pied du Castillet",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "Aquest joc de pistes proposa als participants de recórrer Perpinyà resolent enigmes d'observació, deducció i destresa. L'activitat s'adreça a un públic divers, incloent-hi famílies, turistes i grups, i ofereix una nova mirada sobre la ciutat amb la possibilitat d'escollir entre el bàndol de Lupin o el de la Reine Victoria. Els animadors, disfressats per a l'ocasió, entreguen el material necessari per dur a terme el joc abans que els grups facin el recorregut pel centre de la ciutat i es reuneixin per al repte final.",
+    "descripcio_fr": "Ce jeu de piste propose aux participants de parcourir Perpinyà en résolvant des énigmes d'observation, de déduction et de dextérité. L'activité s'adresse à un public divers, incluant familles, touristes et groupes, et offre un nouveau regard sur la ville avec la possibilité de choisir entre le camp de Lupin ou celui de la Reine Victoria. Les animateurs, costumés pour l'occasion, remettent le matériel nécessaire au déroulement du jeu avant que les groupes n'effectuent le parcours dans le centre-ville et ne se retrouvent pour le défi final.",
+    "associacio": "Contacter Madame CARRAUD Marion",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Lupin-dans-la-ville-1.jpg?width=150&height=120",
+    "font_url": "https://www.billetweb.fr/lupin26-perpignan",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.859Z",
+    "periodicitat": ""
   }
 ]
