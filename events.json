@@ -6132,5 +6132,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.782Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-13-rentrada-literaria",
+    "titol": "Rentrada literària",
+    "data_inici": "2026-10-13",
+    "data_fi": "2026-10-13",
+    "hora": "17:30",
+    "lloc": "Place de la République",
+    "municipi": "Ceret",
+    "comarca": "Vallespir",
+    "categoria": "",
+    "descripcio_ca": "La llibreria Le cheval dans l'arbre presenta la rentrada literària. L'acte compta amb la participació dels Amis de la médiathèque.",
+    "descripcio_fr": "La librairie Le cheval dans l'arbre présente la rentrée littéraire. L'événement compte avec la participation des Amis de la médiathèque.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Rentree-litteraire-13-oct-2026-1.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.806Z",
+    "periodicitat": ""
   }
 ]
