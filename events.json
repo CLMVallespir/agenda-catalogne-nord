@@ -6436,5 +6436,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.807Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-14-bulles-culturelles-cinema",
+    "titol": "Bulles Culturelles - Cinema per a infants",
+    "data_inici": "2026-10-14",
+    "data_fi": "2026-10-14",
+    "hora": "14:30",
+    "lloc": "10 Allée de la Liberté",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "La programació de Bulles Culturelles ofereix una sessió de cinema per a infants amb la pel·lícula Un amour d'épouvantail. L'ajuntament ofereix un berenar a tots els assistents en el marc d'aquest cicle que aplega trobades literàries, cinema, conferències i converses en català.",
+    "descripcio_fr": "La programmation de Bulles Culturelles propose une séance de cinéma pour enfants avec le film Un amour d'épouvantail. La municipalité offre un goûter à tous les participants dans le cadre de ce cycle qui rassemble des rencontres de lecteurs, du cinéma, des conférences et des conversations en catalan.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/6917a9ac903b1fbbc9bfa78aca1d257c.webp?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.848Z",
+    "periodicitat": ""
   }
 ]
