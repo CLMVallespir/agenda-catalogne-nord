@@ -6493,5 +6493,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.679Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-10-jour-de-la",
+    "titol": "Jour de la Nuit",
+    "data_inici": "2026-10-10",
+    "data_fi": "2026-10-10",
+    "hora": "19:30",
+    "lloc": "",
+    "municipi": "Font-romeu",
+    "comarca": "Cerdanya",
+    "categoria": "",
+    "descripcio_ca": "Amb motiu del Jour de la Nuit, es proposa descobrir Font-romeu des d'una perspectiva diferent i prendre consciència sobre la preservació del cel estrellat i la biodiversitat nocturna. L'esdeveniment inclou animacions i activitats per a totes les edats que permeten conèixer l'impacte de la contaminació lumínica i observar la natura a la nit.",
+    "descripcio_fr": "À l’occasion du Jour de la Nuit, il est proposé de découvrir Font-romeu sous un angle différent et de prendre conscience de la préservation du ciel étoilé et de la biodiversité nocturne. L'événement comprend des animations et des activités pour tous les âges permettant de mieux connaître l'impact de la pollution lumineuse et d'observer la nature la nuit.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Maquette-a-suivre---2026-09-30T153858.544.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.858Z",
+    "periodicitat": ""
   }
 ]
