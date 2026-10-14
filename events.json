@@ -6531,5 +6531,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.776Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-13-projeccio-de-la",
+    "titol": "Projecció de la pel·lícula Quand la ville dort",
+    "data_inici": "2026-10-13",
+    "data_fi": "2026-10-13",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Es projecta el film negre The Asphalt Jungle, dirigit per John Huston, una obra que va marcar el gènere dels films de robatoris. La història segueix una quête de redempció en un entorn urbà marcat pel crim, amb les interpretacions de Sterling Hayden i una jove Marilyn Monroe.",
+    "descripcio_fr": "Le film noir The Asphalt Jungle, réalisé par John Huston, est projeté, marquant ainsi le genre du film de casse. L'histoire suit une quête de rédemption dans un environnement urbain marqué par le crime, avec les interprétations de Sterling Hayden et d'une jeune Marilyn Monroe.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Quand-la-ville-dort---Octobre-2026.jpg?width=150&height=120",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.823Z",
+    "periodicitat": ""
   }
 ]
