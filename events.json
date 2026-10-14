@@ -6550,5 +6550,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.823Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-14-exprime-toi-lart",
+    "titol": "Exprime-toi ! L'art libère",
+    "data_inici": "2026-10-14",
+    "data_fi": "2026-10-14",
+    "hora": "09:30",
+    "lloc": "Impasse de Rovira",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "En el marc de la setmana d'informació sobre la salut mental, s'organitzen diversos tallers artístics. Es proposen activitats de gravat en pedra, pintura, creació de paper cuve i ceràmica, incloent-hi una introducció al tornejat de fusta.",
+    "descripcio_fr": "Dans le cadre de la semaine d'information sur la santé mentale, divers ateliers artistiques sont organisés. Des activités de gravure sur pierre, de peinture, de création de papier cuve et de poterie sont proposées, incluant une initiation au tournage sur bois.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/jardins-metiers-elne-pyrenees-mediterranee---Caroline-Mahoux-768x822.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.851Z",
+    "periodicitat": ""
   }
 ]
