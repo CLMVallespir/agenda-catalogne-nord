@@ -7025,5 +7025,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.812Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-en-bastidors-visita",
+    "titol": "En bastidors: visita guiada sobre la història i la fabricació del granat català",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "10:30",
+    "lloc": "62 Avenue Guy Malé",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La Manufacture Henri Privat, guardonada com a Meilleur Ouvrier de France, proposa una immersió en la tradició joiera del granat català. Durant la visita guiada, es recorre l'ècomuseu, una mina reconstruïda i els tallers de la manufactura per observar el treball artesanal dels joiers. L'activitat permet descobrir els gestos i les tècniques tradicionals emprades en la creació d'aquestes peces d'identitat regional.",
+    "descripcio_fr": "La Manufacture Henri Privat, labellisée Meilleur Ouvrier de France, propose une immersion dans la tradition joaillière du grenat catalan. Durant la visite guidée, le parcours traverse l'écomusée, une mine reconstituée et les ateliers de la manufacture pour observer le travail artisanal des joailliers. L'activité permet de découvrir les gestes et les techniques traditionnelles employés dans la création de ces pièces d'identité régionale.",
+    "associacio": "Contacter Monsieur PRIVAT Henri",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Visite-guidee-2-sur-l-histoire-et-la-fabrication-du-grenat-catalan-6a676c6d2f5d4.jpg?width=150&height=120",
+    "font_url": "https://www.henriprivat.fr/fr/visite-de-la-manufacture",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.785Z",
+    "periodicitat": ""
   }
 ]
