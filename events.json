@@ -6569,5 +6569,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.851Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-curs-de-teatre",
+    "titol": "Curs de teatre per a infants",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "09:30",
+    "lloc": "21 Rue Saint-Jean",
+    "municipi": "Vilafranca de Conflent",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest curs de teatre a Vilafranca de Conflent permet descobrir i practicar diverses formes artístiques, com el conte, el cant i el teatre. El programa inclou jocs, expressió corporal, treball de la veu, improvisació i imaginació. L'activitat ofereix una experiència creativa i lúdica per desenvolupar l'expressió individual i col·lectiva, amb un espectacle final.",
+    "descripcio_fr": "Ce stage de théâtre à Villefranche-de-Conflent permet de découvrir et de pratiquer différentes formes artistiques, comme le conte, le chant et le théâtre. Le programme inclut des jeux, de l'expression corporelle, du travail de la voix, de l'improvisation et de l'imagination. L'activité propose une expérience créative et ludique pour développer l'expression individuelle et collective, avec un spectacle en fin de stage.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/STAGE-oct-26-le-tympan-dans-l-oeil.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.845Z",
+    "periodicitat": ""
   }
 ]
