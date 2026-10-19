@@ -6797,5 +6797,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.729Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-cine-berenar-de",
+    "titol": "Cine-berenar de vacances",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "14:30",
+    "lloc": "Médiathèque Victor Hugo2 Rue de la Paix",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "L'acte permet descobrir o redescobrir les aventures d'un jove bruixot que fa les primeres passes en una famosa escola de màgia, envoltat dels seus nous amics i enfrontat a esdeveniments misteriosos. És una activitat pensada per compartir en família, que es completa amb un berenar. L'esdeveniment s'adreça al públic a partir dels 8 anys.",
+    "descripcio_fr": "L'événement permet de découvrir ou redécouvrir les aventures d'un jeune sorcier qui fait ses premiers pas dans une célèbre école de magie, entouré de ses nouveaux amis et confronté à de mystérieux événements. C'est une activité conçue pour être partagée en famille, qui se complète par un goûter. L'événement s'adresse au public à partir de 8 ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Cine-gouter-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.720Z",
+    "periodicitat": ""
   }
 ]
