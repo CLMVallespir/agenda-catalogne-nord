@@ -6930,5 +6930,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.848Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-taller-de-vacances",
+    "titol": "Taller de vacances d'entomologia",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "14:30",
+    "lloc": "66 Avenue de l'Hôtel de Ville",
+    "municipi": "Pollestres",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquest taller permet a petits i grans descobrir el món dels insectes tot desenvolupant la imaginació i la destresa manual. L'activitat sensibilitza sobre la biodiversitat i l'ecologia mitjançant la creació artística, vinculant el reciclatge amb la preservació del medi ambient.",
+    "descripcio_fr": "Cet atelier permet aux petits et aux grands de découvrir le monde des insectes tout en développant l'imagination et la dextérité manuelle. L'activité sensibilise à la biodiversité et à l'écologie à travers la création artistique, en liant le recyclage à la préservation de l'environnement.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ATELIER-VACANCES-ENTOMOLOGIE-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.832Z",
+    "periodicitat": ""
   }
 ]
