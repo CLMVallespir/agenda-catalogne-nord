@@ -6759,5 +6759,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.760Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-aquaparty",
+    "titol": "Aquaparty",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "14:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Durant les vacances de Tots Sants, l'Espace Aquasud organitza una festa aquàtica amb estructures inflables al gran i al petit estany. L'activitat està oberta a tothom i permet gaudir de diversos reptes en família o amb amics.",
+    "descripcio_fr": "Pendant les vacances de la Toussaint, l'Espace Aquasud organise une fête aquatique avec des structures gonflables dans le grand et le petit bassin. L'activité est ouverte à tous et permet de profiter de divers défis en famille ou entre amis.",
+    "associacio": "Contacter ESPACE AQUASUD",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52XK0J-1783702506913.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.740Z",
+    "periodicitat": ""
   }
 ]
