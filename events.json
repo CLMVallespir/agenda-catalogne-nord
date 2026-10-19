@@ -7120,5 +7120,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.846Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-19-contes-de-halloween",
+    "titol": "Contes de Halloween",
+    "data_inici": "2026-10-19",
+    "data_fi": "2026-10-19",
+    "hora": "18:00",
+    "lloc": "salle Cal Panche",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'activitat convida a escoltar els contes de Guillaume a la vora del foc. L'acte té lloc a la sala Cal Panche.",
+    "descripcio_fr": "L'activité invite à écouter les contes de Guillaume au coin du feu. L'événement se déroule dans la salle Cal Panche.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-soiree-contee-19-oct-26.png?width=150&height=120",
+    "font_url": "https://lesangles.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.834Z",
+    "periodicitat": ""
   }
 ]
