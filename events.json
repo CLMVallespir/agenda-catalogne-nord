@@ -6664,5 +6664,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.810Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-de-lautre-cote",
+    "titol": "De l'autre côté du mur",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "15:00",
+    "lloc": "33 rue de l'Hospice",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'espectacle a càrrec de Mains Blanches s'adreça a infants de 0 a 3 anys. Cal inscriure-s'hi a la mediateca.",
+    "descripcio_fr": "Le spectacle proposé par Mains Blanches s'adresse aux enfants de 0 à 3 ans. Il est nécessaire de s'inscrire à la médiathèque.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026.10.spect.delautrecote.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.807Z",
+    "periodicitat": ""
   }
 ]
