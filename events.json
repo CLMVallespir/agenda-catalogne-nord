@@ -6740,5 +6740,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.766Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-espai-de-jocs",
+    "titol": "Espai de jocs en família amb Anima Jeux 66",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "15:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'activitat ofereix un moment lúdic durant les vacances amb els animadors de la societat Anima Jeux 66. Està oberta a un públic familiar, adolescents i adults.",
+    "descripcio_fr": "L'activité propose un moment ludique pendant les vacances avec les animateurs de la société Anima Jeux 66. Elle est ouverte à un public familial, adolescents et adultes.",
+    "associacio": "Contacter MEDIATHEQUE PROSPER MERIMEE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52Y137-1785406463309.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.760Z",
+    "periodicitat": ""
   }
 ]
