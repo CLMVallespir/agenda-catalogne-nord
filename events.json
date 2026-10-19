@@ -6588,5 +6588,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.845Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-el-laberint-del",
+    "titol": "El laberint del Minotaure",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "14:30",
+    "lloc": "Avenue Léon-Jean Grégory",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'activitat convida a submergir-se en la mitologia grega a través d'una sessió de manualitats amb un toc de suspens. El taller està limitat a quinze infants d'entre sis i onze anys.",
+    "descripcio_fr": "L'activité invite à se plonger dans la mythologie grecque à travers une séance de bricolage avec une touche de suspense. L'atelier est limité à quinze enfants âgés de six à onze ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/AT-EFT-210926.png?width=150&height=120",
+    "font_url": "https://mediatheque-le-boulou.c3rb.org/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.842Z",
+    "periodicitat": ""
   }
 ]
