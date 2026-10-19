@@ -6911,5 +6911,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.860Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-bulles-culturelles-conferencia",
+    "titol": "Bulles Culturelles - Conferència \"Le Maître de Cabestany\"",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "18:00",
+    "lloc": "10 Allée de la Liberté",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'acte presenta una retrospectiva de l'escultura medieval centrada en el paper rellevant del Maître de Cabestany en la transmissió de l'ofici artesanal. Bulles Culturelles ofereix trobades de lectors, cinema, conferències i converses en català, tot fomentant la convivència.",
+    "descripcio_fr": "L'événement présente une rétrospective de la sculpture médiévale centrée sur le rôle éminent du Maître de Cabestany dans la transmission du savoir-faire artisanal. Bulles Culturelles propose des rencontres de lecteurs, du cinéma, des conférences et des conversations en catalan, tout en favorisant la convivialité.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/face-principale-a-droite-large.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.848Z",
+    "periodicitat": ""
   }
 ]
