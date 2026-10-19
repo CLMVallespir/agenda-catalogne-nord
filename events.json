@@ -7082,5 +7082,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.744Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-taller-dels-petits",
+    "titol": "Taller dels petits fauvistes",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "09:30",
+    "lloc": "Place du 18 juin",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "La Vitrine sur le Fauvisme proposa tallers de pintura per a pares i infants. Tant a l'interior com davant la badia de Cotlliure, l'activitat convida a viure una experiència creativa en família.",
+    "descripcio_fr": "La Vitrine sur le Fauvisme propose des ateliers de peinture pour les parents et les enfants. Tant à l'intérieur que face à la baie de Collioure, l'activité invite à vivre une expérience créative en famille.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/atelier-petits-fauves.jpg?width=150&height=120",
+    "font_url": "https://www.tourisme-collioure.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.665Z",
+    "periodicitat": ""
   }
 ]
