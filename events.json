@@ -6949,5 +6949,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.832Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-les-desaxes",
+    "titol": "Les désaxés",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Aquesta pel·lícula de John Huston presenta les darreres figures d'un somni americà en decadència a través d'uns personatges perduts al Nevada. L'obra reuneix estrelles com Clark Gable, Montgomery Clift i Marilyn Monroe en el que fou el seu darrer paper cinematogràfic.",
+    "descripcio_fr": "Ce film de John Huston présente les dernières figures d'un rêve américain en déclin à travers des personnages perdus dans le Nevada. L'œuvre réunit des stars comme Clark Gable, Montgomery Clift et Marilyn Monroe dans ce qui fut son dernier rôle cinématographique.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Les-Desaxes---Octobre-2026.jpg?width=150&height=120",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.823Z",
+    "periodicitat": ""
   }
 ]
