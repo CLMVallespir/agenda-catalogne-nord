@@ -6854,5 +6854,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.870Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-els-tallers-dels",
+    "titol": "Els tallers dels aprenents de bruixot",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "10:00",
+    "lloc": "Côte de la place",
+    "municipi": "La Roca d'Albera",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La Vieille Rachel arriba a la Maison de la Culture de La Roca d'Albera per proposar una sèrie d'experiments sorprenents amb pocions i mescles. Les activitats inclouen lliçons sobre experiències extraordinàries i la creació de viscoses morves de trolls, així com un espai en lliure accés per fabricar pocions personalitzades. Aquesta proposta s'emmarca en la Semaine Mar i Munt d'automne.",
+    "descripcio_fr": "La Vieille Rachel arrive à la Maison de la Culture de La Roca d'Albera pour proposer une série d'expériences surprenantes avec des potions et des mixtures. Les activités incluent des leçons sur des expériences extraordinaires et la création de morves de trolls visqueuses, ainsi qu'un espace en libre accès pour fabriquer des potions personnalisées. Cette proposition s'inscrit dans le cadre de la Semaine Mar i Munt d'automne.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/sociere-1.jpg?width=150&height=120",
+    "font_url": "https://www.la-vieille-rachel.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.868Z",
+    "periodicitat": ""
   }
 ]
