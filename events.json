@@ -6892,5 +6892,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.862Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-justin-le-juste",
+    "titol": "Justin le Juste",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-21",
+    "hora": "20:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "La pel·lícula, dirigida per Éric Barbier, explica la història de Justin, un pagès reclutat durant la Primera Guerra Mundial que es veu obligat a abandonar les seves terres per anar al front. Durant el conflicte, la seva trobada amb el tirador senegalès Basile el porta a revoltar-se contra les injustícies i a convertir-se en un heroi inesperat. L'obra, inspirada en l'obra de Jean Pompougnac, és apta per a tots els públics.",
+    "descripcio_fr": "Le film, réalisé par Éric Barbier, raconte l'histoire de Justin, un paysan recruté pendant la Première Guerre mondiale qui est contraint de quitter ses terres pour aller au front. Durant le conflit, sa rencontre avec le tirailleur sénégalais Basile l'amène à se révolter contre les injustices et à devenir un héros inattendu. L'œuvre, inspirée de l'ouvrage de Jean Pompougnac, est adaptée à tout public.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/JUSTIN.jpg?width=150&height=120",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.860Z",
+    "periodicitat": ""
   }
 ]
