@@ -6778,5 +6778,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.740Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-secret-s-medical",
+    "titol": "Secret(s) médical - Boitaclous",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "20:29",
+    "lloc": "Palais des CongrèsPlace Armand Lanoux",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'espectacle Secret(s) Médical presenta la història de quatre amics que veuen la seva relació trontollar quan un d'ells revela un secret compromès sobre un dels seus pacients, un polític que aspira a la presidència. Michel Cymes debuta en aquesta obra que barreja dilemes ètics i situacions còmiques en el transcurs d'un sopar. L'obra convida el públic a reflexionar sobre l'amistat i la moralitat amb un to irònic i divertit.",
+    "descripcio_fr": "Le spectacle Secret(s) Médical présente l'histoire de quatre amis qui voient leur relation vaciller lorsqu'un d'eux révèle un secret compromettant sur l'un de ses patients, un politicien aspirant à la présidence. Michel Cymes fait ses débuts dans cette pièce qui mêle dilemmes éthiques et situations comiques au cours d'un dîner. La pièce invite le public à réfléchir sur l'amitié et la moralité avec un ton ironique et amusant.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/SECRETS-MEDICAL.jpg?width=150&height=120",
+    "font_url": "https://www.boitaclous.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.729Z",
+    "periodicitat": ""
   }
 ]
