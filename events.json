@@ -7063,5 +7063,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.763Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-club-de-lectura",
+    "titol": "Club de lectura: Joan Lluis-Lluis, autor convidat",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "15:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "El club de lectura de la mediateca acull l'autor Joan Lluis-Lluis per conversar sobre la seva trajectòria i les seves obres. La sessió se centra en els llibres «Junil» i «Chroniques d'un dieu boiteux».",
+    "descripcio_fr": "Le club de lecture de la médiathèque accueille l'auteur Joan Lluis-Lluis pour discuter de son parcours et de ses œuvres. La séance se concentre sur les livres «Junil» et «Chroniques d'un dieu boiteux».",
+    "associacio": "Contacter MEDIATHEQUE PROSPER MERIMEE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52XNT1-1784126775203.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.744Z",
+    "periodicitat": ""
   }
 ]
