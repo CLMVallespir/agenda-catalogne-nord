@@ -7101,5 +7101,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.665Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-19-octobre-rose",
+    "titol": "Octobre Rose",
+    "data_inici": "2026-10-19",
+    "data_fi": "2026-10-19",
+    "hora": "16:30",
+    "lloc": "1 Avenue de Thalassa",
+    "municipi": "El Barcarès",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "En el marc d'Octobre Rose, s'organitza una trobada informativa dedicada a la salut de les dones amb l'objectiu de conscienciar sobre la prevenció i la lluita contra els càncers femenins. El programa inclou debats sobre el càncer de mama, així com informació sobre la vacunació i el cribratge del càncer de coll d'úter amb professionals sanitaris.",
+    "descripcio_fr": "Dans le cadre d’Octobre Rose, une rencontre informative dédiée à la santé des femmes est organisée dans le but de sensibiliser à la prévention et à la lutte contre les cancers féminins. Le programme inclut des échanges sur le cancer du sein, ainsi que des informations sur la vaccination et le dépistage du cancer du col de l’utérus avec des professionnels de santé.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marijana1-pink-ribbon-3715346.jpg?width=150&height=120",
+    "font_url": "https://www.lebarcares-tourisme.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.846Z",
+    "periodicitat": ""
   }
 ]
