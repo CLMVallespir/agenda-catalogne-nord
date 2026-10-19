@@ -6987,5 +6987,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.819Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-lectures-de-poemes",
+    "titol": "Lectures de poemes i exposició de cal·ligrafies",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "18:30",
+    "lloc": "",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'acte inclou la presentació del recull de poemes «Par-dessus les décombres» de la poetessa gazaiana Abeer Mohamed, publicat a les Éditions Paraules. Paral·lelament, es presenta una exposició de cal·ligrafies de Hassan Majdi a l'espai El Taller Treize.",
+    "descripcio_fr": "L'événement comprend la présentation du recueil de poèmes «Par-dessus les décombres» de la poétesse gazaouie Abeer Mohamed, paru aux Éditions Paraules. Parallèlement, une exposition de calligraphies de Hassan Majdi est présentée à l'espace El Taller Treize.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/20-10-26.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.816Z",
+    "periodicitat": ""
   }
 ]
