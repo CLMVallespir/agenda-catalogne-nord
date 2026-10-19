@@ -6683,5 +6683,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.807Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-la-ludo-daqui",
+    "titol": "La Ludo d'Aqui especial Halloween",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "10:00",
+    "lloc": "33 rue de l'Hospice",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "Sophie, de la Ludo d'aqui, proposa una sessió de joc especial per a Halloween. L'activitat ofereix l'oportunitat de gaudir d'una jornada lúdica amb temàtica de por.",
+    "descripcio_fr": "Sophie, de la Ludo d'aqui, propose une session de jeu spéciale pour Halloween. L'activité offre l'opportunité de profiter d'une journée ludique sur le thème de l'épouvante.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026.10.ludodaquihalloween.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.807Z",
+    "periodicitat": ""
   }
 ]
