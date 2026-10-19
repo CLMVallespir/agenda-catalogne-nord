@@ -6835,5 +6835,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.708Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-curs-de-circ",
+    "titol": "Curs de circ, gimnàstica, acrobàcia i acro dance",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "09:00",
+    "lloc": "rue du stade",
+    "municipi": "La Roca d'Albera",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquest curs convida els infants a explorar diverses disciplines que combinen creativitat, control del cos i superació personal. Els participants poden progressar al seu propi ritme mentre treballen l'agilitat, la coordinació i l'expressió corporal. Per cloure l'activitat, els joves presentaran un petit espectacle davant les seves famílies per mostrar els avenços realitzats.",
+    "descripcio_fr": "Ce stage invite les enfants à explorer plusieurs disciplines mêlant créativité, maîtrise du corps et dépassement de soi. Les participants peuvent progresser à leur propre rythme tout en travaillant l'agilité, la coordination et l'expression corporelle. Pour clôturer l'activité, les jeunes présenteront un petit spectacle devant leurs familles pour montrer les progrès réalisés.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Gymnaste-en-equilibre-sur-fond-bleu.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.870Z",
+    "periodicitat": ""
   }
 ]
