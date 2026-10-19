@@ -6721,5 +6721,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.792Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-rendez-vous-familiar",
+    "titol": "Rendez-vous familiar: el Canigó, muntanya arquitecturada",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "15:00",
+    "lloc": "Rue des écoles",
+    "municipi": "Els Masos",
+    "comarca": "Conflent",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'activitat convida les famílies a descobrir el Canigó, la muntanya sagrada dels catalans, a través del seu patrimoni i paisatges. En aquest taller lúdic, els participants coneixeran com l'ésser humà ha modificat l'entorn amb el pas del temps i crearan la seva pròpia representació de la muntanya.",
+    "descripcio_fr": "L'activité invite les familles à découvrir le Canigó, montagne sacrée des Catalans, à travers son patrimoine et ses paysages. Lors de cet atelier ludique, les participants découvriront comment l'humain a façonné les abords au fil du temps et créeront leur propre représentation de la montagne.",
+    "associacio": "Contacter Madame BONNAL Gwenaëlle",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/06-Affiche-RDV-Automne-2026-Los-Masos.jpg?width=150&height=120",
+    "font_url": "https://www.tourisme-canigo.com/pays-dart-et-dhistoire-conflent-canigo/#rdv",
+    "estat": "publicat",
+    "data_entrada": "2026-10-06T05:26:32.766Z",
+    "periodicitat": ""
   }
 ]
