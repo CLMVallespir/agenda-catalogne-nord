@@ -7424,5 +7424,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.363Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-iniciacio-a-laquarel",
+    "titol": "Iniciació a l'aquarel·la per a adults",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "14:00",
+    "lloc": "Office de Tourisme Pyrénées 2000",
+    "municipi": "Bolquera",
+    "comarca": "Cerdanya",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquesta activitat permet descobrir la màgia dels Pirineus a través de la pintura amb Aquarelle des Pyrénées. L'ateneu és obert a tothom, tant si són principiants com si tenen nivell avançat.",
+    "descripcio_fr": "Cette activité permet de découvrir la magie des Pyrénées à travers la peinture avec Aquarelle des Pyrénées. L'atelier est ouvert à tous, débutants comme confirmés.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aquarelle-21-10-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.385Z",
+    "periodicitat": ""
   }
 ]
