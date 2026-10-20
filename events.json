@@ -7234,5 +7234,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.405Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-pause-polar",
+    "titol": "Pause Polar",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "18:00",
+    "lloc": "2 passage du Vieux-Port",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "Isabelle Rolland, llibretera i creadora de « La Pause Polar » a Perpinyà, presenta una selecció de novetats de literatura negra. L'acte permet descobrir autors, conèixer els títols de més actualitat i intercanviar opinions sobre un gènere que destaca per mantenir els lectors en suspens.",
+    "descripcio_fr": "Isabelle Rolland, libraire et créatrice de « La Pause Polar » à Perpignan, présente une sélection de nouveautés de littérature noire. La rencontre permet de découvrir des auteurs, de connaître les titres d'actualité et d'échanger autour d'un genre qui excelle à tenir ses lecteurs en haleine.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/livres-litteraire.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.528Z",
+    "periodicitat": ""
   }
 ]
