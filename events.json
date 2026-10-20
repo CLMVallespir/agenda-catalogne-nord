@@ -7158,5 +7158,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.347Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-mercat-de-la",
+    "titol": "Mercat de la plaça Cassanyes",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "07:00",
+    "lloc": "MARCHÉ PLACE CASSANYESPlace Joseph Cassanyes",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Aquest mercat és una autèntica institució a Perpinyà i hi té una clientela cosmopolita fidel. És un espai molt acolorit que aplega nombrosos comerços de roba, alimentació, cosmètics, calçat i joieria.",
+    "descripcio_fr": "Ce marché est une véritable institution sur la ville de Perpignan et la clientèle cosmopolite y est toujours fidèle. Très coloré, il compte de nombreux commerces : alimentation, vêtements, cosmétiques, chaussures, bijoux.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-cassanyes-2.jpg?width=150&height=120",
+    "font_url": "https://www.mairie-perpignan.fr/proximite-securite/les-marches",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.352Z",
+    "periodicitat": "cada setmana"
   }
 ]
