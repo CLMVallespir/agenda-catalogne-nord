@@ -7386,5 +7386,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.552Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-tarda-recreativa",
+    "titol": "Tarda recreativa",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "15:00",
+    "lloc": "Rue de l'ancienne Mairie",
+    "municipi": "Terrats",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Durant les vacances, l'equip de voluntaris proposa una animació dirigida principalment als infants. L'activitat inclou lectures, creació de garlandes amb paper reciclat, jocs i un berenar final.",
+    "descripcio_fr": "Pendant les vacances, l'équipe de bénévoles propose une animation destinée principalement aux enfants. L'activité comprend des lectures, la création de guirlandes en papier recyclé, des jeux et un goûter final.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aSPRES-TERRATS-APREMRECREATIVE.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.363Z",
+    "periodicitat": ""
   }
 ]
