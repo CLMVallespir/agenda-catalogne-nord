@@ -240,12 +240,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZF8U] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-20-tableaux-dansants",
+    "id": "2026-10-20-taules-dansants",
     "titol": "Taules dansants",
     "data_inici": "2026-10-20",
     "data_fi": "2026-10-20",
     "hora": "14:00",
-    "lloc": "Musée Hyacinthe Rigaud\n21 Rue Mailly",
+    "lloc": "Musée Hyacinthe Rigaud21 Rue Mailly",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Exposició",
@@ -254,7 +254,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Expo---Joan-Miro---2026--1--4.jpg?width=150&height=120",
     "font_url": "https://www.musee-rigaud.fr/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.531Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZF9H] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
