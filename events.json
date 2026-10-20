@@ -7139,5 +7139,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-06T05:26:32.834Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-visita-al-tropique",
+    "titol": "Visita al Tropique du Papillon",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "11:00",
+    "lloc": "Rue Nationale",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'espai ofereix un recorregut entre centenars de papallones d'Àsia i d'Amèrica del Sud que volen al voltant de fonts i plantes tropicals. Després de la voliera, la visita continua per un jardí mediterrani ric en vegetació i insectes, en el marc de la Semaine Mar i Munt d'automne.",
+    "descripcio_fr": "L'espace propose un parcours parmi des centaines de papillons d'Asie et d'Amérique du Sud qui volent autour de fontaines et de plantes tropicales. Après la volière, la visite se poursuit à travers un jardin méditerranéen riche en végétation et en insectes, dans le cadre de la Semaine Mar i Munt d'automne.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/voliere-tropique-du-papillon-1.jpg?width=150&height=120",
+    "font_url": "https://www.tourisme-pyrenees-mediterranee.com/blog/temps-fort/semaine-mar-i-munt-de-printemps-2023/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.347Z",
+    "periodicitat": ""
   }
 ]
