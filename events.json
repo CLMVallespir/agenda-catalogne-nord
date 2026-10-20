@@ -7177,5 +7177,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.352Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-20-mercat-setmanal",
+    "titol": "Mercat setmanal",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "08:00",
+    "lloc": "Au village, devant le Cube",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat de proximitat s'instal·la a la plaça des souvenirs d’enfance durant tot l'any. Té lloc cada dimarts i divendres al matí.",
+    "descripcio_fr": "Le marché de proximité s'installe sur la place des souvenirs d’enfance toute l'année. Il a lieu chaque mardi et vendredi matin.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Marche-placesouvenirs-ete2025-Ce.jpg?width=150&height=120",
+    "font_url": "http://www.torreilles-tourisme.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.362Z",
+    "periodicitat": "cada setmana"
   }
 ]
