@@ -7291,5 +7291,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.531Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-taller-poezik",
+    "titol": "Taller Poezik",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "",
+    "lloc": "Rue de la Libération",
+    "municipi": "El Soler",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest taller és conduït per Félicité BULLOT i Monica PADILLA. Les inscripcions es fan directament a la médiathèque Laura Vazquez.",
+    "descripcio_fr": "Ce stage est animé par Félicité BULLOT et Monica PADILLA. Les inscriptions se font directement à la médiathèque Laura Vazquez.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Poezik-407x575.jpg?width=150&height=120",
+    "font_url": "https://www.lesoler.fr/evenement/stage-poezik/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.538Z",
+    "periodicitat": ""
   }
 ]
