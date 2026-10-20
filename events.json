@@ -7405,5 +7405,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.363Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-21-pista-de-patinatge",
+    "titol": "Pista de patinatge sense gel",
+    "data_inici": "2026-10-21",
+    "data_fi": "2026-10-21",
+    "hora": "14:00",
+    "lloc": "Rue Léo Lagrange",
+    "municipi": "Sant Pau de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La pista de patinatge sense gel torna per a les vacances de Tots Sants i s'adreça als infants a partir de sis anys. L'activitat tindrà lloc al Foyer Rural, on es poden llogar patins, i cal portar casc i anar acompanyat d'un adult.",
+    "descripcio_fr": "La patinoire sans glace revient pour les vacances de la Toussaint et s'adresse aux enfants à partir de six ans. L'activité aura lieu au Foyer Rural, où des patins peuvent être prêtés, et il est nécessaire de porter un casque et d'être accompagné d'un adulte.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/PATINOIRE-TOUSSAINT-2026--2-.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.363Z",
+    "periodicitat": ""
   }
 ]
