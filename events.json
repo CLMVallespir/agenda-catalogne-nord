@@ -7272,5 +7272,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.529Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-taules-dansants",
+    "titol": "Taules dansants",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "14:00",
+    "lloc": "Musée Hyacinthe Rigaud21 Rue Mailly",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "Els professors i alumnes del Conservatoire de Perpignan ofereixen un recorregut dansat que transita entre la dansa clàssica i la contemporània. Les sales de l'exposició Joan Miró acullen un diàleg inèdit entre les arts plàstiques i la dansa.",
+    "descripcio_fr": "Les professeurs et élèves du Conservatoire de Perpignan proposent un parcours dansé qui transite entre la danse classique et la danse contemporaine. Les salles de l'exposition Joan Miró accueillent un dialogue inédit entre les arts plastiques et la danse.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Expo---Joan-Miro---2026--1--4.jpg?width=150&height=120",
+    "font_url": "https://www.musee-rigaud.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.531Z",
+    "periodicitat": ""
   }
 ]
