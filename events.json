@@ -7310,5 +7310,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.538Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-cinema-la-bataille",
+    "titol": "Cinema: La Bataille de Gaulle - Partie 2 - J'écris ton nom",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "18:15",
+    "lloc": "Cinéma \"Le Casteil\"",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Cinema",
+    "descripcio_ca": "Es projecta la pel·lícula «La Bataille de Gaulle - Partie 2 - J’écris ton nom», un thriller històric d'Antonin Baudry protagonitzat per Simon Abkarian, Simon Russell Beale i Florian Lesieur. El film narra el periple d'un general que, el juny de 1940, fuig cap a Londres per continuar la lluita i convèncer el món que la batalla de França no ha acabat.",
+    "descripcio_fr": "Le film «La Bataille de Gaulle - Partie 2 - J’écris ton nom», un thriller historique d'Antonin Baudry avec Simon Abkarian, Simon Russell Beale et Florian Lesieur, est projeté. Le long-métrage retrace le parcours d'un général qui, en juin 1940, s'échappe vers Londres pour poursuivre le combat et convaincre le monde que la bataille de France n'est pas terminée.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/la-bataille-de-Gaulle-Partie-1---2.jpg?width=150&height=120",
+    "font_url": "https://www.ticketingcine.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.542Z",
+    "periodicitat": ""
   }
 ]
