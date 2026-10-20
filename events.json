@@ -7196,5 +7196,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.362Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-20-taller-i-conte",
+    "titol": "Taller i conte sonor \"Petite Graine Sonore\"",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "10:30",
+    "lloc": "13 Rue Georges Clemenceau",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquesta proposta ofereix un viatge sensorial a través de les vibracions dels bols de cristall i altres instruments sonors. L'activitat està pensada per a infants d'entre 18 mesos i 10 anys, que han d'anar acompanyats d'un adult, i convida a la relaxació profunda i a l'exploració interior.",
+    "descripcio_fr": "Cette proposition offre un voyage sensoriel à travers les vibrations des bols de cristal et d'autres instruments sonores. L'activité est pensée pour les enfants de 18 mois à 10 ans, qui doivent être accompagnés d'un adulte, et invite à la relaxation profonde et à l'exploration intérieure.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/pumpkin-6720424-1280.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.384Z",
+    "periodicitat": ""
   }
 ]
