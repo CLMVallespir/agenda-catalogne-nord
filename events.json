@@ -7253,5 +7253,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.528Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-concert-dels-professors",
+    "titol": "Concert dels professors de l'Escola de Música de la Costa Vermella",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "20:30",
+    "lloc": "Place Castellane",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Els docents de l'École de Musique de la Côte Vermeille deixen les aules per pujar a l'escenari com a intèrprets. El concert permet descobrir les diferents sensibilitats i universos musicals dels professors en una vetllada artística.",
+    "descripcio_fr": "Les enseignants de l'École de Musique de la Côte Vermeille quittent les salles de classe pour monter sur scène en tant qu'interprètes. Le concert permet de découvrir les différentes sensibilités et univers musicaux des professeurs lors d'une soirée artistique.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Concert--Image-par-congerdesign-de-Pixabay.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.529Z",
+    "periodicitat": ""
   }
 ]
