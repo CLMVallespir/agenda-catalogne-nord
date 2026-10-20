@@ -7367,5 +7367,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.546Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-conferencia-escriptures-i",
+    "titol": "Conferència: «Escriptures i alfabets: dels orígens als nostres dies»",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "15:00",
+    "lloc": "44 Avenue Général de Gaulle",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "Conferència",
+    "descripcio_ca": "El mestre de conferències Bernard Alart convida a un viatge històric per l'evolució de les escriptures que han modelat el pensament, la cultura i la comunicació al llarg dels segles.",
+    "descripcio_fr": "Le maître de conférences Bernard Alart vous invite pour un voyage historique à travers l'évolution des écritures qui ont façonné notre pensée, notre culture et notre façon de communiquer au fil des siècles.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-conference-ecritures-et-alphabets.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.552Z",
+    "periodicitat": ""
   }
 ]
