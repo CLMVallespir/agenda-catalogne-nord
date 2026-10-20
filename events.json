@@ -7215,5 +7215,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.384Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-20-concurs-de-petanca",
+    "titol": "Concurs de petanca a la mèl·le",
+    "data_inici": "2026-10-20",
+    "data_fi": "2026-10-20",
+    "hora": "14:30",
+    "lloc": "Boulodrome Julien EspeltChemin du Mas Riu",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Aquest concurs de petanca es disputa a la mèl·le. Es juguen tres partides i l'organització es reserva el dret de retardar l'inici en cas d'onada de calor.",
+    "descripcio_fr": "Ce concours de pétanque se dispute à la mêlée. Trois parties sont au programme et l'organisation se réserve le droit de décaler l'horaire en cas de canicule.",
+    "associacio": "Contacter Madame LARREGUY Anne-Marie",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/petanque-pixabay-jackmac34.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.405Z",
+    "periodicitat": ""
   }
 ]
