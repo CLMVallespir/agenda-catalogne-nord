@@ -80,12 +80,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52DA5P] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-20-marche-place-cassanyes",
+    "id": "2026-10-20-mercat-de-la",
     "titol": "Mercat de la plaça Cassanyes",
     "data_inici": "2026-10-20",
     "data_fi": "2026-10-20",
     "hora": "07:00",
-    "lloc": "MARCHÉ PLACE CASSANYES\nPlace Joseph Cassanyes",
+    "lloc": "MARCHÉ PLACE CASSANYESPlace Joseph Cassanyes",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Mercat",
@@ -94,7 +94,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-cassanyes-2.jpg?width=150&height=120",
     "font_url": "https://www.mairie-perpignan.fr/proximite-securite/les-marches",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.352Z",
     "periodicitat": "cada setmana",
     "nota_curador": "[ADT66 id: FMALAR066V52GPZB] L'acte es fa 86 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
