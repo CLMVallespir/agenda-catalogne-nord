@@ -7766,5 +7766,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.550Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-23-tallers-creatius-dadhesius",
+    "titol": "Tallers creatius d'adhesius, polseres i trenes",
+    "data_inici": "2026-10-23",
+    "data_fi": "2026-10-23",
+    "hora": "15:00",
+    "lloc": "6 rue de las deveses",
+    "municipi": "Èguet",
+    "comarca": "Cerdanya",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'Ile Récréative organitza tallers de creació d'adhesius d'Halloween per als vidres, polseres i trenes. Els infants menors de 8 anys han d'anar acompanyats durant l'activitat, que inclou un berenar. S'ofereix la possibilitat de beneficiar-se de tarifes reduïdes en cas de reserva de tres tallers durant les vacances o d'inscripció d'un segon infant.",
+    "descripcio_fr": "L'Ile Récréative organise des ateliers de création d'autocollants d'Halloween pour les vitres, de bracelets et de tresses. Les enfants de moins de 8 ans doivent être accompagnés durant l'activité, qui inclut un goûter. La possibilité de bénéficier de tarifs dégressifs est offerte en cas de réservation de trois ateliers pendant les vacances ou d'inscription d'un deuxième enfant.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Ile-recreative.jpeg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.556Z",
+    "periodicitat": ""
   }
 ]
