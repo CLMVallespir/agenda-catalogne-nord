@@ -7880,5 +7880,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.361Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-festa-del-roser",
+    "titol": "Festa del Roser",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "19:30",
+    "lloc": "GRAND RUE",
+    "municipi": "Bolquera",
+    "comarca": "Cerdanya",
+    "categoria": "",
+    "descripcio_ca": "L'acte inclou un àpat amb l'espectacle musical de Tito et Samuel i les seves ballarines. Es tracta d'una proposta que combina música llatina, gipsy i varietat francesa en un ambient festiu.",
+    "descripcio_fr": "L'événement comprend un repas avec le spectacle musical de Tito et Samuel et leurs danseuses. Il s'agit d'une proposition qui mêle musique latine, gipsy et variété française dans une ambiance festive.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ROSER-4.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.384Z",
+    "periodicitat": ""
   }
 ]
