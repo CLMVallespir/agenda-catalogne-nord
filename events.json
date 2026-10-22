@@ -7804,5 +7804,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.331Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-24-mercat-del-dissabte",
+    "titol": "Mercat del dissabte",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "05:30",
+    "lloc": "1 Place Léo Lagrange",
+    "municipi": "Sant Pau de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Cada dissabte, la plaça del Foyer Rural de Sant Pau de Fenollet acull diversos comerciants ambulants com ara peixaters, verdulaires, venedors de fruita seca, un servei de càtering i una costurera. També hi participen productors locals que ofereixen formatges, mel i croquants, entre altres productes.",
+    "descripcio_fr": "Chaque samedi, la place du Foyer Rural de Sant-Paul-de-Fenouillet accueille divers commerçants ambulants tels que des poissonniers, des primeurs, des vendeurs de fruits secs, un service traiteur et une couturière. Des producteurs locaux y participent également pour proposer des fromages, du miel et des croquants, parmi d'autres produits.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-samedi-st-paul.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.351Z",
+    "periodicitat": "cada setmana"
   }
 ]
