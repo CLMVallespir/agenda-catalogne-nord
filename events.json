@@ -7576,5 +7576,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.462Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-entre-bastidors-historics",
+    "titol": "Entre bastidors històrics i ofici de taller",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-24",
+    "hora": "17:00",
+    "lloc": "40 Rue Sant-Vicens",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "Sant Vicens és un espai emblemàtic de la creació artística catalana, reconegut com a Entreprise du Patrimoine Vivant. La visita permet conèixer vuitanta anys d'història familiar lligada a la del Rosselló i a artistes com Picasso, Dali, Maillol o Dufy, a més de descobrir les obres de Jean Lurçat. El recorregut s'endinsa als tallers per observar el procés de fabricació de les peces i el seu saber fer artesanal. Els visitants rebran un record commemoratiu realitzat per a l'ocasió.",
+    "descripcio_fr": "Sant Vicens est un lieu emblématique de la création artistique catalane, labellisé Entreprise du Patrimoine Vivant. La visite permet de découvrir quatre-vingts ans d'histoire familiale liée à celle du Roussillon et à des artistes comme Picasso, Dali, Maillol ou Dufy, ainsi que les œuvres de Jean Lurçat. Le parcours se poursuit dans les ateliers pour observer le processus de fabrication des pièces et leur savoir-faire artisanal. Les visiteurs recevront un souvenir réalisé pour l'occasion.",
+    "associacio": "Contacter Madame BAUBY GASPARIAN Claire",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Claire-historique-et-savoir-faire-atelier-6a8eb6e1a070b-1-.jpg?width=150&height=120",
+    "font_url": "https://www.santvicens.fr/visite-guidee",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.470Z",
+    "periodicitat": ""
   }
 ]
