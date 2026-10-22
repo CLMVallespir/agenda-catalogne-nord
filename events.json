@@ -7937,5 +7937,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.504Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-taller-crea-la",
+    "titol": "Taller: crea la teva màscara de monstre",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Santa Llocaia",
+    "comarca": "Cerdanya",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquesta sessió lúdica està pensada per als més menuts, d'entre 3 i 5 anys. Es proposa als infants que vinguin disfressats per participar en la creació de la seva pròpia màscara de monstre.",
+    "descripcio_fr": "Cette séance ludique est conçue pour les plus petits, âgés de 3 à 5 ans. Les enfants sont invités à venir déguisés pour participer à la création de leur propre masque de monstre.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/PROGRAMME-VAC-OCT--3.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.521Z",
+    "periodicitat": ""
   }
 ]
