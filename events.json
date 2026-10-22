@@ -8146,5 +8146,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.478Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-taller-rere-la",
+    "titol": "Taller rere la petjada dels llops",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "14:00",
+    "lloc": "4 Rue Arago",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'associació FERUS proposa un taller interactiu per descobrir el llop a Catalunya, amb motiu de la celebració d'Halloween. L'activitat permet conèixer el mode de vida d'aquest depredador, els reptes de la seva cohabitació amb els humans i desmuntar falsos mites mitjançant dades científiques i qüestionaris. Aquesta proposta està adreçada a adolescents i adults curiosos.",
+    "descripcio_fr": "L'association FERUS propose un atelier interactif pour découvrir le loup en Catalogne, à l'occasion de la célébration d'Halloween. L'activité permet de connaître le mode de vie de ce prédateur, les enjeux de sa cohabitation avec les humains et de démonter les idées reçues grâce à des données scientifiques et des questionnaires. Cette proposition s'adresse aux adolescents et aux adultes curieux.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ATELIER-LOUP-MEM-AVEC-ASSO-FERUS-merc-28-oct-14h-a-faire-corriger-par-la-.jpg?width=150&height=120",
+    "font_url": "https://mem-leboulou.com/actualites/#evenements",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.393Z",
+    "periodicitat": ""
   }
 ]
