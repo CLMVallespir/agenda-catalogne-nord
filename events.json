@@ -7557,5 +7557,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.447Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-recital-de-cant",
+    "titol": "Recital de cant i piano amb Chants de Si de La",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "17:00",
+    "lloc": "Route du Perthus",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El recital a càrrec de Chants de Si de La presenta una selecció d'fragments d'òperes conegudes com Carmen, Traviata o Lakmé, seguits d'una segona part dedicada a l'opereta i a les cançons de beure. La interpretació anirà a càrrec dels cantants Liz Pelcerf, Hélène Daviaud, Gisèle Xerri i Lambert Barthés, acompanyats al piano per François Michel Rignol. L'acte inclou el sorteig de vins de la regió i finalitzarà amb un aperitiu ofert pels membres de la companyia.",
+    "descripcio_fr": "Le récital assuré par Chants de Si de La présente une sélection d'extraits d'opéras connus comme Carmen, Traviata ou Lakmé, suivis d'une seconde partie dédiée à l'opérette et aux chansons à boire. L'interprétation sera assurée par les chanteurs Liz Pelcerf, Hélène Daviaud, Gisèle Xerri et Lambert Barthés, accompagnés au piano par François Michel Rignol. L'événement comprend un tirage au sort de vins de la région et se terminera par un apéritif offert par les membres de la troupe.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/022-Casino-Boulou.jpeg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.462Z",
+    "periodicitat": ""
   }
 ]
