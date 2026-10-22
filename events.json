@@ -7994,5 +7994,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.509Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-la-tempete",
+    "titol": "La tempête",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "15:00",
+    "lloc": "33 rue de l'Hospice",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Teatre",
+    "descripcio_ca": "La companyia \"Un Hublot dans la tête\" presenta l'espectacle La Tempête. Aquesta representació s'adreça al públic a partir de deu anys.",
+    "descripcio_fr": "La compagnie \"Un Hublot dans la tête\" présente le spectacle La Tempête. Cette représentation s'adresse au public à partir de dix ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026.10.Latempete.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.485Z",
+    "periodicitat": ""
   }
 ]
