@@ -7747,5 +7747,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.550Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-23-cinema-la-vie",
+    "titol": "Cinema: La vie d'une femme",
+    "data_inici": "2026-10-23",
+    "data_fi": "2026-10-23",
+    "hora": "21:15",
+    "lloc": "Cinéma \"Le Casteil\"",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Cinema",
+    "descripcio_ca": "Es projecta la comèdia dramàtica La vie d'une femme, dirigida per Charline Bourgeois-Tacquet i interpretada per Léa Drucker, Mélanie Thierry i Charles Berling. La pel·lícula explora el conflicte vital d'una cirurgiana i cap de servei hospitalari, dividida entre les seves nombroses responsabilitats laborals i una vida privada que es veu alterada per l'arribada d'una romanciera al centre.",
+    "descripcio_fr": "Projection de la comédie dramatique La vie d'une femme, réalisée par Charline Bourgeois-Tacquet et interprétée par Léa Drucker, Mélanie Thierry et Charles Berling. Le film explore le conflit vital d'une chirurgienne et chef de service hospitalier, tiraillée entre ses nombreuses responsabilités professionnelles et une vie privée perturbée par l'arrivée d'une romancière au sein du service.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/la-vie-d-une-femme.jpg?width=150&height=120",
+    "font_url": "https://lesangles.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.550Z",
+    "periodicitat": ""
   }
 ]
