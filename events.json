@@ -7481,5 +7481,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.379Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-taller-creatiu-animals",
+    "titol": "Taller creatiu: animals dels Pirineus",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "16:00",
+    "lloc": "Office de Tourisme Pyrénées 2000",
+    "municipi": "Bolquera",
+    "comarca": "Cerdanya",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'activitat ofereix la creació de dibuixos d'animals amb plantilla sobre suport de fusta, motlles de petjades d'animals amb argila i dibuixos al pastel. Aquesta proposta permet als participants explorar el món animal de l'entorn muntanyenc.",
+    "descripcio_fr": "L'activité propose la création de dessins d'animaux au pochoir sur support en bois, le moulage d'empreintes d'animaux en argile et des dessins au pastel. Cette proposition permet aux participants d'explorer le monde animal de l'environnement montagnard.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Traces-ANIMAUX-DES-PYREnees.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.385Z",
+    "periodicitat": ""
   }
 ]
