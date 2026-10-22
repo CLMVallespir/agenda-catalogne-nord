@@ -7519,5 +7519,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.388Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-visita-guiada-la",
+    "titol": "Visita guiada «La medieval de Sant Andreu»",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "10:00",
+    "lloc": "allée de la Liberté",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "L'activitat s'emmarca en la programació de la Setmana Mar i Munt de tardor. La visita permet descobrir el monestir benedictí de Sant Andreu de Sureda, l'església romànica del qual es manté preservada des de fa gairebé mil anys.",
+    "descripcio_fr": "L'activité s'inscrit dans la programmation de la Semaine Mar i Munt d'automne. La visite permet de découvrir le monastère bénédictin de Saint-André, dont l'église romane est restée préservée depuis près de mille ans.",
+    "associacio": "Contacter Mademoiselle MAHOUX CAROLINE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/visite-caro-st-andre.jpg?width=150&height=120",
+    "font_url": "https://www.tourisme-pyrenees-mediterranee.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.395Z",
+    "periodicitat": ""
   }
 ]
