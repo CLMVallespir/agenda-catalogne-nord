@@ -7614,5 +7614,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.473Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-mercat-setmanal",
+    "titol": "Mercat setmanal",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "08:00",
+    "lloc": "Centre ville",
+    "municipi": "Sant Llorenç de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat de venda al detall de Sant Llorenç de la Salanca anima el centre de la vila dues vegades per setmana. Aquest espai de tipus meridional aplega desenes de comerciants que ofereixen fruites, verdures de la terra, productes frescos, espècies, tèxtil, marroquineria i artesania.",
+    "descripcio_fr": "Le marché de détail de Saint-Laurent de la Salanque anime le cœur de ville deux fois par semaine. Cet espace de type méridional rassemble des dizaines de commerçants qui proposent des fruits, des légumes du terroir, des produits frais, des épices, du textile, de la maroquinerie ainsi que de l'artisanat.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/MARCHE-1.jpg?width=150&height=120",
+    "font_url": "https://www.saintlaurentdelasalanque.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.343Z",
+    "periodicitat": "cada setmana"
   }
 ]
