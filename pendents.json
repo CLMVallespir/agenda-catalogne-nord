@@ -5280,12 +5280,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z95L] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-28-atelier-creatif",
+    "id": "2026-10-28-taller-creatiu",
     "titol": "Taller creatiu",
     "data_inici": "2026-10-28",
     "data_fi": "2026-10-28",
     "hora": "14:30",
-    "lloc": "Médiathèque Victor Hugo\n2 Rue de la Paix",
+    "lloc": "Médiathèque Victor Hugo2 Rue de la Paix",
     "municipi": "Santa Maria la Mar",
     "comarca": "Rosselló",
     "categoria": "Activitat infantil",
@@ -5294,7 +5294,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Atelier-d-halloween.png?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.519Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZCD6] Categoria per tema infantil; RechercheTYPE deia: Taller Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
