@@ -7652,5 +7652,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.334Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-22-les-ocasions-del",
+    "titol": "Les ocasions del multicasc i del refit",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "10:00",
+    "lloc": "au Port",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "Canet de Rosselló esdevé, per a l'onzena edició, la capital mundial del catamarà d'ocasió. L'esdeveniment aplega una oferta excepcional de catamarans i trimarans de creuers a vela i a motor, a més d'un poble d'expositors dedicat a l'equipament, l'electrònica i els serveis nàutics.",
+    "descripcio_fr": "Canet-en-Roussillon devient, pour sa 11ᵉ édition, la capitale mondiale du catamaran d'occasion. L'événement rassemble une offre exceptionnelle de catamarans et trimarans de croisière à voile et à moteur, ainsi qu'un village d'exposants dédié à l'équipement, à l'électronique et aux services nautiques.",
+    "associacio": "Contacter Monsieur CHATILLON Benoit",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/nautipole-1.jpg?width=150&height=120",
+    "font_url": "https://www.lesoccasionsdumulticoque.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.329Z",
+    "periodicitat": ""
   }
 ]
