@@ -8032,5 +8032,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.475Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-animacio-de-jocs",
+    "titol": "Animació de jocs de taula",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "16:00",
+    "lloc": "Route des Bains",
+    "municipi": "Molig",
+    "comarca": "Conflent",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "El Grand Hôtel des Pyrénées organitza sessions de jocs de taula un dimecres de cada dos. L'activitat està adreçada a persones a partir de catorze anys.",
+    "descripcio_fr": "Le Grand Hôtel des Pyrénées vous accueille un mercredi sur deux pour des animations de jeux de société. L'activité s'adresse aux personnes à partir de quatorze ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/jeux-grand-hotel-6.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.466Z",
+    "periodicitat": ""
   }
 ]
