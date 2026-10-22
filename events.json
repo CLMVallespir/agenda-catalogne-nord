@@ -8165,5 +8165,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.393Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-tarda-de-jocs",
+    "titol": "Tarda de jocs de taula",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "14:00",
+    "lloc": "5 Rue des Thermes",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquesta sessió de jocs de taula té lloc a la Maison des Améliens. L'activitat està oberta a tothom qui vulgui participar-hi.",
+    "descripcio_fr": "Cette séance de jeux de société a lieu à la Maison des Améliens. L'activité est ouverte à tous ceux qui souhaitent y participer.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/jeux-de-societe-adobestock.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.373Z",
+    "periodicitat": ""
   }
 ]
