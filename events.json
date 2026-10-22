@@ -7842,5 +7842,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.354Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-24-salo-del-llibre",
+    "titol": "Saló del llibre i de la xocolata",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-25",
+    "hora": "13:30",
+    "lloc": "Complexe Oméga",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El Saló du Livre et du Chocolat ofereix l'oportunitat de conèixer autors, il·lustradors, editors i xocolaters en un esdeveniment que combina literatura i gastronomia. S'hi poden comprar productes de xocolata i llibres per aconseguir dedicatòries.",
+    "descripcio_fr": "Le Salon du Livre et du Chocolat offre l'opportunité de rencontrer des auteurs, illustrateurs, éditeurs et chocolatiers lors d'un événement qui allie littérature et gastronomie. Il est possible d'y acheter des produits chocolatés et des livres à faire dédicacer.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/chocolat.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.359Z",
+    "periodicitat": ""
   }
 ]
