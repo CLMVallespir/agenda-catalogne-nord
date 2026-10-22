@@ -7633,5 +7633,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.343Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-22-mercat-de-la",
+    "titol": "Mercat de la plaça de Bèlgica",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "07:30",
+    "lloc": "Place de Belgique",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat ofereix una gran varietat de productes de qualitat, que inclouen fruites i verdures, pa, pastisseria, carn, embotits, rostits, peix, ostres, caragols, mel, vins i flors. Els clients tenen l'opció de fer comandes als comerciants d'una setmana a l'altra.",
+    "descripcio_fr": "Le marché propose une grande variété de produits de qualité, incluant fruits et légumes, pain, pâtisserie, boucherie, charcuterie, rôtisserie, poissonnerie, huîtres, escargots, miel, vins et fleurs. Les clients ont la possibilité de passer leurs commandes auprès des commerçants d'une semaine à l'autre.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Marche-place-de-Belgique.jpg?width=150&height=120",
+    "font_url": "https://www.perpigare.fr/notre-quartier/commercants-artisans-tpe/commercants-marche-place-de-belgique/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.334Z",
+    "periodicitat": "cada setmana"
   }
 ]
