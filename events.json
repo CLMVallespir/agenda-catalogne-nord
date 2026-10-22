@@ -7975,5 +7975,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.519Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-contes-dhalloween",
+    "titol": "Contes d'Halloween",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "18:00",
+    "lloc": "salle Cal Panche",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'acte convida els assistents a gaudir d'una estona al voltant del foc de xemeneia mentre s'escolten les històries explicades per Guillaume. L'activitat té lloc a la sala Cal Panche.",
+    "descripcio_fr": "L'événement invite les participants à profiter d'un moment au coin du feu tout en écoutant les histoires racontées par Guillaume. L'activité se déroule à la salle Cal Panche.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/livre1.jpg?width=150&height=120",
+    "font_url": "https://my.weezevent.com/les-contes-dhalloween",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.509Z",
+    "periodicitat": ""
   }
 ]
