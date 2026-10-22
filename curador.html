@@ -37,8 +37,10 @@
        Sense testimoni, la pàgina és només de lectura.
 
        Aquesta pàgina és deliberadament autònoma: porta el seu propi
-       estil i les seves pròpies còpies de creaId i valorPermes. Es
-       pot obrir i arreglar sense mirar cap altre fitxer.
+       estil i les seves pròpies còpies de creaId i valorPermes. Només
+       en depèn d'un altre fitxer, curador-cua.js, que té les peces
+       que canvien l'estat de la cua (publicar, rebutjar, retrobar una
+       fila) i és el que Node prova (proves/curador-cua.test.js).
        ============================================================ -->
 
   <style>
@@ -371,6 +373,7 @@
     <div id="llista-pendents"></div>
   </main>
 
+<script src="curador-cua.js"></script>
 <script>
 // ============================================================
 // Coordenades fixes del repositori. Si el repositori es mou o es
@@ -858,128 +861,6 @@ function recullFitxa(fitxa, original) {
 }
 
 // ------------------------------------------------------------
-// Retroba una fila dins d'una cua acabada de llegir, comparant-la
-// sencera. Torna la posició, o -1 si ja no hi és (algú altre l'ha
-// tocada mentrestant).
-// ------------------------------------------------------------
-function trobaIndex(cua, original) {
-  var agulla = JSON.stringify(original);
-  for (var i = 0; i < cua.length; i++) {
-    if (JSON.stringify(cua[i]) === agulla) {
-      return i;
-    }
-  }
-  return -1;
-}
-
-// El text exacte de l'error quan una fila ja no és a la cua. Es compara
-// literalment a publica(), que és l'únic cas on això no és greu.
-var JA_NO_HI_ES = 'La fila ja no era a la cua.';
-
-// El començament del text de l'error quan l'id que es vol publicar ja
-// és a events.json. Porta l'id enganxat al final, i publica() el
-// reconeix per aquest començament.
-var JA_PUBLICAT = 'Aquest acte ja estava publicat, no s’ha duplicat.';
-
-// ------------------------------------------------------------
-// Diu si un identificador ja és a la llista d'actes publicats. Un id
-// buit (un acte sense data d'inici) no compta: no identifica ningú, i
-// tots els actes sense data el compartirien.
-// ------------------------------------------------------------
-function idJaPublicat(events, id) {
-  if (id === '') {
-    return false;
-  }
-
-  for (var i = 0; i < events.length; i++) {
-    if (events[i].id === id) {
-      return true;
-    }
-  }
-  return false;
-}
-
-// ------------------------------------------------------------
-// Torna una transformació que substitueix una fila de la cua, a la
-// mateixa posició, per la fila publicada. Si la fila ja no hi és, peta:
-// val més aturar-se que dir que s'ha fet una cosa que no s'ha fet.
-// ------------------------------------------------------------
-function substitueixPerPublicada(original, publicada) {
-  return function (pendents) {
-    var posicio = trobaIndex(pendents, original);
-    if (posicio === -1) {
-      throw new Error(JA_NO_HI_ES);
-    }
-
-    var nova = pendents.slice();
-    nova[posicio] = publicada;
-    return nova;
-  };
-}
-
-// ------------------------------------------------------------
-// Construeix la fila de pendents.json d'un acte publicat: els 17 camps
-// editats més la nota_curador de l'original, intacta (no és editable i
-// no passa per recullFitxa). Divuit camps, tots cadenes, en l'ordre del §4.
-// ------------------------------------------------------------
-function creaFilaPublicada(editat, original) {
-  var nota = '';
-  if (typeof original.nota_curador === 'string') {
-    nota = original.nota_curador;
-  }
-
-  return {
-    id: editat.id,
-    titol: editat.titol,
-    data_inici: editat.data_inici,
-    data_fi: editat.data_fi,
-    hora: editat.hora,
-    lloc: editat.lloc,
-    municipi: editat.municipi,
-    comarca: editat.comarca,
-    categoria: editat.categoria,
-    descripcio_ca: editat.descripcio_ca,
-    descripcio_fr: editat.descripcio_fr,
-    associacio: editat.associacio,
-    imatge_url: editat.imatge_url,
-    font_url: editat.font_url,
-    estat: 'publicat',
-    data_entrada: editat.data_entrada,
-    periodicitat: editat.periodicitat,
-    nota_curador: nota
-  };
-}
-
-// ------------------------------------------------------------
-// Torna una transformació que marca una fila de la cua com a rebutjada.
-// La fila NO se'n va del fitxer: només li canvia l'estat. Això és la
-// memòria de rebuig del projecte —posició al fitxer, no un tercer
-// magatzem—, i és el que evita que una sincronització automàtica torni
-// a oferir un acte que el curador ja ha dit que no.
-//
-// Es copia la fila en comptes de tocar-la: l'objecte de la cua acabada
-// de llegir no s'ha de modificar mai a mitja escriptura, perquè un
-// reintent el torna a llegir de zero.
-//
-// Si la fila ja no hi és, peta, igual que substitueixPerPublicada().
-// ------------------------------------------------------------
-function marcaRebutjadaALaCua(original) {
-  return function (pendents) {
-    var posicio = trobaIndex(pendents, original);
-    if (posicio === -1) {
-      throw new Error(JA_NO_HI_ES);
-    }
-
-    var rebutjada = JSON.parse(JSON.stringify(pendents[posicio]));
-    rebutjada.estat = 'rebutjat';
-
-    var nova = pendents.slice();
-    nova[posicio] = rebutjada;
-    return nova;
-  };
-}
-
-// ------------------------------------------------------------
 // Escriu un missatge dins d'una fitxa concreta i, si cal, la deixa
 // mig apagada i amb els botons bloquejats mentre s'hi treballa. Les
 // dues coses van sempre juntes a posta: una fitxa apagada que encara
@@ -1069,20 +950,14 @@ async function publica(fitxa, original) {
   }
 
   var editat = recullFitxa(fitxa, original);
-  editat.estat = 'publicat';
 
   avisaFitxa(fitxa, 'Publicant…', '', true);
 
   try {
-    await desaAmbReintent(FITXER_EVENTS, function (events) {
-      // La comprovació va aquí dins, sobre la llista acabada de llegir:
-      // així el reintent la torna a fer sobre el fitxer fresc, i no
-      // s'escriu res si algú altre l'ha publicat mentrestant.
-      if (idJaPublicat(events, editat.id)) {
-        throw new Error(JA_PUBLICAT + ' Identificador: ' + editat.id + '.');
-      }
-      return events.concat([editat]);
-    }, 'Publica ' + editat.titol);
+    // afegeixAPublicats() (curador-cua.js) no escriu l'id si ja hi és, i ho
+    // comprova dins la transformació perquè el reintent la torni a fer.
+    await desaAmbReintent(FITXER_EVENTS, afegeixAPublicats(editat),
+      'Publica ' + editat.titol);
   } catch (error) {
     // No s'ha escrit res i la fila segueix a la cua, tant si l'id ja hi
     // era com si l'escriptura ha fallat. El que canvia és què cal fer-hi.
@@ -1121,9 +996,7 @@ async function publica(fitxa, original) {
   }
 
   fitxa.remove();
-  CUA = CUA.filter(function (fila) {
-    return JSON.stringify(fila) !== JSON.stringify(original);
-  });
+  CUA = treuDeLaCua(CUA, original);
   actualitzaRecompte();
 
   if (laCuaHaCanviat) {
@@ -1162,9 +1035,7 @@ async function rebutja(fitxa, original) {
       'Rebutja ' + original.titol);
 
     fitxa.remove();
-    CUA = CUA.filter(function (fila) {
-      return JSON.stringify(fila) !== JSON.stringify(original);
-    });
+    CUA = treuDeLaCua(CUA, original);
     actualitzaRecompte();
     mostraAvis('Rebutjat: ' + original.titol, 'fet');
   } catch (error) {
@@ -1213,11 +1084,9 @@ async function carregaCua() {
   try {
     var fitxer = await llegeixFitxer(FITXER_PENDENTS);
 
-    // Explícitament només 'pendent'. Les files rebutjades continuen al
-    // fitxer com a memòria de rebuig, i no han de tornar a la cua.
-    CUA = fitxer.dades.filter(function (fila) {
-      return fila.estat === 'pendent';
-    });
+    // filesPendents() (curador-cua.js): només 'pendent', mai «tot menys
+    // rebutjat». Les altres files continuen al fitxer i no tornen a la cua.
+    CUA = filesPendents(fitxer.dades);
 
     for (var i = 0; i < CUA.length; i++) {
       llista.appendChild(creaFitxa(CUA[i]));

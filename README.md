@@ -49,7 +49,7 @@ en dos fitxers JSON del repositori.
 | Fitxer / carpeta | Funció |
 |---|---|
 | `index.html`, `style.css`, `app.js` | Web públic estàtic (vanilla JS, sense frameworks) |
-| `curador.html` | La cua de revisió. Pàgina autònoma; el testimoni de GitHub s'hi enganxa i mor amb la pestanya |
+| `curador.html`, `curador-cua.js` | La cua de revisió i les peces que en canvien l'estat (publicar, rebutjar), que Node prova. El testimoni de GitHub s'hi enganxa i mor amb la pestanya |
 | `events.json` | Dades publicades — font de veritat del que és en línia |
 | `pendents.json` | La cua de revisió — el que espera validació |
 | `events-exemple.json` | Dades fictícies de prova (mode `?prova=1`) |
