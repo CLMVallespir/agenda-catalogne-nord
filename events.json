@@ -7443,5 +7443,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.385Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-taller-de-scrapbooking",
+    "titol": "Taller de scrapbooking",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "13:30",
+    "lloc": "Rue de la Gabarre",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'activitat està reservada als socis de l'associació. S'hi treballen diverses tècniques de manualitats aplicades a l'àlbum de retalls.",
+    "descripcio_fr": "L'activité est réservée aux adhérents de l'association. Différentes techniques de loisirs créatifs appliquées à l'album de scrapbooking y sont travaillées.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/IMG-7395.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.346Z",
+    "periodicitat": ""
   }
 ]
