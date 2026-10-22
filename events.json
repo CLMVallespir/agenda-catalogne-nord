@@ -8070,5 +8070,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.447Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-taller-denergia-mix",
+    "titol": "Taller d'energia mix",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "Targasona",
+    "comarca": "Cerdanya",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'activitat permet comprendre els reptes i les decisions necessàries avui per participar en una transició energètica reeixida per al 2050. El taller s'adreça a persones a partir de 16 anys.",
+    "descripcio_fr": "L'activité permet de comprendre les enjeux et les choix à faire dès aujourd'hui pour participer à une transition énergétique réussie à l'horizon 2050. L'atelier s'adresse aux personnes à partir de 16 ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/28-octobre-themis.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.409Z",
+    "periodicitat": ""
   }
 ]
