@@ -5020,7 +5020,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52R8RU] Ve marcada «Jeux» sense cap patró de joc de club al títol: la categoria queda buida. Si és un joc d'entitat, és Vida associativa; si és un negoci, la fila no hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-28-apres-midi-jeux",
+    "id": "2026-10-28-tarda-de-jocs",
     "titol": "Tarda de jocs de taula",
     "data_inici": "2026-10-28",
     "data_fi": "2026-10-28",
@@ -5034,7 +5034,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/jeux-de-societe-adobestock.jpg?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.373Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52RG3U] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
