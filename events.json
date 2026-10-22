@@ -7956,5 +7956,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.521Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-taller-creatiu",
+    "titol": "Taller creatiu",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "14:30",
+    "lloc": "Médiathèque Victor Hugo2 Rue de la Paix",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "El taller proposa activitats de plegat, retallat, pintar i acolorir amb diversos materials com paper, cartró o roba. L'activitat permet desenvolupar la creativitat mitjançant la realització d'una obra personal i única amb Laetitia.",
+    "descripcio_fr": "L'atelier propose des activités de pliage, découpage, coloriage et peinture avec divers matériaux comme le papier, le carton ou le tissu. L'activité permet de développer sa créativité à travers la réalisation d'une œuvre personnelle et unique avec Laetitia.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Atelier-d-halloween.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.519Z",
+    "periodicitat": ""
   }
 ]
