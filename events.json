@@ -7595,5 +7595,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.470Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-un-couillon-dans",
+    "titol": "Un couillon dans les voiles",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "21:00",
+    "lloc": "LA BOITE A RIRE113 Avenue du Palais des Expositions",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Aquesta comèdia marítima, escrita i interpretada per Delphine Chicoineau amb Jacques Bernet, narra les aventures de la Françoise Gambas durant la seva participació en la cursa Vendée globe. La protagonista es veu sorpresa quan descobreix que en Gustave Potiron s'ha amagat al seu vaixell just abans de la sortida. La situació genera una sèrie de rialles, confusions i discussions en un espai tancat.",
+    "descripcio_fr": "Cette comédie maritime, écrite et interprétée par Delphine Chicoineau avec Jacques Bernet, relate les aventures de Françoise Gambas lors de sa participation à la course du Vendée globe. La protagoniste est surprise lorsqu'elle découvre que Gustave Potiron s'est caché dans son bateau juste avant le départ. La situation engendre une série de rires, de quiproquos et de disputes dans un huis clos.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Un-couillon-dans-les-voiles-2.png?width=150&height=120",
+    "font_url": "http://www.laboitearire.net",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.473Z",
+    "periodicitat": ""
   }
 ]
