@@ -8089,5 +8089,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.409Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-rendez-vous-del",
+    "titol": "Rendez-vous del país d'art i d'història insòlit: Mas-Chancel a Catllar",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "15:00",
+    "lloc": "Place de la République",
+    "municipi": "Catllar",
+    "comarca": "Conflent",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "Aquest acte, emmarcat en el mes de l'arquitectura, ret homenatge a l'arquitecte Édouard Mas-Chancel, figura clau del regionalisme català establert a Catllar. La visita permet descobrir les obres realitzades a la localitat i a altres punts del Conflent, com els banys de Molitg i la maison Chevasson. L'activitat està oberta a tot el públic familiar.",
+    "descripcio_fr": "Dans le cadre du mois de l’architecture, cet événement rend hommage à l'architecte Édouard Mas-Chancel, figure clé du régionalisme catalan installé à Catllar. La visite permet de découvrir ses réalisations dans la localité ainsi qu'ailleurs dans le Conflent, comme aux thermes de Molitg ou à la maison Chevasson. L'activité est ouverte à tout le public familial.",
+    "associacio": "Contacter Madame BONNAL Gwenaëlle",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/07-Affiche-RDV-Automne-2026-Catllar.jpg?width=150&height=120",
+    "font_url": "https://www.tourisme-canigo.com/pays-dart-et-dhistoire-conflent-canigo/#rdv",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.456Z",
+    "periodicitat": ""
   }
 ]
