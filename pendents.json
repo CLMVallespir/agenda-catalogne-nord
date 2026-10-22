@@ -1040,7 +1040,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V51ER88] L'acte es fa 28 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-22-marche-hebdomadaire",
+    "id": "2026-10-22-mercat-setmanal",
     "titol": "Mercat setmanal",
     "data_inici": "2026-10-22",
     "data_fi": "2026-10-22",
@@ -1054,7 +1054,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/MARCHE-1.jpg?width=150&height=120",
     "font_url": "https://www.saintlaurentdelasalanque.fr/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.343Z",
     "periodicitat": "cada setmana",
     "nota_curador": "[ADT66 id: FMALAR066V528GNT] L'acte es fa 61 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
