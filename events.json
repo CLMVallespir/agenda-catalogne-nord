@@ -7500,5 +7500,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.385Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-nouveau-spectacle-naim",
+    "titol": "Nouveau spectacle Naim Chapitre 3",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "20:00",
+    "lloc": "Palais des CongrèsPlace Armand Lanoux",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'humorista Naim presenta el seu nou espectacle, on continua reflexionant sobre les coses que l'irriten a ell i al seu públic. L'acte no es recomana a menors de catorze anys.",
+    "descripcio_fr": "L'humoriste Naim présente son nouveau spectacle, où il continue de réfléchir sur ce qui l'énerve, lui et son public. L'événement est déconseillé aux moins de quatorze ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/NAIM-22-Octobre-2026.png?width=150&height=120",
+    "font_url": "https://www.congres-perpignan.com/agenda/nouveau-spectacle-naim-chapitre-3",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.388Z",
+    "periodicitat": ""
   }
 ]
