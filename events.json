@@ -7709,5 +7709,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.500Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-taller-infantil-meme",
+    "titol": "Taller infantil \"Même pas peur\"",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "14:30",
+    "lloc": "61 Avenue du Gén de Gaulle",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest taller d'arts creatives s'adreça a infants d'entre 6 i 11 anys. L'activitat és gratuïta i requereix inscripció prèvia.",
+    "descripcio_fr": "Cet atelier d'arts créatifs s'adresse aux enfants âgés de 6 à 11 ans. L'activité est gratuite et nécessite une inscription préalable.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Atelier-jeunesse.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.503Z",
+    "periodicitat": ""
   }
 ]
