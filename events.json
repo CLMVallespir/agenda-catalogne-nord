@@ -7538,5 +7538,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.395Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-iniciacio-a-la",
+    "titol": "Iniciació a la dansa flamenc amb Chispa Latina i Almalinda",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "16:30",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'associació Chispa Latina proposa una iniciació a la dansa flamenc. S'hi treballarà l'aprenentatge d'una breu coreografia i l'activitat està adreçada a un públic familiar.",
+    "descripcio_fr": "L'association Chispa Latina propose une initiation à la danse Flamenco. L'apprentissage d'une courte chorégraphie est prévu et l'activité s'adresse à un public familial.",
+    "associacio": "Contacter 1 RUE FRANCOIS ARAGO",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/LCD--2027-2.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.447Z",
+    "periodicitat": ""
   }
 ]
