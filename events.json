@@ -8013,5 +8013,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.485Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-28-taller-de-dibuix",
+    "titol": "Taller de dibuix manga",
+    "data_inici": "2026-10-28",
+    "data_fi": "2026-10-28",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "L'associació Si le Japon m'était conté proposa un taller de dibuix adreçat a infants i joves a partir de deu o onze anys.",
+    "descripcio_fr": "L'association Si le Japon m'était conté propose un atelier de dessin destiné aux enfants et aux jeunes à partir de dix ou onze ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/atelier-manga.jpeg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.475Z",
+    "periodicitat": ""
   }
 ]
