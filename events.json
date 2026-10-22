@@ -7462,5 +7462,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.346Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-festa-de-la",
+    "titol": "Festa de la Verema al Château Lauriga",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "18:00",
+    "lloc": "Traverse de Ponteilla RD37",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "El Château Lauriga organitza una trobada per celebrar la fi de la verema en un ambient distès. La vetllada inclou música amb DJ, oferta gastronòmica amb food-trucks i la degustació dels vins del celler.",
+    "descripcio_fr": "Le Château Lauriga organise une rencontre pour célébrer la fin des vendanges dans une ambiance décontractée. La soirée inclut de la musique avec DJ, une offre gastronomique avec des food-trucks et la dégustation des vins du domaine.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-vendanges-lauriga.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.379Z",
+    "periodicitat": ""
   }
 ]
