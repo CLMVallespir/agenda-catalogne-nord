@@ -7918,5 +7918,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.473Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-samedi-en-scene",
+    "titol": "Samedi en scène: Le Grenier magique de Lili",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "15:30",
+    "lloc": "14 Rue de l'Espace Arthur Conte",
+    "municipi": "Pollestres",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Nicolas visita la seva àvia per ajudar-la a endreçar les golfes. En el procés, descobreix que encara té molt per aprendre sobre el seu avi mag i, amb l'ajuda de Lili, la ratolina que havia estat assistent del seu avi, es replanteja tot el que sabia sobre la màgia.",
+    "descripcio_fr": "Nicolas rend visite à sa grand-mère pour l'aider à ranger son grenier. En cours de route, il découvre qu'il a encore beaucoup à apprendre sur son grand-père magicien et, avec l'aide de Lili, la petite souris qui était l'assistante de son grand-père, il remet en question tout ce qu'il savait sur la magie.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Samedi-en-scene--le-grenier-magique-de-lili.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.504Z",
+    "periodicitat": ""
   }
 ]
