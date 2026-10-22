@@ -7690,5 +7690,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.498Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-22-projeccio-del-film",
+    "titol": "Projecció del film \"Espoir, sierra de Teruel\"",
+    "data_inici": "2026-10-22",
+    "data_fi": "2026-10-22",
+    "hora": "14:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "L'acte ret homenatge a André Malraux amb la presentació i la projecció de la pel·lícula \"Espoir, sierra de Teruel\". La sessió inclou una introducció a càrrec d'Édouard Waintrop sobre la història i la restauració d'aquest film basat en la Guerra d'Espanya.",
+    "descripcio_fr": "L'événement rend hommage à André Malraux avec la présentation et la projection du film \"Espoir, sierra de Teruel\". La séance inclut une introduction d'Édouard Waintrop sur l'histoire et la restauration de ce film basé sur la Guerre d'Espagne.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Espoir--sierra-de-Teruel---Octobre-2026.jpg?width=150&height=120",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.500Z",
+    "periodicitat": ""
   }
 ]
