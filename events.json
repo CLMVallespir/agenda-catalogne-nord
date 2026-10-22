@@ -7728,5 +7728,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.503Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-23-tad-lexplorateur-et",
+    "titol": "Tad l'explorateur et la lampe magique",
+    "data_inici": "2026-10-23",
+    "data_fi": "2026-10-23",
+    "hora": "18:15",
+    "lloc": "Cinéma \"Le Casteil\"",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Cinema",
+    "descripcio_ca": "La projecció del film d'animació d'Enrique Gato s'adreça al públic familiar a partir de sis anys. La història narra la nova aventura de Tad i els seus amics, que han de viatjar a través del temps i de diverses civilitzacions per evitar que Momie alteri el curs de la història.",
+    "descripcio_fr": "La projection du film d'animation d'Enrique Gato s'adresse au public familial à partir de six ans. L'histoire raconte la nouvelle aventure de Tad et de ses amis, qui doivent voyager à travers le temps et différentes civilisations pour éviter que Momie n'altère le cours de l'histoire.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Tad-l-explorateur.jpg?width=150&height=120",
+    "font_url": "https://lesangles.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.550Z",
+    "periodicitat": ""
   }
 ]
