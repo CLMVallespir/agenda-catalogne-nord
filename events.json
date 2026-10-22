@@ -7861,5 +7861,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.359Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-fira-de-la",
+    "titol": "Fira de la Creu Roja",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "09:00",
+    "lloc": "Place du Maréchal Leclerc",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "La Croix-Rouge organitza una fira solidària on es poden trobar roba, vaixella, joguines i diversos articles a preus assequibles. Aquesta iniciativa permet col·laborar amb una bona causa mentre s'hi busquen objectes de segona mà.",
+    "descripcio_fr": "La Croix-Rouge organise une braderie solidaire où vous pourrez trouver des vêtements, de la vaisselle, des jouets et divers articles à petits prix. Cette initiative permet de soutenir une bonne cause tout en chinant des objets.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/de-9h-a-17h---place-du-marche---Collioure.png?width=150&height=120",
+    "font_url": "https://www.tourisme-collioure.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.361Z",
+    "periodicitat": ""
   }
 ]
