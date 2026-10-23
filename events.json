@@ -8583,5 +8583,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.378Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-26-don-de-sang",
+    "titol": "Don de sang",
+    "data_inici": "2026-10-26",
+    "data_fi": "2026-10-26",
+    "hora": "15:00",
+    "lloc": "Boulevard des Rois de Majorque",
+    "municipi": "El Barcarès",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Cada donació de sang pot salvar fins a tres vides. Aquesta activitat proposa dedicar una hora de temps per oferir esperança a les persones que ho necessiten.",
+    "descripcio_fr": "Chaque don de sang peut sauver jusqu'à 3 vies. Cette activité propose de consacrer une heure de son temps pour offrir de l'espoir aux personnes qui en ont besoin.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/AdobeStock-230385064.jpeg?width=150&height=120",
+    "font_url": "https://dondesang.efs.sante.fr/trouver-une-collecte/129552/sang",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.399Z",
+    "periodicitat": ""
   }
 ]
