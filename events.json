@@ -8488,5 +8488,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.537Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-excursio-a-peu",
+    "titol": "Excursió a peu al voltant de la mina de ferro de Palalda",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Esports",
+    "descripcio_ca": "L'associació «Le Montargull» proposa una caminada per descobrir les restes de la mina de ferro de Palalda. El recorregut té una longitud d'1,2 quilòmetres amb un desnivell de 150 metres i una pujada exigent.",
+    "descripcio_fr": "L'association «Le Montargull» propose une randonnée pour découvrir les vestiges de la mine de fer de Palalda. Le parcours a une longueur de 1,2 kilomètre avec un dénivelé de 150 mètres et une montée exigeante.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/025-4.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.567Z",
+    "periodicitat": ""
   }
 ]
