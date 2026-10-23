@@ -8507,5 +8507,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.567Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-concert-solidari-a",
+    "titol": "Concert solidari a la catedral d'Elna",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "19:30",
+    "lloc": "",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "L'associació Point d'Orgue organitza un concert a càrrec de l'Orchestre d'Harmonie Les Musiciens de Rivesaltes. Els fons recaptats es destinaran a la restauració del gran orgue Puget de 1869.",
+    "descripcio_fr": "L'association Point d'Orgue organise un concert avec l'Orchestre d'Harmonie Les Musiciens de Rivesaltes. Les fonds récoltés seront destinés à la restauration du grand orgue Puget de 1869.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cathedrale-elne.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.569Z",
+    "periodicitat": ""
   }
 ]
