@@ -17,7 +17,7 @@ Agenda culturelle automatisée pour la Catalogne Nord.
 associació ──correu──► agenda@clm.cat ──► Cloudflare Email Routing
                                                 │
 associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Cloudflare)
-                                            ├─ email():     parseja → Gemini → Cloudinary → pendents.json → reenvia l'original al Gmail d'arxiu
+                                            ├─ email():     parseja → Claude → Cloudinary → pendents.json → reenvia l'original al Gmail d'arxiu
                                             ├─ fetch():     mapa determinista del formulari → pendents.json
                                             └─ scheduled(): digest setmanal per comarca via Brevo
                                                 │
@@ -29,7 +29,7 @@ associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Clou
 1. Les associacions envien els actes **per correu a `agenda@clm.cat`** o **pel
    formulari Typebot**. No hi ha cap altra via.
 2. Un **únic Worker de Cloudflare** els converteix en files pendents. Pel camí
-   del correu, en treu les dades amb l'API de Gemini i puja el cartell a
+   del correu, en treu les dades amb l'API de Claude i puja el cartell a
    Cloudinary; pel camí del formulari, els camps ja arriben estructurats i no
    cal cap model. Passi el que passi, el correu original es reenvia al Gmail
    d'arxiu.
@@ -57,7 +57,7 @@ en dos fitxers JSON del repositori.
 | `worker/worker.js` | **La font de veritat del Worker.** Els tres gestors: `email()`, `fetch()`, `scheduled()` |
 | `worker/postal-mime.js` | Analitzador MIME vendoritzat (l'única dependència del projecte) |
 | `worker/worker-concatenat.js` | **Generat.** Els dos fitxers de dalt en un de sol: és el que s'enganxa al tauler |
-| `prompts/extract-event.txt` | El prompt d'extracció mestre per a Gemini |
+| `prompts/extract-event.txt` | El prompt d'extracció mestre per a Claude |
 | `importa-csv.js` | Eina d'un sol ús que va sembrar `pendents.json` des del CSV del full antic |
 | `docs/` | Guies de configuració i informes |
 | `docs/arxiu-google/` | **Codi mort.** El sistema anterior (full de càlcul + Apps Script), conservat com a registre històric |
@@ -65,7 +65,9 @@ en dos fitxers JSON del repositori.
 ## Principis
 
 - Sense infraestructura de pagament: només nivells gratuïts (Cloudflare, GitHub
-  Pages, Cloudinary, Brevo, API de Gemini).
+  Pages, Cloudinary, Brevo). L'única excepció és l'API de Claude, pagada amb el
+  crèdit mensual gratuït de l'organització i amb un límit de despesa que la fa
+  fallar abans de cobrar res (§3 de `CLAUDE.md`).
 - Sense comptes d'usuari, sense login, sense base de dades.
 - Sense framework, sense eina de compilació, sense npm.
 - Tot el text públic és bilingüe: català primer, francès a sota.
@@ -95,7 +97,7 @@ ha declarat és decoració.
 | Nom | On va | Què és |
 |---|---|---|
 | `CLOUDINARY_CLOUD_NAME` | Variable de text | surt a l'URL de cada cartell públic; no té res a amagar |
-| `GEMINI_API_KEY` | Secret | API de Gemini |
+| `ANTHROPIC_API_KEY` | Secret | API de Claude (Anthropic) |
 | `GITHUB_TOKEN` | Secret | gra fi, només aquest repositori, només `contents: write` |
 | `BREVO_API_KEY` | Secret | enviament del digest |
 | `BREVO_LIST_ROSSELLO` … `_CERDANYA` | Secrets | els cinc IDs de llista per comarca |

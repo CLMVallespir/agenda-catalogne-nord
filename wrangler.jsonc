@@ -7,7 +7,7 @@
 // fitxer no molesta: simplement ningú no el llegeix.
 //
 // AQUÍ NO HI HA CAP SECRET, I NO N'HI POT HAVER CAP: aquest fitxer és
-// públic com tot el repositori. Les tres claus (GEMINI_API_KEY,
+// públic com tot el repositori. Les tres claus (ANTHROPIC_API_KEY,
 // GITHUB_TOKEN i ADRECA_ARXIU) viuen als Secrets del tauler i no
 // surten mai d'allà. Vegeu docs/pas-fase2-worker-email.md.
 //

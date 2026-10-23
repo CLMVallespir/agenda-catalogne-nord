@@ -76,7 +76,7 @@ ni a Git.
 
 | Nom | Valor |
 |---|---|
-| `GEMINI_API_KEY` | La clau d'AI Studio |
+| `ANTHROPIC_API_KEY` | La clau de l'API d'Anthropic (platform.claude.com → API keys), creada al workspace que té el límit de despesa (§3 de `CLAUDE.md`). Fins al 23 d'octubre de 2026 aquí hi anava `GEMINI_API_KEY`, que ja no fa servir ningú |
 | `GITHUB_TOKEN` | Token de gra fi, **només** el repositori `agenda-catalogne-nord`, permís únic `Contents: Read and write` |
 | `ADRECA_ARXIU` | El Gmail d'arxiu. **Ha de ser una destinació verificada** a l'Email Routing, si no el reenviament falla |
 | `TYPEBOT_SECRET` | El secret compartit del webhook del formulari. No el fa servir el camí del correu: és de la Fase 3a, i el procediment és a `docs/pas-fase3a-worker-formulari.md` |
@@ -201,8 +201,9 @@ funció. Les claus no s'hi escriuen mai.
 | `falta la variable ADRECA_ARXIU` | La secció 3 no s'ha fet. Aquest cas és l'únic en què el Worker **rebutja** el correu en comptes de processar-lo: sense adreça d'arxiu no hi ha manera de desar l'original, i val més que el remitent rebi un avís de no-entrega que empassar-se-li el correu. Posa la variable i demana-li que el torni a enviar. |
 | «falta la variable…» i jures que la vas posar | Tres causes, per ordre de probabilitat. **(1)** El canvi al tauler no s'ha desplegat: els Secrets formen part de la versió del Worker i la pantalla acaba amb un botó **Deploy**. Mira Worker → **Deployments** i, si cal, torna a construir. **(2)** L'has posada com a **variable de text** i no com a Secret: `wrangler deploy` esborra les de text a cada desplegament (secció 3). **(3)** És al Worker equivocat, o el nom no és exacte — cap accent, cap espai al final. I abans de res: mira l'hora de l'entrada del registre, que se'n guarden 3 dies i pot ser d'abans que ho arreglessis. |
 | `el reenviament ha fallat` | L'adreça d'arxiu no és una destinació verificada a l'Email Routing. |
-| `Gemini ha respost amb codi 404` | Google ha retirat el model. Cicle de vida normal: mira quins Flash / Flash-Lite hi ha vigents i canvia la constant `GEMINI_MODEL`. Mai la gamma Pro, que és de pagament. |
-| `Gemini ha respost amb codi 429` | Quota diària del nivell gratuït esgotada. El correu és a l'arxiu; es pot reenviar demà. |
+| `Claude ha respost amb codi 404` | Anthropic ha retirat el model. Cicle de vida normal: mira quin Haiku hi ha vigent i canvia la constant `CLAUDE_MODEL`. Haiku i prou: els altres models costen vint vegades més. |
+| `Claude ha respost amb codi 401` | La clau `ANTHROPIC_API_KEY` no és bona: mal copiada, revocada o caducada. |
+| `Claude ha respost amb codi 429`, `402`, o `400` amb «API usage limits» o «credit balance» | S'ha acabat el crèdit del mes o s'ha arribat al límit de despesa; un 429 també pot ser el límit per minut. El missatge diu quan torna l'accés. El correu és a l'arxiu i es pot reenviar llavors. |
 | `el cartell no s'ha pogut pujar` | Cloudinary ha dit no (mida, format, preset). La fila hi és igualment, sense imatge: el curador la pot afegir a mà. |
 | `GitHub ha rebutjat l'escriptura` | Token caducat, mal abastat, o sense `Contents: write`. |
 

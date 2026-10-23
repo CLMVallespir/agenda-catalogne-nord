@@ -6,6 +6,87 @@ resultin errònies s'esborren, no es maten a comentaris.*
 
 ---
 
+## De Gemini a Claude Haiku 5.5: la quota diària no donava per a dos camins (23 d'octubre de 2026)
+
+**Resum:** el Worker i l'Action criden ara Claude Haiku 5.5
+(`claude-haiku-5-5`) en lloc de Gemini. El motiu és la quota, no la qualitat,
+i l'excepció al §3 de `CLAUDE.md` només val amb un límit de despesa que faci
+fallar les crides quan s'acaba el crèdit, en lloc de cobrar-les.
+
+El pla gratuït de Gemini dona 500 crides al dia **per projecte de Google, no
+per clau**, i els dos camins compartien projecte: l'Action se'n quedava 300 i
+en deixava 200 al Worker. El 22 de setembre, 44 de les 46 últimes files d'una
+passada van entrar en francès quan es va acabar la quota del dia.
+L'organització té a l'API d'Anthropic un crèdit gratuït de 40 $ al mes que es
+renova sol, i Claude no té cap quota diària.
+
+**El compte, fet el 22 d'octubre de 2026 i refet l'endemà amb el pensament
+engegat.** Preus de la pàgina d'Anthropic: Haiku 5.5 a 0,10 $ el milió de
+tokens d'entrada i 0,50 $ el de sortida. Mides reals del repositori:
+`PROMPT_TRADUCCIO` fa 9 007 caràcters i `prompts/extract-event.txt` 4 239; la
+fitxa d'una fila de l'ADT66 fa 325 de mediana i 1 069 de màxim (324 files de
+`pendents.json`). L'entrada es va comptar a 2 caràcters per token, que n'infla
+el nombre a posta. Amb el pensament (vegeu la prova de sota), tots dos
+contextos tenen `max_tokens` = 8 192, i el pitjor cas és una resposta tallada
+a aquest sostre. Surt:
+
+- traducció: 0,0047 $ la pitjor crida (4 000 caràcters de text i 8 192
+  tokens de sortida);
+- una passada de l'Action al pitjor cas, 300 crides: 1,42 $; un mes de cinc
+  dimarts: 7,12 $;
+- un correu al pitjor cas (20 000 caràcters, 8 192 tokens de sortida):
+  0,0053 $;
+- **mesurat**, el 23 d'octubre, amb els tres correus de
+  `prompts/exemples-test/`: de 2 713 a 2 815 tokens d'entrada i de 1 202 a
+  1 451 de sortida per correu, pensament inclòs. De 0,0009 a 0,0010 $ per
+  correu;
+- amb Sonnet 5.5, vint vegades més car, el pitjor mes de l'Action ja feia
+  34,87 $ sense pensar, i amb el Worker al costat no cap en el crèdit. D'aquí
+  ve «Haiku i prou».
+
+**La prova del 23 d'octubre de 2026, i per què hi ha pensament.** Les mateixes
+19 files de l'ADT66, passades per tres configuracions amb
+`--en-sec --pressupost=20 --fitxes` i revisades una per una contra el text
+francès de la font:
+
+| | Haiku sense pensar | Haiku amb pensament (`high`) | `gemini-3.1-flash-lite` |
+|---|---|---|---|
+| files netes | 4 | 12 | 8 |
+| regles dures trencades (data, hora, preu o adreça a la descripció; poble al títol o afegit; invenció) | 12 | 0 | 5 |
+| fets equivocats o mal traduïts | 2 | 1 | 2 |
+| nom propi traduït | 5 | 1 | 1 |
+| errors de llengua | 7 | 4 | 4 |
+| detall perdut per resumir | 0 | 1 | 5 |
+| declinades (entren en francès) | 0 | 1 | 0 |
+
+Sense pensar, Haiku escrivia bon català però saltava les regles del prompt
+(«jaguars» va sortir «guepards»; el rànquing de tennis, equivocat). Amb el
+pensament a esforç `high` no en va trencar cap, i per això els dos contextos
+el porten (`thinking: { type: 'adaptive' }`, `output_config.effort: 'high'`).
+L'únic preu, a part del cost, és que declina més: «Fugueuses» només tenia una
+frase de matèria i va entrar en francès, on Gemini n'hi va inventar una
+segona. Els tres correus de prova del Worker van donar bé la data, l'hora, la
+comarca i la categoria (12 de 12); el correu 1 va sortir amb «la cor» (és
+masculí), «parvis» i el municipi «Prades» en lloc de «Prada».
+
+**Com ha de fallar.** Claude no és cap capa gratuïta: és un servei de
+pagament que el crèdit cobreix. L'excepció al §3 només val si, quan s'acaba,
+les crides fallen. Cal un límit de despesa a la consola d'Anthropic (Billing →
+Spend limits, o un workspace propi; el workspace per defecte no n'admet) no
+més alt que el crèdit, i cap targeta amb recàrrega automàtica. En arribar al
+límit, l'API torna un 400 (límit propi) o un 429 (sostre del nivell), i
+l'Action els tracta com abans tractava la quota exhaurida de Gemini: atura la
+passada, i la resta torna la setmana següent (`esQuotaExhaurida()`).
+
+**El que no ha canviat:** els dos prompts, la lectura defensiva del JSON, el
+pressupost de 300 crides i la pausa de 4,5 s, que es queda per si
+l'organització comença en un nivell amb límits per minut baixos. **El que
+encara no s'ha vist:** una passada de debò de l'Action i un correu de debò al
+Worker. Per jutjar el prompt un altre cop, `--en-sec --amb-claude
+--pressupost=20 --fitxes`, que no escriu res.
+
+---
+
 ## Publicar marca la fila com a `publicat` en comptes de treure-la (1 d'octubre de 2026)
 
 **Resum:** `events.json` no conserva `nota_curador`, on viu el tag
@@ -1309,36 +1390,6 @@ serà una cua que no creix, que és el mateix aspecte que té una cua al dia.
 La regla: **una automatització que s'apaga sola per manca d'activitat no és una
 automatització de fons i s'ha de mirar de tant en tant.** Si es fa llarg, un
 commit qualsevol al repositori reinicia el compte de 60 dies.
-
----
-
-## La quota de Gemini és per projecte, i dos camins que la comparteixen no ho veuen
-
-**Resum:** el límit de Gemini es compta **per projecte de Google, no per clau**,
-de manera que dues claus diferents del mateix projecte es trepitgen la quota
-sense que enlloc no ho digui.
-
-Ho diu la documentació dels límits, literalment: «Rate limits are applied per
-project, not per API key». La conseqüència aquí no és teòrica. El projecte té
-dos contextos que criden Gemini —el Worker, per correu i en directe, i l'Action,
-per lot i setmanalment (§7 bis de `CLAUDE.md`)— i cadascun té la clau en un
-magatzem de secrets diferent: Cloudflare l'un, els Secrets d'Actions de GitHub
-l'altre. **Dos magatzems separats fan pensar en dues quotes separades, i no ho
-són** si les dues claus surten del mateix projecte de Google.
-
-Per què importa: els dos camins no valen igual quan la quota s'acaba. Una fila
-de l'ADT66 que no es tradueix avui es torna a oferir la setmana que ve i no es
-perd res. **Un correu que arriba amb la quota exhaurida sí que es perd**: el
-remitent ja l'ha enviat i ningú no el tornarà a enviar. O sigui que el camí
-barat ha de deixar quota al camí car, no al contrari.
-
-La regla, i és la que hi ha al codi: **el camí per lot no gasta mai tota la
-quota del dia.** `PRESSUPOST_CRIDES_GEMINI = 300` sobre 500 RPD deixa 200 al
-Worker, i és una constant amb el perquè escrit al costat justament perquè el dia
-que algú la pugi a 500 sàpiga què està decidint. La protecció més neta seria un
-**projecte de Google separat per a cada camí** —quotes de debò independents, i
-no costa res—, i és la recomanació; el pressupost hi és perquè funcioni igual
-si no s'ha fet.
 
 ---
 

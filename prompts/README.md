@@ -2,7 +2,7 @@
 
 ## extract-event.txt
 
-Prompt enviat a l'API de Gemini (`gemini-3.5-flash-lite`) pel gestor `email()` del Worker. Converteix el cos d'un correu en un objecte JSON amb els 17 camps públics de l'esquema (16 de sempre + `periodicitat`, afegit el 17 de setembre de 2026 — vegeu §4 de `CLAUDE.md` i `docs/DECISIO-ACTIVITATS-PERMANENTS.md`).
+Prompt enviat a l'API de Claude (`claude-haiku-5-5`; fins al 23 d'octubre de 2026, Gemini) pel gestor `email()` del Worker. Converteix el cos d'un correu en un objecte JSON amb els 17 camps públics de l'esquema (16 de sempre + `periodicitat`, afegit el 17 de setembre de 2026 — vegeu §4 de `CLAUDE.md` i `docs/DECISIO-ACTIVITATS-PERMANENTS.md`).
 
 > **Còpia mestra:** la mestra és **aquest `extract-event.txt`**. La constant `EXTRACTION_PROMPT` de `worker/worker.js` n'és una còpia que ha de ser-hi idèntica, byte a byte (verificada el 27 d'agost de 2026: 3 773 bytes, iguals). Es compara **tal com Git els guarda**, amb salts LF: al disc, a Windows, aquest `.txt` es veu amb CRLF i fa 3 824 bytes, que és cosa de `core.autocrlf` i no cap diferència de text. Si en canvies una, canvia l'altra.
 >
@@ -16,7 +16,7 @@ Prompt enviat a l'API de Gemini (`gemini-3.5-flash-lite`) pel gestor `email()` d
 
 ### Com provar-lo manualment (verificació del Pas 2)
 
-1. Obre Google AI Studio (aistudio.google.com), tria el mateix model que la constant `GEMINI_MODEL` de `worker/worker.js` (ara `gemini-3.5-flash-lite`) i copia tot el contingut de `extract-event.txt`.
+1. Obre la consola d'Anthropic (platform.claude.com) i, al Workbench, tria el mateix model que la constant `CLAUDE_MODEL` de `worker/worker.js` (ara `claude-haiku-5-5`) i copia tot el contingut de `extract-event.txt`.
 2. Substitueix `{{AVUI}}` per la data d'avui (per exemple `2026-06-12`).
 3. Enganxa un dels correus de `exemples-test/` després de la línia `CORREU:`.
 4. Envia i comprova el resultat amb la llista següent.

@@ -206,7 +206,7 @@ verificar per codi):
 - [ ] Worker → Settings → **Trigger Events → Cron Triggers**: hi ha l'entrada
       `*/10 13,14 * * 2`, i **una de sola**.
 - [ ] Worker → Settings → **Variables**: `CLOUDINARY_CLOUD_NAME` com a variable
-      de text, i els Secrets `GEMINI_API_KEY`, `GITHUB_TOKEN`, `BREVO_API_KEY`,
+      de text, i els Secrets `ANTHROPIC_API_KEY`, `GITHUB_TOKEN`, `BREVO_API_KEY`,
       `TYPEBOT_SECRET`, `ADRECA_ARXIU` i els cinc `BREVO_LIST_*`.
 - [ ] Worker → **Deployments**: la darrera versió desplegada és la del 29
       d'agost. Recorda que **un Secret canviat no és viu fins que es desplega**.

@@ -4989,14 +4989,14 @@ class PostalMime {
 // EL CAMÍ D'UN CORREU, en ordre:
 //   1. reenviament a l'arxiu  ← el primer de tot, i passi el que passi
 //   2. postal-mime            → assumpte + cos de text + adjunts
-//   3. Gemini                 → els 11 camps que el model pot deduir
+//   3. Claude                 → els 11 camps que el model pot deduir
 //   4. Cloudinary             → el primer cartell adjunt (opcional)
 //   5. pendents.json          → una fila de 16 cadenes, estat "pendent"
 //
 // EL CAMÍ D'UNA TRAMESA DEL FORMULARI, en ordre:
 //   1. el secret de la capçalera  ← el primer de tot; si no, 403
 //   2. només POST                 → qualsevol altre mètode, 405
-//   3. mapa determinista          → camp a camp, CAP crida a Gemini:
+//   3. mapa determinista          → camp a camp, CAP crida a Claude:
 //                                   el formulari ja dona els camps
 //                                   separats, i el cartell ja ha
 //                                   pujat a Cloudinary des del
@@ -5040,7 +5040,8 @@ class PostalMime {
 // SECRETS I VARIABLES. Cap valor no viu mai dins d'aquest fitxer.
 // Als Secrets del tauler de Cloudflare (Worker > Settings >
 // Variables and Secrets):
-//   GEMINI_API_KEY         (la clau d'AI Studio)
+//   ANTHROPIC_API_KEY      (la clau de la consola d'Anthropic,
+//                           platform.claude.com)
 //   GITHUB_TOKEN           (gra fi, només aquest repositori, permís
 //                           únic `contents: write`)
 //   ADRECA_ARXIU           (el Gmail d'arxiu; ha de ser una destinació
@@ -5079,14 +5080,36 @@ var GITHUB_BRANCH = 'main';
 var FITXER_PENDENTS = 'pendents.json';
 var FITXER_EVENTS = 'events.json';
 
-// --- L'API de Gemini (nivell gratuït d'AI Studio) ---
+// --- L'API de Claude (Anthropic) ---
+// Des del 23 d'octubre de 2026; abans era Gemini (NOTES.md diu per
+// què es va canviar). Es paga amb el crèdit mensual de
+// l'organització, que ha de tenir un límit de despesa a la consola:
+// quan s'acaba, les crides fallen en lloc de cobrar res (§3 de
+// CLAUDE.md).
 // El nom del model viu en UNA constant i prou. Si algun dia torna un
-// 404 amb el nom del model a dins, és el cicle de vida normal de
-// Google: mira quins Flash / Flash-Lite hi ha vigents i canvia-la.
-// Mai la gamma Pro, que és de pagament.
-var GEMINI_MODEL = 'gemini-3.5-flash-lite';
-var GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/' + GEMINI_MODEL + ':generateContent';
-var GEMINI_MAX_TOKENS = 4096;
+// 404 amb el nom del model a dins, és el cicle de vida normal
+// d'Anthropic: mira quin Haiku hi ha vigent i canvia-la. Haiku i
+// prou: el model següent costa vint vegades més.
+var CLAUDE_MODEL = 'claude-haiku-5-5';
+var CLAUDE_URL = 'https://api.anthropic.com/v1/messages';
+// La versió de l'API, a la capçalera `anthropic-version`. Fixa a
+// posta: una versió nova pot canviar el que torna, i es canvia a mà.
+var CLAUDE_VERSIO_API = '2026-10-21';
+// Els 17 camps fan menys de 2 048 tokens; la resta és per al
+// pensament, que compta dins d'aquest sostre (vegeu
+// demanaExtraccioClaude()). Els que no s'usen no es paguen.
+var CLAUDE_MAX_TOKENS = 8192;
+
+// Les claus de l'objecte que ha de tornar el model: les 17 de la
+// regla 2 del prompt, en el mateix ordre. L'API les fa complir
+// (`output_config.format`, vegeu esquemaDeCadenes()), que és el que
+// feia `responseMimeType` a Gemini. SI LA REGLA 2 DEL PROMPT CANVIA
+// DE CLAUS, AQUESTA LLISTA CANVIA AMB ELLA.
+var CLAUS_EXTRACCIO = [
+  'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
+  'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat'
+];
 
 // --- Cloudinary: pujada sense signatura (docs/pas-3-cloudinary.md) ---
 // El preset ja porta la carpeta (clm-agenda/posters) i la
@@ -5416,17 +5439,17 @@ async function processaCorreu(message, env) {
   var textCorreu = textDelCorreu(correu);
 
   // Un correu sense gens de text no es pot analitzar: seria una
-  // crida a Gemini llençada i una fila buida a la cua. L'original
+  // crida a Claude llençada i una fila buida a la cua. L'original
   // ja és a l'arxiu, que és l'únic que importa.
   if (textCorreu === '') {
     console.log('processaCorreu(): correu sense text. Arxivat, sense fila.');
     return;
   }
 
-  // Gemini PRIMER, el cartell després: si l'extracció falla, no
+  // Claude PRIMER, el cartell després: si l'extracció falla, no
   // haurem deixat cap imatge òrfena a Cloudinary.
   var avui = new Date().toISOString().slice(0, 10);
-  var dadesExtretes = await demanaExtraccioGemini(textCorreu, env.GEMINI_API_KEY, avui);
+  var dadesExtretes = await demanaExtraccioClaude(textCorreu, env.ANTHROPIC_API_KEY, avui);
 
   // El cartell és opcional, i que falli no ha de costar la fila:
   // sense imatge la fila encara és bona i el curador pot afegir-la.
@@ -5536,7 +5559,7 @@ async function respostaDelFormulari(request, env) {
 
 // ------------------------------------------------------------
 // Munta la fila de 17 camps a partir del cos del formulari. Mapa
-// determinista, camp a camp, sense cap crida a Gemini: el formulari
+// determinista, camp a camp, sense cap crida a Claude: el formulari
 // ja dona la informació separada. Torna l'objecte de la fila.
 // ------------------------------------------------------------
 function construeixFilaFormulari(cos) {
@@ -5615,7 +5638,7 @@ function respostaJson(codi, objecte) {
 // ------------------------------------------------------------
 // El text que enviarem al model: l'assumpte, una línia buida i el
 // cos. Torna "" si el correu no porta gens de text (ni assumpte ni
-// cos): així qui la crida sap que no val la pena cridar Gemini.
+// cos): així qui la crida sap que no val la pena cridar Claude.
 // ------------------------------------------------------------
 function textDelCorreu(correu) {
   var assumpte = '';
@@ -5739,49 +5762,59 @@ async function pujaCartellCloudinary(adjunt, cloudName) {
 }
 
 // ============================================================
-// GEMINI
+// CLAUDE
 // ============================================================
 
 // ------------------------------------------------------------
-// Envia el text del correu a Gemini amb el prompt d'extracció i
+// Envia el text del correu a Claude amb el prompt d'extracció i
 // torna la resposta ja convertida en objecte (els 17 camps de
 // l'esquema). Llança si la crida falla o la resposta no és JSON.
-// La clau només viatja a la capçalera, mai al registre.
+// La clau només viatja a la capçalera, mai al registre. Un
+// `fetch` i prou: el §3 de CLAUDE.md no admet cap paquet npm.
 // ------------------------------------------------------------
-async function demanaExtraccioGemini(textCorreu, apiKey, avui) {
+async function demanaExtraccioClaude(textCorreu, apiKey, avui) {
   if (!apiKey) {
-    throw new Error('falta el secret GEMINI_API_KEY.');
+    throw new Error('falta el secret ANTHROPIC_API_KEY.');
   }
 
   var prompt = EXTRACTION_PROMPT.replace('{{AVUI}}', avui);
   var contingut = prompt + textCorreu;
 
   var cos = {
-    contents: [
-      { parts: [ { text: contingut } ] }
-    ],
-    generationConfig: {
-      maxOutputTokens: GEMINI_MAX_TOKENS,
-      responseMimeType: 'application/json',
-      // Els models 3.x "pensen" per defecte, i els tokens de pensar
-      // compten dins de maxOutputTokens: poden tallar el JSON abans
-      // de tancar-lo. Això és una extracció, no cal rumiar-hi.
-      thinkingConfig: { thinkingLevel: 'minimal' }
-    }
+    model: CLAUDE_MODEL,
+    max_tokens: CLAUDE_MAX_TOKENS,
+    // AMB PENSAMENT, I A ESFORÇ ALT, com a l'Action. A la prova del
+    // 23 d'octubre de 2026 sobre 19 files de l'ADT66, Haiku sense
+    // pensar saltava les regles del prompt en 15 i amb pensament en
+    // cap (NOTES.md). L'extracció també és seguir regles: no
+    // inventar, comarca i categoria de la llista, dates. El
+    // pensament no torna cap text (un bloc `thinking` buit, que
+    // extreuTextResposta() salta) però es paga com a sortida i compta
+    // dins de CLAUDE_MAX_TOKENS. Cap `temperature`: la versió
+    // CLAUDE_VERSIO_API la rebutja.
+    thinking: { type: 'adaptive' },
+    output_config: {
+      effort: 'high',
+      format: { type: 'json_schema', schema: esquemaDeCadenes(CLAUS_EXTRACCIO) }
+    },
+    messages: [
+      { role: 'user', content: contingut }
+    ]
   };
 
-  var resposta = await fetch(GEMINI_URL, {
+  var resposta = await fetch(CLAUDE_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'x-goog-api-key': apiKey
+      'content-type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': CLAUDE_VERSIO_API
     },
     body: JSON.stringify(cos)
   });
 
   if (!resposta.ok) {
     var detall = await resposta.text();
-    throw new Error('Gemini ha respost amb codi ' + resposta.status + '. ' + detall);
+    throw new Error('Claude ha respost amb codi ' + resposta.status + '. ' + detall);
   }
 
   var dades = await resposta.json();
@@ -5790,23 +5823,45 @@ async function demanaExtraccioGemini(textCorreu, apiKey, avui) {
 }
 
 // ------------------------------------------------------------
-// Treu el text de resposta de dins l'objecte que torna Gemini.
-// Llança un error clar si la resposta ve buida, bloquejada o
-// tallada. Torna el text.
+// Treu el text de resposta de dins l'objecte que torna Claude.
+// Llança un error clar si la resposta ve tallada, declinada o
+// sense text. El text es busca pel TIPUS de bloc, mai per la
+// posició: només el bloc `type === 'text'` és la resposta.
+// Torna el text.
 // ------------------------------------------------------------
 function extreuTextResposta(dades) {
-  if (!dades.candidates || dades.candidates.length === 0) {
-    throw new Error('Gemini no ha tornat cap resposta (potser bloquejada).');
+  if (dades.stop_reason === 'max_tokens') {
+    throw new Error('la resposta de Claude s\'ha tallat (max_tokens): apuja CLAUDE_MAX_TOKENS.');
+  }
+  if (dades.stop_reason === 'refusal') {
+    throw new Error('Claude ha declinat la petició (stop_reason: refusal).');
   }
 
-  var candidat = dades.candidates[0];
-  if (candidat.finishReason === 'MAX_TOKENS') {
-    throw new Error('la resposta de Gemini s\'ha tallat (MAX_TOKENS): apuja GEMINI_MAX_TOKENS.');
+  var blocs = Array.isArray(dades.content) ? dades.content : [];
+  for (var i = 0; i < blocs.length; i++) {
+    if (blocs[i] && blocs[i].type === 'text' && typeof blocs[i].text === 'string') {
+      return blocs[i].text;
+    }
   }
-  if (!candidat.content || !candidat.content.parts || candidat.content.parts.length === 0) {
-    throw new Error('la resposta de Gemini no conté text (finishReason: ' + candidat.finishReason + ').');
+  throw new Error('la resposta de Claude no conté text (stop_reason: ' + dades.stop_reason + ').');
+}
+
+// ------------------------------------------------------------
+// L'esquema JSON d'un objecte amb aquestes claus: totes cadenes,
+// totes obligatòries i cap més. És el que l'API fa complir a la
+// resposta. Torna l'esquema.
+// ------------------------------------------------------------
+function esquemaDeCadenes(claus) {
+  var propietats = {};
+  for (var i = 0; i < claus.length; i++) {
+    propietats[claus[i]] = { type: 'string' };
   }
-  return candidat.content.parts[0].text;
+  return {
+    type: 'object',
+    properties: propietats,
+    required: claus.slice(),
+    additionalProperties: false
+  };
 }
 
 // ------------------------------------------------------------

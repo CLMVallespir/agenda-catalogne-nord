@@ -18,8 +18,9 @@
 //   tradueixLot() viu aquí perquè és l'única crida a un model de tot el camí.
 //   Vegeu-hi el perquè.
 //
-//   - CRIDA GEMINI, i NOMÉS Gemini. Una crida per fila, al pas 7 bis, per
+//   - CRIDA CLAUDE, i NOMÉS Claude. Una crida per fila, al pas 7 bis, per
 //     escriure el títol i les dues descripcions en català abans d'encuar-les.
+//     Fins al 23 d'octubre de 2026 era Gemini (§7 de CLAUDE.md).
 //     Vegeu el §«La traducció a la ingestió» d'aquí sota. RES DE CLOUDINARY:
 //     el cartell definitiu el continua fent el curador.
 //   - NOMÉS ESCRIU A `pendents.json`. `events.json` es llegeix per a la capa 2
@@ -48,7 +49,7 @@
 // EL CRITERI EDITORIAL AUTOMÀTIC (R4 i la llista d'exclusions) va just darrere
 // del mapeig i abans de la deduplicació i de tota classificació: és l'únic lloc
 // del camí on encara es té l'oferta crua. Una oferta descartada o exclosa no
-// entra a pendents.json ni gasta cap crida a Gemini. El perquè i l'ordre
+// entra a pendents.json ni gasta cap crida a Claude. El perquè i l'ordre
 // intern són al bàner d'eines/exclusions-editorials.js.
 //
 // I la deduplicació DINS DEL LOT va entremig, pel mateix motiu i per un de
@@ -84,12 +85,12 @@
 // files candidates després dels filtres i de tota la deduplicació. Ja no hi ha
 // cap constant de límit —la de la primera execució s'ha esborrat— i per omissió
 // no es retalla res: el sostre d'una passada de debò el posa el pressupost de
-// crides a Gemini, que és un altre concepte i una altra constant.
+// crides a Claude, que és un altre concepte i una altra constant.
 //
 // LA TRADUCCIÓ A LA INGESTIÓ (pas 7 bis). El flux arriba en francès i encuar
 // una agenda catalana en francès no té sentit, o sigui que abans d'escriure una
 // fila se li reescriuen el títol i les dues descripcions en català. Una crida a
-// Gemini PER FILA, mai per lot: amb deu fitxes al mateix missatge la descripció
+// Claude PER FILA, mai per lot: amb deu fitxes al mateix missatge la descripció
 // d'una es contamina de la del costat, i el risc número u d'aquesta feina és
 // justament la invenció.
 //
@@ -106,7 +107,8 @@
 //     el flux la torna a oferir, la classificació la torna a dir `nova` i entra
 //     a la cua de la vegada següent. Cap tercer fitxer d'estat, cap marca, res
 //     a recordar (§3 de CLAUDE.md: l'estat viu en dos JSON i prou).
-//   QUOTA EXHAURIDA (un 429 amb RESOURCE_EXHAUSTED) -> exactament igual que el
+//   QUOTA EXHAURIDA (un 429, un 402, o el 400 del límit de despesa o del saldo
+//     de crèdit: vegeu esQuotaExhaurida()) -> exactament igual que el
 //     pressupost exhaurit. El primer que arriba atura les crides, sense
 //     reintent: ni aquella fila ni cap de les que venen darrere no s'escriuen,
 //     i totes tornen la propera passada.
@@ -122,24 +124,24 @@
 //   PER QUÈ LA QUOTA NO ÉS UNA CRIDA FALLIDA MÉS. Fins al 30 de setembre de
 //   2026 ho era, i el 22 de setembre ho va demostrar: 44 de les 46 últimes
 //   files de la passada van entrar en francès, totes seguides, quan la quota
-//   del dia es va acabar. El forat de «la fila que peta sempre» aquí no hi és:
-//   la quota no depèn de la fila i es refà l'endemà. Una cosa que val més saber
-//   que descobrir: Google també respon 429 RESOURCE_EXHAUSTED quan es passa del
-//   límit per minut. La pausa entre crides ho evita; si mai passés, la passada
-//   s'aturaria d'hora i la resta tornaria la setmana següent, que és la
-//   direcció bona de l'error.
+//   del dia de Gemini es va acabar. El forat de «la fila que peta sempre» aquí
+//   no hi és: la quota no depèn de la fila. Amb Claude ja no hi ha quota
+//   diària, però el tall continua valent: el crèdit del mes i el límit de
+//   despesa, quan s'acaben, s'acaben per a totes les files que venen darrere,
+//   i un 429 per minut també atura la passada. La pausa entre crides fa que no
+//   hagi de passar; si mai passés, la passada s'aturaria d'hora i la resta
+//   tornaria la setmana següent, que és la direcció bona de l'error.
 //
-// EL PRESSUPOST són 300 crides per passada, no les 500 del dia: els altres 200,
-// marge inclòs, són per al camí de correu del Worker, que comparteix la quota
-// del projecte. Vegeu PRESSUPOST_CRIDES_GEMINI.
+// EL PRESSUPOST són 300 crides per passada, i des del pas a Claude és un sostre
+// de despesa, no un repartiment de quota. Vegeu PRESSUPOST_CRIDES_CLAUDE.
 //
-// EL RITME és una pausa entre crides per no passar de 15 RPM. Es tradueix per
+// EL RITME és una pausa entre crides (PAUSA_ENTRE_CRIDES_MS). Es tradueix per
 // ordre d'IMMINÈNCIA, no per ordre del flux: el que es queda fora del
 // pressupost ha de ser el que passa més tard, que encara serà dins la finestra
 // de 30 dies la propera vegada.
 //
-// EN SEC NO ES GASTA QUOTA. `--en-sec` no crida Gemini de debò; la crida es pot
-// injectar (`cridaGemini` a les opcions) i és així com es prova el pas sencer
+// EN SEC NO ES GASTA CRÈDIT. `--en-sec` no crida Claude de debò; la crida es pot
+// injectar (`cridaClaude` a les opcions) i és així com es prova el pas sencer
 // sense clau i sense xarxa.
 //
 // Ús des del terminal (Node 18 o superior, cap dependència):
@@ -147,32 +149,33 @@
 //   node eines/sincronitza-programada.js --proves   -> passa la bateria de proves
 //                                                      (sense xarxa, no escriu)
 //   node eines/sincronitza-programada.js --en-sec   -> ho fa tot MENYS escriure
-//                                                      i sense cridar Gemini
+//                                                      i sense cridar Claude
 //   node eines/sincronitza-programada.js            -> tradueix i escriu
 //   node eines/sincronitza-programada.js --limit=5  -> com a màxim 5 candidates
 //   node eines/sincronitza-programada.js --pressupost=5  -> com a màxim 5 crides
-//   node eines/sincronitza-programada.js --en-sec --amb-gemini --pressupost=5
+//   node eines/sincronitza-programada.js --en-sec --amb-claude --pressupost=5
 //                                                   -> tradueix de debò i no
 //                                                      escriu res: és com es
 //                                                      jutja el prompt
 //
-// PER JUTJAR EL PROMPT, doncs, `--en-sec --amb-gemini` amb un pressupost petit.
-// `--amb-gemini` no fa res sense `--en-sec` (fora d'en sec ja es tradueix) i és
+// PER JUTJAR EL PROMPT, doncs, `--en-sec --amb-claude` amb un pressupost petit.
+// `--amb-claude` no fa res sense `--en-sec` (fora d'en sec ja es tradueix) i és
 // l'única manera de veure què escriu el model sense tocar `pendents.json`. Amb
 // `--fitxes` a més a més, escriu al terminal els tres camps de cada fila.
 //
 // Dos secrets a l'entorn, i cadascun fa una cosa:
 //
-//   GITHUB_TOKEN    sense ell els dos fitxers es llegeixen del disc i
-//                   l'escriptura no es pot fer: en sec funciona, i sense
-//                   `--en-sec` s'atura amb un error clar. Amb token, tots dos
-//                   es llegeixen per l'API —mai de Pages, que serveix còpies de
-//                   CDN endarrerides (§7 de CLAUDE.md).
-//   GEMINI_API_KEY  sense ella NO es tradueix i la passada NO s'atura: les
-//                   files s'encuen en francès, com abans que el pas 7 bis
-//                   existís, i el registre del run ho diu amb un ATENCIÓ. Va
-//                   als Secrets d'Actions del repositori, que és un magatzem
-//                   diferent del de Cloudflare (§7 bis de CLAUDE.md).
+//   GITHUB_TOKEN       sense ell els dos fitxers es llegeixen del disc i
+//                      l'escriptura no es pot fer: en sec funciona, i sense
+//                      `--en-sec` s'atura amb un error clar. Amb token, tots
+//                      dos es llegeixen per l'API —mai de Pages, que serveix
+//                      còpies de CDN endarrerides (§7 de CLAUDE.md).
+//   ANTHROPIC_API_KEY  sense ella NO es tradueix i la passada NO s'atura: les
+//                      files s'encuen en francès, com abans que el pas 7 bis
+//                      existís, i el registre del run ho diu amb un ATENCIÓ.
+//                      Va als Secrets d'Actions del repositori, que és un
+//                      magatzem diferent del de Cloudflare (§7 bis de
+//                      CLAUDE.md).
 // ---------------------------------------------------------------------------
 
 
@@ -213,10 +216,10 @@ var FONT_ADT66 = { tipus: 'oficina-turisme', llengua: 'fr' };
 // cap candidata. El que queda és l'interruptor `--limit=N` de la línia
 // d'ordres, per a proves acotades, i aplicaLimit() que el fa.
 //
-// EL SOSTRE D'UNA PASSADA DE DEBÒ ÉS UN ALTRE: el pressupost de crides a Gemini
+// EL SOSTRE D'UNA PASSADA DE DEBÒ ÉS UN ALTRE: el pressupost de crides a Claude
 // d'aquí sota. Són dos conceptes diferents, amb dues constants diferents i a
 // posta —un limita files candidates, l'altre limita crides a un servei extern
-// amb quota compartida— i mai no s'han de fondre en un sol nombre.
+// que es paga amb crèdit— i mai no s'han de fondre en un sol nombre.
 //
 // EL LÍMIT S'APLICA AL FINAL, mai al principi. Va després del mapeig, del
 // criteri editorial automàtic, de la deduplicació dins del lot, de la
@@ -242,54 +245,69 @@ var DATA_AL_FINAL = '9999-99-99';
 // d'una fila que, si surt malament, torna la setmana que ve. Provar un model
 // nou aquí no ha de tocar el camí de correu, que funciona.
 //
-// Des del 5 de setembre de 2026 és `gemini-3.1-flash-lite` i abans era
-// `gemini-3.5-flash-lite`, el mateix que el Worker. El canvi és per qualitat de
-// llengua, no per quota: segons la consola, tots dos donen 500 RPD i 250K TPM
-// al pla gratuït, o sigui que el pressupost de 300 crides no es toca.
+// Des del 23 d'octubre de 2026 és Claude Haiku 5.5, pagat amb el crèdit mensual
+// de l'organització a Anthropic. Abans era Gemini: `gemini-3.1-flash-lite` des
+// del 5 de setembre (per qualitat de llengua) i `gemini-3.5-flash-lite` abans.
+// El pas a Claude és per quota, no per qualitat: les 500 crides al dia del pla
+// gratuït de Gemini, compartides amb el Worker, no donaven per a tots dos
+// camins. El perquè i el compte del cost són a NOTES.md.
 //
-// Mai la gamma Pro, que és de pagament. Un 404 amb el nom del model a dins és
-// cicle de vida normal de Google: mira quins Flash / Flash-Lite hi ha vigents i
-// canvia la constant (§7 de CLAUDE.md).
-var GEMINI_MODEL_TRADUCCIO = 'gemini-3.1-flash-lite';
-var GEMINI_URL_TRADUCCIO = 'https://generativelanguage.googleapis.com/v1beta/models/' +
-  GEMINI_MODEL_TRADUCCIO + ':generateContent';
+// Haiku, i no cap altre model de Claude: és el barat, i el següent costa vint
+// vegades més i en el pitjor mes ja no cap en el crèdit (NOTES.md). Un 404 amb
+// el nom del model a dins és cicle de vida normal d'Anthropic: mira quin Haiku
+// hi ha vigent i canvia la constant (§7 de CLAUDE.md).
+var CLAUDE_MODEL_TRADUCCIO = 'claude-haiku-5-5';
+var CLAUDE_URL = 'https://api.anthropic.com/v1/messages';
 
-// Tres camps curts en dues llengües. 512 podrien quedar justos amb una
-// descripció llarga; 1024 hi caben de sobres i no es paguen si no s'usen.
-var GEMINI_MAX_TOKENS = 1024;
+// La versió de l'API, que viatja a la capçalera `anthropic-version`. Fixa a
+// posta: una versió nova pot canviar el que torna l'API, i es canvia a mà.
+var CLAUDE_VERSIO_API = '2026-10-21';
 
-// Igual que al Worker: JSON garantit, sense `temperature` (els models 3.x la
-// ignoren) i sense `thinkingBudget` (llegat, incompatible amb thinkingLevel).
-// Aquí `minimal` i no `low`: això és redacció, no la decisió que demana
-// eines/classifica-editorial.js.
-var CONFIGURACIO_GEMINI = {
-  maxOutputTokens: GEMINI_MAX_TOKENS,
-  responseMimeType: 'application/json',
-  thinkingConfig: { thinkingLevel: 'minimal' }
+// Tres camps curts en dues llengües, que en fan menys de 1 024; la resta és
+// per al pensament, que també compta dins d'aquest sostre (vegeu
+// demanaTraduccioClaude()). Si el pensament s'hi menja tot, la crida peta amb
+// `max_tokens` i la fila s'encua en francès. Els tokens que no s'usen no es
+// paguen.
+var CLAUDE_MAX_TOKENS = 8192;
+
+// L'objecte que ha de tornar el model: les tres claus del prompt, totes
+// cadenes, cap més. L'API el fa complir (`output_config.format`), que és el
+// que feia `responseMimeType` a Gemini. Si el prompt canvia de claus, aquest
+// esquema canvia amb ell.
+var ESQUEMA_TRADUCCIO = {
+  type: 'object',
+  properties: {
+    titol: { type: 'string' },
+    descripcio_ca: { type: 'string' },
+    descripcio_fr: { type: 'string' }
+  },
+  required: ['titol', 'descripcio_ca', 'descripcio_fr'],
+  additionalProperties: false
 };
 
-// EL PRESSUPOST DE CRIDES D'UNA PASSADA, i és 300 a posta i no 500.
+// EL PRESSUPOST DE CRIDES D'UNA PASSADA: 300, i ara és un sostre de despesa.
 //
-// El pla gratuït de Gemini 3.5 Flash-Lite dona 15 RPM · 250K TPM · 500 RPD, i
-// els límits són PER PROJECTE, no per clau: el camí de correu del Worker
-// comparteix aquesta mateixa quota. Els 200 que queden, marge inclòs, són per a
-// ell. Una extracció de correu perduda per quota exhaurida és una pèrdua real
-// —el remitent ja ha enviat el correu i ningú no el tornarà a enviar—; una fila
-// d'ADT66 que espera la propera passada, no.
+// Fins al 23 d'octubre de 2026 era un repartiment de quota: Gemini dona 500
+// crides al dia per projecte, i les 200 que l'Action no gastava eren per al
+// Worker. Claude no té cap límit diari; el que s'acaba és el crèdit del mes.
+// Les 300 crides d'una passada, totes en el pitjor cas —el text més llarg i la
+// resposta tallada a CLAUDE_MAX_TOKENS—, són uns 1,42 $, i un mes de cinc
+// dimarts uns 7,12 $ (l'estimació és a NOTES.md, refeta amb el pensament).
 //
 // NO ÉS EL LÍMIT DE FILES. Vegeu el §«El límit de mà» de dalt: són dos
-// conceptes. Aquest nombre no es toca sense tornar a mirar la quota del
-// projecte a https://aistudio.google.com/rate-limit.
-var PRESSUPOST_CRIDES_GEMINI = 300;
+// conceptes. Si es puja, cal tornar a fer el compte del cost contra el crèdit.
+var PRESSUPOST_CRIDES_CLAUDE = 300;
 
 // Els intents que té una fila: un, i un reintent. Prou per a un tall de xarxa i
 // per a una resposta mal formada; el que peti dues vegades s'encua en francès i
 // la passada continua.
 var INTENTS_PER_FILA = 2;
 
-// La pausa ENTRE crides, per no passar de 15 RPM. Quinze per minut són 4 000 ms
-// justos; 4 500 hi deixa marge, i amb la latència de la crida a sobre la
-// passada va a uns 10 per minut.
+// La pausa ENTRE crides. Va néixer per als 15 RPM de Gemini, i es queda a 4,5 s
+// tot i que Claude en dona molts més: una organització nova a Anthropic pot
+// començar en un nivell amb límits per sota dels publicats, i un 429 atura la
+// passada (vegeu esQuotaExhaurida()). Amb 4,5 s no se'n fan mai més de tretze
+// per minut, i una passada setmanal no té pressa.
 //
 // D'AQUÍ SURT EL `timeout-minutes` DEL WORKFLOW: 300 crides a 4,5 s de pausa
 // són 22 minuts i mig, més la latència de cada crida, i el `.yml` en demana 90
@@ -298,9 +316,8 @@ var INTENTS_PER_FILA = 2;
 var PAUSA_ENTRE_CRIDES_MS = 4500;
 
 // Fins on s'ensenya el motiu d'una crida fallida al registre del run. Els
-// missatges d'error de Gemini porten el cos sencer de la resposta a dins i
-// poden fer centenars de línies; el que cal per saber què passa són les
-// primeres. Es retalla per caràcters, no per paraules: aquí no hi ha res a
+// missatges d'error de l'API porten el cos sencer de la resposta a dins; el
+// que cal per saber què passa són les primeres línies. Es retalla per caràcters, no per paraules: aquí no hi ha res a
 // llegir bonic, hi ha un codi d'error a trobar.
 var MAX_MOTIU_FALLADA = 300;
 
@@ -413,21 +430,21 @@ var PROMPT_TRADUCCIO = [
 // --- La funció --------------------------------------------------------------
 
 // ------------------------------------------------------------
-// Fa una passada sencera. `opcions` és { enSec, token, clauGemini, repositori,
-// avui, limit, pressupost, pausaMs, cridaGemini }:
+// Fa una passada sencera. `opcions` és { enSec, token, clauClaude, repositori,
+// avui, limit, pressupost, pausaMs, cridaClaude }:
 //
-//   enSec        a cert ho fa tot menys escriure, i tampoc no crida Gemini
+//   enSec        a cert ho fa tot menys escriure, i tampoc no crida Claude
 //   token        el GITHUB_TOKEN; sense ell els fitxers es llegeixen del disc
-//   clauGemini   la GEMINI_API_KEY; sense ella no es tradueix
+//   clauClaude   la ANTHROPIC_API_KEY; sense ella no es tradueix
 //   avui         AAAA-MM-DD, per fixar la data a les proves
 //   limit        talla les candidates (0, per omissió, no en talla cap)
-//   pressupost   les crides a Gemini de la passada (per omissió,
-//                PRESSUPOST_CRIDES_GEMINI)
+//   pressupost   les crides a Claude de la passada (per omissió,
+//                PRESSUPOST_CRIDES_CLAUDE)
 //   pausaMs      la pausa entre crides (per omissió, PAUSA_ENTRE_CRIDES_MS; 0
 //                la treu, i és com les proves corren de seguida)
-//   ambGemini    a cert, en sec TAMBÉ tradueix de debò. És per jutjar el
+//   ambClaude    a cert, en sec TAMBÉ tradueix de debò. És per jutjar el
 //                prompt: crides reals, cap escriptura
-//   cridaGemini  la crida injectada, per provar el pas 7 bis sencer sense clau
+//   cridaClaude  la crida injectada, per provar el pas 7 bis sencer sense clau
 //                i sense xarxa. Se la crida amb (fila) i ha de tornar una
 //                promesa de { titol, descripcio_ca, descripcio_fr }
 //
@@ -477,7 +494,7 @@ async function sincronitzaProgramada(opcions) {
   //    es té l'oferta crua: la fusió del pas següent construeix una fila nova i
   //    deixa caure l'oferta. I va abans de tota classificació: una oferta
   //    descartada o exclosa no és ni «nova» ni «ja rebutjada», no es compta
-  //    enlloc més i no entra mai a la cua ni gasta cap crida a Gemini.
+  //    enlloc més i no entra mai a la cua ni gasta cap crida a Claude.
   var criteri = exclusions.aplicaCriteriAutomatic(mapejades);
 
   // 4. La deduplicació dins del mateix lot, abans de comparar-lo amb res.
@@ -791,15 +808,15 @@ function comparaPerDataInici(a, b) {
 //   motiusDeFallada  [{ motiu, quantes }, ...] per què han petat les crides
 //   retalladesPerPressupost  files que no s'escriuen perquè no han tingut
 //                crida. NO són cap descart: tornen a la propera passada
-//   exhauridesPerQuota  files que no s'escriuen perquè Gemini ha dit que la
-//                quota s'ha acabat: la que ha rebut el 429 i totes les que
-//                venien darrere. Tampoc no són cap descart, i es compten a
-//                part del pressupost: l'un és nostre, l'altra és de Google
-//   motiuDeQuota el 429 tal com l'ha dit Gemini, retallat, o '' si no n'hi ha
+//   exhauridesPerQuota  files que no s'escriuen perquè Claude ha dit prou —un
+//                429, el crèdit o el límit de despesa (esQuotaExhaurida())—:
+//                la que ha rebut l'error i totes les que venien darrere.
+//                Tampoc no són cap descart, i es compten a part del
+//                pressupost: l'un és nostre, l'altre és d'Anthropic
+//   motiuDeQuota l'error tal com l'ha dit Claude, retallat, o '' si no n'hi ha
 //                hagut cap
-//   limitDeQuota quin límit diu Google que s'ha acabat —per minut o per dia, i
-//                de quin model—, llegit del cos sencer del 429 abans de
-//                retallar-lo; '' si no n'hi ha hagut cap. Vegeu
+//   limitDeQuota quin límit diu Anthropic que s'ha acabat, llegit del cos de
+//                l'error; '' si no n'hi ha hagut cap. Vegeu
 //                descriuLimitDeQuota()
 //
 // PER QUÈ `fallades` I `senseMateria` VAN SEPARADES. La fila acaba igual —sense
@@ -814,7 +831,7 @@ function comparaPerDataInici(a, b) {
 async function tradueixLot(files, config) {
   var llista = Array.isArray(files) ? files : [];
   var informe = {
-    feta: config.cridaGemini !== null,
+    feta: config.cridaClaude !== null,
     motiu: config.motiuSenseTraduccio,
     pressupost: config.pressupost,
     crides: 0,
@@ -834,7 +851,7 @@ async function tradueixLot(files, config) {
   // passar, i sense clau és el que diu el §7 bis de CLAUDE.md. Però l'avís hi
   // va igualment: el mapeig ja no n'escriu cap de traducció, i una fila en
   // francès sense avís no ho diria al curador.
-  if (config.cridaGemini === null) {
+  if (config.cridaClaude === null) {
     for (var f = 0; f < llista.length; f++) {
       posaAvisDeTraduccio(llista[f], AVIS_NO_TRADUIT);
     }
@@ -850,7 +867,7 @@ async function tradueixLot(files, config) {
   var quotaExhaurida = false;
 
   for (var i = 0; i < ordenades.length; i++) {
-    // Un cop Gemini ha dit que la quota s'ha acabat, ja no es crida més: les
+    // Un cop Claude ha dit que la quota s'ha acabat, ja no es crida més: les
     // files que queden no s'escriuen i tornaran la propera passada.
     if (quotaExhaurida === true) {
       informe.exhauridesPerQuota++;
@@ -866,7 +883,8 @@ async function tradueixLot(files, config) {
 
     var sortida = await tradueixUnaFila(ordenades[i], config, informe);
 
-    // La fila que ha rebut el 429 es tracta com si no hagués tingut crida.
+    // La fila que ha rebut l'error de quota es tracta com si no hagués tingut
+    // crida.
     if (sortida.quota === true) {
       quotaExhaurida = true;
       informe.exhauridesPerQuota++;
@@ -906,13 +924,14 @@ function motiusOrdenats(comptes) {
 //   ok      cert si el model ha respost amb un objecte llegible
 //   camps   l'objecte tal com l'ha dit el model, sense mirar-ne cap camp
 //   motiu   el missatge de l'últim error, quan `ok` és fals
-//   quota   cert si Gemini ha respost que la quota s'ha acabat. Llavors no es
-//           reintenta: el reintent tornaria a topar amb el mateix 429
+//   quota   cert si Claude ha dit prou per a tota la passada
+//           (esQuotaExhaurida()). Llavors no es reintenta: el reintent
+//           tornaria a topar amb el mateix error
 //
 // NO LLANÇA MAI. Una crida que peta és una fila amb avís, no un run aturat.
 //
 // CADA INTENT GASTA PRESSUPOST, també el reintent: el pressupost compta crides
-// a Gemini, no files. Si el reintent no hi cap, no es fa i la fila surt amb el
+// a Claude, no files. Si el reintent no hi cap, no es fa i la fila surt amb el
 // motiu del primer error.
 // ------------------------------------------------------------
 async function tradueixUnaFila(fila, config, informe) {
@@ -932,7 +951,7 @@ async function tradueixUnaFila(fila, config, informe) {
     informe.crides++;
 
     try {
-      var camps = await config.cridaGemini(fila);
+      var camps = await config.cridaClaude(fila);
       return { ok: true, camps: camps, motiu: '', quota: false };
     } catch (error) {
       motiu = error.message;
@@ -946,107 +965,89 @@ async function tradueixUnaFila(fila, config, informe) {
 }
 
 // ------------------------------------------------------------
-// Diu si el missatge d'una crida fallida és el 429 de quota exhaurida. Calen
-// les dues coses: el codi, que el posa demanaTraduccioGemini(), i l'estat
-// RESOURCE_EXHAUSTED, que ve dins del cos de la resposta de Google.
+// Diu si el missatge d'una crida fallida vol dir que Claude ha dit prou per a
+// tota la passada, i no només per a aquesta fila. demanaTraduccioClaude() posa
+// el codi al davant del missatge («codi 429»), i els casos són tres:
+//
+//   429  el límit per minut, o el sostre de despesa mensual del nivell de
+//        l'organització
+//   402  un problema de facturació (`billing_error`)
+//   400  NOMÉS si el missatge parla del límit de despesa que hi hem posat
+//        nosaltres («You have reached your specified … API usage limits») o
+//        del saldo de crèdit («credit balance»: així ho ha dit l'API quan el
+//        crèdit s'acaba, encara que la documentació d'avui ja no ho esmenti).
+//        Qualsevol altre 400 és una petició mal feta, i això sí que és una
+//        fallada de la fila.
+//
+// El 400 es reconeix pel text perquè l'API no hi posa cap codi propi.
 // ------------------------------------------------------------
 function esQuotaExhaurida(motiu) {
   var text = String(motiu);
-  return text.indexOf('codi 429') !== -1 && text.indexOf('RESOURCE_EXHAUSTED') !== -1;
+
+  if (text.indexOf('codi 429') !== -1 || text.indexOf('codi 402') !== -1) {
+    return true;
+  }
+
+  if (text.indexOf('codi 400') !== -1) {
+    return text.indexOf('API usage limits') !== -1 || text.indexOf('credit balance') !== -1;
+  }
+
+  return false;
 }
 
 // ------------------------------------------------------------
-// Diu quin límit de Google s'ha acabat, llegit del cos del 429: per minut o per
-// dia, el valor i el model. NOMÉS ÉS PER AL REGISTRE DEL RUN: el tall per quota
-// fa el mateix sigui quin sigui el límit.
-//
-// Es llegeix del cos SENCER, no del motiu retallat: Google ho posa al final, a
-// `error.details`, dins de les `violations` d'un QuotaFailure, i els primers
-// MAX_MOTIU_FALLADA caràcters no hi arriben. El període surt del `quotaId`, que
-// porta «PerDay» o «PerMinute» al nom. Si el cos no es pot llegir o no ho diu,
-// ho diu així i no ho endevina.
+// Diu quin límit d'Anthropic s'ha acabat, llegit del cos de l'error: el tipus
+// (`rate_limit_error`, `billing_error`, `invalid_request_error`), el codi
+// d'`error.details.error_code` si n'hi ha —`enforced_spend_limit_reached` és
+// el sostre de despesa del nivell— i el missatge, que diu fins quan. NOMÉS ÉS
+// PER AL REGISTRE DEL RUN: el tall per quota fa el mateix sigui quin sigui el
+// límit. Si el cos no es pot llegir, ho diu així i no ho endevina.
 // ------------------------------------------------------------
 function descriuLimitDeQuota(motiu) {
-  var violacions = violacionsDeQuota(motiu);
+  var error = errorDelCos(motiu);
 
-  if (violacions.length === 0) {
-    return 'Google no diu quin límit és';
+  if (error === null || typeof error.type !== 'string') {
+    return 'Anthropic no diu quin límit és';
   }
 
-  var parts = [];
-  for (var i = 0; i < violacions.length; i++) {
-    parts.push(descriuViolacio(violacions[i]));
+  var parts = [error.type];
+
+  if (error.details && typeof error.details.error_code === 'string') {
+    parts.push(error.details.error_code);
   }
 
-  return parts.join(' | ');
+  if (typeof error.message === 'string') {
+    parts.push(error.message);
+  }
+
+  return parts.join(' · ');
 }
 
 // ------------------------------------------------------------
-// Les `violations` de tots els QuotaFailure del cos d'un 429, o [] si el cos
-// no és JSON o no en porta cap.
+// L'objecte `error` del cos JSON que porta el motiu d'una crida fallida, o null
+// si el cos no és JSON o no en porta cap.
 // ------------------------------------------------------------
-function violacionsDeQuota(motiu) {
+function errorDelCos(motiu) {
   var text = String(motiu);
   var inici = text.indexOf('{');
   var fi = text.lastIndexOf('}');
 
   if (inici === -1 || fi === -1 || fi < inici) {
-    return [];
+    return null;
   }
 
   var cos;
   try {
     cos = JSON.parse(text.substring(inici, fi + 1));
   } catch (error) {
-    return [];
+    return null;
   }
 
-  if (!cos || !cos.error || !Array.isArray(cos.error.details)) {
-    return [];
+  if (!cos || typeof cos.error !== 'object' || cos.error === null) {
+    return null;
   }
 
-  var violacions = [];
-  for (var i = 0; i < cos.error.details.length; i++) {
-    var detall = cos.error.details[i];
-    if (detall && Array.isArray(detall.violations)) {
-      violacions = violacions.concat(detall.violations);
-    }
-  }
-
-  return violacions;
-}
-
-// ------------------------------------------------------------
-// Una violació de quota en una línia llegible: «per dia, límit 500 · model
-// gemini-3.1-flash-lite · GenerateRequestsPerDayPerProjectPerModel-FreeTier».
-// ------------------------------------------------------------
-function descriuViolacio(violacio) {
-  var id = '';
-  if (violacio && typeof violacio.quotaId === 'string') {
-    id = violacio.quotaId;
-  }
-
-  var model = 'model no dit';
-  if (violacio && violacio.quotaDimensions && typeof violacio.quotaDimensions.model === 'string') {
-    model = 'model ' + violacio.quotaDimensions.model;
-  }
-
-  var periode = 'període no dit';
-  if (id.indexOf('PerDay') !== -1) {
-    periode = 'per dia';
-  } else if (id.indexOf('PerMinute') !== -1) {
-    periode = 'per minut';
-  }
-
-  if (violacio && typeof violacio.quotaValue === 'string') {
-    periode = periode + ', límit ' + violacio.quotaValue;
-  }
-
-  if (id === '') {
-    id = 'sense quotaId';
-  }
-
-  return periode + ' · ' + model + ' · ' + id;
+  return cos.error;
 }
 
 // ------------------------------------------------------------
@@ -1127,7 +1128,7 @@ function aplicaTraduccio(fila, sortida, informe) {
 
 // ------------------------------------------------------------
 // Suma una unitat al motiu d'aquesta fallada. El motiu es retalla abans de
-// comptar-lo, perquè un error de Gemini porta el cos sencer de la resposta a
+// comptar-lo, perquè un error de l'API porta el cos sencer de la resposta a
 // dins i dues fallades iguals no s'agruparien mai si es comptessin senceres.
 // ------------------------------------------------------------
 function comptaMotiuDeFallada(informe, motiu) {
@@ -1171,14 +1172,15 @@ function espera(ms) {
 }
 
 
-// --- Les peces: la crida a Gemini -------------------------------------------
+// --- Les peces: la crida a Claude -------------------------------------------
 // El mateix patró que worker/worker.js, i a posta: la clau només a la capçalera
-// `x-goog-api-key` —mai a l'URL, mai al registre—, JSON garantit per
-// `responseMimeType`, i la resposta tallada del primer «{» a l'últim «}» abans
-// de parsejar-la.
+// `x-api-key` —mai a l'URL, mai al registre—, JSON garantit per l'esquema
+// d'`output_config.format`, i la resposta tallada del primer «{» a l'últim «}»
+// abans de parsejar-la. Un `fetch` i prou: el §3 de CLAUDE.md no admet cap
+// paquet npm, i l'SDK d'Anthropic ho seria.
 
 // ------------------------------------------------------------
-// Demana a Gemini el títol i les dues descripcions d'una fila, i torna
+// Demana a Claude el títol i les dues descripcions d'una fila, i torna
 // l'objecte que hagi respost el model. NO en mira cap camp: qui decideix què
 // se n'escriu és aplicaTraduccio().
 //
@@ -1186,7 +1188,7 @@ function espera(ms) {
 // Llançar és el que toca: qui la crida és tradueixUnaFila(), que ho recull i
 // encua la fila amb l'avís.
 // ------------------------------------------------------------
-async function demanaTraduccioGemini(fila, clau) {
+async function demanaTraduccioClaude(fila, clau) {
   // El municipi i la comarca hi van com a CONTEXT, no com a camps que hagi
   // d'escriure: el prompt li diu que la forma bona del nom del poble és la
   // d'aquest camp i no la del text original, que ve en francès. Vegeu la regla
@@ -1196,51 +1198,71 @@ async function demanaTraduccioGemini(fila, clau) {
     '\nTÍTOL: ' + fila.titol +
     '\nTEXT: ' + fila.descripcio_fr;
 
+  // AMB PENSAMENT, I A ESFORÇ ALT. Sense pensar (la primera prova, del 23
+  // d'octubre de 2026), Haiku saltava les regles del prompt en 15 de 19 files:
+  // dates i preus a la descripció, el poble al títol, noms propis traduïts.
+  // Això no és cap mancança de llengua sinó de seguir instruccions, que és el
+  // que el pensament i l'esforç `high` milloren. El pensament no torna cap
+  // text (es queda en un bloc `thinking` buit, que textDeClaude() salta) però
+  // es paga com a sortida i compta dins de CLAUDE_MAX_TOKENS. Cap
+  // `temperature`: la versió CLAUDE_VERSIO_API de l'API la rebutja.
   var cos = {
-    contents: [
-      { parts: [ { text: PROMPT_TRADUCCIO + '\n' + fitxa } ] }
-    ],
-    generationConfig: CONFIGURACIO_GEMINI
+    model: CLAUDE_MODEL_TRADUCCIO,
+    max_tokens: CLAUDE_MAX_TOKENS,
+    thinking: { type: 'adaptive' },
+    output_config: {
+      effort: 'high',
+      format: { type: 'json_schema', schema: ESQUEMA_TRADUCCIO }
+    },
+    messages: [
+      { role: 'user', content: PROMPT_TRADUCCIO + '\n' + fitxa }
+    ]
   };
 
-  var resposta = await fetch(GEMINI_URL_TRADUCCIO, {
+  var resposta = await fetch(CLAUDE_URL, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'x-goog-api-key': clau
+      'content-type': 'application/json',
+      'x-api-key': clau,
+      'anthropic-version': CLAUDE_VERSIO_API
     },
     body: JSON.stringify(cos)
   });
 
   if (!resposta.ok) {
     var detall = await resposta.text();
-    throw new Error('Gemini ha respost amb codi ' + resposta.status + '. ' + detall);
+    throw new Error('Claude ha respost amb codi ' + resposta.status + '. ' + detall);
   }
 
   var dades = await resposta.json();
-  return analitzaJsonDeGemini(textDeGemini(dades));
+  return analitzaJsonDeClaude(textDeClaude(dades));
 }
 
 // ------------------------------------------------------------
-// Treu el text de resposta de dins l'objecte que torna Gemini. Llança un error
-// clar si ve buida, bloquejada o tallada.
+// Treu el text de resposta de dins l'objecte que torna Claude. Llança un error
+// clar si ve tallada, declinada o sense text.
+//
+// EL TEXT ES BUSCA PER TIPUS DE BLOC, mai per posició: `content` és una llista
+// de blocs, i només el de `type === 'text'` és la resposta.
 // ------------------------------------------------------------
-function textDeGemini(dades) {
-  if (!dades.candidates || dades.candidates.length === 0) {
-    throw new Error('Gemini no ha tornat cap resposta (potser bloquejada).');
+function textDeClaude(dades) {
+  if (dades.stop_reason === 'max_tokens') {
+    throw new Error('la resposta de Claude s\'ha tallat (max_tokens): apuja CLAUDE_MAX_TOKENS.');
   }
 
-  var candidat = dades.candidates[0];
-
-  if (candidat.finishReason === 'MAX_TOKENS') {
-    throw new Error('la resposta de Gemini s\'ha tallat (MAX_TOKENS): apuja GEMINI_MAX_TOKENS.');
+  if (dades.stop_reason === 'refusal') {
+    throw new Error('Claude ha declinat la petició (stop_reason: refusal).');
   }
 
-  if (!candidat.content || !candidat.content.parts || candidat.content.parts.length === 0) {
-    throw new Error('la resposta de Gemini no conté text (finishReason: ' + candidat.finishReason + ').');
+  var blocs = Array.isArray(dades.content) ? dades.content : [];
+
+  for (var i = 0; i < blocs.length; i++) {
+    if (blocs[i] && blocs[i].type === 'text' && typeof blocs[i].text === 'string') {
+      return blocs[i].text;
+    }
   }
 
-  return candidat.content.parts[0].text;
+  throw new Error('la resposta de Claude no conté text (stop_reason: ' + dades.stop_reason + ').');
 }
 
 // ------------------------------------------------------------
@@ -1248,7 +1270,7 @@ function textDeGemini(dades) {
 // si de cas es talla del primer «{» a l'últim «}» abans de parsejar. Llança si
 // no hi ha objecte JSON.
 // ------------------------------------------------------------
-function analitzaJsonDeGemini(text) {
+function analitzaJsonDeClaude(text) {
   var inici = text.indexOf('{');
   var fi = text.lastIndexOf('}');
 
@@ -1375,9 +1397,9 @@ function configuracio(opcions) {
     // el pressupost de crides, no aquest nombre. El 0 hi val i vol dir «cap
     // límit», i per això només un nombre de debò el sobreescriu.
     limit: esNombre(donades.limit) ? donades.limit : 0,
-    pressupost: esNombre(donades.pressupost) ? donades.pressupost : PRESSUPOST_CRIDES_GEMINI,
+    pressupost: esNombre(donades.pressupost) ? donades.pressupost : PRESSUPOST_CRIDES_CLAUDE,
     pausaMs: esNombre(donades.pausaMs) ? donades.pausaMs : PAUSA_ENTRE_CRIDES_MS,
-    cridaGemini: traduccio.crida,
+    cridaClaude: traduccio.crida,
     motiuSenseTraduccio: traduccio.motiu
   };
 }
@@ -1391,39 +1413,39 @@ function configuracio(opcions) {
 //
 //   1. Una crida injectada mana sempre. És així com es prova el pas sencer
 //      sense clau i sense xarxa, en sec inclòs.
-//   2. En sec no es gasta quota de debò, si no es demana expressament. Una
+//   2. En sec no es gasta crèdit de debò, si no es demana expressament. Una
 //      passada que no escriu res no ha de pagar tres-centes crides a un servei
-//      amb quota compartida amb el Worker, i el `.yml` fa les execucions
-//      manuals en sec per omissió. L'excepció és `ambGemini`
-//      (`--amb-gemini`), que és com es jutja el prompt: crides de debò i cap
+//      que es paga amb el crèdit del mes, i el `.yml` fa les execucions
+//      manuals en sec per omissió. L'excepció és `ambClaude`
+//      (`--amb-claude`), que és com es jutja el prompt: crides de debò i cap
 //      escriptura. Va amb pressupost petit, sempre.
 //   3. Sense clau no hi ha traducció, i la passada NO s'atura: les files
 //      s'encuen en francès, com abans que el pas 7 bis existís. Però el motiu
 //      ho diu amb un ATENCIÓ, perquè això és una configuració incompleta i no
-//      una decisió: el secret GEMINI_API_KEY no s'hi ha posat.
+//      una decisió: el secret ANTHROPIC_API_KEY no s'hi ha posat.
 // ------------------------------------------------------------
 function decideixCrida(donades, enSec) {
-  if (typeof donades.cridaGemini === 'function') {
-    return { crida: donades.cridaGemini, motiu: '' };
+  if (typeof donades.cridaClaude === 'function') {
+    return { crida: donades.cridaClaude, motiu: '' };
   }
 
-  if (enSec && donades.ambGemini !== true) {
-    return { crida: null, motiu: 'en sec: no es gasta quota de Gemini' };
+  if (enSec && donades.ambClaude !== true) {
+    return { crida: null, motiu: 'en sec: no es crida Claude' };
   }
 
-  var clau = donades.clauGemini || '';
+  var clau = donades.clauClaude || '';
 
   if (clau === '') {
     return {
       crida: null,
-      motiu: 'ATENCIÓ: falta el secret GEMINI_API_KEY. Les files s\'encuen en francès.'
+      motiu: 'ATENCIÓ: falta el secret ANTHROPIC_API_KEY. Les files s\'encuen en francès.'
     };
   }
 
   // La clau es queda tancada aquí dins i no viatja enlloc més: tradueixLot()
   // rep una funció, no un secret.
   return {
-    crida: function (fila) { return demanaTraduccioGemini(fila, clau); },
+    crida: function (fila) { return demanaTraduccioClaude(fila, clau); },
     motiu: ''
   };
 }
@@ -1563,17 +1585,19 @@ module.exports = {
 // --- Proves des del terminal ------------------------------------------------
 // `node eines/sincronitza-programada.js --proves`. Tot el que ve fins al
 // separador següent és per exercitar les peces a mà: no toca el flux, ni
-// GitHub, ni Gemini, i no escriu res. La crida a Gemini és una funció feta a
+// GitHub, ni Claude, i no escriu res. La crida a Claude és una funció feta a
 // mà que respon el que cada cas necessita.
 
 // El dia de referència de la bateria. Fix a posta: una prova que depengui de
 // quin dia s'executi deixa de provar res.
 var AVUI_DE_PROVA = '2026-09-30';
 
-// Un 429 de quota tal com el construeix demanaTraduccioGemini(): el codi, i el
-// cos de Google amb RESOURCE_EXHAUSTED a dins.
+// Un 429 de quota tal com el construeix demanaTraduccioClaude(): el codi, i el
+// cos d'Anthropic del sostre de despesa a dins.
 var MOTIU_QUOTA_DE_PROVA =
-  'Gemini ha respost amb codi 429. {"error":{"code":429,"status":"RESOURCE_EXHAUSTED"}}';
+  'Claude ha respost amb codi 429. {"type":"error","error":{"type":"rate_limit_error",' +
+  '"message":"You have reached your API usage limits.",' +
+  '"details":{"error_code":"enforced_spend_limit_reached"}}}';
 
 // ------------------------------------------------------------
 // Una fila en francès, amb el tag del mapeig, d'un sol dia.
@@ -1593,13 +1617,13 @@ function filaDeProva(data) {
 // La configuració que tradueixLot() espera, sense pausa entre crides.
 // ------------------------------------------------------------
 function configDeProva(crida, motiu) {
-  return { cridaGemini: crida, pressupost: 300, pausaMs: 0, motiuSenseTraduccio: motiu };
+  return { cridaClaude: crida, pressupost: 300, pausaMs: 0, motiuSenseTraduccio: motiu };
 }
 
 // ------------------------------------------------------------
 // La passada que exerciten els cinc primers casos. Cinc files desordenades a
 // posta; per ordre d'imminència, la de l'1 es tradueix, la del 2 peta amb un
-// 503 dues vegades i s'encua en francès, la del 3 topa amb la quota, i la del 4
+// 529 dues vegades i s'encua en francès, la del 3 topa amb la quota, i la del 4
 // i la del 5 ja no han de tenir crida. Torna { resultat, crides }, amb les
 // crides que ha rebut de debò la funció.
 // ------------------------------------------------------------
@@ -1609,7 +1633,7 @@ async function passadaAmbQuota() {
   var crida = async function (fila) {
     comptador.crides++;
     if (fila.data_inici === '2026-10-02') {
-      throw new Error('Gemini ha respost amb codi 503. overloaded');
+      throw new Error('Claude ha respost amb codi 529. overloaded_error');
     }
     if (fila.data_inici === '2026-10-03') {
       throw new Error(MOTIU_QUOTA_DE_PROVA);
@@ -1827,7 +1851,7 @@ function bateria() {
       nom: 'quota: el 429 no es reintenta i darrere seu ja no es crida',
       comprova: async function () {
         var passada = await passadaAmbQuota();
-        // 1 (traduïda) + 2 (503 amb reintent) + 1 (429 sense reintent) = 4.
+        // 1 (traduïda) + 2 (529 amb reintent) + 1 (429 sense reintent) = 4.
         if (passada.crides === 4 && passada.resultat.informe.crides === 4) {
           return '';
         }
@@ -1837,11 +1861,46 @@ function bateria() {
     },
 
     {
-      nom: 'quota: el motiu de Google es desa a l\'informe',
+      nom: 'quota: el motiu de Claude es desa a l\'informe',
       comprova: async function () {
         var informe = (await passadaAmbQuota()).resultat.informe;
-        return informe.motiuDeQuota.indexOf('RESOURCE_EXHAUSTED') !== -1 ? '' :
-          'motiuDeQuota no porta RESOURCE_EXHAUSTED: «' + informe.motiuDeQuota + '»';
+        return informe.motiuDeQuota.indexOf('rate_limit_error') !== -1 ? '' :
+          'motiuDeQuota no porta rate_limit_error: «' + informe.motiuDeQuota + '»';
+      }
+    },
+
+    {
+      nom: 'quota: el límit exhaurit es llegeix del cos de l\'error',
+      comprova: async function () {
+        var informe = (await passadaAmbQuota()).resultat.informe;
+        var esperat = 'rate_limit_error · enforced_spend_limit_reached · ' +
+          'You have reached your API usage limits.';
+        return informe.limitDeQuota === esperat ? '' :
+          'limitDeQuota és «' + informe.limitDeQuota + '»';
+      }
+    },
+
+    {
+      nom: 'quota: el 402 i els 400 de despesa i de crèdit aturen; un 400 qualsevol, no',
+      comprova: async function () {
+        var casos = [
+          { quota: true, motiu: 'Claude ha respost amb codi 402. ' +
+            '{"type":"error","error":{"type":"billing_error","message":"Billing issue."}}' },
+          { quota: true, motiu: 'Claude ha respost amb codi 400. ' +
+            '{"type":"error","error":{"type":"invalid_request_error",' +
+            '"message":"You have reached your specified API usage limits."}}' },
+          { quota: true, motiu: 'Claude ha respost amb codi 400. ' +
+            '{"type":"error","error":{"type":"invalid_request_error",' +
+            '"message":"Your credit balance is too low to access the Anthropic API."}}' },
+          { quota: false, motiu: 'Claude ha respost amb codi 400. ' +
+            '{"type":"error","error":{"type":"invalid_request_error","message":"max_tokens: invalid"}}' }
+        ];
+        for (var i = 0; i < casos.length; i++) {
+          if (esQuotaExhaurida(casos[i].motiu) !== casos[i].quota) {
+            return 'el cas ' + (i + 1) + ' havia de donar ' + casos[i].quota;
+          }
+        }
+        return '';
       }
     },
 
@@ -1858,10 +1917,11 @@ function bateria() {
     },
 
     {
-      nom: 'un 429 sense RESOURCE_EXHAUSTED és una fallada normal i s\'escriu',
+      nom: 'un 400 que no és de despesa és una fallada normal i s\'escriu',
       comprova: async function () {
         var crida = async function () {
-          throw new Error('Gemini ha respost amb codi 429. altre');
+          throw new Error('Claude ha respost amb codi 400. ' +
+            '{"type":"error","error":{"type":"invalid_request_error","message":"max_tokens: invalid"}}');
         };
         var resultat = await tradueixLot([filaDeProva('2026-10-01')], configDeProva(crida, ''));
         if (resultat.files.length === 1 && resultat.informe.fallades === 1 &&
@@ -1870,6 +1930,29 @@ function bateria() {
         }
         return 'files ' + resultat.files.length + ', fallades ' + resultat.informe.fallades +
           ', quota ' + resultat.informe.exhauridesPerQuota + ' (esperava 1, 1, 0)';
+      }
+    },
+
+    {
+      nom: 'textDeClaude: el text es busca per tipus de bloc, i max_tokens i refusal peten',
+      comprova: async function () {
+        var text = textDeClaude({
+          stop_reason: 'end_turn',
+          content: [{ type: 'thinking', thinking: '' }, { type: 'text', text: '{"titol":"T"}' }]
+        });
+        if (text !== '{"titol":"T"}') {
+          return 'esperava el text del bloc de text, tinc «' + text + '»';
+        }
+        var motius = ['max_tokens', 'refusal'];
+        for (var i = 0; i < motius.length; i++) {
+          try {
+            textDeClaude({ stop_reason: motius[i], content: [{ type: 'text', text: '{' }] });
+            return 'amb stop_reason ' + motius[i] + ' havia de petar i no ha petat';
+          } catch (error) {
+            // Peta, que és el que toca: la fila s'encuarà amb l'avís.
+          }
+        }
+        return '';
       }
     },
 
@@ -2292,7 +2375,7 @@ function informeDeTraduccio(traducio) {
   console.log('    retallades pel pressupost  ' + traducio.retalladesPerPressupost +
     '   (no descartades: tornaran a la propera passada)');
   console.log('    EXHAURIDES PER QUOTA       ' + traducio.exhauridesPerQuota +
-    '   (Gemini ha dit prou: no escrites, tornaran a la propera passada)');
+    '   (Claude ha dit prou: no escrites, tornaran a la propera passada)');
   if (traducio.limitDeQuota !== '') {
     console.log('      límit exhaurit: ' + traducio.limitDeQuota);
   }
@@ -2326,7 +2409,7 @@ function comptaMotius(rescatades) {
 // ------------------------------------------------------------
 // Escriu al terminal els tres camps que ha tocat la traducció, fila per fila.
 // Serveix per a una cosa i prou: jutjar el que escriu el model amb
-// `--en-sec --amb-gemini --fitxes` i un pressupost petit. No surt mai per
+// `--en-sec --amb-claude --fitxes` i un pressupost petit. No surt mai per
 // omissió —amb 300 files ompliria el registre del run de dalt a baix.
 // ------------------------------------------------------------
 function escriuFitxes(files) {
@@ -2369,7 +2452,7 @@ function nombreDeLaLiniaDOrdres(argv, prefix) {
 // El punt d'entrada del terminal i del workflow.
 // ------------------------------------------------------------
 async function principal() {
-  // La bateria va sola: ni flux, ni GitHub, ni Gemini, ni cap escriptura.
+  // La bateria va sola: ni flux, ni GitHub, ni Claude, ni cap escriptura.
   if (process.argv.indexOf('--proves') !== -1) {
     await provaBateria();
     return;
@@ -2379,9 +2462,9 @@ async function principal() {
 
   var opcions = {
     enSec: enSec,
-    ambGemini: process.argv.indexOf('--amb-gemini') !== -1,
+    ambClaude: process.argv.indexOf('--amb-claude') !== -1,
     token: process.env.GITHUB_TOKEN || '',
-    clauGemini: process.env.GEMINI_API_KEY || '',
+    clauClaude: process.env.ANTHROPIC_API_KEY || '',
     repositori: process.env.GITHUB_REPOSITORY || ''
   };
 

@@ -8,11 +8,12 @@
 # mapeja, el compara amb el que ja tenim i escriu les files noves a
 # `pendents.json` per l'API de continguts de GitHub.
 #
-#   - CRIDA GEMINI, i li cal un secret propi. El pas 7 bis del guió tradueix
-#     cada fila al català abans d'encuar-la, i la clau surt del secret
-#     `GEMINI_API_KEY` d'AQUEST repositori (Settings -> Secrets and variables
-#     -> Actions), que és un magatzem DIFERENT dels Secrets de Cloudflare on
-#     viu la del Worker. Si el secret no hi és, la passada NO s'atura: les
+#   - CRIDA CLAUDE (des del 23 d'octubre de 2026; abans, Gemini), i li cal un
+#     secret propi. El pas 7 bis del guió tradueix cada fila al català abans
+#     d'encuar-la, i la clau surt del secret `ANTHROPIC_API_KEY` d'AQUEST
+#     repositori (Settings -> Secrets and variables -> Actions), que és un
+#     magatzem DIFERENT dels Secrets de Cloudflare on viu la del Worker. Si el
+#     secret no hi és, la passada NO s'atura: les
 #     files s'encuen en francès i el registre del run ho diu amb un ATENCIÓ.
 #     RES DE CLOUDINARY: aquest camí continua sense pujar cap cartell.
 #   - CAP `git commit` NI `git push`. El curador pot estar publicant al mateix
@@ -62,7 +63,7 @@ jobs:
     # pausa són 22 minuts i mig, i amb la latència de cada crida un run ple
     # ronda els 25-30. Els 90 (des del 22 de setembre de 2026; abans 40) hi
     # deixen marge de sobres i tallen si penja. Si es canvia
-    # PRESSUPOST_CRIDES_GEMINI o PAUSA_ENTRE_CRIDES_MS, s'ha de canviar aquí.
+    # PRESSUPOST_CRIDES_CLAUDE o PAUSA_ENTRE_CRIDES_MS, s'ha de canviar aquí.
     timeout-minutes: 90
 
     steps:
@@ -83,7 +84,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Aquesta sí que s'ha de crear a mà, un sol cop, als Secrets d'Actions
           # d'aquest repositori. Sense ella el run va igual i encua en francès.
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ "${{ inputs.en_sec }}" = "true" ]; then
             node eines/sincronitza-programada.js --en-sec

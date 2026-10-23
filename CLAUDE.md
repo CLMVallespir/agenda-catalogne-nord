@@ -22,15 +22,15 @@ dels dos no toca mai `events.json`.
 associació ──correu──► agenda@clm.cat ──► Cloudflare Email Routing
                                                 │
 associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Cloudflare)
-                                            ├─ email():     reenvia l'original a Gmail (arxiu) → parseja → Gemini → Cloudinary → pendents.json
+                                            ├─ email():     reenvia l'original a Gmail (arxiu) → parseja → Claude → Cloudinary → pendents.json
                                             ├─ fetch():     mapa determinista del formulari → pendents.json
                                             └─ scheduled(): digest setmanal per comarca via Brevo
                                                 │
 flux ADT66 ──────────────────────────────►  UNA SOLA ACTION (GitHub Actions)
                                             └─ .github/workflows/sincronitza-adt66.yml
                                                  └─ eines/sincronitza-programada.js
-                                                      sincronitza → mapeja → classifica → filtra → tradueix (Gemini) → pendents.json
-                                                      (Gemini sí, fins a dos intents per fila; Cloudinary no)
+                                                      sincronitza → mapeja → classifica → filtra → tradueix (Claude) → pendents.json
+                                                      (Claude sí, fins a dos intents per fila; Cloudinary no)
                                                 │
                               curador.html (GitHub Pages) ──valida──► events.json
                                                 │
@@ -87,7 +87,14 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 ## 3. Restriccions innegociables
 
 - **Només capes gratuïtes:** Cloudflare (Email Routing + Workers), GitHub Pages,
-  Cloudinary, Brevo, API de Gemini. Cap infraestructura de pagament, mai.
+  Cloudinary, Brevo. Cap infraestructura de pagament, mai.
+  **Única excepció, decidida pel propietari el 23 d'octubre de 2026:** l'API de
+  Claude (Anthropic), que substitueix la de Gemini. No és cap capa gratuïta: és
+  un servei de pagament que cobreix el crèdit mensual gratuït de l'organització.
+  Per això l'excepció només val amb **un límit de despesa a la consola
+  d'Anthropic que no passi del crèdit**, i sense cap targeta amb recàrrega
+  automàtica: quan el crèdit s'acaba, les crides han de fallar, no cobrar. El
+  perquè i el compte del cost són a `NOTES.md`.
 - **Cap framework, cap eina de compilació, cap npm.** JavaScript vanilla pertot.
   **Única excepció, ja decidida:** `postal-mime`, *vendoritzat* — un sol fitxer
   fixat, copiat al repositori amb la versió i l'URL d'origen al comentari de
@@ -104,7 +111,7 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 - **Les imatges viuen a Cloudinary, mai a Git.**
 - **Bilingüe, català primer,** a tot el que veu el públic (§6). Excepció única:
   `curador.html` és només en català — l'únic usuari n'és el curador.
-- **Els secrets viuen als Secrets del Worker** (`GEMINI_API_KEY`, `GITHUB_TOKEN`,
+- **Els secrets viuen als Secrets del Worker** (`ANTHROPIC_API_KEY`, `GITHUB_TOKEN`,
   `BREVO_API_KEY`, `TYPEBOT_SECRET` + IDs de llistes Brevo). El
   `CLOUDINARY_CLOUD_NAME` no és secret. Mai al codi, mai als registres, mai a Git.
 - El token de GitHub és **de gra fi, limitat a aquest repositori, només
@@ -430,21 +437,32 @@ publicitària.
 
 ## 7. Mecànica dels serveis (fets, no decisions)
 
-- **Gemini** — **dues constants de model, una per context, que no es mouen
-  juntes**: al Worker, `GEMINI_MODEL` = `gemini-3.5-flash-lite` amb
-  `maxOutputTokens: 4096`; a l'Action, `GEMINI_MODEL_TRADUCCIO` =
-  `gemini-3.1-flash-lite` (des del 5 de setembre de 2026, per qualitat de
-  llengua) amb `GEMINI_MAX_TOKENS` = 1024. El perquè és damunt la constant, al bloc
-  «Constants: la traducció a la ingestió (pas 7 bis)» d'`eines/sincronitza-programada.js`. Mai la gamma Pro (és de pagament).
-  Clau a la
-  capçalera `x-goog-api-key`. `generationConfig` (idèntica als dos contextos, llevat
-  dels tokens): `responseMimeType: 'application/json'`,
-  `maxOutputTokens`, `thinkingConfig: { thinkingLevel: 'minimal' }` — **cap
-  `temperature`** (ignorada als models 3.x) i **cap `thinkingBudget`** (llegat,
-  incompatible amb `thinkingLevel`). Resposta parsejada defensivament del primer
-  `{` a l'últim `}`. Si mai retorna 404 amb el nom del model, és cicle de vida
-  normal de Google: consulta els models Flash/Flash-Lite vigents i canvia la
-  constant.
+- **Claude (Anthropic)** — des del 23 d'octubre de 2026; abans, Gemini (el
+  perquè, a `NOTES.md`). **Dues constants de model, una per context, que no es
+  mouen juntes**: al Worker, `CLAUDE_MODEL` = `claude-haiku-5-5`; a l'Action,
+  `CLAUDE_MODEL_TRADUCCIO` = `claude-haiku-5-5`. Tots dos amb
+  `CLAUDE_MAX_TOKENS` = 8192, perquè el pensament hi compta. Haiku i prou: el model
+  següent costa vint vegades més i el pitjor mes ja no cap en el crèdit. Un
+  `fetch` a `https://api.anthropic.com/v1/messages` i cap SDK (§3: cap npm).
+  Capçaleres `x-api-key` (la clau; mai a l'URL, mai al registre),
+  `anthropic-version` = `CLAUDE_VERSIO_API` (`2026-10-21`, fixa a posta) i
+  `content-type`. Cos idèntic als dos contextos llevat de l'esquema: `model`,
+  `max_tokens`, `thinking: { type: 'adaptive' }` amb
+  `output_config.effort: 'high'` (sense pensar, Haiku saltava les regles del
+  prompt en 15 de 19 files; amb pensament, en cap: la prova del 23 d'octubre
+  de 2026, a `NOTES.md`), `messages` amb un sol missatge
+  `user`, i `output_config.format` amb l'esquema JSON de les claus que demana
+  el prompt —les 17 de la regla 2 del prompt d'extracció al Worker
+  (`CLAUS_EXTRACCIO`), les 3 de la traducció a l'Action (`ESQUEMA_TRADUCCIO`)—,
+  que és el que garanteix el JSON. **Cap `temperature`**: la versió
+  `2026-10-21` la rebutja. El text es busca pel **tipus de bloc**
+  (`type === 'text'`), mai per la posició, i un `stop_reason` `max_tokens` o
+  `refusal` és un error. Resposta parsejada defensivament del primer `{` a
+  l'últim `}`. Si mai retorna 404 amb el nom del model, és cicle de vida normal
+  d'Anthropic: mira quin Haiku hi ha vigent i canvia la constant.
+  **Encara crida Gemini** la cadena de recerca fora de línia
+  (`eines/classifica-editorial.js` i `eines/verifica-esdeveniment.js`, via
+  `eines/processa-lot.js`): no és cap camí viu i espera la revisió D-01.
 - **Prompt d'extracció** — `prompts/extract-event.txt` és el mestre; la còpia dins
   el Worker ha de ser-hi **idèntica, al peu de la lletra**. `{{AVUI}}` se
   substitueix per la data d'avui (`YYYY-MM-DD`), serveix només per inferir un any
@@ -478,7 +496,7 @@ ha **dos** llocs on s'executa codi sol, i no es poden configurar al mateix lloc.
 |---|---|---|
 | Unitat de treball | un esdeveniment, en directe | un lot sencer, periòdicament |
 | Què el dispara | un correu, un POST del Typebot, el cron del digest | el cron setmanal del workflow, o el botó «Run workflow» |
-| Crida models? | **sí** — Gemini i Cloudinary | **sí, Gemini i prou** — fins a dos intents per fila (`INTENTS_PER_FILA`), i cada intent gasta pressupost, per traduir-la al català abans d'encuar-la (pas 7 bis). Cloudinary, mai |
+| Crida models? | **sí** — Claude i Cloudinary | **sí, Claude i prou** — fins a dos intents per fila (`INTENTS_PER_FILA`), i cada intent gasta pressupost, per traduir-la al català abans d'encuar-la (pas 7 bis). Cloudinary, mai |
 | Escriu | `pendents.json` | `pendents.json`, i res més |
 | Es desplega | enganxant el codi al tauler de Cloudflare | fent commit del `.yml`; no hi ha res a desplegar |
 | Fitxers | `worker/worker.js`, `worker/worker-concatenat.js` | `.github/workflows/sincronitza-adt66.yml` + `eines/sincronitza-programada.js` |
@@ -486,7 +504,7 @@ ha **dos** llocs on s'executa codi sol, i no es poden configurar al mateix lloc.
 **On viu cada configuració — i no es comparteixen mai:**
 
 - **Secrets del Worker** (tauler de Cloudflare → Settings → Variables):
-  `GEMINI_API_KEY`, `GITHUB_TOKEN` (el de gra fi, §3), `BREVO_API_KEY`,
+  `ANTHROPIC_API_KEY`, `GITHUB_TOKEN` (el de gra fi, §3), `BREVO_API_KEY`,
   `TYPEBOT_SECRET` i els IDs de llistes de Brevo. El `CLOUDINARY_CLOUD_NAME`
   hi és com a variable, no com a secret.
 - **Secrets de l'Action** (GitHub → Settings → Secrets and variables →
@@ -494,18 +512,19 @@ ha **dos** llocs on s'executa codi sol, i no es poden configurar al mateix lloc.
     - `GITHUB_TOKEN` **no s'hi ha de posar**: és el token efímer que GitHub posa
       sol a cada run, amb `permissions: contents: write` declarat al `.yml`;
       neix i mor amb el run.
-    - `GEMINI_API_KEY` **sí que s'hi ha de posar a mà, un sol cop**. Aquest
+    - `ANTHROPIC_API_KEY` **sí que s'hi ha de posar a mà, un sol cop**. Aquest
       magatzem és **diferent** del dels Secrets de Cloudflare, on viu la clau
       del Worker: posar-la en un lloc no la posa a l'altre. Aquest fitxer ja
       deia que el dia que aquest camí cridés un model el secret aniria aquí;
       des del 4 de setembre de 2026, aquest dia ja ha arribat.
-    - **Recomanació, no requisit: que sigui una clau d'un projecte de Google
-      NOU**, no la mateixa del Worker. La quota de Gemini és **per projecte, no
-      per clau**, i amb projectes separats una passada de 300 crides de l'Action
-      no pot deixar sense quota el correu que arribi aquella tarda. Amb el
-      mateix projecte també funciona, i per això el pressupost de l'Action és
-      300 i no 500: els altres 200 es deixen expressament per al Worker.
-    - **Si `GEMINI_API_KEY` no hi és, el run NO s'atura**: les files s'encuen en
+    - **La mateixa clau d'Anthropic serveix per als dos magatzems.** Amb
+      Gemini es recomanava un projecte de Google per a cada camí, perquè la
+      quota diària era per projecte i una passada de l'Action podia deixar
+      sense quota el correu de la tarda. Anthropic no té quota diària, i el
+      límit que compta —la despesa del mes— és de l'organització o del
+      workspace, no de la clau. El pressupost de 300 crides de l'Action és ara
+      un sostre de despesa (`PRESSUPOST_CRIDES_CLAUDE`), no cap repartiment.
+    - **Si `ANTHROPIC_API_KEY` no hi és, el run NO s'atura**: les files s'encuen en
       francès, com abans que el pas 7 bis existís, i el registre del run ho diu
       amb un ATENCIÓ. És una configuració incompleta que es veu, no una fallada
       silenciosa.

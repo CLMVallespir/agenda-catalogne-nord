@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// PROVES EN SEC DEL PAS 7 BIS — cap crida real a Gemini, cap escriptura.
+// PROVES EN SEC DEL PAS 7 BIS — cap crida real a Claude, cap escriptura.
 //
 // El flux de l'ADT66 es baixa UN sol cop i es desa en memòria cau al
 // directori d'aquest fitxer; totes les passades el llegeixen d'allà, de manera
@@ -61,7 +61,7 @@ function cridaBona(fila) {
 
 // Peta sempre.
 function cridaQuePeta() {
-  return Promise.reject(new Error('429 RESOURCE_EXHAUSTED simulat'));
+  return Promise.reject(new Error('Claude ha respost amb codi 529. overloaded_error simulat'));
 }
 
 // --- Les passades -----------------------------------------------------------
@@ -162,7 +162,7 @@ async function traduccioDUnaFila(fila, resposta) {
   var sync = require(path.join(ARREL, 'eines', 'sincronitza-programada.js'));
 
   var resultat = await sync.tradueixLot([fila], {
-    cridaGemini: function () { return Promise.resolve(resposta); },
+    cridaClaude: function () { return Promise.resolve(resposta); },
     motiuSenseTraduccio: '',
     pressupost: 10,
     pausaMs: 0
@@ -334,7 +334,7 @@ function trosDelPrompt() {
 function trosDeLaFitxa() {
   var codi = fs.readFileSync(
     path.join(ARREL, 'eines', 'sincronitza-programada.js'), 'utf8');
-  var inici = codi.indexOf('async function demanaTraduccioGemini');
+  var inici = codi.indexOf('async function demanaTraduccioClaude');
   return codi.slice(inici, codi.indexOf('var cos = {', inici));
 }
 
@@ -471,7 +471,7 @@ async function principal() {
 
   // --- P1. Tot es tradueix: la línia de base -------------------------------
   console.log('P1. pressupost folgat, crida que va bé sempre');
-  var p1 = await passada(ofertes, { pressupost: 100000, cridaGemini: cridaBona });
+  var p1 = await passada(ofertes, { pressupost: 100000, cridaClaude: cridaBona });
   var candidates = p1.candidates;
   console.log('    candidates=' + candidates +
     '  crides=' + p1.traducio.crides +
@@ -532,7 +532,7 @@ async function principal() {
   // --- P2. El pressupost talla on toca ------------------------------------
   console.log('');
   console.log('P2. pressupost=25');
-  var p2 = await passada(ofertes, { pressupost: 25, cridaGemini: cridaBona });
+  var p2 = await passada(ofertes, { pressupost: 25, cridaClaude: cridaBona });
   console.log('    escrites=' + p2.noves.length +
     '  crides=' + p2.traducio.crides +
     '  retallades=' + p2.traducio.retalladesPerPressupost);
@@ -555,7 +555,7 @@ async function principal() {
   // --- P3. Una crida que peta sempre: s'encua tot i no atura --------------
   console.log('');
   console.log('P3. pressupost=30, crida que peta sempre');
-  var p3 = await passada(ofertes, { pressupost: 30, cridaGemini: cridaQuePeta });
+  var p3 = await passada(ofertes, { pressupost: 30, cridaClaude: cridaQuePeta });
   console.log('    escrites=' + p3.noves.length +
     '  crides=' + p3.traducio.crides +
     '  fallades=' + p3.traducio.fallades);
@@ -570,7 +570,7 @@ async function principal() {
   comprova(
     p3.traducio.motiusDeFallada.length === 1 &&
     p3.traducio.motiusDeFallada[0].quantes === 15 &&
-    p3.traducio.motiusDeFallada[0].motiu.indexOf('429 RESOURCE_EXHAUSTED simulat') !== -1,
+    p3.traducio.motiusDeFallada[0].motiu.indexOf('overloaded_error simulat') !== -1,
     'el motiu de la fallada surt a l\'informe, agrupat i comptat'
   );
   comprova(
@@ -596,7 +596,7 @@ async function principal() {
     }
     return cridaBona(fila);
   }
-  var p4 = await passada(ofertes, { pressupost: 20, cridaGemini: cridaIrregular });
+  var p4 = await passada(ofertes, { pressupost: 20, cridaClaude: cridaIrregular });
   console.log('    escrites=' + p4.noves.length +
     '  crides=' + p4.traducio.crides +
     '  traduides=' + p4.traducio.traduides +
@@ -615,7 +615,7 @@ async function principal() {
   function cridaBuida(fila) {
     return Promise.resolve({ titol: 'CATALÀ: ' + fila.titol, descripcio_ca: '', descripcio_fr: '' });
   }
-  var p5 = await passada(ofertes, { pressupost: 10, cridaGemini: cridaBuida });
+  var p5 = await passada(ofertes, { pressupost: 10, cridaClaude: cridaBuida });
   console.log('    escrites=' + p5.noves.length +
     '  traduides=' + p5.traducio.traduides +
     '  nomesTitol=' + p5.traducio.nomesTitol +
@@ -647,7 +647,7 @@ async function principal() {
       descripcio_fr: ''
     });
   }
-  var p6 = await passada(ofertes, { pressupost: 5, cridaGemini: cridaMitjaParella });
+  var p6 = await passada(ofertes, { pressupost: 5, cridaClaude: cridaMitjaParella });
   console.log('    traduides=' + p6.traducio.traduides +
     '  fallades=' + p6.traducio.fallades +
     '  senseMateria=' + p6.traducio.senseMateria);
@@ -666,7 +666,7 @@ async function principal() {
   console.log('');
   console.log('P7. pressupost=4, pausa de 200 ms');
   var abans = Date.now();
-  var p7 = await passada(ofertes, { pressupost: 4, cridaGemini: cridaBona, pausaMs: 200 });
+  var p7 = await passada(ofertes, { pressupost: 4, cridaClaude: cridaBona, pausaMs: 200 });
   var trigat = Date.now() - abans;
   console.log('    crides=' + p7.traducio.crides + '  trigat=' + trigat + ' ms');
   comprova(p7.traducio.crides === 4, '4 crides');

@@ -71,7 +71,7 @@
     "retalladesPerLimit": 0,
     "traducio": {
       "feta": false,
-      "motiu": "en sec: no es gasta quota de Gemini",
+      "motiu": "en sec: no es crida Claude",
       "pressupost": 300,
       "crides": 0,
       "traduides": 0,
@@ -464,7 +464,7 @@
     "retalladesPerLimit": 0,
     "traducio": {
       "feta": false,
-      "motiu": "en sec: no es gasta quota de Gemini",
+      "motiu": "en sec: no es crida Claude",
       "pressupost": 300,
       "crides": 0,
       "traduides": 0,
