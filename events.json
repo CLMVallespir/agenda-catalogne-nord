@@ -8450,5 +8450,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.372Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-taller-de-kick",
+    "titol": "Taller de kick-boxing amb Remi Parra",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "10:00",
+    "lloc": "Place Jean Rolland",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'associació de Défense de rue organitza un taller de boxa (peu i puny) impartit per Remi Parra, sis vegades campió del món de K1. L'activitat és oberta a persones de tots els nivells.",
+    "descripcio_fr": "L'association de Défense de rue organise un stage de boxe (pieds-poings) avec Remi Parra, 6 fois champion du monde K1. L'activité est accessible à tous les niveaux.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/stage-kickboxing.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.511Z",
+    "periodicitat": ""
   }
 ]
