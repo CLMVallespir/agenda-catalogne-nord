@@ -8621,5 +8621,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.403Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-26-creanins-en-vacances",
+    "titol": "Créanin's en vacances",
+    "data_inici": "2026-10-26",
+    "data_fi": "2026-10-26",
+    "hora": "10:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Les Collections de Saint-Cyprien organitzen un taller d'iniciació al pop-up per a infants de 6 a 12 anys. Els participants aprendran a crear targetes en relleu mitjançant tècniques de plegat, retallada i encolat per donar vida al paper.",
+    "descripcio_fr": "Les Collections de Saint-Cyprien organisent un atelier d'initiation au pop-up pour les enfants de 6 à 12 ans. Les participants apprendront à créer des cartes en relief grâce à des techniques de pliage, de découpage et de collage pour donner vie au papier.",
+    "associacio": "Contacter OT COLLECTIONS DE SAINT CYPRIEN",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/lcd-creanins-vacances-3.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.453Z",
+    "periodicitat": ""
   }
 ]
