@@ -8374,5 +8374,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.566Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-castanyada",
+    "titol": "Castanyada",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "15:00",
+    "lloc": "12 Avenue de la République",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El Foment de la Sardana organitza una castanyada amb castanyes torrades a la platja central. L'acte inclou una doble ballada de sardanes amb la cobla des Albères i la Sol de Banyuls a la plaça Paul Reig.",
+    "descripcio_fr": "Le Foment de la Sardana organise une castanyada avec des châtaignes grillées sur la plage centrale. L'événement comprend une double ballada de sardanes avec la cobla des Albères et la Sol de Banyuls sur la place Paul Reig.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/castanyada-2.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.335Z",
+    "periodicitat": ""
   }
 ]
