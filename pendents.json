@@ -4040,7 +4040,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZIY8] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-25-randonnee-pedestre-autour",
+    "id": "2026-10-25-excursio-a-peu",
     "titol": "Excursió a peu al voltant de la mina de ferro de Palalda",
     "data_inici": "2026-10-25",
     "data_fi": "2026-10-25",
@@ -4054,7 +4054,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/025-4.jpg?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.567Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZJ1I] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
