@@ -8564,5 +8564,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.374Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-26-mercat-setmanal",
+    "titol": "Mercat setmanal",
+    "data_inici": "2026-10-26",
+    "data_fi": "2026-10-26",
+    "hora": "08:00",
+    "lloc": "Avenue Ledru Rollin",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Aquesta cita permet tant als veïns com als visitants omplir els cistells amb productes de proximitat. El mercat compta amb la presència de productors locals, productors ecològics i artesans.",
+    "descripcio_fr": "Ce rendez-vous permet aux habitants comme aux visiteurs de passage de remplir leurs paniers avec des produits de proximité. Le marché compte la présence de producteurs locaux, de producteurs bio et d'artisans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Rivesaltes-Marche-Sabine-Aiguaviva.jpg?width=150&height=120",
+    "font_url": "https://www.rivesaltes.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.378Z",
+    "periodicitat": "cada setmana"
   }
 ]
