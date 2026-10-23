@@ -8184,5 +8184,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.373Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-espectacle-de-teatre",
+    "titol": "Espectacle de teatre i dansa « O »",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "11:00",
+    "lloc": "Quai François Joly",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Dos personatges-ocell emprenen la recerca d'un lloc on sentir-se a casa. La companyia A Contra Cor Teatre presenta una creació poètica que combina el moviment corporal, les màscares i les titelles. L'espectacle s'ha desenvolupat en residència dins del projecte transfronterer LAboArtMed, impulsat per Eurek’Art en el marc del festival Pignon sur Mer.",
+    "descripcio_fr": "Deux personnages-oiseaux partent en quête d'un lieu où se sentir chez soi. La compagnie A Contra Cor Teatre présente une création poétique qui mêle mouvement corporel, masques et marionnettes. Ce spectacle a été développé en résidence dans le cadre du projet transfrontalier LAboArtMed, porté par Eurek’Art dans le cadre du festival Pignon sur Mer.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Port-Vendres-Bettina-Bauer--17-.jpg-1200px.JPG?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.529Z",
+    "periodicitat": ""
   }
 ]
