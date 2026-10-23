@@ -8317,5 +8317,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.555Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-jornada-recreativa",
+    "titol": "Jornada recreativa",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "10:00",
+    "lloc": "Avenue de la Marne",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquesta jornada ofereix jocs i activitats gratuïtes destinades als infants. El programa inclou estructures inflables amb temàtica esportiva, animacions, un escultor de globus i un foodtruck de creps.",
+    "descripcio_fr": "Cette journée propose des jeux et des animations gratuites destinés aux enfants. Le programme comprend des structures gonflables sur le thème du sport, des animations, un sculpteur de ballons et un foodtruck de crêpes.",
+    "associacio": "Contacter Madame FLOUR Alexandra",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/format-tourinsoft--12-.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.557Z",
+    "periodicitat": ""
   }
 ]
