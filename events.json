@@ -8279,5 +8279,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.543Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-cinema-lodyssee",
+    "titol": "Cinema «L'Odyssée»",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "17:15",
+    "lloc": "Cinéma \"Le Casteil\"",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Cinema",
+    "descripcio_ca": "Es projecta la pel·lícula «L'Odyssée», una obra d'acció i aventura dirigida per Christopher Nolan i protagonitzada per Matt Damon, Tom Holland i Anne Hathaway. La trama narra el periple d'Ulisses en el seu intent de retornar a Ítaca per retrobar-se amb la seva família després de la guerra de Troia. L'acte no està recomanat per a menors de dotze anys.",
+    "descripcio_fr": "Projection du film «L'Odyssée», une œuvre d'action et d'aventure réalisée par Christopher Nolan et mettant en vedette Matt Damon, Tom Holland et Anne Hathaway. L'intrigue retrace le périple d'Ulysse tentant de retourner à Ithaque pour retrouver sa famille après la guerre de Troie. L'événement est déconseillé aux moins de douze ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/l-odyssee-2.jpg?width=150&height=120",
+    "font_url": "https://lesangles.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.550Z",
+    "periodicitat": ""
   }
 ]
