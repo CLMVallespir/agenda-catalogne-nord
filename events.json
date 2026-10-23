@@ -8241,5 +8241,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.534Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-cinema-heart-of",
+    "titol": "Cinema «Heart of the Beast»",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "21:15",
+    "lloc": "Cinéma \"Le Casteil\"",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Cinema",
+    "descripcio_ca": "Es projecta la pel·lícula d'acció i aventura «Heart of the Beast», dirigida per David Ayer i protagonitzada per Brad Pitt, Uber i J.K. Simmons. El film relata la història de James Belmont, un exmembre de les forces especials que, després de patir un accident d'avió a l'Alaska, ha de lluitar per sobreviure amb el seu gos Odin en un entorn natural salvatge.",
+    "descripcio_fr": "Le film d'action et d'aventure «Heart of the Beast», réalisé par David Ayer et avec Brad Pitt, Uber et J.K. Simmons à l'affiche, est projeté. Le film raconte l'histoire de James Belmont, un ancien des forces spéciales qui, après un crash d'avion en Alaska, doit lutter pour survivre avec son chien Odin dans un environnement naturel sauvage.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/heart-of-the-best.jpg?width=150&height=120",
+    "font_url": "https://www.ticketingcine.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.542Z",
+    "periodicitat": ""
   }
 ]
