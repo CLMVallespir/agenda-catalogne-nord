@@ -8222,5 +8222,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.533Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-rifa",
+    "titol": "Rifa",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "15:00",
+    "lloc": "Centre culturel",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "L'associació Le Club de l'Amitié organitza una rifa per compartir un moment de convivència. L'acte està obert a tothom i ofereix l'oportunitat de guanyar diversos premis, des de productes gurmet fins a objectes quotidians.",
+    "descripcio_fr": "L'association Le Club de l'Amitié organise une rifle pour partager un moment de convivialité. L'événement est ouvert à tous et offre l'opportunité de gagner divers prix, allant de produits gourmands à des objets du quotidien.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/lottery-8093660-1280.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.534Z",
+    "periodicitat": ""
   }
 ]
