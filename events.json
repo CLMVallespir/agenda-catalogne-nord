@@ -8412,5 +8412,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.336Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-loto-de-la",
+    "titol": "Loto de la gent gran",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Trullars",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "El Club des Aînés de Trullars organitza el seu gran loto a la Salle des Fêtes de Trullars. Es tracta d'una jornada per compartir un moment de convivència en família o amb amics mentre els participants proven sort amb diversos premis.",
+    "descripcio_fr": "Le Club des Aînés de Trullars organise son grand loto à la Salle des Fêtes de Trullars. Il s'agit d'une journée pour partager un moment de convivialité en famille ou entre amis tout en tentant sa chance avec divers prix à gagner.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-trouilals-lotodesainees.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.359Z",
+    "periodicitat": ""
   }
 ]
