@@ -3360,7 +3360,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZHPH] Títol escrit per un model a partir del francès de l'ADT66. L'oferta no porta cap text descriptiu i no se n'ha inventat cap: les dues descripcions queden buides."
   },
   {
-    "id": "2026-10-24-journee-recreative",
+    "id": "2026-10-24-jornada-recreativa",
     "titol": "Jornada recreativa",
     "data_inici": "2026-10-24",
     "data_fi": "2026-10-24",
@@ -3374,7 +3374,7 @@
     "associacio": "Contacter Madame FLOUR Alexandra",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/format-tourinsoft--12-.png?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.557Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZHQ3] Ve marcada «Jeux» sense cap patró de joc de club al títol: la categoria queda buida. Si és un joc d'entitat, és Vida associativa; si és un negoci, la fila no hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
