@@ -8545,5 +8545,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.373Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-26-gran-dictat",
+    "titol": "Gran dictat",
+    "data_inici": "2026-10-26",
+    "data_fi": "2026-10-26",
+    "hora": "15:30",
+    "lloc": "2 carrer del picot",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte convida a participar en un gran dictat inspirat en el format de l'emissió Apostrophes. Es tracta d'una activitat sense competició on l'objectiu principal és jugar amb les paraules, acceptar el repte i gaudir de la llengua francesa.",
+    "descripcio_fr": "L'événement invite à participer à une grande dictée inspirée du format de l'émission Apostrophes. Il s'agit d'une activité sans compétition où l'objectif principal est de jouer avec les mots, de relever le défi et d'apprécier la langue française.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Design-sans-titre--1--4.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.374Z",
+    "periodicitat": ""
   }
 ]
