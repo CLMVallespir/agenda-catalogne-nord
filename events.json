@@ -8355,5 +8355,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.564Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-primera-jornada-nacional",
+    "titol": "Primera jornada nacional de les immersions termals",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "09:00",
+    "lloc": "",
+    "municipi": "Molig",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "Amb motiu de la primera jornada nacional d'Immersions Thermales, l'establiment termal de Molig obre les portes al públic. Els assistents poden descobrir les instal·lacions, experimentar els tractaments oferts i conversar amb l'equip de professionals sobre els beneficis del termalisme. L'activitat inclou visites, la descoberta del recorregut termal i un espai d'intercanvi per resoldre dubtes.",
+    "descripcio_fr": "À l'occasion de la première journée nationale Immersions Thermales, l'établissement thermal de Molitg-les-Bains ouvre ses portes au public. Les visiteurs peuvent découvrir les installations, expérimenter les soins proposés et échanger avec l'équipe de professionnels sur les bienfaits du thermalisme. L'activité comprend des visites, la découverte du parcours thermal et un espace d'échange pour répondre aux questions.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Screenshot-2026-10-17-125530.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.566Z",
+    "periodicitat": ""
   }
 ]
