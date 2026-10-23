@@ -8336,5 +8336,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.557Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-festa-de-la",
+    "titol": "Festa de la rosquilla",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Teatre",
+    "descripcio_ca": "Aquesta jornada festiva inclou un mercat artesanal, la venda de rosquilles i degustacions de vins dolços. El programa proposa espectacles de ball, actuacions de castellers, música amb la batucada Catala Que Ta i diverses activitats familiars com jocs de fusta o jocs de pista. També s'hi presenta l'obra \"La Rosquilla du Haut-Vallespir\" i una exposició sobre la història de les cases Piroué, Perez i Touron.",
+    "descripcio_fr": "Cette journée festive comprend un marché artisanal, la vente de rousquilles et des dégustations de vins doux. Le programme propose des spectacles de danse, des représentations de castellers, de la musique avec la batucada Catala Que Ta et diverses activités familiales comme des jeux en bois ou des jeux de piste. L'événement permet également de découvrir l'ouvrage \"La Rosquilla du Haut-Vallespir\" et une exposition sur l'histoire des maisons Piroué, Perez et Touron.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/FETE-DE-LA-ROSQUILLA--2--1.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.564Z",
+    "periodicitat": ""
   }
 ]
