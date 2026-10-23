@@ -8602,5 +8602,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.399Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-26-karaoke",
+    "titol": "Karaoke",
+    "data_inici": "2026-10-26",
+    "data_fi": "2026-10-26",
+    "hora": "18:00",
+    "lloc": "2 carrer Del Picot",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Música",
+    "descripcio_ca": "La vetllada de karaoke convida a gaudir de la música, el riure i la bona companyia. Es poden interpretar des de grans clàssics fins a èxits imprescindibles, pensats per a tots els gustos i nivells.",
+    "descripcio_fr": "La soirée karaoké invite à profiter de la musique, du rire et de la bonne compagnie. Il est possible d'interpréter des grands classiques comme des tubes incontournables, pensés pour tous les goûts et tous les niveaux.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/karaoke-11-avril.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.403Z",
+    "periodicitat": ""
   }
 ]
