@@ -8469,5 +8469,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.511Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-festa-del-vi",
+    "titol": "Festa del vi",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "11:00",
+    "lloc": "Place Jean-François Carrere",
+    "municipi": "Òpol i Perellós",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "La festa del vi i dels vinyaters torna a celebrar-se enguany. S'ofereix servei de bar, restauració al mateix recinte i animació musical.",
+    "descripcio_fr": "La fête du vin et des vignerons est de nouveau au rendez-vous cette année. Un service de buvette, une restauration sur place et une animation musicale sont proposés.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/opoul-fete-du-vin.jpg?width=150&height=120",
+    "font_url": "https://www.opoul-perillos.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.537Z",
+    "periodicitat": ""
   }
 ]
