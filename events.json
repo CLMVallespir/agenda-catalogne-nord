@@ -8393,5 +8393,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.335Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-festa-de-la",
+    "titol": "Festa de la Rotja",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "09:00",
+    "lloc": "Le long de la D6",
+    "municipi": "Saorra",
+    "comarca": "Conflent",
+    "categoria": "Mercat",
+    "descripcio_ca": "Aquesta jornada de tardor posa en relleu la riquesa i la gastronomia de la vall de la Rotja amb productors i artesans locals. La cultura catalana és protagonista amb les actuacions dels Gegants de Villefranche-de-Conflent, els Castellers Els Pallagos Del Conflent, la Batukagralla, la Cobla Les Casenoves i el grup Zykatok. L'esdeveniment ofereix música, jocs per a la mainada i una rifa en un ambient festiu pensat per a totes les generacions.",
+    "descripcio_fr": "Cette journée d'automne met en avant la richesse et la gastronomie de la vallée de la Rotja avec des producteurs et artisans locaux. La culture catalane est à l'honneur avec les prestations des Géants de Villefranche-de-Conflent, des Castellers Els Pallagos Del Conflent, de la Batukagralla, de la Cobla Les Casenoves et du groupe Zykatok. L'événement propose de la musique, des jeux pour les enfants et une tombola dans une ambiance festive pensée pour toutes les générations.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/fete-dela-Rotja-2026.jpg?width=150&height=120",
+    "font_url": "https://www.tourisme-canigo.com/agenda/fete-de-la-rotja-fmalar066v51u5bx/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.336Z",
+    "periodicitat": ""
   }
 ]
