@@ -8260,5 +8260,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.542Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-shinrin-yoku-bany",
+    "titol": "Shinrin Yoku: bany de bosc a Mosset",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "09:30",
+    "lloc": "",
+    "municipi": "Mosset",
+    "comarca": "Conflent",
+    "categoria": "Esports",
+    "descripcio_ca": "L'activitat és una invitació a connectar amb la natura mitjançant una caminada lenta i silenciosa. Es tracta d'una experiència sensorial que permet despertar els sentits i reforçar el vincle amb els boscos de les muntanyes catalanes.",
+    "descripcio_fr": "L'activité est une invitation à se connecter avec la nature grâce à une marche lente et silencieuse. Il s'agit d'une expérience sensorielle qui permet d'éveiller ses sens et de renforcer le lien avec les forêts des montagnes catalanes.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/261011-affiche-bain-de-foret-Mosset-Col-de-Jau-web.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.543Z",
+    "periodicitat": ""
   }
 ]
