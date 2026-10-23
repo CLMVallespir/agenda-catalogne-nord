@@ -8298,5 +8298,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.550Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-barca-rose-gran",
+    "titol": "Barca Rose - Gran bingo",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "15:00",
+    "lloc": "Boulevard des Rois de Majorque",
+    "municipi": "El Barcarès",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Amb motiu d'Octobre Rose, el municipi i les associacions locals organitzen una jornada solidària amb un gran bingo per lluitar contra el càncer de mama. Els beneficis de l'acte es destinaran a l'associació ONCO PARCOURS de Toulouges.",
+    "descripcio_fr": "À l'occasion d'Octobre Rose, la municipalité et les associations locales organisent une journée solidaire avec un grand loto pour lutter contre le cancer du sein. Les bénéfices de l'événement seront reversés à l'association ONCO PARCOURS de Toulouges.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/russkoe-loto-5875700-1280-6.jpg?width=150&height=120",
+    "font_url": "https://www.lebarcares.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.555Z",
+    "periodicitat": ""
   }
 ]
