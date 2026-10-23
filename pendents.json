@@ -3740,7 +3740,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z14Y] Possible activitat esportiva de pagament elevat (30 €): comproveu si és una entitat o un negoci. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-25-stage-kickboxing-avec",
+    "id": "2026-10-25-taller-de-kick",
     "titol": "Taller de kick-boxing amb Remi Parra",
     "data_inici": "2026-10-25",
     "data_fi": "2026-10-25",
@@ -3754,7 +3754,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/stage-kickboxing.jpg?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.511Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z9M2] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
