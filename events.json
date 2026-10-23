@@ -8431,5 +8431,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.359Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-treball-del-cavall",
+    "titol": "Treball del cavall a l'exterior",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "09:30",
+    "lloc": "route de Fourques",
+    "municipi": "Terrats",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "Aquesta formació inclou tallers pràctics sobre el ritme natural del cavall, la resolució de problemes i la comunicació no verbal per millorar la relació entre l'animal i el genet. Les sessions també aborden la seguretat en sortides a l'exterior, tècniques de desensibilització i l'avaluació de competències mitjançant balades encarregades.",
+    "descripcio_fr": "Cette formation inclut des ateliers pratiques sur le rythme naturel du cheval, la résolution de problèmes et la communication non verbale pour améliorer la relation entre l'animal et le cavalier. Les sessions abordent également la sécurité lors des sorties en extérieur, des techniques de désensibilisation et l'évaluation des compétences à travers des balades encadrées.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-terrats-travail.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.372Z",
+    "periodicitat": ""
   }
 ]
