@@ -8526,5 +8526,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.569Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-26-taller-de-memoria",
+    "titol": "Taller de memòria",
+    "data_inici": "2026-10-26",
+    "data_fi": "2026-10-26",
+    "hora": "10:00",
+    "lloc": "5 Rue des Thermes",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest taller està destinat a treballar i exercitar la memòria. L'activitat té lloc a la Maison des Améliens.",
+    "descripcio_fr": "Cet atelier est destiné à travailler et exercer la mémoire. L'activité a lieu à la Maison des Améliens.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/atelier-memoire.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-20T07:58:13.373Z",
+    "periodicitat": ""
   }
 ]
