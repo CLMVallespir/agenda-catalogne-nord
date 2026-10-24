@@ -8830,5 +8830,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.708Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-10-29-taller-de-cuina",
+    "titol": "Taller de cuina i nutrició",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "14:00",
+    "lloc": "2 BOULEVARD VIOLET",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Els tallers de cuina i nutrició són gratuïts i s'adrecen a tots els cuidadors familiars. El nombre de places és limitat i la inscripció és obligatòria.",
+    "descripcio_fr": "Les ateliers de cuisine et de nutrition sont gratuits et s'adressent à tous les aidants familiaux. Le nombre de places est limité et l'inscription est obligatoire.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-atelier-cuisine-et-nutrition.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.807Z",
+    "periodicitat": ""
   }
 ]
