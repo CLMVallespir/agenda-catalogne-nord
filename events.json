@@ -8678,5 +8678,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.750Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-23-jazz-e-sole",
+    "titol": "Jazz e sole - Suave Quartet",
+    "data_inici": "2026-10-23",
+    "data_fi": "2026-10-23",
+    "hora": "20:30",
+    "lloc": "7 Rue de la République",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Suave Quartet proposa un viatge entre els ritmes captivadors del Brasil i la dolçor assolellada d'Itàlia. Al seu repertori, la samba, la bossa nova i el jazz es barregen amb elegància i finesa, i els ritmes animats de la música brasilera s'hi troben amb la calidesa de cançons italianes i franceses rearranjades, amb referències que van de Sergio Mendes a Gilberto Gil, passant per Claude Nougaro o Edith Piaf. La interpretació és personal i sensible, i el grup hi mostra una complicitat musical evident. La formació la integren Nadia Lombardo al cant, Cyril Salvagnac a la guitarra, Fabrice Camboulive al baix i Laurent Meyer a la bateria.",
+    "descripcio_fr": "Suave Quartet propose un voyage entre les rythmes envoûtants du Brésil et la douceur ensoleillée de l'Italie. Dans leur répertoire, la samba, la bossa nova et le jazz se mêlent avec élégance et finesse, et les rythmes entraînants de la musique brésilienne côtoient la chaleur de chansons italiennes et françaises réarrangées, avec des références allant de Sergio Mendes à Gilberto Gil, en passant par Claude Nougaro ou Edith Piaf. L'interprétation est personnelle et sensible, et le groupe y montre une complicité musicale évidente. La formation réunit Nadia Lombardo au chant, Cyril Salvagnac à la guitare, Fabrice Camboulive à la basse et Laurent Meyer à la batterie.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/format-tourinsoft--4-.png?width=150&height=120",
+    "font_url": "https://www.rivesaltes.fr/activites/agenda-culturel/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.765Z",
+    "periodicitat": ""
   }
 ]
