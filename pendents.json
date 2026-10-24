@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-10-23-don-du-sang",
+    "id": "2026-10-23-donacio-de-sang",
     "titol": "Donació de sang",
     "data_inici": "2026-10-23",
     "data_fi": "2026-10-23",
@@ -14,7 +14,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-don-du-sang.jpg?width=150&height=120",
     "font_url": "https://dondesang.efs.sante.fr/trouver-une-collecte",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.711Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V5204GB] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
