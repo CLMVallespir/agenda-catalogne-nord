@@ -8754,5 +8754,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.807Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-te-dansant-al",
+    "titol": "Té dansant al Casino Joa",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "15:00",
+    "lloc": "Route du Perthus",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Es tracta d'un té dansant al Casino Joa. L'acte inclou una consumició i una pastisseria, i cal fer reserva prèvia.",
+    "descripcio_fr": "Il s'agit d'un thé dansant au Casino Joa. L'acte comprend une consommation et une pâtisserie, et une réservation préalable est nécessaire.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/AFF-THE-DANSANT-LE-BOULOU.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.829Z",
+    "periodicitat": ""
   }
 ]
