@@ -8716,5 +8716,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.756Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-23-collection-felins-micro",
+    "titol": "Collection félins, Micro-Folie",
+    "data_inici": "2026-10-23",
+    "data_fi": "2026-10-23",
+    "hora": "14:00",
+    "lloc": "Route de Collioure",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Els felins, com els gats, els tigres, els lleons i els jaguars, han ocupat un lloc destacat en la història de les civilitzacions, a vegades com a divinitats, símbols de poder o companys fidels. Mitjançant una selecció d'obres digitalitzades, l'acte permet conèixer aquests animals i les creences, les emocions i els símbols que encarnen. Amb tauletes digitals, es poden explorar les obres al ritme de cadascú i observar les diferents maneres com els artistes han representat aquestes criatures. És una experiència cultural accessible a tothom, que convida petits i grans a mirar el món animal amb una mirada nova.",
+    "descripcio_fr": "Tantôt divinités, symboles de puissance ou compagnons fidèles, les chats, les tigres, les lions et les jaguars ont occupé une place fascinante dans l'histoire des civilisations. À travers une sélection d'œuvres numérisées, l'acte permet de découvrir ces animaux et les croyances, les émotions et les symboles qu'ils incarnent. Grâce à des tablettes numériques, les œuvres peuvent être explorées à son propre rythme et l'on peut observer les différentes manières dont les artistes ont représenté ces créatures. Il s'agit d'une expérience culturelle accessible à tous, qui invite petits et grands à porter un regard nouveau sur le monde animal.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/micro-folie-3.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.865Z",
+    "periodicitat": ""
   }
 ]
