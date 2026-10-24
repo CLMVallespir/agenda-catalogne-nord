@@ -8697,5 +8697,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.765Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-23-taller-de-costura",
+    "titol": "Taller de costura infantil",
+    "data_inici": "2026-10-23",
+    "data_fi": "2026-10-23",
+    "hora": "15:00",
+    "lloc": "Office de Tourisme Pyrénées 2000",
+    "municipi": "Bolquera",
+    "comarca": "Cerdanya",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte consisteix en un taller de costura per a parelles formades per un adult i un infant, a partir de sis anys. S'hi crea un petit sujet de feltre sobre el tema d'Halloween. El material és inclòs.",
+    "descripcio_fr": "L'atelier de couture s'adresse à des binômes formés d'un adulte et d'un enfant, dès six ans. On y réalise un petit sujet en feutrine sur le thème d'Halloween. Le matériel est fourni.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/couture-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.756Z",
+    "periodicitat": ""
   }
 ]
