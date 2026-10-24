@@ -8659,5 +8659,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.711Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-23-musiques-del-mon",
+    "titol": "Músiques del món",
+    "data_inici": "2026-10-23",
+    "data_fi": "2026-10-23",
+    "hora": "21:00",
+    "lloc": "Le village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El grup Groove Factory, amb Sabrina i els seus músics, proposa un repertori de sonoritats pop i groove. El repertori gira entorn de l'univers d'Amy Winehouse.",
+    "descripcio_fr": "Le groupe Groove Factory, avec Sabrina et ses musiciens, propose un répertoire de sonorités pop et groove. Le répertoire tourne autour de l'univers d'Amy Winehouse.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/lcd-musiques-monde-12.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.750Z",
+    "periodicitat": ""
   }
 ]
