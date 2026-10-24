@@ -8735,5 +8735,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.865Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-24-theatre-mode-demploi",
+    "titol": "Théâtre mode d'emploi",
+    "data_inici": "2026-10-24",
+    "data_fi": "2026-10-24",
+    "hora": "20:30",
+    "lloc": "Place Castellane",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'espectacle parteix de la mala reputació que encara pot tenir el teatre, sobretot entre les generacions joves. Amb una simple maleta d'accessoris, dues persones intèrpretes, Marion Astorg i Théo Trassoudaine, s'enfronten a una obra austríaca d'acció rocambolesca i de nombrosos personatges. La ficció es va desbordant i el plaer del joc acaba imposant-se a les consideracions més eruditeѕ. La direcció escènica és de Maïanne Barthès.",
+    "descripcio_fr": "Le spectacle part de la mauvaise réputation que le théâtre peut encore avoir, surtout auprès des jeunes générations. Avec une simple malle d'accessoires, deux interprètes, Marion Astorg et Théo Trassoudaine, s'attaquent à une pièce autrichienne à l'action rocambolesque et aux nombreux personnages. La fiction déborde peu à peu et le plaisir du jeu finit par l'emporter sur les considérations savantes. La mise en scène est de Maïanne Barthès.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/24-octobre-Theatre-Mode-d-Emploi-Romane-Marion-CharlyneAzzalin--11-.jpg-800px.JPG?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.807Z",
+    "periodicitat": ""
   }
 ]
