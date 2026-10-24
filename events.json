@@ -8773,5 +8773,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.829Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-25-rifa-del-rugbi",
+    "titol": "Rifa del rugbi",
+    "data_inici": "2026-10-25",
+    "data_fi": "2026-10-25",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Dins del marc de l'octobre rose, l'EBC Vinçà organitza una rifa. El programa inclou 30 partides, 8 trens de la sort, vals de compra Super U i altres sorpreses.",
+    "descripcio_fr": "Dans le cadre d'Octobre rose, l'EBC Vinçà organise une tombola. Le programme comprend 30 parties, 8 trains de la chance, des bons d'achat Super U et d'autres surprises.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ebc-vinca.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.867Z",
+    "periodicitat": ""
   }
 ]
