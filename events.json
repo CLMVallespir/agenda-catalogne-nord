@@ -8640,5 +8640,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-20T07:58:13.453Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-23-donacio-de-sang",
+    "titol": "Donació de sang",
+    "data_inici": "2026-10-23",
+    "data_fi": "2026-10-23",
+    "hora": "15:00",
+    "lloc": "Salle Marcel Cazeilles",
+    "municipi": "Sant Joan la Cella",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La donació de sang es fa a Sant Joan la Cella, amb cita prèvia. Hi poden donar les persones en bon estat de salut, d'entre 18 i 70 anys i que pesin almenys 50 quilos. Els donants han de venir sense estar en dejú i ben hidratats, i portar un document d'identitat i un bolígraf. La donació dura uns 45 minuts, dels quals 10 corresponen a l'extracció.",
+    "descripcio_fr": "Le don du sang a lieu à Sant Joan la Cella, sur rendez-vous. Peuvent donner les personnes en bonne santé, âgées de 18 à 70 ans et pesant au moins 50 kilos. Les donneurs doivent venir sans être à jeun et bien hydratés, et apporter une pièce d'identité et un stylo. Le don dure environ 45 minutes, dont 10 minutes de prélèvement.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-don-du-sang.jpg?width=150&height=120",
+    "font_url": "https://dondesang.efs.sante.fr/trouver-une-collecte",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.711Z",
+    "periodicitat": ""
   }
 ]
