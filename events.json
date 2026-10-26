@@ -9419,5 +9419,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.805Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-passejada-somiadora-i",
+    "titol": "Passejada somiadora i pastoral - Patrimoines en scène",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "10:00",
+    "lloc": "Place du Général de Gaulle",
+    "municipi": "Estagell",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La passejada permet descobrir les restes de la vida pastoral que encara és molt present al Mont d'Estagell. La companyia Marie est de la nuit s'ha associat amb George Bernadas, pastor i formatger, i amb l'Association Villa stagello, coneixedors de la garriga, per guiar el recorregut. Pel camí s'escolten relats i cants de pastors sards, piemontesos, occitans i catalans, i s'hi troben màscares, siluetes i danses, al ritme de les cabres. L'activitat és a partir de 6 anys, es fa en un recorregut de 3 km de dificultat fàcil, i els qui ho desitgin poden emportar-se un pícnic.",
+    "descripcio_fr": "La promenade permet de découvrir les traces de la vie pastorale, encore très présente sur le Mont d'Estagell. La compagnie Marie est de la nuit s'est associée à George Bernadas, berger-fromager, et à l'Association Villa stagello, connaisseurs de la garrigue, pour guider le parcours. Le long du chemin, on écoute des récits et des chants de bergers sardes, piémontais, occitans et catalans, et l'on rencontre masques, silhouettes et danses, au rythme des chèvres. L'activité est accessible à partir de 6 ans, sur un parcours de 3 km de difficulté facile, et ceux qui le souhaitent peuvent emporter un pique-nique.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/PNRCF-Affiche-A3-PeS-311026-juin2026-v6-page-0001.jpg?width=150&height=120",
+    "font_url": "https://www.parc-corbieres-fenouilledes.fr/agenda/31-10-balade-reveuse-et-pastorale-sur-le-mont-destagel/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.808Z",
+    "periodicitat": ""
   }
 ]
