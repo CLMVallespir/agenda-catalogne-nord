@@ -9628,5 +9628,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.360Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-mercat-de-segona",
+    "titol": "Mercat de segona mà",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "08:00",
+    "lloc": "Route de Saint Jean Lasseille",
+    "municipi": "Banyuls dels Aspres",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "L'APE BDA organitza un mercat de segona mà a benefici dels infants de l'escola de Banyuls dels Aspres. Els beneficis de la jornada es destinaran a donar suport als projectes i a les activitats dels alumnes. Al lloc de l'acte hi haurà una barra de begudes i entrepans.",
+    "descripcio_fr": "L'APE BDA organise un marché de seconde main au profit des enfants de l'école de Banyuls dels Aspres. Les bénéfices de la journée seront destinés à soutenir les projets et les activités des élèves de l'école. Une buvette et un snack seront proposés sur place.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aSPRES-BDA-VIDE-GRENIER-ECOLES.JPG?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.369Z",
+    "periodicitat": ""
   }
 ]
