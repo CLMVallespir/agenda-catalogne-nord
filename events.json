@@ -9818,5 +9818,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.476Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-02-betes-de-palais",
+    "titol": "Bêtes de Palais - Palais des Rois de Majorque",
+    "data_inici": "2026-11-02",
+    "data_fi": "2026-11-02",
+    "hora": "10:00",
+    "lloc": "PALAIS DES ROIS DE MAJORQUERue des Archers",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "Amb motiu de la Jornada mundial dels animals, l'exposició mostra el lloc que ocupaven els animals en la vida quotidiana, l'oci i les creences dels reis de l'Edat Mitjana. La visita, pensada per a tothom, combina història, patrimoni i natura. Convida grans i petits a mirar d'una altra manera el monument i la biodiversitat que l'envolta encara avui.",
+    "descripcio_fr": "À l'occasion de la Journée mondiale des animaux, l'exposition montre la place qu'occupaient les animaux dans la vie quotidienne, les loisirs et les croyances des rois du Moyen Âge. La visite, destinée à tous, associe histoire, patrimoine et nature. Elle invite petits et grands à porter un regard neuf sur le monument et la biodiversité qui l'entoure encore aujourd'hui.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Visite-thematique-Nature-et-Animaux---Octobre-2026.PNG?width=150&height=120",
+    "font_url": "https://www.ledepartement66.fr/agenda/opera-dete-cendrillon-de-rudolf-noureev/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.418Z",
+    "periodicitat": ""
   }
 ]
