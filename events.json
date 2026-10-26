@@ -9495,5 +9495,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.832Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-trobada-literaria-amb",
+    "titol": "Trobada literària amb Lucie Rico",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "16:00",
+    "lloc": "1 Rue Arago",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La romancera, guionista i directora Lucie Rico, originària de Perpignan, porta els lectors a una història en què la memòria esdevé un territori tan fascinant com incert. Jennifer viu tranquil·la fins que unes paraules que apareixen a l'ordinador li fan sorgir el record d'una escena de violència que creia oblidada, i intenta reconstruir-la mentre la seva pròpia memòria sembla oposar-s'hi. Amb una escriptura que juga amb el suspens, el desplaçament i l'estranyesa, l'autora qüestiona la relació amb els records, els relats familiars i les veritats que de vegades es prefereix deixar a l'ombra. La trobada permet conèixer el procés de creació de l'autora i els mecanismes d'aquesta novel·la tan intrigant com desconcertant.",
+    "descripcio_fr": "La romancière, scénariste et réalisatrice Lucie Rico, originaire de Perpignan, entraîne ses lecteurs dans une histoire où la mémoire devient un territoire aussi fascinant qu'incertain. Jennifer mène une vie paisible jusqu'au jour où quelques mots apparus sur son ordinateur font resurgir le souvenir d'une scène de violence qu'elle croyait oubliée, et elle tente de la reconstituer alors que sa propre mémoire semble lui résister. Avec une écriture qui joue avec le suspense, le décalage et l'étrangeté, l'autrice interroge le rapport aux souvenirs, aux récits familiaux et aux vérités que l'on préfère parfois laisser dans l'ombre. La rencontre permet de découvrir le processus de création de l'autrice et les mécanismes de ce roman aussi intrigant que déroutant.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/31-10-2026-Lucie-Rico--Librairie-Oxymore.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.834Z",
+    "periodicitat": ""
   }
 ]
