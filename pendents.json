@@ -4300,12 +4300,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z95Q] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-30-piece-de-theatre",
+    "id": "2026-10-30-obra-de-teatre",
     "titol": "Obra de teatre",
     "data_inici": "2026-10-30",
     "data_fi": "2026-10-30",
     "hora": "20:30",
-    "lloc": "Salle Escaro de la mairie\nPlace François Desnoyer",
+    "lloc": "Salle Escaro de la mairiePlace François Desnoyer",
     "municipi": "Sant Cebrià de Rosselló",
     "comarca": "Rosselló",
     "categoria": "Teatre",
@@ -4314,7 +4314,7 @@
     "associacio": "Contacter OT COLLECTIONS DE SAINT CYPRIEN",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52ZAYR-1790587406041.jpg?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.827Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZAYR] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
