@@ -9704,5 +9704,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.378Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-regards-sur-ma",
+    "titol": "Regards sur ma région",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "09:30",
+    "lloc": "81 Bis rue du Palais de Justice",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'exposició presenta les obres del pintor Raphael Martinez, nascut a Perpignan. Autodidacte, des de sempre la pintura és el seu mitjà d'expressió preferit, guiat per les emocions i la llum. Fa una desena d'anys va decidir dedicar-s'hi professionalment, i les seves teles reflecteixen la bellesa i les emocions dels paisatges lluminosos.",
+    "descripcio_fr": "L'exposition présente les œuvres du peintre Raphael Martinez, né à Perpignan. Autodidacte, la peinture est depuis toujours son moyen d'expression privilégié, guidé par les émotions et la lumière. Il y a une dizaine d'années, il a décidé d'en faire son métier, et ses toiles reflètent la beauté et les émotions des paysages lumineux.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche---Exposition-Martin-Vives--2-.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.424Z",
+    "periodicitat": ""
   }
 ]
