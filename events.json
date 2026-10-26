@@ -9438,5 +9438,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.808Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-dia-de-los",
+    "titol": "Dia de los Muertos",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "16:00",
+    "lloc": "",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Elna celebra Halloween i el Día de los Muertos amb animacions per a petits i grans. Hi ha tallers per a infants, amb maquillatge, polseres i fanalets, en un ambient musical. Els diables de la Factoria de Só fan també un correfoc, i després hi ha un espectacle de focs artificials a l'Épicentre, subjecte a les condicions meteorològiques i de seguretat.",
+    "descripcio_fr": "Elna célèbre Halloween et le Día de los Muertos avec des animations pour petits et grands. Des ateliers pour enfants proposent maquillage, bracelets et lanternes, dans une ambiance musicale. Les diables de la Factoria de Só défileront également en correfoc, avant un feu d'artifice à l'Épicentre, sous réserve des conditions météorologiques et de sécurité.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/halloween-6.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.821Z",
+    "periodicitat": ""
   }
 ]
