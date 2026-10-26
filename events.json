@@ -9476,5 +9476,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.828Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-sorciere-fanfreluche",
+    "titol": "Sorcière Fanfreluche",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "15:00",
+    "lloc": "Carrer Mossem Fourquet",
+    "municipi": "Eus",
+    "comarca": "Conflent",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'espectacle Sorcière Fanfreluche és un conte per a infants a partir de 4 anys. Al fons del bosc, en una vella barraca, darrere la porta hi ha una bruixa esbarriada: és la baba Yaga, que obre el pas a un altre món ple de grimori, gat negre i sortilegis. La narració combina la paraula i la música, entre calfreds i entremaliadesa.",
+    "descripcio_fr": "Le spectacle Sorcière Fanfreluche est un conte pour enfants à partir de 4 ans. Au fond des bois, dans une vieille bicoque, derrière la porte se trouve une sorcière échevelée et écervelée : c'est baba Yaga, qui ouvre le passage vers un autre monde rempli de grimoire, de chat noir et de sortilèges. Le récit mêle la parole et la musique, entre frissons et espièglerie.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Capture-235.JPG?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.832Z",
+    "periodicitat": ""
   }
 ]
