@@ -5680,12 +5680,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZF9F] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-31-bien-etre-au",
+    "id": "2026-10-31-benestar-al-museu",
     "titol": "Benestar al museu - Sofrologia",
     "data_inici": "2026-10-31",
     "data_fi": "2026-10-31",
     "hora": "10:00",
-    "lloc": "Musée Hyacinthe Rigaud\n21 Rue Mailly",
+    "lloc": "Musée Hyacinthe Rigaud21 Rue Mailly",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Exposició",
@@ -5694,7 +5694,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Sophrologie-au-Musee-d-art-Hyacinthe-Rigaud-2.jpg?width=150&height=120",
     "font_url": "https://www.musee-rigaud.fr/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.835Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZFAH] Possible nova era o guia espiritual («bien-etre», «sophrologie»): comproveu de qui és l'acte i si hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
