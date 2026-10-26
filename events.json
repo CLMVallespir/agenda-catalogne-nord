@@ -10407,5 +10407,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.434Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-06-racontars-arctiques",
+    "titol": "Racontars arctiques",
+    "data_inici": "2026-11-06",
+    "data_fi": "2026-11-07",
+    "hora": "20:30",
+    "lloc": "Boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'espectacle explica les històries que una colla de caçadors, escampats pel flanc nord-est de Groenlàndia a l'inici dels anys cinquanta, es van explicant mentre viuen aïllats i quan les provisions comencen a faltar. Els relats s'inspiren en l'obra de l'autor danès Jørn Riel i es mouen entre allò real i allò llegendari. La companyia quebequesa La ruée vers l'or hi combina marionetes d'escuma, interpretació, sorolls i música en directe, i s'adreça a un públic adult i adolescent.",
+    "descripcio_fr": "Le spectacle raconte les histoires qu'une poignée de chasseurs, dispersés sur le flanc nord-est du Groenland au début des années 1950, se transmettent alors qu'ils vivent isolés et que les provisions commencent à manquer. Les récits s'inspirent de l'œuvre de l'auteur danois Jørn Riel et oscillent entre le vrai et le légendaire. La compagnie québécoise La ruée vers l'or y associe marionnettes en mousse, jeu d'acteur, bruitages et musique en direct, et s'adresse à un public adulte et adolescent.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/asPRES-THUIR-RACONTARS-ARCHITIQUES.JPG?width=150&height=120",
+    "font_url": "https://thuir.fr/le-theatre-des-aspres/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.434Z",
+    "periodicitat": ""
   }
 ]
