@@ -8963,5 +8963,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.818Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-conferencia-el-canigo",
+    "titol": "Conferència: el Canigó, Grand Site de France: història, reptes i perspectives",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "18:00",
+    "lloc": "Salle PabiransPassage de PabiransPlace Pierre ROIG",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "Florian Chardon, director del Syndicat mixte Canigó Grand Site, presenta una conferència sobre el massís i els balcons del Canigó com a grand site de France, amb la gènesi del projecte, un balanç i les perspectives de futur. El Canigó, de 2.784 metres d'altitud, és considerat la «muntanya sagrada dels catalans» i és alhora una referència de la biodiversitat europea i un pol turístic molt atractiu i molt freqüentat. L'acció de Canigó Grand Site consisteix a dur a terme un projecte que combina la protecció del patrimoni natural, paisatgístic i cultural amb la gestió dels fluxos de visitants. L'acte s'adreça al públic adult.",
+    "descripcio_fr": "Florian Chardon, directeur du Syndicat mixte Canigó Grand Site, présente une conférence sur le massif et les balcons du Canigó en tant que grand site de France, avec la genèse du projet, un bilan et les perspectives d'avenir. Le Canigó, qui culmine à 2 784 mètres d'altitude, est considéré comme la « montagne sacrée des Catalans » et constitue à la fois une référence de la biodiversité européenne et un pôle touristique très attractif et très fréquenté. L'action de Canigó Grand Site consiste à mener un projet qui associe la protection du patrimoine naturel, paysager et culturel à la gestion des flux de visiteurs. L'acte s'adresse au public adulte.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2910-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.822Z",
+    "periodicitat": ""
   }
 ]
