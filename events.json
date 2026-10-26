@@ -8887,5 +8887,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.727Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-taller-bolets-i",
+    "titol": "Taller: bolets i ocells fantàstics",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "16:00",
+    "lloc": "31 Avenue du Serrat de l'Ours",
+    "municipi": "Bolquera",
+    "comarca": "Cerdanya",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Es fabriquen bolets d'argila i es personalitzen bolets de fusta. També es fan ocells fantàstics amb plantilles grans i dibuixos amb pastells.",
+    "descripcio_fr": "On fabrique des champignons en argile et on personnalise des champignons en bois. Des oiseaux fantastiques sont réalisés avec de grands pochoirs et des dessins aux pastels.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Copie-de-Ateliers-Natures.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.758Z",
+    "periodicitat": ""
   }
 ]
