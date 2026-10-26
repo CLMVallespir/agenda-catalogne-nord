@@ -10749,5 +10749,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.462Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-2n-open-doccitanie",
+    "titol": "2n Open d'Occitanie de Fast Hiking",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "08:30",
+    "lloc": "avenue de la Vallée Heureuse",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "El fast hiking és una excursió ràpida i esportiva que es fa a un ritme sostingut, en autonomia, per un recorregut amb desnivell i/o dificultats tècniques. Es tracta d'una disciplina més esportiva i dinàmica que el senderisme clàssic.",
+    "descripcio_fr": "Le fast hiking est une randonnée rapide et sportive qui se pratique à allure soutenue, en autonomie, sur un parcours avec du dénivelé et/ou des difficultés techniques. Il s'agit d'une discipline plus sportive et plus dynamique que la randonnée classique.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/fast-hiking.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.464Z",
+    "periodicitat": ""
   }
 ]
