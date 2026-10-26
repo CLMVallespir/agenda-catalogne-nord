@@ -10920,5 +10920,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.478Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-taller-de-descoberta",
+    "titol": "Taller de descoberta del cant coral",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "10:30",
+    "lloc": "",
+    "municipi": "Fontpedrosa",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte és un taller obert a tothom per descobrir el cant coral en un ambient cordial i distès. Els participants canten junts, aprenen a escoltar els altres i exploren la veu sense la pressió de l'actuació. Hi poden participar tant principiants com aficionats al cant.",
+    "descripcio_fr": "L'atelier est ouvert à tous et permet de découvrir le chant choral dans une ambiance cordiale et conviviale. Les participants chantent ensemble, apprennent à écouter les autres et explorent leur voix sans pression de performance. Il s'adresse aussi bien aux débutants qu'aux amateurs de chant.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-atelier-de-chant-choral-VEVENT.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.481Z",
+    "periodicitat": ""
   }
 ]
