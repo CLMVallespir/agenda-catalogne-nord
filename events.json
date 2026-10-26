@@ -9666,5 +9666,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.370Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-exposicio-lexil-des",
+    "titol": "Exposició «L'exil des républicains espagnols» i «Le camp spécial» al Château Royal",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "10:00",
+    "lloc": "Quai de l'Amirauté",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "El Château Royal proposa conèixer l'exposició permanent «L'exil des républicains espagnols», així com «Le camp spécial de Cotlliure». Es recorda que milers de dones, homes, persones grans, infants i soldats van fugir de la dictadura cap al nord. Aquest recorregut d'exili va ser llarg i dur, i va representar el pesat tribut pagat pels republicans espanyols.",
+    "descripcio_fr": "Le Château Royal propose de découvrir son exposition permanente intitulée « L'exil des républicains espagnols », ainsi que « Le camp spécial de Cotlliure ». Il est rappelé que des milliers de femmes, d'hommes, de personnes âgées, d'enfants et de soldats ont fui la dictature en se dirigeant vers le nord. Ce parcours d'exil fut long et éprouvant, représentant le lourd tribut payé par les républicains espagnols.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-expo-retirada-collioure.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.373Z",
+    "periodicitat": ""
   }
 ]
