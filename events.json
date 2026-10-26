@@ -9932,5 +9932,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.458Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-03-gira-ludica-jocs",
+    "titol": "Gira lúdica - jocs en família o entre amics",
+    "data_inici": "2026-11-03",
+    "data_fi": "2026-11-03",
+    "hora": "17:30",
+    "lloc": "2 RUE DU COMMERCE",
+    "municipi": "Ceret",
+    "comarca": "Vallespir",
+    "categoria": "",
+    "descripcio_ca": "Es tracta d'una gira lúdica oferta pel departament. Permet jugar a jocs entre amics o en família per passar una estona de convivència.",
+    "descripcio_fr": "Il s'agit d'une tournée ludique offerte par le département. Elle permet de jouer à des jeux entre amis ou en famille pour passer un moment de convivialité.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/AFF-TOURNEE-LUDIQUE-completee.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.465Z",
+    "periodicitat": ""
   }
 ]
