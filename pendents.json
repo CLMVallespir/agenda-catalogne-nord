@@ -4040,12 +4040,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52VEM6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-30-carpenter-brut-1ere",
+    "id": "2026-10-30-carpenter-brut-primera",
     "titol": "Carpenter Brut + primera part",
     "data_inici": "2026-10-30",
     "data_fi": "2026-10-30",
     "hora": "20:30",
-    "lloc": "ElMediator\nAvenue Maréchal Leclerc",
+    "lloc": "ElMediatorAvenue Maréchal Leclerc",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Música",
@@ -4054,7 +4054,7 @@
     "associacio": "Contacter BILLETTERIE",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Carpenter-Brut--1-.jpg?width=150&height=120",
     "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/carpenter-brut-10-2026",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.758Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52W6XC] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
