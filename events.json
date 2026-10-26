@@ -10122,5 +10122,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.418Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-04-mercredi-je-cree",
+    "titol": "Mercredi, je crée!",
+    "data_inici": "2026-11-04",
+    "data_fi": "2026-11-04",
+    "hora": "10:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Atelier creatiu dirigit per l'artista MITSU, destinat a infants a partir de 8 anys. Els infants descobreixen el modelatge manipulant la terra per crear una forma senzilla inspirada en el món viu (animal, personatge o objecte imaginari). Es tracta d'un moment creatiu i sensorial que deixa volar la imaginació mentre es diverteixen.",
+    "descripcio_fr": "Atelier créatif animé par l'artiste MITSU, destiné aux enfants à partir de 8 ans. Les enfants découvrent le modelage en manipulant la terre pour créer une forme simple inspirée du vivant (animal, personnage ou objet imaginaire). Il s'agit d'un moment créatif et sensoriel qui laisse libre cours à l'imagination tout en s'amusant.",
+    "associacio": "Contacter OT COLLECTIONS DE SAINT CYPRIEN",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52Y6JC-1785860377155.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.419Z",
+    "periodicitat": ""
   }
 ]
