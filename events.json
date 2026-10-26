@@ -9951,5 +9951,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.465Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-03-riflettes",
+    "titol": "Riflettes",
+    "data_inici": "2026-11-03",
+    "data_fi": "2026-11-03",
+    "hora": "15:00",
+    "lloc": "Espace des Comptes Guifred de Conflent",
+    "municipi": "Cornellà de Conflent",
+    "comarca": "Conflent",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Es juga a Cornellà de Conflent una sessió de riflettes oberta a tothom, amb 15 partides i una consolació. Hi ha vals de compra com a premi.",
+    "descripcio_fr": "Une séance de riflettes ouverte à tous est proposée à Cornellà de Conflent, avec 15 parties et une consolante. Des bons d'achat sont mis en jeu.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Rifle-loto-2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.468Z",
+    "periodicitat": ""
   }
 ]
