@@ -10939,5 +10939,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.481Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-castanyada-i-vi",
+    "titol": "Castanyada i vi nou",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "18:30",
+    "lloc": "Rue Saint-Pierre",
+    "municipi": "Vilafranca de Conflent",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "L'acte celebra la tardor amb la Castanyada i el vi nou, una tradició catalana festiva proposada per l'Association des Géants de Villefranche. Hi ha un moment de convivència amb castanyes i raïms oferts, i es pot tastar un got de vi nou.",
+    "descripcio_fr": "L'acte célèbre l'automne avec la Castanyada et le vin nouveau, une tradition catalane festive proposée par l'Association des Géants de Villefranche. Un moment de partage est proposé autour de châtaignes et de raisins offerts, et il est possible de déguster un verre de vin nouveau.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/CASTANYADE-GEANTS-VDC.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.481Z",
+    "periodicitat": ""
   }
 ]
