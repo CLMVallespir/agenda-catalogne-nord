@@ -9096,5 +9096,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.861Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-cita-gastronomica-la",
+    "titol": "Cita gastronòmica: La Table du Canigó",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "18:45",
+    "lloc": "17 Avenue Général de Gaulle",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "La comuna de Vinça organitza una trobada gastronòmica amb La Table du Canigó, en què els cuiners Gilles Bascou i Julien Blaya posen en relleu la cuina catalana, acompanyada d'una selecció de vins locals. El menú de maridatges de plats i vins, especial Boles de Picolat, inclou una entrada, un plat de cada cuiner, una taula de formatges i, de postres, el 2784m. La selecció de vins i el suc de fruita estan inclosos.",
+    "descripcio_fr": "La commune de Vinça organise une rencontre gastronomique avec La Table du Canigó, au cours de laquelle les chefs Gilles Bascou et Julien Blaya mettent à l'honneur la cuisine catalane, accompagnée d'une sélection de vins locaux. Le menu d'accords mets et vins, spécial Boles de Picolat, comprend une entrée, un plat de chaque chef, un plateau de fromages et, en dessert, le 2784m. La sélection de vins et le jus de fruit sont compris.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/AFFICHE-A3-6.jpg?width=150&height=120",
+    "font_url": "https://www.tourisme-canigo.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.868Z",
+    "periodicitat": ""
   }
 ]
