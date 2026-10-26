@@ -10255,5 +10255,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.444Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-05-cluedo-gegant",
+    "titol": "Cluédo gegant!",
+    "data_inici": "2026-11-05",
+    "data_fi": "2026-11-05",
+    "hora": "19:00",
+    "lloc": "2 rue Jacint Verdaguer",
+    "municipi": "Taurinyà",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "L'acte consisteix en una investigació a mida real al restaurant, amb mentides, coartades i culpables per descobrir. Enguany els sospitosos seran els clients.",
+    "descripcio_fr": "L'événement consiste en une enquête grandeur nature au restaurant, avec mensonges, alibis et coupables à découvrir. Cette année, les suspects seront les clients.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cludeo-2026-20260920-164224-0000.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.450Z",
+    "periodicitat": ""
   }
 ]
