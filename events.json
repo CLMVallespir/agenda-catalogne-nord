@@ -9590,5 +9590,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.472Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-la-maison-de",
+    "titol": "La maison de nos rêves",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-11-01",
+    "hora": "17:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "Comèdia dirigida per Jr., amb Kev Adams, Chantal Ladesou i Camille Aguilar, entre d'altres. Una jove parella creu haver trobat la solució miraculosa per accedir a la propietat: una compra vitalícia, una casa preciosa a la vora del llac i una dama moribunda, en definitiva el pla perfecte. Però un cop signat el contracte, la dama es troba molt millor i converteix el seu somni immobiliari en un autèntic malson. És per a tots els públics.",
+    "descripcio_fr": "Comédie réalisée par Jr., avec Kev Adams, Chantal Ladesou et Camille Aguilar, entre autres. Un jeune couple croit avoir trouvé la solution miracle pour accéder à la propriété : une vente en viager, une maison magnifique au bord du lac et une dame mourante, bref le plan parfait. Mais une fois le contrat signé, la dame va beaucoup mieux et transforme leur rêve immobilier en véritable cauchemar. Tout public.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/MAISON-19.jpg?width=150&height=120",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.482Z",
+    "periodicitat": ""
   }
 ]
