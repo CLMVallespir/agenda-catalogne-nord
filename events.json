@@ -10293,5 +10293,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.459Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-05-reunio-publica-sobre",
+    "titol": "Reunió pública sobre la mutualitat de poble",
+    "data_inici": "2026-11-05",
+    "data_fi": "2026-11-05",
+    "hora": "18:00",
+    "lloc": "Rue du 14 Juillet",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "La reunió pública informa sobre la mutualitat de poble, també anomenada complementària de salut comunal, que consisteix a comprar en grup per obtenir tarifes preferents per als habitants. Durant la trobada es donaran a conèixer el funcionament del dispositiu, les garanties i les tarifes proposades, i es respondran les preguntes dels assistents. Està obert a tots els residents del municipi, sense condició d'edat ni de recursos i sense qüestionari de salut. El dispositiu s'adreça especialment a jubilats, estudiants, persones aturades o autònomes que no tenen una mutual d'empresa obligatòria.",
+    "descripcio_fr": "La réunion publique présente la mutuelle de village, aussi appelée complémentaire santé communale, qui consiste en un achat groupé permettant d'obtenir des tarifs préférentiels pour les habitants. Au cours de la rencontre seront présentés le fonctionnement du dispositif, les garanties et les tarifs proposés, et il sera répondu aux questions des participants. Il est ouvert à tous les résidents de la commune, sans condition d'âge ni de ressources et sans questionnaire de santé. Le dispositif s'adresse particulièrement aux retraités, étudiants, demandeurs d'emploi ou indépendants qui ne disposent pas d'une mutuelle d'entreprise obligatoire.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/05-11-26-RU-publique-Mutuelle-village.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.469Z",
+    "periodicitat": ""
   }
 ]
