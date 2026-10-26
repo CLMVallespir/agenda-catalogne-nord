@@ -9685,5 +9685,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.373Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-exposicio-galerie-legrand",
+    "titol": "Exposició Galerie Legrand",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "10:30",
+    "lloc": "Carrer deL MITG",
+    "municipi": "Castellnou dels Aspres",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "La Galerie Legrand de Castelnou dels Aspres acull una exposició conjunta de Brin de Folie i Clin d’Œil Photographie. L'exposició reuneix objectes reutilitzats i transformats, que recuperen una segona vida a partir de materials destinats al rebuig, i fotografies d'un to desenfadat que trenquen les normes. Les fotografies són humorístiques i transgressores, i la proposta dels artistes es caracteritza per l'originalitat, l'humor i la creativitat.",
+    "descripcio_fr": "La Galerie Legrand de Castelnou dels Aspres accueille une exposition conjointe de Brin de Folie et Clin d’Œil Photographie. L’exposition réunit des objets réutilisés et transformés, qui retrouvent une seconde vie à partir de matériaux destinés au rebut, et des photographies à l’esprit décalé qui bousculent les règles. Les photographies sont humoristiques et transgressives, et la proposition des artistes se caractérise par l’originalité, l’humour et la créativité.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-castlenou-clinoeil.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.378Z",
+    "periodicitat": ""
   }
 ]
