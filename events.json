@@ -10901,5 +10901,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.478Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-concert-de-duo",
+    "titol": "Concert de duo barroc",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "16:00",
+    "lloc": "1 RUE DE L'EGLISE",
+    "municipi": "Brullà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Anna Llado i Guillem Gironès formen un duo barroc de músics professionals que actuen regularment a la regió de Perpignan i rodalies. El text presenta dos instruments de l'època barroca: el clavicordi, d'teclat i cordes percutides, molt popular de l'edat mitjana a l'època barroca per a l'estudi personal per la seva poca potència sonora, i el xalumeu, instrument de vent de fusta amb canya simple, antecessor directe del clarinet modern.",
+    "descripcio_fr": "Anna Llado et Guillem Gironès forment un duo baroque de musiciens professionnels qui se produisent régulièrement dans la région de Perpignan et ses environs. Le texte présente deux instruments de l'époque baroque : le clavicorde, instrument à clavier et à cordes frappées, très populaire du Moyen Âge à l'époque baroque pour l'étude personnelle en raison de sa faible puissance sonore, et le chalumeau, instrument à vent en bois et à anche simple, ancêtre direct de la clarinette moderne.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aSPRES-BROUILA-DUOBARROQUE.jpg?width=150&height=120",
+    "font_url": "https://www.alainmarinaro.fr/evenement/duo-anna-llado-et-guillem-girones-chalumeau-et-clavicorde/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.478Z",
+    "periodicitat": ""
   }
 ]
