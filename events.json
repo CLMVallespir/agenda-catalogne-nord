@@ -10160,5 +10160,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.444Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-05-bebes-lectors",
+    "titol": "Bebès-lectors",
+    "data_inici": "2026-11-05",
+    "data_fi": "2026-11-05",
+    "hora": "09:30",
+    "lloc": "4 avenue de Perpignan",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La mediateca de Canet de Rosselló organitza des de fa anys les sessions de bebès-lectors, dirigides a futurs i aprenents lectors d'entre 0 i 3 anys. Les sessions són organitzades conjuntament per la Médiathèque Albert Camus i el Relais Assistantes-Maternelles (RAM) de la ciutat. Durant tres quarts d'hora o una hora s'hi llegeixen contes, s'hi canten cançons infantils i s'hi descobreixen llibres, i hi poden assistir tots els infants de 0 a 3 anys acompanyats d'un adult. No cal inscriure's prèviament.",
+    "descripcio_fr": "La médiathèque de Canet de Rosselló organise depuis plusieurs années les séances de bébés-lecteurs, destinées aux futurs et apprentis lecteurs âgés de 0 à 3 ans. Les séances sont co-organisées par la Médiathèque Albert Camus et le Relais Assistantes-Maternelles (RAM) de la ville. Pendant trois quarts d'heure à une heure, on y lit des histoires, on y chante des comptines et on y découvre des livres, et tous les enfants de 0 à 3 ans accompagnés d'un adulte peuvent y assister. Il n'est pas nécessaire de s'inscrire au préalable.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/image-22.png?width=150&height=120",
+    "font_url": "https://www.mediatheques.perpignanmediterraneemetropole.fr/in/fr/coteradieuse/mediatheque-a-camus---canet-en-roussillon",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.364Z",
+    "periodicitat": ""
   }
 ]
