@@ -10008,5 +10008,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.367Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-04-conseller-numeric-a",
+    "titol": "Conseller numèric a la mediateca",
+    "data_inici": "2026-11-04",
+    "data_fi": "2026-11-04",
+    "hora": "10:00",
+    "lloc": "4 Avenue de Perpignan",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El conseller numèric Sébastien està a disposició del públic per acompanyar-lo en l'ús quotidià del món digital. Pot resoldre dubtes sobre una gestió en línia, un programari, una aplicació o l'ús d'aparells informàtics com ordinadors, tauletes, telèfons intel·ligents o objectes connectats. Per a tràmits administratius cal dirigir-se a la Maison France Services, i no al conseller numèric. L'accés és lliure i no cal cita prèvia.",
+    "descripcio_fr": "Le conseiller numérique Sébastien est à la disposition du public pour l'accompagner dans l'usage quotidien du numérique. Il peut répondre aux questions sur une démarche en ligne, un logiciel, une application ou l'utilisation d'appareils informatiques comme les ordinateurs, les tablettes, les smartphones ou les objets connectés. Pour les démarches administratives, il faut se rendre à la Maison France Services, et non auprès du conseiller numérique. L'accès est libre, sans rendez-vous.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/image-10.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.369Z",
+    "periodicitat": ""
   }
 ]
