@@ -9913,5 +9913,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.452Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-03-exposicio-lheritage-de",
+    "titol": "Exposició L'Héritage de Darwin",
+    "data_inici": "2026-11-03",
+    "data_fi": "2026-11-03",
+    "hora": "",
+    "lloc": "Avenue de Mont Louis",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "",
+    "descripcio_ca": "L'exposició es planteja com una immersió en l'univers de Charles Darwin. Repassa la història dels seus descobriments, el seu impacte en la comprensió del món viu i l'herència científica que va deixar.",
+    "descripcio_fr": "L'exposition se présente comme une immersion dans l'univers de Charles Darwin. Elle retrace l'histoire de ses découvertes, leur impact sur la compréhension du vivant et l'héritage scientifique qu'il a laissé.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Exposition-Darwin--1-.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.458Z",
+    "periodicitat": ""
   }
 ]
