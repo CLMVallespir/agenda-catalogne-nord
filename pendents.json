@@ -1140,7 +1140,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZJ7E] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-03-cafe-litteraire-saint",
+    "id": "2026-11-03-cafe-literari",
     "titol": "Cafè literari",
     "data_inici": "2026-11-03",
     "data_fi": "2026-11-03",
@@ -1154,7 +1154,7 @@
     "associacio": "Contacter Madame BENET Brigitte",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cafe-litteraire-ST-MARTIN.jpg?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.372Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52IOHT] L'acte es fa 12 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
