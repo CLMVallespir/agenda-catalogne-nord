@@ -9229,5 +9229,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.815Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-obra-de-teatre",
+    "titol": "Obra de teatre",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "20:30",
+    "lloc": "Salle Escaro de la mairiePlace François Desnoyer",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "En el marc de la campanya Octobre rose, la companyia Les Complices representa l'obra de teatre Drumer Club en benefici de la Ligue contre le Cancer. Tres dones són les úniques membres d'un club d'activitat desconeguda, i una convidada haurà de demostrar que pot entrar-hi i descobrir què s'hi trama. És una obra divertida i àgil, amb un humor corrosiu. En acabar la representació, el públic podrà conversar amb les actrius al voltant d'una copa.",
+    "descripcio_fr": "Dans le cadre de la campagne Octobre rose, la compagnie Les Complices présente la pièce Drumer Club au profit de la Ligue contre le Cancer. Trois femmes sont les seules membres d'un club dont l'activité reste inconnue, et une invitée devra prouver qu'elle peut y entrer et découvrir ce qui s'y trame. C'est une pièce drôle et rythmée, à l'humour décapant. À l'issue de la représentation, le public pourra discuter avec les comédiennes autour d'un verre.",
+    "associacio": "Contacter OT COLLECTIONS DE SAINT CYPRIEN",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52ZAYR-1790587406041.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.827Z",
+    "periodicitat": ""
   }
 ]
