@@ -10141,5 +10141,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.419Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-04-babe-le-cochon",
+    "titol": "Babe, le cochon devenu berger",
+    "data_inici": "2026-11-04",
+    "data_fi": "2026-11-04",
+    "hora": "10:30",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Es projecta la pel·lícula Babe, le cochon devenu berger, en versió francesa, adreçada a famílies i infants a partir de 7 anys. Babe és un porquet que, com tots els porcs, està destinat a acabar convertit en embotit, però escapa d'aquest destí cruel de manera miraculosa. A la granja descobreix la vida rural i intenta fer-se un lloc en aquest món desconegut, tot procurant esdevenir indispensable per no acabar a la cassola.",
+    "descripcio_fr": "La séance projette le film Babe, le cochon devenu berger, en version française, destiné aux familles et aux enfants à partir de 7 ans. Babe est un porcelet qui, comme tous les cochons, est destiné à finir en charcuterie, mais il échappe à ce sort cruel de manière miraculeuse. À la ferme, il découvre la vie rurale et tente de se faire une place dans ce monde inconnu, en cherchant à devenir indispensable pour ne pas finir à la casserole.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Babe--le-cochon-devenu-berger---Novembre-2026.jpg?width=150&height=120",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.444Z",
+    "periodicitat": ""
   }
 ]
