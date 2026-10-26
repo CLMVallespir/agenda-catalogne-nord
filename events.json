@@ -10597,5 +10597,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.436Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-memoire-de-feu",
+    "titol": "Mémoire de feu et d'histoire d'eau",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "09:00",
+    "lloc": "22 Avenue Pierre Estirac",
+    "municipi": "Òpol i Perellós",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "L'acte aborda com els habitants han fet front, al llarg del temps, a la manca d'aigua i als seus efectes en la vida quotidiana. És una passejada de 6 a 7 quilòmetres, de dificultat fàcil i a partir de 8 anys. En acabar la ruta, aquesta memòria s'escolta al voltant d'un pot d'amistat. Els participants poden portar material d'observació, com ara binocles o telescopi.",
+    "descripcio_fr": "L'activité évoque comment les habitants ont fait face, au fil du temps, au manque d'eau et à ses effets sur la vie quotidienne. C'est une balade de 6 à 7 kilomètres, de difficulté facile et à partir de 8 ans. À l'issue du parcours, cette mémoire est écoutée autour d'un pot de l'amitié. Les participants peuvent apporter du matériel d'observation, comme des jumelles ou une longue-vue.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/MEMOIRE-DE-FEU-ET-HISTROIRES-D4EAU.png?width=150&height=120",
+    "font_url": "https://www.parc-corbieres-fenouilledes.fr/agenda/07-11-memoire-de-feu-et-histoires-deau/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.438Z",
+    "periodicitat": ""
   }
 ]
