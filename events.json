@@ -9742,5 +9742,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.448Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-partit-de-rugbi",
+    "titol": "Partit de rugbi",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "15:00",
+    "lloc": "Rue Michel Costeseque",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "L'Union Sportive Côte Rocheuse (USCR) es retroba amb els seus rivals en partits en què cada pilota compta. Hi haurà placatges, accelerades, assajos i mostres de solidaritat, i els jugadors necessitaran l'ànim del públic per marcar la diferència. L'acte s'adreça a aficionats al rugbi, seguidors fidels o curiosos, i permet viure la intensitat d'un partit i compartir un moment de cohesió al voltant dels valors del rugbi.",
+    "descripcio_fr": "L'Union Sportive Côte Rocheuse (USCR) retrouve ses adversaires lors de rencontres où chaque ballon compte. Il y aura des plaquages, des accélérations, des essais et des actions de solidarité, et les joueurs auront besoin des encouragements du public pour faire la différence. L'événement s'adresse aux amateurs de rugby, aux supporters fidèles et aux curieux, et permet de vivre l'intensité d'un match et de partager un moment fédérateur autour des valeurs du rugby.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/rugby-6.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.457Z",
+    "periodicitat": ""
   }
 ]
