@@ -10198,5 +10198,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.384Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-05-rhinoceros",
+    "titol": "Rhinocéros",
+    "data_inici": "2026-11-05",
+    "data_fi": "2026-11-05",
+    "hora": "20:00",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Bérangère Vantusso revisita l'obra d'Eugène Ionesco Rhinocéros en un muntatge visual i colpidor. A través d'aquesta faula, en què els habitants d'una ciutat es transformen a poc a poc en rinoceronts, l'espectacle qüestiona l'ascens de les ideologies, el conformisme i la resistència individual. Amb un impressionant teatre d'objectes, l'adaptació fa emergir la força i la inquietant modernitat del text, entre l'humor, la poesia i la tensió dramàtica.",
+    "descripcio_fr": "Bérangère Vantusso revisite la pièce d'Eugène Ionesco Rhinocéros dans une mise en scène visuelle et saisissante. À travers cette fable où les habitants d'une ville se transforment peu à peu en rhinocéros, le spectacle interroge la montée des idéologies, le conformisme et la résistance individuelle. Avec un impressionnant théâtre d'objets, l'adaptation fait émerger la puissance et la troublante modernité du texte, entre humour, poésie et tension dramatique.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Rhino-Ceros.jpg?width=150&height=120",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.407Z",
+    "periodicitat": ""
   }
 ]
