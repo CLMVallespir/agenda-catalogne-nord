@@ -8944,5 +8944,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.812Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-joc-de-rol",
+    "titol": "Joc de rol i d'aventura",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "14:00",
+    "lloc": "61 Avenue du Gén de Gaulle",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Es tracta d'una sessió de joc de rol i d'aventura animada per Sébastien Fajal-Gratuit. L'activitat requereix inscripció prèvia i s'adreça a persones a partir de 14 anys.",
+    "descripcio_fr": "Il s'agit d'une session de jeu de rôle et d'aventure animée par Sébastien Fajal-Gratuit. L'activité nécessite une inscription préalable et s'adresse aux personnes à partir de 14 ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Jeu-de-role.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.818Z",
+    "periodicitat": ""
   }
 ]
