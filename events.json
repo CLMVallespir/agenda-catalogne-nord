@@ -10027,5 +10027,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.369Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-04-les-petites-scenes",
+    "titol": "Les petites scènes, espectacle per a públic infantil «Papallonas»",
+    "data_inici": "2026-11-04",
+    "data_fi": "2026-11-04",
+    "hora": "10:00",
+    "lloc": "86 Avenue Joliot-Curie",
+    "municipi": "Palau del Vidre",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Espectacle per a públic infantil en què la granota explora el bosc que hi ha al voltant del seu estany. Descobreix un món poblat d'animals més grans que ella, i la seva aventura passa de fulla en fulla i de branca en branca, amb sorolls i cançons. Els infants han d'anar acompanyats d'un adult, que també s'ha d'inscriure.",
+    "descripcio_fr": "Spectacle destiné au jeune public dans lequel la Grenouille explore la forêt qui entoure sa mare. Elle découvre un monde peuplé d'animaux plus gros qu'elle, et son aventure passe de feuille en feuille et de branche en branche, avec bruitages et chansons. Les enfants doivent être accompagnés d'un adulte, qui doit lui aussi s'inscrire.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026-les-petites-scenes-OTI-11-04-saute-grenouille.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.376Z",
+    "periodicitat": ""
   }
 ]
