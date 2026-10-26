@@ -10882,5 +10882,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.474Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-destination-noel-a",
+    "titol": "Destination Noël a la Recyclerie",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "09:30",
+    "lloc": "15 Boulevard d'Archimède",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La Recyclerie d'Elne obre la sala d'exposició de Nadal per a les famílies que volen preparar les festes sense gastar gaire. Hi ha decoracions de Nadal, com boles, garlandes i avets artificials, joguines per als infants i mobles restaurats pel taller de fusta en tres ambients: Black Forest, Noël Scandinave i English Cottage. Tots els articles són de segona mà i a preus baixos, i les recaptacions de la botiga financen la Recyclerie i la seva acció a favor de l'ocupació i la inserció professional.",
+    "descripcio_fr": "La Recyclerie d'Elne ouvre son espace d'exposition de Noël aux familles qui veulent préparer les fêtes sans trop dépenser. On y trouve des décorations de Noël, comme des boules, des guirlandes et des sapins artificiels, des jouets pour les enfants et des meubles restaurés par l'atelier bois, dans trois ambiances : Black Forest, Noël Scandinave et English Cottage. Tous les articles sont de seconde main et à petits prix, et les recettes de la boutique financent la Recyclerie et son action en faveur de l'emploi et de l'insertion professionnelle.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/logo-recyclerie-elne.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.478Z",
+    "periodicitat": ""
   }
 ]
