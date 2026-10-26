@@ -9020,5 +9020,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.823Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-taller-corones-de",
+    "titol": "Taller: corones de tardor",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Santa Llocaia",
+    "comarca": "Cerdanya",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'un taller en què es crea una corona vegetal per decorar la casa. L'activitat està oberta a tot el públic a partir de 7 anys.",
+    "descripcio_fr": "Il s'agit d'un atelier au cours duquel on réalise une couronne végétale pour décorer la maison. L'activité est ouverte à tous les publics à partir de 7 ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/PROGRAMME-VAC-OCT--2.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.830Z",
+    "periodicitat": ""
   }
 ]
