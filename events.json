@@ -10806,5 +10806,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.465Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-tattoo-convention",
+    "titol": "Tattoo Convention",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "10:00",
+    "lloc": "Parc des ExpositionsAvenue du Palais des Expositions",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'edició d'enguany combina tatuadors i tatuadores de tots els estils amb una immersió en l'univers de les illes. La companyia Hekeani hi farà vibrar el saló durant tot el cap de setmana, amb danses i espectacles tradicionals. Al programa hi ha un gran poble polinesi, espectacles i danses tradicionals, animacions i tallers culturals, tatuadors internacionals, parades de comerciants i artesans, piercing i servei de restauració al lloc.",
+    "descripcio_fr": "L'édition de cette année associe tatoueurs et tatoueuses de tous styles à une immersion dans l'univers des îles. La compagnie Hekeani fera vibrer le salon tout au long du week-end avec des danses et des spectacles traditionnels. Au programme figurent un grand village polynésien, des spectacles et danses traditionnelles, des animations et ateliers culturels, des tatoueurs internationaux, des stands de marchands et d'artisans, du piercing et une restauration sur place.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/PERPIGNAN-TATTOO-CONVENTION-2026.jpg?width=150&height=120",
+    "font_url": "https://www.congres-perpignan.com/events/perpignan-tattoo-convention/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.470Z",
+    "periodicitat": ""
   }
 ]
