@@ -9875,5 +9875,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.424Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-03-prete-a-tout",
+    "titol": "Prête à tout",
+    "data_inici": "2026-11-03",
+    "data_fi": "2026-11-03",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Gus Van Sant porta a la pantalla la novel·la de Joyce Maynard i segueix Suzanne Stone, una jove presentadora del temps d'una cadena local convençuda que la fama és la fi última de l'existència. Per aconseguir-la, Suzanne està disposada a fer-ho tot, i el film exposa de manera implacable els fonaments foscos del mode de vida americà. Hi interpreten Nicole Kidman, Matt Dillon, Casey Affleck i Joaquim Phoenix, que fa de Jimmy, un adolescent perdut. Inspirat en una notícia de successos, el film combina passat, present i futur.",
+    "descripcio_fr": "Gus Van Sant porte à l'écran le roman de Joyce Maynard et suit Suzanne Stone, une jeune présentatrice météo d'une chaîne locale convaincue que la célébrité est la fin ultime de l'existence. Pour y parvenir, Suzanne est prête à tout, et le film expose de manière implacable les fondements sombres du mode de vie américain. Y jouent Nicole Kidman, Matt Dillon, Casey Affleck et Joaquim Phoenix, qui incarne Jimmy, un adolescent perdu. Inspiré d'un fait divers, le film entremêle passé, présent et avenir.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/PRETE-A-TOUT---Novembre-2026.jpg?width=150&height=120",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.444Z",
+    "periodicitat": ""
   }
 ]
