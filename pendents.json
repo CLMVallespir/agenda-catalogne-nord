@@ -4405,7 +4405,7 @@
     "data_inici": "2026-10-30",
     "data_fi": "2026-10-30",
     "hora": "12:15",
-    "lloc": "Musée Hyacinthe Rigaud\n21 rue Mailly",
+    "lloc": "Musée Hyacinthe Rigaud21 rue Mailly",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Exposició",
@@ -4414,7 +4414,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/DETECTIVES-AU-MUSEE---ENQUETE-SUR-LES-FEMMES-EN-IMAGES----Avril-2026-2.jpg?width=150&height=120",
     "font_url": "https://www.musee-rigaud.fr/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.835Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZF9J] L'acte es fa 6 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
