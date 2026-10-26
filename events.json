@@ -10692,5 +10692,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.454Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-ballada-de-sardanes",
+    "titol": "Ballada de sardanes: castanyes i vi nou",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Rià i Cirac",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "Hi haurà una ballada de sardanes amb la cobla Casenoves a l'àrea de lleure. En cas de mal temps, l'acte es farà a la sala de festes.",
+    "descripcio_fr": "Il y aura une ballade de sardanes avec la cobla Casenoves à l'aire de loisirs. En cas de mauvais temps, l'acte se déroulera à la salle des fêtes.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/IMG-6816.JPG?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.458Z",
+    "periodicitat": ""
   }
 ]
