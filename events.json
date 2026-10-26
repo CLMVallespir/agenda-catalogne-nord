@@ -9761,5 +9761,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.457Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-taller-descriptura-en",
+    "titol": "Taller d'escriptura «En sommeil»",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "14:30",
+    "lloc": "L'Art et les Mots13 Rue Paul Massot",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest taller d'escriptura permet a cadascú descobrir la seva part poètica, un espai de construcció i les emocions amagades, sense judicis ni objectius a assolir. El grup és guiat a través de mini-conferències, debats, textos llegits i compartits, imatges estimulants i una escolta respectuosa. El taller posa l'accent en el plaer d'estar junts, de dir-se, de llegir-se i d'escoltar-se, i de descobrir autors i artistes. Aquesta vegada hi participa, entre d'altres, el poeta Jean-Yves Masson.",
+    "descripcio_fr": "Cet atelier d'écriture permet à chacun de découvrir sa part poétique, un espace de construction et ses émotions enfouies, sans jugement ni objectif à atteindre. Le groupe est guidé à travers des mini-conférences, des débats, des textes lus et partagés, des images stimulantes et une écoute respectueuse. L'atelier met l'accent sur le plaisir d'être ensemble, de se dire, de se lire et de s'entendre, et de découvrir des auteurs et artistes. Cette fois, y participe notamment le poète Jean-Yves Masson.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/En-sommeil---Automne-2026--1-.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.463Z",
+    "periodicitat": ""
   }
 ]
