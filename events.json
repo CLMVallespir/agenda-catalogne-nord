@@ -9514,5 +9514,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.834Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-benestar-al-museu",
+    "titol": "Benestar al museu - Sofrologia",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "10:00",
+    "lloc": "Musée Hyacinthe Rigaud21 Rue Mailly",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "La visita sensorial pel Musée Hyacinthe Rigaud és guiada per Anne Forgues, sofrologa i mediadora. Els participants recorren les sales a poc a poc i se'ls convida a fixar-se en la respiració, les percepcions corporals i les sensacions, per viure les obres d'una altra manera. Són moments guiats i breus en què es pot observar com reacciona el cos i com l'esperit s'aquieta davant dels quadres.",
+    "descripcio_fr": "La visite sensorielle du Musée Hyacinthe Rigaud est guidée par Anne Forgues, sophrologue et médiatrice. Les participants parcourent les salles à petite allure et sont invités à porter attention à la respiration, aux perceptions corporelles et aux sensations, afin de vivre les œuvres autrement. Il s'agit de courts moments guidés au cours desquels on peut observer comment le corps réagit et comment l'esprit s'apaise devant les tableaux.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Sophrologie-au-Musee-d-art-Hyacinthe-Rigaud-2.jpg?width=150&height=120",
+    "font_url": "https://www.musee-rigaud.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.835Z",
+    "periodicitat": ""
   }
 ]
