@@ -4900,12 +4900,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52TD47] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-31-atelier-de-conversation",
+    "id": "2026-10-31-taller-de-conversa",
     "titol": "Taller de conversa en català «L'Esmorzar»",
     "data_inici": "2026-10-31",
     "data_fi": "2026-10-31",
     "hora": "10:00",
-    "lloc": "Médiathèque\n2 Rue de la Paix",
+    "lloc": "Médiathèque2 Rue de la Paix",
     "municipi": "Santa Maria la Mar",
     "comarca": "Rosselló",
     "categoria": "Taller",
@@ -4914,7 +4914,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/catalan.png?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.742Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52U6VS] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
