@@ -9609,5 +9609,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.482Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-trails",
+    "titol": "Trails",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "",
+    "lloc": "rue du passage à gué",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "El Neulos Trail, de 35 km i 2.000 m de desnivell positiu, és una de les novetats de l'edició 2026. Després de la pujada del Neulos, el recorregut passa pel Chalet de l'Ouillat i el Pic d'Aureille i arriba al Casot del Guarda, sobre Laroque des Albères, abans de pujar al Puig Nalt. El Trail du Château d'Ultrera, de 13 km i 500 m de desnivell positiu, es manté sense canvis, i la cursa infantil no es reconvoca enguany. Les inscripcions per a les curses es fan en línia.",
+    "descripcio_fr": "Le Neulos Trail, de 35 km et 2 000 m de dénivelé positif, est l'une des nouveautés de l'édition 2026. Après la montée du Neulos, le parcours passe par le Chalet de l'Ouillat et le Pic d'Aureille, puis atteint le Casot del Guarda, au-dessus de Laroque des Albères, avant de gravir le Puig Nalt. Le Trail du Château d'Ultrera, de 13 km et 500 m de dénivelé positif, reste inchangé, et la course des enfants n'est pas reconduite cette année. Les inscriptions aux courses se font en ligne.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cross-st-martin-2025-sorede.jpg?width=150&height=120",
+    "font_url": "https://www.centre-pyrenees-trail.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.360Z",
+    "periodicitat": ""
   }
 ]
