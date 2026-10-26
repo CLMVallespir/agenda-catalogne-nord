@@ -9039,5 +9039,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.830Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-les-nuits-du",
+    "titol": "Les Nuits du Mas: un nou punt de trobada mensual",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "18:30",
+    "lloc": "2 Avenue de la Salanque",
+    "municipi": "Bompàs",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "En aquesta primera nit, el protagonista és el handpan. Es tracta d'un instrument de sonoritats suaus i captivadores, entre percussió i melodies, que convida a alentir el ritme, escoltar i viatjar.",
+    "descripcio_fr": "Pour cette première nuit, le handpan est à l'honneur. C'est un instrument aux sonorités douces et envoûtantes, entre percussion et mélodies, qui invite à ralentir, à écouter et à voyager.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Les-nuits-du-mas.jpg?width=150&height=120",
+    "font_url": "https://bompas.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.839Z",
+    "periodicitat": ""
   }
 ]
