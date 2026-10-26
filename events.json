@@ -10331,5 +10331,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.473Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-05-taller-de-destil",
+    "titol": "Taller de destil·leria",
+    "data_inici": "2026-11-05",
+    "data_fi": "2026-11-05",
+    "hora": "",
+    "lloc": "1 Traverse de Prades",
+    "municipi": "Els Masos",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "Mitja jornada a la destil·leria d'Els Masos, al peu del Canigou, on els participants destil·len ells mateixos una planta, en directe, i observen com en surten l'oli essencial i l'hidrolat. Després es tracten les diferències entre oli essencial i hidrolat, els usos, les normes de precaució i com triar-los i conservar-los. Cadascú se'n du l'hidrolat o el roll-on que ha fabricat. Hi pot assistir tothom a partir de secundària, sense coneixements previs.",
+    "descripcio_fr": "Une demi-journée à la distillerie d'Els Masos, au pied du Canigou, où les participants distillent eux-mêmes une plante, en direct, et observent la sortie de l'huile essentielle et de l'hydrolat. Ensuite, on aborde les différences entre huile essentielle et hydrolat, leurs usages, les règles de précaution, ainsi que la manière de les choisir et de les conserver. Chacun repart avec l'hydrolat ou le roll-on qu'il a fabriqué. L'activité est ouverte à tous dès le collège, sans connaissances préalables.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/846705068-18337226308272614-6227497420476566325-n.jpg?width=150&height=120",
+    "font_url": "https://floraluna.fr/boutique/aroma-distillation-niv1/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.475Z",
+    "periodicitat": ""
   }
 ]
