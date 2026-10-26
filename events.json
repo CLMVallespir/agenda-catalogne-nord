@@ -9989,5 +9989,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.469Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-04-sessio-de-joc",
+    "titol": "Sessió de joc d'escacs a la mediateca",
+    "data_inici": "2026-11-04",
+    "data_fi": "2026-11-04",
+    "hora": "15:00",
+    "lloc": "4 Avenue de Perpignan",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "L'acte consisteix en una sessió de joc d'escacs durant una tarda a la mediateca. Hi poden participar tant les persones principiants com les jugadores i jugadors experimentats. Hi haurà persones que acompanyaran els participants per jugar-hi les partides.",
+    "descripcio_fr": "L'activité consiste en une séance de jeu d'échecs pendant un après-midi à la médiathèque. Elle est ouverte aux débutants comme aux joueurs confirmés. Des personnes seront présentes pour accompagner les participants dans leurs parties.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ChessSet-2.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.367Z",
+    "periodicitat": ""
   }
 ]
