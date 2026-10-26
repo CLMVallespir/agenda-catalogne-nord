@@ -10312,5 +10312,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.469Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-05-xerrada-sobre-els",
+    "titol": "Xerrada sobre els « gosses »",
+    "data_inici": "2026-11-05",
+    "data_fi": "2026-11-05",
+    "hora": "10:00",
+    "lloc": "6, rue de la République",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La xerrada gira al voltant dels « gosses de Cotlliure ». Tracta de com el petit port de pesca va veure néixer els seus artistes.",
+    "descripcio_fr": "La causerie tourne autour des « gosses de Cotlliure ». Elle traite de la manière dont le petit port de pêche a vu naître ses artistes.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Animation-hiver-paysage-2026--1-.png?width=150&height=120",
+    "font_url": "https://www.tourisme-collioure.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.473Z",
+    "periodicitat": ""
   }
 ]
