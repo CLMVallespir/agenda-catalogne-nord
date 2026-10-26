@@ -10654,5 +10654,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.442Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-la-fabrique-des",
+    "titol": "La fabrique des petits sorciers - 2a edició «Le village en fête»",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-08",
+    "hora": "10:00",
+    "lloc": "Rue la Roussillonnaise",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'acte recrea un poble en festa a través de quatre univers màgics poblats de fades, encantadors, follets i bruixes. S'hi ofereixen decorats immersius amb sons i llums, tallers lúdics i creatius per descobrir els secrets de la bruixeria, i un espectacle de màgia amb grans il·lusions. Hi ha també un petit mercat artesanal i begudes encantades. El dissabte al vespre es fa la Boum des sorciers, una festa per ballar fins a la nit, en un moment sense espectacle de màgia.",
+    "descripcio_fr": "L'acte recrée un village en fête à travers quatre univers magiques peuplés de fées, d'enchanteurs, de lutins et de sorcières. On y propose des décors immersifs avec sons et lumières, des ateliers ludiques et créatifs pour percer les secrets de la sorcellerie, et un spectacle de magie aux grandes illusions. Il y a aussi un petit marché artisanal et des breuvages enchantés. Le samedi soir a lieu la Boum des sorciers, une fête pour danser jusqu'au bout de la nuit, sans spectacle de magie à ce moment-là.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Rivesaltes-La-Fabrique-des-Petits-Sorciers-2026.jpg?width=150&height=120",
+    "font_url": "https://www.helloasso.com/associations/centre-associatif-pour-la-production-de-spectacles/evenements/la-fabrique-des-petits-sorciers-2eme-edition",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.451Z",
+    "periodicitat": ""
   }
 ]
