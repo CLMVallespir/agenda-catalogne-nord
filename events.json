@@ -10350,5 +10350,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.475Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-06-mpl-justine",
+    "titol": "MPL + Justine",
+    "data_inici": "2026-11-06",
+    "data_fi": "2026-11-06",
+    "hora": "20:30",
+    "lloc": "ELMEDIATORAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "El grup MPL, que fa més de deu anys que és en actiu, combina la cançó, el pop, tocs electrònics i influències urbanes. Sobre l'escenari, els seus temes es presenten amb una posada en escena teatral, coreografies espontànies i una energia col·lectiva que implica el públic de principi a fi. Després d'haver triomfat als grans escenaris francesos, el grup barreja l'emoció, l'humor i la festa. Justine obrirà la vetllada com a primera part.",
+    "descripcio_fr": "Le groupe MPL, actif depuis plus de dix ans, mêle chanson, pop, touches électroniques et influences urbaines. Sur scène, ses morceaux prennent la forme d'une mise en scène théâtrale, de chorégraphies spontanées et d'une énergie collective qui embarque le public du début à la fin. Après avoir triomphé sur les grandes scènes françaises, le groupe mêle émotion, humour et fête. Justine ouvrira la soirée en première partie.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/mpl.jpg?width=150&height=120",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/mpl-nov2026",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.409Z",
+    "periodicitat": ""
   }
 ]
