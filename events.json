@@ -10084,5 +10084,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.384Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-04-taller-per-renovar",
+    "titol": "Taller per renovar un tamboret",
+    "data_inici": "2026-11-04",
+    "data_fi": "2026-11-04",
+    "hora": "14:00",
+    "lloc": "7 Boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'un taller d'iniciació a la tapisseria de mobles, en què es tapissa l'assise d'un tamboret per renovar-lo. Els participants poden portar el seu propi tamboret o personalitzar-ne un que l'Atelier Arago de Tuïr haurà triat. El procés inclou fer un gabarit en paper kraft, tallar l'escuma de guarniment i cobrir-la amb la tela de cobertura. El taller admet fins a quatre persones com a màxim.",
+    "descripcio_fr": "Il s'agit d'un atelier d'initiation à la tapisserie d'ameublement, au cours duquel on tapisse l'assise d'un tabouret pour le rénover. Les participants peuvent apporter leur propre tabouret ou personnaliser celui que l'Atelier Arago de Tuïr aura choisi. L'activité comprend la réalisation d'un gabarit en papier kraft, la découpe de la mousse de garniture et le recouvrement avec le tissu de couverture. L'atelier accueille quatre personnes au maximum.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/1-atelier-decouverte-relookez-votre-tabouret.jpg?width=150&height=120",
+    "font_url": "https://atelier-arago.com/ateliers-decouverte/stage-decouverte-assise-tabouret/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.389Z",
+    "periodicitat": ""
   }
 ]
