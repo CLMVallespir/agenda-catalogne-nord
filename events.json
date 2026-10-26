@@ -8849,5 +8849,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.807Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-les-metamorfosis-dels",
+    "titol": "Les metamorfosis dels gestos",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "15:00",
+    "lloc": "22 Avenue du Vallespir",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'una activitat de pintura i dibuix que vol ajudar a expressar la creativitat i les emocions. És un moment de benestar i relaxació. S'hi treballen tècniques variades, com l'acrílic, l'aquarel·la o el pastel, i s'explora el color i les formes per conèixer-se millor. No cal tenir cap coneixement previ de pintura ni de dibuix.",
+    "descripcio_fr": "Il s'agit d'une activité de peinture et de dessin qui vise à exprimer la créativité et les émotions. C'est un moment de bien-être et de détente. Diverses techniques y sont travaillées, comme l'acrylique, l'aquarelle ou le pastel, et l'on explore les couleurs et les formes pour mieux se connaître. Aucune connaissance préalable en peinture ni en dessin n'est nécessaire.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/atelier-adultes.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.737Z",
+    "periodicitat": ""
   }
 ]
