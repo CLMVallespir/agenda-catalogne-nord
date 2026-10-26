@@ -10502,5 +10502,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.459Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-06-le-train-de",
+    "titol": "Le train de la voie 6",
+    "data_inici": "2026-11-06",
+    "data_fi": "2026-11-06",
+    "hora": "20:30",
+    "lloc": "1 Avenue Lavoisier",
+    "municipi": "Toluges",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Sobre l'andana d'una estació, un retard poc comú reuneix viatgers i un empleat de l'estació. En aquesta espera suspesa, es creen vincles inesperats i es revelen les personalitats de cadascú. L'obra, una comèdia satírica de Jean-Pierre Brouillaud, parteix d'una situació banal per donar lloc a trobades alhora divertides i improbables. Es tracta d'una peça plena de picardia, interpretada per una companyia de teatre amateur, que observa amb humor les nostres petites manies, les diferències i les maneres de conviure.",
+    "descripcio_fr": "Sur le quai d'une gare, un retard peu commun réunit des voyageurs et un employé de la gare. Dans cette attente suspendue, des liens inattendus se créent et les personnalités de chacun se révèlent. La pièce, une comédie satirique de Jean-Pierre Brouillaud, part d'une situation banale pour donner lieu à des rencontres à la fois drôles et improbables. Il s'agit d'une pièce pleine de malice, interprétée par une troupe de théâtre amateur, qui observe avec humour nos petites manies, nos différences et nos façons de vivre ensemble.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/LE-TRAIN-DE-LA-VOIE-6.png?width=150&height=120",
+    "font_url": "https://www.toulouges.fr/evenement/theatre-amateur-comedie-satirique-le-train-de-la-voie-6/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.467Z",
+    "periodicitat": ""
   }
 ]
