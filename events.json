@@ -9894,5 +9894,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.444Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-03-marxa-nordica",
+    "titol": "Marxa nòrdica",
+    "data_inici": "2026-11-03",
+    "data_fi": "2026-11-03",
+    "hora": "09:30",
+    "lloc": "",
+    "municipi": "Passà",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "La nova secció de marxa nòrdica de Passà proposa sortides pels voltants del poble en un ambient cordial. Les sortides les animen Rosy, Marcel i Francis, es fan els dimarts cada quinze dies, segons el que decideixin els animadors. Hi ha dos circuits, d'una hora o de dues hores, i es recomana portar calçat adequat per caminar i una ampolla d'aigua.",
+    "descripcio_fr": "La nouvelle section de marche nordique de Passà propose des sorties dans les environs du village, dans une ambiance conviviale. Les sorties sont animées par Rosy, Marcel et Francis et ont lieu le mardi, tous les quinze jours, selon les indications des animateurs. Deux circuits sont proposés, d'une heure ou de deux heures, et il est recommandé de prendre des chaussures adaptées à la marche ainsi qu'une gourde.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-passa-marchenordique3nov.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.452Z",
+    "periodicitat": ""
   }
 ]
