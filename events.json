@@ -10825,5 +10825,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.470Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-fleuron-gascon",
+    "titol": "Fleuron Gascon",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "09:00",
+    "lloc": "",
+    "municipi": "El Barcarès",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "L'acte consisteix en dues jornades dedicades a la vaca gascona i a les tradicions locals. Hi ha mercats de productors, on es presenten sabors i saber fer locals. Es fa un concurs de reproductors, desfilades i el lliurament de premis als millors animals. Hi haurà animacions i jocs de fusta per als petits i els grans, una degustació gratuïta de carn gascona i un aperitiu ofert al públic.",
+    "descripcio_fr": "Cet événement se tient sur deux journées consacrées à la vache gasconne et aux traditions locales. Des marchés de producteurs y présentent des saveurs et des savoir-faire locaux. Un concours de reproducteurs, des défilés et la remise des prix récompensent les plus beaux animaux. Des animations et des jeux en bois sont proposés aux petits comme aux grands, avec une dégustation gratuite de viande gasconne et un apéritif offert au public.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/pexels-gokul-ks-31254675.jpg?width=150&height=120",
+    "font_url": "https://www.lebarcares-tourisme.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.471Z",
+    "periodicitat": ""
   }
 ]
