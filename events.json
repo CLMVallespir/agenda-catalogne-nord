@@ -10863,5 +10863,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.474Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-gran-rifa-anual",
+    "titol": "Gran rifa anual de la MAM",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "17:30",
+    "lloc": "13 Rue Jules Michelet",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Es fa la gran rifa anual de la MAM. Hi haurà begudes i llaminadures per als assistents. Immediatament després de la rifa, s'hi farà un concert de Wood's. Hi ha nombrosos lots per guanyar, gràcies a la participació d'artistes, comerciants i de l'ajuntament de Cotlliure i dels seus voltants.",
+    "descripcio_fr": "La grande rifle annuelle de la MAM se déroule. Des boissons et des gourmandises sont proposées sur place. Juste après la rifle, un concert des Wood's est donné. De nombreux lots sont à gagner, grâce à la participation d'artistes, de commerçants et de la mairie de Cotlliure et de ses environs.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/rifle-mam-2026.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.474Z",
+    "periodicitat": ""
   }
 ]
