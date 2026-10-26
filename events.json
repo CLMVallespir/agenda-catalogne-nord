@@ -9191,5 +9191,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.772Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-les-nocturnes",
+    "titol": "Les nocturnes",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "18:00",
+    "lloc": "Place Jean Ferrat",
+    "municipi": "Canoes",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Nova cita festiva a Canoes pensada per a famílies, amics i veïns, amb food trucks, un espai per prendre alguna cosa i relaxar-se, tallers i animacions per a la mainada i parades d'artesans i creadors locals. Cada mes té una temàtica diferent; la primera edició és dedicada a les veremes, i s'hi fa un concurs de «pourou» amb un regal en joc.",
+    "descripcio_fr": "Nouvelle soirée festive à Canoes destinée aux familles, aux amis et aux voisins, avec des food trucks, un espace pour prendre un verre et se détendre, des ateliers et animations pour les enfants, et des stands d'artisans et de créateurs locaux. Chaque mois a une thématique différente ; la première édition est consacrée aux vendanges, avec un concours de « pourou » doté d'un cadeau à la clé.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/LES-NOCTURNES-DE-CANOHES.png?width=150&height=120",
+    "font_url": "https://www.canohes.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.808Z",
+    "periodicitat": ""
   }
 ]
