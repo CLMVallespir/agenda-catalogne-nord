@@ -9647,5 +9647,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.369Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-concert-lheure-musicale",
+    "titol": "Concert L'heure musicale",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "16:30",
+    "lloc": "Rue du 14 Juillet",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "L'acte homenatja el record d'Alain Marinaro, mort fa vint-i-cinc anys, i l'organitza Les Amis d'Alain Marinaro. El pianista Romain Hervé hi interpretarà obres de Chopin i de Liszt, i també àries de comèdies musicals de Christian Schittenhelm, compositor francès al qual ha dedicat el seu darrer CD. El concert es fa a la sala Novelty de Banyuls de la Marenda.",
+    "descripcio_fr": "Le concert rend hommage au souvenir d'Alain Marinaro, décédé il y a vingt-cinq ans, et est organisé par Les Amis d'Alain Marinaro. Le pianiste Romain Hervé y interprétera des œuvres de Chopin et de Liszt, ainsi que des airs de comédies musicales de Christian Schittenhelm, compositeur français à qui il a consacré son dernier CD. Le concert se tient à la salle Novelty de Banyuls de la Marenda.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Romain-Herve-Marinaro-nov.jpg?width=150&height=120",
+    "font_url": "https://alainmarinaro.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.370Z",
+    "periodicitat": ""
   }
 ]
