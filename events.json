@@ -9267,5 +9267,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.831Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-trobada-literaria-amb",
+    "titol": "Trobada literària amb Pierre Ducrozet",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "18:00",
+    "lloc": "1 Rue Arago",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "Pierre Ducrozet, autor guardonat diverses vegades, presenta la seva novel·la Éden, un relat sobre la joventut en la recerca d'un nou horitzó. Éden s'ofega en una vida que ja no li sembla seva. Quan la mare desapareix cap al Pacífic, decideix partir a buscar-la i embarca en un portacontenidors, on descobreix, durant la travessia, els mariners, els migrants i els ciutadans que composen un món contemporani marcat per tensions i trasbalsos. L'acte permet conversar amb l'escriptor sobre la creació d'aquest relat d'aventura i de transformació, i sobre les grans preguntes que alimenten la seva obra: com trobar el propi lloc, inventar altres maneres de viure i tornar a fer seva l'existència.",
+    "descripcio_fr": "Pierre Ducrozet, auteur plusieurs fois récompensé, présente son roman Éden, un récit sur la jeunesse à la recherche d'un nouvel horizon. Éden étouffe dans une vie qui ne lui semble plus la sienne. Lorsque sa mère disparaît vers le Pacifique, il décide de partir à sa recherche et embarque sur un porte-conteneurs, où il découvre, au cours de la traversée, les marins, les migrants et les citoyens qui composent un monde contemporain marqué par les tensions et les bouleversements. L'événement permet d'échanger avec l'écrivain sur la création de ce récit d'aventure et de transformation, ainsi que sur les grandes questions qui nourrissent son œuvre : comment trouver sa place, inventer d'autres façons de vivre et se réapproprier son existence.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/30-10-2026-Rencontre-Pierre-Ducrozet--Librairie-Oxymore.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.834Z",
+    "periodicitat": ""
   }
 ]
