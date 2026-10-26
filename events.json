@@ -10673,5 +10673,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.451Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-teatre-germinal",
+    "titol": "Teatre: Germinal",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "14:30",
+    "lloc": "RUE LEO LAGRANGE",
+    "municipi": "Sant Pau de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Adaptació d'una obra cabdal de la literatura, presentada en forma de conte. Se centra en la figura d'Etienne Lantier, un jove ple d'esperança que es troba davant la violència d'un món que no coneixia. El públic s'endinsa en les fosques galeries de la mina i segueix la recerca d'amor i de justícia d'Etienne.",
+    "descripcio_fr": "Adaptation d'une œuvre majeure de la littérature, présentée sous la forme d'un conte. Elle est centrée sur la figure d'Etienne Lantier, un jeune homme plein d'espoir qui se trouve confronté à la violence d'un monde qu'il ne soupçonnait pas. Le public plonge dans les galeries sombres de la mine et suit la quête d'amour et de justice d'Etienne.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/THEATRE02-C.Struillou-CCAF-2.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.454Z",
+    "periodicitat": ""
   }
 ]
