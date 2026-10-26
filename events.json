@@ -10236,5 +10236,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.421Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-05-taller-daprenentatge-de",
+    "titol": "Taller d'aprenentatge de la degustació",
+    "data_inici": "2026-11-05",
+    "data_fi": "2026-11-05",
+    "hora": "19:45",
+    "lloc": "CAVES MAILLOL9 Cours François Palmarole",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "És el taller amb què començar la sèrie: hi s'adquireixen el mètode i el vocabulari que fan més interessants les degustacions posteriors. S'hi recorren les tres etapes de la degustació —la vista, l'olfacte i la boca—, i s'aprèn a reconèixer i nomenar els aromes a partir de referències senzilles, així com a formar-se una opinió i a expressar-la. També s'hi estudien l'acidesa, els tanins, el sucre i l'alcohol, els quatre pilars de l'equilibri d'un vi, i es tasten diversos vins en sèrie, escollits perquè es complementin, de manera que la comparació ajudi a entendre'ls. Un especialista en vins guia la sessió, n'explica els conceptes i respon les preguntes, sense fer servir un llenguatge especialitzat.",
+    "descripcio_fr": "C'est l'atelier par lequel commencer la série : il permet d'acquérir la méthode et le vocabulaire qui rendent les dégustations suivantes plus intéressantes. On y parcourt les trois étapes de la dégustation — la vue, l'odorat et la bouche — et l'on apprend à reconnaître et à nommer les arômes à partir de repères simples, ainsi qu'à se forger un avis et à l'exprimer. On y étudie aussi l'acidité, les tanins, le sucre et l'alcool, les quatre piliers de l'équilibre d'un vin, et l'on goûte plusieurs vins en série, choisis pour se compléter, afin que la comparaison aide à les comprendre. Un spécialiste des vins guide la séance, en explique les notions et répond aux questions, sans recourir à un vocabulaire spécialisé.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Degustation-Vin-du-Roussillon--Caves-Maillol.jpg?width=150&height=120",
+    "font_url": "https://www.caves-maillol.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.444Z",
+    "periodicitat": ""
   }
 ]
