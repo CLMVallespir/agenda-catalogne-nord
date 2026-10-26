@@ -10730,5 +10730,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.458Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-festa-de-sant",
+    "titol": "Festa de Sant Martí",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "19:30",
+    "lloc": "",
+    "municipi": "Jóc",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "La festa de Sant Martí de Jóc és un sopar ballable amenitzat per l'orquestra de Bruno i Céline, Nuit en folie. El menú inclou aperitiu, pollastre amb gambes i arròs, Alaska al forn, vi, cafè i licors digestius.",
+    "descripcio_fr": "La fête de la Saint-Martin de Jóc est un repas dansant animé par l'orchestre de Bruno et Céline, Nuit en folie. Le menu comprend un apéritif, du poulet aux gambas et du riz, de l'Alaska au four, du vin, du café et des digestifs.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Repas-spectacle.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.462Z",
+    "periodicitat": ""
   }
 ]
