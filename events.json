@@ -9362,5 +9362,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.742Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-mini-excursio-a",
+    "titol": "Mini excursió a l'aire lliure",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "10:30",
+    "lloc": "8 RUE ARAGO",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "Es proposa una mini excursió a peu a l'aire lliure, accessible a tothom, tant si es practica esport com si es comença. Els participants hi poden anar sols o acompanyats, en un ambient de convivència, moviment i bon humor. L'activitat es planteja com un moment per compartir i per fer servir l'energia positiva del grup.",
+    "descripcio_fr": "Il s'agit d'une mini randonnée en plein air, accessible à tous, qu'on soit sportif ou débutant. Les participants peuvent venir seuls ou accompagnés, dans une ambiance conviviale faite de bonne humeur, de mouvement et de partage. L'activité se veut un moment de convivialité et d'énergie positive.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-minirandooct.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.760Z",
+    "periodicitat": ""
   }
 ]
