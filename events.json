@@ -10768,5 +10768,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.464Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-taller-dart-de",
+    "titol": "Taller d'art de la fermentació",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "09:00",
+    "lloc": "Rue de la Neige",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El taller se centra en la fermentació, un mètode ancestral de conservació dels aliments, i n'explica els beneficis. Els participants elaboren pots i begudes fermentades que s'enduen a casa. L'activitat, que té lloc a Illa, es desenvolupa en un ambient convivial i educatiu.",
+    "descripcio_fr": "L'atelier porte sur la fermentation, une méthode ancestrale de conservation des aliments, et en présente les bienfaits. Les participants réalisent des bocaux et des boissons fermentées qu'ils emportent chez eux. L'activité, qui a lieu à Illa, se déroule dans une ambiance conviviale et éducative.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/fabrica2.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.464Z",
+    "periodicitat": ""
   }
 ]
