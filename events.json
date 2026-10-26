@@ -9324,5 +9324,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.841Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-tina-arena",
+    "titol": "Tina Arena",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "20:00",
+    "lloc": "Palais des congrèsPlace Armand Lanoux",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "La cantant australiana Tina Arena, multipremiada i amb deu milions de discos venuts arreu del món, té una carrera de 50 anys. Després de quinze anys d'absència, torna als escenaris amb una sèrie de concerts. L'acte permet al públic redescobrir el seu repertori francès i internacional.",
+    "descripcio_fr": "L'artiste australienne Tina Arena, multirécompensée et aux dix millions de disques vendus dans le monde, compte 50 ans de carrière. Après quinze années d'absence, elle revient avec une série de concerts. Le public peut redécouvrir son répertoire français et international.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/TIna-Arena---Octobre-2026.jpg?width=150&height=120",
+    "font_url": "https://www.boitaclous.com/spectacles/tina-arena/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.739Z",
+    "periodicitat": ""
   }
 ]
