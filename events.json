@@ -9400,5 +9400,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.801Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-hery-putter",
+    "titol": "Hery Putter",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "11:00",
+    "lloc": "Rue Jean Jaurès",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "És un espectacle de màgia en què el públic segueix una classe del professor Hery Putter, professor de màgia a l'escola dels bruixots. L'acte consisteix en un curs de màgia accelerat, al final del qual els assistents esdevenen nous mags.",
+    "descripcio_fr": "Il s'agit d'un spectacle de magie dans lequel le public suit un cours dans la classe du professeur Hery Putter, professeur de magie à l'école des sorciers. Il s'agit d'un cours de magie accéléré à l'issue duquel les spectateurs deviennent de nouveaux magiciens.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2hery-potter.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.805Z",
+    "periodicitat": ""
   }
 ]
