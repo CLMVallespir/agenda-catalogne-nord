@@ -10977,5 +10977,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.364Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-mercat-de-segona",
+    "titol": "Mercat de segona mà",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "07:00",
+    "lloc": "",
+    "municipi": "Brullà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Es fa un mercat de segona mà davant del pavelló esportiu. A l'interior del pavelló es fa també una venda d'articles de puericultura. Les inscripcions per ocupar un espai es fan a l'ajuntament.",
+    "descripcio_fr": "Un vide-grenier se tient devant la halle des sports. À l'intérieur de la halle, une braderie d'articles de puériculture a également lieu. Les inscriptions pour occuper un emplacement se font en mairie.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-brouilla-videgrenierreport.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.376Z",
+    "periodicitat": ""
   }
 ]
