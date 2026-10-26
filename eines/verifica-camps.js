@@ -6,16 +6,15 @@
 // No arregla res, no escriu res, no toca la xarxa. Només mira i informa.
 //
 // PER QUÈ EXISTEIX AQUEST FITXER. És el germà de `verifica-enum.js`, i neix
-// del mateix problema amb una agreujant. L'enum viu a catorze còpies i, quan
-// se'n van tocar dues de catorze, la conseqüència va ser visible: una fila amb
+// del mateix problema amb una agreujant. L'enum viu a dotze còpies i, quan
+// se'n van tocar dues, la conseqüència va ser visible: una fila amb
 // una categoria que `valorPermes()` buidava. El JOC DE CAMPS viu a més llocs
 // encara, i quan se'n toca un de sol la conseqüència NO es veu: no hi ha cap
 // `valorPermes()` dels noms de camp, i el camp que falta simplement no hi és.
 // Cap error, cap avís, cap registre, cap bateria aturada.
 //
-// El §4.G de `docs/DECISIO-ACTIVITATS-PERMANENTS.md` ho diu així: «Res, avui,
-// no enxamparia una fila que hagi perdut el camp nou en un dels 23 llocs.»
-// Aquest guió és aquell «res».
+// Res més no enxamparia una fila que hagi perdut el camp nou en un dels llocs
+// de la taula `LLOCS` d'aquí baix. Aquest guió és aquell «res».
 //
 // D'ON SURT LA LLISTA BONA. **No d'aquí.** Com a `verifica-enum.js`, aquest
 // fitxer NO declara el joc de camps: si el declarés seria una còpia més i
@@ -38,15 +37,10 @@
 //
 // EL QUE AQUEST GUIÓ NO MIRA, i queda dit perquè no s'hi confiï de més:
 //
-//   - `CAMPS_CONTRASTABLES` d'`eines/verifica-esdeveniment.js` (9 camps). És
-//     curt A POSTA —el comentari de la 125 ho explica— i no és cap còpia del
-//     joc de camps: és una tria de què es pot contrastar amb la font original.
-//     No hi entra.
 //   - Les files de prova en línia de `prova-local.html` i els fitxers de
 //     dades (`events.json`, `pendents.json`, `events-exemple.json`): són
 //     dades, no esquemes. Una fila a qui li falti un camp es comporta com si
-//     el tingués buit, que és el que diu el §4.F de la decisió.
-//   - `docs/arxiu-google/`: codi mort (§9 de CLAUDE.md).
+//     el tingués buit.
 //   - Els numerals escrits en prosa dins dels comentaris («els disset
 //     camps»). Sí que es mira, en canvi, el numeral del prompt («aquestes 16
 //     claus»), perquè aquell text se li envia al model de debò.
@@ -59,9 +53,8 @@
 // aturar qualsevol cosa que el cridi abans de desplegar.
 //
 // SI HI AFEGEIXES UN LLOC: la taula `LLOCS` d'aquí baix és l'única cosa que
-// s'ha de tocar, i ha de dir el mateix que el §4 de
-// `docs/DECISIO-ACTIVITATS-PERMANENTS.md`. La columna `punt` és el número que
-// aquell inventari li dona, per poder-los comparar d'una ullada.
+// s'ha de tocar. La columna `punt` és una etiqueta estable de l'inventari del
+// 17 de setembre de 2026: no es renumera quan es treu un lloc.
 // ---------------------------------------------------------------------------
 
 var fs = require('fs');
@@ -89,7 +82,7 @@ var CAMPS_DEL_SISTEMA = ['id', 'estat', 'data_entrada'];
 
 // Els llocs on el joc de camps s'escriu a mà, amb la manera de treure-l'en.
 // `mena` diu quins camps hi ha d'haver; `com` diu quin extractor els sap
-// llegir. L'ordre és el del §4 de la decisió, i `punt` és el seu número.
+// llegir. `punt` és l'etiqueta de l'inventari (vegeu el bàner).
 var LLOCS = [
   // --- Les còpies del prompt (§4.A) ---------------------------------------
   // El mestre no es compara amb ningú: d'ell surt la llista bona. El que sí
@@ -108,32 +101,20 @@ var LLOCS = [
   { punt: '7', fitxer: 'worker/worker-concatenat.js', que: 'construeixFilaFormulari()', mena: 'public', com: 'objecte', dins: 'construeixFilaFormulari', obre: 'return {' },
   { punt: '8', fitxer: 'curador.html', que: 'recullFitxa()', mena: 'public', com: 'objecte', dins: 'recullFitxa', obre: 'return {' },
   { punt: '9', fitxer: 'curador.html', que: 'creaFitxa() — camps editables', mena: 'editable', com: 'fitxa', dins: 'creaFitxa' },
-  { punt: '10', fitxer: 'importa-csv.js', que: 'ESQUEMA', mena: 'public', com: 'array', nom: 'ESQUEMA' },
-  { punt: '11', fitxer: 'importa-csv.js', que: 'construeixFila()', mena: 'public', com: 'objecte', dins: 'construeixFila', obre: 'return {' },
   { punt: '12', fitxer: 'eines/mapeja-adt66.js', que: 'CAMPS_PRODUCCIO', mena: 'cua', com: 'array', nom: 'CAMPS_PRODUCCIO' },
   { punt: '13', fitxer: 'eines/mapeja-adt66.js', que: 'mapejaOfertaADT66()', mena: 'cua', com: 'objecte', dins: 'mapejaOfertaADT66', obre: 'var fila = {' },
-  { punt: '14', fitxer: 'eines/mapeja-recerca.js', que: 'CAMPS_PRODUCCIO', mena: 'cua', com: 'array', nom: 'CAMPS_PRODUCCIO' },
-  { punt: '15', fitxer: 'eines/mapeja-recerca.js', que: 'mapejaAProduccio()', mena: 'cua', com: 'objecte', dins: 'mapejaAProduccio', obre: 'var fila = {' },
 
   // --- Els consumidors de dades (§4.C) ------------------------------------
   { punt: '16', fitxer: 'eines/dedup-esdeveniments.js', que: 'CAMPS', mena: 'cua', com: 'array', nom: 'CAMPS' },
-  { punt: '18', fitxer: 'eines/processa-lot.js', que: 'CAMPS_PRODUCCIO', mena: 'cua', com: 'array', nom: 'CAMPS_PRODUCCIO' },
 
   // --- Els ajudants de prova (§5) -----------------------------------------
-  // Aquests sis són el deute tècnic que la decisió inventaria: llistes de
+  // Aquests quatre són deute tècnic: llistes de
   // camps escrites a mà dins d'un ajudant de prova, sense ningú que les
   // compari amb la mestra. Aquest guió és aquell ningú.
   { punt: '§5', fitxer: 'eines/adt66-identificador.js', que: 'camps de filaDeProva()', mena: 'cua', com: 'array', nom: 'camps', dins: 'filaDeProva' },
-  { punt: '§5', fitxer: 'eines/classifica-editorial.js', que: 'CAMPS', mena: 'cua', com: 'array', nom: 'CAMPS' },
   { punt: '§5', fitxer: 'eines/deteccio-retirades.js', que: 'camps de filaDeProva()', mena: 'cua', com: 'array', nom: 'camps', dins: 'filaDeProva' },
   { punt: '§5', fitxer: 'eines/puja-cartell.js', que: 'CAMPS', mena: 'cua', com: 'array', nom: 'CAMPS' },
-  { punt: '§5', fitxer: 'eines/verifica-esdeveniment.js', que: 'CAMPS', mena: 'cua', com: 'array', nom: 'CAMPS' },
   { punt: '§5', fitxer: 'eines/dedup-contra-fitxers.js', que: 'filaDeProva()', mena: 'cua', com: 'objecte', dins: 'filaDeProva', obre: 'var fila = {' },
-
-  // --- Posterior a l'inventari --------------------------------------------
-  // `eines/neteja-cua.js` és del 16 de setembre de 2026 i el §4 de la decisió
-  // —escrit sobre 041d0e8— no el podia conèixer.
-  { punt: 'nou', fitxer: 'eines/neteja-cua.js', que: 'CAMPS_CANONICS', mena: 'cua', com: 'array', nom: 'CAMPS_CANONICS' }
 ];
 
 
@@ -187,8 +168,8 @@ function verificaElsCamps() {
 
   if (problemes.length > 0) {
     console.log('');
-    console.log('L\'inventari dels llocs on viu el joc de camps és al §4 de');
-    console.log('docs/DECISIO-ACTIVITATS-PERMANENTS.md.');
+    console.log('Els llocs on viu el joc de camps són a la taula LLOCS d\'aquest');
+    console.log('mateix fitxer (eines/verifica-camps.js).');
   }
 
   return problemes.length;

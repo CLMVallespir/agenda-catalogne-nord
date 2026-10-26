@@ -5061,13 +5061,9 @@ class PostalMime {
 //   BREVO_LIST_VALLESPIR    per llista. No són contrasenyes, però són
 //   BREVO_LIST_CAPCIR       dades del compte i el repositori és
 //   BREVO_LIST_CERDANYA     públic)
-// I una viu a `wrangler.jsonc`, com a `vars`:
+// I una viu al tauler com a variable de text (no com a Secret):
 //   CLOUDINARY_CLOUD_NAME  (no és secreta de cap manera: surt a l'URL
-//                           de cada cartell del web públic. Va a la
-//                           configuració i no al tauler perquè
-//                           `wrangler deploy` esborra les variables de
-//                           text del tauler a cada desplegament; els
-//                           Secrets, en canvi, no els toca)
+//                           de cada cartell del web públic)
 //
 // DESPLEGAMENT: vegeu docs/pas-fase2-worker-email.md (el correu),
 // docs/pas-fase3a-worker-formulari.md (el formulari) i
@@ -5081,9 +5077,7 @@ var FITXER_PENDENTS = 'pendents.json';
 var FITXER_EVENTS = 'events.json';
 
 // --- L'API de Claude (Anthropic) ---
-// Des del 23 d'octubre de 2026; abans era Gemini (NOTES.md diu per
-// què es va canviar). Es paga amb el crèdit mensual de
-// l'organització, que ha de tenir un límit de despesa a la consola:
+// Es paga amb el crèdit mensual de l'organització, que ha de tenir un límit de despesa a la consola:
 // quan s'acaba, les crides fallen en lloc de cobrar res (§3 de
 // CLAUDE.md).
 // El nom del model viu en UNA constant i prou. Si algun dia torna un
@@ -5102,8 +5096,7 @@ var CLAUDE_MAX_TOKENS = 8192;
 
 // Les claus de l'objecte que ha de tornar el model: les 17 de la
 // regla 2 del prompt, en el mateix ordre. L'API les fa complir
-// (`output_config.format`, vegeu esquemaDeCadenes()), que és el que
-// feia `responseMimeType` a Gemini. SI LA REGLA 2 DEL PROMPT CANVIA
+// (`output_config.format`, vegeu esquemaDeCadenes()). SI LA REGLA 2 DEL PROMPT CANVIA
 // DE CLAUS, AQUESTA LLISTA CANVIA AMB ELLA.
 var CLAUS_EXTRACCIO = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
@@ -5132,8 +5125,9 @@ var CAPCALERA_SECRET = 'X-Typebot-Secret';
 // una expressió cron. La solució més simple que ho garanteix tot
 // l'any: el cron desperta el Worker cada deu minuts durant les DUES
 // hores candidates, i el Worker mira quina hora és a París i se'n
-// torna a dormir si no són les 15. L'expressió és a wrangler.jsonc,
-// i és una de sola: "*/10 13,14 * * 2".
+// torna a dormir si no són les 15. L'expressió es configura al tauler
+// (Settings -> Trigger Events -> Cron Triggers) i és una de sola:
+// "*/10 13,14 * * 2".
 var HORA_DIGEST_PARIS = 15;
 
 // Cada despertada envia com a molt aquests correus, i la següent
@@ -5320,7 +5314,7 @@ export default {
       return respostaJson(403, { ok: false, error: 'no autoritzat' });
     }
 
-    // Només POST (FASES.md, Fase 3a). Aquí ja sabem que qui pregunta
+    // Només POST (docs/pas-fase3a-worker-formulari.md). Aquí ja sabem que qui pregunta
     // porta el secret, o sigui que sí que li podem dir la veritat:
     // un 405 li estalvia mitja tarda de buscar on és l'error.
     if (request.method !== 'POST') {
@@ -5941,7 +5935,7 @@ function campText(objecte, clau) {
 }
 
 // ------------------------------------------------------------
-// Còpia literal de creaId (docs/arxiu-google/utils.gs, curador.html). Fa
+// Còpia literal de creaId (curador.html). Fa
 // l'id: la data d'inici, un guió, i un pedaç curt fet de les tres
 // primeres paraules del títol. El sistema RECONSTRUEIX sempre l'id,
 // mai es refia del que hagi tornat el model. Torna "" si no hi ha
@@ -5972,7 +5966,7 @@ function creaId(dataInici, titol) {
 }
 
 // ------------------------------------------------------------
-// Còpia literal de valorPermes (docs/arxiu-google/utils.gs, curador.html).
+// Còpia literal de valorPermes (curador.html).
 // Torna el valor si és a la llista permesa, si no "".
 // ------------------------------------------------------------
 function valorPermes(valor, llistaPermesa) {
@@ -6258,7 +6252,7 @@ async function enviaDigestSetmanal(env, ara) {
 // ------------------------------------------------------------
 // Una sola lectura d'events.json, SEMPRE per l'API de continguts de
 // GitHub (mai de Pages, que serveix còpies de CDN endarrerides), que
-// en treu DUES llistes (§6, Q4 de docs/DECISIO-ACTIVITATS-PERMANENTS.md):
+// en treu DUES llistes (Q4 de NOTES.md, «Activitats permanents»):
 // «setmana» — els actes publicats que comencen entre dues dates, totes
 // dues incloses — i «permanents» — els actes publicats amb
 // `periodicitat` no buida i `data_fi >= avui`, tinguin o no ocurrència
@@ -6708,8 +6702,8 @@ async function respostaDigestDeProva(request, env) {
 // L'HTML DEL DIGEST
 //
 // La meitat PURA del digest: només munta text i dates, i no crida
-// cap API. És el mateix disseny que ja estava aprovat a l'Apps
-// Script (docs/arxiu-google/digestHtml.gs): targeta blanca sobre fons
+// cap API. És el mateix disseny que ja estava aprovat al
+// primer digest: targeta blanca sobre fons
 // clar, actes agrupats per dia sota una capçalera amb un punt
 // daurat, el vermell només a l'hora i al «Fins al…», la categoria
 // com una etiqueta negra. Taules i estils en línia, sense fonts
@@ -6863,8 +6857,8 @@ function construeixBlocEsdeveniment(esdeveniment) {
 }
 
 // ------------------------------------------------------------
-// El bloc compacte de les activitats permanents (§3 i §6 Q4 de
-// docs/DECISIO-ACTIVITATS-PERMANENTS.md): germana de
+// El bloc compacte de les activitats permanents (regla 3 i Q4 de
+// NOTES.md, «Activitats permanents»): germana de
 // construeixBlocEsdeveniment(), però sense cartell, sense categoria i
 // amb la periodicitat escrita tal com és —una línia per acte, mai una
 // línia per ocurrència. Surt també quan la finestra de la setmana és

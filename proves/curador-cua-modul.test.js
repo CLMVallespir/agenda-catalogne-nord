@@ -43,10 +43,35 @@ test('el mòdul exporta exactament el que la pàgina veu com a globals', async f
   assert.equal(pag.ctx.JA_NO_HI_ES, cua.JA_NO_HI_ES);
   assert.equal(pag.ctx.JA_PUBLICAT, cua.JA_PUBLICAT);
   assert.deepEqual(Object.keys(cua).sort(), [
-    'JA_NO_HI_ES', 'JA_PUBLICAT', 'afegeixAPublicats', 'creaFilaPublicada',
-    'filesPendents', 'idJaPublicat', 'marcaRebutjadaALaCua',
-    'substitueixPerPublicada', 'treuDeLaCua', 'trobaIndex'
+    'JA_NO_HI_ES', 'JA_PUBLICAT', 'afegeixAPublicats', 'combinaTransformacions',
+    'creaFilaPublicada', 'filesPendents', 'idJaPublicat', 'marcaRebutjadaALaCua',
+    'missatgeDeLot', 'substitueixPerPublicada', 'treuDeLaCua', 'trobaIndex'
   ]);
+});
+
+test('combinaTransformacions: aplica en ordre, recull l’error de cada peça i només llança si peten totes', function () {
+  var suma = function (n) {
+    return function (llista) { return llista.concat([n]); };
+  };
+  var peta = function () { throw new Error('no'); };
+
+  var combinada = cua.combinaTransformacions([suma(1), peta, suma(2)]);
+  var original = [0];
+  assert.deepEqual(combinada.transforma(original), [0, 1, 2]);
+  assert.deepEqual(original, [0]);
+  assert.equal(combinada.errors[0], null);
+  assert.equal(combinada.errors[1].message, 'no');
+  assert.equal(combinada.errors[2], null);
+
+  var totes = cua.combinaTransformacions([peta, peta]);
+  assert.throws(function () { totes.transforma([]); }, /no/);
+  assert.equal(totes.errors.length, 2);
+});
+
+test('missatgeDeLot: una línia és la línia; més, el títol del lot i una línia per decisió', function () {
+  assert.equal(cua.missatgeDeLot('Publica 2 actes', ['Publica A']), 'Publica A');
+  assert.equal(cua.missatgeDeLot('Publica 2 actes', ['Publica A', 'Publica B']),
+    'Publica 2 actes\n\nPublica A\nPublica B');
 });
 
 test('filesPendents: només «pendent», i una llista nova', function () {

@@ -7,24 +7,24 @@
 //
 // PER QUÈ EXISTEIX AQUEST FITXER. El projecte no té cap sistema de mòduls
 // —vegeu el §3 de CLAUDE.md—, o sigui que cada punt d'entrada porta la seva
-// còpia de la llista a mà. N'hi ha catorze de `categoria` en nou fitxers. Cap
+// còpia de la llista a mà. N'hi ha dotze de `categoria` en vuit fitxers. Cap
 // compilador no en pot comparar cap parell, perquè no hi ha compilador.
 //
 // El 29 d'agost de 2026 es va afegir `Concentració` a l'enum i es va posar
-// només a dos dels catorze llocs (el filtre i les icones d'`app.js`). El
+// només a dos dels llocs (el filtre i les icones d'`app.js`). El
 // resultat va ser una fila publicada a `events.json` amb una categoria que
 // `curador.html` i `worker/worker.js` no reconeixien i que `valorPermes()`
 // hauria buidat en silenci en desar-la. Cap error, cap avís, cap registre.
 // Aquest guió és el que hauria cridat aquell dia.
 //
 // D'ON SURT LA LLISTA BONA. **No d'aquí.** Aquest fitxer NO declara cap enum,
-// a posta: si en declarés un, seria la còpia número quinze i tindria el mateix
+// a posta: si en declarés un, seria la còpia número tretze i tindria el mateix
 // problema que vol resoldre. La llista bona la llegeix de
 // `prompts/extract-event.txt`, que el §7 de CLAUDE.md ja diu que és el mestre,
 // i tots els altres llocs es comparen contra aquell.
 //
 // Això vol dir que per afegir una categoria es comença sempre pel prompt. Si
-// algú la posa només al prompt, aquest guió marcarà els altres tretze llocs
+// algú la posa només al prompt, aquest guió marcarà els altres onze llocs
 // com a incorrectes, que és exactament el que ha de dir.
 //
 // Ús des del terminal (Node 18 o superior, cap dependència):
@@ -86,19 +86,13 @@ var LLOCS = [
   { fitxer: 'curador.html', que: 'CATEGORIA_VALUES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIA_VALUES' },
   { fitxer: 'curador.html', que: 'COMARCA_VALUES', enumeracio: 'comarca', com: 'array', nom: 'COMARCA_VALUES' },
 
-  // 9. La importació del CSV.
-  { fitxer: 'importa-csv.js', que: 'CATEGORIA_VALUES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIA_VALUES' },
-  { fitxer: 'importa-csv.js', que: 'COMARCA_VALUES', enumeracio: 'comarca', com: 'array', nom: 'COMARCA_VALUES' },
-
-  // 10-12. Les eines de la canonada.
+  // 9-10. Les eines de la canonada.
   { fitxer: 'eines/dedup-esdeveniments.js', que: 'CATEGORIES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIES' },
   { fitxer: 'eines/dedup-esdeveniments.js', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' },
   { fitxer: 'eines/mapeja-adt66.js', que: 'CATEGORIES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIES' },
   { fitxer: 'eines/mapeja-adt66.js', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' },
-  { fitxer: 'eines/mapeja-recerca.js', que: 'CATEGORIES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIES' },
-  { fitxer: 'eines/mapeja-recerca.js', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' },
 
-  // 13-14. El mirall offline del web públic.
+  // 11-12. El mirall offline del web públic.
   { fitxer: 'prova-local.html', que: 'CATEGORIES (filtre)', enumeracio: 'categoria', com: 'bilingue', nom: 'CATEGORIES' },
   { fitxer: 'prova-local.html', que: 'CATEGORIA_ICONES', enumeracio: 'categoria', com: 'icones', nom: 'CATEGORIA_ICONES' },
   { fitxer: 'prova-local.html', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' }

@@ -17,7 +17,7 @@
 //      Sense congelar-lo, dues passades no donarien mai la mateixa sortida.
 //
 // No hi ha cap costura nova a la interfície de `sincronitzaProgramada()`
-// (decisió D-02 de `docs/DECISIONS-ARQUITECTURA.md`).
+// (decisió D-02 de `NOTES.md`).
 //
 // Nota: `MockTimers` de `node:test` pot escriure un avís d'API experimental
 // segons la versió de Node. L'avís no vol dir cap error.

@@ -2,14 +2,14 @@
 // FILTRE PREVI DE CANDIDATS
 //
 // Una sola feina: treure el soroll obvi d'una llista de candidats en brut,
-// ABANS que arribin al mapeig i a processaLot(). Res més.
+// ABANS que arribin al mapeig. Res més.
 //
-//   - Cap crida a Gemini ni a cap API. Codi pur: entra una llista, en surten
+//   - Cap crida a cap model ni a cap API. Codi pur: entra una llista, en surten
 //     dues. No llegeix cap fitxer i no n'escriu cap.
 //   - Cap detall d'ADT66 ni de cap altra font concreta: treballa sobre els
 //     camps de l'esquema de recerca, i qualsevol font futura el crida igual.
-//   - NO està connectat a res: ni a sincronitzaADT66(), ni a processaLot().
-//     És la peça, no el cablejat.
+//   - El crida l'Action (eines/sincronitza-programada.js), que li passa el
+//     lot ja llegit; ell no llegeix el flux ni escriu res.
 //
 // QUÈ NO ÉS AQUEST FILTRE, i val més tenir-ho clar abans de tocar-hi res: no és
 // la classificació editorial. Decidir si un acte és de discurs o no, i si és
@@ -19,7 +19,7 @@
 // decisió. Això d'aquí és anterior i molt més tosc: mira dues
 // coses mecàniques i comptables —si l'acte cau dins la finestra de dates i si
 // el títol o l'organitzador porten una paraula de soroll conegut— i prou. La
-// seva raó de ser és estalviar crides a Gemini i files que no s'han de mirar.
+// seva raó de ser és estalviar crides al model i files que no s'han de mirar.
 //
 // La conseqüència pràctica d'aquesta ratlla: **a la llista negra no hi ha
 // d'entrar mai una categoria editorial.** «Tren turístic» o «visita de pagament»
@@ -125,8 +125,7 @@ var CAMPS_DE_TEXT = ['nom_original', 'nom_altra_llengua', 'organitzador'];
 // Filtra un lot de candidats en brut. Cada element pot ser:
 //
 //   - un registre de recerca tal qual, o
-//   - { registre: <el registre>, font: {...} }, la mateixa forma que accepta
-//     processaLot(), perquè el que surti d'aquí s'hi pugui passar sencer.
+//   - { registre: <el registre>, font: {...} }, amb la font al costat.
 //
 // Els candidats NO es toquen: els que passen surten tal com han entrat, amb el
 // seu embolcall si en portaven. Aquesta peça no mapeja res.
@@ -197,7 +196,7 @@ function motiuDeDescart(registre, dia, final) {
 //              massa lluny
 //
 // Un acte SENSE data d'inici no es descarta mai per aquest criteri. És el
-// mateix que ja fa processaLot() amb la clau forta: no sabem situar-lo, i no
+// criteri de la clau forta de dedup-esdeveniments.js: no sabem situar-lo, i no
 // saber-ho no és cap motiu per llençar-lo. Passa, i el curador el veurà amb
 // l'avís que el mapeig li posarà a `nota_curador`.
 //
@@ -317,8 +316,7 @@ function normalitzaText(text) {
 // ------------------------------------------------------------
 // El registre de recerca d'un candidat, vingui embolcallat o tal qual. Cap
 // camp de l'esquema de recerca no es diu `registre`, o sigui que la forma
-// embolcallada no es pot confondre amb un registre de debò. És la mateixa
-// regla que a eines/processa-lot.js.
+// embolcallada no es pot confondre amb un registre de debò.
 // ------------------------------------------------------------
 function registreDeCandidat(candidat) {
   if (!candidat) {
@@ -332,8 +330,7 @@ function registreDeCandidat(candidat) {
 
 // ------------------------------------------------------------
 // El valor net d'un camp de recerca: el camp absent, el buit i la cadena
-// literal "null" que escriu la recerca es tracten igual (§3 de
-// docs/HANDOFF-MAPEIG-RECERCA.md).
+// literal "null" es tracten igual.
 // ------------------------------------------------------------
 function textDeRecerca(valor) {
   if (typeof valor !== 'string') {

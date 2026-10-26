@@ -14,7 +14,7 @@
 //   - Cap detall d'ADT66 més enllà d'un: la capa 1 llegeix el tag
 //     `[ADT66 id: …]` que hi escriu `eines/mapeja-adt66.js`, i el llegeix amb
 //     la funció d'aquell mòdul, no amb cap còpia. Una fila sense tag —correu,
-//     Typebot, CSV de recerca— es salta la capa 1 sense error.
+//     Typebot— es salta la capa 1 sense error.
 //
 //
 // --- LA REGLA QUE MANA TOT EL DISSENY: SI DUBTES, ENCUA -------------------
@@ -51,8 +51,8 @@
 //
 // CAPA 2, DIFUSA, CONTRA `events.json`. Les files d'`events.json` no porten cap
 // identificador i no en portaran mai: `recullFitxa()` es queda els camps
-// públics i `nota_curador` —el tag inclòs— només viu a `pendents.json`. El sondeig de
-// `docs/SONDEIG-FONT-URL-ADT66.md` va tancar també l'última porta: cap camp
+// públics i `nota_curador` —el tag inclòs— només viu a `pendents.json`. El sondeig recollit a
+// NOTES.md, «El flux de l'ADT66», va tancar també l'última porta: cap camp
 // del flux no porta URL de fitxa, o sigui que `font_url` tampoc no pot fer
 // d'ancoratge. Queda comparar el CONTINGUT, i comparar contingut és estimar.
 // D'aquí ve tot el §«El llindar».
@@ -472,8 +472,8 @@ function informeDeRecompte(recompte) {
 
 // ------------------------------------------------------------
 // Un candidat { fila, font } a partir d'un element del lot, que pot venir amb
-// font pròpia o sense. Mateix conveni que processaLot(): la font pròpia mana,
-// i si no n'hi ha s'aplica la del lot.
+// font pròpia o sense. La font pròpia mana, i si no n'hi ha
+// s'aplica la del lot.
 // ------------------------------------------------------------
 function candidatDe(element, fontPerOmissio) {
   if (!element) {

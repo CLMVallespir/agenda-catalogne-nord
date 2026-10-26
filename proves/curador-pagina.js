@@ -277,7 +277,8 @@ function creaDipositFals(fitxers) {
       versio: estat[nom].versio + 1
     };
     diposit.commits.push(cos.message);
-    return resposta200({});
+    // Com GitHub: la resposta porta el sha nou del fitxer.
+    return resposta200({ content: { sha: 'sha-' + estat[nom].versio } });
   };
 
   return diposit;
@@ -339,6 +340,7 @@ async function carregaCurador(diposit) {
     document: document,
     window: window,
     fetch: diposit.fetch,
+    setTimeout: setTimeout,
     atob: atob,
     btoa: btoa,
     TextEncoder: TextEncoder,

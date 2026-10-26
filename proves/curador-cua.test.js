@@ -65,6 +65,8 @@ async function preparaPagina(pendents, events) {
   var diposit = pagina.creaDipositFals({ 'pendents.json': pendents, 'events.json': events });
   var pag = await pagina.carregaCurador(diposit);
   pag.ctx.TESTIMONI = 'testimoni-de-prova';
+  // Els reintents de conflicte, sense pauses: les proves no han d'esperar.
+  pag.ctx.ESPERES_CONFLICTE_MS = [0, 0, 0];
   return { diposit: diposit, pag: pag };
 }
 
@@ -243,7 +245,7 @@ test('publica: si events.json no es pot escriure, no es toca pendents.json i l�
   assert.equal(p.pag.ctx.CUA.length, 3);
 });
 
-test('publica: dos conflictes de sha seguits són una fallada, no un tercer intent', async function () {
+test('publica: quatre conflictes de sha seguits són una fallada, no un cinquè intent', async function () {
   var f = tresFiles();
   var p = await preparaPagina([f.mig], []);
   var fitxa = pagina.creaFitxaFalsa(pagina.campsEditables(f.mig));
@@ -255,6 +257,7 @@ test('publica: dos conflictes de sha seguits són una fallada, no un tercer inte
   await p.pag.ctx.publica(fitxa, f.mig);
 
   assert.deepEqual(p.diposit.registre, [
+    'GET events.json', 'PUT events.json', 'GET events.json', 'PUT events.json',
     'GET events.json', 'PUT events.json', 'GET events.json', 'PUT events.json'
   ]);
   assert.equal(fitxa.retirat, false);
@@ -412,6 +415,135 @@ test('rebutja: sense testimoni no demana confirmació ni escriu res', async func
   assert.deepEqual(diposit.registre, []);
   assert.deepEqual(pag.confirmacions, []);
   assert.equal(fitxa.retirat, false);
+});
+
+
+// --- La cua d'escriptura ----------------------------------------------------
+
+// Una fitxa i la fila que porta, per als tests de diverses decisions.
+function fitxaDe(fila) {
+  return pagina.creaFitxaFalsa(pagina.campsEditables(fila));
+}
+
+test('cua d’escriptura: tres clics seguits fan un commit per fitxer i decisió i després un de sol per al lot', async function () {
+  var f = tresFiles();
+  var p = await preparaPagina([f.abans, f.mig, f.despres], []);
+  var fitxes = [fitxaDe(f.abans), fitxaDe(f.mig), fitxaDe(f.despres)];
+
+  // El primer clic engega l'escriptura; els altres dos arriben mentre vola.
+  var fetes = [
+    p.pag.ctx.publica(fitxes[0], f.abans),
+    p.pag.ctx.publica(fitxes[1], f.mig),
+    p.pag.ctx.rebutja(fitxes[2], f.despres)
+  ];
+  assert.equal(fitxes[1].avis.textContent, 'En cua per publicar…');
+  assert.equal(fitxes[2].avis.textContent, 'En cua per rebutjar…');
+  assert.equal(fitxes[1].botons[0].disabled, true);
+  await Promise.all(fetes);
+
+  // El segon lot parteix de l'última versió escrita: cap lectura més.
+  assert.deepEqual(p.diposit.registre, [
+    'GET events.json', 'PUT events.json', 'GET pendents.json', 'PUT pendents.json',
+    'PUT events.json', 'PUT pendents.json'
+  ]);
+  assert.deepEqual(p.diposit.commits, [
+    'Publica Concert a Ceret',
+    'Marca com a publicada Concert a Ceret',
+    'Publica Ball a Prats',
+    'Cua del curador: 2 decisions\n\nMarca com a publicada Ball a Prats\nRebutja Mercat a Arles'
+  ]);
+
+  assert.deepEqual(p.diposit.dades('events.json').map(function (fila) {
+    return fila.titol;
+  }), ['Concert a Ceret', 'Ball a Prats']);
+  assert.deepEqual(p.diposit.dades('pendents.json').map(function (fila) {
+    return fila.estat;
+  }), ['publicat', 'publicat', 'rebutjat']);
+  assert.equal(fitxes[0].retirat && fitxes[1].retirat && fitxes[2].retirat, true);
+  assert.equal(p.pag.ctx.CUA.length, 0);
+  assert.equal(p.pag.ctx.DESANT, false);
+});
+
+test('cua d’escriptura: en un lot, l’acte ja publicat es queda a la cua i els altres s’escriuen', async function () {
+  var f = tresFiles();
+  var jaHiEra = filaEvent({ id: f.despres.id, titol: f.despres.titol,
+    data_inici: f.despres.data_inici, data_fi: f.despres.data_fi });
+  var p = await preparaPagina([f.abans, f.mig, f.despres], [jaHiEra]);
+  var fitxes = [fitxaDe(f.abans), fitxaDe(f.mig), fitxaDe(f.despres)];
+
+  var fetes = [
+    p.pag.ctx.rebutja(fitxes[0], f.abans),
+    p.pag.ctx.publica(fitxes[1], f.mig),
+    p.pag.ctx.publica(fitxes[2], f.despres)
+  ];
+  await Promise.all(fetes);
+
+  // El commit del lot només nomena el que s'ha escrit.
+  assert.deepEqual(p.diposit.commits, [
+    'Rebutja Concert a Ceret',
+    'Publica Ball a Prats',
+    'Marca com a publicada Ball a Prats'
+  ]);
+  assert.equal(p.diposit.dades('events.json').length, 2);
+  assert.deepEqual(p.diposit.dades('pendents.json').map(function (fila) {
+    return fila.estat;
+  }), ['rebutjat', 'publicat', 'pendent']);
+  assert.equal(fitxes[1].retirat, true);
+  assert.equal(fitxes[2].retirat, false);
+  assert.equal(fitxes[2].avis.textContent.indexOf(JA_PUBLICAT), 0);
+  assert.equal(fitxes[2].botons[0].disabled, false);
+  assert.deepEqual(titolsDeLaCua(p.pag), ['Mercat a Arles']);
+});
+
+test('cua d’escriptura: dos conflictes i a la tercera va bé, sobre el fitxer fresc', async function () {
+  var f = tresFiles();
+  var p = await preparaPagina([f.abans, f.mig, f.despres], []);
+  var fitxa = fitxaDe(f.mig);
+
+  p.diposit.fallaPut = function (nom, vegada) {
+    return nom === 'pendents.json' && vegada <= 2 ? 409 : null;
+  };
+
+  await p.pag.ctx.rebutja(fitxa, f.mig);
+
+  assert.deepEqual(p.diposit.registre, [
+    'GET pendents.json', 'PUT pendents.json', 'GET pendents.json', 'PUT pendents.json',
+    'GET pendents.json', 'PUT pendents.json'
+  ]);
+  assert.deepEqual(p.diposit.commits, ['Rebutja Ball a Prats']);
+  assert.equal(fitxa.retirat, true);
+});
+
+test('cua d’escriptura: si un altre escriptor s’hi ha avançat, la versió recordada no val i es torna a llegir', async function () {
+  var f = tresFiles();
+  var p = await preparaPagina([f.abans, f.mig, f.despres], []);
+
+  await p.pag.ctx.rebutja(fitxaDe(f.abans), f.abans);
+
+  // L'Action escriu pendents.json entre dos clics.
+  var actual = p.diposit.dades('pendents.json');
+  p.diposit.canvia('pendents.json', actual.concat([filaPendent({ id: 'nova', titol: 'Nova' })]));
+  p.diposit.registre.length = 0;
+
+  await p.pag.ctx.rebutja(fitxaDe(f.mig), f.mig);
+
+  assert.deepEqual(p.diposit.registre, ['PUT pendents.json', 'GET pendents.json', 'PUT pendents.json']);
+  assert.deepEqual(p.diposit.dades('pendents.json').map(function (fila) {
+    return fila.estat;
+  }), ['rebutjat', 'rebutjat', 'pendent', 'pendent']);
+});
+
+test('cua d’escriptura: mentre es desa, la cua no es pot tornar a carregar', async function () {
+  var f = tresFiles();
+  var p = await preparaPagina([f.mig], []);
+
+  var feta = p.pag.ctx.rebutja(fitxaDe(f.mig), f.mig);
+  p.pag.ctx.recarregaLaCua();
+
+  assert.equal(p.pag.element('avis-global').textContent,
+    'Encara s’estan desant decisions. Espera que acabin i torna-ho a provar.');
+  await feta;
+  assert.deepEqual(p.diposit.registre, ['GET pendents.json', 'PUT pendents.json']);
 });
 
 

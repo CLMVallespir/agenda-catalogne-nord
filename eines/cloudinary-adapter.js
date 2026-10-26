@@ -37,9 +37,8 @@
 //
 //     AQUEST ADAPTADOR NO ESTÀ CONNECTAT A RES.
 //
-// Ni a processaLot(), ni a pipelineOffline(), ni a cap cosa que corri sola. La
-// clau `puja` de l'objecte d'agents continua sense rebre'l: avui només s'hi
-// passen pujadors de mentida, a les proves. Connectar-lo vol dir gastar espai
+// Ni a l'Action, ni al Worker, ni a cap cosa que corri sola: el llança a mà
+// eines/cartells-a-cloudinary.js. Connectar-lo vol dir gastar espai
 // del compte de Cloudinary de debò per cada fila d'un lot, i això és una decisió
 // del propietari, no un pas que es faci de passada. Fins que no la prengui,
 // aquesta eina es fa servir a mà.

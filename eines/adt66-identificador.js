@@ -7,11 +7,11 @@
 // PER QUÈ EXISTEIX. eines/deteccio-retirades.js ja sap dir quines ofertes han
 // caigut del flux, però necessita que qui la cridi li passi `filesAncorades`:
 // quina fila ve de quina oferta. I avui no ho sap ningú, perquè el
-// `SyndicObjectID` no viatja enlloc. El §2 quater de docs/HANDOFF-ADT66.md
+// `SyndicObjectID` no viatja enlloc. NOTES.md, «El flux de l'ADT66»,
 // tanca la porta a resoldre-ho amb un camp nou —l'esquema del §4 de CLAUDE.md
 // són 16 camps públics + `periodicitat` (17 a events.json) + `nota_curador`
 // (18 a pendents.json), i no en creix cap dinovè— i el §2
-// ter demostra que `font_url` tampoc no el pot portar de manera útil.
+// ter d'aquella secció demostra que `font_url` tampoc no el pot portar de manera útil.
 //
 // Queda `nota_curador`, i hi encaixa per disseny, no per manca de lloc millor.
 // El §4 de CLAUDE.md diu que és un camp de servei: **l'escriuen només els
@@ -62,7 +62,7 @@
 // (`extreuIdentificadors()`) i recorre les files de tot estat.
 //
 // UNA FILA POT NO PORTAR-NE CAP, I NO ÉS CAP ERROR. Les files que vénen del
-// correu, del Typebot o del CSV de recerca no tenen cap oferta ADT66 darrere.
+// correu o del Typebot no tenen cap oferta ADT66 darrere.
 // `extreuIdentificador()` hi torna `null` i `construeixAncoratge()` les
 // ignora en silenci.
 //

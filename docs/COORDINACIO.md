@@ -3,8 +3,7 @@
 > Protocol de treball entre els dos cervells del projecte. Viu a `docs/` perquè el
 > coordinador de Claude Code el llegeixi a cada sessió. Els intercanvis (encàrrecs i
 > informes) **no** van al repositori: viuen a `coordinacio/`, ignorat per git.
-> Versió 1.3 · 6 d'octubre de 2026 — el paràgraf 4 de la capçalera comença
-> comprovant el model de la sessió.
+> Versió 1.4 · 23 d'octubre de 2026.
 
 ---
 
@@ -52,6 +51,10 @@ coordinacio/                      ← ignorat per git, al Quefas2 de Miquel
    afirmacions amb el codi i redacta l'encàrrec següent.
 
 Un encàrrec, un informe, el mateix número. Una feina que es reprèn porta número nou.
+
+Quan un encàrrec és tancat i el que n'ha sortit ja és a `NOTES.md` (la fila del
+registre, les decisions i les lliçons), els seus fitxers de `coordinacio/`
+s'esborren: no hi ha arxiu d'encàrrecs vells.
 
 ---
 
@@ -128,7 +131,7 @@ Tres fonts: les regles del projecte, *Clean Code* (Robert C. Martin) i la idea d
 | C4 | **Cap coneixement duplicat.** Quan un context d'execució obliga a duplicar (Worker enganxat, navegador sense mòduls, Node), una verificació detecta la deriva, com fa `verifica-enum.js`. | Clean Code |
 | C5 | **Noms que diuen la intenció**; una funció, una feina, al nivell d'abstracció del mòdul. | Clean Code |
 | C6 | **Fallades visibles:** cap error engolit; cada missatge diu què cal fer. | Clean Code + `CLAUDE.md` §5 |
-| C7 | **Cada servei extern en un sol lloc:** Gemini, API de GitHub, Brevo, Cloudinary, Tourinsoft. | Clean Code |
+| C7 | **Cada servei extern en un sol lloc:** API de Claude, API de GitHub, Brevo, Cloudinary, Tourinsoft. | Clean Code |
 | C8 | **Comprovable per la interfície** amb `node:test` i `node:assert`, que venen amb Node: zero dependències. | Clean Code + Ousterhout |
 
 **Conflictes ja resolts** — no cal tornar-hi:
@@ -177,25 +180,14 @@ palanca (*leverage*), localitat. **Vocabulari de domini:** `CLAUDE.md` §4, §4 
 ## 7. On queden les decisions
 
 - Decisió d'arquitectura acceptada, o candidat rebutjat amb una raó que caldrà
-  recordar → una entrada a `docs/DECISIONS-ARQUITECTURA.md` (fa de registre
-  d'ADR). No es crea `docs/adr/` ni `GLOSSARY.md`: el vocabulari ja és al
-  `CLAUDE.md`.
-- Lliçó puntual → `NOTES.md`, com sempre.
+  recordar → una entrada `D-NN` al §2 de `NOTES.md`, amb el número següent. No
+  es crea `docs/adr/` ni `GLOSSARY.md`: el vocabulari ja és al `CLAUDE.md`.
+- Lliçó puntual → `NOTES.md` §5, com sempre.
 
 ---
 
 ## 8. Registre
 
-El coordinador actualitza la fila del seu encàrrec al final, dins el commit de
-l'encàrrec.
-
-| ENC | Data | Tema | Estat | Resultat |
-|---|---|---|---|---|
-| 000 | 2026-10-03 | Posada en marxa del protocol | fet | 3 edicions + `git mv` de l'auditoria de juliol; verifica-enum i verifica-camps en verd (INF-000) |
-| 001 | 2026-10-03 | Auditoria d'arquitectura | fet | 7 candidats (ARQ-01–ARQ-07); recomanació principal ARQ-01, la passada en sec de l'Action reproduïble (INF-001) |
-| 002 | 2026-10-06 | Protocol v1.2 i verificador del Worker enganxable (ARQ-03) | fet | protocol v1.2; `verifica-worker-concatenat.js` en verd (A 4950, bàner 25, B 2064) i primera prova `node:test`, 5/5 en verd (INF-002) |
-| 003 | 2026-10-06 | La xarxa de la passada de l'Action (ARQ-01, primera part) | fet | `proves/passada-action.test.js`, 2/2 en verd sobre 42 ofertes de les 1.425 del flux del 2026-10-06; les dues mutacions la posen en vermell; 2 branques sense cobrir perquè el flux no en porta (INF-003) |
-| 004 | 2026-10-06 | Documentació: una sola font i els fets de l'auditoria | fet | `CLAUDE.md` única descripció del projecte (D-03): 5 documents arxivats a `docs/arxiu/`; contradiccions 3, 4, 5, 7, 8 i 10 de l'INF-001 corregides; només comentaris de codi tocats; la 6 (vora de l'acte) espera ARQ-05 (INF-004) |
-| 005 | 2026-10-06 | El Cinema d'Elna, exclòs només per l'adreça | fet | regla estreta: només l'adreça (13, boulevard Voltaire), `tipusCinema` esborrada; la xarxa porta 2 ofertes sintètiques d'Elna (S1 s'exclou, S2 entra a la cua); `--proves` 31, `passada-action` 2/2, `verifica-worker-concatenat` 5/5 (INF-005) |
-| 006 | 2026-10-06 | El criteri editorial automàtic, en un sol mòdul (ARQ-07) | fet | R4 (amb els dos rescats) i la llista d'exclusions a `eines/exclusions-editorials.js`, interfície `aplicaCriteriAutomatic`; xarxa estesa amb S3 («portes ouvertes»); esperat intacte al segon commit, `--proves` 31, `passada-action` 2/2 (INF-006) |
-| 007 | 2026-10-07 | Les portes manuals: imatge, avís de dates, D-04 i D-05 | fet | — |
+El registre dels encàrrecs és el §7 de `NOTES.md`. El coordinador hi afegeix la
+fila del seu encàrrec al final, dins el commit de l'encàrrec. El següent és
+l'ENC-008.

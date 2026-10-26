@@ -7,9 +7,10 @@
 //   - Cap crida a cap API. Codi pur: entren dos instantanis, en surt una
 //     llista. Aquesta funció NO crida mai el flux ella mateixa.
 //   - Cap escriptura: ni a pendents.json, ni enlloc.
-//   - NO està connectada a res: ni a sincronitzaADT66(), ni a processaLot(),
-//     ni a cap cron. És la peça, no el cablejat. Cada quan es fa una passada
-//     completa del flux és una decisió del propietari, no d'aquest fitxer.
+//   - No la crida l'Action (eines/sincronitza-programada.js) ni cap cron: la
+//     requereix eines/adt66-identificador.js només per a les proves. És la
+//     peça, no el cablejat. Cada quan es fa una passada completa del flux és
+//     una decisió del propietari, no d'aquest fitxer.
 //
 // AQUESTA FUNCIÓ NOMÉS MARCA. MAI ESBORRA CAP FILA I MAI TOCA `estat`.
 // Retirar un acte del públic és sempre decisió del curador: aquí només se li
@@ -24,14 +25,14 @@
 // QUI GUARDA L'INSTANTANI ANTERIOR NO ÉS AQUESTA PEÇA. Rep els dos ja fets i
 // prou. On acaba vivint l'instantani anterior encara NO està decidit: el §3
 // de CLAUDE.md diu que l'estat viu en dos fitxers JSON, i un tercer fitxer
-// trencaria aquella restricció. Vegeu docs/HANDOFF-ADT66.md §6.
+// trencaria aquella restricció. Vegeu NOTES.md, «El flux de l'ADT66» (§6).
 //
 // L'ANCORATGE FILA ↔ OFERTA NO ESTÀ RESOLT, i és la limitació que val més
 // saber abans de cablejar res. Cap fila de `pendents.json` no porta el
 // `SyndicObjectID` de l'oferta que la va originar, i comprovat amb curl el 30
 // d'agost de 2026 **no hi ha cap adreça pública i llegible de la fitxa de
 // l'ADT66 construïda a partir del `SyndicObjectID`** que el pogués portar
-// dins de `font_url` (docs/HANDOFF-ADT66.md §2 ter). Per això
+// dins de `font_url` (NOTES.md, «El flux de l'ADT66», §2 ter). Per això
 // `filesAncorades` és un argument: qui cridi la funció ha de saber, ell, quina
 // fila ve de quina oferta. Sense ancoratge, la funció torna la llista de
 // retirades amb `fila_afectada: null` i la nota ja escrita, que continua sent

@@ -1,20 +1,20 @@
 // ---------------------------------------------------------------------------
 // DEDUPLICACIÓ D'ESDEVENIMENTS — comparació de dues files candidates
 //
-// Una sola feina: donades DUES files de l'esquema de setze camps, dir si són
+// Una sola feina: donades DUES files de l'esquema de divuit camps, dir si són
 // el mateix acte, si són actes diferents, o si no es pot decidir i ha de mirar-
 // s'ho el curador. Res més.
 //
-//   - Cap crida a Gemini ni a cap API. Codi pur: entren dues files, surt una
+//   - Cap crida a cap model ni a cap API. Codi pur: entren dues files, surt una
 //     decisió. No llegeix res i no escriu enlloc.
 //   - Cap detall d'ADT66 ni de cap altra font concreta. Serveix el dia que
 //     entri una font nova a la cua.
 //   - MAI fusiona en silenci quan hi ha dubte: el dubte és una de les tres
 //     respostes possibles, i porta les dues files perquè es puguin ensenyar.
 //
-// Com es reutilitza: dins de Node, amb `require()` —ho fa
-// `eines/processa-lot.js`, i és l'únic que n'exporta la funció. Dins del Worker
-// no hi ha mòduls: qui la hi vulgui copia el bloc de constants i el de peces
+// Com es reutilitza: dins de Node, amb `require()` —ho fan l'Action i
+// diversos mòduls d'`eines/`. Dins del Worker no hi ha mòduls: qui la hi
+// vulgui copia el bloc de constants i el de peces
 // tal qual —MÉS la taula d'`eines/pobles-alies.js`, que és l'única cosa que
 // aquest fitxer importa de fora. El bloc final de proves no es copia mai.
 //
@@ -22,10 +22,10 @@
 //
 //   node eines/dedup-esdeveniments.js    -> passa la bateria de proves
 //
-// L'esquema de setze camps és el del §4 de CLAUDE.md. Aquesta peça no l'amplia:
+// L'esquema de divuit camps és el del §4 de CLAUDE.md. Aquesta peça no l'amplia:
 // el que li falta —de quina font ve cada fila i en quina llengua està escrit el
-// títol— arriba a part, en un descriptor `font`, perquè els setze camps no ho
-// saben dir i no és feina d'aquesta tasca inventar-ne un dissetè.
+// títol— arriba a part, en un descriptor `font`, perquè els divuit camps no ho
+// saben dir i no és feina d'aquesta tasca inventar-ne un dinovè.
 // ---------------------------------------------------------------------------
 
 
@@ -100,7 +100,7 @@ var CATEGORIES = [
 // són el mateix poble i cap comparació de text ho endevina sola.
 //
 // La taula viu a eines/pobles-alies.js, que és l'origen de veritat compartit
-// amb eines/mapeja-recerca.js. Aquí no en cal cap còpia: es llegeix en tots
+// amb eines/mapeja-adt66.js. Aquí no en cal cap còpia: es llegeix en tots
 // dos sentits, i qualsevol de les dues formes porta a la mateixa clau.
 //
 // Hi ha parells que aquest fitxer no necessita —«Céret» i «Ceret» ja cauen
@@ -136,7 +136,7 @@ var PARAULES_BUIDES = {
 // Compara dues files candidates i torna una decisió. Cada candidata és un
 // objecte de dues parts:
 //
-//   { fila: <els setze camps>, font: { tipus: '...', llengua: 'ca' | 'fr' } }
+//   { fila: <els divuit camps>, font: { tipus: '...', llengua: 'ca' | 'fr' } }
 //
 // `font.tipus` és una clau de JERARQUIA_FONTS i decideix qui mana en cas de
 // conflicte de camps. `font.llengua` és la llengua en què està escrit el TÍTOL
@@ -477,7 +477,7 @@ function fusionaFiles(candidatA, candidatB) {
   // potser tenia el problema. Es queden totes dues.
   fusionada.nota_curador = ajuntaNotes(filaA.nota_curador, filaB.nota_curador);
 
-  // Q3 (§6 de DECISIO-ACTIVITATS-PERMANENTS.md): el bucle de dalt ja aplica
+  // Q3 de NOTES.md, «Activitats permanents (periodicitat)»: el bucle de dalt ja aplica
   // «la plena guanya la buida»; l'únic que hi falta és l'avís quan totes
   // dues són plenes i diferents, perquè el curador sàpiga que n'hi havia
   // una altra i quina s'ha descartat.
@@ -530,7 +530,7 @@ function resolEstat(estatA, estatB) {
   //
   //   'publicat'  un esdeveniment publicat ja ha passat el filtre humà, i cap
   //               fusió automàtica no pot revertir-ho. Hi arriba el dia que es
-  //               dedupliqui contra events.json (docs/HANDOFF-ADT66.md §4).
+  //               dedupliqui contra events.json (NOTES.md, «El flux de l'ADT66»).
   //   'rebutjat'  un rebuig és una decisió sobre l'ESDEVENIMENT i no sobre la
   //               fila que el porta: ha de sobreviure la fusió, o la memòria de
   //               rebuig es perd i el curador torna a revisar el que ja havia
@@ -605,9 +605,9 @@ function resultatComparacio(parts) {
 
 
 // --- Còpies literals de les funcions compartides ----------------------------
-// Són les mateixes de docs/arxiu-google/utils.gs, worker/worker.js i
-// curador.html. Es copien, no s'importen: el projecte no té cap sistema de
-// mòduls i totes les vies d'entrada han de donar l'id idèntic.
+// Són les mateixes de worker/worker.js i curador.html. Es copien, no
+// s'importen: el projecte no té cap sistema de mòduls i totes les vies
+// d'entrada han de donar l'id idèntic.
 
 // ------------------------------------------------------------
 // Còpia literal de valorPermes: torna el valor només si és a la llista
@@ -647,8 +647,8 @@ function creaId(dataInici, titol) {
 
 // --- El que surt d'aquest fitxer --------------------------------------------
 // La funció, i una sola peça de dins. La resta són seves i no les ha de cridar
-// ningú. L'exportació és per a Node (eines/processa-lot.js,
-// eines/classifica-editorial.js). Al Worker no hi arriba mai per aquí: allà es
+// ningú. L'exportació és per a Node (eines/sincronitza-programada.js,
+// eines/mapeja-adt66.js). Al Worker no hi arriba mai per aquí: allà es
 // copia, com diu la capçalera.
 //
 // ajuntaNotes surt a fora perquè la regla d'ajuntar dues notes de curador

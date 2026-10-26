@@ -36,23 +36,15 @@ al registre i prou.
 
 ### 2. La idempotència: el registre de Brevo és l'apunt
 
-L'Apps Script guardava la data del darrer enviament a la Script Property
-`DIGEST_DARRER_ENVIAMENT`. Aquí no hi ha ni full de càlcul ni propietats, i
 `CLAUDE.md` §3 diu que l'estat viu només a `events.json` i `pendents.json`: no hi
 ha lloc on apuntar «ja enviat».
 
-No en calia cap de nou. **El registre d'enviaments del mateix Brevo és l'apunt.**
-Cada correu surt etiquetat `digest-AAAA-MM-DD-comarca`, i abans d'enviar res el
+No en cal cap. **El registre d'enviaments del mateix Brevo és l'apunt.** Cada
+correu surt etiquetat `digest-AAAA-MM-DD-comarca`, i abans d'enviar res el
 Worker es llegeix els enviaments d'avui (`GET /v3/smtp/emails`) i en fa un
-conjunt de parelles «etiqueta + adreça».
-
-Això surt **millor** que la propietat antiga, no pitjor:
-
-| | Apps Script | Worker |
-|---|---|---|
-| Granularitat | per dia | **per persona i comarca** |
-| Si l'execució mor a mig camí | uns quants es queden sense digest aquella setmana | **la següent despertada continua per on era** |
-| Estat nou a mantenir | una Script Property | **cap** |
+conjunt de parelles «etiqueta + adreça». La guarda és **per persona i
+comarca**, no per dia: si l'execució mor a mig camí, la despertada següent
+continua per on era, sense repetir ningú, i no hi ha cap estat nou a mantenir.
 
 I si el registre de Brevo **no es pot llegir**, el digest **no s'envia**. És
 deliberat, i és la mateixa regla de sempre del projecte: sense poder garantir una
@@ -77,8 +69,7 @@ posta.
 
 ### 4. Les activitats permanents: passatgeres, no motor
 
-**Afegit el 17 de setembre de 2026** (`docs/DECISIO-ACTIVITATS-PERMANENTS.md`
-§3 i §6 Q4). El bloc de resum de les activitats permanents (`periodicitat` no
+(Q4 de `NOTES.md`, «Activitats permanents».) El bloc de resum de les activitats permanents (`periodicitat` no
 buida, `data_fi >= avui`) **no fa enviar cap digest que altrament no
 s'enviaria**. Viatja de passatger: si una comarca ja té algun acte puntual dins
 de la finestra de set dies i, per tant, ja envia digest, el bloc de permanents
@@ -146,8 +137,8 @@ Els noms dels Secrets són **sense accents i en majúscules** (`BREVO_LIST_ROSSE
 encara que la comarca es digui «Rosselló». La correspondència la fa el codi, una
 per una, a la taula `COMARQUES_BREVO`.
 
-Els ids de llista no són contrasenyes, però van als Secrets i no a
-`wrangler.jsonc` perquè **aquest repositori és públic** i són dades del compte.
+Els ids de llista no són contrasenyes, però van als Secrets perquè **aquest
+repositori és públic** i són dades del compte.
 
 Recorda el detall de sempre: **un Secret nou no és viu fins que desplegues.** La
 pantalla acaba amb un botó **Deploy**.
@@ -163,13 +154,8 @@ Trigger**:
 
 Un de sol. No en posis dos (un per a cada hora UTC): compten per separat contra
 el límit de **5 activadors cron per compte** del pla gratuït, i aquesta expressió
-ja cobreix les dues hores.
-
-L'expressió també és a `wrangler.jsonc`, sota `triggers.crons`, però **ara mateix
-aquell fitxer no el llegeix ningú**: el camí «Connect to Git» està desconnectat a
-posta (vegeu `NOTES.md`). Mentre el desplegament es faci a mà des del tauler, el
-cron s'ha de posar **al tauler**. Hi és a `wrangler.jsonc` perquè el dia que es
-torni a connectar el Git no calgui recordar-se'n.
+ja cobreix les dues hores. El tauler és l'únic lloc on viu: un cron que no hi
+és no deixa cap registre, i el digest de dimarts simplement no surt.
 
 ---
 
@@ -271,8 +257,7 @@ enviaDigestSetmanal(): 0 correus en aquesta despertada, 12 en tot el dia.
   publicat.
 - **La llista de la setmana no mira `data_fi`.** La finestra es decideix amb
   `data_inici`: una exposició que va començar abans d'aquesta setmana i que
-  encara dura **no** hi surt. Era així a l'Apps Script i s'ha mantingut.
-  **Excepció, des del 17 de setembre de 2026:** el bloc de permanents (§4 de
+  encara dura **no** hi surt. **Excepció:** el bloc de permanents (§4 de
   dalt) sí que mira `data_fi`, perquè és l'únic senyal de vigència que
   `periodicitat` té.
 - **No escriu res enlloc.** Cap commit, cap fila, cap fitxer.

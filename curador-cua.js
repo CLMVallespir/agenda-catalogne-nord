@@ -213,6 +213,68 @@ function marcaRebutjadaALaCua(original) {
 }
 
 
+// --- Diverses decisions en una sola escriptura ------------------------------
+
+// ------------------------------------------------------------
+// Ajunta diverses transformacions en una de sola, que és el que permet
+// desar en un sol commit totes les decisions que s'han acumulat mentre
+// la pàgina escrivia. Torna { transforma, errors }:
+//
+//   transforma  la transformació que `desaAmbReintent()` espera: aplica
+//               les peces en ordre, cadascuna sobre el resultat de
+//               l'anterior
+//   errors      l'error de cada peça, a la mateixa posició, o null si
+//               ha anat bé. Es torna a omplir a cada passada, perquè el
+//               reintent de conflicte de sha torna a fer-ho tot sobre el
+//               fitxer fresc i val el que ha passat l'últim cop
+//
+// Una peça que peta no atura les altres: la seva decisió no s'escriu i
+// les de les altres sí. Si PETEN TOTES, la transformació llança el
+// primer error, i així no s'escriu cap commit buit; amb una sola peça és
+// exactament el que feia la peça tota sola.
+// ------------------------------------------------------------
+function combinaTransformacions(transformacions) {
+  var errors = [];
+
+  function transforma(llista) {
+    var resultat = llista;
+    var bones = 0;
+    errors.length = 0;
+
+    for (var i = 0; i < transformacions.length; i++) {
+      try {
+        resultat = transformacions[i](resultat);
+        errors.push(null);
+        bones++;
+      } catch (error) {
+        errors.push(error);
+      }
+    }
+
+    if (bones === 0 && errors.length > 0) {
+      throw errors[0];
+    }
+    return resultat;
+  }
+
+  return { transforma: transforma, errors: errors };
+}
+
+// ------------------------------------------------------------
+// El missatge de commit d'un lot. Amb una sola línia és aquella línia
+// tal qual («Publica Ball a Prats»), com quan cada decisió feia el seu
+// commit. Amb més d'una, el títol del lot a dalt i una línia per
+// decisió a sota, perquè l'historial de git continuï dient què s'ha fet
+// a cada acte.
+// ------------------------------------------------------------
+function missatgeDeLot(titolDelLot, linies) {
+  if (linies.length === 1) {
+    return linies[0];
+  }
+  return titolDelLot + '\n\n' + linies.join('\n');
+}
+
+
 // --- Per a Node -------------------------------------------------------------
 
 // Al navegador `module` no existeix i les funcions de dalt ja són globals;
@@ -229,6 +291,8 @@ if (typeof module !== 'undefined' && module.exports) {
     afegeixAPublicats: afegeixAPublicats,
     creaFilaPublicada: creaFilaPublicada,
     substitueixPerPublicada: substitueixPerPublicada,
-    marcaRebutjadaALaCua: marcaRebutjadaALaCua
+    marcaRebutjadaALaCua: marcaRebutjadaALaCua,
+    combinaTransformacions: combinaTransformacions,
+    missatgeDeLot: missatgeDeLot
   };
 }

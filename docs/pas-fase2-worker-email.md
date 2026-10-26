@@ -1,12 +1,12 @@
-# Fase 2 — El Worker: el gestor `email()`
+# El Worker: desplegament i gestor `email()`
 
-Com desplegar i verificar el gestor de correu de l'únic Worker del projecte.
-Camí principal: **connectar el Worker al repositori de Git**, i que cada empenta
-a `main` el desplegui sola. Al final hi ha el camí de recanvi (enganxar el codi
-a mà al tauler), que continua funcionant i no necessita res de tot això.
+Com desplegar l'únic Worker del projecte i verificar-ne el gestor de correu. El
+desplegament és **només manual**: s'enganxa `worker/worker-concatenat.js` al
+tauler de Cloudflare. El Git Build és desconnectat a posta (vegeu `NOTES.md`,
+«Dues vies de desplegament alhora es trepitgen en silenci»).
 
-Prerequisit: la **Fase 0** ha de ser feta (Email Routing viu, `agenda@clm.cat`
-creada, destinacions verificades i provades des de fora). Vegeu `FASES.md`.
+Prerequisit: Email Routing viu a `clm.cat`, amb `agenda@clm.cat` creada i la
+destinació de l'arxiu verificada i provada des d'un compte de fora.
 
 ## Els fitxers
 
@@ -14,174 +14,83 @@ creada, destinacions verificades i provades des de fora). Vegeu `FASES.md`.
 |---|---|
 | `worker/worker.js` | El codi del projecte. És el que llegiràs i arreglaràs. |
 | `worker/postal-mime.js` | Dependència vendoritzada (parser de MIME). **No l'editis.** Versió, URL d'origen i sha256 són a la seva capçalera. |
-| `wrangler.jsonc` | La configuració del desplegament: nom, punt d'entrada, data de compatibilitat, registres. **Cap secret.** |
-| `.assetsignore` | Una xarxa de seguretat que avui no fa res. Vegeu l'avís de més avall. |
+| `worker/worker-concatenat.js` | **Generat.** Els dos fitxers de dalt en un de sol: `postal-mime.js` sense la línia `export default PostalMime;`, un bàner, i `worker.js` sense la línia de l'`import`. És el que s'enganxa. |
 
-## 1. Crear el Worker i connectar-lo al repositori
+## 1. Desplegar
 
-1. Tauler de Cloudflare → **Workers & Pages** → **Create application** →
-   **Import a repository**, i tria `CLMVallespir/agenda-catalogne-nord`.
-   - Si ja tens el Worker creat d'abans (del camí manual), no cal refer-lo: ves
-     al Worker → **Settings** → **Build** i connecta-hi el repositori des d'allà.
-2. **El nom del Worker ha de ser `agenda-catalogne-nord`**, exactament igual
-   que el `name` de `wrangler.jsonc`. En importar un repositori, Cloudflare
-   bateja el Worker amb el nom del repositori: d'aquí ve aquest nom, i per això
-   el `name` de la configuració l'ha de dir igual. Si no coincideixen, la
-   construcció falla amb «Failed to match Worker name».
+1. Comprova que el concatenat és al dia i que els enums quadren:
+   ```
+   node eines/verifica-worker-concatenat.js
+   node eines/verifica-enum.js
+   ```
+   Tots dos han de sortir en verd. Si el primer falla, el concatenat no
+   correspon al `worker.js` d'ara: torna'l a generar abans de res.
+2. Tauler de Cloudflare → **Workers & Pages** → `agenda-catalogne-nord` →
+   **Edit code**.
+3. Esborra tot el que hi ha a l'editor i enganxa-hi **sencer**
+   `worker/worker-concatenat.js`. Surten unes 7 100 línies: és normal.
+4. **Deploy**.
 
-## 2. Les opcions de construcció
+Mai no editis el codi al tauler: un pedaç fet allà, o al concatenat, es perd la
+propera vegada que es regeneri. Es toca `worker.js`, es regenera el concatenat
+al mateix commit i s'enganxa.
 
-Al Worker → **Settings** → **Build**:
+## 2. La configuració, al tauler
 
-| Camp | Valor |
-|---|---|
-| Git branch | `main` |
-| Root directory | *(buit — l'arrel del repositori)* |
-| Build command | *(buit — no hi ha res a compilar)* |
-| Deploy command | `npx wrangler deploy` (és el valor per defecte) |
-| Non-production branch deploy command | *(deixa el valor per defecte; només fem servir `main`)* |
-| Build watch paths → Include | `worker/*` **i** `wrangler.jsonc` |
-| Build watch paths → Exclude | *(buit)* |
+Tota la configuració viu al tauler del Worker (**Settings**), perquè és allà on
+la llegeix el desplegament manual. Cap valor al codi ni a Git.
 
-**Els «build watch paths» no són opcionals.** Aquest repositori és també la base
-de dades: cada publicació des de `curador.html` són dos commits a `main`, i el
-mateix Worker escriu a `pendents.json` cada vegada que arriba un correu. Amb el
-valor per defecte (`*`, o sigui tot), cada una d'aquelles empentes tornaria a
-construir i desplegar el Worker — incloses les que el Worker es provoca a ell
-mateix escrivint la cua. Al pla gratuït hi ha 3 000 minuts de construcció al mes
-i una construcció alhora: els gastaries a redesplegar codi que no ha canviat.
-Amb `worker/*` i `wrangler.jsonc` a Include, els commits de dades no construeixen
-res, i els canvis de configuració sí.
-
-> **No hi entra `wrangler`, ni a la teva màquina ni al teu cap.** L'empaquetat
-> el fa Cloudflare als seus servidors. Tu segueixes editant fitxers i fent
-> commits. El que hi guanyes: el codi desplegat és, demostrablement, el codi
-> commitat.
-
-## 3. Els secrets i les variables
-
-El Worker necessita cinc valors, i **al camí de Git no van tots al mateix
-lloc**. La regla és una i té una raó mecànica:
-
-> `npx wrangler deploy` **esborra les variables de text posades al tauler** cada
-> vegada que desplega, perquè la configuració manda. Els **Secrets no els toca
-> mai**. Per tant: tot el que sigui secret, als Secrets del tauler; tot el que
-> no sigui secret, a `wrangler.jsonc`. Una variable de text posada al tauler
-> desapareixeria a la primera construcció, i te n'adonaries dies després, quan
-> un cartell no pugés.
-
-**Quatre Secrets, al tauler.** Worker → **Settings** → **Variables and Secrets**,
-tipus **Secret**. No surten mai del tauler: ni al codi, ni a `wrangler.jsonc`,
-ni a Git.
+**Secrets** (Settings → **Variables and Secrets**, tipus **Secret**):
 
 | Nom | Valor |
 |---|---|
-| `ANTHROPIC_API_KEY` | La clau de l'API d'Anthropic (platform.claude.com → API keys), creada al workspace que té el límit de despesa (§3 de `CLAUDE.md`). Fins al 23 d'octubre de 2026 aquí hi anava `GEMINI_API_KEY`, que ja no fa servir ningú |
-| `GITHUB_TOKEN` | Token de gra fi, **només** el repositori `agenda-catalogne-nord`, permís únic `Contents: Read and write` |
+| `ANTHROPIC_API_KEY` | La clau de l'API d'Anthropic (platform.claude.com → API keys), creada al workspace que té el límit de despesa (§3 de `CLAUDE.md`) |
+| `GITHUB_TOKEN` | Token de gra fi, **només** el repositori `agenda-catalogne-nord`, permís únic `Contents: Read and write` (vegeu `README.md`) |
 | `ADRECA_ARXIU` | El Gmail d'arxiu. **Ha de ser una destinació verificada** a l'Email Routing, si no el reenviament falla |
-| `TYPEBOT_SECRET` | El secret compartit del webhook del formulari. No el fa servir el camí del correu: és de la Fase 3a, i el procediment és a `docs/pas-fase3a-worker-formulari.md` |
+| `TYPEBOT_SECRET` | El secret compartit del webhook del formulari (`docs/pas-fase3a-worker-formulari.md`) |
+| `BREVO_API_KEY`, `BREVO_LIST_*` | El digest (`docs/pas-fase3b-worker-digest.md`) |
 
 `ADRECA_ARXIU` és Secret tot i que una adreça de correu no és cap contrasenya:
 aquest repositori és públic, i l'adreça personal del propietari no hi ha de
-sortir. Com que és Secret, també sobreviu als desplegaments.
+sortir.
 
-**Una variable, a `wrangler.jsonc`.** Ja hi és, no has de fer res:
+**Una variable de text** (mateixa pantalla, tipus **Text**):
+`CLOUDINARY_CLOUD_NAME` = `clm-agenda`. No és secreta: el nom del cloud surt a
+l'URL de cada cartell del web públic. Si falta, la pujada del cartell falla i la
+fila entra sense imatge, sense cap error que ho relacioni.
 
-```jsonc
-"vars": {
-  "CLOUDINARY_CLOUD_NAME": "clm-agenda"
-}
-```
+**L'activador cron** del digest (Settings → **Trigger Events** → **Cron
+Triggers**): `*/10 13,14 * * 2`, i **un de sol**.
 
-Aquesta no és secreta de cap manera: el nom del cloud surt sencer a l'URL de
-cada cartell del web públic (obre `events.json` i ho veuràs) i la pujada és
-sense signatura. Si algun dia canvia el compte de Cloudinary, es canvia aquí i
-es fa un commit — i el desplegament la torna a posar sola.
+**Els registres** (Settings → **Observability**): Workers Logs engegat, perquè
+es guardin els dels últims **3 dies** i no només el flux en directe.
 
-Quan afegeixes o canvies un Secret al tauler, **el canvi no és viu fins que
-desplegues**: la pantalla acaba amb un botó **Deploy**, i els valors formen part
-de la versió del Worker. Si has posat un Secret i el registre continua dient que
-falta, mira primer si aquella versió s'ha desplegat de debò (Worker →
-**Deployments**), i si no, torna a construir.
+Quan afegeixes o canvies un Secret, **el canvi no és viu fins que desplegues**:
+els valors formen part de la versió del Worker. Si el registre diu que falta una
+variable que has posat, mira primer Worker → **Deployments**.
 
-## 4. Enganxar el Worker a l'adreça
+## 3. Enganxar el Worker a l'adreça
 
 Cloudflare → el domini `clm.cat` → **Email** → **Email Routing** → **Routing
-rules** → la regla de `agenda@clm.cat` → **Edit**:
+rules** → la regla d'`agenda@clm.cat` → **Edit**:
 
 - **Action:** `Send to a Worker`
 - **Destination:** `agenda-catalogne-nord`
 
-Guarda. A partir d'aquest moment el correu d'`agenda@clm.cat` ja **no** va
-directament al Gmail: hi arriba reenviat pel Worker. Aquesta regla viu a l'Email
-Routing, no a `wrangler.jsonc`: connectar el Git no la toca.
+A partir d'aquí el correu d'`agenda@clm.cat` ja **no** va directament al Gmail:
+hi arriba reenviat pel Worker.
 
-## 5. Comprovar que el desplegament ha agafat el punt d'entrada bo
-
-Això es mira **una vegada**, just després de la primera construcció, per
-descartar que Cloudflare hagi desplegat res més que `worker/worker.js`.
-
-1. **El registre de construcció** (Worker → **Deployments**, o **Settings** →
-   **Build**, i obre la construcció). A la sortida del `npx wrangler deploy` hi
-   ha d'haver:
-   - que **la construcció acabi bé**. Aquesta és la comprovació forta del punt
-     d'entrada, i no la mida: si l'`import` de `./postal-mime.js` no s'hagués
-     resolt, esbuild s'hauria aturat amb un error de resolució i no hi hauria
-     cap desplegament. Un Worker de 27 kB sense el parser no és un resultat
-     possible;
-   - una línia de pujada del guió amb la seva mida, del tipus
-     `Total Upload: … KiB / gzip: … KiB`. Ha de ser de **centenars de kB**, no
-     de desenes: el parser sol ja són 155 kB de codi font. Serà bastant menys
-     que la suma dels dos fitxers, perquè en empaquetar es descarten els
-     comentaris — no t'espantis pel número exacte;
-   - `Uploaded agenda-catalogne-nord` i `Deployed agenda-catalogne-nord`;
-   - i sobretot **cap línia que parli d'actius** (res de «assets», ni de
-     «Uploading N files»). Si n'hi ha cap, algú ha afegit una clau `assets`:
-     llegeix l'avís de la secció següent.
-2. **Bindings** (Worker → **Settings** → **Bindings**): no hi ha d'haver cap
-   binding d'`Assets`. La llista ha de ser buida.
-3. **Deployments**: el desplegament de dalt ha de dir que ve de Workers Builds i
-   portar el hash del commit que acabes d'empènyer. Compara'l amb
-   `git log --oneline -1`.
-4. **La prova de debò**, que val més que les tres anteriors: envia un correu i
-   mira els registres (secció 6). Si hi surt una línia de `processaCorreu()`, el
-   punt d'entrada és el bo — el gestor `email()` només existeix a `worker.js`.
-
-## Avís — cap clau `assets`, mai
-
-`wrangler.jsonc` no declara cap directori d'actius, i no n'ha de declarar cap.
-El web públic de «Què fas?» es serveix des de GitHub Pages; el Worker no serveix
-pàgines (CLAUDE.md §8).
-
-Importa perquè la temptació és clara: el web estàtic viu a l'arrel d'aquest
-mateix repositori, i afegir `"assets": { "directory": "." }` sembla la manera
-de servir-lo des del Worker. No ho és. Amb aquella línia, Cloudflare pujaria com
-a pàgina web pública tot el que hi ha a l'arrel: l'historial de Git sencer, els
-documents interns del projecte, el CSV d'importació. Si algun dia et cal servir
-el web des del Worker, és una decisió d'arquitectura, no una línia de
-configuració: parla'n abans.
-
-La segona barrera és el `.assetsignore` de l'arrel del repositori. Avui no fa
-res — no hi ha cap directori d'actius que ignorar — i està bé així: existeix per
-si aquella línia s'hi arriba a posar, i llavors deixa fora la brossa. La seva
-capçalera explica què hi ha i què no.
-
-## 6. Verificar la Fase 2 (la porta)
+## 4. Verificar el gestor de correu
 
 Envia els correus **des d'un compte de fora** (no des del Gmail d'arxiu). Els
-registres es veuen al Worker → **Logs**: hi ha el flux en directe
-(**Begin log stream**) i, com que `wrangler.jsonc` té `observability` engegada,
-també les entrades desades dels últims **3 dies** — que és el que cal per a un
-correu que falla de matinada.
+registres són al Worker → **Logs**.
 
 1. **Correu real amb cartell.** Un correu amb dates, lloc i un cartell adjunt
    (imatge o PDF). Comprova:
-   - una fila nova a dalt de `pendents.json` al GitHub, amb `imatge_url`
-     apuntant a `res.cloudinary.com`;
+   - una fila nova a `pendents.json` al GitHub, amb `imatge_url` apuntant a
+     `res.cloudinary.com`;
    - un commit nou que diu «Correu nou a la cua: …»;
-   - l'original al Gmail d'arxiu;
-   - i que aquell commit **no** ha engegat cap construcció (és la prova que els
-     «build watch paths» estan bé).
+   - l'original al Gmail d'arxiu.
 2. **Correu escombraria o buit.** Comprova que **arriba igualment al Gmail** i
    que als registres no hi ha cap error no controlat. Un correu sense gens de
    text no crea cap fila i el registre ho diu: «correu sense text. Arxivat,
@@ -190,6 +99,9 @@ correu que falla de matinada.
    fila del punt 1. Ha d'aparèixer a `events.json` i, un minut després, al web
    públic.
 
+Per jutjar el prompt sense enviar res, hi ha tres correus de prova a
+`prompts/exemples-test/`.
+
 ## Si alguna cosa falla
 
 Tot passa pels registres del Worker, i tots els missatges comencen pel nom de la
@@ -197,14 +109,13 @@ funció. Les claus no s'hi escriuen mai.
 
 | Al registre hi diu | Què vol dir |
 |---|---|
-| `Failed to match Worker name` | El `name` de `wrangler.jsonc` i el nom del Worker al tauler han de ser el mateix: `agenda-catalogne-nord`. El registre de construcció diu tots dos noms, el que esperava i el que ha trobat. |
-| `falta la variable ADRECA_ARXIU` | La secció 3 no s'ha fet. Aquest cas és l'únic en què el Worker **rebutja** el correu en comptes de processar-lo: sense adreça d'arxiu no hi ha manera de desar l'original, i val més que el remitent rebi un avís de no-entrega que empassar-se-li el correu. Posa la variable i demana-li que el torni a enviar. |
-| «falta la variable…» i jures que la vas posar | Tres causes, per ordre de probabilitat. **(1)** El canvi al tauler no s'ha desplegat: els Secrets formen part de la versió del Worker i la pantalla acaba amb un botó **Deploy**. Mira Worker → **Deployments** i, si cal, torna a construir. **(2)** L'has posada com a **variable de text** i no com a Secret: `wrangler deploy` esborra les de text a cada desplegament (secció 3). **(3)** És al Worker equivocat, o el nom no és exacte — cap accent, cap espai al final. I abans de res: mira l'hora de l'entrada del registre, que se'n guarden 3 dies i pot ser d'abans que ho arreglessis. |
+| `falta la variable ADRECA_ARXIU` | El Secret no hi és. És l'únic cas en què el Worker **rebutja** el correu en comptes de processar-lo: sense adreça d'arxiu no hi ha manera de desar l'original, i val més que el remitent rebi un avís de no-entrega. Posa el Secret, desplega i demana-li que el torni a enviar. |
+| «falta la variable…» i jures que la vas posar | Tres causes, per ordre de probabilitat. **(1)** El canvi al tauler no s'ha desplegat: mira Worker → **Deployments**. **(2)** És al Worker equivocat, o el nom no és exacte — cap accent, cap espai al final. **(3)** L'entrada del registre és d'abans que ho arreglessis: se'n guarden 3 dies, mira l'hora. |
 | `el reenviament ha fallat` | L'adreça d'arxiu no és una destinació verificada a l'Email Routing. |
 | `Claude ha respost amb codi 404` | Anthropic ha retirat el model. Cicle de vida normal: mira quin Haiku hi ha vigent i canvia la constant `CLAUDE_MODEL`. Haiku i prou: els altres models costen vint vegades més. |
 | `Claude ha respost amb codi 401` | La clau `ANTHROPIC_API_KEY` no és bona: mal copiada, revocada o caducada. |
 | `Claude ha respost amb codi 429`, `402`, o `400` amb «API usage limits» o «credit balance» | S'ha acabat el crèdit del mes o s'ha arribat al límit de despesa; un 429 també pot ser el límit per minut. El missatge diu quan torna l'accés. El correu és a l'arxiu i es pot reenviar llavors. |
-| `el cartell no s'ha pogut pujar` | Cloudinary ha dit no (mida, format, preset). La fila hi és igualment, sense imatge: el curador la pot afegir a mà. |
+| `el cartell no s'ha pogut pujar` | Cloudinary ha dit no (mida, format, preset) o falta `CLOUDINARY_CLOUD_NAME`. La fila hi és igualment, sense imatge: el curador la pot afegir a mà. Si és un PDF que no es veu, a Cloudinary: Settings → Security → «Allow delivery of PDF and ZIP files». |
 | `GitHub ha rebutjat l'escriptura` | Token caducat, mal abastat, o sense `Contents: write`. |
 
 **La invariant:** passi el que passi, l'original acaba al Gmail d'arxiu. El
@@ -218,36 +129,3 @@ i el pot tornar a enviar. És un rebuig permanent, o sigui que el seu servidor n
 ho reintentarà sol — ho ha de fer la persona, i per això el text del rebuig li
 diu què fer. Un correu empassat en silenci és l'única cosa que aquest disseny no
 es permet.
-
-## Camí de recanvi — desplegament manual
-
-Segueix funcionant, i no depèn de res de les seccions 1, 2 i 5. Serveix si la
-connexió amb Git fa nosa, si vols provar un canvi sense commitar-lo, o si un dia
-el camí de Git s'espatlla i el correu no pot esperar. En aquest camí,
-`wrangler.jsonc` no el llegeix ningú: el nom, els registres i la resta els
-configures al tauler.
-
-Al Worker → **Edit code**. L'editor accepta més d'un fitxer, i si el teu ho
-permet és el camí bo:
-
-1. Esborra tot el que hi ha a `worker.js` i enganxa-hi el contingut de
-   `worker/worker.js`.
-2. Amb el botó **+** de la llista de fitxers, crea `postal-mime.js` i
-   enganxa-hi el contingut de `worker/postal-mime.js`.
-3. **Deploy**.
-
-**Si l'editor només et deixa un fitxer**, fes-ho en un de sol:
-
-1. Enganxa primer tot `worker/postal-mime.js`.
-2. **Esborra'n l'última línia**, `export default PostalMime;` (hi ha un
-   comentari just a sobre que ho recorda).
-3. Enganxa a continuació tot `worker/worker.js`, i **esborra'n la línia**
-   `import PostalMime from './postal-mime.js';`.
-4. **Deploy**. Surten unes 5 600 línies i uns 185 kB: és normal.
-
-Les dues maneres s'han provat i donen el mateix resultat que el camí de Git.
-
-> Mentre el Worker estigui connectat a Git, l'editor del tauler **no és la font
-> de veritat**: la propera empenta que toqui `worker/*` o `wrangler.jsonc`
-> substituirà el que hi hagis editat. Els canvis que hagin de durar es fan al
-> repositori.

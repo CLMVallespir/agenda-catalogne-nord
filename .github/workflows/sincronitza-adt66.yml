@@ -8,7 +8,7 @@
 # mapeja, el compara amb el que ja tenim i escriu les files noves a
 # `pendents.json` per l'API de continguts de GitHub.
 #
-#   - CRIDA CLAUDE (des del 23 d'octubre de 2026; abans, Gemini), i li cal un
+#   - CRIDA CLAUDE (model Claude Haiku), i li cal un
 #     secret propi. El pas 7 bis del guió tradueix cada fila al català abans
 #     d'encuar-la, i la clau surt del secret `ANTHROPIC_API_KEY` d'AQUEST
 #     repositori (Settings -> Secrets and variables -> Actions), que és un

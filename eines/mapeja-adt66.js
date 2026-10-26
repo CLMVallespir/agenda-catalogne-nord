@@ -2,22 +2,20 @@
 // MAPEIG ADT66 -> PRODUCCIÓ
 //
 // Una sola feina: convertir una oferta del flux WCF de l'ADT66 (els 35 camps
-// del §2 bis de docs/HANDOFF-ADT66.md) en una fila neta de l'esquema de
+// del §2 bis de NOTES.md, «El flux de l'ADT66») en una fila neta de l'esquema de
 // PRODUCCIÓ (els camps del §4 de CLAUDE.md). Res més.
 //
-//   - Cap crida a la xarxa. Ni al flux de l'ADT66, ni a Gemini, ni a
+//   - Cap crida a la xarxa. Ni al flux de l'ADT66, ni a cap model, ni a
 //     Cloudinary. Codi pur: entra una oferta, surt una fila.
 //   - Cap escriptura: ni a pendents.json, ni a events.json, ni enlloc.
 //   - Cap deduplicació, cap filtre editorial, cap traducció, cap pujada de
 //     cartell. Cadascuna és una tasca a part i ja té el seu fitxer.
-//   - No està connectada a res: ni a eines/processa-lot.js, ni a
-//     eines/pipeline-offline.js. És la peça de mapeig sola.
+//   - El crida l'Action (eines/sincronitza-programada.js). És la peça de
+//     mapeig sola.
 //
-// LA FORMA DEL RESULTAT ÉS LA MATEIXA que la de mapejaAProduccio() a
-// eines/mapeja-recerca.js: { fila, metadadades }. No és cap coincidència i no
-// s'ha de trencar. Les dues fonts —el CSV de recerca i el flux de l'ADT66—
-// entren pel mateix canal, i el dia que en vingui una tercera ha d'entrar-hi
-// igual. La procedència NO entra mai als camps de producció: surt a part.
+// LA FORMA DEL RESULTAT és { fila, metadadades }, i no s'ha de trencar: el dia
+// que entri una font nova ha d'entrar pel mateix canal. La procedència NO entra
+// mai als camps de producció: surt a part.
 //
 // L'ÚNICA excepció, i és un camp de l'esquema, no una drecera: `nota_curador`.
 // Vegeu el §«La nota del curador» d'aquí sota: aquí hi va PRIMER el tag
@@ -26,9 +24,8 @@
 //
 // --- ELS 35 CAMPS: QUINS ES FAN SERVIR I QUINS NO -------------------------
 //
-// La llista dels 35 és la del §2 bis de docs/HANDOFF-ADT66.md. Aquí es diu
-// què se'n fa de cadascun, com fa docs/HANDOFF-MAPEIG-RECERCA.md amb els 31
-// del CSV. Si canvies res d'aquí, canvia-ho allà.
+// La llista dels 35 és la del §2 bis de NOTES.md, «El flux de l'ADT66». Aquí
+// es diu què se'n fa de cadascun. Si canvies res d'aquí, canvia-ho allà.
 //
 // ELS QUE ARRIBEN A LA FILA (onze noms del flux, deu camps de la fila: `TRI`
 // i `COMMUNDATE` alimenten tots dos la banda de les dates):
@@ -63,7 +60,7 @@
 //   ObjectTypeName    -> metadadades.font.tipus_objecte («Fêtes et manifestations»).
 //   GmapLatitude      -> metadadades.descartats.latitud. La comarca es treu del
 //   GmapLongitude     -> metadadades.descartats.longitud.  municipi, no de les
-//                        coordenades (§2 bis del handoff). No es fan servir.
+//                        coordenades (§2 bis de NOTES.md). No es fan servir.
 //   Structure         -> metadadades.font.estructura, només el `Name`: és
 //                        l'oficina de turisme que ha entrat l'oferta, no
 //                        l'organitzador. NO va a `associacio`: posar-hi
@@ -94,19 +91,19 @@
 //                        4 de setembre de 2026 sí que arriba a la fila.)
 //   CHAMPSYSTEME      -> metadadades.descartats.camp_sistema. Camp intern.
 //
-// **Els dos que falten dels 35.** El handoff n'enumera 25 pel seu nom i diu
+// **Els dos que falten dels 35.** NOTES.md n'enumera 25 pel seu nom i diu
 // «els deu de sempre» sense llistar-los; d'aquells deu, vuit surten anomenats
 // als §1.4, §1.5 i §2 bis i són els vuit d'aquí dalt (SyndicObjectID,
 // SyndicObjectName, Updated, Published, ObjectTypeName, GmapLatitude,
-// GmapLongitude, Structure). Els altres dos no queden escrits enlloc del
-// handoff. Aquest mapeig NO en fa servir cap: si el dia que es mesuri el flux
+// GmapLongitude, Structure). Els altres dos no queden escrits enlloc de
+// NOTES.md. Aquest mapeig NO en fa servir cap: si el dia que es mesuri el flux
 // resulta que porten alguna cosa útil, s'afegeixen aquí i a la taula.
 //
 //
 // --- QUATRE COSES QUE AQUEST MAPEIG NO RESOL, I ÉS A POSTA ----------------
 //
 // 1. **`comarca` es deduïx del municipi, i al flux d'avui surt SEMPRE plena.**
-//    Cap dels 35 camps no la porta, i el handoff diu que surt «del municipi, no
+//    Cap dels 35 camps no la porta, i NOTES.md diu que surt «del municipi, no
 //    de les coordenades» — o sigui d'una taula municipi -> comarca. Aquesta
 //    taula ara existeix: **eines/comarca-per-poble.js**, escrita el 31 d'agost
 //    de 2026 justament per això. Al flux d'aquell dia resol **els 125
@@ -131,7 +128,7 @@
 //    l'`src` es copia tal com ve, sense tocar-lo: qui desfà el retall és
 //    variantsDeCartell(), a eines/puja-cartell.js, que prova l'adreça sense
 //    paràmetres i, si no hi és, la del retall. Era la pregunta oberta 5 del §5
-//    del handoff, resolta el 31 d'agost de 2026.
+//    de NOTES.md, resolta el 31 d'agost de 2026.
 //
 // 4. **Els actes passats no es treuen.** Una oferta d'una sola data ja
 //    passada genera fila igualment. Treure-les és el filtre previ
@@ -160,8 +157,8 @@
 
 // --- El que ve de fora ------------------------------------------------------
 
-// Els noms de poble en les dues llengües, compartits amb el dedup i amb el
-// mapeig de recerca.
+// Els noms de poble en les dues llengües, compartits amb el dedup i amb la
+// comarca per poble.
 var pobles = require('./pobles-alies.js');
 
 // I la pertinença comarcal de cada poble, que viu al seu costat. És la peça
@@ -169,7 +166,7 @@ var pobles = require('./pobles-alies.js');
 // no en porta cap, i el municipi la determina del tot.
 var comarques = require('./comarca-per-poble.js');
 
-// La regla de dates del §3 bis del handoff. Es crida, no es copia: el dia que
+// La regla de dates del §3 bis de NOTES.md. Es crida, no es copia: el dia que
 // es toqui el llindar, s'ha de tocar en un sol lloc.
 var sincronitza = require('./adt66-sincronitza.js');
 
@@ -354,7 +351,7 @@ var CATEGORIA_INFANTIL = 'Activitat infantil';
 // `RechercheTYPE`, però són dos camps i dos vocabularis: dues constants.
 var SEPARADOR_TEMES = ',';
 
-// La regla conservadora de la Q1 (§6 de DECISIO-ACTIVITATS-PERMANENTS.md).
+// La regla conservadora de la Q1 (NOTES.md, «Activitats permanents (periodicitat)»).
 // Mesurats els 31 temes reals de `COMMUNTHEME` (16 de setembre de 2026, 1 652
 // ofertes), un sol valor diu explícitament una freqüència: «Marché
 // hebdomadaire». Cap no diu «mensuel» ni equivalent, o sigui que aquesta
@@ -388,13 +385,13 @@ var SEPARADOR_TIPUS = ',';
 
 // ------------------------------------------------------------
 // Converteix una oferta del flux WCF de l'ADT66 en una fila de producció.
-// Torna dues coses ben separades, la mateixa forma que mapejaAProduccio():
+// Torna dues coses ben separades:
 //
 //   fila         els camps canònics, tots cadenes, en l'ordre del §4. És
 //                l'únic que pot anar a pendents.json.
 //   metadadades  tota la resta: d'on surt, quan es va tocar, i el que s'ha
 //                descartat pel camí. NO té encara cap lloc definitiu al
-//                sistema, igual que la de mapeja-recerca.js.
+//                sistema.
 //
 // Una oferta que no porti un camp és igual que una que el porti buit o a
 // `null`: tot això és "" (§4 de CLAUDE.md: mai null, mai absent). El flux en
@@ -700,7 +697,7 @@ function titolDeProduccio(oferta) {
 // ------------------------------------------------------------
 // Les tres dates de l'esquema. La classificació contigu/periòdic la fa
 // classificaDates() d'eines/adt66-sincronitza.js, que és qui té la regla del
-// §3 bis del handoff: aquí NO es reimplementa res, només es crida i s'hi
+// §3 bis de NOTES.md: aquí NO es reimplementa res, només es crida i s'hi
 // afegeix l'avís que li toca al curador.
 //
 // Un acte periòdic es publica com un sol dia —la propera ocurrència— i els
@@ -1012,7 +1009,7 @@ function temaEsInfantil(campTema) {
 // mecanisme que temaEsInfantil() —es parteix `COMMUNTHEME` per comes i es
 // compara TROS SENCER, mai com a subcadena—, però amb una llista d'un sol
 // valor i sense tocar la categoria. Si cap tros no hi coincideix, buida: la
-// omple el curador (regla 3 del §2 de DECISIO-ACTIVITATS-PERMANENTS.md).
+// omple el curador (regla 3 de NOTES.md, «Activitats permanents (periodicitat)»).
 // ------------------------------------------------------------
 function periodicitatDeProduccio(campTema) {
   var text = textDeCamp(campTema);
@@ -1178,7 +1175,7 @@ var MAPA_COMARQUES = construeixMapaDeComarques();
 // arriba com `<a href='https://…' target='_blank'>…</a>`, amb cometes simples,
 // i a 898 de 1 504 ofertes arriba a `null` de debò.
 //
-// DECISIÓ TANCADA (§2 ter de docs/HANDOFF-ADT66.md): `font_url` és això i
+// DECISIÓ TANCADA (§2 ter de NOTES.md, «El flux de l'ADT66»): `font_url` és això i
 // prou. És el web de l'ORGANITZADOR, no cap fitxa de l'ADT66 —no n'hi ha cap
 // de construïble des del SyndicObjectID—, i no hi ha cap altra `font_url`
 // disponible en tot el flux.
@@ -1361,9 +1358,8 @@ function ordenaSegonsEsquema(fila) {
 // --- Les peces: la metadada -------------------------------------------------
 
 // ------------------------------------------------------------
-// Tot el que NO pot anar als camps de producció, agrupat per què és. La
-// mateixa forma que la de mapeja-recerca.js —`font`, `descartats`, `avisos`—,
-// amb un bloc `dates` que allà no cal perquè el CSV no porta sèries.
+// Tot el que NO pot anar als camps de producció, agrupat per què és. Té la
+// forma `font`, `dates`, `descartats`, `avisos`:
 //
 //   font        d'on surt l'oferta i quan la va tocar l'ADT66
 //   dates       què n'ha dit classificaDates(): quantes n'hi havia i si
@@ -1374,8 +1370,7 @@ function ordenaSegonsEsquema(fila) {
 //               fotos algun dia podrien fer falta i aquí no es perden.
 //   avisos      les notes que ha generat aquest mateix mapeig
 //
-// ON VIU AIXÒ: encara no està decidit, igual que la de mapeja-recerca.js
-// (§4 de docs/HANDOFF-MAPEIG-RECERCA.md). Aquesta funció no ho resol a posta.
+// ON VIU AIXÒ: encara no està decidit. Aquesta funció no ho resol a posta.
 // ------------------------------------------------------------
 function metadadadesDeProduccio(oferta, quan, avisos) {
   return {
@@ -1429,8 +1424,8 @@ function nomDeLestructura(estructura) {
 
 
 // --- Còpies literals de les funcions compartides ----------------------------
-// Són les mateixes de docs/arxiu-google/utils.gs, worker/worker.js,
-// curador.html, eines/dedup-esdeveniments.js i eines/mapeja-recerca.js. Es
+// Són les mateixes de worker/worker.js, curador.html i
+// eines/dedup-esdeveniments.js. Es
 // copien, no s'importen: el projecte no té cap sistema de mòduls i totes les
 // vies d'entrada han de donar l'id idèntic.
 
@@ -1473,8 +1468,7 @@ function creaId(dataInici, titol) {
 // --- El que surt d'aquest fitxer --------------------------------------------
 // Només la funció: les peces de dins són seves i no les ha de cridar ningú.
 // L'exportació NO connecta res: aquest fitxer continua sense llegir ni
-// escriure enlloc, i ni processa-lot.js ni pipeline-offline.js el criden
-// encara.
+// escriure enlloc; el crida eines/sincronitza-programada.js.
 
 module.exports = {
   mapejaOfertaADT66: mapejaOfertaADT66,
@@ -1487,7 +1481,7 @@ module.exports = {
 // forma part de la peça i no s'ha de copiar enlloc.
 //
 // CAP PROVA NO TOCA LA XARXA. Les ofertes d'aquí sota estan fetes a mà a
-// partir dels casos que docs/HANDOFF-ADT66.md documenta de debò —el registre
+// partir dels casos que NOTES.md, «El flux de l'ADT66», documenta de debò —el registre
 // retallat del §2 bis, els dos contraexemples de la taula del §3 bis, les
 // xifres de cobertura del §2 ter—, no descarregades. La forma és la del flux;
 // el contingut és curt a posta perquè es pugui llegir.
@@ -1525,7 +1519,7 @@ function serieDeDates(comenca, cadaQuants, quantes) {
 function casosDeProva() {
   return [
     {
-      nom: 'Dates contigües: el registre real del §2 bis del handoff',
+      nom: 'Dates contigües: un registre real del flux',
       entrada: {
         SyndicObjectID: 'FMALAR066FS0009D',
         SyndicObjectName: 'LES OCCASIONS DU MULTICOQUE & DU REFIT',

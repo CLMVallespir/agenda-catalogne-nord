@@ -8,7 +8,7 @@ de nou, no hi ha cap URL nova per desplegar. Només s'hi afegeixen un gestor
 Prerequisit: la **Fase 2** ha de ser desplegada i verificada (vegeu
 `docs/pas-fase2-worker-email.md`).
 
-Aquí no hi ha cap crida a Gemini, i és a posta: el formulari ja demana cada camp
+Aquí no hi ha cap crida a cap model, i és a posta: el formulari ja demana cada camp
 per separat, i el cartell ja puja del navegador a Cloudinary dins el flux del
 Typebot. Al Worker només hi arriba un JSON amb els camps fets, i el que fa és un
 mapa determinista camp a camp cap als 17 camps públics de l'esquema (§4 de
@@ -99,10 +99,9 @@ Al final del flux del formulari, el bloc **Webhook / HTTP request**:
 }
 ```
 
-Són **les mateixes dotze claus** que enviava a l'Apps Script, **més
-`periodicitat`** (afegida el 17 de setembre de 2026, docs/pas-5-typebot-questionari.md,
-pas 5bis): tretze en total. `es_permanent` és control intern del Typebot i no
-s'envia. L'únic altre que canvia és l'URL i la capçalera del secret.
+Són **tretze claus**: dotze de l'acte i `periodicitat`
+(docs/pas-5-typebot-questionari.md, pas 5bis). `es_permanent` és control intern
+del Typebot i no s'envia.
 
 > **No treguis `idioma_descripcio` del cos.** És el que decideix si la descripció
 > va a `descripcio_ca` o a `descripcio_fr`. Si falta, tot cau a `descripcio_ca`.

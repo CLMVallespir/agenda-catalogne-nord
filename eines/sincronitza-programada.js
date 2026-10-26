@@ -19,8 +19,8 @@
 //   Vegeu-hi el perquè.
 //
 //   - CRIDA CLAUDE, i NOMÉS Claude. Una crida per fila, al pas 7 bis, per
-//     escriure el títol i les dues descripcions en català abans d'encuar-les.
-//     Fins al 23 d'octubre de 2026 era Gemini (§7 de CLAUDE.md).
+//     escriure el títol i les dues descripcions en català abans d'encuar-les
+//     (§7 de CLAUDE.md).
 //     Vegeu el §«La traducció a la ingestió» d'aquí sota. RES DE CLOUDINARY:
 //     el cartell definitiu el continua fent el curador.
 //   - NOMÉS ESCRIU A `pendents.json`. `events.json` es llegeix per a la capa 2
@@ -98,7 +98,7 @@
 // compara títols i FONT_ADT66 declara `llengua: 'fr'`. Traduir abans deixaria
 // el lot en català amb una etiqueta que diu francès i la comparació de títols
 // no voldria dir res. Conseqüència coneguda i ja escrita a
-// docs/HANDOFF-ADT66.md §4: la capa 2 continua inerta per a aquesta font.
+// NOTES.md, «El flux de l'ADT66»: la capa 2 continua inerta per a aquesta font.
 // Traduir aquí NO l'activa, i no és cap descuit.
 //
 // TRES CASOS, I NO ES BARREGEN MAI:
@@ -121,12 +121,10 @@
 //     petés sempre no entraria mai a la cua, i un acte que ningú no veu és
 //     pitjor que un acte en francès.
 //
-//   PER QUÈ LA QUOTA NO ÉS UNA CRIDA FALLIDA MÉS. Fins al 30 de setembre de
-//   2026 ho era, i el 22 de setembre ho va demostrar: 44 de les 46 últimes
-//   files de la passada van entrar en francès, totes seguides, quan la quota
-//   del dia de Gemini es va acabar. El forat de «la fila que peta sempre» aquí
-//   no hi és: la quota no depèn de la fila. Amb Claude ja no hi ha quota
-//   diària, però el tall continua valent: el crèdit del mes i el límit de
+//   PER QUÈ LA QUOTA NO ÉS UNA CRIDA FALLIDA MÉS. Una quota esgotada no depèn
+//   de la fila: si cada fila s'encués en francès tot i que la quota s'hagi
+//   acabat, les últimes de la passada hi entrarien totes seguides. El forat de
+//   «la fila que peta sempre» aquí no hi és. El crèdit del mes i el límit de
 //   despesa, quan s'acaben, s'acaben per a totes les files que venen darrere,
 //   i un 429 per minut també atura la passada. La pausa entre crides fa que no
 //   hagi de passar; si mai passés, la passada s'aturaria d'hora i la resta
@@ -240,17 +238,13 @@ var DATA_AL_FINAL = '9999-99-99';
 // --- Constants: la traducció a la ingestió (pas 7 bis) ----------------------
 
 // EL MODEL D'AQUEST CAMÍ ÉS SEU I NO ES MOU AMB EL DEL WORKER, i per això la
-// constant porta sufix. Són dues feines diferents: el Worker treu setze camps
+// constant porta sufix. Són dues feines diferents: el Worker treu disset camps
 // d'un correu que ningú no tornarà a enviar, aquí es reescriuen tres camps
 // d'una fila que, si surt malament, torna la setmana que ve. Provar un model
 // nou aquí no ha de tocar el camí de correu, que funciona.
 //
-// Des del 23 d'octubre de 2026 és Claude Haiku 5.5, pagat amb el crèdit mensual
-// de l'organització a Anthropic. Abans era Gemini: `gemini-3.1-flash-lite` des
-// del 5 de setembre (per qualitat de llengua) i `gemini-3.5-flash-lite` abans.
-// El pas a Claude és per quota, no per qualitat: les 500 crides al dia del pla
-// gratuït de Gemini, compartides amb el Worker, no donaven per a tots dos
-// camins. El perquè i el compte del cost són a NOTES.md.
+// És Claude Haiku 5.5, pagat amb el crèdit mensual de l'organització a
+// Anthropic. El perquè i el compte del cost són a NOTES.md.
 //
 // Haiku, i no cap altre model de Claude: és el barat, i el següent costa vint
 // vegades més i en el pitjor mes ja no cap en el crèdit (NOTES.md). Un 404 amb
@@ -271,9 +265,8 @@ var CLAUDE_VERSIO_API = '2026-10-21';
 var CLAUDE_MAX_TOKENS = 8192;
 
 // L'objecte que ha de tornar el model: les tres claus del prompt, totes
-// cadenes, cap més. L'API el fa complir (`output_config.format`), que és el
-// que feia `responseMimeType` a Gemini. Si el prompt canvia de claus, aquest
-// esquema canvia amb ell.
+// cadenes, cap més. L'API el fa complir (`output_config.format`). Si el
+// prompt canvia de claus, aquest esquema canvia amb ell.
 var ESQUEMA_TRADUCCIO = {
   type: 'object',
   properties: {
@@ -287,9 +280,7 @@ var ESQUEMA_TRADUCCIO = {
 
 // EL PRESSUPOST DE CRIDES D'UNA PASSADA: 300, i ara és un sostre de despesa.
 //
-// Fins al 23 d'octubre de 2026 era un repartiment de quota: Gemini dona 500
-// crides al dia per projecte, i les 200 que l'Action no gastava eren per al
-// Worker. Claude no té cap límit diari; el que s'acaba és el crèdit del mes.
+// Claude no té cap límit diari; el que s'acaba és el crèdit del mes.
 // Les 300 crides d'una passada, totes en el pitjor cas —el text més llarg i la
 // resposta tallada a CLAUDE_MAX_TOKENS—, són uns 1,42 $, i un mes de cinc
 // dimarts uns 7,12 $ (l'estimació és a NOTES.md, refeta amb el pensament).
@@ -303,8 +294,8 @@ var PRESSUPOST_CRIDES_CLAUDE = 300;
 // la passada continua.
 var INTENTS_PER_FILA = 2;
 
-// La pausa ENTRE crides. Va néixer per als 15 RPM de Gemini, i es queda a 4,5 s
-// tot i que Claude en dona molts més: una organització nova a Anthropic pot
+// La pausa ENTRE crides: 4,5 s, tot i que Claude en dona molts
+// més: una organització nova a Anthropic pot
 // començar en un nivell amb límits per sota dels publicats, i un 429 atura la
 // passada (vegeu esQuotaExhaurida()). Amb 4,5 s no se'n fan mai més de tretze
 // per minut, i una passada setmanal no té pressa.
@@ -335,7 +326,7 @@ var AVIS_NO_TRADUIT =
 
 // --- Constants: el prompt de traducció --------------------------------------
 // Aquest text NO és el prompt d'extracció de prompts/extract-event.txt i no
-// n'ha de ser cap còpia: aquell treu setze camps d'un correu, aquest reescriu
+// n'ha de ser cap còpia: aquell treu disset camps d'un correu, aquest reescriu
 // tres camps d'una fila que ja té tota la resta decidida. Són dues feines i dos
 // prompts.
 //
@@ -1725,7 +1716,7 @@ function candidatDeProva(oferta, titol) {
 // L'oferta del cinema d'Elna tal com va sortir del flux el 30 de setembre de
 // 2026. ATENCIÓ: el flux no és desat enlloc del repositori, de manera que això
 // NO és l'oferta crua sencera sinó la reconstrucció amb els valors literals que
-// `Claude outputs/elna-cinema-identificacio.txt` va copiar del flux. Hi són tots
+// es van copiar del flux. Hi són tots
 // els camps que miren les exclusions (Commune, DETAILADRESSE, RechercheTYPE) i
 // els d'identificació; no hi són els 35 camps.
 // ------------------------------------------------------------

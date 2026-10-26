@@ -7,7 +7,7 @@ Decisió presa el 2026-06-12: el preset és **unsigned**. Conseqüència: el Wor
 ## 1. Crear el compte
 
 1. Ves a <https://cloudinary.com> i clica **Sign up for free**.
-2. Registra't amb el correu del projecte (el mateix que farà servir el Workspace, si ja el tens; si no, qualsevol correu — el compte Cloudinary no depèn de Google).
+2. Registra't amb el correu del projecte.
 3. Si et demana quin producte t'interessa, tria **Programmable Media** (API per a desenvolupadors), no el DAM.
 4. **Important — el cloud name:** durant el registre (o just després, a Settings → Product environments) pots personalitzar el *cloud name*. Apareixerà a totes les URL d'imatges per sempre (`https://res.cloudinary.com/EL-TEU-CLOUD-NAME/...`). Tria'n un d'estable i llegible, per exemple `agenda-nord` o `clm-agenda`. No es pot canviar fàcilment després.
 
@@ -46,7 +46,7 @@ Amb el preset unsigned, el Worker només fa servir el cloud name. La key i el se
 
 ## 4. Verificació
 
-### Opció A — des del tauler (la del pla original)
+### Opció A — des del tauler
 
 1. **Settings** → **Upload** → busca l'opció de preset per defecte del Media Library i posa-hi temporalment `agenda-posters`.
 2. Ves al **Media Library** i puja una imatge de prova gran (un cartell qualsevol > 800 px d'amplada).
@@ -55,9 +55,9 @@ Amb el preset unsigned, el Worker només fa servir el cloud name. La key i el se
 
 ### Opció B — prova real de l'API (idèntica al que fa el Worker)
 
-Dona'm el cloud name i faig jo la pujada de prova des d'aquí amb una crida POST a
-`https://api.cloudinary.com/v1_1/CLOUD_NAME/image/upload` amb `upload_preset=agenda-posters`.
-No cal cap credencial secreta: és exactament la crida que fa el Worker.
+Una crida POST a `https://api.cloudinary.com/v1_1/CLOUD_NAME/image/upload` amb
+`upload_preset=agenda-posters` i el camp `file`. No cal cap credencial secreta:
+és exactament la crida que fa el Worker.
 
 ### Llista de verificació
 
@@ -68,4 +68,5 @@ No cal cap credencial secreta: és exactament la crida que fa el Worker.
 - [ ] La imatge servida és WebP i fa com a màxim 800 px d'amplada (la URL o la pestanya de detalls ho indiquen; també es pot comprovar amb clic dret → inspecciona).
 - [ ] Una imatge més petita de 800 px no s'amplia (opcional, segona prova).
 
-Quan tot estigui marcat, el Pas 3 queda tancat. El següent pas que no depèn de Google és el Pas 6 (repositori GitHub).
+Si un cartell en PDF no es veu, activa Settings → Security → «Allow delivery of
+PDF and ZIP files».

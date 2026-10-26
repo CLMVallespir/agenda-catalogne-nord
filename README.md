@@ -1,10 +1,10 @@
 # «Què fas?» — Agenda cultural de la Catalunya Nord
 
 > **Per a l'assistent (Claude):** abans de tocar res, llegeix `CLAUDE.md` (la
-> constitució: arquitectura, esquema, restriccions, estil) i `FASES.md` (el pla
-> de construcció i l'estat de cada fase). Cal mantenir l'esperit: simplicitat
-> per sobre de tot, bilingüe català primer, només nivells gratuïts, sense
-> frameworks ni comptes d'usuari.
+> constitució: arquitectura, esquema, restriccions, estil) i `NOTES.md` (la
+> història, les decisions que no es reobren i les lliçons). Cal mantenir
+> l'esperit: simplicitat per sobre de tot, bilingüe català primer, només
+> nivells gratuïts, sense frameworks ni comptes d'usuari.
 
 Agenda cultural automatitzada per a la Catalunya Nord (Rosselló, Conflent,
 Vallespir, Capcir, Cerdanya).
@@ -21,6 +21,9 @@ associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Clou
                                             ├─ fetch():     mapa determinista del formulari → pendents.json
                                             └─ scheduled(): digest setmanal per comarca via Brevo
                                                 │
+flux ADT66 ──────────────────────────────►  UNA SOLA ACTION (GitHub Actions)
+                                            └─ sincronitza → mapeja → filtra → tradueix (Claude) → pendents.json
+                                                │
                               curador.html (GitHub Pages) ──valida──► events.json
                                                 │
                               web públic estàtic (GitHub Pages) llegeix events.json
@@ -33,16 +36,21 @@ associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Clou
    Cloudinary; pel camí del formulari, els camps ja arriben estructurats i no
    cal cap model. Passi el que passi, el correu original es reenvia al Gmail
    d'arxiu.
-3. La cua de revisió és **`pendents.json`**, a l'arrel del repositori.
-4. La persona curadora revisa la cua a **`curador.html`**, corregeix el que
+3. A més, una **Action de GitHub** baixa el flux d'actes de l'ADT66 (l'agència
+   de turisme del departament), en treu el que és nou i dins el criteri
+   editorial, ho tradueix al català amb Claude i ho afegeix a la cua.
+   S'engega a mà des de la pestanya Actions.
+4. La cua de revisió és **`pendents.json`**, a l'arrel del repositori.
+5. La persona curadora revisa la cua a **`curador.html`**, corregeix el que
    calgui i valida amb dos botons: **Publica** o **Rebutja**.
-5. Publicar afegeix l'acte a **`events.json`**, que és la font de veritat del
+6. Publicar afegeix l'acte a **`events.json`**, que és la font de veritat del
    que és públic. **GitHub Pages** serveix el web estàtic que el llegeix.
-6. Cada dimarts a les 15.00 (hora de París), el mateix Worker envia un **digest
+7. Cada dimarts a les 15.00 (hora de París), el mateix Worker envia un **digest
    setmanal per comarca** via Brevo.
 
 **Cap base de dades i cap servidor** més enllà d'aquest Worker: tot l'estat viu
-en dos fitxers JSON del repositori.
+en dos fitxers JSON del repositori. L'Action no és cap servidor: és un guió que
+s'executa i para.
 
 ## Estructura
 
@@ -58,9 +66,12 @@ en dos fitxers JSON del repositori.
 | `worker/postal-mime.js` | Analitzador MIME vendoritzat (l'única dependència del projecte) |
 | `worker/worker-concatenat.js` | **Generat.** Els dos fitxers de dalt en un de sol: és el que s'enganxa al tauler |
 | `prompts/extract-event.txt` | El prompt d'extracció mestre per a Claude |
-| `importa-csv.js` | Eina d'un sol ús que va sembrar `pendents.json` des del CSV del full antic |
-| `docs/` | Guies de configuració i informes |
-| `docs/arxiu-google/` | **Codi mort.** El sistema anterior (full de càlcul + Apps Script), conservat com a registre històric |
+| `.github/workflows/sincronitza-adt66.yml`, `eines/sincronitza-programada.js` | L'Action: la sincronització del flux de l'ADT66 |
+| `eines/` | Els mòduls que crida l'Action, els verificadors (`verifica-*.js`) i `cartells-a-cloudinary.js`, que puja a mà els cartells de la cua |
+| `proves/` | Les proves amb `node:test`, una per fitxer |
+| `docs/` | El criteri editorial, el protocol amb Claude Chat i les guies de configuració dels serveis |
+| `CLAUDE.md` | La descripció del sistema tal com és avui |
+| `NOTES.md` | La història del projecte, les decisions i les lliçons |
 
 ## Principis
 
@@ -85,12 +96,13 @@ viu a `docs/`.
 `worker/worker.js`, es torna a generar `worker/worker-concatenat.js` i s'enganxa
 sencer al tauler de Cloudflare (Worker → Edit code → Deploy). Mai al revés: un
 pedaç fet directament al fitxer concatenat es perd la propera vegada que es
-generi.
+generi. Abans d'enganxar, `node eines/verifica-enum.js` i
+`node eines/verifica-worker-concatenat.js` en verd.
 
-El Git Build està **desconnectat** a posta. Amb ell connectat hi hauria dues
-vies de desplegament trepitjant-se en silenci (vegeu `NOTES.md`). Mentre el
-desplegament sigui manual, **`wrangler.jsonc` no el llegeix ningú**: el que hi
-ha declarat és decoració.
+El Git Build està **desconnectat** a posta, i no n'hi ha cap fitxer de
+configuració al repositori: amb dues vies de desplegament actives alhora es
+trepitgen en silenci (vegeu `NOTES.md`). Tota la configuració del Worker viu al
+tauler.
 
 ### Configuració (tauler de Cloudflare)
 
@@ -106,7 +118,22 @@ ha declarat és decoració.
 
 **Un Secret canviat al tauler no és viu fins que es desplega.** L'activador cron
 (`*/10 13,14 * * 2`) també s'afegeix a mà: Worker → Settings → Trigger Events →
-Cron Triggers.
+Cron Triggers. Els registres (Worker → Logs) han de tenir Workers Logs engegat.
+
+A l'Email Routing de `clm.cat`, la regla d'`agenda@clm.cat` té l'acció **Send
+to a Worker** cap al Worker `agenda-catalogne-nord`. L'adreça d'`ADRECA_ARXIU`
+ha de ser una destinació verificada, o el reenviament falla.
+
+L'Action té el seu propi secret, `ANTHROPIC_API_KEY`, a GitHub → Settings →
+Secrets and variables → Actions. És un magatzem diferent del de Cloudflare; la
+clau pot ser la mateixa.
+
+**El token de GitHub de gra fi** (el del Worker i el que s'enganxa al curador):
+GitHub → Settings → Developer settings → Personal access tokens →
+Fine-grained tokens → Generate new token. Només el repositori
+`agenda-catalogne-nord`, permís únic **Contents: Read and write**, caducitat
+d'un any. Apunta't la data: quan caduca, el Worker i el curador fallen amb un
+401. Guarda'l al gestor de contrasenyes, mai al repositori.
 
 ### Publicar i rebutjar actes
 
@@ -115,9 +142,17 @@ s'hi enganxa el testimoni de GitHub de gra fi i es treballa. Sense testimoni, la
 pàgina és només de lectura.
 
 Publicar escriu `events.json` **abans** de marcar la fila de `pendents.json`
-com a `publicat` (no la treu, des de l'1 d'octubre de 2026: així la
-sincronització reconeix l'oferta). L'ordre no és casual: si falla enmig, deixa
-un duplicat visible a la cua i no un acte perdut.
+com a `publicat` (no la treu: així la sincronització reconeix l'oferta). L'ordre
+no és casual: si falla enmig, deixa un duplicat visible a la cua i no un acte
+perdut.
+
+### Sincronitzar l'ADT66
+
+Pestanya **Actions** → «Sincronitza ADT66» → **Run workflow**. Per omissió
+s'executa en sec (no escriu res); desmarca-ho per encuar de debò. El cron
+setmanal és escrit al `.yml` però comentat. Els cartells de les files noves es
+pugen a Cloudinary a mà: `node eines/cartells-a-cloudinary.js --prova` primer,
+i sense `--prova` per escriure.
 
 ### Rollback
 

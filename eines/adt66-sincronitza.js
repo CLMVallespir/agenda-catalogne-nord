@@ -4,7 +4,7 @@
 // Una sola feina: baixar les ofertes de l'ADT66 que han canviat des de
 // l'última vegada que hi vam mirar, senceres. Res més.
 //
-//   - Cap crida a Gemini.
+//   - Cap crida a cap model.
 //   - Cap escriptura: ni a pendents.json, ni enlloc. Aquesta funció LLEGEIX.
 //   - Cap deduplicació, cap filtre, cap classificació. Cadascuna és una
 //     tasca a part.
@@ -28,7 +28,7 @@
 //   node eines/adt66-sincronitza.js 2026-08-01T00:00:00    -> diferencial
 //
 // Comportament de l'API confirmat amb curl el 29 d'agost de 2026; el detall
-// és a docs/HANDOFF-ADT66.md.
+// és a NOTES.md, «El flux de l'ADT66».
 // ---------------------------------------------------------------------------
 
 // --- Coordenades del flux --------------------------------------------------
@@ -378,8 +378,8 @@ function comptaDisperses(ofertes) {
 // --- El que surt d'aquest fitxer -------------------------------------------
 // La funció pública, i les tres peces de dates. Aquestes tres surten a fora
 // perquè eines/mapeja-adt66.js les ha de fer servir tal com són: la regla del
-// §3 bis de docs/HANDOFF-ADT66.md —què és un acte continu i què un de
-// periòdic— no pot viure copiada a dos fitxers, o el dia que es toqui el
+// §3 bis de NOTES.md, «El flux de l'ADT66» —què és un acte continu i què un
+// de periòdic— no pot viure copiada a dos fitxers, o el dia que es toqui el
 // llindar en un lloc i no a l'altre, dues peces del mateix canal classificarien
 // la mateixa oferta de maneres diferents sense que res fallés.
 

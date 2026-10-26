@@ -6,20 +6,17 @@
 // `imatge_url` la còpia nostra —o buidar el camp i dir al curador per què no
 // s'ha pogut. Res més.
 //
-// PER QUÈ EXISTEIX AQUESTA PEÇA. El CSV de recerca porta el cartell al camp
-// `url_cartell`, i eines/mapeja-recerca.js el posa a `imatge_url` **tal qual**
-// —docs/HANDOFF-MAPEIG-RECERCA.md ho diu explícitament: «Tal qual. No es puja
-// res a Cloudinary aquí: això és una altra tasca». Aquesta és aquella altra
-// tasca. Les URL que hi arriben (cdt66.media.tourinsoft.eu,
+// PER QUÈ EXISTEIX AQUESTA PEÇA. Una fila de l'ADT66 a pendents.json porta a
+// `imatge_url` l'URL del cartell tal com el dona el flux: eines/mapeja-adt66.js
+// no el puja a Cloudinary. Aquesta és aquella altra tasca. Les URL que hi arriben (cdt66.media.tourinsoft.eu,
 // cdn.iris-etourism.io, files.appli-intramuros.com, webs d'ajuntament…) no es
 // poden enllaçar des de GitHub Pages i no en tenim llicència de reutilització:
 // abans de publicar-les cal que la imatge sigui nostra.
 //
 // D'ON SURT L'URL D'ORIGEN, I LA TENSIÓ QUE HI HA (llegiu-ho abans de tocar-hi).
 // L'encàrrec deia «si `fila.imatge_url` ja té contingut, no facis res, perquè
-// pot venir del Typebot». Però el candidat de recerca **no porta l'URL del
-// cartell enlloc més**: `url_cartell` no arriba a les metadadades, va de dret a
-// `imatge_url`. Si la regla fos literalment «camp ple = no toquis», aquesta
+// pot venir del Typebot». Però la fila de l'ADT66 **no porta l'URL del
+// cartell enlloc més**: el mapeig el posa de dret a `imatge_url`. Si la regla fos literalment «camp ple = no toquis», aquesta
 // peça no s'activaria mai. La regla que la resol sense inventar cap camp nou és
 // mirar ON apunta l'URL, que és el que de debò distingeix els dos casos:
 //
@@ -28,7 +25,7 @@
 //     navegador a Cloudinary dins el flux del Typebot» i que «l'URL arriba
 //     fet». O sigui que la fila del formulari queda protegida igual, i per la
 //     raó de fons —ja hi ha còpia nostra— i no per la forma.
-//   - Apunta a fora       -> és el cartell de recerca que cal copiar.
+//   - Apunta a fora       -> és un cartell de tercers que cal copiar.
 //   - Buit                -> no hi ha cap cartell. Silenci.
 //
 // El que aquesta peça NO fa, i no ho ha de fer mai:
@@ -47,15 +44,11 @@
 //
 //   node eines/puja-cartell.js     -> passa la bateria de proves
 //
-// El cablejat ja hi és: processaLot() la crida com el tercer agent injectat, i
-// pipelineOffline() li passa la clau `puja` tal qual. I la `funcioPujada` de
-// debò també existeix ja: és eines/cloudinary-adapter.js. El que NO s'ha fet és
-// ajuntar les dues coses —vegeu §EL QUE FALTA DECIDIR, al final d'aquesta
-// capçalera—, o sigui que avui aquesta peça només s'exercita amb pujadors de
-// mentida, a les proves. Res d'això no escriu enlloc: cap escriptura a
-// pendents.json ni a events.json no passa per aquí.
+// La `funcioPujada` de debò és eines/cloudinary-adapter.js, i la crida a mà
+// eines/cartells-a-cloudinary.js. Res d'això no escriu enlloc des d'aquí: cap
+// escriptura a pendents.json ni a events.json no passa per aquesta peça.
 //
-// Com les altres dues peces amb crida injectada, **no és idempotent**: passar-la
+// Com tota peça amb crida injectada, **no és idempotent**: passar-la
 // dues vegades per una fila que ha fallat hi deixa dos avisos. Qui la cridi en
 // bucle ha de saber quines files ja hi han passat. (Una fila que ha reeixit sí
 // que és estable: la segona passada la veu ja a Cloudinary i calla.)
@@ -63,7 +56,7 @@
 //
 // --- EL CRITERI DE SILENCI --------------------------------------------------
 //
-// Mateix criteri que eines/verifica-esdeveniment.js, i pel mateix motiu: la
+// El criteri és que la
 // nota groga de curador.html ha de voler dir «atura't i mira això». Aquí escriu
 // nota tot el que deixa la fila sense imatge, i només això:
 //
@@ -77,7 +70,7 @@
 //
 // --- ELS DOS MOTIUS DE DESCART, I PER QUÈ NOMÉS N'HI HA UN AQUÍ -------------
 //
-// Es coneixen dos motius pels quals un cartell de recerca no s'ha de publicar.
+// Es coneixen dos motius pels quals un cartell de tercers no s'ha de publicar.
 // Aquest fitxer només en detecta un, i és a posta:
 //
 //   1. ENLLAÇ A UNA XARXA SOCIAL. Un enllaç a una publicació d'Instagram (o de
@@ -94,18 +87,14 @@
 //
 // --- ON VA AQUESTA NOTA DINS LA CADENA -------------------------------------
 //
-// Ordre, ja fixat al cablejat (regla 5 d'eines/processa-lot.js): procedència
-// (mapeig) -> verificació -> classificació -> cartell. Última, i per una raó de
-// lectura, no d'implementació: les tres
-// primeres parlen de si la fila és CERTA i si HI HA D'ENTRAR —les preguntes que
-// poden fer que el curador no publiqui la fila. La del cartell parla de com
-// quedarà la fitxa un cop decidit que sí. Qui llegeixi l'avís groc ha de topar
-// primer amb el que li pot fer canviar la decisió.
+// Convenció per al lector: l'avís del cartell va l'últim. Les notes anteriors
+// parlen de si la fila és CERTA i si HI HA D'ENTRAR —les preguntes que poden
+// fer que el curador no publiqui la fila. La del cartell parla de com quedarà
+// la fitxa un cop decidit que sí. Qui llegeixi l'avís groc ha de topar primer
+// amb el que li pot fer canviar la decisió.
 //
-// A efectes de codi l'ordre és lliure: ajuntaNotes() només encadena, i cap de
-// les quatre peces no llegeix la nota que hi ha escrita. L'ordre és una
-// convenció per al lector, i aquest fitxer no el força de cap manera: qui el
-// decideix és l'ordre dels tres blocs de passaElsAgents(), a processa-lot.js.
+// A efectes de codi l'ordre és lliure: ajuntaNotes() només encadena, i cap peça
+// no llegeix la nota que hi ha escrita. Aquest fitxer no força cap ordre.
 //
 //
 // --- EL QUE JA ESTÀ COMPROVAT ----------------------------------------------
@@ -136,11 +125,6 @@
 // mà sobre pendents.json — mai un pas automàtic. La primera passada va pujar
 // 51 cartells de 54 i en va deixar 3 amb nota (dos 404 a la font, un fitxer de
 // 16 MB que passa del límit de Cloudinary).
-//
-// Dins de processaLot(), en canvi, la clau `puja` continua sense passar-se a
-// les proves: allà el pujador segueix sent de mentida, perquè processaLot() es
-// crida sobre lots que encara no se sap si entraran enlloc. El cablejat és
-// inofensiu: una clau `puja` que no es passa no fa absolutament res.
 // ---------------------------------------------------------------------------
 
 
@@ -155,15 +139,9 @@ var dedup = require('./dedup-esdeveniments.js');
 
 // --- Constants --------------------------------------------------------------
 
-// El camp del CSV de recerca que porta el cartell original. NO es llegeix
-// d'aquí —mapejaAProduccio() ja l'ha abocat a `imatge_url` abans que aquesta
-// peça vegi res—, però el nom es deixa escrit perquè qui vingui darrere sàpiga
-// de quin camp parlem sense haver d'obrir mapeja-recerca.js.
-var CAMP_RECERCA_CARTELL = 'url_cartell';
-
 // Com comença tota nota escrita per aquesta peça. Mateixa forma que
-// '[Verificació: ' i '[Suggeriment editorial: ': el curador reconeix d'un cop
-// d'ull qui ha escrit què, i sap on acaba el que hi havia abans.
+// '[ADT66 id: ': el curador reconeix d'un cop d'ull qui ha escrit què, i sap
+// on acaba el que hi havia abans.
 var MARCA_CARTELL = '[Cartell: ';
 
 // El domini on viuen les imatges de Cloudinary. Un `imatge_url` que hi apunti
@@ -174,8 +152,8 @@ var DOMINI_CLOUDINARY = 'cloudinary.com';
 // El domini on l'ADT66 serveix els seus cartells. El flux hi enganxa sempre un
 // `?width=150&height=120`, i 150 px no és cap cartell: la mateixa adreça sense
 // paràmetres dona l'original. Era la pregunta oberta 5 del §5 de
-// docs/HANDOFF-ADT66.md, que deia que es resoldria aquí i no al mapeig; això
-// és fer-ho. Comprovat amb curl sobre les 17 adreces d'ADT66 que hi ha a la
+// NOTES.md, «El flux de l'ADT66», que deia que es resoldria aquí i no al
+// mapeig; això és fer-ho. Comprovat amb curl sobre les 17 adreces d'ADT66 que hi ha a la
 // cua: 4 kB de retall contra 756 kB d'original, en un cas 16 MB.
 var DOMINI_MEDIA_ADT66 = 'media.tourinsoft.eu';
 
@@ -212,8 +190,7 @@ var MAX_MOTIU = 160;
 // Copia el cartell d'un candidat a Cloudinary i li actualitza `imatge_url`.
 //
 //   candidat      { fila, font: {...}, metadadades: {...} }, la mateixa forma
-//                 que accepten dedup-esdeveniments.js, classifica-editorial.js
-//                 i verifica-esdeveniment.js.
+//                 que accepta dedup-esdeveniments.js.
 //   funcioPujada  funció injectada. Se la crida amb (urlOrigen) i ha de tornar
 //                 una promesa de { url } si ha anat bé o de { error } si no.
 //
@@ -569,15 +546,13 @@ function missatgeDError(error) {
 
 
 // --- El que surt d'aquest fitxer --------------------------------------------
-// La funció, el nom del camp de recerca d'on ve el cartell, i les dues proves
-// de domini, que qui cablegi això voldrà poder consultar sense duplicar-les.
-// Cap d'elles no toca la xarxa.
+// La funció i les dues proves de domini, que qui la cridi voldrà poder
+// consultar sense duplicar-les. Cap d'elles no toca la xarxa.
 
 module.exports = {
   pujaCartell: pujaCartell,
   esDeCloudinary: esDeCloudinary,
-  esDeXarxaSocial: esDeXarxaSocial,
-  CAMP_RECERCA_CARTELL: CAMP_RECERCA_CARTELL
+  esDeXarxaSocial: esDeXarxaSocial
 };
 
 
@@ -598,8 +573,7 @@ var CAMPS = [
 // `agenda-posters` i la carpeta `clm-agenda/posters`.
 var URL_CLOUDINARY = 'https://res.cloudinary.com/agenda-nord/image/upload/v1756400000/clm-agenda/posters/mercat-prada.webp';
 
-// Tres URL de cartell reals del CSV de recerca, de les tres fonts de tercers
-// que hi surten més.
+// Tres URL de cartell reals, de les tres fonts de tercers que hi surten més.
 var URL_TOURINSOFT = 'https://cdt66.media.tourinsoft.eu/upload/Octubre-Festa.jpg';
 var URL_INTRAMUROS = 'https://files.appli-intramuros.com/img/events/6388/ff08de1a950a50cf828e36b724a0018b_exposition.jpg';
 var URL_INSTAGRAM = 'https://www.instagram.com/p/DZ_94qCIblJ/';
@@ -614,10 +588,8 @@ var URL_ADT66_ORIGINAL = 'https://cdt66.media.tourinsoft.eu/upload/JEP-2026.jpg'
 // comprovar que la neteja de paràmetres no s'aplica a ningú més.
 var URL_DRUPAL_AMB_ITOK = 'https://www.mairie-perpignan.fr/sites/default/files/styles/originale/public/images/musee-puig-3.jpg?itok=hUbp1msg';
 
-// Una nota de mapeig, una de verificació i una de classificació, tal com les
-// escriuen de debò mapejaAProduccio(), verificaEsdeveniment() i
-// classificaEditorial(). Serveixen per provar que les quatre notes s'apilen en
-// ordre i que cap no s'esborra.
+// Una nota de mapeig, una de verificació i una de classificació. Serveixen
+// per provar que les quatre notes s'apilen en ordre i que cap no s'esborra.
 var NOTA_MAPEIG = 'El títol ve en «fr» i no hi ha versió catalana: cal traduir-lo.';
 var NOTA_VERIFICACIO = '[Verificació: dubte — hora] La citació no dona cap hora concreta.';
 var NOTA_CLASSIFICACIO = '[Suggeriment editorial: NUCLI — R6] Mercat setmanal que sosté els petits productors.';
@@ -649,9 +621,8 @@ function filaDeProva(extres) {
 }
 
 // ------------------------------------------------------------
-// Un bloc de metadadades de prova, amb la mateixa forma que el que torna
-// mapejaAProduccio(). Aquesta peça no el mira, però hi és per comprovar que
-// sobreviu el pas.
+// Un bloc de metadadades de prova. Aquesta peça no el mira, però hi és per
+// comprovar que sobreviu el pas.
 // ------------------------------------------------------------
 function metadadadesDeProva() {
   return {
@@ -1066,9 +1037,8 @@ async function provaUnCas(cas) {
 }
 
 // ------------------------------------------------------------
-// Un lot de tres files amb un pujador que peta a la segona. És el mateix patró
-// que ja garanteix eines/verifica-esdeveniment.js amb el verificador: una crida
-// que falla no atura el lot ni perd cap fila.
+// Un lot de tres files amb un pujador que peta a la segona: una crida que
+// falla no atura el lot ni perd cap fila.
 // ------------------------------------------------------------
 async function provaLotAmbUnaFallada() {
   var problemes = [];

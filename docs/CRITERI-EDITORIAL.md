@@ -35,7 +35,7 @@ mercat, concert, exposició, festa, sardanes, taller, fira, esport)?
 **R2 — La llengua decideix només al discurs.** Una activitat de discurs en català
 o bilingüe entra. En francès, entra **només si el subjecte és el país mateix** —
 la seva terra, la seva història, la seva memòria, la seva llengua, els seus
-artistes. Si no, es **marca**: va al full com a pendent amb el senyal, i decideix
+artistes. Si no, es **marca**: va a la cua com a pendent amb el senyal, i decideix
 el curador. No s'exclou d'ofici i no es publica d'ofici.
 
 **R3 — Preferència associativa.** Associació, comitè de festes, parròquia, casal,
@@ -132,8 +132,8 @@ Cal saber-ho: aquestes tres decisions són les que es podrien girar.
 
 - **NUCLI** — el país fent-se. És el que dona el registre català a l'agenda.
 - **PERIFÈRIA** — legítim i publicable, però no és el que la caracteritza.
-- **MARCAT** — discurs en francès sense relació amb la cultura catalana. Entra al
-  full com a pendent, senyalat; el curador decideix.
+- **MARCAT** — discurs en francès sense relació amb la cultura catalana. Entra a
+  la cua com a pendent, senyalat; el curador decideix.
 - **FORA** — no entra.
 
 Sobre les 102 files de la tardor 2026: **40 nucli, 37 perifèria, 8 marcades, 17
@@ -163,7 +163,7 @@ Tres punts, i cap més:
 - **(a) Per lloc, automàtic.** La programació del cinema d'Elna no entra a
   l'agenda. Ho aplica `eines/exclusions-editorials.js` a la ingestió de l'ADT66,
   sense cap intervenció del curador: l'oferta no arriba a `pendents.json` ni
-  gasta cap crida a Gemini. El cinema s'identifica per l'adreça (13, boulevard
+  gasta cap crida al model. El cinema s'identifica per l'adreça (13, boulevard
   Voltaire): una projecció d'un altre organitzador a Elna, en una altra adreça,
   entra a la cua com qualsevol oferta (decisió del 6 d'octubre de 2026).
 - **(b) Per contingut, cas per cas, decidit pel curador.** Per exemple, els

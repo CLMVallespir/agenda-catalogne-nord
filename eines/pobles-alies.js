@@ -5,7 +5,7 @@
 // català i en francès. El fan servir:
 //
 //   eines/dedup-esdeveniments.js   per muntar una clau de comparació
-//   eines/mapeja-recerca.js        per triar la forma que es PUBLICA
+//   eines/mapeja-adt66.js          per triar la forma que es PUBLICA
 //
 // Abans la taula vivia copiada als dos fitxers. Una sola còpia amb un avís és
 // sostenible; dues ja no, i el dia que se n'afegís un poble a un lloc i no a

@@ -28,9 +28,9 @@ Les variables que recull aquest formulari són exactament les que espera `respos
 | `associacio` | `associacio` | Text | Sí |
 | `imatge_url` | `imatge_url` | Càrrega Cloudinary (botó) | No |
 
-`es_un_sol_dia`, `es_permanent` i `idioma_descripcio` només serveixen per guiar el formulari; no s'escriuen al full.
+`es_un_sol_dia`, `es_permanent` i `idioma_descripcio` només serveixen per guiar el formulari; no s'escriuen a `pendents.json`.
 
-El camp `periodicitat` és per a **activitats permanents**: cursos, tallers o mercats que es repeteixen setmana rere setmana, no per a un acte d'un sol dia (vegeu `docs/DECISIO-ACTIVITATS-PERMANENTS.md`). És text lliure i **es pot deixar en blanc**: el blanc vol dir «és un acte puntual», no «no ho sabem». El que decideix on va la descripció és `idioma_descripcio`: si val `fr`, el text va a `descripcio_fr`; en qualsevol altre cas, a `descripcio_ca`. La traducció que falti l'omple el curador durant la revisió setmanal.
+El camp `periodicitat` és per a **activitats permanents**: cursos, tallers o mercats que es repeteixen setmana rere setmana, no per a un acte d'un sol dia (vegeu `NOTES.md`, «Activitats permanents»). És text lliure i **es pot deixar en blanc**: el blanc vol dir «és un acte puntual», no «no ho sabem». El que decideix on va la descripció és `idioma_descripcio`: si val `fr`, el text va a `descripcio_fr`; en qualsevol altre cas, a `descripcio_ca`. La traducció que falti l'omple el curador durant la revisió setmanal.
 
 El camp `imatge_url` ara **sí** que es recull al formulari: la càrrega del cartell es fa directament del navegador a Cloudinary (vegeu el Pas 13 i `docs/pas-5-typebot-cartell-cloudinary.md`). Si l'usuari no carrega cap cartell, arriba com a cadena buida `""`.
 
@@ -169,7 +169,7 @@ Pas d'entrada: **Text** → desa a `periodicitat`. Text lliure, tal com el redac
 >
 > *Dans quelle comarque ?*
 
-Pas de tria (botons) → desa a `comarca`. Les cinc opcions, escrites **exactament** així (han de coincidir amb el desplegable del full):
+Pas de tria (botons) → desa a `comarca`. Les cinc opcions, escrites **exactament** així (han de coincidir amb la llista de comarques del §4 de `CLAUDE.md`):
 
 - `Rosselló`
 - `Conflent`
@@ -177,7 +177,7 @@ Pas de tria (botons) → desa a `comarca`. Les cinc opcions, escrites **exactame
 - `Capcir`
 - `Cerdanya`
 
-> **Important:** el text del botó ha de ser exactament el valor de dalt (sense afegir-hi res), perquè el full només accepta aquests cinc valors. Si vols, pots afegir el nom francès com a etiqueta visible, però el **valor desat** a la variable ha de ser el català exacte.
+> **Important:** el text del botó ha de ser exactament el valor de dalt (sense afegir-hi res), perquè el Worker només accepta aquests cinc valors i buida qualsevol altre (`valorPermes()`). Si vols, pots afegir el nom francès com a etiqueta visible, però el **valor desat** a la variable ha de ser el català exacte.
 
 ---
 
@@ -295,4 +295,4 @@ Després del webhook, una bombolla final de confirmació:
 
 ## Recordatori de l'esquema
 
-El formulari recull **dades estructurades** ja separades per camps, de manera que en aquesta via **no hi ha cap pas d'IA** (a diferència del correu, que passa per Gemini al Pas 4). La descripció arriba en una sola llengua i el curador completa l'altra durant la revisió setmanal. El cartell, si n'hi ha, ja arriba allotjat a Cloudinary (mai al full ni al Git); si no, `imatge_url` és buit. Cada esdeveniment entra al full amb `estat = pendent`.
+El formulari recull **dades estructurades** ja separades per camps, de manera que en aquesta via **no hi ha cap pas d'IA** (a diferència del correu, que passa per Claude). La descripció arriba en una sola llengua i el curador completa l'altra durant la revisió setmanal. El cartell, si n'hi ha, ja arriba allotjat a Cloudinary (mai al Git); si no, `imatge_url` és buit. Cada esdeveniment entra a `pendents.json` amb `estat = pendent`.

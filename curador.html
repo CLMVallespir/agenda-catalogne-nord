@@ -413,8 +413,27 @@ var TESTIMONI = '';
 // al fitxer fresc abans d'escriure-hi.
 var CUA = [];
 
+// Les decisions (publicar, rebutjar) que esperen torn per desar-se, i si
+// la pàgina està escrivint ara mateix. Les escriptures van D'UNA EN UNA:
+// cada una és un commit a main, i dues alhora topen entre elles (409).
+// Vegeu encuaDecisio().
+var DECISIONS_EN_ESPERA = [];
+var DESANT = false;
+
+// L'última versió que aquesta pàgina ha escrit de cada fitxer, amb el sha
+// que GitHub hi ha tornat: { 'pendents.json': { dades, sha }, ... }. La
+// següent escriptura del mateix fitxer en parteix sense tornar-lo a
+// llegir: l'API de lectura pot servir una còpia de fa fins a 60 segons.
+var DARRERA_ESCRIPTURA = {};
+
+// Les pauses abans de cada reintent quan GitHub diu que el fitxer ha
+// canviat (409 o 422): quatre intents en total, uns set segons com a
+// màxim. Prou perquè acabi l'escriptura de l'Action o d'una altra
+// pestanya que se'ns hagi avançat.
+var ESPERES_CONFLICTE_MS = [1000, 2000, 4000];
+
 // ------------------------------------------------------------
-// Còpia literal de creaId (docs/arxiu-google/utils.gs). El sistema sempre
+// Còpia literal de creaId (worker/worker.js). El sistema sempre
 // reconstrueix l'id, mai es refia del que porti la fila.
 // ------------------------------------------------------------
 function creaId(dataInici, titol) {
@@ -438,7 +457,7 @@ function creaId(dataInici, titol) {
 }
 
 // ------------------------------------------------------------
-// Còpia literal de valorPermes (docs/arxiu-google/utils.gs).
+// Còpia literal de valorPermes (worker/worker.js).
 // Torna el valor si és a la llista permesa, si no "".
 // ------------------------------------------------------------
 function valorPermes(valor, llistaPermesa) {
@@ -466,10 +485,13 @@ function capcaleresGitHub() {
 // ------------------------------------------------------------
 // Llegeix un fitxer JSON del repositori per l'API de continguts (mai
 // de Pages, que serveix còpies endarrerides). Torna { dades, sha }.
+//
+// El paràmetre `t` no el llegeix GitHub: fa que cada URL sigui nova i
+// cap memòria cau entremig no torni la resposta d'una lectura anterior.
 // ------------------------------------------------------------
 async function llegeixFitxer(nomFitxer) {
   var url = 'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO +
-    '/contents/' + nomFitxer + '?ref=' + GITHUB_BRANCH;
+    '/contents/' + nomFitxer + '?ref=' + GITHUB_BRANCH + '&t=' + Date.now();
 
   var resposta = await fetch(url, {
     method: 'GET',
@@ -521,30 +543,76 @@ async function escriuFitxer(nomFitxer, dades, sha, missatgeCommit) {
 }
 
 // ------------------------------------------------------------
-// Llegeix un fitxer, hi aplica una transformació i el torna a
-// escriure. Si un altre escriptor s'hi ha avançat (conflicte de sha),
-// torna a llegir i ho reintenta UN cop, tal com mana el §7.
+// Aplica una transformació a un fitxer i el torna a escriure. Parteix
+// de l'última versió que aquesta pàgina hi ha escrit, si n'hi ha, i si
+// no, el llegeix.
+//
+// Si un altre escriptor s'hi ha avançat (conflicte de sha), espera, el
+// torna a llegir i ho reintenta, fins a ESPERES_CONFLICTE_MS.length
+// vegades. La transformació es torna a fer cada cop sobre el fitxer
+// fresc: per això no ha de tocar mai la llista que rep.
+//
+// `missatgeCommit` pot ser un text o una funció que el torni; la funció
+// es crida DESPRÉS de la transformació, perquè el missatge d'un lot
+// només nomeni les decisions que s'escriuen de debò.
 // ------------------------------------------------------------
 async function desaAmbReintent(nomFitxer, transforma, missatgeCommit) {
-  var intents = 0;
+  var reintents = 0;
 
-  while (intents < 2) {
-    var actual = await llegeixFitxer(nomFitxer);
+  while (true) {
+    var actual = DARRERA_ESCRIPTURA[nomFitxer];
+    if (!actual) {
+      actual = await llegeixFitxer(nomFitxer);
+    }
+
     var nouContingut = transforma(actual.dades);
+    var missatge = missatgeCommit;
+    if (typeof missatgeCommit === 'function') {
+      missatge = missatgeCommit();
+    }
 
     try {
-      await escriuFitxer(nomFitxer, nouContingut, actual.sha, missatgeCommit);
+      var resposta = await escriuFitxer(nomFitxer, nouContingut, actual.sha, missatge);
+      recordaEscriptura(nomFitxer, nouContingut, resposta);
       return nouContingut;
     } catch (error) {
-      intents++;
+      // La versió recordada ja no és la de GitHub: la propera vegada es llegeix.
+      delete DARRERA_ESCRIPTURA[nomFitxer];
+
       // Un conflicte de sha és l'únic error que val la pena reintentar.
       var esConflicte = error.message.indexOf('codi 409') !== -1 ||
         error.message.indexOf('codi 422') !== -1;
-      if (!esConflicte || intents >= 2) {
+      if (!esConflicte || reintents >= ESPERES_CONFLICTE_MS.length) {
         throw error;
       }
+
+      await espera(ESPERES_CONFLICTE_MS[reintents]);
+      reintents++;
     }
   }
+}
+
+// ------------------------------------------------------------
+// Recorda el que s'acaba d'escriure i el sha nou que GitHub hi ha
+// tornat, perquè la propera escriptura del mateix fitxer no l'hagi de
+// tornar a llegir. Si la resposta no porta sha, no recorda res.
+// ------------------------------------------------------------
+function recordaEscriptura(nomFitxer, dades, resposta) {
+  if (resposta && resposta.content && typeof resposta.content.sha === 'string') {
+    DARRERA_ESCRIPTURA[nomFitxer] = { dades: dades, sha: resposta.content.sha };
+    return;
+  }
+  delete DARRERA_ESCRIPTURA[nomFitxer];
+}
+
+// ------------------------------------------------------------
+// Espera els mil·lisegons que se li diguin. Amb 0 no espera gens.
+// ------------------------------------------------------------
+function espera(ms) {
+  if (!(ms > 0)) {
+    return Promise.resolve();
+  }
+  return new Promise(function (resol) { setTimeout(resol, ms); });
 }
 
 // ------------------------------------------------------------
@@ -915,6 +983,13 @@ function comptaEdicionsPendents() {
 // continuar; sense edicions pendents no pregunta res.
 // ------------------------------------------------------------
 function potLlencarEdicions() {
+  // Repintar mentre es desa tornaria a ensenyar com a pendents les files
+  // que la cua d'escriptura encara no ha acabat de desar.
+  if (DESANT) {
+    mostraAvis('Encara s’estan desant decisions. Espera que acabin i torna-ho a provar.', 'error');
+    return false;
+  }
+
   var quantes = comptaEdicionsPendents();
   if (quantes === 0) {
     return true;
@@ -935,14 +1010,9 @@ function potLlencarEdicions() {
 // després marca la fila de pendents.json com a publicada (la substitueix
 // a la mateixa posició, amb la nota_curador intacta; no la treu).
 //
-// L'ordre importa i no és casual. Són dues escriptures i no hi ha
-// manera de fer-les alhora: si primer es marqués la fila i després
-// fallés events.json, l'acte no seria enlloc. Fent-ho al revés, una
-// fallada deixa la fila encara pendent a la cua, que és recuperable.
-//
-// Cap de les dues escriptures no és cega: la primera no afegeix un id
-// que ja hi sigui, i la segona diu en veu alta si la fila ja no era a
-// la cua. Publicar dues vegades el mateix acte ha de deixar rastre.
+// No escriu res tot sola: posa la decisió a la cua d'escriptura
+// (encuaDecisio) i torna quan s'ha desat o ha fallat. Mentrestant el
+// curador pot seguir amb la fitxa següent.
 // ------------------------------------------------------------
 async function publica(fitxa, original) {
   if (!potEscriure()) {
@@ -951,61 +1021,14 @@ async function publica(fitxa, original) {
 
   var editat = recullFitxa(fitxa, original);
 
-  avisaFitxa(fitxa, 'Publicant…', '', true);
-
-  try {
-    // afegeixAPublicats() (curador-cua.js) no escriu l'id si ja hi és, i ho
-    // comprova dins la transformació perquè el reintent la torni a fer.
-    await desaAmbReintent(FITXER_EVENTS, afegeixAPublicats(editat),
-      'Publica ' + editat.titol);
-  } catch (error) {
-    // No s'ha escrit res i la fila segueix a la cua, tant si l'id ja hi
-    // era com si l'escriptura ha fallat. El que canvia és què cal fer-hi.
-    if (error.message.indexOf(JA_PUBLICAT) === 0) {
-      // La fila es queda a la cua perquè el curador decideixi: rebutjar-la,
-      // o canviar-li la data o el títol si de debò és un acte diferent que
-      // ha topat amb el mateix id.
-      avisaFitxa(fitxa, error.message + ' Rebutja la fila si sobra.', '', false);
-      mostraAvis(error.message, '');
-      return;
-    }
-    avisaFitxa(fitxa, 'No s’ha publicat. ' + error.message, 'error', false);
-    mostraAvis('La publicació ha fallat. L’acte segueix a la cua.', 'error');
-    return;
-  }
-
-  // A partir d'aquí l'acte JA és a events.json. Si el que ve falla, el
-  // que queda és un duplicat a la cua, i cal dir-ho tal com és.
-  var laCuaHaCanviat = false;
-
-  try {
-    await desaAmbReintent(FITXER_PENDENTS,
-      substitueixPerPublicada(original, creaFilaPublicada(editat, original)),
-      'Marca com a publicada ' + editat.titol);
-  } catch (error) {
-    if (error.message !== JA_NO_HI_ES) {
-      avisaFitxa(fitxa, 'Publicat a events.json, però no l’he pogut marcar com a publicada a la cua: ' +
-        error.message + ' Torna a carregar la cua i rebutja aquesta fila.', 'error', false);
-      mostraAvis('Publicat a mitges: mira el missatge de la fitxa.', 'error');
-      return;
-    }
-    // Algú altre l'ha tocat a la cua mentre es publicava. L'acte s'ha
-    // publicat igualment, però això no es pot dir en silenci: la cua ha
-    // canviat sota els peus i val més que el curador ho sàpiga.
-    laCuaHaCanviat = true;
-  }
-
-  fitxa.remove();
-  CUA = treuDeLaCua(CUA, original);
-  actualitzaRecompte();
-
-  if (laCuaHaCanviat) {
-    mostraAvis('Publicat: ' + editat.titol + ' (' + editat.id + '). La fila ja no era ' +
-      'a la cua: algú altre l’ha tocada mentre es publicava. Torna a carregar la cua.', '');
-    return;
-  }
-
-  mostraAvis('Publicat: ' + editat.titol, 'fet');
+  await encuaDecisio({
+    mena: 'publica',
+    fitxa: fitxa,
+    original: original,
+    editat: editat,
+    errorEvents: null,
+    errorPendents: null
+  }, 'Publicant…', 'En cua per publicar…');
 }
 
 // ------------------------------------------------------------
@@ -1028,20 +1051,272 @@ async function rebutja(fitxa, original) {
     return;
   }
 
-  avisaFitxa(fitxa, 'Rebutjant…', '', true);
+  await encuaDecisio({
+    mena: 'rebutja',
+    fitxa: fitxa,
+    original: original,
+    errorPendents: null
+  }, 'Rebutjant…', 'En cua per rebutjar…');
+}
 
+
+// --- La cua d'escriptura ------------------------------------------------------
+// Cada decisió és un commit a main, i GitHub rebutja (409) un commit fet
+// sobre una branca que s'ha mogut mentrestant. Per això les escriptures no
+// van mai alhora: una decisió que arriba mentre la pàgina escriu s'espera,
+// i quan li toca surt amb TOTES les que s'han acumulat, en un sol commit
+// per fitxer (un lot). Amb una sola decisió, les escriptures i els
+// missatges de commit són els de sempre.
+
+// ------------------------------------------------------------
+// Posa una decisió a la cua d'escriptura i bloqueja la seva fitxa. Si no
+// s'està escrivint res, la cua s'engega de seguida. Torna una promesa
+// que es resol quan la decisió s'ha desat o ha fallat; no falla mai.
+// ------------------------------------------------------------
+function encuaDecisio(decisio, textAra, textEnCua) {
+  if (DESANT) {
+    avisaFitxa(decisio.fitxa, textEnCua, '', true);
+  } else {
+    avisaFitxa(decisio.fitxa, textAra, '', true);
+  }
+
+  var feta = new Promise(function (resol) {
+    decisio.acaba = resol;
+  });
+  DECISIONS_EN_ESPERA.push(decisio);
+
+  if (!DESANT) {
+    buidaDecisions();
+  }
+  return feta;
+}
+
+// ------------------------------------------------------------
+// Desa lot rere lot fins que no queda cap decisió en espera. Cada lot
+// són totes les decisions que s'han acumulat mentre es desava l'anterior.
+// ------------------------------------------------------------
+async function buidaDecisions() {
+  DESANT = true;
+
+  while (DECISIONS_EN_ESPERA.length > 0) {
+    var lot = DECISIONS_EN_ESPERA.splice(0, DECISIONS_EN_ESPERA.length);
+
+    try {
+      await desaLot(lot);
+    } catch (error) {
+      // desaLot() ja recull els errors de cada decisió; això només pot ser
+      // un error de programa, i no ha de deixar la cua encallada.
+      mostraAvis('Error inesperat en desar: ' + error.message, 'error');
+    }
+
+    for (var i = 0; i < lot.length; i++) {
+      lot[i].acaba();
+    }
+  }
+
+  DESANT = false;
+}
+
+// ------------------------------------------------------------
+// Desa un lot de decisions i diu a cada fitxa com ha anat.
+//
+// L'ordre de les dues escriptures importa i no és casual: primer
+// events.json amb totes les publicacions del lot, després pendents.json
+// amb totes les marques i tots els rebuigs. Si es marqués la fila abans
+// i després fallés events.json, l'acte no seria enlloc; fent-ho al
+// revés, una fallada deixa la fila encara pendent a la cua, que és
+// recuperable.
+// ------------------------------------------------------------
+async function desaLot(lot) {
+  var publicacions = lot.filter(function (decisio) {
+    return decisio.mena === 'publica';
+  });
+
+  if (publicacions.length > 0) {
+    await desaPublicacions(publicacions);
+  }
+
+  // A pendents.json hi van els rebuigs i les publicacions que ja són a
+  // events.json; una publicació que hi ha fallat no s'hi marca.
+  var aLaCua = lot.filter(function (decisio) {
+    return decisio.mena === 'rebutja' || decisio.errorEvents === null;
+  });
+
+  if (aLaCua.length > 0) {
+    await desaALaCua(aLaCua);
+  }
+
+  for (var i = 0; i < lot.length; i++) {
+    if (lot[i].mena === 'publica') {
+      acabaPublicacio(lot[i]);
+    } else {
+      acabaRebuig(lot[i]);
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// Afegeix a events.json, en un sol commit, tots els actes publicats del
+// lot. Deixa a cada decisió el seu `errorEvents` (null si s'ha escrit).
+//
+// afegeixAPublicats() (curador-cua.js) no escriu un id que ja hi sigui, i
+// ho comprova dins la transformació perquè el reintent la torni a fer.
+// ------------------------------------------------------------
+async function desaPublicacions(publicacions) {
+  var combinada = combinaTransformacions(publicacions.map(function (decisio) {
+    return afegeixAPublicats(decisio.editat);
+  }));
+
+  var missatge = function () {
+    return missatgeDeLot('Publica ' + publicacions.length + ' actes',
+      liniesBones(publicacions, combinada.errors, function (decisio) {
+        return 'Publica ' + decisio.editat.titol;
+      }));
+  };
+
+  var errorDelFitxer = null;
   try {
-    await desaAmbReintent(FITXER_PENDENTS, marcaRebutjadaALaCua(original),
-      'Rebutja ' + original.titol);
-
-    fitxa.remove();
-    CUA = treuDeLaCua(CUA, original);
-    actualitzaRecompte();
-    mostraAvis('Rebutjat: ' + original.titol, 'fet');
+    await desaAmbReintent(FITXER_EVENTS, combinada.transforma, missatge);
   } catch (error) {
+    errorDelFitxer = error;
+  }
+
+  for (var i = 0; i < publicacions.length; i++) {
+    publicacions[i].errorEvents = errorDeLaDecisio(combinada.errors[i], errorDelFitxer);
+  }
+}
+
+// ------------------------------------------------------------
+// Escriu a pendents.json, en un sol commit, les marques de publicada i
+// els rebuigs del lot. Deixa a cada decisió el seu `errorPendents`.
+// ------------------------------------------------------------
+async function desaALaCua(decisions) {
+  var combinada = combinaTransformacions(decisions.map(function (decisio) {
+    if (decisio.mena === 'publica') {
+      return substitueixPerPublicada(decisio.original,
+        creaFilaPublicada(decisio.editat, decisio.original));
+    }
+    return marcaRebutjadaALaCua(decisio.original);
+  }));
+
+  var missatge = function () {
+    return missatgeDeLot('Cua del curador: ' + decisions.length + ' decisions',
+      liniesBones(decisions, combinada.errors, function (decisio) {
+        if (decisio.mena === 'publica') {
+          return 'Marca com a publicada ' + decisio.editat.titol;
+        }
+        return 'Rebutja ' + decisio.original.titol;
+      }));
+  };
+
+  var errorDelFitxer = null;
+  try {
+    await desaAmbReintent(FITXER_PENDENTS, combinada.transforma, missatge);
+  } catch (error) {
+    errorDelFitxer = error;
+  }
+
+  for (var i = 0; i < decisions.length; i++) {
+    decisions[i].errorPendents = errorDeLaDecisio(combinada.errors[i], errorDelFitxer);
+  }
+}
+
+// ------------------------------------------------------------
+// Les línies del missatge de commit, només de les decisions que la
+// transformació ha pogut aplicar.
+// ------------------------------------------------------------
+function liniesBones(decisions, errors, linia) {
+  var linies = [];
+  for (var i = 0; i < decisions.length; i++) {
+    if (errors[i] === null) {
+      linies.push(linia(decisions[i]));
+    }
+  }
+  return linies;
+}
+
+// ------------------------------------------------------------
+// L'error que toca a una decisió del lot: el seu propi, si la seva peça
+// ha petat; si no, el del fitxer, si l'escriptura ha fallat; si no, null.
+// Si el fitxer no s'ha arribat a llegir, la peça no té error propi
+// (undefined) i val el del fitxer.
+// ------------------------------------------------------------
+function errorDeLaDecisio(errorPropi, errorDelFitxer) {
+  if (errorPropi) {
+    return errorPropi;
+  }
+  return errorDelFitxer;
+}
+
+// ------------------------------------------------------------
+// Diu a la fitxa i a dalt de tot com ha anat una publicació, i la treu
+// de la pantalla si l'acte ja és a events.json.
+// ------------------------------------------------------------
+function acabaPublicacio(decisio) {
+  var fitxa = decisio.fitxa;
+  var editat = decisio.editat;
+  var error = decisio.errorEvents;
+
+  if (error) {
+    // No s'ha escrit res i la fila segueix a la cua, tant si l'id ja hi
+    // era com si l'escriptura ha fallat. El que canvia és què cal fer-hi.
+    if (error.message.indexOf(JA_PUBLICAT) === 0) {
+      // La fila es queda a la cua perquè el curador decideixi: rebutjar-la,
+      // o canviar-li la data o el títol si de debò és un acte diferent que
+      // ha topat amb el mateix id.
+      avisaFitxa(fitxa, error.message + ' Rebutja la fila si sobra.', '', false);
+      mostraAvis(error.message, '');
+      return;
+    }
+    avisaFitxa(fitxa, 'No s’ha publicat. ' + error.message, 'error', false);
+    mostraAvis('La publicació ha fallat. L’acte segueix a la cua.', 'error');
+    return;
+  }
+
+  // A partir d'aquí l'acte JA és a events.json. Si la marca ha fallat, el
+  // que queda és un duplicat a la cua, i cal dir-ho tal com és.
+  var errorCua = decisio.errorPendents;
+  if (errorCua && errorCua.message !== JA_NO_HI_ES) {
+    avisaFitxa(fitxa, 'Publicat a events.json, però no l’he pogut marcar com a publicada a la cua: ' +
+      errorCua.message + ' Torna a carregar la cua i rebutja aquesta fila.', 'error', false);
+    mostraAvis('Publicat a mitges: mira el missatge de la fitxa.', 'error');
+    return;
+  }
+
+  fitxa.remove();
+  CUA = treuDeLaCua(CUA, decisio.original);
+  actualitzaRecompte();
+
+  // Algú altre l'ha tocat a la cua mentre es publicava. L'acte s'ha
+  // publicat igualment, però això no es pot dir en silenci: la cua ha
+  // canviat sota els peus i val més que el curador ho sàpiga.
+  if (errorCua) {
+    mostraAvis('Publicat: ' + editat.titol + ' (' + editat.id + '). La fila ja no era ' +
+      'a la cua: algú altre l’ha tocada mentre es publicava. Torna a carregar la cua.', '');
+    return;
+  }
+
+  mostraAvis('Publicat: ' + editat.titol, 'fet');
+}
+
+// ------------------------------------------------------------
+// Diu a la fitxa i a dalt de tot com ha anat un rebuig, i la treu de la
+// pantalla si s'ha desat.
+// ------------------------------------------------------------
+function acabaRebuig(decisio) {
+  var fitxa = decisio.fitxa;
+  var error = decisio.errorPendents;
+
+  if (error) {
     avisaFitxa(fitxa, error.message, 'error', false);
     mostraAvis('El rebuig ha fallat. Mira el missatge de la fitxa.', 'error');
+    return;
   }
+
+  fitxa.remove();
+  CUA = treuDeLaCua(CUA, decisio.original);
+  actualitzaRecompte();
+  mostraAvis('Rebutjat: ' + decisio.original.titol, 'fet');
 }
 
 // ------------------------------------------------------------

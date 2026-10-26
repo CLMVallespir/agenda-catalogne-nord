@@ -1,7 +1,8 @@
 # CLAUDE.md — «Què fas?» · Agenda de Catalunya Nord
 
-*Constitució del projecte per a l'agent de codi. Sempre en context. Les fases de
-treball són a `FASES.md`. Última revisió: 4 de setembre de 2026.*
+*Constitució del projecte per a l'agent de codi. Sempre en context. Descriu el
+sistema tal com és avui; la història, les decisions tancades i les lliçons són
+a `NOTES.md`. Última revisió: 23 d'octubre de 2026.*
 
 ---
 
@@ -41,8 +42,8 @@ flux ADT66 ───────────────────────
 - **`pendents.json`** (arrel del repositori) és la cua de revisió del curador
   **i la memòria de rebuig del projecte**: rebutjar una fila no la suprimeix, li
   posa `estat = "rebutjat"` i la deixa on és; publicar tampoc no la suprimeix, hi
-  posa `estat = "publicat"` (1 d'octubre de 2026). Per això la cua del curador
-  filtra explícitament `estat === 'pendent'` en pintar.
+  posa `estat = "publicat"`. Per això la cua del curador filtra explícitament
+  `estat === 'pendent'` en pintar.
 - El **Gmail d'arxiu** només rep correu reenviat pel Worker. Cap script no hi viu.
   És el registre permanent de cada tramesa original.
 
@@ -58,13 +59,19 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
   recomanació, no un menú.
 - **Abans d'informar de progrés, audita cada afirmació contra un resultat real
   d'aquesta sessió.** Si una prova falla, digues-ho amb la sortida; si un pas s'ha
-  saltat, digues-ho. Cap porta de fase (vegeu `FASES.md`) no es declara passada
-  sense l'evidència mostrada.
+  saltat, digues-ho.
 - **Atura't només quan calgui de debò:** una acció destructiva, un canvi real
   d'abast, o una dada que només el propietari pot donar (claus, DNS, comptes).
-- **Mantén `NOTES.md`** a l'arrel: una lliçó per entrada, amb resum d'una línia.
-  Correccions i enfocaments confirmats, amb el perquè. Esborra les notes que
-  resultin errònies. No hi dupliquis el que el repositori ja registra.
+- **`NOTES.md` és l'única història del projecte.** Abans de tocar una part,
+  llegeix-ne les entrades: hi ha les decisions que no es reobren (§2), el que se
+  sap de les fonts i els errors que no s'han de repetir. Una lliçó per entrada,
+  amb resum i el perquè; les que resultin errònies s'esborren. Una decisió nova
+  hi entra amb el número següent (D-07…). No hi dupliquis el que el repositori ja
+  registra.
+- **Cap carpeta d'arxiu, cap document de feina que sobrevisqui a la feina.** Una
+  eina d'un sol ús s'esborra quan el seu resultat és commitat; un handoff, un
+  sondeig o un informe, quan el que ensenya ha passat a `NOTES.md` o aquí. El
+  passat el guarda git.
 - Si una petició xoca amb una restricció del §3, **fes aflorar la tensió** i
   proposa l'alternativa més simple dins l'esperit — no trenquis el patró en silenci.
 - **Perfils de sub-agent a `.claude/agents/`:** `agenda-lector` (només lectura:
@@ -77,7 +84,10 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
   mòduls profunds no diuen el mateix.
 - **Proves:** amb `node:test` i `node:assert`, que venen amb Node (zero
   dependències). Viuen a `proves/` i s'executen una per una:
-  `node --test proves/<nom>.test.js`.
+  `node --test proves/<nom>.test.js`. La majoria de mòduls d'`eines/` porten
+  també una bateria pròpia (`node eines/<nom>.js`), però **no executis mai la
+  carpeta sencera**: `eines/cartells-a-cloudinary.js` reescriu `pendents.json`
+  si no se li passa `--prova`, i `eines/adt66-sincronitza.js` baixa el flux.
   Un fitxer de `proves/` que fa `require` d'un mòdul d'`eines/` no pot dur al nom
   el nom de cap mòdul d'`eines/`: les guardes de les bateries miren
   `process.argv[1]` per subcadena i s'engegarien. `proves/passada-action.test.js`
@@ -89,72 +99,43 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 - **Només capes gratuïtes:** Cloudflare (Email Routing + Workers), GitHub Pages,
   Cloudinary, Brevo. Cap infraestructura de pagament, mai.
   **Única excepció, decidida pel propietari el 23 d'octubre de 2026:** l'API de
-  Claude (Anthropic), que substitueix la de Gemini. No és cap capa gratuïta: és
-  un servei de pagament que cobreix el crèdit mensual gratuït de l'organització.
-  Per això l'excepció només val amb **un límit de despesa a la consola
-  d'Anthropic que no passi del crèdit**, i sense cap targeta amb recàrrega
-  automàtica: quan el crèdit s'acaba, les crides han de fallar, no cobrar. El
-  perquè i el compte del cost són a `NOTES.md`.
+  Claude (Anthropic). No és cap capa gratuïta: és un servei de pagament que
+  cobreix el crèdit mensual gratuït de l'organització. Per això l'excepció només
+  val amb **un límit de despesa a la consola d'Anthropic que no passi del
+  crèdit**, i sense cap targeta amb recàrrega automàtica: quan el crèdit
+  s'acaba, les crides han de fallar, no cobrar. El compte del cost és a
+  `NOTES.md`.
 - **Cap framework, cap eina de compilació, cap npm.** JavaScript vanilla pertot.
-  **Única excepció, ja decidida:** `postal-mime`, *vendoritzat* — un sol fitxer
-  fixat, copiat al repositori amb la versió i l'URL d'origen al comentari de
-  capçalera. Cap `package.json`, cap `node_modules`.
-- **Desplegament sense cadena d'eines:** el Worker es desplega enganxant el codi a
-  l'editor del tauler de Cloudflare. Si el tauler fa difícil un Worker de dos
-  mòduls, la sortida acceptada és concatenar el fitxer vendoritzat dins el Worker,
-  un sol cop, dins d'un bloc marcat amb bàner clar. Mai `wrangler` com a requisit.
-  Abans d'enganxar-lo, `node eines/verifica-worker-concatenat.js` ha de sortir en
-  verd.
+  **Única excepció:** `postal-mime`, *vendoritzat* — un sol fitxer fixat, copiat
+  al repositori amb la versió i l'URL d'origen al comentari de capçalera. Cap
+  `package.json`, cap `node_modules`.
+- **Desplegament sense cadena d'eines:** el Worker es desplega **només** enganxant
+  `worker/worker-concatenat.js` a l'editor del tauler de Cloudflare. És un fitxer
+  generat: `postal-mime.js` sense el seu `export`, un bàner, i `worker/worker.js`
+  sense l'`import`. Es toca `worker.js`, es regenera el concatenat al mateix
+  commit i s'enganxa sencer; mai al revés. Abans d'enganxar-lo,
+  `node eines/verifica-worker-concatenat.js` ha de sortir en verd. El Git Build
+  de Cloudflare és desconnectat a posta, i cap `wrangler` ni cap fitxer de
+  configuració de desplegament: dues vies alhora es trepitgen en silenci.
 - **Cap base de dades.** L'estat viu en dos fitxers JSON al repositori
   (`events.json`, `pendents.json`) i prou.
 - **Cap compte d'usuari, cap login, cap servidor més enllà de l'únic Worker.**
 - **Les imatges viuen a Cloudinary, mai a Git.**
 - **Bilingüe, català primer,** a tot el que veu el públic (§6). Excepció única:
   `curador.html` és només en català — l'únic usuari n'és el curador.
-- **Els secrets viuen als Secrets del Worker** (`ANTHROPIC_API_KEY`, `GITHUB_TOKEN`,
-  `BREVO_API_KEY`, `TYPEBOT_SECRET` + IDs de llistes Brevo). El
-  `CLOUDINARY_CLOUD_NAME` no és secret. Mai al codi, mai als registres, mai a Git.
+- **Els secrets viuen als Secrets del Worker** (`ANTHROPIC_API_KEY`,
+  `GITHUB_TOKEN`, `BREVO_API_KEY`, `TYPEBOT_SECRET`, `ADRECA_ARXIU` + IDs de
+  llistes Brevo). El `CLOUDINARY_CLOUD_NAME` no és secret i és una variable de
+  text del tauler. Mai al codi, mai als registres, mai a Git.
 - El token de GitHub és **de gra fi, limitat a aquest repositori, només
   `contents: write`**.
 
 ## 4. L'esquema — canònic i exacte
 
-**Divuit camps** — el recompte real des del 17 de setembre de 2026 —, amb aquests
-noms i aquest ordre, idèntics a tot arreu. No en canviïs mai cap sense tocar
-**tots** els llocs de la llista del §4 bis alhora.
-
-> **CORRECCIÓ DEL 3 DE SETEMBRE DE 2026.** Aquest paràgraf deia «els quatre
-> llocs alhora», i la xifra era falsa. Els enums viuen a **catorze còpies dins
-> de nou fitxers de codi**, més cinc documents. La conseqüència no va ser
-> teòrica: quan es va afegir `Concentració` a l'enum, es va posar només al
-> filtre i a les icones d'`app.js` —dos llocs de catorze—, i durant dies hi va
-> haver una fila publicada a `events.json` amb una categoria que
-> `curador.html` i `worker/worker.js` no reconeixien i **buidaven en silenci**
-> via `valorPermes()`. La llista del §4 bis existeix perquè això no torni a
-> passar.
-
-> **CORRECCIÓ DEL 17 DE SETEMBRE DE 2026.** Aquest paràgraf deia «disset
-> camps», i des de la implementació de `docs/DECISIO-ACTIVITATS-PERMANENTS.md`
-> (sessions 1–8 del seu §7, entre el 8 i el 16 de setembre de 2026) és fals: hi
-> ha un divuitè camp, `periodicitat`. **A diferència de `nota_curador`, és
-> públic**: arriba a `events.json` i el llegeix el web i el digest. Si algun
-> document del projecte encara diu «disset camps» o «setze camps» sense
-> aquesta data, és anterior a aquesta correcció.
-
-*Per què disset i no setze, primer:* els setze primers són els de sempre i no
-n'ha canviat cap. El dissetè d'aleshores, `nota_curador`, és de naturalesa
-diferent: no descriu l'acte, sinó que diu al curador què ha d'anar a mirar
-abans d'aprovar la fila. Es va afegir quan la canonada d'ingestió externa va
-començar a produir files amb problemes coneguts —títol per traduir, categoria
-sense calaix, municipi que no consta— que fins llavors no tenien on dir-se.
-
-*Per què divuit i no disset, després:* `periodicitat` cobreix un fenomen que no
-té res a veure amb `nota_curador` —descriu l'**acte** (si es repeteix
-setmanalment), no la fila— i que fins al 8 de setembre de 2026 no tenia on
-dir-se. Text lliure; `""` vol dir «acte puntual», no «no ho sabem». El detall
-sencer —el nom triat, les cinc decisions de disseny i l'inventari de cada lloc
-tocat— és a `docs/DECISIO-ACTIVITATS-PERMANENTS.md`, que no es rediscuteix
-aquí.
+**Divuit camps**, amb aquests noms i aquest ordre, idèntics a tot arreu. No en
+canviïs mai cap sense tocar **tots** els llocs de la llista del §4 bis alhora.
+Els disset primers descriuen l'acte i són públics; el 18è, `nota_curador`,
+descriu la fila i no surt mai de la cua.
 
 1. `id` — `YYYY-MM-DD-slug` (ex.: `2026-09-14-ball-prats`); buit si no hi ha data
 2. `titol` — títol, en català
@@ -176,7 +157,8 @@ aquí.
 15. `estat` — `pendent` · `publicat` · `rebutjat`
 16. `data_entrada` — marca de temps ISO de creació de la fila
 17. `periodicitat` — activitat permanent: frase lliure en català («cada
-    dissabte al matí»); `""` si l'acte és puntual (`docs/DECISIO-ACTIVITATS-PERMANENTS.md`)
+    dissabte al matí»); `""` vol dir «acte puntual», no «no ho sabem». Les
+    regles (Q1–Q5) són a `NOTES.md`, «Activitats permanents».
 18. `nota_curador` — avisos per a qui revisa la fila; `""` per defecte, i
     l'únic dels divuit que **no** arriba a `events.json` (vegeu més avall)
 
@@ -192,76 +174,55 @@ Regles de què depèn el codi:
   model d'extracció** (el prompt els retorna buits expressament).
 - **No et refiïs mai de l'`id` que retorni el model:** reconstrueix-lo sempre amb
   `creaId(dataInici, titol)`. Coerceix `comarca` i `categoria` a la llista permesa
-  amb `valorPermes(...)`, si no `""`.
+  amb `valorPermes(...)`, si no `""`. L'`id` no és únic (tres paraules del
+  títol): per identificar una fila, `id` + `titol` + `municipi`.
 
 **Regles pròpies d'`estat` a `pendents.json`** — `rebutjat` hi és **persistent**:
 
-- **Rebutjar no suprimeix la fila.** `rebutja()` a `curador.html` fa **una sola
-  escriptura**: llegeix `pendents.json`, posa `estat = "rebutjat"` a la fila i
-  torna a escriure el fitxer sencer. Cap `splice`, cap fila treta.
+- **Rebutjar no suprimeix la fila.** `rebutja()` a `curador.html` llegeix
+  `pendents.json`, posa `estat = "rebutjat"` a la fila i torna a escriure el
+  fitxer sencer. Cap `splice`, cap fila treta.
 - **Per això `pendents.json` és la memòria de rebuig del projecte.** Un acte que
   el curador ha dit que no ha de deixar rastre en algun lloc, o la
   sincronització automàtica de l'ADT66 el tornarà a oferir cada setmana. Aquest
-  lloc és el mateix fitxer —posició al fitxer, no un tercer magatzem—, perquè el
-  §3 diu que l'estat viu en dos fitxers JSON i prou.
+  lloc és el mateix fitxer, perquè el §3 diu que l'estat viu en dos fitxers JSON
+  i prou.
 - **La cua només pinta `estat === 'pendent'`**, i el filtre és literalment això,
   no `!== 'rebutjat'`: qualsevol estat nou o inesperat queda fora de la cua per
   defecte, que és el costat segur.
-- **Publicar marca, igual que rebutjar** (canviat l'1 d'octubre de 2026): dues
-  escriptures, `events.json` primer i després **substituir**, a la mateixa
-  posició de `pendents.json`, la fila per la publicada (`estat = "publicat"`,
-  `nota_curador` intacta, els 18 camps). Ja no es treu: `events.json` no conserva
-  `nota_curador`, on viu el tag `[ADT66 id: …]`, i sense la fila la passada
-  següent no reconeixia l'oferta publicada i la tornava a encuar (vegeu
-  `NOTES.md`). Fins aquesta data la regla, decidida el 3 de setembre de 2026, era
-  «publicar treu, rebutjar marca».
+- **Publicar marca, igual que rebutjar:** dues escriptures, `events.json` primer
+  i després **substituir**, a la mateixa posició de `pendents.json`, la fila per
+  la publicada (`estat = "publicat"`, `nota_curador` intacta, els 18 camps).
+  `events.json` no conserva `nota_curador`, on viu el tag `[ADT66 id: …]`: sense
+  la fila, la passada següent no reconeixeria l'oferta publicada.
 - **La poda de l'Action treu les `pendent`, les `rebutjat` i les `publicat` que
   ja han passat.** Ho fa `podaCaducades()` a `eines/sincronitza-programada.js`,
   dins de cada escriptura: l'últim dia de l'acte —`data_fi`, o `data_inici` si
   `data_fi` és buida— anterior a avui. Qualsevol estat inesperat i qualsevol
   fila sense cap data utilitzable no es poden mai. El registre del run compta
-  les tres per separat. (`publicat` s'hi va afegir l'1 d'octubre de 2026, amb
-  la regla de dalt; abans no es podava mai.)
-  **Canviat el 30 de setembre de 2026.** Fins llavors la regla, escrita al
-  bàner d'aquell fitxer, deia que les `pendent` no es podaven mai «perquè la
-  cua és del curador». Dues coses l'han girada. La cua s'omplia d'actes
-  acabats: el 29 de setembre, 129 de les 167 pendents ja havien passat, i una
-  pendent passada ja no es pot publicar. I una pendent passada fa nosa: la capa
-  1 del §4 ter la troba pel tag i diu `ja_a_la_cua`, de manera que la data
-  següent d'una oferta que es repeteix no entra mai. No es perd cap memòria de
-  rebuig ni de cua: la vora és la mateixa de la finestra de `filtraCandidats()`,
-  o sigui que una oferta caducada el filtre ja la llença abans d'arribar
-  enlloc, i la fila podada queda a l'historial de git de `pendents.json`.
+  les tres per separat. No es perd cap memòria: la vora és la mateixa de la
+  finestra de `filtraCandidats()`, o sigui que una oferta caducada el filtre ja
+  la llença abans d'arribar enlloc, i la fila podada queda a l'historial de git.
 - **En fusionar dues files duplicades, l'estat es resol per precedència i mai
-  per posició.** L'ordre definitiu, de més fort a més fluix, és
+  per posició.** L'ordre, de més fort a més fluix, és
   **`publicat` > `rebutjat` > `pendent`** (i, si cap dels dos no és cap dels
   tres, el primer que digui alguna cosa). Ho decideix
-  `resolEstat(estatA, estatB)` a `eines/dedup-esdeveniments.js`, amb la
-  precedència en una sola llista llegible. Guanya vingui la fila del costat que
-  vingui, i tant se val quina de les dues va entrar abans:
-    - **`publicat` primer** perquè un esdeveniment publicat ja ha passat el
-      filtre humà i cap fusió automàtica no pot revertir-ho. Hi arribarà el dia
-      que es dedupliqui contra `events.json` (`docs/HANDOFF-ADT66.md` §4, tasca
-      encara per fer); des de l'1 d'octubre de 2026 `pendents.json` ja pot
-      portar files `publicat` (les que hi deixa `curador.html`).
-    - **`rebutjat` abans que `pendent`** perquè un rebuig és una decisió sobre
-      l'**esdeveniment**, no sobre la fila que el porta. Si manés la posició, la
-      fusió perdria la memòria de rebuig (el curador tornaria a revisar el que ja
-      havia dit que no) o bé suprimiria un acte nou que ningú no ha vist mai.
+  `resolEstat(estatA, estatB)` a `eines/dedup-esdeveniments.js`. `publicat`
+  primer perquè ja ha passat el filtre humà; `rebutjat` abans que `pendent`
+  perquè un rebuig és una decisió sobre l'**esdeveniment**, no sobre la fila.
 - **Tot mòdul nou que llegeixi `pendents.json` ha de declarar quins estats
   tracta**, al bàner de dalt del fitxer, i filtrar-los explícitament amb
   `=== 'pendent'` —mai `!== 'rebutjat'`. Els mòduls d'avui:
-  `curador.html` només pinta `pendent`; `eines/cartells-a-cloudinary.js` només
-  puja cartells de files `pendent` (una fila rebutjada gastaria quota per deixar
-  a Cloudinary una còpia permanent d'un acte que no es publicarà mai) i torna la
-  resta intacta, perquè qui la crida hi reescriu el fitxer sencer;
-  `eines/dedup-esdeveniments.js` tracta els tres estats i els resol per
+  `curador.html` només pinta `pendent` i hi marca com a `publicat` la fila que
+  publica; `eines/cartells-a-cloudinary.js` només puja cartells de files
+  `pendent` i torna la resta intacta, perquè qui la crida hi reescriu el fitxer
+  sencer; `eines/dedup-esdeveniments.js` tracta els tres estats i els resol per
   precedència; `eines/dedup-contra-fitxers.js` tracta els tres estats i en
-  torna una etiqueta cadascun (§4 ter). Decidit el 3 de setembre de 2026.
-  `eines/sincronitza-programada.js` escriu només files `pendent` i en poda les
-  `pendent`, les `rebutjat` i les `publicat` caducades (la regla de dalt, del 30
-  de setembre de 2026 i, per a `publicat`, de l'1 d'octubre de 2026).
-  `curador.html` hi marca com a `publicat` la fila que publica.
+  torna una etiqueta cadascun (§4 ter); `eines/sincronitza-programada.js`
+  escriu només files `pendent` i en poda les caducades dels tres estats.
+- **L'Action no reescriu mai una fila que ja és a la cua.** `curador-cua.js`
+  troba la fila comparant-la sencera (`JSON.stringify`); si canviés mentre el
+  curador la té oberta, la seva decisió fallaria amb «ja no era a la cua».
 
 ## 4 ter. Ancoratge contra el que ja tenim — dues capes, i el biaix cap a encuar
 
@@ -274,19 +235,17 @@ diferent**, i **no escriu res**: torna una etiqueta per oferta
 - **Capa 1, exacta, contra `pendents.json`.** El tag `[ADT66 id: …]` que
   `mapejaOfertaADT66()` deixa a `nota_curador` es torna a llegir amb
   `extreuIdentificadors()` d'`eines/adt66-identificador.js`, que en llegeix
-  **tots** els tags d'una nota, no només el primer (1 d'octubre de 2026); l'oferta
-  entrant en porta un de sol i el llegeix amb `extreuIdentificador()`. Igualtat
-  d'identificador, cap llindar. Mira **totes** les files del fitxer, sense
-  filtrar-ne cap per estat abans de comparar: filtrar-hi «només les pendents»
-  seria justament l'error que la memòria de rebuig del §4 vol evitar —l'oferta
-  rebutjada tornaria a entrar cada setmana—, i l'oferta publicada tampoc: la
-  seva fila `publicat` s'hi queda i la protegeix (`ja_publicat`).
+  **tots** els tags d'una nota; l'oferta entrant en porta un de sol i el llegeix
+  amb `extreuIdentificador()`. Igualtat d'identificador, cap llindar. Mira
+  **totes** les files del fitxer, sense filtrar-ne cap per estat: filtrar-hi
+  «només les pendents» faria tornar cada setmana l'oferta rebutjada, i l'oferta
+  publicada la protegeix la seva fila `publicat` (`ja_publicat`).
 - **Capa 2, difusa, contra `events.json`.** Les files d'`events.json` no porten
-  identificador i no en portaran mai (`recullFitxa()` deixa `nota_curador` fora),
-  i `docs/SONDEIG-FONT-URL-ADT66.md` va tancar també la via de `font_url`.
-  Queda comparar contingut: es reutilitza `comparaEsdeveniments()` sencer
-  —municipi normalitzat + `data_inici` com a clau dura, Jaccard dels títols com
-  a desempat— i s'hi posa un llindar **més exigent** al damunt.
+  identificador i no en portaran mai (`recullFitxa()` deixa `nota_curador`
+  fora), i `font_url` no el pot portar (`NOTES.md`, «El flux de l'ADT66»). Es
+  reutilitza `comparaEsdeveniments()` sencer —municipi normalitzat +
+  `data_inici` com a clau dura, Jaccard dels títols com a desempat— i s'hi posa
+  un llindar **més exigent** al damunt.
 
 **La regla que mana el disseny: si dubtes, ENCUA.** Un duplicat a
 `pendents.json` és visible i el curador el resol en un clic; un acte descartat
@@ -295,69 +254,55 @@ surt com a `nova`.
 
 **El llindar de la capa 2 és 0,75, no el 0,55 del mòdul de dedup**, i són dos
 números perquè són dues decisions: allà fusionar deixa una fila a la cua, aquí
-passar el llindar vol dir que l'acte no arriba enlloc. Mesurat sobre els 92
-títols reals (84 de `pendents.json` + 8 d'`events.json`):
-
-- «El Taller de les Barques de Paulilles» i «El Taller de les Descobertes de
-  Paulilles», mateix poble i mateix dia, fan **0,500 i són dos tallers
-  diferents**. És el fals positiu més perillós del corpus i marca el terra.
-- La franja [0,55–0,75) és la de **«una paraula distintiva canviada»** (4 contra
-  4 compartint-ne 3 = 0,600; 5 contra 5 compartint-ne 4 = 0,667). N'hi ha prou
-  d'afegir el municipi als dos títols de Paulilles —el que fan els títols de
-  l'ADT66— per pujar aquell parell a 0,600 i ficar-lo dins de la franja.
-- Una substitució entre dos títols de n paraules dona (n−1)/(n+1), que no arriba
-  a 0,75 fins a **n = 7**; 88 dels 92 títols reals en tenen sis o menys (mediana:
-  tres). Per damunt de 0,75, doncs, gairebé només hi ha títols que **afegeixen**
-  paraules a un altre, que és la forma d'un duplicat de debò.
-- El cost acceptat: «5es Jornades d'Història Nacional» (publicat) i la seva
-  versió llarga (a la cua) són el mateix acte i fan **0,444** — s'encuen. És la
-  direcció bona de l'error.
+passar el llindar vol dir que l'acte no arriba enlloc. Mesurat sobre 92 títols
+reals: «El Taller de les Barques de Paulilles» i «El Taller de les Descobertes
+de Paulilles», mateix poble i mateix dia, fan 0,500 i són dos tallers
+diferents; la franja [0,55–0,75) és la de «una paraula distintiva canviada»;
+una substitució entre títols de n paraules dona (n−1)/(n+1), que no arriba a
+0,75 fins a n = 7, i 88 dels 92 títols en tenen sis o menys. Per damunt de
+0,75 gairebé només hi ha títols que **afegeixen** paraules a un altre, que és la
+forma d'un duplicat de debò. El cost acceptat: un acte publicat i la seva versió
+llarga a la cua poden quedar per sota (0,444) i s'encuen. És la direcció bona
+de l'error.
 
 Un `estat` de `pendents.json` que no sigui cap dels tres **no s'endevina**: la
 capa 1 no diu res i l'oferta acaba a `nova`. El costat segur d'aquest mòdul és
 deixar-la ENTRAR, al contrari que a `curador.html`, on és deixar-la FORA de la
 cua. Als dos llocs el costat segur és el que no fa desaparèixer informació
-sense que ningú ho vegi. Decidit el 3 de setembre de 2026.
+sense que ningú ho vegi.
 
 **Regles pròpies de `nota_curador`** — és un camp de servei, no de contingut:
 
-- **L'escriuen només els agents de darrere** (ara mateix, `mapejaAProduccio()`).
-  Ni el model d'extracció, ni el Typebot, ni cap persona hi escriuen: el prompt
-  no el coneix i el formulari no el demana.
-- **El frontend públic no el llegeix mai.** `index.html` i `app.js` l'han
-  d'ignorar si hi és. Avui ho fan sols, perquè llegeixen els camps pel nom i mai
-  no itineren les claus d'un esdeveniment; qui hi toqui ha de mantenir-ho així.
+- **L'escriuen només els agents de darrere:** `mapejaOfertaADT66()` (el tag
+  `[ADT66 id: …]`, sempre el primer, i els avisos del mapeig), la passada de
+  l'Action, `pujaCartell()`, la fusió de `eines/dedup-esdeveniments.js` i el
+  Worker (`afegeixNota()`). Ni el model d'extracció, ni el Typebot, ni cap
+  persona hi escriuen: el prompt no el coneix i el formulari no el demana.
+- **El frontend públic no el llegeix mai.** `index.html` i `app.js` llegeixen
+  els camps pel nom i mai no itineren les claus d'un esdeveniment; qui hi toqui
+  ha de mantenir-ho així.
 - **Només es mostra a `curador.html`**, com un avís groc a dalt de la fitxa, i
   **no és editable**: no porta `data-camp`, de manera que `recullFitxa()` ni el
-  veu. El curador el llegeix, no el toca.
-- **No arriba mai a `events.json`, i és deliberat.** És el camp 18è: viu a
-  `pendents.json` i a `curador.html` i s'atura allà (en publicar, la fila de
-  `pendents.json` es queda amb la nota intacta; l'1 d'octubre de 2026 va deixar
-  de ser «treta»). `recullFitxa()` construeix
-  els **17 camps públics exactes** (els setze de sempre més `periodicitat`,
-  que sí que és públic) i la nota no hi entra, o sigui que
-  `events.json` no en porta mai cap. El motiu: `events.json` és l'arxiu públic i
-  es serveix sencer a qualsevol navegador, i una nota de treball intern
-  («municipi que no consta», «títol per traduir») no hi pinta res; si mai cal
+  veu.
+- **No arriba mai a `events.json`, i és deliberat** (decidit el 29 d'agost de
+  2026; no és cap descuit i no s'ha d'«arreglar»). `recullFitxa()` construeix
+  els **17 camps públics exactes**. `events.json` es serveix sencer a qualsevol
+  navegador, i una nota de treball intern no hi pinta res; si mai cal
   consultar-la, la traça queda a l'historial de git de `pendents.json`.
-  **Decidit el 29 d'agost de 2026: no és cap descuit i no s'ha d'«arreglar».**
 - És l'única excepció a «cada camp descriu l'acte»: aquest descriu **la fila**.
-  Per això, quan es fusionen dues files duplicades, no mana la jerarquia de fonts
-  sinó que es queden **totes dues notes** (`eines/dedup-esdeveniments.js`).
+  Per això, quan es fusionen dues files duplicades, es queden **totes dues
+  notes** (`ajuntaNotes()`).
 
-*Qui l'escriu avui i qui encara no:* `mapejaAProduccio()` sí. El Worker
-(`email()` i `fetch()`) encara **no**: les files que hi entren no porten el camp
-fins que el Worker es torni a desplegar. Com que un camp desconegut és `""`,
-això no trenca res ni al curador ni al web, però val més saber-ho que
-descobrir-ho.
+*El Worker desplegat encara no l'escriu:* els avisos d'`afegeixNota()` són al
+codi del repositori però no al tauler fins que es torni a enganxar el Worker.
+Com que un camp desconegut és `""`, això no trenca res ni al curador ni al web.
 
 ## 4 bis. On viu l'enum — la llista completa
 
-Comprovat amb `grep` sobre tot el repositori el 3 de setembre de 2026. **Un
-valor nou de `comarca` o de `categoria` s'ha d'afegir als catorze llocs de la
-primera taula el mateix dia**, o el sistema el buida sol: `valorPermes()`
-retorna `""` per a tot el que no és a la seva llista, i tant `curador.html` com
-el Worker el criden en desar.
+**Un valor nou de `comarca` o de `categoria` s'ha d'afegir als dotze llocs de la
+taula el mateix dia**, o el sistema el buida sol: `valorPermes()` retorna `""`
+per a tot el que no és a la seva llista, i tant `curador.html` com el Worker el
+criden en desar.
 
 **No ho comprovis a mà —hi ha un guió que ho fa:**
 
@@ -370,9 +315,10 @@ les compara amb totes les còpies, i torna 1 si res no quadra. Enxampa un valor
 que falti, un que sobri, l'ordre canviat, el numeral del prompt que es queda
 enrere («una d'aquestes **deu**» amb tretze valors a la llista) i una còpia del
 prompt del Worker que hagi deixat de ser literal. **Executa'l sempre que toquis
-un enum, i abans de desplegar el Worker.**
+un enum, i abans de desplegar el Worker.** El germà per al joc de camps és
+`node eines/verifica-camps.js`.
 
-**Les catorze còpies vives, en nou fitxers:**
+**Les dotze còpies vives, en vuit fitxers:**
 
 | # | Fitxer | Què hi ha |
 |---|---|---|
@@ -384,31 +330,23 @@ un enum, i abans de desplegar el Worker.**
 | 6 | `app.js` | `CATEGORIES` (filtre del web públic, amb el francès) |
 | 7 | `app.js` | `CATEGORIA_ICONES` (**una icona SVG per categoria**) |
 | 8 | `curador.html` | `CATEGORIA_VALUES` (desplegable **i** `valorPermes()` en desar) |
-| 9 | `importa-csv.js` | `CATEGORIA_VALUES` |
-| 10 | `eines/dedup-esdeveniments.js` | `CATEGORIES` |
-| 11 | `eines/mapeja-adt66.js` | `CATEGORIES` |
-| 12 | `eines/mapeja-recerca.js` | `CATEGORIES` |
-| 13 | `prova-local.html` | `CATEGORIES` (mirall offline d'`app.js`) |
-| 14 | `prova-local.html` | `CATEGORIA_ICONES` (ídem) |
+| 9 | `eines/dedup-esdeveniments.js` | `CATEGORIES` |
+| 10 | `eines/mapeja-adt66.js` | `CATEGORIES` |
+| 11 | `prova-local.html` | `CATEGORIES` (mirall offline d'`app.js`) |
+| 12 | `prova-local.html` | `CATEGORIA_ICONES` (ídem) |
 
 **Els dos documents que també l'escriuen** i que queden desfasats si no es
-toquen: aquest fitxer (§4) i `docs/pas-5-typebot-questionari.md`. Les còpies que
-n'hi havia a `docs/arxiu/` no es toquen (D-03).
+toquen: aquest fitxer (§4) i `docs/pas-5-typebot-questionari.md`.
 
-**Dues còpies congelades que NO s'han de sincronitzar mai**, i per què:
-
-- `docs/arxiu-google/utils.gs` i `docs/arxiu-google/processNewEmails.gs` — codi
-  mort del sistema anterior (§9). Actualitzar-les seria fer veure que
-  s'executen.
-- `img/_ds/clm-vallespir-design-system-*/_ds_bundle.js` — export d'una eina de
-  disseny del 27 d'agost de 2026, amb una còpia fossilitzada de `CATEGORIES` a
-  dins. **Cap pàgina no el carrega**: els dos `.dc.html` d'`img/` només en fan
-  servir `tokens/colors.css`. És una fotografia, no codi.
+**Una còpia congelada que NO s'ha de sincronitzar mai:**
+`img/_ds/clm-vallespir-design-system-*/_ds_bundle.js`, export d'una eina de
+disseny del 27 d'agost de 2026, amb una còpia fossilitzada de `CATEGORIES` a
+dins. **Cap pàgina no el carrega**: els dos `.dc.html` d'`img/` només en fan
+servir `tokens/colors.css`. És una fotografia, no codi.
 
 *La resta d'ocurrències del repositori són **dades o casos de prova**, no
-enums: `events.json`, `pendents.json`, `events-exemple.json`,
-`esdeveniments-importacio-filtrat.csv` i les files de prova d'
-`eines/classifica-editorial.js`. No es toquen quan creix l'enum.*
+enums: `events.json`, `pendents.json`, `events-exemple.json` i `proves/dades/`.
+No es toquen quan creix l'enum.*
 
 ## 5. Estil de codi
 
@@ -425,6 +363,8 @@ enums: `events.json`, `pendents.json`, `events-exemple.json`,
   encadenats en codi crític.
 - **Autoprova de tot fitxer:** podria el propietari, no professional, obrir-lo al
   cap de sis mesos i arreglar-hi un error sense demanar ajuda? Si no, simplifica.
+- Als documents, cita una funció o un bloc pel nom, mai per `fitxer:línia`:
+  les línies es mouen.
 
 ## 6. Protocol lingüístic (tot el que veu el públic)
 
@@ -437,32 +377,27 @@ publicitària.
 
 ## 7. Mecànica dels serveis (fets, no decisions)
 
-- **Claude (Anthropic)** — des del 23 d'octubre de 2026; abans, Gemini (el
-  perquè, a `NOTES.md`). **Dues constants de model, una per context, que no es
-  mouen juntes**: al Worker, `CLAUDE_MODEL` = `claude-haiku-5-5`; a l'Action,
+- **Claude (Anthropic)** — **Dues constants de model, una per context, que no
+  es mouen juntes**: al Worker, `CLAUDE_MODEL` = `claude-haiku-5-5`; a l'Action,
   `CLAUDE_MODEL_TRADUCCIO` = `claude-haiku-5-5`. Tots dos amb
-  `CLAUDE_MAX_TOKENS` = 8192, perquè el pensament hi compta. Haiku i prou: el model
-  següent costa vint vegades més i el pitjor mes ja no cap en el crèdit. Un
-  `fetch` a `https://api.anthropic.com/v1/messages` i cap SDK (§3: cap npm).
+  `CLAUDE_MAX_TOKENS` = 8192, perquè el pensament hi compta. Haiku i prou: el
+  model següent costa vint vegades més i el pitjor mes ja no cap en el crèdit.
+  Un `fetch` a `https://api.anthropic.com/v1/messages` i cap SDK (§3: cap npm).
   Capçaleres `x-api-key` (la clau; mai a l'URL, mai al registre),
   `anthropic-version` = `CLAUDE_VERSIO_API` (`2026-10-21`, fixa a posta) i
   `content-type`. Cos idèntic als dos contextos llevat de l'esquema: `model`,
   `max_tokens`, `thinking: { type: 'adaptive' }` amb
   `output_config.effort: 'high'` (sense pensar, Haiku saltava les regles del
-  prompt en 15 de 19 files; amb pensament, en cap: la prova del 23 d'octubre
-  de 2026, a `NOTES.md`), `messages` amb un sol missatge
-  `user`, i `output_config.format` amb l'esquema JSON de les claus que demana
-  el prompt —les 17 de la regla 2 del prompt d'extracció al Worker
-  (`CLAUS_EXTRACCIO`), les 3 de la traducció a l'Action (`ESQUEMA_TRADUCCIO`)—,
-  que és el que garanteix el JSON. **Cap `temperature`**: la versió
-  `2026-10-21` la rebutja. El text es busca pel **tipus de bloc**
-  (`type === 'text'`), mai per la posició, i un `stop_reason` `max_tokens` o
-  `refusal` és un error. Resposta parsejada defensivament del primer `{` a
-  l'últim `}`. Si mai retorna 404 amb el nom del model, és cicle de vida normal
-  d'Anthropic: mira quin Haiku hi ha vigent i canvia la constant.
-  **Encara crida Gemini** la cadena de recerca fora de línia
-  (`eines/classifica-editorial.js` i `eines/verifica-esdeveniment.js`, via
-  `eines/processa-lot.js`): no és cap camí viu i espera la revisió D-01.
+  prompt; la prova és a `NOTES.md`), `messages` amb un sol missatge `user`, i
+  `output_config.format` amb l'esquema JSON de les claus que demana el prompt
+  —les 17 de la regla 2 del prompt d'extracció al Worker (`CLAUS_EXTRACCIO`),
+  les 3 de la traducció a l'Action (`ESQUEMA_TRADUCCIO`)—, que és el que
+  garanteix el JSON. **Cap `temperature`**: la versió `2026-10-21` la rebutja.
+  El text es busca pel **tipus de bloc** (`type === 'text'`), mai per la
+  posició, i un `stop_reason` `max_tokens` o `refusal` és un error. Resposta
+  parsejada defensivament del primer `{` a l'últim `}`. Si mai retorna 404 amb
+  el nom del model, és cicle de vida normal d'Anthropic: mira quin Haiku hi ha
+  vigent i canvia la constant.
 - **Prompt d'extracció** — `prompts/extract-event.txt` és el mestre; la còpia dins
   el Worker ha de ser-hi **idèntica, al peu de la lletra**. `{{AVUI}}` se
   substitueix per la data d'avui (`YYYY-MM-DD`), serveix només per inferir un any
@@ -473,64 +408,64 @@ publicitària.
   `clm-agenda/posters`, transformació d'entrada `w_800,c_limit,q_80,f_webp`. Només
   cal el nom del cloud, cap signatura. El preset ja converteix un PDF en WebP de la
   primera pàgina: puja el PDF tal qual. Accepta la primera imatge o PDF adjunt;
-  ignora les imatges en línia.
+  ignora les imatges en línia. Els cartells de les files de l'ADT66 es pugen a mà
+  amb `node eines/cartells-a-cloudinary.js`, mai des de l'Action.
 - **GitHub** — lectura i escriptura de `pendents.json` i `events.json` **sempre
   via l'API de continguts** (mai llegint de Pages, que serveix còpies de CDN
   endarrerides): GET per obtenir contingut + SHA, un sol PUT amb base64 i
   `JSON.stringify(dades, null, 2)`. En conflicte de SHA (escriptor concurrent),
-  torna a llegir i reintenta un cop.
+  torna a llegir i reintenta un cop. **Excepció: `curador.html`**: les decisions
+  passen per una cua d'escriptura, d'una en una, i les que s'hi acumulen surten
+  en un sol commit per fitxer; la pàgina recorda el SHA que torna cada PUT i en
+  conflicte reintenta fins a tres cops, amb pauses d'1, 2 i 4 s
+  (`ESPERES_CONFLICTE_MS`).
 - **Brevo** — un correu **transaccional per subscriptor** (mai campanya), amb línia
   de baixa bilingüe a cada missatge. Llistes per comarca (IDs als Secrets).
-- **Typebot** — el formulari recull **una sola** `descripcio` més un senyal
-  `idioma_descripcio` (`"ca"`/`"fr"`): posa el text a la banda que toca i deixa
-  l'altra buida (el curador completa la traducció en revisar). El cartell ja puja
-  del navegador a Cloudinary dins el flux del Typebot: l'URL arriba fet, guarda'l
-  tal qual.
+- **Typebot** — el formulari no és cap fitxer del repositori: s'edita al servei, i
+  la seva especificació és `docs/pas-5-typebot-questionari.md`. Recull **una
+  sola** `descripcio` més un senyal `idioma_descripcio` (`"ca"`/`"fr"`): posa el
+  text a la banda que toca i deixa l'altra buida (el curador completa la
+  traducció en revisar). El cartell ja puja del navegador a Cloudinary dins el
+  flux del Typebot: l'URL arriba fet, guarda'l tal qual.
 
 ## 7 bis. Els dos contextos d'execució, i quina configuració viu a cadascun
 
-El projecte ja no és «un Worker, tres portes». Des del 4 de setembre de 2026 hi
-ha **dos** llocs on s'executa codi sol, i no es poden configurar al mateix lloc.
+Hi ha **dos** llocs on s'executa codi sol, i no es poden configurar al mateix
+lloc.
 
 | | **El Worker** (Cloudflare) | **L'Action** (GitHub Actions) |
 |---|---|---|
 | Unitat de treball | un esdeveniment, en directe | un lot sencer, periòdicament |
-| Què el dispara | un correu, un POST del Typebot, el cron del digest | el cron setmanal del workflow, o el botó «Run workflow» |
+| Què el dispara | un correu, un POST del Typebot, el cron del digest | el botó «Run workflow» (el cron setmanal hi és escrit però comentat) |
 | Crida models? | **sí** — Claude i Cloudinary | **sí, Claude i prou** — fins a dos intents per fila (`INTENTS_PER_FILA`), i cada intent gasta pressupost, per traduir-la al català abans d'encuar-la (pas 7 bis). Cloudinary, mai |
 | Escriu | `pendents.json` | `pendents.json`, i res més |
-| Es desplega | enganxant el codi al tauler de Cloudflare | fent commit del `.yml`; no hi ha res a desplegar |
+| Es desplega | enganxant `worker/worker-concatenat.js` al tauler de Cloudflare | fent commit del `.yml`; no hi ha res a desplegar |
 | Fitxers | `worker/worker.js`, `worker/worker-concatenat.js` | `.github/workflows/sincronitza-adt66.yml` + `eines/sincronitza-programada.js` |
 
 **On viu cada configuració — i no es comparteixen mai:**
 
-- **Secrets del Worker** (tauler de Cloudflare → Settings → Variables):
+- **Al tauler del Worker** (Cloudflare → Worker → Settings): els Secrets
   `ANTHROPIC_API_KEY`, `GITHUB_TOKEN` (el de gra fi, §3), `BREVO_API_KEY`,
-  `TYPEBOT_SECRET` i els IDs de llistes de Brevo. El `CLOUDINARY_CLOUD_NAME`
-  hi és com a variable, no com a secret.
+  `TYPEBOT_SECRET`, `ADRECA_ARXIU` i els IDs de llistes de Brevo; la variable de
+  text `CLOUDINARY_CLOUD_NAME`; i l'activador cron `*/10 13,14 * * 2` (Trigger
+  Events → Cron Triggers). **Un Secret canviat no és viu fins que es desplega.**
 - **Secrets de l'Action** (GitHub → Settings → Secrets and variables →
   Actions del repositori), i n'hi ha dos, de naturalesa ben diferent:
     - `GITHUB_TOKEN` **no s'hi ha de posar**: és el token efímer que GitHub posa
       sol a cada run, amb `permissions: contents: write` declarat al `.yml`;
       neix i mor amb el run.
     - `ANTHROPIC_API_KEY` **sí que s'hi ha de posar a mà, un sol cop**. Aquest
-      magatzem és **diferent** del dels Secrets de Cloudflare, on viu la clau
-      del Worker: posar-la en un lloc no la posa a l'altre. Aquest fitxer ja
-      deia que el dia que aquest camí cridés un model el secret aniria aquí;
-      des del 4 de setembre de 2026, aquest dia ja ha arribat.
-    - **La mateixa clau d'Anthropic serveix per als dos magatzems.** Amb
-      Gemini es recomanava un projecte de Google per a cada camí, perquè la
-      quota diària era per projecte i una passada de l'Action podia deixar
-      sense quota el correu de la tarda. Anthropic no té quota diària, i el
-      límit que compta —la despesa del mes— és de l'organització o del
-      workspace, no de la clau. El pressupost de 300 crides de l'Action és ara
-      un sostre de despesa (`PRESSUPOST_CRIDES_CLAUDE`), no cap repartiment.
-    - **Si `ANTHROPIC_API_KEY` no hi és, el run NO s'atura**: les files s'encuen en
-      francès, com abans que el pas 7 bis existís, i el registre del run ho diu
-      amb un ATENCIÓ. És una configuració incompleta que es veu, no una fallada
-      silenciosa.
+      magatzem és **diferent** del dels Secrets de Cloudflare: posar-la en un
+      lloc no la posa a l'altre. La mateixa clau serveix per als dos: el límit
+      que compta —la despesa del mes— és de l'organització o del workspace, no
+      de la clau. El pressupost de 300 crides de l'Action és un sostre de
+      despesa (`PRESSUPOST_CRIDES_CLAUDE`).
+    - **Si `ANTHROPIC_API_KEY` no hi és, el run NO s'atura**: les files s'encuen
+      en francès i el registre del run ho diu amb un ATENCIÓ. És una
+      configuració incompleta que es veu, no una fallada silenciosa.
 - **Les coordenades del repositori** (`propietari/repositori`, branca, noms dels
-  dos fitxers) són constants dins de cada fitxer de codi, com sempre. A l'Action,
-  el repositori el dona `GITHUB_REPOSITORY`, que ve del propi run.
+  dos fitxers) són constants dins de cada fitxer de codi. A l'Action, el
+  repositori el dona `GITHUB_REPOSITORY`, que ve del propi run.
 
 **Per què això no trenca el §3** («cap servidor més enllà de l'únic Worker»): un
 runner d'Actions no és cap servidor. No escolta res, no té adreça, no és
@@ -544,9 +479,18 @@ públic · comentaris o funcions socials · analítica o seguiment · cap base d
 cap servidor més enllà de l'únic Worker · cap framework CSS o JS · cap selector
 d'interval de dates al web públic.
 
-Ajornat amb camí ja acordat (documentat a `FASES.md` §Ajornats, no per construir
-ara): tokens de curació per comarca; confirmació del primer remitent; «send mail
-as» per respondre des de `agenda@clm.cat`.
+**Ajornat amb camí ja acordat** (no per construir ara):
+
+- **Tokens de curació per comarca.** Quan una associació vulgui curar la seva
+  comarca: un token de gra fi propi + `curador.html?comarca=Vallespir` que filtra
+  la cua. Cap taula d'usuaris; l'historial de commits diu qui ha aprovat què.
+  Només després d'una temporada d'ús en solitari.
+- **Confirmació del primer remitent.** Quan calgui, una llista `remitents.json`
+  al repositori gestionada pel Worker. No dissenyar-ho fins que faci falta.
+- **Respondre des de `agenda@clm.cat`** («send mail as» amb relay SMTP): només
+  quan la recepció porti temps rodant.
+- **Adreça atrapa-ho-tot `*@clm.cat`:** xarxa contra errates, a canvi de brossa.
+  Decisió del propietari, cap codi.
 
 ## 9. Actius existents — NO els reconstrueixis
 
@@ -555,23 +499,18 @@ Ja fets, en producció, al mateix repositori:
 - **`index.html` / `style.css` / `app.js`** — el web públic, amb el disseny
   blanc-i-negre de dos temes (clar/fosc), el logotip «Què fas?», filtres per
   comarca i categoria, llista cronològica per dies. No en toquis el disseny.
+  **`qui-som.html`** i **`mencions-legals.html`**.
 - **`events.json`** — dades publicades. **`events-exemple.json`** + `?prova=1` —
   mode de prova amb dades fictícies. **`prova-local.html`** — mirall offline.
-- **`prompts/extract-event.txt`** — el prompt d'extracció mestre.
-- **`fonts/`** (woff2 autoallotjats) i **`img/logo/`**.
-- **`docs/`** — guies i informes, inclòs `CRITERI-EDITORIAL.md` (el criteri de què
-  entra a l'agenda i què no: és del curador, no del codi).
-  Les exclusions per criteri polític (1 d'octubre de 2026) són a la seva secció
-  «Exclusions per criteri polític» i l'eina que aplica la de lloc és
-  `eines/exclusions-editorials.js`. Els tastos i les visites de caves (1
-  d'octubre de 2026) són a la secció «Activitat comercial: tastos i visites de
-  caves», i la regla «Tast comercial» també viu a `eines/exclusions-editorials.js`.
-- **`docs/arxiu-google/`** — **codi mort, no el toquis.** El sistema anterior
-  (full de càlcul + Apps Script), retirat de l'ús viu el 29 d'agost de 2026 amb
-  la Fase 4, i les guies que el descrivien. Es conserva perquè diverses notes de
-  `NOTES.md` s'hi refereixen per explicar per què el Worker fa les coses com les
-  fa. Res d'allà dins no s'executa i res no s'ha de mantenir al dia. Les còpies
-  originals de `creaId()` i `valorPermes()` són a `docs/arxiu-google/utils.gs`.
-
-La teva feina és **la canonada nova i `curador.html`** — res més. Els detalls, fase
-a fase, a `FASES.md`.
+- **`curador.html`** + **`curador-cua.js`** — la cua de revisió i les peces
+  d'estat que Node prova.
+- **`prompts/extract-event.txt`** — el prompt d'extracció mestre, amb tres
+  correus de prova a `prompts/exemples-test/`.
+- **`fonts/`** (woff2 autoallotjats) i **`img/logo/`**. Les fonts editables del
+  logotip són els `.dc.html` d'`img/`.
+- **`docs/`** — `CRITERI-EDITORIAL.md` (el criteri de què entra a l'agenda i què
+  no: és del curador, no del codi; les exclusions per criteri polític i la regla
+  «Tast comercial» les aplica `eines/exclusions-editorials.js`),
+  `COORDINACIO.md` (el protocol amb Claude Chat) i les guies de configuració
+  dels serveis (`pas-*.md`).
+- **`NOTES.md`** — la història, les decisions i les lliçons.

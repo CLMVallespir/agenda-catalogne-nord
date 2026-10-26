@@ -5,7 +5,7 @@
 // eines/puja-cartell.js amb el pujador de debò d'eines/cloudinary-adapter.js, i
 // tornar a escriure el fitxer. Res més.
 //
-//   - Cap crida a Gemini. Cap mapeig, cap deduplicació, cap filtre, cap
+//   - Cap crida a cap model. Cap mapeig, cap deduplicació, cap filtre, cap
 //     classificació: cadascuna és una peça a part i cap no es toca des d'aquí.
 //   - Cap lògica pròpia sobre cartells. Qui decideix què es puja, què es
 //     descarta i què s'escriu a `nota_curador` és pujaCartell(); aquest fitxer

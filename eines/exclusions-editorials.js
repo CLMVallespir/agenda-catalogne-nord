@@ -16,7 +16,7 @@
 //     a `nota_curador` de les files que R4 rescata. No crida cap API, no llegeix
 //     ni escriu cap fitxer.
 //   - NO posa cap `estat` a res. Una oferta descartada o exclosa simplement no
-//     entra a `pendents.json` (ni, per tant, gasta cap crida a Gemini): és el
+//     entra a `pendents.json` (ni, per tant, gasta cap crida al model): és el
 //     que fa eines/sincronitza-programada.js amb el que torna el lot.
 //   - Mira camps del flux TAL COM ARRIBEN (`Commune`, `DETAILADRESSE`,
 //     `RechercheTYPE`, `SyndicObjectName`, `DETAILDESCRIPTIF`, `COMMUNNOM`,

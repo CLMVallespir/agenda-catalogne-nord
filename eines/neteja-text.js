@@ -1,14 +1,14 @@
 // ---------------------------------------------------------------------------
-// NETEJA DEL TEXT DE FONT — abans que entri a cap prompt de Gemini
+// NETEJA DEL TEXT DE FONT — abans que entri a cap prompt
 //
 // Una sola feina: agafar un camp de text tal com arriba d'una font externa i
 // tornar-lo llegible. Res més.
 //
-//   - Cap crida a Gemini ni a cap API. Codi pur: entra una cadena, en surt
+//   - Cap crida a cap model ni a cap API. Codi pur: entra una cadena, en surt
 //     una altra. No llegeix res i no escriu enlloc.
 //   - Cap decisió editorial: no tradueix, no resumeix, no talla, no jutja si
-//     l'acte entra a l'agenda. Això és de docs/CRITERI-EDITORIAL.md i de
-//     eines/classifica-editorial.js, no d'aquí.
+//     l'acte entra a l'agenda. Això és de docs/CRITERI-EDITORIAL.md i del
+//     curador, no d'aquí.
 //   - Cap decisió d'esquema: no coerceix comarques ni categories, no toca
 //     `estat` ni `nota_curador`.
 //
