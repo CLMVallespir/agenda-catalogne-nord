@@ -9723,5 +9723,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.424Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-castanyada-i-vi",
+    "titol": "Castanyada i vi nou",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Mosset",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "El comitè de festes de Mosset organitza un moment de convivència al voltant de la tradicional Castanyada i vi nou, que té com a elements les castanyes i el vi nou. L'acte requereix reserva prèvia.",
+    "descripcio_fr": "Le comité des fêtes de Mosset organise un moment de convivialité autour de la traditionnelle Castanyada i vi nou, qui a pour éléments les châtaignes et le vin nouveau. L'activité nécessite une réservation préalable.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/1789588935743.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.448Z",
+    "periodicitat": ""
   }
 ]
