@@ -9343,5 +9343,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.739Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-taller-de-conversa",
+    "titol": "Taller de conversa en català «L'Esmorzar»",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "10:00",
+    "lloc": "Médiathèque2 Rue de la Paix",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'un moment d'intercanvi en català, de to distès i obert a tothom, sigui quin sigui el nivell de la llengua. Durant la trobada es pren una beguda calenta i es comparteixen records d'infància o d'altres temes. Hi poden participar grans i petits, siguin o no socis de la mediateca.",
+    "descripcio_fr": "Il s'agit d'un moment d'échange en catalan, convivial et ouvert à tous, quel que soit le niveau de la langue. Pendant la rencontre, on prend une boisson chaude et l'on partage des souvenirs d'enfance ou d'autres sujets. Petits et grands peuvent y participer, qu'ils soient ou non adhérents de la médiathèque.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/catalan.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.742Z",
+    "periodicitat": ""
   }
 ]
