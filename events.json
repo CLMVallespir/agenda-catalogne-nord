@@ -8868,5 +8868,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.737Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-salon-des-antiquaires",
+    "titol": "Salon des Antiquaires au Château royal",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "10:00",
+    "lloc": "Quai de l'Amirauté",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El Salon des Antiquaires torna al Château royal amb una nova edició marcada per l'elegància i l'autenticitat. Una trentena d'antiquaris de tota França, seleccionats i acreditats per Robert Gaillard, expert homologat C.E.F.A., hi presentaran peces dels segles XVIII, XIX i XX: mobles, pintures, argenteria, joies, catifes, teixits antics i vidres. El saló té el label «Authenticité et Qualité», atorgat pel Syndicat National du Commerce de l'Antiquité et de l'Occasion (SNCAO-GA).",
+    "descripcio_fr": "Le Salon des Antiquaires revient au Château royal pour une nouvelle édition placée sous le signe de l'élégance et de l'authenticité. Une trentaine d'antiquaires venus de toute la France, sélectionnés et accrédités par Robert Gaillard, expert homologué C.E.F.A., y présenteront des pièces des XVIIIe, XIXe et XXe siècles : meubles, peintures, argenterie, bijoux, tapis, textiles anciens et verrerie. Le salon porte le label « Authenticité et Qualité », décerné par le Syndicat National du Commerce de l'Antiquité et de l'Occasion (SNCAO-GA).",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026-10-29-automne-des-antiquaires.png?width=150&height=120",
+    "font_url": "https://www.tourisme-collioure.com/fete-manifestation/marche-des-antiquaires/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.727Z",
+    "periodicitat": ""
   }
 ]
