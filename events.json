@@ -11015,5 +11015,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.376Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-taller-descriptura-les",
+    "titol": "Taller d'escriptura «Les ciels volcaniques de Turner»",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "El taller d'escriptura permet explorar la part poètica i les emocions de cadascú, sense jutjaments ni objectius a assolir. El grup és guiat a través de miniconferències, debats, textos llegits i compartits, imatges i una escolta respectuosa. S'hi llegeixen textos de Patrick Marcel, Daniel Maximin, Gísli Pálsson, Andrea Thominot i Aldo Leopold, entre d'altres, i es descobreixen autors i artistes. Hi predomina el plaer d'estar junts, de llegir-se i d'escoltar-se.",
+    "descripcio_fr": "L'atelier d'écriture permet d'explorer la part poétique et les émotions de chacun, sans jugement ni objectif à atteindre. Le groupe est guidé à travers des mini-conférences, des débats, des textes lus et partagés, des images et une écoute respectueuse. On y lit des textes de Patrick Marcel, Daniel Maximin, Gísli Pálsson, Andrea Thominot et Aldo Leopold, entre autres, et l'on découvre des auteur·e·s et artistes. Le plaisir d'être ensemble, de se lire et de s'écouter y prédomine.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Ciels-volcaniques-de-Turner---Novembre-2026-.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.379Z",
+    "periodicitat": ""
   }
 ]
