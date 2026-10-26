@@ -10217,5 +10217,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.407Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-05-jeudis-aux-collections",
+    "titol": "Jeudis aux collections",
+    "data_inici": "2026-11-05",
+    "data_fi": "2026-11-05",
+    "hora": "18:30",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Taller creatiu per a adults, animat per l'artista Véronique Ricart. Es tracta d'un taller d'exploració artística al voltant de la matèria, el color i la composició. Mitjançant diferents tècniques pictòriques i jocs de textures, els participants exploren el seu propi llenguatge plàstic, es deixen anar i desenvolupen una aproximació sensible i intuïtiva a la pintura.",
+    "descripcio_fr": "Atelier créatif pour adultes, animé par l'artiste Véronique Ricart. Il s'agit d'un atelier d'exploration artistique autour de la matière, de la couleur et de la composition. Grâce à différentes techniques picturales et à des jeux de textures, les participants explorent leur propre langage plastique, lâchent prise et développent une approche sensible et intuitive de la peinture.",
+    "associacio": "Contacter COLLECTIONS DE SAINT CYPRIEN",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/lcd-jeudis--2-.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.421Z",
+    "periodicitat": ""
   }
 ]
