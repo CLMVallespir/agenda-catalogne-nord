@@ -2720,12 +2720,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZIRQ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-07-masterclasses-gourmandes",
+    "id": "2026-11-07-masterclasses-gurmandes",
     "titol": "Masterclasses gurmandes",
     "data_inici": "2026-11-07",
     "data_fi": "2026-11-07",
     "hora": "10:00",
-    "lloc": "Théâtre Jean Piat\n3 Rue Joseph Lafon",
+    "lloc": "Théâtre Jean Piat3 Rue Joseph Lafon",
     "municipi": "Canet de Rosselló",
     "comarca": "Rosselló",
     "categoria": "",
@@ -2734,7 +2734,7 @@
     "associacio": "Contacter Madame DEPOUES Virginie",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aioli-e1792412235488.jpg?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.474Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZJAX] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
