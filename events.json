@@ -9856,5 +9856,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.372Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-03-exposicio-plan-large",
+    "titol": "Exposició «Plan large/Plan serré» d'Andrée Batlle i Anne-Marie Outters",
+    "data_inici": "2026-11-03",
+    "data_fi": "2026-11-03",
+    "hora": "",
+    "lloc": "Arabesque - Centre d'Art5 Rue Jules Romains",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Andrée Batlle i Anne-Marie Outters comparteixen la mirada sobre el món viu en l'exposició Plan large/Plan serré, on juguen amb les escales i els punts de vista. Entre paisatges, natura i escenes quotidianes, les seves obres conviden a observar de manera diferent el que ens envolta, des del detall més íntim fins als horitzons més amplis. Es tracta d'una mostra on la sensibilitat, la llum i la mirada dialoguen en harmonia. Va dirigida a tot tipus de públic.",
+    "descripcio_fr": "Andrée Batlle et Anne-Marie Outters partagent un même regard sur le monde vivant dans l'exposition Plan large/Plan serré, où elles jouent avec les échelles et les points de vue. Entre paysages, nature et scènes du quotidien, leurs œuvres invitent à observer autrement ce qui nous entoure, du détail le plus intime aux horizons les plus vastes. Il s'agit d'une exposition où la sensibilité, la lumière et le regard dialoguent en harmonie. Elle s'adresse à tous les publics.",
+    "associacio": "Contacter ARABESQUE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52YEOS-1786552437892.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.424Z",
+    "periodicitat": ""
   }
 ]
