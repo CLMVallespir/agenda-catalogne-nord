@@ -8925,5 +8925,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.761Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-projection-miro-dans",
+    "titol": "Projection Miró, dans la couleur de ses rêves",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "16:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "El realitzador Jean-Michel Meurice repassa els vint anys decisius en què Miró inventa el seu llenguatge de signes, entre el taller de Montroig i el de Palma, el mateix lloc que evoca l'exposició del museu. El documentari, de 52 minuts de durada, revela un artista de mil facetes que va treballar amb diferents mitjans al llarg de la seva carrera.",
+    "descripcio_fr": "Le réalisateur Jean-Michel Meurice retrace les vingt années décisives au cours desquelles Miró invente son langage de signes, entre l'atelier de Montroig et celui de Palma, le même lieu qu'évoque l'exposition du musée. Ce documentaire de 52 minutes révèle un artiste aux mille facettes, qui a travaillé avec différents médiums tout au long de sa carrière.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/MIRO.png?width=150&height=120",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.812Z",
+    "periodicitat": ""
   }
 ]
