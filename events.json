@@ -9837,5 +9837,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.418Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-03-cafe-literari",
+    "titol": "Cafè literari",
+    "data_inici": "2026-11-03",
+    "data_fi": "2026-11-03",
+    "hora": "10:00",
+    "lloc": "10 Rue de la Mairie",
+    "municipi": "Sant Martí de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El cafè literari de Sant Martí de Fenollet és una trobada on cada persona presenta les lectures del moment. Per a qui no hagi llegit, s'hi presenta una pel·lícula, una exposició o una lectura en veu alta. L'activitat és oberta a tothom. Per a la sessió de febrer es proposa triar de 2 a 5 llibres que hagin marcat l'any 2025 i que es vulguin recomanar.",
+    "descripcio_fr": "Le café littéraire de Sant Martí de Fenollet est une rencontre où chacun présente ses lectures du moment. Pour celles et ceux qui n'ont pas lu, on présente un film, une exposition ou une lecture à voix haute. L'activité est ouverte à tous. Pour la séance de février, il est proposé de sélectionner de 2 à 5 livres ayant marqué l'année 2025 et que l'on souhaite recommander.",
+    "associacio": "Contacter Madame BENET Brigitte",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cafe-litteraire-ST-MARTIN.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.372Z",
+    "periodicitat": ""
   }
 ]
