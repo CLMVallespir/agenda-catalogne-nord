@@ -4100,12 +4100,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52XK17] Ve marcada «Jeux» sense cap patró de joc de club al títol: la categoria queda buida. Si és un joc d'entitat, és Vida associativa; si és un negoci, la fila no hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-30-duo-piano-et",
+    "id": "2026-10-30-duo-piano-i",
     "titol": "Duo piano i violí",
     "data_inici": "2026-10-30",
     "data_fi": "2026-10-30",
     "hora": "12:30",
-    "lloc": "Avenue Maréchal Leclerc\nAvenue Maréchal Leclerc",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Teatre",
@@ -4114,7 +4114,7 @@
     "associacio": "Contacter BILLETTERIE",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Duo-Piano-et-Violon.jpg?width=150&height=120",
     "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.772Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52XKGK] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
