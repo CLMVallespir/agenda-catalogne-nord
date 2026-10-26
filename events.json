@@ -10559,5 +10559,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.360Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-taller-descriptura-literaria",
+    "titol": "Taller d'escriptura literària amb Rose-Marie Mattiani",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "09:30",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "El taller s'adreça a qualsevol persona que tingui ganes d'escriure i necessiti ser acompanyada, estimulada i animada en la seva escriptura, amb el desig de progressar dins d'un grup constructiu. El taller és conduït per Rose-Marie Mattiani.",
+    "descripcio_fr": "L'atelier s'adresse à toute personne qui a envie d'écrire et qui a besoin d'être accompagnée, stimulée et encouragée dans son écriture, guidée par le désir de progresser au sein d'un groupe constructif. Il est conduit par Rose-Marie Mattiani.",
+    "associacio": "Contacter MÉDIATHÈQUE PROSPER MÉRIMÉE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52XJYW-1783698631603.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.406Z",
+    "periodicitat": ""
   }
 ]
