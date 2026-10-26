@@ -10958,5 +10958,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.481Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-grande-rifle-de",
+    "titol": "Grande rifle de la Saint Martin 2026",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "15:30",
+    "lloc": "SALLE JEANTET VIOLET",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "La rifa té molts lots en joc i es fa en un ambient festiu, amb la presència dels Dansaires Catalans de Tuïr. Aquesta activitat ajuda l'entitat a finançar els vestits tradicionals i els intercanvis amb altres grups folklòrics de França. Així es contribueix a la transmissió i la valorització del patrimoni cultural.",
+    "descripcio_fr": "La rifle comporte de nombreux lots et se déroule dans une ambiance conviviale, avec la présence des Dansaires Catalans de Tuïr. Cette activité aide l'association à financer les costumes traditionnels et les échanges avec d'autres groupes folkloriques de France. Elle contribue ainsi à la transmission et à la mise en valeur du patrimoine culturel.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aSPRES-THUIR-RIFLE-ST-MARTIN26.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.364Z",
+    "periodicitat": ""
   }
 ]
