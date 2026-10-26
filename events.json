@@ -9286,5 +9286,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.834Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-la-pause-dej",
+    "titol": "La pause dej' au musée - Visites flash",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "12:15",
+    "lloc": "Musée Hyacinthe Rigaud21 rue Mailly",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "El cicle proposa visites curtes que recorren obres del museu. Hi ha sessions sobre el paisatge després de l'impressionisme, amb la pintura de Terrus i Bausil, i una altra sobre la maternitat i la família a les col·leccions permanents, amb motiu d'Octobre rose. També s'hi tracten Miró i la guerra civil espanyola, l'abstracció, la ceràmica de Josep Llorens Artigas i l'academicisme, a través d'obres d'Ingres i de Gabriel Faraill.",
+    "descripcio_fr": "Le cycle propose de courtes visites qui parcourent des œuvres du musée. Il comprend des séances sur le paysage après l'impressionnisme, avec la peinture de Terrus et Bausil, et une autre sur la maternité et la famille dans les collections permanentes, à l'occasion d'Octobre rose. Sont également abordés Miró et la guerre civile espagnole, l'abstraction, la céramique de Josep Llorens Artigas et l'académisme, à travers des œuvres d'Ingres et de Gabriel Faraill.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/DETECTIVES-AU-MUSEE---ENQUETE-SUR-LES-FEMMES-EN-IMAGES----Avril-2026-2.jpg?width=150&height=120",
+    "font_url": "https://www.musee-rigaud.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.835Z",
+    "periodicitat": ""
   }
 ]
