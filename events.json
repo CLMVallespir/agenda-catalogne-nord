@@ -9381,5 +9381,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.760Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-incollables",
+    "titol": "Incollables",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "16:30",
+    "lloc": "Théâtre Municipal Jordi Pere Cerdà5 Place de la République",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Incollables és un duo coreogràfic i burlesc en què dos personatges veuen com els seus caps s'enganxen a tot el que toquen, fins que s'enganxen l'un a l'altre. Entre contorsió, equilibri, teatre físic i clown, els cossos s'embullen en un caos alegre. La peça explora amb humor, a través de situacions absurdes i estratègies extravagants, els pensaments obsessius, els bloquejos i les fragilitats. És un espectacle sensible i original, adreçat tant als petits com als grans, a partir de 4 anys.",
+    "descripcio_fr": "Incollables est un duo chorégraphique et burlesque dans lequel deux personnages voient leurs têtes se coller à tout ce qu'elles touchent, jusqu'à se retrouver collées l'une à l'autre. Entre contorsion, équilibre, théâtre physique et clown, les corps s'emmêlent dans un chaos joyeux. La pièce explore avec humour, à travers des situations absurdes et des stratégies farfelues, les pensées obsessionnelles, les blocages et les fragilités. Il s'agit d'un spectacle sensible et original, destiné aux petits comme aux grands, à partir de 4 ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Incollables---visuel-1.jpg?width=150&height=120",
+    "font_url": "https://www.perpignantourisme.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.801Z",
+    "periodicitat": ""
   }
 ]
