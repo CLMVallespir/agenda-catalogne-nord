@@ -10711,5 +10711,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.458Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-taller-creatiu",
+    "titol": "Taller creatiu",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "",
+    "lloc": "2 Avenue Dumayne",
+    "municipi": "Font-romeu",
+    "comarca": "Cerdanya",
+    "categoria": "Taller",
+    "descripcio_ca": "Taller creatiu, lúdic i colorit, en què es fabrica una làmpada de lava. L'activitat, que es fa a Font-romeu, s'adreça a infants a partir de 7 anys i cal inscriure-s'hi prèviament.",
+    "descripcio_fr": "Atelier créatif, ludique et coloré, au cours duquel on fabrique une lampe à lave. L'activité, qui se déroule à Font-romeu, s'adresse aux enfants à partir de 7 ans et nécessite une inscription préalable.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/lampe-a-lave---1-.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.458Z",
+    "periodicitat": ""
   }
 ]
