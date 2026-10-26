@@ -9305,5 +9305,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.835Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-la-bataille-de",
+    "titol": "La bataille de Gaulle - Partie 1 - L'âge de fer",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "21:15",
+    "lloc": "Cinéma \"Le Casteil\"",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Cinema",
+    "descripcio_ca": "Pel·lícula històrica i thriller dirigida per Antonin Baudry, amb Simon Abkarian, Simon Russell Beale i Florian Lesieur. La França s'enfonsa i signa l'armistici, però un general desconegut, sol contra tots, s'escapa cap a Londres per intentar convèncer el món que la batalla de França no ha acabat ni s'ha perdut. Poc a poc, a Anglaterra, a França i a l'Àfrica, es van aixecant resistents en la clandestinitat, estudiants de secundària revoltats i soldats decidits.",
+    "descripcio_fr": "Thriller historique réalisé par Antonin Baudry, avec Simon Abkarian, Simon Russell Beale et Florian Lesieur. La France s'effondre et signe l'armistice, mais un général inconnu, seul contre tous, s'échappe vers Londres pour tenter de convaincre le monde que la bataille de France n'est ni terminée ni perdue. Peu à peu, en Angleterre, en France et en Afrique, se lèvent des résistants de l'ombre, des lycéens révoltés et des soldats déterminés.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/la-bataille-de-Gaulle-Partie-1---2.jpg?width=150&height=120",
+    "font_url": "https://www.ticketingcine.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.841Z",
+    "periodicitat": ""
   }
 ]
