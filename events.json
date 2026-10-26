@@ -9457,5 +9457,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.821Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-salo-artesanal-de",
+    "titol": "Saló artesanal de moda i confecció",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "10:00",
+    "lloc": "4 Avenue Chopin",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La sisena edició del saló artesanal de moda i confecció reuneix creacions artesanals de moda i confecció durant un cap de setmana dedicat a la creació, a compartir i al saber fer local. Hi haurà una desfilada de moda i servei de bar i restauració. L'acte es fa a Illa.",
+    "descripcio_fr": "La 6e édition du salon artisanal de mode et de couture réunit des créations artisanales de mode et de couture pendant un week-end consacré à la création, au partage et au savoir-faire local. Il y aura un défilé de mode et un service de buvette et de restauration. L'événement se déroule à Illa.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Salon-Couture.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.828Z",
+    "periodicitat": ""
   }
 ]
