@@ -10540,5 +10540,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.468Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-salo-del-llibre",
+    "titol": "Saló del llibre",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "09:00",
+    "lloc": "RUE LEO LAGRANGE",
+    "municipi": "Sant Pau de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Saló adreçat als amants dels llibres i de la literatura, amb trobades amb autors i editors. Per tancar la jornada, es representa l'obra de teatre Germinal.",
+    "descripcio_fr": "Salon destiné à tous les passionnés de livres et de littérature, avec des rencontres avec des auteurs et des éditeurs. Pour clôturer la journée, la pièce de théâtre Germinal est proposée.",
+    "associacio": "Contacter Madame BIBLIOTHEQUE MUNICIPALE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/SALON-DU-LIVRE-2026---MAJ-19.09.26.png?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.360Z",
+    "periodicitat": ""
   }
 ]
