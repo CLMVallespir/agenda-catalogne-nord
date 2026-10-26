@@ -9134,5 +9134,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.733Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-coldplayed",
+    "titol": "Coldplayed",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "20:30",
+    "lloc": "Palais des congrèsPlace Armand Lanoux",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Després d'un concert de Coldplay al Stade de France, Kévin Cartière decideix crear un grup tribut del grup britànic. Set amics músics i tècnics recreen el so, l'univers visual, els efectes i l'ambient de Coldplay. El grup, originari dels Hauts de France, ofereix un espectacle fidel a l'actualitat de la banda, amb duets amb Rihanna, Séléna Gomez i Beyoncé, com Princess Of China, Let Somebody Go i Hymn For The Weekend. Anne-Sophie Cartière hi aporta una nota exòtica i festiva.",
+    "descripcio_fr": "Après un concert de Coldplay au Stade de France, Kévin Cartière décide de créer un groupe hommage au groupe britannique. Sept amis musiciens et techniciens recréent le son, l'univers visuel, les effets et l'ambiance de Coldplay. Le groupe, originaire des Hauts de France, propose un spectacle fidèle à l'actualité du groupe, avec des duos avec Rihanna, Séléna Gomez et Beyoncé, comme Princess Of China, Let Somebody Go et Hymn For The Weekend. Anne-Sophie Cartière y apporte une touche exotique et festive.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/COLDPLAYED.jpg?width=150&height=120",
+    "font_url": "https://my.weezevent.com/coldplayed-perpignan-1",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.753Z",
+    "periodicitat": ""
   }
 ]
