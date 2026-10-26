@@ -9248,5 +9248,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.827Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-romulus-do-brasil",
+    "titol": "Rômulus do Brasil s'invita a l'OT",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "16:00",
+    "lloc": "6, rue de la République",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Inspirat per les músiques populars del Brasil, Romulo Gonçalves desenvolupa un univers on es combinen el jazz, la samba i influències afrobrasileres i amerindis. El seu repertori, marcat per la poesia, barreja subtilment sonoritats portugueses amb l'univers d'Arthur Rimbaud, i revela la sensibilitat i el talent d'aquest autor i compositor.",
+    "descripcio_fr": "Inspiré par les musiques populaires du Brésil, Romulo Gonçalves développe un univers où se combinent le jazz, la samba et des influences afro-brésiliennes et amérindiennes. Son répertoire, empreint de poésie, mêle subtilement des sonorités portugaises à l'univers d'Arthur Rimbaud, révélant la sensibilité et le talent de cet auteur-compositeur.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Romulus-do-brasil.png?width=150&height=120",
+    "font_url": "https://www.tourisme-collioure.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.831Z",
+    "periodicitat": ""
   }
 ]
