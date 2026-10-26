@@ -3560,12 +3560,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z8IO] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-29-conference-le-canigou",
+    "id": "2026-10-29-conferencia-el-canigo",
     "titol": "Conferència: el Canigó, Grand Site de France: història, reptes i perspectives",
     "data_inici": "2026-10-29",
     "data_fi": "2026-10-29",
     "hora": "18:00",
-    "lloc": "Salle Pabirans\nPassage de Pabirans\nPlace Pierre ROIG",
+    "lloc": "Salle PabiransPassage de PabiransPlace Pierre ROIG",
     "municipi": "Santa Maria la Mar",
     "comarca": "Rosselló",
     "categoria": "Conferència",
@@ -3574,7 +3574,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2910-2.png?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.822Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z947] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
