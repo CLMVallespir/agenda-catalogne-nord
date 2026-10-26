@@ -10996,5 +10996,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.376Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-tarda-de-ball",
+    "titol": "Tarda de ball",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "15:00",
+    "lloc": "196 avenue de Perpignan",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "La tarda inclou una animació musical a càrrec del grup Bruno Masnou, de varietats. L'acte permet compartir un moment de convivència al voltant de la dansa i la música. Hi ha també un servei de petita restauració.",
+    "descripcio_fr": "L'après-midi comprend une animation musicale assurée par le groupe Bruno Masnou, de variétés. L'activité permet de partager un moment convivial autour de la danse et de la musique. Un service de petite restauration est également proposé sur place.",
+    "associacio": "Contacter Monsieur CANERIE Cyril",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Visuel-paysage-2.png?width=150&height=120",
+    "font_url": "http://www.canet-tourisme.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.376Z",
+    "periodicitat": ""
   }
 ]
