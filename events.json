@@ -9780,5 +9780,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.463Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-01-vide-greni-i",
+    "titol": "Vide-greni i borsa de joguines",
+    "data_inici": "2026-11-01",
+    "data_fi": "2026-11-01",
+    "hora": "06:30",
+    "lloc": "Capellans",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "L'associació Le Cercle des nageurs de Saint-Cyprien organitza un vide-greni i una borsa de joguines. Hi ha servei de restauració i bar al lloc. Les inscripcions són prèvies i cal portar-hi una còpia del document d'identitat.",
+    "descripcio_fr": "L'association Le Cercle des nageurs de Saint-Cyprien organise un vide-grenier et une bourse aux jouets. Une restauration et une buvette sont proposées sur place. Les inscriptions sont préalables et il faut se munir d'une copie de sa pièce d'identité.",
+    "associacio": "Contacter ASSOCIATION LE CERCLE DES NAGEURS DE SAINT-CYPRIEN",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/AFFICHE-BJ-ET-VG-01.11.2026.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.473Z",
+    "periodicitat": ""
   }
 ]
