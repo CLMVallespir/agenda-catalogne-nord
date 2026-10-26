@@ -9115,5 +9115,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.868Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-animacio-de-realitat",
+    "titol": "Animació de realitat virtual",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "15:00",
+    "lloc": "7 passage jeantet violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte proposa una trobada amb la realitat virtual. És per a tothom a partir de 12 anys, i hi ha una franja específica per a adults i gent gran.",
+    "descripcio_fr": "L'acte propose une rencontre avec la réalité virtuelle. Il s'adresse à tout public à partir de 12 ans, et une séance spécifique est prévue pour les adultes et les seniors.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-realitvirt.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.733Z",
+    "periodicitat": ""
   }
 ]
