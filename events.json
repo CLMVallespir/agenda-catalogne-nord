@@ -9001,5 +9001,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.823Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-la-grange-aux",
+    "titol": "La Grange aux Loups",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "16:30",
+    "lloc": "Salle Cal Panche",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "",
+    "descripcio_ca": "L'acte consisteix en una partida del mític joc del Loup Garou. És per a públic a partir de 6 anys.",
+    "descripcio_fr": "L'acte consiste en une partie du mythique jeu du Loup Garou. Il s'adresse au public à partir de 6 ans.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/LUOP-GAROU.jpg?width=150&height=120",
+    "font_url": "https://my.weezevent.com/la-grange-aux-loups",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.823Z",
+    "periodicitat": ""
   }
 ]
