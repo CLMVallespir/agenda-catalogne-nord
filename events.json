@@ -9153,5 +9153,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.753Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-carpenter-brut-primera",
+    "titol": "Carpenter Brut + primera part",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "20:30",
+    "lloc": "ElMediatorAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Carpenter Brut s'ha imposat com un dels artistes més destacats de l'escena synthwave internacional, amb un so potent i directe. Inspirat en John Carpenter, Dario Argento, Slayer o Justice, construeix un univers coherent, fosc i estilitzat, a mig camí entre el thriller retro, el glam-metal i la distopia futurista. Amb Leather Temple tanca una trilogia iniciada amb Leather Teeth i Leather Terror, i ofereix una obra total: alhora àlbum conceptual, banda sonora d'una pel·lícula imaginària i experiència gràfica postapocalíptica.",
+    "descripcio_fr": "Carpenter Brut s'est imposé comme l'un des artistes majeurs de la scène synthwave internationale, avec un son puissant et direct. Puisant son inspiration chez John Carpenter, Dario Argento, Slayer ou Justice, il construit un univers cohérent, sombre et stylisé, à la croisée du thriller rétro, du glam-metal et de la dystopie futuriste. Avec Leather Temple, il clôt une trilogie amorcée par Leather Teeth et Leather Terror, et livre une œuvre totale : à la fois album conceptuel, bande originale d'un film imaginaire et expérience graphique post-apocalyptique.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Carpenter-Brut--1-.jpg?width=150&height=120",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/carpenter-brut-10-2026",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.758Z",
+    "periodicitat": ""
   }
 ]
