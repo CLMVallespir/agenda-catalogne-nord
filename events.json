@@ -9058,5 +9058,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.839Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-cinema-mochy",
+    "titol": "Cinema Mochy",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "18:15",
+    "lloc": "Cinéma \"Le Casteil\"",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Cinema",
+    "descripcio_ca": "Projecció de la pel·lícula d'animació Mochy, amb animació de Jérémie Degruson i Yanis Belaid. Està destinada a infants a partir de 6 anys. Mochy és un jove gos de gran cor, però no té un físic fàcil, i això no l'impedeix de tenir un somni: participar en el concurs del gos més bonic. Superant tots els obstacles, farà tot el possible per dur a terme aquest projecte agosarat, amb l'esperança secreta de trobar la persona que l'estimarà per a tota la vida.",
+    "descripcio_fr": "Projection du film d'animation Mochy, avec une animation de Jérémie Degruson et Yanis Belaid. Elle s'adresse aux enfants à partir de 6 ans. Mochy est un jeune chien au grand cœur, mais il n'a pas un physique facile, et cela ne l'empêche pas d'avoir un rêve : participer au concours du plus beau chien. Surmontant tous les obstacles, il fera tout son possible pour réaliser ce projet fou, avec le secret espoir de trouver la personne qui l'aimera pour la vie.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/mochy.png?width=150&height=120",
+    "font_url": "https://lesangles.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.847Z",
+    "periodicitat": ""
   }
 ]
