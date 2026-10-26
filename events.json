@@ -10103,5 +10103,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.389Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-04-jam-des-projets",
+    "titol": "Jam des projets",
+    "data_inici": "2026-11-04",
+    "data_fi": "2026-11-04",
+    "hora": "19:00",
+    "lloc": "ElMediatorAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Després de l'èxit de la Jam d'abril passat, aquesta trobada dedicada als projectes en creació s'instal·la de manera estable al Mediator. Oberta a estudiants de musicologia i a propostes artístiques emergents, aquesta escena de treball en curs és un espai d'experimentació, de trobades i de descobertes. Per acabar la vetllada, s'hi programa so electrònic contundent.",
+    "descripcio_fr": "Après le succès de la Jam d'avril dernier, cette rencontre consacrée aux projets en création s'installe durablement au Mediator. Ouverte aux étudiants en musicologie et aux propositions artistiques émergentes, cette scène de travail en cours est un espace d'expérimentation, de rencontres et de découvertes. Pour finir la soirée, un son électro puissant est programmé.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/JAM-DES-PROJETS-2026.jpg?width=150&height=120",
+    "font_url": "https://www.theatredelarchipel.org/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.418Z",
+    "periodicitat": ""
   }
 ]
