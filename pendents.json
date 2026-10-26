@@ -2320,7 +2320,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z1UY] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-07-theatre-novembre",
+    "id": "2026-11-07-teatre",
     "titol": "Teatre",
     "data_inici": "2026-11-07",
     "data_fi": "2026-11-07",
@@ -2334,7 +2334,7 @@
     "associacio": "",
     "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/07-11-theatre-de-l-orne-La-Planque.jpg?width=150&height=120",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.439Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z347] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
