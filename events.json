@@ -8906,5 +8906,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.758Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-29-cine-club-canetoiles",
+    "titol": "Ciné-club Canetoiles: Les feux de la chandeleur",
+    "data_inici": "2026-10-29",
+    "data_fi": "2026-10-29",
+    "hora": "20:00",
+    "lloc": "Avenue Guy Drut",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Sessió de cinema de barri amb la projecció de Les feux de la chandeleur (França, 1972), dirigida per Serge Korber i interpretada per Annie Girardot, Jean Rochefort, Claude Jade, Bernard Fresson, Bernard Lecoq i Jean Bouise. La pel·lícula explica la història d'Alexandre Boursault, notari de província, la vida del qual es complica quan la seva dona, Marie-Louise, expressa obertament les seves idees polítiques i participa en tota mena de manifestacions. Quan els seus expedients es perden enmig dels fullets que convoquen a la vaga general, el notari ha de triar entre la seva dona i la seva clientela, i el 2 de febrer, el dia de la Candelera, Alexandre deixa Marie-Louise.",
+    "descripcio_fr": "Séance de cinéma de quartier projetant Les feux de la chandeleur (France, 1972), réalisé par Serge Korber et interprété par Annie Girardot, Jean Rochefort, Claude Jade, Bernard Fresson, Bernard Lecoq et Jean Bouise. Le film raconte l'histoire d'Alexandre Boursault, notaire de province, dont la vie se complique lorsque sa femme, Marie-Louise, affiche ouvertement ses idées politiques et participe à toutes sortes de manifestations. Quand ses dossiers se perdent au milieu des tracts appelant à la grève générale, le notaire doit choisir entre sa femme et sa clientèle, et le 2 février, jour de la Chandeleur, Alexandre quitte Marie-Louise.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-les-feux-de-la-chandeleur.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.761Z",
+    "periodicitat": ""
   }
 ]
