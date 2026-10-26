@@ -9571,5 +9571,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.468Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-36a-fira-del",
+    "titol": "36a fira del gras i mercat de productors de pagès de Bourg-Madame",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-11-01",
+    "hora": "09:00",
+    "lloc": "",
+    "municipi": "La Guingueta d'Ix",
+    "comarca": "Cerdanya",
+    "categoria": "Mercat",
+    "descripcio_ca": "La fira reuneix productors de pagès que ofereixen ànecs, oques, fetge gras, vins, formatges, ostres, embotits, pa artesanal i marisc. Es tracta de la 36a edició d'aquest certamen.",
+    "descripcio_fr": "La foire réunit des producteurs fermiers qui proposent canards, oies, foie gras, vins, fromages, huîtres, charcuterie, pain artisanal et fruits de mer. Il s'agit de la 36e édition de ce rendez-vous.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/31-oct-BM.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.472Z",
+    "periodicitat": ""
   }
 ]
