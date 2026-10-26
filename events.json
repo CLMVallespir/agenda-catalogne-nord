@@ -9970,5 +9970,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.468Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-03-exposicio-de-vitralls",
+    "titol": "Exposició de vitralls",
+    "data_inici": "2026-11-03",
+    "data_fi": "2026-11-03",
+    "hora": "",
+    "lloc": "44 Avenue Général de Gaulle",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'acte consisteix en una exposició de vitralls de l'artista Michel Lafay. Es presenta a la mediateca de Vinçà.",
+    "descripcio_fr": "L'événement consiste en une exposition de vitraux de l'artiste Michel Lafay. Elle est présentée à la médiathèque de Vinçà.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-expo-Lafay-Michel.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.469Z",
+    "periodicitat": ""
   }
 ]
