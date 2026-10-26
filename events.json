@@ -10635,5 +10635,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.439Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-07-george-sand-150",
+    "titol": "George Sand, 150 ans de modernité",
+    "data_inici": "2026-11-07",
+    "data_fi": "2026-11-07",
+    "hora": "11:00",
+    "lloc": "CASA XANXO8 rue de la Main de Fer",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "Es commemora el 150è aniversari de la mort de George Sand, una figura destacada del segle XIX. Amb motiu d'aquesta efemèride, el Musée George Sand et de la Vallée noire ha dissenyat una exposició itinerant que convida a redescobrir la seva obra i la seva herència. L'exposició presenta Sand en les seves múltiples cares: novel·lista talentosa, artista apassionada, viatgera incansable i dona compromesa. Permet mantenir un vincle fort amb el públic i recordar que l'herència de Sand connecta amb les preocupacions d'avui.",
+    "descripcio_fr": "Le 150e anniversaire de la mort de George Sand, figure majeure du XIXe siècle, est commémoré. À cette occasion, le Musée George Sand et de la Vallée noire a conçu une exposition itinérante qui invite à redécouvrir son œuvre et son héritage. L'exposition présente Sand sous ses multiples visages : romancière talentueuse, artiste passionnée, voyageuse infatigable et femme engagée. Elle permet de maintenir un lien fort avec le public et de rappeler combien l'héritage de Sand résonne avec les préoccupations d'aujourd'hui.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/SAND-ET-CHOPIN-2.png?width=150&height=120",
+    "font_url": "https://www.perpignantourisme.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.442Z",
+    "periodicitat": ""
   }
 ]
