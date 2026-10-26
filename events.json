@@ -9552,5 +9552,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.384Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-castanyada",
+    "titol": "Castanyada",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Banyuls dels Aspres",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La Castanyada celebra la tardor amb una trobada festiva al cor del poble. Hi haurà castanyes torrades i una degustació de vi en un ambient de festa. L'acte és una ocasió per compartir un moment de convivència i de gastronomia entre veïns, amics i famílies.",
+    "descripcio_fr": "La Castanyada célèbre l'automne lors d'une rencontre festive au cœur du village. Il y aura des châtaignes grillées et une dégustation de vin dans une ambiance de fête. L'événement est l'occasion de partager un moment de convivialité et de gourmandise entre voisins, amis et familles.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aSPRES-BDA-CASTANYADA.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.468Z",
+    "periodicitat": ""
   }
 ]
