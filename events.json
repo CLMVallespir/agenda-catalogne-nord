@@ -9210,5 +9210,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.808Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-30-le-dernier-gardien",
+    "titol": "Le dernier gardien de phare d'Occitanie",
+    "data_inici": "2026-10-30",
+    "data_fi": "2026-10-30",
+    "hora": "18:00",
+    "lloc": "4 Rue Arago",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "El documentari de 60 minuts, dirigit per François Brun, segueix Laurent Simons, gardià del far de Leucate des de fa una trentena d'anys. Simons té cura del manteniment de tots els fars i fanals de l'Aude i del Roussillon, i és un dels darrers gardians i tècnics formats a l'antiga École des Phares et Balises de Brest. La pel·lícula es pregunta qui cuidarà el far quan Simons es jubili, i recorre part de la història dels fars de França. A la projecció hi seran presents el director, François Brun, i Laurent Simons.",
+    "descripcio_fr": "Ce documentaire de 60 minutes, réalisé par François Brun, suit Laurent Simons, gardien du phare de Leucate depuis une trentaine d'années. Simons est chargé de la maintenance de tous les phares et feux de l'Aude et du Roussillon, et il fait partie des derniers gardiens et techniciens formés à l'ancienne École des Phares et Balises de Brest. Le film s'interroge sur l'avenir du phare lorsque Simons prendra sa retraite, et retrace une partie de l'histoire des phares de France. À la projection seront présents le réalisateur, François Brun, et Laurent Simons.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche---Le-Dernier-gardien-de-phare-d-Occitanie--3-.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-23T14:19:20.815Z",
+    "periodicitat": ""
   }
 ]
