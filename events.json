@@ -9533,5 +9533,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-23T14:19:20.835Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-10-31-festa-de-la",
+    "titol": "Festa de la tardor al Mas La Marchette",
+    "data_inici": "2026-10-31",
+    "data_fi": "2026-10-31",
+    "hora": "19:30",
+    "lloc": "",
+    "municipi": "Oms",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El Mas La Marchette, a Oms, acull una vetllada gastronòmica i convivial dedicada als colors i sabors de la tardor. El menú inclou una amanida de tardor, carn picada d'ànec i butternut i un pastís melós de xocolata i castanya. La decoració tardorenca i un petit obsequi sorpresa completen la vetllada.",
+    "descripcio_fr": "Le Mas La Marchette, à Oms, accueille une soirée gourmande et conviviale consacrée aux couleurs et aux saveurs de l'automne. Le menu comprend une salade d'automne, un hachis de canard et butternut, ainsi qu'un fondant au chocolat et à la châtaigne. La décoration automnale et un petit cadeau surprise complètent la soirée.",
+    "associacio": "",
+    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-oms-fete-automne.jpg?width=150&height=120",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.384Z",
+    "periodicitat": ""
   }
 ]
