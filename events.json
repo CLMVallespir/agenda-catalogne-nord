@@ -11034,5 +11034,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.379Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-ronde-des-dolmens",
+    "titol": "Ronde des Dolmens",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Corbera les Cabanes",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La Ronde des Dolmens és una prova a Corbera les Cabanes que inclou una caminada de 11 km i un trail de 13 km, amb 600 m de desnivell positiu. En acabar la cursa s'ofereix una fideuà, i a la nit hi ha un concert del grup Al Chemist.",
+    "descripcio_fr": "La Ronde des Dolmens est une épreuve à Corbera les Cabanes qui comprend une randonnée de 11 km et un trail de 13 km, avec 600 m de dénivelé positif. À l'issue de la course, une fideuà est proposée, et le soir un concert du groupe Al Chemist a lieu.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084335/18-07_mrkjx4.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.402Z",
+    "periodicitat": ""
   }
 ]
