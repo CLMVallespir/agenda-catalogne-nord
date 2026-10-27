@@ -11072,5 +11072,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.407Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-le-retour-de",
+    "titol": "Le retour de Richard III par le train de 09h24",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "17:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "La companyia Tururut-théâtre presenta una obra sobre Pierre-Henry Langlois, un conseller polític jubilat desenganyat pels metges. Després de perdre la resta de la seva família en un accident d'avió, contracta actors i actrius perquè en substitueixin els membres. El protagonista vol ajustar comptes amb el seu passat per poder marxar en pau, i l'obra es pregunta si tot anirà com ell ho ha previst.",
+    "descripcio_fr": "La compagnie Tururut-théâtre présente une pièce sur Pierre-Henry Langlois, un conseiller politique à la retraite condamné par les médecins. Après avoir perdu le reste de sa famille dans un accident d'avion, il engage des comédiens et des comédiennes pour les remplacer. Le protagoniste veut régler ses comptes avec son passé afin de pouvoir partir en paix, et la pièce se demande si tout se déroulera comme il l'entend.",
+    "associacio": "Contacter OT COLLECTIONS DE SAINT CYPRIEN",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084337/event-FMALAR066V52Y6JV-1785861527312_wt6u3t.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.419Z",
+    "periodicitat": ""
   }
 ]
