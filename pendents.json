@@ -3025,7 +3025,7 @@
     "data_inici": "2026-11-08",
     "data_fi": "2026-11-08",
     "hora": "16:30",
-    "lloc": "Théâtre de l'Archipel\nAvenue Maréchal Leclerc",
+    "lloc": "Théâtre de l'ArchipelAvenue Maréchal Leclerc",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Teatre",
@@ -3034,7 +3034,7 @@
     "associacio": "Contacter BILLETTERIE",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084336/Soprane_fwsebp.webp",
     "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.407Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52XKH5] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
