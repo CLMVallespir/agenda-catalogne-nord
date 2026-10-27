@@ -56,6 +56,8 @@ fitxer, i `git show <commit>^:<ruta>` el torna a ensenyar.*
 - **23 d'octubre.** Gemini → Claude Haiku 5.5 al Worker i a l'Action. Neteja
   de les etapes anteriors (D-06). Miquel confirma que els activadors i el Web
   App d'Apps Script, i el full, ja no hi són.
+- **27 d'octubre.** Els cartells d'octubre, a Cloudinary (151 pendents, 128
+  publicats). El curador copia el cartell en publicar (D-07).
 
 ---
 
@@ -95,6 +97,16 @@ protocol de coordinació.
   fer carpetes d'arxiu.** Una eina d'un sol ús s'esborra quan el seu resultat
   és commitat; un document de feina (handoff, sondeig, informe) s'esborra quan
   el que ensenya ha passat aquí o a `CLAUDE.md`.
+- **D-07 · 27 d'octubre.** El cartell es copia a Cloudinary **en publicar**,
+  des de `curador.html` (`copiaCartells()`), i no abans a mà. Va néixer perquè
+  `cartells-a-cloudinary.js` no s'havia tornat a llançar des de l'1 d'octubre:
+  el 27, 129 dels 146 actes vius del web mostraven la miniatura de 150 px de
+  l'ADT66, il·legible al visor. Un pas manual que depèn de recordar-se'n
+  s'oblida. Ara la pàgina prova l'original i després la miniatura
+  (`variantsDeCartell()`), i si Cloudinary no en pot copiar cap **no publica**:
+  el curador ho torna a provar o buida el camp. Mai no es publica un cartell
+  d'un tercer. De retruc, una fila rebutjada ja no deixa cap còpia a
+  Cloudinary. L'Action continua sense tocar Cloudinary.
 
 Decisions anteriors al registre, igual de tancades (el perquè és a la lliçó que
 s'indica):
@@ -194,7 +206,8 @@ i el 4 de setembre de 2026 sobre el flux sencer (1 463–1 543 ofertes).
   aquestes set, i només a principi de línia: «Tarif : 5 €» és contingut.
 - **Cartells.** L'`src` porta `?width=150&height=120`, una miniatura;
   `variantsDeCartell()` prova l'original primer i la miniatura després, i
-  només per al domini de l'ADT66.
+  només per al domini de l'ADT66. `curador.html` en fa el mateix en publicar
+  (D-07).
 - **Retirades.** `detectaRetirades()` sap dir quines ofertes han caigut del
   flux entre dos instantanis, però no és connectada a res i no s'ha decidit on
   es desaria l'instantani anterior. Una anul·lació no es caça.

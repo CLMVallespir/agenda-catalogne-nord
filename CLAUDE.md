@@ -408,8 +408,12 @@ publicitària.
   `clm-agenda/posters`, transformació d'entrada `w_800,c_limit,q_80,f_webp`. Només
   cal el nom del cloud, cap signatura. El preset ja converteix un PDF en WebP de la
   primera pàgina: puja el PDF tal qual. Accepta la primera imatge o PDF adjunt;
-  ignora les imatges en línia. Els cartells de les files de l'ADT66 es pugen a mà
-  amb `node eines/cartells-a-cloudinary.js`, mai des de l'Action.
+  ignora les imatges en línia. **En publicar, `curador.html` copia a
+  Cloudinary el cartell que encara no hi és** (`copiaCartells()`; per a
+  l'ADT66, l'original abans que la miniatura de 150 px) i, si no pot, no
+  publica: mai no surt al web el cartell d'un tercer (D-07). Mai des de
+  l'Action. `node eines/cartells-a-cloudinary.js` encara copia a mà els de
+  tota la cua, però ja no cal després de cada passada.
 - **GitHub** — lectura i escriptura de `pendents.json` i `events.json` **sempre
   via l'API de continguts** (mai llegint de Pages, que serveix còpies de CDN
   endarrerides): GET per obtenir contingut + SHA, un sol PUT amb base64 i

@@ -275,6 +275,55 @@ function missatgeDeLot(titolDelLot, linies) {
 }
 
 
+// --- El cartell -------------------------------------------------------------
+// Un acte es publica amb el cartell al Cloudinary de l'agenda, mai al d'un
+// tercer (D-07 de NOTES.md). La pujada és de la pàgina; aquí només hi ha les
+// dues decisions que no surten a la xarxa: si ja és nostre, i quines adreces
+// s'han de provar.
+
+// El domini on l'ADT66 serveix els cartells. El flux hi enganxa sempre un
+// `?width=150&height=120`, una miniatura; sense paràmetres hi ha l'original.
+var DOMINI_MEDIA_ADT66 = 'media.tourinsoft.eu';
+
+// ------------------------------------------------------------
+// Còpia literal d'esDelNostreCloudinary (worker/worker.js): diu si l'URL
+// és del Cloudinary de l'agenda (el nom del cloud).
+// ------------------------------------------------------------
+function esDelNostreCloudinary(url, nomCloud) {
+  if (typeof nomCloud !== 'string' || nomCloud === '') {
+    return false;
+  }
+  if (typeof url !== 'string') {
+    return false;
+  }
+  return url.indexOf('https://res.cloudinary.com/' + nomCloud + '/') === 0;
+}
+
+// ------------------------------------------------------------
+// Les adreces que val la pena provar per a un cartell, en ordre. La mateixa
+// regla que variantsDeCartell() d'eines/puja-cartell.js, que és la mestra:
+// per a l'ADT66, l'original primer i la miniatura després (hi ha cartells
+// que només existeixen retallats); per a tothom més, l'adreça tal com és.
+// ------------------------------------------------------------
+function variantsDeCartell(url) {
+  var domini = '';
+  try {
+    domini = new URL(url).hostname.toLowerCase();
+  } catch (error) {
+    return [url];
+  }
+
+  var esDeLADT66 = domini === DOMINI_MEDIA_ADT66 ||
+    domini.slice(-(DOMINI_MEDIA_ADT66.length + 1)) === '.' + DOMINI_MEDIA_ADT66;
+  var senseParametres = url.split('?')[0];
+
+  if (!esDeLADT66 || senseParametres === url) {
+    return [url];
+  }
+  return [senseParametres, url];
+}
+
+
 // --- Per a Node -------------------------------------------------------------
 
 // Al navegador `module` no existeix i les funcions de dalt ja són globals;
@@ -293,6 +342,8 @@ if (typeof module !== 'undefined' && module.exports) {
     substitueixPerPublicada: substitueixPerPublicada,
     marcaRebutjadaALaCua: marcaRebutjadaALaCua,
     combinaTransformacions: combinaTransformacions,
-    missatgeDeLot: missatgeDeLot
+    missatgeDeLot: missatgeDeLot,
+    esDelNostreCloudinary: esDelNostreCloudinary,
+    variantsDeCartell: variantsDeCartell
   };
 }

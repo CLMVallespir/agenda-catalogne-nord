@@ -44,9 +44,34 @@ test('el mòdul exporta exactament el que la pàgina veu com a globals', async f
   assert.equal(pag.ctx.JA_PUBLICAT, cua.JA_PUBLICAT);
   assert.deepEqual(Object.keys(cua).sort(), [
     'JA_NO_HI_ES', 'JA_PUBLICAT', 'afegeixAPublicats', 'combinaTransformacions',
-    'creaFilaPublicada', 'filesPendents', 'idJaPublicat', 'marcaRebutjadaALaCua',
-    'missatgeDeLot', 'substitueixPerPublicada', 'treuDeLaCua', 'trobaIndex'
+    'creaFilaPublicada', 'esDelNostreCloudinary', 'filesPendents', 'idJaPublicat',
+    'marcaRebutjadaALaCua', 'missatgeDeLot', 'substitueixPerPublicada', 'treuDeLaCua',
+    'trobaIndex', 'variantsDeCartell'
   ]);
+});
+
+test('esDelNostreCloudinary: només el cloud de l’agenda, i sense nom de cloud mai', function () {
+  var nostra = 'https://res.cloudinary.com/clm-agenda/image/upload/v1/ball.webp';
+  assert.equal(cua.esDelNostreCloudinary(nostra, 'clm-agenda'), true);
+  assert.equal(cua.esDelNostreCloudinary('https://res.cloudinary.com/un-altre/image/upload/ball.webp', 'clm-agenda'), false);
+  assert.equal(cua.esDelNostreCloudinary('http://res.cloudinary.com/clm-agenda/image/upload/ball.webp', 'clm-agenda'), false);
+  assert.equal(cua.esDelNostreCloudinary(nostra, ''), false);
+  assert.equal(cua.esDelNostreCloudinary('', 'clm-agenda'), false);
+});
+
+test('variantsDeCartell: a l’ADT66, l’original abans que la miniatura; la resta, tal com és', function () {
+  var miniatura = 'http://cdt66.media.tourinsoft.eu/upload/ball.jpg?width=150&height=120';
+  assert.deepEqual(cua.variantsDeCartell(miniatura),
+    ['http://cdt66.media.tourinsoft.eu/upload/ball.jpg', miniatura]);
+  assert.deepEqual(cua.variantsDeCartell('http://cdt66.media.tourinsoft.eu/upload/ball.jpg'),
+    ['http://cdt66.media.tourinsoft.eu/upload/ball.jpg']);
+
+  // Un paràmetre d'un altre domini pot ser el que fa existir la imatge.
+  var drupal = 'https://www.mairie-perpignan.fr/sites/default/files/musee.jpg?itok=hUbp1msg';
+  assert.deepEqual(cua.variantsDeCartell(drupal), [drupal]);
+  assert.deepEqual(cua.variantsDeCartell('https://media.tourinsoft.eu.exemple.net/a.jpg?x=1'),
+    ['https://media.tourinsoft.eu.exemple.net/a.jpg?x=1']);
+  assert.deepEqual(cua.variantsDeCartell('no és cap adreça'), ['no és cap adreça']);
 });
 
 test('combinaTransformacions: aplica en ordre, recull l’error de cada peça i només llança si peten totes', function () {

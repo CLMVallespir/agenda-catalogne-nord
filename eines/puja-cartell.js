@@ -290,6 +290,9 @@ async function unaPujada(urlOrigen, funcioPujada) {
 //
 // No es toca l'URL de ningú més: retallar paràmetres a cegues trencaria els
 // que en necessiten per servir la imatge (`?itok=…` de Drupal, per exemple).
+//
+// N'hi ha una còpia a curador-cua.js, la que fa servir el curador en
+// publicar (D-07). Si la regla canvia aquí, canvia allà.
 // ------------------------------------------------------------
 function variantsDeCartell(urlOrigen) {
   var origen = cadena(urlOrigen);

@@ -205,6 +205,11 @@ function creaFitxaFalsa(camps) {
 // Ganxos per provar les carreres i les fallades:
 //   alLlegir(nom, vegada)  — després de servir un GET; pot cridar canvia()
 //   fallaPut(nom, vegada)  — torna un codi HTTP per fer fallar aquell PUT
+//
+// També fa de Cloudinary fals per a la pujada de cartells: `cartells` és
+// { 'adreça d'origen': 'secure_url' }; una adreça que no hi és respon 400,
+// com quan Cloudinary no la pot carregar. Cada pujada queda al registre
+// com a 'POST cloudinary <adreça>'.
 function creaDipositFals(fitxers) {
   var estat = {};
   var lectures = {};
@@ -229,6 +234,7 @@ function creaDipositFals(fitxers) {
     commits: [],
     alLlegir: null,
     fallaPut: null,
+    cartells: {},
 
     // El text exacte del fitxer, tal com GitHub el tindria.
     text: function (nom) {
@@ -244,6 +250,10 @@ function creaDipositFals(fitxers) {
   };
 
   diposit.fetch = async function (url, opcions) {
+    if (url.indexOf('https://api.cloudinary.com/') === 0) {
+      return respostaDeCloudinary(diposit, opcions.body.get('file'));
+    }
+
     var nom = /\/contents\/([^?]+)/.exec(url)[1];
     var metode = opcions.method;
     diposit.registre.push(metode + ' ' + nom);
@@ -302,6 +312,23 @@ function respostaError(codi, text) {
   };
 }
 
+// El Cloudinary fals: la còpia si l'adreça és a `diposit.cartells`, si no un
+// 400 amb el cos d'error que torna Cloudinary.
+function respostaDeCloudinary(diposit, origen) {
+  diposit.registre.push('POST cloudinary ' + origen);
+
+  if (diposit.cartells[origen]) {
+    return resposta200({ secure_url: diposit.cartells[origen] });
+  }
+  var cos = { error: { message: 'Error in loading ' + origen } };
+  return {
+    ok: false,
+    status: 400,
+    json: async function () { return cos; },
+    text: async function () { return JSON.stringify(cos); }
+  };
+}
+
 
 // --- La pàgina --------------------------------------------------------------
 
@@ -341,6 +368,9 @@ async function carregaCurador(diposit) {
     window: window,
     fetch: diposit.fetch,
     setTimeout: setTimeout,
+    URL: URL,
+    FormData: FormData,
+    AbortSignal: AbortSignal,
     atob: atob,
     btoa: btoa,
     TextEncoder: TextEncoder,

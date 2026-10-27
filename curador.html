@@ -432,6 +432,16 @@ var DARRERA_ESCRIPTURA = {};
 // pestanya que se'ns hagi avançat.
 var ESPERES_CONFLICTE_MS = [1000, 2000, 4000];
 
+// La pujada de cartells a Cloudinary en publicar (D-07 de NOTES.md):
+// unsigned, amb el mateix preset que el Worker. Res d'això no és secret:
+// el nom del cloud surt a cada imatge del web públic.
+var CLOUDINARY_CLOUD = 'clm-agenda';
+var CLOUDINARY_PRESET = 'agenda-posters';
+
+// Quant s'espera una pujada abans de donar-la per perduda. Cloudinary ha
+// d'anar a buscar la imatge a casa d'un tercer, i no és instantani.
+var TEMPS_MAXIM_PUJADA_MS = 30000;
+
 // ------------------------------------------------------------
 // Còpia literal de creaId (worker/worker.js). El sistema sempre
 // reconstrueix l'id, mai es refia del que porti la fila.
@@ -1132,8 +1142,15 @@ async function desaLot(lot) {
     return decisio.mena === 'publica';
   });
 
-  if (publicacions.length > 0) {
-    await desaPublicacions(publicacions);
+  // Els cartells, abans de cap escriptura: una publicació el cartell de la
+  // qual no s'ha pogut copiar surt del lot amb el seu error i no s'escriu.
+  await copiaCartells(publicacions);
+  var publicables = publicacions.filter(function (decisio) {
+    return decisio.errorEvents === null;
+  });
+
+  if (publicables.length > 0) {
+    await desaPublicacions(publicables);
   }
 
   // A pendents.json hi van els rebuigs i les publicacions que ja són a
@@ -1153,6 +1170,95 @@ async function desaLot(lot) {
       acabaRebuig(lot[i]);
     }
   }
+}
+
+// ------------------------------------------------------------
+// Copia a Cloudinary el cartell de cada publicació del lot que encara no
+// hi és. Si va bé, l'acte es publica amb la còpia; si no, la decisió es
+// queda amb `errorEvents` i no s'escriu: el curador ho torna a provar o
+// buida el camp i publica sense cartell. Mai no es publica un cartell
+// d'un tercer (la miniatura de 150 px de l'ADT66, per exemple).
+// ------------------------------------------------------------
+async function copiaCartells(publicacions) {
+  for (var i = 0; i < publicacions.length; i++) {
+    var decisio = publicacions[i];
+    var cartell = decisio.editat.imatge_url;
+
+    if (cartell === '' || esDelNostreCloudinary(cartell, CLOUDINARY_CLOUD)) {
+      continue;
+    }
+
+    avisaFitxa(decisio.fitxa, 'Copiant el cartell a Cloudinary…', '', true);
+    var resultat = await copiaCartell(cartell);
+
+    if (resultat.url !== '') {
+      decisio.editat.imatge_url = resultat.url;
+      avisaFitxa(decisio.fitxa, 'Publicant…', '', true);
+    } else {
+      decisio.errorEvents = new Error('No s’ha pogut copiar el cartell a Cloudinary (' +
+        resultat.motiu + '). Torna-ho a provar, o buida «URL del cartell» per publicar sense cartell.');
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// Prova les adreces del cartell en ordre (variantsDeCartell, a
+// curador-cua.js) i torna { url, motiu } de la primera que va bé, o el
+// motiu de l'última que ha fallat.
+// ------------------------------------------------------------
+async function copiaCartell(urlOrigen) {
+  var variants = variantsDeCartell(urlOrigen);
+  var resultat = { url: '', motiu: 'no hi ha cap adreça per provar' };
+
+  for (var i = 0; i < variants.length; i++) {
+    resultat = await pujaACloudinary(variants[i]);
+    if (resultat.url !== '') {
+      return resultat;
+    }
+  }
+  return resultat;
+}
+
+// ------------------------------------------------------------
+// Una pujada unsigned: Cloudinary va a buscar la imatge a l'adreça i en
+// torna la còpia. Es demana `secure_url` (https), no `url` (http). No
+// llança mai: torna { url, motiu }.
+// ------------------------------------------------------------
+async function pujaACloudinary(urlOrigen) {
+  var formulari = new FormData();
+  formulari.append('file', urlOrigen);
+  formulari.append('upload_preset', CLOUDINARY_PRESET);
+
+  var resposta = null;
+  try {
+    resposta = await fetch('https://api.cloudinary.com/v1_1/' + CLOUDINARY_CLOUD + '/image/upload', {
+      method: 'POST',
+      body: formulari,
+      signal: AbortSignal.timeout(TEMPS_MAXIM_PUJADA_MS)
+    });
+  } catch (error) {
+    return { url: '', motiu: 'Cloudinary no respon: ' + error.message };
+  }
+
+  var dades = null;
+  try {
+    dades = await resposta.json();
+  } catch (error) {
+    return { url: '', motiu: 'Cloudinary ha respost ' + resposta.status + ' sense JSON' };
+  }
+
+  if (!resposta.ok) {
+    var detall = '';
+    if (dades && dades.error && typeof dades.error.message === 'string') {
+      detall = ': ' + dades.error.message;
+    }
+    return { url: '', motiu: 'Cloudinary ha respost ' + resposta.status + detall };
+  }
+
+  if (!dades || typeof dades.secure_url !== 'string' || dades.secure_url === '') {
+    return { url: '', motiu: 'Cloudinary no ha tornat cap adreça' };
+  }
+  return { url: dades.secure_url, motiu: '' };
 }
 
 // ------------------------------------------------------------

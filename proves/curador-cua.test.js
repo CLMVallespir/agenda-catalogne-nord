@@ -328,6 +328,118 @@ test('publica: sense testimoni no fa res', async function () {
 });
 
 
+// --- Publica: el cartell a Cloudinary (D-07) --------------------------------
+
+var MINIATURA_ADT66 = 'http://cdt66.media.tourinsoft.eu/upload/ball.jpg?width=150&height=120';
+var ORIGINAL_ADT66 = 'http://cdt66.media.tourinsoft.eu/upload/ball.jpg';
+var COPIA = 'https://res.cloudinary.com/clm-agenda/image/upload/v1/ball.webp';
+
+test('publica: el cartell de l’ADT66 es copia sense la miniatura i la còpia va als dos fitxers', async function () {
+  var fila = filaPendent({ imatge_url: MINIATURA_ADT66, nota_curador: '[ADT66 id: 42]' });
+  var p = await preparaPagina([fila], []);
+  p.diposit.cartells[ORIGINAL_ADT66] = COPIA;
+  var fitxa = pagina.creaFitxaFalsa(pagina.campsEditables(fila));
+
+  await p.pag.ctx.publica(fitxa, fila);
+
+  assert.deepEqual(p.diposit.registre, [
+    'POST cloudinary ' + ORIGINAL_ADT66,
+    'GET events.json', 'PUT events.json', 'GET pendents.json', 'PUT pendents.json'
+  ]);
+  assert.equal(p.diposit.text('events.json'), textDe([filaEvent({ imatge_url: COPIA })]));
+  assert.equal(p.diposit.text('pendents.json'), textDe([filaPendent({
+    imatge_url: COPIA, estat: 'publicat', nota_curador: '[ADT66 id: 42]'
+  })]));
+  assert.equal(fitxa.retirat, true);
+});
+
+test('publica: si l’original no hi és, es copia la miniatura', async function () {
+  var fila = filaPendent({ imatge_url: MINIATURA_ADT66 });
+  var p = await preparaPagina([fila], []);
+  p.diposit.cartells[MINIATURA_ADT66] = COPIA;
+  var fitxa = pagina.creaFitxaFalsa(pagina.campsEditables(fila));
+
+  await p.pag.ctx.publica(fitxa, fila);
+
+  assert.deepEqual(p.diposit.registre.slice(0, 2), [
+    'POST cloudinary ' + ORIGINAL_ADT66, 'POST cloudinary ' + MINIATURA_ADT66
+  ]);
+  assert.equal(p.diposit.dades('events.json')[0].imatge_url, COPIA);
+  assert.equal(fitxa.retirat, true);
+});
+
+test('publica: si Cloudinary no pot copiar el cartell, no s’escriu res i l’acte segueix a la cua', async function () {
+  var fila = filaPendent({ imatge_url: 'https://www.exemple.cat/cartell.jpg' });
+  var p = await preparaPagina([fila], []);
+  var fitxa = pagina.creaFitxaFalsa(pagina.campsEditables(fila));
+  var abans = p.diposit.text('pendents.json');
+
+  await p.pag.ctx.publica(fitxa, fila);
+
+  assert.deepEqual(p.diposit.registre, ['POST cloudinary https://www.exemple.cat/cartell.jpg']);
+  assert.deepEqual(p.diposit.dades('events.json'), []);
+  assert.equal(p.diposit.text('pendents.json'), abans);
+  assert.equal(fitxa.retirat, false);
+  assert.equal(fitxa.avis.textContent,
+    'No s’ha publicat. No s’ha pogut copiar el cartell a Cloudinary (Cloudinary ha respost 400: ' +
+    'Error in loading https://www.exemple.cat/cartell.jpg). Torna-ho a provar, o buida ' +
+    '«URL del cartell» per publicar sense cartell.');
+  assert.equal(fitxa.avis.className, 'avis error');
+  assert.equal(fitxa.botons[0].disabled, false);
+  assert.equal(p.pag.element('avis-global').textContent,
+    'La publicació ha fallat. L’acte segueix a la cua.');
+  assert.equal(p.pag.ctx.CUA.length, 1);
+});
+
+test('publica: un cartell que ja és del Cloudinary de l’agenda no es torna a pujar', async function () {
+  var fila = filaPendent({ imatge_url: COPIA });
+  var p = await preparaPagina([fila], []);
+  var fitxa = pagina.creaFitxaFalsa(pagina.campsEditables(fila));
+
+  await p.pag.ctx.publica(fitxa, fila);
+
+  assert.deepEqual(p.diposit.registre, [
+    'GET events.json', 'PUT events.json', 'GET pendents.json', 'PUT pendents.json'
+  ]);
+  assert.equal(p.diposit.dades('events.json')[0].imatge_url, COPIA);
+});
+
+test('cua d’escriptura: en un lot, el cartell que falla atura la seva publicació i no la de les altres', async function () {
+  var f = tresFiles();
+  f.mig.imatge_url = MINIATURA_ADT66;
+  f.despres.imatge_url = 'https://www.exemple.cat/cartell.jpg';
+  var p = await preparaPagina([f.abans, f.mig, f.despres], []);
+  p.diposit.cartells[ORIGINAL_ADT66] = COPIA;
+  var fitxes = [f.abans, f.mig, f.despres].map(function (fila) {
+    return pagina.creaFitxaFalsa(pagina.campsEditables(fila));
+  });
+
+  // El rebuig obre la cua d'escriptura; les dues publicacions hi entren
+  // mentre es desa i surten juntes al lot següent.
+  await Promise.all([
+    p.pag.ctx.rebutja(fitxes[0], f.abans),
+    p.pag.ctx.publica(fitxes[1], f.mig),
+    p.pag.ctx.publica(fitxes[2], f.despres)
+  ]);
+
+  assert.deepEqual(p.diposit.commits, [
+    'Rebutja Concert a Ceret',
+    'Publica Ball a Prats',
+    'Marca com a publicada Ball a Prats'
+  ]);
+  assert.deepEqual(p.diposit.dades('events.json').map(function (fila) {
+    return fila.titol + ' ' + fila.imatge_url;
+  }), ['Ball a Prats ' + COPIA]);
+  assert.deepEqual(p.diposit.dades('pendents.json').map(function (fila) {
+    return fila.estat;
+  }), ['rebutjat', 'publicat', 'pendent']);
+  assert.equal(fitxes[1].retirat, true);
+  assert.equal(fitxes[2].retirat, false);
+  assert.equal(fitxes[2].avis.className, 'avis error');
+  assert.equal(fitxes[2].botons[0].disabled, false);
+});
+
+
 // --- Rebutja ----------------------------------------------------------------
 
 test('rebutja: una sola escriptura, la fila es queda al seu lloc amb estat «rebutjat»', async function () {
