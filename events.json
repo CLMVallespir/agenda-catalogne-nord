@@ -11851,5 +11851,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.462Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-braderia-de-la",
+    "titol": "Braderia de la Croix Rouge",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "09:00",
+    "lloc": "Plage nord",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "És una venda de joguines pensada per a petits i grans. Hi haurà jocs de taula, joguines i llibres.",
+    "descripcio_fr": "Il s'agit d'une vente de jouets destinée aux petits et aux grands. On y trouvera des jeux de société, des jouets et des livres.",
+    "associacio": "Contacter HUBERT ALAIN",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084440/croix-rouge-braderie_o5loif.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.463Z",
+    "periodicitat": ""
   }
 ]
