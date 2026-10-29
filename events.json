@@ -12364,5 +12364,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.393Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-recital-de-violoncel",
+    "titol": "Recital de violoncel",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "07:15",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Cécile Lacharme proposa dos concerts immersius on la música dialoga amb la llum natural. Sola a l'escenari, amb el seu violoncel i una pedalera, superposa bucles i efectes sonors per crear una mena d'orquestra en multidifusió 360°. Inspirades en el seu àlbum Dérives, les seves composicions neoclàssiques amb textures contemporànies evoquen els elements, els paisatges i els moviments del món: l'aigua, la tempesta, la travessia o la calma. La llum natural canvia la percepció de la música, i els dos concerts ofereixen experiències sensibles, alhora contemplatives i envoltants, en un moment suspès entre natura i creació sonora.",
+    "descripcio_fr": "Cécile Lacharme propose deux concerts immersifs où la musique dialogue avec la lumière naturelle. Seule sur scène avec son violoncelle et un pédalier, elle superpose boucles et effets sonores pour créer une sorte d'orchestre en multidiffusion 360°. Inspirées de son album Dérives, ses compositions néo-classiques aux textures contemporaines évoquent les éléments, les paysages et les mouvements du monde : l'eau, l'orage, la traversée ou le calme. La lumière naturelle transforme la perception de la musique, et les deux concerts offrent des expériences sensibles, à la fois contemplatives et enveloppantes, dans un moment suspendu entre nature et création sonore.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084531/recital-violoncelle-_wwb3om.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.408Z",
+    "periodicitat": ""
   }
 ]
