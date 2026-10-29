@@ -12098,5 +12098,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.481Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-16-taller-descriptura-abdellatif",
+    "titol": "Taller d'escriptura: Abdellatif Laâbi, poésie sans barreaux ni frontières",
+    "data_inici": "2026-11-16",
+    "data_fi": "2026-11-16",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "Eus",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "És un taller d'escriptura creativa en grup reduït, que es fa en una casa de poble amb terrassa i jardí. El grup és guiat a través de miniconferències, debats, lectures i textos compartits, i imatges estimulants, amb una escolta respectuosa i sense judicis ni objectius a assolir. El plaer d'estar junts, de dir-se, de llegir-se i d'escoltar-se, i la descoberta d'autors i artistes, n'és el fil conductor.",
+    "descripcio_fr": "Il s'agit d'un atelier d'écriture créative en petit groupe, qui se déroule dans une maison de village avec terrasse et jardin. Le groupe est guidé à travers des mini-conférences, des discussions, des textes lus et partagés et des images stimulantes, dans une écoute respectueuse, sans jugement ni objectif à atteindre. Le plaisir d'être ensemble, de se dire, de se lire et de s'entendre, ainsi que la découverte d'auteur·e·s et d'artistes, en constituent le fil conducteur.",
+    "associacio": "Contacter Madame MARGOUX Blandine",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084481/Abdellatif-Laabi---Novembre-2026---Eus---A4--1-_b0pjjv.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.463Z",
+    "periodicitat": ""
   }
 ]
