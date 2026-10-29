@@ -179,6 +179,15 @@ Regles de què depèn el codi:
   `creaId(dataInici, titol)`. Coerceix `comarca` i `categoria` a la llista permesa
   amb `valorPermes(...)`, si no `""`. L'`id` no és únic (tres paraules del
   títol): per identificar una fila, `id` + `titol` + `municipi`.
+- **La fila d'una porta surt per `filaSegura(campsBruts, origen)`**
+  (`eines/fila-segura.js`): els divuit camps en ordre i tots cadenes, un sostre
+  de caràcters per camp de text (amb avís si talla), el títol en una sola línia
+  (va al missatge dels commits), dates `AAAA-MM-DD` o `""` amb avís, les dues
+  llistes, adreces http(s), `id`/`estat`/`data_entrada` del sistema, i cap
+  claudàtor a `nota_curador` fora del tag `[ADT66 id: …]` del davant. Només
+  sanitza: no decideix res d'entrar (D-04). Es crida a la porta, **abans de cap
+  fusió**. Avui hi passa l'ADT66 (`mapejaOfertaADT66()`, i la traducció de
+  l'Action per `campSegur()`); el Worker encara no.
 
 **Regles pròpies d'`estat` a `pendents.json`** — `rebutjat` hi és **persistent**:
 
@@ -339,7 +348,7 @@ un enum, i abans de desplegar el Worker.** El germà per al joc de camps és
 | 7 | `app.js` | `CATEGORIA_ICONES` (**una icona SVG per categoria**) |
 | 8 | `curador.html` | `CATEGORIA_VALUES` (desplegable **i** `valorPermes()` en desar) |
 | 9 | `eines/dedup-esdeveniments.js` | `CATEGORIES` |
-| 10 | `eines/mapeja-adt66.js` | `CATEGORIES` |
+| 10 | `eines/fila-segura.js` | `CATEGORIES` (el mapeig de l'ADT66 la llegeix d'aquí) |
 | 11 | `prova-local.html` | `CATEGORIES` (mirall offline d'`app.js`) |
 | 12 | `prova-local.html` | `CATEGORIA_ICONES` (ídem) |
 

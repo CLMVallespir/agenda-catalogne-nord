@@ -101,7 +101,7 @@ var LLOCS = [
   { punt: '7', fitxer: 'worker/worker-concatenat.js', que: 'construeixFilaFormulari()', mena: 'public', com: 'objecte', dins: 'construeixFilaFormulari', obre: 'return {' },
   { punt: '8', fitxer: 'curador.html', que: 'recullFitxa()', mena: 'public', com: 'objecte', dins: 'recullFitxa', obre: 'return {' },
   { punt: '9', fitxer: 'curador.html', que: 'creaFitxa() — camps editables', mena: 'editable', com: 'fitxa', dins: 'creaFitxa' },
-  { punt: '12', fitxer: 'eines/mapeja-adt66.js', que: 'CAMPS_PRODUCCIO', mena: 'cua', com: 'array', nom: 'CAMPS_PRODUCCIO' },
+  { punt: '12', fitxer: 'eines/fila-segura.js', que: 'CAMPS', mena: 'cua', com: 'array', nom: 'CAMPS' },
   { punt: '13', fitxer: 'eines/mapeja-adt66.js', que: 'mapejaOfertaADT66()', mena: 'cua', com: 'objecte', dins: 'mapejaOfertaADT66', obre: 'var fila = {' },
 
   // --- Els consumidors de dades (§4.C) ------------------------------------

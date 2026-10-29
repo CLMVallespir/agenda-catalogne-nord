@@ -178,25 +178,9 @@ var dedup = require('./dedup-esdeveniments.js');
 // mateixa que fan servir el web i el curador abans de pintar-les.
 var urlSegura = require('../url-segura.js');
 
-
-// --- Constants: els esquemes ------------------------------------------------
-
-// Els divuit camps de producció, amb el nom i l'ordre del §4 de CLAUDE.md. La
-// fila que surt d'aquí té sempre aquests divuit i cap més, en aquest ordre.
-var CAMPS_PRODUCCIO = [
-  'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
-  'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
-  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
-  'nota_curador'
-];
-
-var COMARQUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
-
-var CATEGORIES = [
-  'Música', 'Teatre', 'Dansa i ball', 'Conferència', 'Exposició', 'Mercat',
-  'Cinema', 'Taller', 'Activitat infantil', 'Patrimoni i tradicions',
-  'Concentració', 'Esports', 'Vida associativa'
-];
+// La forma de la fila: l'esquema de divuit camps, les dues llistes, creaId(),
+// valorPermes() i filaSegura(), per on passa la fila abans de sortir d'aquí.
+var segura = require('./fila-segura.js');
 
 
 // --- Constants: les categories del flux -------------------------------------
@@ -415,7 +399,7 @@ function mapejaOfertaADT66(ofertaWCF) {
 
   var fila = {
     // L'id no s'hereta MAI: el SyndicObjectID de l'oferta no hi entra.
-    id: creaId(quan.data_inici, titol),
+    id: segura.creaId(quan.data_inici, titol),
     titol: titol,
     data_inici: quan.data_inici,
     data_fi: quan.data_fi,
@@ -434,6 +418,7 @@ function mapejaOfertaADT66(ofertaWCF) {
     imatge_url: adrecaSegura(adrecaDeImatge(oferta.LISTINGPHOTO), 'El cartell', avisos),
     font_url: adrecaSegura(adrecaDeEnllac(oferta.DETAILSITEWEB), 'L\'enllaç de l\'organitzador', avisos),
     // Els dos camps que omple el sistema i que la font no toca mai.
+    // filaSegura() els torna a posar igual, com l'id.
     estat: 'pendent',
     data_entrada: new Date().toISOString(),
     // La regla conservadora de la Q1: buida sempre, tret del sol tema que
@@ -463,8 +448,11 @@ function mapejaOfertaADT66(ofertaWCF) {
 
   fila.nota_curador = notaCurador(oferta, avisos);
 
+  // La fila surt per filaSegura(): els divuit camps en ordre, els sostres, i
+  // cap claudàtor a la nota fora del tag, que alguns avisos copien text del
+  // flux (eines/fila-segura.js).
   return {
-    fila: ordenaSegonsEsquema(fila),
+    fila: segura.filaSegura(fila, 'adt66'),
     metadadades: metadadadesDeProduccio(oferta, quan, avisos)
   };
 }
@@ -776,7 +764,7 @@ function descripcioDeProduccio(oferta) {
 // "", però la coerció és la mateixa a tot arreu i no s'ha de saltar aquí.
 // ------------------------------------------------------------
 function comarcaDeProduccio(municipi, avisos) {
-  var comarca = valorPermes(comarques.obtenComarca(municipi), COMARQUES);
+  var comarca = segura.valorPermes(comarques.obtenComarca(municipi), segura.COMARQUES);
 
   if (comarca === '') {
     avisos.push('El municipi «' + municipi + '» no és a la taula de comarques: cal posar la comarca a mà, o la fila no sortirà al filtre per comarca.');
@@ -938,14 +926,14 @@ function categoriaDunTros(tros) {
     return '';
   }
 
-  var directa = valorPermes(net, CATEGORIES);
+  var directa = segura.valorPermes(net, segura.CATEGORIES);
   if (directa !== '') {
     return directa;
   }
 
   var traduida = CATEGORIES_ADT66[normalitzaText(net)] || '';
 
-  return valorPermes(traduida, CATEGORIES);
+  return segura.valorPermes(traduida, segura.CATEGORIES);
 }
 
 // ------------------------------------------------------------
@@ -1357,22 +1345,6 @@ function cadena(valor) {
   return valor.trim();
 }
 
-// ------------------------------------------------------------
-// Torna la fila amb els camps en l'ordre exacte de l'esquema i cap més. Que
-// l'ordre de les claus d'un objecte no importi al codi no vol dir que no
-// importi: pendents.json es llegeix a ull i es compara amb git diff.
-// ------------------------------------------------------------
-function ordenaSegonsEsquema(fila) {
-  var ordenada = {};
-
-  for (var i = 0; i < CAMPS_PRODUCCIO.length; i++) {
-    var camp = CAMPS_PRODUCCIO[i];
-    ordenada[camp] = cadena(fila[camp]);
-  }
-
-  return ordenada;
-}
-
 
 // --- Les peces: la metadada -------------------------------------------------
 
@@ -1439,48 +1411,6 @@ function nomDeLestructura(estructura) {
     return '';
   }
   return cadena(estructura.Name);
-}
-
-
-// --- Còpies literals de les funcions compartides ----------------------------
-// Són les mateixes de worker/worker.js, curador.html i
-// eines/dedup-esdeveniments.js. Es
-// copien, no s'importen: el projecte no té cap sistema de mòduls i totes les
-// vies d'entrada han de donar l'id idèntic.
-
-// ------------------------------------------------------------
-// Còpia literal de valorPermes: torna el valor només si és a la llista
-// permesa, i '' si no hi és.
-// ------------------------------------------------------------
-function valorPermes(valor, llistaPermesa) {
-  if (llistaPermesa.indexOf(valor) === -1) {
-    return '';
-  }
-  return valor;
-}
-
-// ------------------------------------------------------------
-// Còpia literal de creaId: la data d'inici, un guió, i les tres primeres
-// paraules del títol en minúscules i sense accents. Torna '' si no hi ha data.
-// ------------------------------------------------------------
-function creaId(dataInici, titol) {
-  if (dataInici === '') {
-    return '';
-  }
-
-  var text = titol.toLowerCase();
-  text = text.normalize('NFD').replace(/[̀-ͯ]/g, '');
-  text = text.replace(/['’]/g, '');
-  text = text.replace(/[^a-z0-9]+/g, ' ');
-  text = text.trim();
-
-  if (text === '') {
-    return dataInici;
-  }
-
-  var paraules = text.split(/\s+/);
-  var paraulesCurtes = paraules.slice(0, 3);
-  return dataInici + '-' + paraulesCurtes.join('-');
 }
 
 
@@ -2548,7 +2478,7 @@ function comprovacionsDeSempre(resultat, cas) {
   }
 
   var claus = Object.keys(fila);
-  if (claus.join('|') !== CAMPS_PRODUCCIO.join('|')) {
+  if (claus.join('|') !== segura.CAMPS.join('|')) {
     problemes.push('els camps no són els divuit de l\'esquema, en ordre');
   }
   for (var k = 0; k < claus.length; k++) {
@@ -2574,7 +2504,7 @@ function comprovacionsDeSempre(resultat, cas) {
   // La comarca no es comprova per valor: cap dels 35 camps no la porta, però
   // es deduïx del municipi, o sigui que depèn del poble de cada cas. El que sí
   // que ha de valer sempre és que sigui una de les cinc, o buida.
-  if (fila.comarca !== '' && COMARQUES.indexOf(fila.comarca) === -1) {
+  if (fila.comarca !== '' && segura.COMARQUES.indexOf(fila.comarca) === -1) {
     problemes.push('comarca «' + fila.comarca + '» no és cap de les cinc');
   }
   if (fila.id !== '' && fila.id === syndicObjectID) {

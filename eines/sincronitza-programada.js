@@ -195,6 +195,10 @@ var esCaducada = caducitat.esCaducada;
 var darrerDiaDeLActe = caducitat.darrerDiaDeLActe;
 var esData = caducitat.esData;
 
+// Els sostres i el títol d'una línia de la fila (eines/fila-segura.js): el que
+// torna la traducció de Claude hi passa igual que el que arriba del flux.
+var segura = require('./fila-segura.js');
+
 var fs = require('fs');
 
 
@@ -1088,9 +1092,9 @@ function aplicaTraduccio(fila, sortida, informe) {
   }
 
   var camps = sortida.camps || {};
-  var titol = cadenaDeModel(camps.titol);
-  var descCa = cadenaDeModel(camps.descripcio_ca);
-  var descFr = cadenaDeModel(camps.descripcio_fr);
+  var titol = cadenaDeModel(camps.titol, 'titol');
+  var descCa = cadenaDeModel(camps.descripcio_ca, 'descripcio_ca');
+  var descFr = cadenaDeModel(camps.descripcio_fr, 'descripcio_fr');
 
   // L'oferta no porta text descriptiu: només el títol es pot passar al català.
   if (fila.descripcio_fr === '') {
@@ -1145,16 +1149,17 @@ function posaAvisDeTraduccio(fila, avis) {
 }
 
 // ------------------------------------------------------------
-// El valor d'un camp tal com l'ha dit el model, reduït a cadena utilitzable.
+// El valor d'un camp tal com l'ha dit el model, reduït a cadena utilitzable i
+// passat per campSegur(): el sostre del camp, i el títol en una sola línia.
 // Tot el que no sigui una cadena —un nombre, un null, una clau que no hi és—
 // val ''. §4 de CLAUDE.md: tot camp és una cadena i el desconegut és ''.
 // ------------------------------------------------------------
-function cadenaDeModel(valor) {
+function cadenaDeModel(valor, camp) {
   if (typeof valor !== 'string') {
     return '';
   }
 
-  return valor.trim();
+  return segura.campSegur(camp, valor);
 }
 
 // ------------------------------------------------------------

@@ -651,14 +651,20 @@ no la línia.
 - **El correu no va tancat ni declarat «només dades» dins el prompt** (el text
   va darrere de `CORREU:`). La protecció d'avui és que tota fila neix `pendent`.
   Si es corregeix, al prompt mestre i a la còpia del Worker alhora.
-- **Cap sostre de mida**: ni al text del correu abans del model
+- **Cap sostre de mida al Worker**: ni al text del correu abans del model
   (`textDelCorreu()`), que ara es paga per token, ni a cada camp del formulari
   (`campText()`). Cap límit de repetició al webhook, i qualsevol remitent
   d'`agenda@` gasta una crida (la confirmació del primer remitent és ajornada,
-  `CLAUDE.md` §8).
+  `CLAUDE.md` §8). L'ADT66 ja té els sostres per camp (`filaSegura()`, 29
+  d'octubre); el Worker els tindrà quan hi passi, amb una còpia literal i un
+  verificador.
+- **El títol del Worker va cru al missatge del commit** (`afegeixAPendents()`):
+  un salt de línia hi pot falsificar línies de peu a l'historial. Ho tanca el
+  títol d'una línia de `filaSegura()` el dia que el Worker hi passi.
 - **Les dates i les hores de les portes manuals no es validen de format**: una
   `data_inici` malformada desapareix del web sense avís. Només s'avisa de dates
-  invertides (D-05).
+  invertides (D-05). `filaSegura()` ja ho fa amb les dates, però el Worker
+  encara no hi passa.
 - **`{{AVUI}}` es calcula en UTC** (`toISOString()`): de 00.00 a 02.00 de París
   dona el dia anterior. Només afecta la inferència de l'any.
 - **El retorn de `reenviaAArxiu()` no es consulta**, i al correu Claude i
