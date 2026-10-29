@@ -11908,5 +11908,43 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.476Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-festa-major-st",
+    "titol": "Festa major St Assicle Ste Victoire",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "11:30",
+    "lloc": "Rue de la Caserne",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La festa major inclou sardanes i un dinar català organitzat per l'associació SJCS, amb l'ambient musical del cantant l'Adjudant Poivre. Al llarg de la tarda hi ha un concert íntim de Julio Leone, amb cançons en català, i un espectacle aeri de circ, «L'Entrain», de la companyia Les Mains Blanches. Durant tota la jornada hi ha jocs inflables, jocs de fusta, pesca d'ànecs, futbolí, legos gegants, tallers de circ i un mercat de creadors, i el col·lectiu Els Amics de l'Escola de Sorède ofereix una pausa gastronòmica. Les activitats són gratuïtes, a càrrec de l'ajuntament, i en cas de mal temps es traslladen a la sala polivalent.",
+    "descripcio_fr": "La fête majeure comprend des sardanes et un repas catalan organisé par l'association SJCS, avec l'ambiance musicale du chanteur l'Adjudant Poivre. Dans l'après-midi, un concert intimiste de Julio Leone, avec des chansons en catalan, et un spectacle aérien de cirque, « L'Entrain », de la compagnie Les Mains Blanches, sont proposés. Toute la journée, il y a des jeux gonflables, des jeux en bois, une pêche aux canards, un baby-foot, des légos géants, des ateliers de cirque et un marché de créateurs, et le collectif Els Amics de l'Escola de Sorède propose une pause gourmande. Les activités sont gratuites, à la charge de la mairie, et en cas de mauvais temps elles se replient dans la salle polyvalente.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084449/Festa-Major-2025-BBauer--2-_znbqi1.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.366Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-te-dansant",
+    "titol": "Te dansant",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "15:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Es tracta d'un te dansant amb el grup Téquila. Durant aquest moment de ball compartit es servirà te acompanyat de galetes.",
+    "descripcio_fr": "Il s'agit d'un thé dansant avec le groupe Téquila. Pendant ce moment de danse partagé, un thé accompagné de biscuits est servi.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084450/The-dansant-1920px_rvm9nx.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.384Z",
+    "periodicitat": ""
   }
 ]
