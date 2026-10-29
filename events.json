@@ -11452,5 +11452,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.477Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-11-castanyada",
+    "titol": "Castanyada",
+    "data_inici": "2026-11-11",
+    "data_fi": "2026-11-11",
+    "hora": "12:00",
+    "lloc": "",
+    "municipi": "Nyer",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "La castanyada a Nyer és un àpat convivial amb sabors de tardor. El menú inclou sopa de carbassa, ollada, formatge, pastís de pomes i castanyes i cafè, amb moscatell i vi inclosos. És un moment per compartir i gaudir en família o entre amics.",
+    "descripcio_fr": "La castanyada à Nyer est un repas convivial aux saveurs d'automne. Le menu comprend soupe de potiron, ouillade, fromage, tarte aux pommes et châtaignes et café, avec muscat et vin inclus. C'est un moment de partage et de gourmandise, à savourer en famille ou entre amis.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084391/856921024-1555217219985887-1261623749810219379-n--1-_wgoavm.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.479Z",
+    "periodicitat": ""
   }
 ]
