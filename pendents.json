@@ -4320,12 +4320,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZHOC] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-13-exposition-sculptures-de",
+    "id": "2026-11-13-exposicio-descultures-de",
     "titol": "Exposició d'escultures de Marcel Deltell",
     "data_inici": "2026-11-13",
     "data_fi": "2026-11-13",
     "hora": "10:00",
-    "lloc": "Galerie Auguste \n11 Avenue de Perpignan",
+    "lloc": "Galerie Auguste 11 Avenue de Perpignan",
     "municipi": "Torrelles de la Salanca",
     "comarca": "Rosselló",
     "categoria": "Exposició",
@@ -4334,13 +4334,13 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084421/848188619-122283116768142672-869_zorbnw.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.468Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZI45] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-14-salon-litteraire-festif",
+    "id": "2026-11-14-salo-literari-festiu",
     "titol": "Saló literari festiu",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -4354,7 +4354,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084422/salon-litteraire_cv8dmn.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.383Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52SCMT] Categoria per tema infantil; RechercheTYPE deia: Conferència Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
