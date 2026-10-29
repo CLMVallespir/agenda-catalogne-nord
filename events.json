@@ -11110,5 +11110,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.422Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-te-dansant",
+    "titol": "Te dansant",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "14:30",
+    "lloc": "Hôtel de Ville",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Dansa i ball",
+    "descripcio_ca": "Són balls de saló com el vals, el tango, el paso doble o el madison, en un ambient de convivència. Al llarg de la temporada hi actuen diferents orquestres, com Orchestre Baïlamor, Orchestre Jean-Pierre Laurens i Orchestre Alex Lorenzo, que fan ballar tant els aficionats com els apassionats. Cadascú pot sortir a la pista, sol, en parella o amb amics, i gaudir plenament de la música. Hi ha una pausa gastronòmica, begudes a voluntat i guarda-roba gratuït.",
+    "descripcio_fr": "Il s'agit de danses de salon comme la valse, le tango, le paso doble ou le madison, dans une ambiance conviviale. Au cours de la saison, différents orchestres se succèdent, notamment Orchestre Baïlamor, Orchestre Jean-Pierre Laurens et Orchestre Alex Lorenzo, pour faire danser aussi bien les amateurs que les passionnés. Seul, en couple ou entre amis, chacun peut rejoindre la piste et profiter pleinement de la musique. Une pause gourmande, des boissons à volonté et un vestiaire gratuit sont également proposés.",
+    "associacio": "Contacter TRADITIONS CATALANES",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084340/ChatGPT-Image-1-sept.-2026--11-42-45_lendnn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.426Z",
+    "periodicitat": ""
   }
 ]
