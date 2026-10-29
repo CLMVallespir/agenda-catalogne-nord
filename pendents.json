@@ -5020,7 +5020,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZIX2] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-15-bourse-au-jouets",
+    "id": "2026-11-15-borsa-de-joguines",
     "titol": "Borsa de joguines, roba i puericultura",
     "data_inici": "2026-11-15",
     "data_fi": "2026-11-15",
@@ -5034,7 +5034,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084473/jouets-2_g1da8l.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.477Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZJST] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
