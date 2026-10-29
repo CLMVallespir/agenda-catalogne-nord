@@ -12554,5 +12554,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.464Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-festival-aujourdhui-musiques",
+    "titol": "Festival Aujourd'hui Musiques",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-12",
+    "hora": "",
+    "lloc": "THÉÂTRE DE L'ARCHIPEL Avenue du Général Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "El festival Aujourd'hui Musiques es dedica a les formes sonores i visuals més innovadores. Se celebra a L'Archipel i a El Mediator, i la presentació del festival es fa al Carré. Aquesta edició es deixa travessar pels ritmes, les pulsacions i tot allò que ressona, es transmet i ens posa en moviment.",
+    "descripcio_fr": "Le festival Aujourd'hui Musiques est dédié aux formes sonores et visuelles les plus innovantes. Il se déroule à L'Archipel et à El Mediator, et la présentation du festival a lieu au Carré. Cette édition se laisse traverser par les rythmes, les pulsations et tout ce qui résonne, se transmet et nous met en mouvement.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084403/Festival-Aujourd-hui-Musiques-2026_fdfcvq.webp",
+    "font_url": "https://www.theatredelarchipel.org/aujourdhui-musiques",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.470Z",
+    "periodicitat": ""
   }
 ]
