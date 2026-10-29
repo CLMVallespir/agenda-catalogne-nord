@@ -12022,5 +12022,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.434Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-jornada-a-lestil",
+    "titol": "Jornada a l'estil de la festa de la cervesa",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "12:30",
+    "lloc": "Avenue de Saint-Saturnin",
+    "municipi": "Vernet",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "La jornada reprodueix l'ambient de la festa de la cervesa, amb accents alsacians, a la sala polivalent de Vernet. El menú inclou brètzel, xucrut amb quatre tipus de carn i tarta de poma alsaciana, acompanyats d'una beguda o d'un cafè. A la tarda, amb entrada lliure per a tothom, hi haurà ball i música a càrrec de Gérard Boissel – EDMSONO.",
+    "descripcio_fr": "La journée reproduit l'ambiance de la fête de la bière, aux accents alsaciens, à la salle polyvalente de Vernet. Le menu comprend un bretzel, une choucroute aux quatre viandes et une tarte aux pommes alsacienne, accompagnés d'une boisson ou d'un café. L'après-midi, avec entrée libre pour tous, il y aura de la danse et de la musique avec Gérard Boissel – EDMSONO.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084457/840419466-1107765721732308-6953595312367818178-n_qfyma5.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.455Z",
+    "periodicitat": ""
   }
 ]
