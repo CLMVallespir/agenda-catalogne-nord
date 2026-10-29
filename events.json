@@ -12402,5 +12402,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.408Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-les-toublitouts-expressio",
+    "titol": "Les Toublitouts - Expressió teatral",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "18:00",
+    "lloc": "3 Rue Joseph Lafon",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Des del setembre de 2024 s'han fet tallers d'expressió teatral per a persones amb la malaltia d'Alzheimer i per a familiars cuidadors, amb el suport econòmic de l'Action Social Malakoff Humanis. Aquests tallers han donat lloc a la companyia Les Toublitouts, que ha inaugurat la seva gira departamental amb la primera representació de l'any al teatre municipal de Perpignan, davant de més de 100 espectadors. Sota la direcció de Thierry Coma i en col·laboració amb el Théâtre aux Croisements, els participants han treballat l'autoestima, l'expressió individual i col·lectiva i la ruptura dels tabús sobre la malaltia, a través de la creació, les improvisacions i l'expressió lliure. L'espectacle presenta malalts i cuidadors en escenes de teatre emotives i originals, fruit d'un treball col·lectiu.",
+    "descripcio_fr": "Depuis septembre 2024, des ateliers d'expression théâtrale sont destinés aux personnes atteintes de la maladie d'Alzheimer et à leurs proches aidants, avec le soutien financier de l'Action Social Malakoff Humanis. Ces ateliers ont donné naissance à la troupe Les Toublitouts, qui a inauguré sa tournée départementale avec la première représentation de l'année au théâtre municipal de Perpignan, devant plus de 100 spectateurs. Sous la direction de Thierry Coma et en partenariat avec le Théâtre aux Croisements, les participants ont travaillé l'estime de soi, l'expression individuelle et collective et la levée des tabous sur la maladie, à travers la création, les improvisations et l'expression libre. Le spectacle présente malades et aidants dans des scènes de théâtre émouvantes et originales, fruit d'un travail collectif.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084535/11.26-Affiche-spectacle-Alzeimer--theatre-Canet-2_xd0j8f.webp",
+    "font_url": "www.pole-alzheimer.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.426Z",
+    "periodicitat": ""
   }
 ]
