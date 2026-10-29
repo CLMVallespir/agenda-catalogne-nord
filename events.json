@@ -12193,5 +12193,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.419Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-17-film-la-barbe",
+    "titol": "Film «La barbe à papa»",
+    "data_inici": "2026-11-17",
+    "data_fi": "2026-11-17",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Peter Bogdanovich dirigeix aquesta pel·lícula sobre Moses Pray, petit estafador de la Gran Depressió nord-americana, que es fa càrrec de la seva filla Addie, de nou anys, després del funeral d'una antiga amant. Quan emprèn el viatge cap a casa d'una tia al Missouri, no sap que podria ser-ne el pare. Entre estafes i trobades, s'hi crea una complicitat entre tots dos. La pel·lícula, en blanc i negre, és un road movie nostàlgic sobre l'Amèrica dels anys trenta.",
+    "descripcio_fr": "Peter Bogdanovich dirige ce film sur Moses Pray, petit escroc de la Grande Dépression américaine, qui prend en charge sa fille Addie, âgée de neuf ans, après les funérailles d'une ancienne maîtresse. Lorsqu'il entreprend le voyage vers la maison d'une tante dans le Missouri, il ignore qu'il pourrait être son père. Entre escroqueries et rencontres, une complicité naît entre les deux. Le film, en noir et blanc, est un road movie nostalgique sur l'Amérique des années trente.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084501/La-Barbe-a-Papa---Novembre-2026_fhpwf0.webp",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.445Z",
+    "periodicitat": ""
   }
 ]
