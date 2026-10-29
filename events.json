@@ -11661,5 +11661,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.436Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-13-conferencies-sobre-plantes",
+    "titol": "Conferències sobre plantes medicinals",
+    "data_inici": "2026-11-13",
+    "data_fi": "2026-11-13",
+    "hora": "",
+    "lloc": "Avenue de Mont Louis",
+    "municipi": "Els Angles",
+    "comarca": "Capcir",
+    "categoria": "Conferència",
+    "descripcio_ca": "Anne-Marie Pujol presenta una conferència sobre les plantes medicinals i els seus usos. L'acte es repeteix en dues sessions i s'hi tracten els secrets i els beneficis de les plantes que ens envolten.",
+    "descripcio_fr": "Anne-Marie Pujol présente une conférence sur les plantes médicinales et leurs usages. L'acte se répète en deux séances et aborde les secrets et les bienfaits des plantes qui nous entourent.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084416/Conference-AMP-novembre--1-_nskcil.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.458Z",
+    "periodicitat": ""
   }
 ]
