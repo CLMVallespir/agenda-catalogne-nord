@@ -11984,5 +11984,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.400Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-deployer-la-nuit",
+    "titol": "Déployer la nuit",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "17:30",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "A la fi del dia, Déployer la nuit proposa una travessia musical on els segles es responen amb una sorprenent llibertat. Sota la direcció de la soprano Juliette de Massy, quatre músics fan dialogar obres de Monteverdi, Marin Marais, Tarquinio Merula i Sébastien Le Camus amb peces de John Cage, Steve Reich i Pierre-Yves Macé, entre la música barroca i la creació contemporània. Els arranjaments inèdits revelen noves ressonàncies i dibuixen un paisatge sonor inspirat en els misteris de la nit, en un concert portat per Alla Notte de Pierre-Yves Macé, que convida a una escolta contemplativa on s'entrelacen poesia, silenci i llum. Com a preludi, una deambulació cantada pels espais de l'Archipel fa descobrir el lloc d'una altra manera.",
+    "descripcio_fr": "À la fin de la journée, Déployer la nuit propose une traversée musicale où les siècles se répondent avec une surprenante liberté. Sous la direction de la soprano Juliette de Massy, quatre musiciens font dialoguer des œuvres de Monteverdi, Marin Marais, Tarquinio Merula et Sébastien Le Camus avec des pièces de John Cage, Steve Reich et Pierre-Yves Macé, entre musique baroque et création contemporaine. Les arrangements inédits révèlent de nouvelles résonances et dessinent un paysage sonore inspiré par les mystères de la nuit, dans un concert porté par Alla Notte de Pierre-Yves Macé, qui invite à une écoute contemplative où s'entrelacent poésie, silence et lumière. En prélude, une déambulation chantée dans les espaces de l'Archipel fait découvrir le lieu d'une autre manière.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084454/Deployer-la-nuit_c8tbwa.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.408Z",
+    "periodicitat": ""
   }
 ]
