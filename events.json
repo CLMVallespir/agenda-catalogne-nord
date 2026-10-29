@@ -11490,5 +11490,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.393Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-je-suis-une",
+    "titol": "Je suis une montagne",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-15",
+    "hora": "12:30",
+    "lloc": "Théâtre de l'ArchipelAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Amb Je suis une montagne, Éric Arnal-Burtschy proposa, dins del festival Aujourd'hui Musiques, una experiència sensorial sense actors ni relat. El públic seu directament a l'escenari, en tumbones suspeses sobre el terra, amb els ulls tancats, i percep vent, canvis de temperatura, olors d'humus, sons greus i capes musicals. L'espectacle és una travessia immòbil per les forces geològiques i climàtiques, a partir d'una creació sonora i olfactiva. Conté efectes estroboscòpics i vibracions, desaconsellats a persones amb epilèpsia fotosensible i a dones embarassades.",
+    "descripcio_fr": "Avec Je suis une montagne, Éric Arnal-Burtschy propose, au cœur du festival Aujourd'hui Musiques, une expérience sensorielle sans acteurs ni récit. Le public prend place directement sur le plateau, installé sur des transats suspendus au-dessus du sol, les yeux fermés. Vent, variations de température, odeurs d'humus, grondements sourds et nappes musicales composent une traversée immobile des forces géologiques et climatiques, à partir d'une création sonore et olfactive. Le spectacle comporte des effets stroboscopiques et des vibrations, déconseillés aux personnes épileptiques photosensibles et aux femmes enceintes.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084394/Je-suis-une-montagne-1_csi1kd.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.407Z",
+    "periodicitat": ""
   }
 ]
