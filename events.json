@@ -11395,5 +11395,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.388Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-11-fira-del-fetge",
+    "titol": "Fira del fetge gras",
+    "data_inici": "2026-11-11",
+    "data_fi": "2026-11-11",
+    "hora": "09:00",
+    "lloc": "3 Place de la République",
+    "municipi": "El Soler",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Es tracta d'un mercat de productors. Hi ha fetge gras i productes de la terra de caràcter festiu.",
+    "descripcio_fr": "Il s'agit d'un marché de producteurs. On y trouve du foie gras et des produits du terroir à caractère festif.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084382/Foire-ua-gras_qeo4ms.webp",
+    "font_url": "https://www.lesoler.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.460Z",
+    "periodicitat": ""
   }
 ]
