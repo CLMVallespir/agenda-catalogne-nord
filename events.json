@@ -12155,5 +12155,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.373Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-17-club-de-lecture",
+    "titol": "Club de lecture des Amis de la Médiathèque",
+    "data_inici": "2026-11-17",
+    "data_fi": "2026-11-17",
+    "hora": "15:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "El club de lectura de la mediateca de Sant Cebrià de Rosselló es reuneix al voltant d'obres escollides. L'activitat permet descobrir gèneres literaris nous i enriquir el punt de vista i els coneixements sobre el món.",
+    "descripcio_fr": "Le club de lecture de la médiathèque de Sant Cebrià de Rosselló se réunit autour d'œuvres choisies. L'activité permet de découvrir de nouveaux genres littéraires et d'enrichir son point de vue et ses connaissances sur le monde.",
+    "associacio": "Contacter MÉDIATHÈQUE PROSPER MÉRIMÉE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084491/event-FMALAR066V52XJZA-1783699334042-3_hwu71l.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.418Z",
+    "periodicitat": ""
   }
 ]
