@@ -3420,7 +3420,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZJBS] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-08-randonnee-departementale",
+    "id": "2026-11-08-caminada-departamental",
     "titol": "Caminada departamental",
     "data_inici": "2026-11-08",
     "data_fi": "2026-11-08",
@@ -3434,7 +3434,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084359/Aspres-terrats-rando8nov_zffr0l.webp",
     "font_url": "https://www.cdsmr66.org/randonnee-departementale-2026/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.476Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZJO4] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
