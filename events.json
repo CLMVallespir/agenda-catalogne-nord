@@ -11642,5 +11642,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.407Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-13-conferencia-debat-sobre",
+    "titol": "Conferència debat sobre el clima",
+    "data_inici": "2026-11-13",
+    "data_fi": "2026-11-13",
+    "hora": "18:30",
+    "lloc": "Impasse Jeantet Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La Comunitat de comunes dels Aspres organitza, en el marc de la revisió del Pla climàtic-aire-energia territorial (PCAET), una sèrie de conferències-debats amb experts sobre temes centrals d'aquest pla. Les sessions tracten els efectes de les calors fortes sobre la salut, els recursos d'aigua per al futur dels Pyrénées-Orientales i la qualitat de l'aire, amb les intervencions del doctor François Carbonnel i de Caroline Figueres. Els debats han de permetre entendre què està en joc per al territori i reflexionar col·lectivament sobre les accions que es poden impulsar en el marc del PCAET.",
+    "descripcio_fr": "La Communauté de communes des Aspres organise, dans le cadre de la révision du Plan climat-air-énergie territorial (PCAET), une série de conférences-débats avec des experts sur des thèmes au cœur de ce plan. Les séances portent sur les effets des fortes chaleurs sur la santé, les ressources en eau pour le futur des Pyrénées-Orientales et la qualité de l'air, avec les interventions du docteur François Carbonnel et de Caroline Figueres. Ces débats doivent permettre de mieux comprendre les enjeux pour le territoire et de réfléchir collectivement aux actions à mener dans le cadre du PCAET.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084409/Aspres-aspres-conferencedebatclimat_tnbvpu.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.436Z",
+    "periodicitat": ""
   }
 ]
