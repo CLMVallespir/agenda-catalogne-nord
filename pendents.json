@@ -4694,13 +4694,13 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084449/Festa-Major-2025-BBauer--2-_znbqi1.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.366Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52B1RB] Categoria per tema infantil; RechercheTYPE deia: Música Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-15-the-dansant",
+    "id": "2026-11-15-te-dansant",
     "titol": "Te dansant",
     "data_inici": "2026-11-15",
     "data_fi": "2026-11-15",
@@ -4714,7 +4714,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084450/The-dansant-1920px_rvm9nx.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.384Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52TYKJ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
