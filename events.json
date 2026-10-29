@@ -11243,5 +11243,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.476Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-09-amb-el-que",
+    "titol": "Amb el que creixerà entre les ruïnes",
+    "data_inici": "2026-11-09",
+    "data_fi": "2026-11-09",
+    "hora": "14:45",
+    "lloc": "LIBRAIRIE TORCATIS10 Rue Mailly",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'un taller d'escriptura on cadascú pot descobrir la seva part poètica, el seu espai de construcció i les emocions amagades. No hi ha judici ni objectiu a assolir. El grup és guiat a través de mini-conferències, debats, textos llegits i compartits, imatges estimulants i una escolta respectuosa. El taller es fa en companyia poètica de Ludivine Joinnot, i també d'Ailton Krenak, Marielle Macé i Alain Schnapp, així com d'altres pensadors i historiadors de les «ruïnes», en els diferents sentits del terme.",
+    "descripcio_fr": "Il s'agit d'un atelier d'écriture où chacun peut découvrir sa part poétique, son espace de construction et ses émotions enfouies. Il n'y a ni jugement ni objectif à atteindre. Le groupe est guidé à travers des mini-conférences, des discussions, des textes lus et partagés, des images stimulantes et une écoute respectueuse. L'atelier se déroule en compagnie poétique de Ludivine Joinnot, ainsi que d'Ailton Krenak, Marielle Macé et Alain Schnapp, et d'autres penseurs et historiens des « ruines », dans les différents sens du terme.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084363/Ruines---Novembre-2026-_j8llki.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.463Z",
+    "periodicitat": ""
   }
 ]
