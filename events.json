@@ -11604,5 +11604,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.459Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-13-quartet-prima-kanta",
+    "titol": "Quartet Prima Kanta",
+    "data_inici": "2026-11-13",
+    "data_fi": "2026-11-13",
+    "hora": "12:30",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El quartet Prima Kanta presenta In a Purple Time, un recorregut musical on les fronteres entre el jazz, la música de cambra i la creació contemporània es difuminen. Amb composicions de Laurent Rochelle, el piano, el violí, l'arpa electroacústica, el clarinet i la veu dialoguen per crear un univers ple de matisos i textures. Entre l'acústica i l'electrònica, les melodies es despleguen com a paisatges sonors de colors canviants, a vegades delicats, a vegades sorprenents. És un concert immersiu i poètic, que deixa lliure curs a l'imaginari i permet a cadascú construir el seu propi relat al llarg de la música.",
+    "descripcio_fr": "Le quartet Prima Kanta présente In a Purple Time, un parcours musical où les frontières entre le jazz, la musique de chambre et la création contemporaine s'estompent. Avec des compositions de Laurent Rochelle, le piano, le violon, la harpe électroacoustique, la clarinette et la voix dialoguent pour créer un univers riche en nuances et en textures. Entre acoustique et électronique, les mélodies se déploient comme des paysages sonores aux couleurs changeantes, tantôt délicats, tantôt surprenants. C'est un concert immersif et poétique, qui laisse libre cours à l'imaginaire et permet à chacun de construire son propre récit au fil de la musique.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084407/Quartet-Prima-Kanta-1_lkkcpn.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.407Z",
+    "periodicitat": ""
   }
 ]
