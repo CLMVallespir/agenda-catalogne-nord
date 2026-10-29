@@ -11870,5 +11870,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.463Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-les-20-anys",
+    "titol": "Les 20 anys d'Argeles Gospel Singers",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-15",
+    "hora": "10:00",
+    "lloc": "14 Rue du 14 Juillet",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Amb motiu dels seus 20 anys, el grup vocal Argeles Gospel Singers obre les portes de l'univers del gospel. L'acte inclou una exposició de fotografies, un taller de gospel, concerts i una barra de begudes.",
+    "descripcio_fr": "À l'occasion de ses 20 ans, le groupe vocal Argeles Gospel Singers ouvre les portes de l'univers du gospel. L'acte comprend une exposition de photographies, un atelier de gospel, des concerts et une buvette.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084443/AFFICHE-20-ANS_upuegp.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.472Z",
+    "periodicitat": ""
   }
 ]
