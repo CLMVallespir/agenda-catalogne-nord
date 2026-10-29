@@ -12535,5 +12535,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.409Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-sophro-balade",
+    "titol": "Sophro-balade",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "Codalet",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte permet experimentar els beneficis de la sofrologia a l'aire lliure. Es fa a Saint Michel de Cuxa.",
+    "descripcio_fr": "L'activité permet d'expérimenter les bienfaits de la sophrologie en plein air. Elle se déroule à Saint Michel de Cuxa.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084550/Capture-153_ys9lre.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.464Z",
+    "periodicitat": ""
   }
 ]
