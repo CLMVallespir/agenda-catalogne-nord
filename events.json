@@ -11357,5 +11357,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.475Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-11-rifle-du-hand",
+    "titol": "Rifle du Hand",
+    "data_inici": "2026-11-11",
+    "data_fi": "2026-11-11",
+    "hora": "15:30",
+    "lloc": "Boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "És la temporada dels Rifles del Handball Club Tuïr. Hi ha molts lots per guanyar.",
+    "descripcio_fr": "C'est la saison des Rifles du Handball Club Tuïr. De nombreux lots sont à gagner.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084376/Aspres-thuir-riflehand26_iufduh.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.365Z",
+    "periodicitat": ""
   }
 ]
