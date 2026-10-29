@@ -12231,5 +12231,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.371Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-sessio-de-jocs",
+    "titol": "Sessió de jocs",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "15:00",
+    "lloc": "4 Avenue de Perpignan",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Una vegada al mes, el personal de la mediateca proposa una sessió per jugar i descobrir jocs nous. L'activitat és oberta a tothom, sense límit d'edat.",
+    "descripcio_fr": "Une fois par mois, le personnel de la médiathèque propose une séance pour jouer et découvrir de nouveaux jeux. L'activité est ouverte à tous, sans limite d'âge.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084515/20240214---Jeux-Mediatheque_mh92ur.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.372Z",
+    "periodicitat": ""
   }
 ]
