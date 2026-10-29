@@ -12212,5 +12212,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.445Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-donacio-de-sang",
+    "titol": "Donació de sang",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "15:00",
+    "lloc": "Avenue Georges Pézières",
+    "municipi": "Sant Pau de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La donació de sang es fa a Sant Pau de Fenollet, amb o sense cita prèvia. Per donar sang cal tenir entre 18 i 70 anys, pesar més de 50 quilos, no haver rebut mai una transfusió i estar en bona forma. Abans de donar cal haver menjat i begut, i cal portar un document d'identitat. Tot el procés dura una hora, dels quals deu minuts corresponen a la donació pròpiament dita, i cada donació permet atendre tres pacients diferents en els dies següents.",
+    "descripcio_fr": "Le don du sang a lieu à Sant Pau de Fenollet, avec ou sans rendez-vous. Pour donner, il faut avoir entre 18 et 70 ans, peser plus de 50 kilos, n'avoir jamais reçu de transfusion et être en bonne forme. Avant le don, il faut avoir mangé et bu, et se munir d'une pièce d'identité. L'ensemble de la démarche dure une heure, dont dix minutes pour le don lui-même, et chaque don permet de soigner trois patients différents dans les jours suivants.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084512/don-du-sang-Gerd-Altmann-de-Pixabay-2_edj1gf.webp",
+    "font_url": "https://dondesang.efs.sante.fr/trouver-une-collecte/149590/sang/05-01-2026",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.371Z",
+    "periodicitat": ""
   }
 ]
