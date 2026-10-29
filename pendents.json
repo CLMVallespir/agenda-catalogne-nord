@@ -5760,7 +5760,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YEMM] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-19-les-toublitouts-expressions",
+    "id": "2026-11-19-les-toublitouts-expressio",
     "titol": "Les Toublitouts - Expressió teatral",
     "data_inici": "2026-11-19",
     "data_fi": "2026-11-19",
@@ -5774,7 +5774,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084535/11.26-Affiche-spectacle-Alzeimer--theatre-Canet-2_xd0j8f.webp",
     "font_url": "www.pole-alzheimer.fr",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.426Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52YP1S] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
