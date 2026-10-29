@@ -5680,12 +5680,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52VZ8R] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-19-recital-violoncelle",
+    "id": "2026-11-19-recital-de-violoncel",
     "titol": "Recital de violoncel",
     "data_inici": "2026-11-19",
     "data_fi": "2026-11-19",
     "hora": "07:15",
-    "lloc": "Avenue Maréchal Leclerc\nAvenue Maréchal Leclerc",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Música",
@@ -5694,7 +5694,7 @@
     "associacio": "Contacter BILLETTERIE",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084531/recital-violoncelle-_wwb3om.webp",
     "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.408Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52XKJB] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
