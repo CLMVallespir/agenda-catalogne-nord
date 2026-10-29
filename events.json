@@ -12041,5 +12041,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.455Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-apat-de-xucrut",
+    "titol": "Àpat de xucrut i tarda ballable",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "12:00",
+    "lloc": "Rue Jules Ferry",
+    "municipi": "Llupià",
+    "comarca": "Rosselló",
+    "categoria": "Dansa i ball",
+    "descripcio_ca": "L'associació Llupia Animations organitza un àpat de xucrut i una tarda ballable amb Bruno Duo. La tarda ballable segueix l'àpat.",
+    "descripcio_fr": "L'association Llupia Animations organise un repas de choucroute et un après-midi dansant avec Bruno Duo. L'après-midi dansant suit le repas.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084462/choucroute_lbmylc.webp",
+    "font_url": "https://mairie-llupia.fr/fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.466Z",
+    "periodicitat": ""
   }
 ]
