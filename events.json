@@ -11433,5 +11433,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.462Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-11-festival-tous-sentinelles",
+    "titol": "Festival Tous sentinelles",
+    "data_inici": "2026-11-11",
+    "data_fi": "2026-11-11",
+    "hora": "",
+    "lloc": "Rue du 14 Juillet",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "El festival Tous sentinelles té el seu cor a Banyuls de la Marenda, en col·laboració amb el CPIE Occitanie. És una cita dedicada a la descoberta de la biodiversitat marina i a la preservació del litoral, adreçada a habitants, famílies i visitants. A través d'animacions i trobades, s'hi posen en relleu el coneixement del medi marí, les ciències participatives i el compromís ciutadà. L'acte recorda que la protecció de la Mediterrània és cosa de tothom.",
+    "descripcio_fr": "Le festival Tous sentinelles a son cœur à Banyuls de la Marenda, en collaboration avec le CPIE Occitanie. C'est un rendez-vous consacré à la découverte de la biodiversité marine et à la préservation du littoral, destiné aux habitants, aux familles et aux visiteurs. À travers des animations et des rencontres, le festival met en avant la connaissance du milieu marin, les sciences participatives et l'engagement citoyen. L'événement rappelle que la protection de la Méditerranée est l'affaire de tous.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084390/Du-11-au-15-11-TOUS-SENTINELLES-BANYULS--REOUCHE-NAT-_gi3myy.webp",
+    "font_url": "https://www.banyuls-sur-mer.com/mairie/actualites/coeur-du-festival-tous-sentinelles-du-11-au-15-novembre-2026/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.477Z",
+    "periodicitat": ""
   }
 ]
