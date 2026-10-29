@@ -11699,5 +11699,43 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.462Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-13-exposicio-descultures-de",
+    "titol": "Exposició d'escultures de Marcel Deltell",
+    "data_inici": "2026-11-13",
+    "data_fi": "2026-11-13",
+    "hora": "10:00",
+    "lloc": "Galerie Auguste 11 Avenue de Perpignan",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'exposició presenta les darreres creacions de Marcel Deltell. Després de les seves històries amb fusta flotada, els viatges imaginaris en globus aerostàtic i les cabanes poètiques, l'artista proposa «un retorn a l'essencial». Hi fa servir diversos suports i tècniques: fusta, filferro, materials reciclats, argila, collages i pintura. Dona caràcter als seus personatges perquè el públic pugui imaginar-ho tot.",
+    "descripcio_fr": "L'exposition présente les dernières créations de Marcel Deltell. Après ses histoires en bois flotté, ses voyages imaginaires en montgolfière et ses cabanes poétiques, l'artiste propose « un retour à l'essentiel ». Il utilise divers supports et techniques : bois, fil de fer, matériaux recyclés, argile, collages et peinture. Il donne du caractère à ses personnages afin que le public puisse tout imaginer.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084421/848188619-122283116768142672-869_zorbnw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.468Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-salo-literari-festiu",
+    "titol": "Saló literari festiu",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "13:30",
+    "lloc": "Rue Saint-Jacques",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "A més dels participants als tallers mensuals d'escriptura organitzats per Médialettres, a Sureda hi ha autors que han publicat obres de tots els àmbits. Entre les finalitats hi ha comunicar recerques històriques o artístiques, explicar una intriga o inventar simplement un conte. L'animació l'organitza l'associació Médialettres amb Le Cercle des auteurs catalans du 66.",
+    "descripcio_fr": "En plus des participants aux ateliers mensuels d'écriture organisés par Médialettres, Sureda compte des auteurs ayant publié leurs œuvres dans tous les domaines. Parmi les objectifs figurent communiquer des recherches historiques ou artistiques, raconter une intrigue ou simplement inventer une nouvelle. L'animation est organisée par l'association Médialettres avec Le Cercle des auteurs catalans du 66.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084422/salon-litteraire_cv8dmn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.383Z",
+    "periodicitat": ""
   }
 ]
