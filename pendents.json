@@ -3985,7 +3985,7 @@
     "data_inici": "2026-11-12",
     "data_fi": "2026-11-12",
     "hora": "20:30",
-    "lloc": "Palais des congrès\nPlace Armand Lanoux",
+    "lloc": "Palais des congrèsPlace Armand Lanoux",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Música",
@@ -3994,7 +3994,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084393/I-MUVRINI_w7jl1i.webp",
     "font_url": "https://www.congres-perpignan.com/events/i-muvrini/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.393Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52VEMB] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
