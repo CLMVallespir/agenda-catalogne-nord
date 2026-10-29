@@ -12478,5 +12478,43 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.483Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-taller-diniciacio-a",
+    "titol": "Taller d'iniciació a Lingua Libre",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "16:00",
+    "lloc": "4 Avenue de Perpignan",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Lingua Libre és un projecte germà de Wikipedia que té com a ambició que tothom enregistri les paraules de totes les llengües del planeta. L'enregistrament de paraules està a l'abast de tothom i té molts usos. L'acte permet conèixer aquesta eina i aportar-hi la pròpia veu per al saber universal.",
+    "descripcio_fr": "Lingua Libre est un projet frère de Wikipedia qui a pour ambition de faire enregistrer par chacun les mots de toutes les langues de la planète. L'enregistrement des mots est à la portée de tous et présente de nombreux usages. L'acte permet de découvrir cet outil et d'y apporter sa voix pour le savoir universel.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084544/1280px-Lingualibre-logo.svg-3_ie8mcp.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.367Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-donacio-de-sang",
+    "titol": "Donació de sang",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "15:00",
+    "lloc": "4 Avenue Chopin",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La donació de sang dura una hora, dels quals només deu minuts corresponen a l'extracció. Poden donar sang les persones d'entre 18 i 70 anys que pesin més de 50 quilos, que mai no hagin rebut una transfusió i que es trobin en bon estat de salut. Abans de donar cal haver menjat i begut, i cal presentar un document d'identitat. Cada donació permet tractar tres pacients diferents en els propers dies.",
+    "descripcio_fr": "Le don de sang dure une heure, dont dix minutes seulement sont consacrées au prélèvement. Peuvent donner leur sang les personnes âgées de 18 à 70 ans, pesant plus de 50 kilos, n'ayant jamais reçu de transfusion et se sentant en bonne santé. Il faut avoir mangé et bu avant le don, et se présenter avec une pièce d'identité. Chaque don permet de soigner trois patients différents dans les jours suivants.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084545/20-11-26_qwidlr.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.383Z",
+    "periodicitat": ""
   }
 ]
