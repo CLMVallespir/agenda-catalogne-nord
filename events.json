@@ -11148,5 +11148,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.436Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-aniversari-de-la",
+    "titol": "Aniversari de la Ferme d'Estoher",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "10:00",
+    "lloc": "Camps del Mas",
+    "municipi": "Estoer",
+    "comarca": "Conflent",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La Ferme d'Estoher celebra el seu aniversari amb una jornada festiva i familiar. El programa inclou un mercat de creadors i productors, una desfilada de mascotes, creps dolces i salades, una barra de begudes, jocs de fusta, una gran tómbola amb nombrosos premis, un contacontes per als infants i una cerca del tresor. La jornada inclou també la visita a la granja, que té 150 animals.",
+    "descripcio_fr": "La Ferme d'Estoher fête son anniversaire avec une journée festive et familiale. Le programme comprend un marché de créateurs et producteurs, un défilé de mascottes, des crêpes sucrées et salées, une buvette, des jeux en bois, une grande tombola avec de nombreux lots, un conte pour les enfants et une chasse au trésor. La journée comprend aussi la visite de la ferme, qui compte 150 animaux.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084345/2-56_i5i2ql.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.446Z",
+    "periodicitat": ""
   }
 ]
