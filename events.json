@@ -11338,5 +11338,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.454Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-10-podcasts-de-territori",
+    "titol": "Podcasts de territori",
+    "data_inici": "2026-11-10",
+    "data_fi": "2026-11-10",
+    "hora": "",
+    "lloc": "5 Rue de l'Égalité",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'associació Beau Bruit presenta a la Médiathèque Pons d'Illa un projecte per descobrir el territori a través de l'escolta, amb paisatges sonors i històries viscudes. Per inaugurar el Saló d'escolta, la sessió d'obertura és una proposta insòlita i poètica amb l'artista Ninon De Graaff i la BIP - Brigade d'Intervention Poétique.",
+    "descripcio_fr": "L'association Beau Bruit présente à la Médiathèque Pons d'Illa un projet pour découvrir le territoire à travers l'écoute, avec des paysages sonores et des histoires vécues. Pour inaugurer le Salon d'écoute, la séance d'ouverture est une proposition insolite et poétique avec l'artiste Ninon De Graaff et la BIP - Brigade d'Intervention Poétique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084375/10-11-b_eioixw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.475Z",
+    "periodicitat": ""
   }
 ]
