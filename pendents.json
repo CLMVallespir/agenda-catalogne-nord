@@ -4640,7 +4640,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZJ58] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-14-salon-du-fait",
+    "id": "2026-11-14-salo-del-fet",
     "titol": "Saló del fet a mà",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -4654,7 +4654,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084445/856168454-939084962615061-171485685626503551-n_prpzic.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.476Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZJPF] La categoria queda buida a posta: «Salon» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
