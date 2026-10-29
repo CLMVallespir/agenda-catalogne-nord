@@ -12003,5 +12003,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.408Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-theatre-des-aspres",
+    "titol": "Théâtre des Aspres - Temporada cultural: Nallar",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "11:00",
+    "lloc": "Boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Nallar és un espectacle íntim i proper al públic, inspirat en els sons i els gestos del món rural, com les campanes, les crides dels pastors, la llana, la palla o els mugits dels animals. Parla de la casa que cadascú porta dins, un terreny fèrtil que convida a la contemplació i a desenvolupar la confiança en un mateix. És un espectacle pensat per veure i viure en família. La companyia Inspira Teatre, fundada el 2011 per Esther Westermeyer, crea espectacles per a tots els públics a partir de les arts del ritme i de la veu.",
+    "descripcio_fr": "Nallar est un spectacle intime et proche de son public, inspiré des sons et des gestes du monde rural, comme les cloches, les appels des bergers, la laine, la paille ou les mugissements des animaux. Il parle de la maison que chacun porte en soi, un terreau fertile qui invite à la contemplation et à développer la confiance en soi. C'est un spectacle conçu pour être vu et vécu en famille. La compagnie Inspira Teatre, fondée en 2011 par Esther Westermeyer, crée des spectacles pour tous les publics à partir des arts du rythme et de la voix.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084457/Aspres-thuir-nallar_yfrrcg.webp",
+    "font_url": "https://thuir.fr/le-theatre-des-aspres/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.434Z",
+    "periodicitat": ""
   }
 ]
