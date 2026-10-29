@@ -12269,5 +12269,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.394Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-cine-lecture-nous",
+    "titol": "Ciné-lecture Nous voilà grands",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "15:30",
+    "lloc": "14 Rue de l'Espace Arthur Conte",
+    "municipi": "Pollestres",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Vuit històries curtes expliquen amb delicadesa la gelosia, la compartició i la diversitat de les famílies del dia a dia. L'activitat s'adreça a infants a partir de 2 anys.",
+    "descripcio_fr": "Huit histoires courtes évoquent avec délicatesse la jalousie, le partage et la diversité des familles du quotidien. L'activité s'adresse aux enfants à partir de 2 ans.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084517/NOUS-VOILA-GRANDS_v6r7p6.webp",
+    "font_url": "https://cinemaville-pollestres.com/actualites/e54e092b-d224-4258-97c8-c80b5418c6fb",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.446Z",
+    "periodicitat": ""
   }
 ]
