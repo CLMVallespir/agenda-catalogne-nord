@@ -4125,7 +4125,7 @@
     "data_inici": "2026-11-12",
     "data_fi": "2026-11-12",
     "hora": "",
-    "lloc": "THÉÂTRE DE L'ARCHIPEL \nAvenue du Général Leclerc",
+    "lloc": "THÉÂTRE DE L'ARCHIPEL Avenue du Général Leclerc",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Teatre",
@@ -4134,7 +4134,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084403/Festival-Aujourd-hui-Musiques-2026_fdfcvq.webp",
     "font_url": "https://www.theatredelarchipel.org/aujourdhui-musiques",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.470Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZIID] Ve marcada només «Festival», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
