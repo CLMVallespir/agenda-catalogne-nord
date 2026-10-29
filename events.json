@@ -11680,5 +11680,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.458Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-13-instant-benestar",
+    "titol": "Instant benestar",
+    "data_inici": "2026-11-13",
+    "data_fi": "2026-11-13",
+    "hora": "18:00",
+    "lloc": "33 rue de l'Hospice",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "Dins de la quinzena Sport et Santé, la mediateca de Prada acull un taller animat per Nadia Zen, professora certificada de Hatha Yoga. S'hi explica com tenir cura de si mateix en el dia a dia amb eines senzilles i a l'abast de tothom.",
+    "descripcio_fr": "Dans le cadre de la quinzaine Sport et Santé, la médiathèque de Prada accueille un atelier animé par Nadia Zen, professeure certifiée de Hatha Yoga. Il y est expliqué comment prendre soin de soi au quotidien avec des outils simples et accessibles à tous.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084417/2026.11-Nadia-zen--1-_qsaefd.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.462Z",
+    "periodicitat": ""
   }
 ]
