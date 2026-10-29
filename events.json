@@ -11167,5 +11167,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.446Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-aplec-de-la",
+    "titol": "Aplec de la Saint Martin",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "11:00",
+    "lloc": "",
+    "municipi": "Castell de Vernet",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "Aplec per celebrar la Saint Martin a l'abadia. Inclou una processó, seguida d'una missa i d'un got de l'amistat. Després hi haurà un dinar de farcell i sardanes, i també un moment d'intercanvi espiritual i vespres.",
+    "descripcio_fr": "Aplec pour célébrer la Saint Martin à l'abbaye. Il comprend une procession, suivie d'une messe et d'un verre de l'amitié. Ensuite, il y aura un repas tiré du sac et des sardanes, ainsi qu'un moment d'échange spirituel et des vêpres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084349/IMG-6811-2_ti5sjs.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.458Z",
+    "periodicitat": ""
   }
 ]
