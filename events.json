@@ -12345,5 +12345,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.473Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-les-causeries-aux",
+    "titol": "Les causeries aux collections",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "18:30",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'acte és una conferència animada per Alexandre Charett-Dykes. Té com a tema la decadència barcelonina i la pintura modernista catalana (vers 1890-1920).",
+    "descripcio_fr": "L'activité est une conférence animée par Alexandre Charett-Dykes. Elle a pour thème la décadence barcelonaise et la peinture moderniste catalane (vers 1890-1920).",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084529/lcd-causeries-7_m4kczp.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.393Z",
+    "periodicitat": ""
   }
 ]
