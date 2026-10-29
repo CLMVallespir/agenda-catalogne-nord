@@ -12117,5 +12117,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.463Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-16-exposicio-jie-yeon",
+    "titol": "Exposició Jie-Yeon Jeon – «Qui sommes-nous?»",
+    "data_inici": "2026-11-16",
+    "data_fi": "2026-11-16",
+    "hora": "",
+    "lloc": "3 Rue Porte Balaguer",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'artista coreana Jie-Yeon Jeon presenta en aquesta exposició el seu univers artístic, la seva sensibilitat i la seva mirada sobre el món. La seva obra parla el llenguatge de la modernitat: una gestualitat prudent i alhora aventurera, que recorre extensions clapejades, distribueix vessaments de color i de matèria, i treballa amb petites taques ratllades, recobriments i superposicions. Les obres proposen una experiència de contemplació i descoberta, i obren un diàleg entre creació, emoció i percepció. L'exposició permet conèixer de prop el seu plantejament artístic personal.",
+    "descripcio_fr": "L'artiste coréenne Jie-Yeon Jeon présente dans cette exposition son univers artistique, sa sensibilité et son regard sur le monde. Son œuvre parle le langage de la modernité : une gestualité prudente et à la fois aventureuse, qui parcourt des étendues tachetées, répartit des jets de couleur et de matière, et travaille par petites touches hachurées, recouvrements et superpositions. Les œuvres proposent une expérience de contemplation et de découverte, et ouvrent un dialogue entre création, émotion et perception. L'exposition permet de connaître de près sa démarche artistique personnelle.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084483/16-11-Affiche-exposition-Jie-Yeon-Jeon_rrhzhw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.473Z",
+    "periodicitat": ""
   }
 ]
