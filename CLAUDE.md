@@ -38,7 +38,8 @@ flux ADT66 ───────────────────────
                               web públic estàtic (GitHub Pages) llegeix events.json
 ```
 
-- **`events.json`** (arrel del repositori) és la font de veritat del que és públic.
+- **`events.json`** (arrel del repositori) és la font de veritat del que és públic,
+  i només hi ha actes que no han passat: cada publicació en treu els passats (D-08).
 - **`pendents.json`** (arrel del repositori) és la cua de revisió del curador
   **i la memòria de rebuig del projecte**: rebutjar una fila no la suprimeix, li
   posa `estat = "rebutjat"` i la deixa on és; publicar tampoc no la suprimeix, hi
@@ -203,6 +204,11 @@ Regles de què depèn el codi:
   les tres per separat. No es perd cap memòria: la vora és la mateixa de la
   finestra de `filtraCandidats()`, o sigui que una oferta caducada el filtre ja
   la llença abans d'arribar enlloc, i la fila podada queda a l'historial de git.
+- **El curador poda `events.json` a cada publicació (D-08)**, al mateix commit
+  i amb la mateixa regla: `podaEventsPassats()` a `curador-cua.js`, amb l'avui
+  del rellotge del navegador. La regla de «ja ha passat» és una de sola,
+  `esCaducada()` a `curador-cua.js`, i `podaCaducades()` la hi va a buscar. Si no
+  es pot publicar cap acte del lot, no s'escriu res, ni la poda.
 - **En fusionar dues files duplicades, l'estat es resol per precedència i mai
   per posició.** L'ordre, de més fort a més fluix, és
   **`publicat` > `rebutjat` > `pendent`** (i, si cap dels dos no és cap dels

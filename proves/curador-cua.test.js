@@ -27,6 +27,10 @@ var pla = pagina.pla;
 var JA_NO_HI_ES = 'La fila ja no era a la cua.';
 var JA_PUBLICAT = 'Aquest acte ja estava publicat, no s’ha duplicat.';
 
+// L'avui de la pàgina a totes les proves: anterior a totes les dates de les
+// files de prova, perquè la poda d'events.json no depengui del rellotge.
+var AVUI_DE_PROVA = '2026-10-15';
+
 // Els disset camps públics: els de la cua menys nota_curador.
 var CAMPS_PUBLICS = pagina.CAMPS_DE_CUA.slice(0, 17);
 
@@ -67,6 +71,9 @@ async function preparaPagina(pendents, events) {
   pag.ctx.TESTIMONI = 'testimoni-de-prova';
   // Els reintents de conflicte, sense pauses: les proves no han d'esperar.
   pag.ctx.ESPERES_CONFLICTE_MS = [0, 0, 0];
+  // Un avui fix i anterior a totes les dates de les files de prova: la poda
+  // d'events.json (D-08) no n'ha de treure cap llevat de les que ho demanin.
+  pag.ctx.avuiLocal = function () { return AVUI_DE_PROVA; };
   return { diposit: diposit, pag: pag };
 }
 
@@ -176,6 +183,44 @@ test('publica: un id buit no identifica ningú, i no bloqueja un acte sense data
   ]);
   assert.equal(p.diposit.dades('events.json').length, 2);
   assert.equal(fitxa.retirat, true);
+});
+
+test('publica: al mateix commit treu d’events.json els actes que ja han passat, i el missatge ho diu', async function () {
+  var f = tresFiles();
+  var passat = filaEvent({
+    id: '2026-10-01-fira-passada', titol: 'Fira passada',
+    data_inici: '2026-10-01', data_fi: '2026-10-01'
+  });
+  var llarga = filaEvent({
+    id: '2026-09-01-exposicio-llarga', titol: 'Exposició llarga',
+    data_inici: '2026-09-01', data_fi: '2026-12-31'
+  });
+  var p = await preparaPagina([f.abans, f.mig, f.despres], [passat, llarga]);
+
+  await p.pag.ctx.publica(pagina.creaFitxaFalsa(pagina.campsEditables(f.mig)), f.mig);
+
+  assert.deepEqual(p.diposit.dades('events.json').map(function (fila) {
+    return fila.titol;
+  }), ['Exposició llarga', 'Ball a Prats']);
+  assert.deepEqual(p.diposit.commits, [
+    'Publica Ball a Prats\n\nTreu d’events.json 1 acte que ja ha passat (D-08).',
+    'Marca com a publicada Ball a Prats'
+  ]);
+});
+
+test('publica: si l’acte no es pot publicar, events.json no es toca, tampoc per podar-lo', async function () {
+  var f = tresFiles();
+  var passat = filaEvent({
+    id: '2026-10-01-fira-passada', titol: 'Fira passada',
+    data_inici: '2026-10-01', data_fi: '2026-10-01'
+  });
+  var p = await preparaPagina([f.mig], [passat, filaEvent({})]);
+  var eventsAbans = p.diposit.text('events.json');
+
+  await p.pag.ctx.publica(pagina.creaFitxaFalsa(pagina.campsEditables(f.mig)), f.mig);
+
+  assert.equal(p.diposit.text('events.json'), eventsAbans);
+  assert.deepEqual(p.diposit.commits, []);
 });
 
 test('publica: si algú publica el mateix id enmig d’un conflicte de sha, el reintent no escriu res', async function () {

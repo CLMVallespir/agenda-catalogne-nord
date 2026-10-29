@@ -27,6 +27,13 @@
 //     posició per la publicada (estat «publicat», nota_curador intacta).
 //   - La cua només pinta `estat === 'pendent'`, literalment això.
 //   - Una fila de pendents.json en porta divuit camps; una d'events.json, disset.
+//   - events.json només guarda actes que no han passat (D-08): cada
+//     publicació en treu els passats.
+//
+// LA REGLA DE «JA HA PASSAT» VIU AQUÍ, i només aquí: esCaducada(). La fan
+// servir la poda d'events.json del curador i la de pendents.json de l'Action
+// (podaCaducades(), a eines/sincronitza-programada.js, que fa
+// require('../curador-cua.js')). Si canvia, canvia per a tots dos.
 // ---------------------------------------------------------------------------
 
 
@@ -324,11 +331,82 @@ function variantsDeCartell(url) {
 }
 
 
+// --- Actes passats ----------------------------------------------------------
+
+// ------------------------------------------------------------
+// Diu si l'acte d'una fila ja ha passat: el seu últim dia és anterior a
+// `avui` (AAAA-MM-DD). Una fila sense cap data utilitzable no ha passat:
+// no es pot dir, i es queda.
+// ------------------------------------------------------------
+function esCaducada(fila, avui) {
+  var darrerDia = darrerDiaDeLActe(fila);
+
+  if (darrerDia === '') {
+    return false;
+  }
+
+  return darrerDia < avui;
+}
+
+// ------------------------------------------------------------
+// L'últim dia de l'acte: `data_fi`, o `data_inici` si `data_fi` és buida. És
+// la mateixa vora que mira la finestra de filtraCandidats() de l'Action, i la
+// mateixa amb què app.js amaga els actes passats. Torna '' si la data que
+// toca no té la forma AAAA-MM-DD.
+// ------------------------------------------------------------
+function darrerDiaDeLActe(fila) {
+  var dataFi = fila.data_fi;
+
+  if (dataFi === undefined || dataFi === null || String(dataFi).trim() === '') {
+    dataFi = fila.data_inici;
+  }
+
+  if (!esData(dataFi)) {
+    return '';
+  }
+
+  return dataFi;
+}
+
+// ------------------------------------------------------------
+// Diu si un valor té la forma AAAA-MM-DD. No comprova que el dia existeixi:
+// aquí només cal saber si es pot comparar com a data.
+// ------------------------------------------------------------
+function esData(valor) {
+  return typeof valor === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(valor);
+}
+
+// ------------------------------------------------------------
+// Separa els actes d'events.json que ja han passat dels que no. Torna
+// { vius, passats }, totes dues llistes noves; la d'entrada no es toca.
+//
+// PER QUÈ (D-08). El web ja amaga els actes passats, i events.json no pot
+// créixer sense sostre: l'API de continguts de GitHub, l'única via per on
+// el llegeixen el curador, l'Action i el digest del Worker, deixa de tornar
+// el contingut d'un fitxer de més d'1 MB. Una fila treta queda a
+// l'historial de git.
+// ------------------------------------------------------------
+function podaEventsPassats(events, avui) {
+  var vius = [];
+  var passats = [];
+
+  for (var i = 0; i < events.length; i++) {
+    if (esCaducada(events[i], avui)) {
+      passats.push(events[i]);
+    } else {
+      vius.push(events[i]);
+    }
+  }
+
+  return { vius: vius, passats: passats };
+}
+
+
 // --- Per a Node -------------------------------------------------------------
 
 // Al navegador `module` no existeix i les funcions de dalt ja són globals;
-// a Node, `require()` rep aquesta llista. Només hi ha el que la pàgina i les
-// proves fan servir.
+// a Node, `require()` rep aquesta llista. Només hi ha el que la pàgina, les
+// proves i l'Action (la regla d'«actes passats») fan servir.
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     JA_NO_HI_ES: JA_NO_HI_ES,
@@ -344,6 +422,10 @@ if (typeof module !== 'undefined' && module.exports) {
     combinaTransformacions: combinaTransformacions,
     missatgeDeLot: missatgeDeLot,
     esDelNostreCloudinary: esDelNostreCloudinary,
-    variantsDeCartell: variantsDeCartell
+    variantsDeCartell: variantsDeCartell,
+    esCaducada: esCaducada,
+    darrerDiaDeLActe: darrerDiaDeLActe,
+    esData: esData,
+    podaEventsPassats: podaEventsPassats
   };
 }

@@ -1262,27 +1262,56 @@ async function pujaACloudinary(urlOrigen) {
 }
 
 // ------------------------------------------------------------
+// La data d'avui al rellotge del navegador, AAAA-MM-DD: la mateixa
+// vora amb què app.js amaga els actes passats al web.
+// ------------------------------------------------------------
+function avuiLocal() {
+  var ara = new Date();
+  var mes = String(ara.getMonth() + 1).padStart(2, '0');
+  var dia = String(ara.getDate()).padStart(2, '0');
+  return ara.getFullYear() + '-' + mes + '-' + dia;
+}
+
+// ------------------------------------------------------------
 // Afegeix a events.json, en un sol commit, tots els actes publicats del
 // lot. Deixa a cada decisió el seu `errorEvents` (null si s'ha escrit).
 //
 // afegeixAPublicats() (curador-cua.js) no escriu un id que ja hi sigui, i
 // ho comprova dins la transformació perquè el reintent la torni a fer.
+//
+// Al mateix commit treu d'events.json els actes que ja han passat (D-08,
+// podaEventsPassats() a curador-cua.js), i el missatge diu quants. Si
+// no es pot publicar cap acte del lot, no s'escriu res, ni la poda.
 // ------------------------------------------------------------
 async function desaPublicacions(publicacions) {
   var combinada = combinaTransformacions(publicacions.map(function (decisio) {
     return afegeixAPublicats(decisio.editat);
   }));
 
+  var avui = avuiLocal();
+  var passats = [];
+  var transforma = function (events) {
+    var poda = podaEventsPassats(events, avui);
+    passats = poda.passats;
+    return combinada.transforma(poda.vius);
+  };
+
   var missatge = function () {
-    return missatgeDeLot('Publica ' + publicacions.length + ' actes',
+    var text = missatgeDeLot('Publica ' + publicacions.length + ' actes',
       liniesBones(publicacions, combinada.errors, function (decisio) {
         return 'Publica ' + decisio.editat.titol;
       }));
+    if (passats.length === 1) {
+      text = text + '\n\nTreu d’events.json 1 acte que ja ha passat (D-08).';
+    } else if (passats.length > 1) {
+      text = text + '\n\nTreu d’events.json ' + passats.length + ' actes que ja han passat (D-08).';
+    }
+    return text;
   };
 
   var errorDelFitxer = null;
   try {
-    await desaAmbReintent(FITXER_EVENTS, combinada.transforma, missatge);
+    await desaAmbReintent(FITXER_EVENTS, transforma, missatge);
   } catch (error) {
     errorDelFitxer = error;
   }

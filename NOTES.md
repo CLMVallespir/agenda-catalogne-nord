@@ -107,6 +107,19 @@ protocol de coordinació.
   el curador ho torna a provar o buida el camp. Mai no es publica un cartell
   d'un tercer. De retruc, una fila rebutjada ja no deixa cap còpia a
   Cloudinary. L'Action continua sense tocar Cloudinary.
+- **D-08 · 29 d'octubre.** `events.json` només guarda actes que no han
+  passat. Cada publicació del curador en treu, al mateix commit, els que
+  tenen l'últim dia (`data_fi`, o `data_inici` si és buida) anterior a avui
+  al rellotge del navegador (`podaEventsPassats()`), i el missatge del commit
+  diu quants. Va néixer perquè res no el podava: el 29 d'octubre feia 718 KB i
+  creixia uns 20 KB al dia, i l'API de continguts de GitHub —l'única via per
+  on el llegeixen el curador, l'Action i el digest del Worker— deixa el camp
+  `content` buit per damunt d'1 MB; hi hauria arribat cap al 12-14 de
+  novembre. El web ja amagava els passats, el filtre de l'Action ja no els
+  ofereix, i una fila treta queda a l'historial de git. La regla de «ja ha
+  passat» és una de sola, `esCaducada()` a `curador-cua.js`, i la poda de
+  `pendents.json` de l'Action la crida d'allà. Es reobre si mai es vol un
+  arxiu públic d'actes passats: llavors, un fitxer apart.
 
 Decisions anteriors al registre, igual de tancades (el perquè és a la lliçó que
 s'indica):

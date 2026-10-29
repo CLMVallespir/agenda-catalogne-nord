@@ -188,6 +188,13 @@ var contraFitxers = require('./dedup-contra-fitxers.js');
 var filtre = require('./filtra-candidats.js');
 var exclusions = require('./exclusions-editorials.js');
 
+// La regla de «l'acte ja ha passat» viu a curador-cua.js: la poda de la cua
+// d'aquí i la d'events.json del curador (D-08) han de dir el mateix.
+var caducitat = require('../curador-cua.js');
+var esCaducada = caducitat.esCaducada;
+var darrerDiaDeLActe = caducitat.darrerDiaDeLActe;
+var esData = caducitat.esData;
+
 var fs = require('fs');
 
 
@@ -1289,7 +1296,7 @@ function analitzaJsonDeClaude(text) {
 //   estat === 'rebutjat', 'pendent' o 'publicat'
 //                          mai un `!== …`: una fila amb un estat nou o
 //                          inesperat s'ha de poder veure, no desaparèixer
-//   últim dia < avui       vegeu darrerDiaDeLActe(). Una fila sense cap data
+//   últim dia < avui       vegeu esCaducada(), a curador-cua.js. Una fila sense cap data
 //                          utilitzable no es pot dir que hagi passat, i es
 //                          queda
 //
@@ -1320,47 +1327,6 @@ function podaCaducades(files, avui) {
   }
 
   return { cua: cua, rebutjades: rebutjades, pendents: pendents, publicades: publicades };
-}
-
-// ------------------------------------------------------------
-// Diu si l'acte d'una fila ja ha passat. Una fila sense cap data utilitzable
-// no ha passat: no es pot dir.
-// ------------------------------------------------------------
-function esCaducada(fila, avui) {
-  var darrerDia = darrerDiaDeLActe(fila);
-
-  if (darrerDia === '') {
-    return false;
-  }
-
-  return darrerDia < avui;
-}
-
-// ------------------------------------------------------------
-// L'últim dia de l'acte: `data_fi`, o `data_inici` si `data_fi` és buida. És
-// la mateixa vora que mira la finestra de filtraCandidats(). Torna '' si la
-// data que toca no té la forma AAAA-MM-DD.
-// ------------------------------------------------------------
-function darrerDiaDeLActe(fila) {
-  var dataFi = fila.data_fi;
-
-  if (dataFi === undefined || dataFi === null || String(dataFi).trim() === '') {
-    dataFi = fila.data_inici;
-  }
-
-  if (!esData(dataFi)) {
-    return '';
-  }
-
-  return dataFi;
-}
-
-// ------------------------------------------------------------
-// Diu si un valor té la forma AAAA-MM-DD. No comprova que el dia existeixi:
-// aquí només cal saber si es pot comparar com a data.
-// ------------------------------------------------------------
-function esData(valor) {
-  return typeof valor === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(valor);
 }
 
 

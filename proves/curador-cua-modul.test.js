@@ -44,10 +44,39 @@ test('el mòdul exporta exactament el que la pàgina veu com a globals', async f
   assert.equal(pag.ctx.JA_PUBLICAT, cua.JA_PUBLICAT);
   assert.deepEqual(Object.keys(cua).sort(), [
     'JA_NO_HI_ES', 'JA_PUBLICAT', 'afegeixAPublicats', 'combinaTransformacions',
-    'creaFilaPublicada', 'esDelNostreCloudinary', 'filesPendents', 'idJaPublicat',
-    'marcaRebutjadaALaCua', 'missatgeDeLot', 'substitueixPerPublicada', 'treuDeLaCua',
-    'trobaIndex', 'variantsDeCartell'
+    'creaFilaPublicada', 'darrerDiaDeLActe', 'esCaducada', 'esData', 'esDelNostreCloudinary',
+    'filesPendents', 'idJaPublicat', 'marcaRebutjadaALaCua', 'missatgeDeLot',
+    'podaEventsPassats', 'substitueixPerPublicada', 'treuDeLaCua', 'trobaIndex',
+    'variantsDeCartell'
   ]);
+});
+
+test('esCaducada: l’últim dia és data_fi, o data_inici si és buida; avui encara no ha passat', function () {
+  var avui = '2026-10-29';
+  assert.equal(cua.esCaducada(filaEvent({ data_inici: '2026-10-28', data_fi: '2026-10-28' }), avui), true);
+  assert.equal(cua.esCaducada(filaEvent({ data_inici: '2026-10-29', data_fi: '2026-10-29' }), avui), false);
+  assert.equal(cua.esCaducada(filaEvent({ data_inici: '2026-10-01', data_fi: '2026-11-15' }), avui), false);
+  assert.equal(cua.esCaducada(filaEvent({ data_inici: '2026-10-28', data_fi: '' }), avui), true);
+});
+
+test('esCaducada: una fila sense cap data utilitzable no ha passat', function () {
+  var avui = '2026-10-29';
+  assert.equal(cua.esCaducada(filaEvent({ data_inici: '', data_fi: '' }), avui), false);
+  assert.equal(cua.esCaducada(filaEvent({ data_inici: '28/10/2026', data_fi: '' }), avui), false);
+});
+
+test('podaEventsPassats: separa els passats dels vius, en ordre i sense tocar la llista', function () {
+  var passat = filaEvent({ id: 'a', data_inici: '2026-10-01', data_fi: '2026-10-01' });
+  var viu = filaEvent({ id: 'b', data_inici: '2026-11-07', data_fi: '2026-11-07' });
+  var senseData = filaEvent({ id: 'c', data_inici: '', data_fi: '' });
+  var llarg = filaEvent({ id: 'd', data_inici: '2026-09-01', data_fi: '2026-12-31' });
+  var events = [passat, viu, senseData, llarg];
+
+  var poda = cua.podaEventsPassats(events, '2026-10-29');
+
+  assert.deepEqual(poda.vius, [viu, senseData, llarg]);
+  assert.deepEqual(poda.passats, [passat]);
+  assert.equal(events.length, 4);
 });
 
 test('esDelNostreCloudinary: només el cloud de l’agenda, i sense nom de cloud mai', function () {
