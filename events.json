@@ -11756,5 +11756,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.398Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-nadau-boitaclous",
+    "titol": "Nadau - Boitaclous",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "20:29",
+    "lloc": "Palais des CongrèsPlace Armand Lanoux",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Nadau és un cantant gascó-bearnès que, des de fa cinquanta anys, travessa els colls per parlar de la vida quotidiana, de les arrels, dels amors senzills i de les indignacions alegres. Les seves cançons, cantades en una llengua que evoca la terra, el vent i el bon vi, donen tanta importància als silencis com a les paraules. Envoltat d'una alegre família musical, presenta melodies que fan vibrar l'ànima i que de vegades esdevenen himnes dels seguidors de la Section Paloise.",
+    "descripcio_fr": "Nadau est un chanteur gascon-béarnais qui, depuis cinquante ans, traverse les cols pour parler de la vie quotidienne, des racines, des amours simples et des colères joyeuses. Ses chansons, chantées dans une langue qui évoque la terre, le vent et le bon vin, accordent autant d'importance aux silences qu'aux mots. Entouré d'une joyeuse famille musicale, il propose des mélodies qui font vibrer l'âme et deviennent parfois des hymnes pour les supporters de la Section Paloise.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084425/NADAU_l5d3cv.webp",
+    "font_url": "https://www.boitaclous.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.399Z",
+    "periodicitat": ""
   }
 ]
