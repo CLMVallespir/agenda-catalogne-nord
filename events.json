@@ -11281,5 +11281,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.397Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-10-cafe-diabete-dessiner",
+    "titol": "Café diabète : « Dessiner la maladie » : art-thérapie et inconscient",
+    "data_inici": "2026-11-10",
+    "data_fi": "2026-11-10",
+    "hora": "15:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'Association Française des Diabétiques (AFD 66) organitza aquesta trobada d'intercanvi i d'informació a la Médiathèque Prosper Mérimée de Sant Cebrià de Rosselló. Els tallers pretenen ajudar els pacients i els seus familiars que els acompanyen a comprendre millor la malaltia, a descodificar els missatges de salut i a compartir trucs del dia a dia. Tot plegat es fa amb un to distès.",
+    "descripcio_fr": "L'Association Française des Diabétiques (AFD 66) organise cette rencontre d'échanges et d'informations à la Médiathèque Prosper Mérimée de Sant Cebrià de Rosselló. Ces ateliers visent à aider les patients et leurs proches aidants à mieux comprendre la maladie, à décoder les messages de santé et à partager des astuces du quotidien. Le tout se déroule dans une ambiance conviviale.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084367/event-FMALAR066V52YVVU-1788422383777_cdoucz.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.429Z",
+    "periodicitat": ""
   }
 ]
