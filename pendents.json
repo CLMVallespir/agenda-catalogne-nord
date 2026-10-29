@@ -3380,7 +3380,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZJ9J] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-08-masterclass-autour-du",
+    "id": "2026-11-08-masterclass-al-voltant",
     "titol": "Masterclass al voltant de l'arròs",
     "data_inici": "2026-11-08",
     "data_fi": "2026-11-08",
@@ -3394,7 +3394,7 @@
     "associacio": "Contacter Madame DEPOUES virginie",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084357/IMG-10042_k9fijw.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.474Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZJBB] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
