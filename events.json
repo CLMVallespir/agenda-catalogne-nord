@@ -11566,5 +11566,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.450Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-donacio-de-sang",
+    "titol": "Donació de sang",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-12",
+    "hora": "14:00",
+    "lloc": "Place Castellane",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Cada donació de sang pot contribuir a salvar vides i a atendre les necessitats quotidianes dels pacients ingressats als hospitals. Les necessitats de productes sanguinis es mantenen constants durant tot l'any, tant per a intervencions quirúrgiques com per al tractament de determinades malalties o per a situacions d'urgència. La recollida es fa amb o sense cita prèvia.",
+    "descripcio_fr": "Chaque don de sang peut contribuer à sauver des vies et à répondre aux besoins quotidiens des patients hospitalisés. Les besoins en produits sanguins restent constants tout au long de l'année, tant pour les interventions chirurgicales que pour le traitement de certaines maladies ou les situations d'urgence. La collecte se fait avec ou sans rendez-vous.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084400/Coeur-sang-3_ldxpxv.webp",
+    "font_url": "https://dondesang.efs.sante.fr/don-de-sang",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.457Z",
+    "periodicitat": ""
   }
 ]
