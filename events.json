@@ -12307,5 +12307,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.450Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-nature-en-tet",
+    "titol": "Nature en Têt: l'amor al niu, seducció, ous, nius i petits ocells",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "14:30",
+    "lloc": "33 rue de l'Hospice",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "Aquest acte forma part del cicle d'animació natura Nature en Têt i tracta la vida dels ocells. S'hi expliquen la seducció, les parades nupcials vertiginoses, els nius, els ous i els polls, i com creixen etapa rere etapa fins que s'envolen. Està adreçat a infants de 6 a 12 anys.",
+    "descripcio_fr": "Cet acte fait partie du cycle d'animation nature Nature en Têt et traite de la vie des oiseaux. On y aborde la séduction, les parades nuptiales vertigineuses, les nids, les œufs et les oisillons, ainsi que la façon dont ils grandissent étape après étape jusqu'à leur envol. Il s'adresse aux enfants de 6 à 12 ans.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084520/Capture-230_xvyc1j.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.450Z",
+    "periodicitat": ""
   }
 ]
