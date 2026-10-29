@@ -4034,7 +4034,7 @@
     "associacio": "Contacter Madame BONNAL Gwenaëlle",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084397/09-Affiche-RDV-Automne-2026-Olette_zch5bo.webp",
     "font_url": "https://www.tourisme-canigo.com/pays-dart-et-dhistoire-conflent-canigo/#rdv",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.423Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52YDT1] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
@@ -4045,7 +4045,7 @@
     "data_inici": "2026-11-12",
     "data_fi": "2026-11-12",
     "hora": "14:00",
-    "lloc": "INSTITUT JEAN VIGO\n1 rue Jean Vieilledent",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Cinema",
@@ -4054,7 +4054,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084398/Paris-qui-dort---Novembre-2026_pttpzg.webp",
     "font_url": "https://www.inst-jeanvigo.eu/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.445Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z8B0] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
