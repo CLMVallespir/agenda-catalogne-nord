@@ -11946,5 +11946,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.384Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-mercat-de-nadal",
+    "titol": "Mercat de Nadal",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Molig",
+    "comarca": "Conflent",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "A Molig, la sala comunal acull el mercat de Nadal, una jornada per compartir en família o amb amics. Hi ha parades on passejar i trobar idees de regal, i es pot començar a preparar les festes de final d'any. Petits i grans podran gaudir d'aquesta primera aproximació al Nadal abans d'hora.",
+    "descripcio_fr": "À Molig, la salle communale accueille le marché de Noël, une journée à partager en famille ou entre amis. On y trouve des stands où flâner et dénicher des idées cadeaux, et il est possible de commencer à préparer les fêtes de fin d'année. Petits et grands pourront profiter de cette première parenthèse de Noël avant l'heure.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084450/Affiche-Marche-de-Noel-Moderne-et-Simple-Illustrations-Rouge-2_oypean.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.397Z",
+    "periodicitat": ""
   }
 ]
