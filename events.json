@@ -11471,5 +11471,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.479Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-i-muvrini",
+    "titol": "I Muvrini",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-12",
+    "hora": "20:30",
+    "lloc": "Palais des congrèsPlace Armand Lanoux",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "I Muvrini, grup de germans, celebren el que viu, el que dona i el que apassiona. Al Nuage 33 presenten una simfonia sense fronteres, amb la divisa «Que res no ens separi». Quatre de les veus més belles de Còrsega es combinen amb un blues cors, una guitarra portuguesa, cors africans de César Anot, el fado i un groove urbà. També hi participen la veu de soprano de Kelly Poukens i cors d'infants.",
+    "descripcio_fr": "I Muvrini, groupe de frères, célèbrent ce qui vit, ce qui donne et ce qui passionne. Au Nuage 33, ils présentent une symphonie sans frontières, avec la devise « Que rien ne nous sépare ». Quatre des plus belles voix de Corse se mêlent à un blues corse, une guitare portugaise, des chœurs africains de César Anot, le fado et un groove urbain. Y participent aussi la voix de soprano de Kelly Poukens et des chœurs d'enfants.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084393/I-MUVRINI_w7jl1i.webp",
+    "font_url": "https://www.congres-perpignan.com/events/i-muvrini/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.393Z",
+    "periodicitat": ""
   }
 ]
