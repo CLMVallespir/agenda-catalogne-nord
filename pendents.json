@@ -4540,7 +4540,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZGVF] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-14-atelier-petite-enfance",
+    "id": "2026-11-14-taller-de-petita",
     "titol": "Taller de petita infància",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -4554,7 +4554,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084439/2026.11.margueritecourtieu_sxwcrx.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.462Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZGVK] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
