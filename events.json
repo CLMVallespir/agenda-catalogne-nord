@@ -12459,5 +12459,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.450Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-vetllada-beaujolais-nouveau",
+    "titol": "Vetllada Beaujolais nouveau al Mas La Marchette",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "19:30",
+    "lloc": "",
+    "municipi": "Oms",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El Mas La Marchette celebra l'arribada del Beaujolais nouveau amb un sopar gastronòmic i convivial, dedicat als vins i als sabors. El menú inclou un got de Beaujolais nouveau de cortesia, crepes verdes amb espinacs, xampinyons i parmesà, salsitxó calent amb gratinat delfinès i, de postres, tarta de peres al vi. Els vins del Beaujolais seleccionats per Sandrine també es venen al celler del mas.",
+    "descripcio_fr": "Le Mas La Marchette célèbre l'arrivée du Beaujolais nouveau avec un dîner gastronomique et convivial, consacré aux vins et aux saveurs. Le menu comprend un verre de Beaujolais nouveau offert, des crêpes vertes aux épinards, champignons et parmesan, du saucisson chaud au gratin dauphinois et, en dessert, une tarte aux poires au vin. Les vins du Beaujolais sélectionnés par Sandrine sont également vendus au caveau du mas.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084543/Aspres-oms-beaujelais-nouveaumarchette_czmlvk.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.483Z",
+    "periodicitat": ""
   }
 ]
