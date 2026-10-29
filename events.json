@@ -11737,5 +11737,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.383Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-fete-de-la",
+    "titol": "Fête de la Saint Brice",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "19:00",
+    "lloc": "Avenue Jean Jaurès",
+    "municipi": "Maurí",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La festa inclou un aperitiu amb tapes. Hi haurà animació musical amb el grup Vertigo.",
+    "descripcio_fr": "La fête comprend un apéritif avec des tapas. Il y aura une animation musicale avec le groupe Vertigo.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084424/FETE-ST-BRICE--14-11-26--MAURY_v0c4ii.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.398Z",
+    "periodicitat": ""
   }
 ]
