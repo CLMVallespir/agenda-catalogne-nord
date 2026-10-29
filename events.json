@@ -11224,5 +11224,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.474Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-caminada-departamental",
+    "titol": "Caminada departamental",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "09:30",
+    "lloc": "",
+    "municipi": "Terrats",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "L'acte és una caminada departamental que es fa un any després de l'edició anterior i manté el format habitual. Es fa amb l'ajuntament de Terrats i comença amb una acollida amb cafè. El recorregut és una marxa d'unes tres hores, i la tornada és convivial, amb aperitiu. Després s'hi fa un dinar de farcell compartit.",
+    "descripcio_fr": "Il s'agit d'une randonnée départementale qui a lieu un an après l'édition précédente et qui garde le format habituel. Elle se fait avec la mairie de Terrats et commence par un accueil café. Le parcours est une marche d'environ trois heures, et le retour est convivial, avec un apéritif. Ensuite, un repas tiré du sac partagé est proposé.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084359/Aspres-terrats-rando8nov_zffr0l.webp",
+    "font_url": "https://www.cdsmr66.org/randonnee-departementale-2026/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.476Z",
+    "periodicitat": ""
   }
 ]
