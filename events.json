@@ -11509,5 +11509,43 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.407Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-rendez-vous-du",
+    "titol": "Rendez-vous du Pays d'Art et d'Histoire: conferència. El tractat de Corbeil (1258)",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-12",
+    "hora": "18:00",
+    "lloc": "Rue de la Fusterie",
+    "municipi": "Oleta",
+    "comarca": "Conflent",
+    "categoria": "Conferència",
+    "descripcio_ca": "Renaud Labadie Savy, historiador, ofereix a Oleta una conferència sobre el tractat de Corbeil de 1258, que dibuixa una frontera del tot nova. Des de l'alta edat mitjana, la província de la Narbonnaise formava un continu cultural que unia la Septimanie amb Barcelona, el Conflent i les Corbières. Segons el ponent, el tractat consolida la victòria francesa sobre l'Aragó mitjançant una xarxa de fortaleses reials, però a escala local la frontera continua sent porosa. Les circulacions i les organitzacions transfrontereres es mantenen per als habitants, i la línia lingüística entre els espais occità i català només es va fixant poc a poc.",
+    "descripcio_fr": "Renaud Labadie Savy, historien, propose à Oleta une conférence sur le traité de Corbeil de 1258, qui dessine une frontière entièrement nouvelle. Depuis le haut Moyen Âge, la province de la Narbonnaise formait un continuum culturel reliant la Septimanie à Barcona, au Conflent et aux Corbières. Selon le conférencier, le traité consolide la victoire française sur l'Aragon grâce à un réseau de forteresses royales, mais à l'échelle locale la frontière reste poreuse. Les circulations et les organisations transfrontalières demeurent pour les habitants, et la ligne linguistique entre les espaces occitan et catalan ne se fixe que peu à peu.",
+    "associacio": "Contacter Madame BONNAL Gwenaëlle",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084397/09-Affiche-RDV-Automne-2026-Olette_zch5bo.webp",
+    "font_url": "https://www.tourisme-canigo.com/pays-dart-et-dhistoire-conflent-canigo/#rdv",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.423Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-film-paris-qui",
+    "titol": "Film Paris qui dort",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-12",
+    "hora": "14:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "El primer film de René Clair, rodat a París, mostra una ciutat de sobte immobilitzada i dona lloc a efectes visuals sorprenents. L'obra es va quedar sense distribuïdor fins a l'èxit del film següent, Entr'acte, que n'ha permès l'estrena. Les restauracions de la Fondation Jérôme Seydoux-Pathé restitueixen avui les dues versions del film. L'acompanyament musical és de Karol Beffa, que aposta per la poesia i una dolça malenconia.",
+    "descripcio_fr": "Le premier film de René Clair, tourné à Paris, met en scène une ville soudainement figée et donne lieu à des effets visuels surprenants. L'œuvre reste sans distributeur jusqu'au succès du film suivant, Entr'acte, qui en permet la sortie. Les restaurations de la Fondation Jérôme Seydoux-Pathé restituent aujourd'hui les deux versions du film. L'accompagnement musical est signé Karol Beffa, qui fait la part belle à la poésie et à une douce mélancolie.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084398/Paris-qui-dort---Novembre-2026_pttpzg.webp",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.445Z",
+    "periodicitat": ""
   }
 ]
