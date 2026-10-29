@@ -11376,5 +11376,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.365Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-11-fira-dels-camelots",
+    "titol": "Fira dels camelots",
+    "data_inici": "2026-11-11",
+    "data_fi": "2026-11-11",
+    "hora": "08:00",
+    "lloc": "Espace Méditerranée",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Es tracta de la 5a edició de la fira dels camelots a Perpinyà, un esdeveniment convivial amb nombrosos expositors que ofereixen una àmplia varietat de productes: roba, accessoris, articles de la vida quotidiana i idees de regal. L'ambient és càlid i animat, i petits i grans hi troben el que busquen entre les parades. És una cita per fer bones compres i descobrir productes.",
+    "descripcio_fr": "Il s'agit de la 5e édition de la foire des camelots à Perpinyà, un événement convivial avec de nombreux exposants proposant une large variété de produits : vêtements, accessoires, articles du quotidien et idées cadeaux. L'ambiance est chaleureuse et animée, et petits et grands y trouvent leur bonheur entre les stands. C'est un rendez-vous pour faire de bonnes affaires et découvrir des produits.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084378/Foire-des-Camelots-1_qzogoc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.388Z",
+    "periodicitat": ""
   }
 ]
