@@ -12174,5 +12174,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.418Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-17-le-repas-des",
+    "titol": "Le repas des Fauves",
+    "data_inici": "2026-11-17",
+    "data_fi": "2026-11-17",
+    "hora": "20:30",
+    "lloc": "3 Rue Joseph Lafon",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "La companyia Grenier Théâtre & Cie Cœur et Jardin presenta el muntatge Le repas des Fauves, adaptació de Julien Sibres de l'obra de Vahé Katcha, amb direcció artística de Claude Hélias. Els fets transcorren el 1942, a la França ocupada: set amics es reuneixen a casa dels Pélissier per celebrar un aniversari, però la vetllada es torna tensa quan dos oficials alemanys són abatuts davant de l'edifici. El comandant Kaubach, de la Gestapo, concedeix als convidats un termini de dues hores per designar ells mateixos dos ostatges que seran executats, ja que reconeix en Victor Pélissier, un llibreter amb qui té tracte i els consells del qual aprecia. L'obra planteja la lluita per salvar la pròpia pell a qualsevol preu, en detriment de l'amistat i de l'amor, amb crueltat i humor.",
+    "descripcio_fr": "La compagnie Grenier Théâtre & Cie Cœur et Jardin présente la pièce Le repas des Fauves, adaptation de Julien Sibres de l'œuvre de Vahé Katcha, sous la direction artistique de Claude Hélias. L'action se déroule en 1942, dans la France occupée : sept amis se retrouvent chez les Pélissier pour fêter un anniversaire, mais la soirée devient tendue lorsque deux officiers allemands sont abattus devant l'immeuble. Le commandant Kaubach, de la Gestapo, accorde aux convives un délai de deux heures pour désigner eux-mêmes deux otages qui seront exécutés, car il reconnaît en Victor Pélissier un libraire avec qui il a des relations et dont il apprécie les conseils. L'œuvre pose la lutte pour sauver sa peau à n'importe quel prix, au détriment de l'amitié et de l'amour, avec cruauté et humour.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084494/Afiches-A3-TJP-8_a5mmou.webp",
+    "font_url": "http(s)://www.canetenroussillon.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.419Z",
+    "periodicitat": ""
   }
 ]
