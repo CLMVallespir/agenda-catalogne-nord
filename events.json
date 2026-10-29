@@ -11775,5 +11775,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.399Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-au-theatre-ca",
+    "titol": "Au théâtre... ça me dit ! : La planque",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "20:30",
+    "lloc": "17 Avenue Général Joseph Santraille",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Una comèdia qüestiona la nostra llibertat davant de les nostres pors. L'obra la interpreta la companyia Les Tréteaux de l’Orne (Banyuls-sur-Mer).",
+    "descripcio_fr": "Une comédie questionne notre liberté face à nos peurs. Elle est interprétée par la troupe Les Tréteaux de l’Orne (Banyuls-sur-Mer).",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084430/-Au-theatre...-ca-me-dit-------La-planque--par-la-troupe-Les-Treteaux-de-l-Orne--Banyuls-sur-Mer-_jgyjdt.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.438Z",
+    "periodicitat": ""
   }
 ]
