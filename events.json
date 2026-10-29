@@ -11889,5 +11889,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.472Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-salo-del-fet",
+    "titol": "Saló del fet a mà",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "10:00",
+    "lloc": "19 Rue du Château",
+    "municipi": "Ortafà",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El saló del fet a mà es fa a Ortafà i reuneix una trentena de creadors d'aquí. Hi ha una tómbola amb un lot ofert per cadascun dels creadors presents al saló. Els participants poden endur-se'n, potser, una de les seves creacions.",
+    "descripcio_fr": "Le salon du fait main se tient à Ortafà et réunit une trentaine de créateurs d'ici. Une tombola propose un lot offert par chacun des créateurs présents au salon. Les participants ont peut-être la chance de repartir avec l'une de leurs créations.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084445/856168454-939084962615061-171485685626503551-n_prpzic.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.476Z",
+    "periodicitat": ""
   }
 ]
