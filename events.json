@@ -12250,5 +12250,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.372Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-taller-de-despertar",
+    "titol": "Taller de despertar al benestar sonor per a infants",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "10:30",
+    "lloc": "13 Rue Georges Clemenceau",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Els tallers s'adrecen a infants i adolescents a Sant Genís de Fontanes i s'adapten al ritme, l'edat i la sensibilitat de cadascun. Els condueix una monitora educadora amb 18 anys d'experiència, formada en ioga del so i sonoteràpia, i proposen una immersió vibratòria per calmar el cos i la ment. Es presenten com a beneficis la reducció de l'estrès i de l'ansietat escolar, la millora de la concentració, la regulació emocional i un son més reparador. La pràctica és suau, inclusiva i no requereix cap preparació física prèvia, i cal que els infants vagin acompanyats d'un adult.",
+    "descripcio_fr": "Les ateliers s'adressent aux enfants et aux adolescents à Sant Genís de Fontanes et s'adaptent au rythme, à l'âge et à la sensibilité de chacun. Ils sont conduits par une monitrice éducatrice qui compte 18 ans d'expérience, formée au yoga du son et à la sonothérapie, et proposent une immersion vibratoire pour apaiser le corps et l'esprit. Les bénéfices présentés sont la réduction du stress et de l'anxiété scolaire, l'amélioration de la concentration, la régulation des émotions et un meilleur sommeil. La pratique est douce, inclusive et ne demande aucun prérequis physique, et la présence d'un adulte accompagnateur est obligatoire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084515/atelier-conte-sonore-1_uqmk5b.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.394Z",
+    "periodicitat": ""
   }
 ]
