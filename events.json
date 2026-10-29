@@ -11205,5 +11205,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.470Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-masterclass-al-voltant",
+    "titol": "Masterclass al voltant de l'arròs",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "10:00",
+    "lloc": "32 Boulevard Cassanyes",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'acte és una masterclass matinal per aprendre a cuinar l'arròs, un gran plat mediterrani. Aymeric explica els secrets d'un arròs excepcional: la preparació del brou, la cocció al perol i els trucs i gestos del cuiner. Els participants poden compartir l'experiència i tastar l'arròs preparat al moment.",
+    "descripcio_fr": "L'activité est une masterclass matinale pour apprendre à cuisiner le riz, un grand plat méditerranéen. Aymeric y révèle les secrets d'un riz d'exception : la préparation du bouillon, la cuisson au poêlon et les astuces et gestes du chef. Les participants peuvent partager l'expérience et déguster le riz préparé sur-le-champ.",
+    "associacio": "Contacter Madame DEPOUES virginie",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084357/IMG-10042_k9fijw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.474Z",
+    "periodicitat": ""
   }
 ]
