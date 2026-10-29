@@ -3480,12 +3480,12 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZKVI] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-09-avec-ce-qui",
+    "id": "2026-11-09-amb-el-que",
     "titol": "Amb el que creixerà entre les ruïnes",
     "data_inici": "2026-11-09",
     "data_fi": "2026-11-09",
     "hora": "14:45",
-    "lloc": "LIBRAIRIE TORCATIS\n10 Rue Mailly",
+    "lloc": "LIBRAIRIE TORCATIS10 Rue Mailly",
     "municipi": "Perpinyà",
     "comarca": "Rosselló",
     "categoria": "Taller",
@@ -3494,7 +3494,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084363/Ruines---Novembre-2026-_j8llki.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.463Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZH1V] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
