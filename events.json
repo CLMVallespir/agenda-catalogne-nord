@@ -12383,5 +12383,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.408Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-empire",
+    "titol": "Empire",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "20:00",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "La companyia La Zampa imagina, amb Empire, un mural coreogràfic en què el moviment serveix per qüestionar les relacions de poder, de dominació i de transformació. Sobre un espai escènic format per vint-i-cinc tatamis de formes inestables, sis ballarins i el músic Marc Sens exploren un llenguatge físic nodrit del judo i de la contradansa anglesa. Caigudes, desequilibris, suspensions i impulsos composen una dansa en què la fragilitat esdevé una força creadora. Amb guitarres en bucle i un univers visual lluminós, la peça desplega un paisatge mutable, alhora íntim i polític, on els cossos inventen noves maneres de resistir, de relacionar-se i de reinventar el món.",
+    "descripcio_fr": "La compagnie La Zampa imagine, avec Empire, une fresque chorégraphique où le mouvement sert à interroger les rapports de pouvoir, de domination et de transformation. Sur un espace scénique composé de vingt-cinq tatamis aux formes instables, six danseurs et le musicien Marc Sens explorent un langage physique nourri du judo et de la contredanse anglaise. Chutes, déséquilibres, suspensions et élans composent une danse où la fragilité devient une force créatrice. Avec des guitares en boucle et un univers visuel éclatant, la pièce déploie un paysage mouvant, à la fois intime et politique, où les corps inventent de nouvelles façons de résister, de se relier et de réinventer le monde.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084532/Empire-_h9zyuu.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.408Z",
+    "periodicitat": ""
   }
 ]
