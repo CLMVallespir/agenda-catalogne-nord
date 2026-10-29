@@ -11300,5 +11300,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.429Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-10-film-after-yang",
+    "titol": "Film After Yang",
+    "data_inici": "2026-11-10",
+    "data_fi": "2026-11-10",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Film del cineasta nord-americà d'origen coreà Kogonada, conegut pels seus assaigs en vídeo i per la seva tècnica de muntatge. Qüestiona el dol que es pot sentir per robots domèstics en un futur molt semblant al present, en un món marcat per la intel·ligència artificial. És menys abstracte que Her, de Spike Jonze, i la interpretació de Colin Farrell hi és molt destacada. Ignorat injustament als cinemes francesos el 2022, l'Institut Jean Vigo el reivindica.",
+    "descripcio_fr": "Film du cinéaste américain d'origine coréenne Kogonada, connu pour ses essais vidéo et sa technique de montage. Il interroge le deuil que l'on pourrait ressentir envers des robots domestiques dans un futur très proche de notre présent, dans un monde marqué par l'intelligence artificielle. Moins abstrait que Her de Spike Jonze, il met en avant la prestation de Colin Farrell. Injustement ignoré lors de sa sortie en salles en France en 2022, le film est remis à l'honneur par l'Institut Jean Vigo.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084369/After-Yang---Novembre-2026_reuyij.webp",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.445Z",
+    "periodicitat": ""
   }
 ]
