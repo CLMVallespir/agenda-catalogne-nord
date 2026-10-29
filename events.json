@@ -11585,5 +11585,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.457Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-jamais-le-premier",
+    "titol": "Jamais le premier soir",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-12",
+    "hora": "21:00",
+    "lloc": "LA BOITE A RIRE113 Avenue du Palais des Expositions",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Comèdia de Marie Arditi i Sébastien Cypers, amb Nataly Rojas Conde i Sébastien Cypers. Elodie, dona lliure però soltera i poc orgullosa de ser-ho, decideix refer la seva vida sentimental i es fixa la resolució «Mai més la primera nit». Quan coneix l'home de la seva vida en una festa, però, totes les seves teories estan a punt d'ensorrar-se. La comèdia moderna retrata la dona treballadora desesperada a la recerca de l'amor i també l'home deconstruït i les seves contrarietats, i deixa el paper principal a la dona, lluny dels tòpics.",
+    "descripcio_fr": "Comédie de Marie Arditi et Sébastien Cypers, avec Nataly Rojas Conde et Sébastien Cypers. Elodie, femme libre mais célibataire et peu fière de l'être, décide de reprendre en main sa vie sentimentale et se fixe la résolution « Mai més la primera nit ». Mais lorsqu'elle rencontre l'homme de sa vie lors d'une soirée, toutes ses théories risquent de s'effondrer. La comédie moderne met en scène la femme active désespérée en quête d'amour, mais aussi l'homme déconstruit et ses contrariétés, et laisse la place belle à la femme, loin des clichés.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084402/JAMAIS-LE-PREMIER-SOIR-3_calm5g.webp",
+    "font_url": "http://www.laboitearire.net",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.459Z",
+    "periodicitat": ""
   }
 ]
