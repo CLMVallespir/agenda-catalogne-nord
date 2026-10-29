@@ -154,7 +154,9 @@ descriu la fila i no surt mai de la cua.
 12. `associacio` — entitat organitzadora
 13. `imatge_url` — URL de Cloudinary; `""` si no n'hi ha.
     La del formulari només s'accepta si és del Cloudinary de l'agenda.
-14. `font_url` — enllaç a la font original; `""` si no n'hi ha
+14. `font_url` — enllaç a la font original; `""` si no n'hi ha.
+    Només `http:` o `https:` (`esUrlSegura()` de `url-segura.js`), com tota
+    adreça que va a un enllaç.
 15. `estat` — `pendent` · `publicat` · `rebutjat`
 16. `data_entrada` — marca de temps ISO de creació de la fila
 17. `periodicitat` — activitat permanent: frase lliure en català («cada
@@ -514,6 +516,10 @@ Ja fets, en producció, al mateix repositori:
   mode de prova amb dades fictícies. **`prova-local.html`** — mirall offline.
 - **`curador.html`** + **`curador-cua.js`** — la cua de revisió i les peces
   d'estat que Node prova.
+- **`url-segura.js`** — la regla única de quines adreces poden anar a un
+  enllaç: `http:` o `https:` i prou. La carreguen `index.html`, `curador.html`
+  i `prova-local.html` (`<script src>`) i `eines/mapeja-adt66.js` (`require`);
+  el Worker no la necessita (no posa cap `font_url`).
 - **`prompts/extract-event.txt`** — el prompt d'extracció mestre, amb tres
   correus de prova a `prompts/exemples-test/`.
 - **`fonts/`** (woff2 autoallotjats) i **`img/logo/`**. Les fonts editables del

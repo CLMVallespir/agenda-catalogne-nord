@@ -506,13 +506,14 @@ function iconaCategoria(categoria) {
 }
 
 // Crea el cos visible: títol, comarca, meta i el botó "Veure més".
+// El títol només és enllaç si font_url és http(s) (url-segura.js).
 function creaCos(e) {
   var cos = document.createElement('div');
   cos.className = 'cos-esdeveniment';
 
   var titol = document.createElement('h3');
   titol.className = 'titol-esdeveniment';
-  if (e.font_url) {
+  if (esUrlSegura(e.font_url)) {
     var enllac = document.createElement('a');
     enllac.href = e.font_url;
     enllac.textContent = e.titol;

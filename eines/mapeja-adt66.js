@@ -174,6 +174,10 @@ var sincronitza = require('./adt66-sincronitza.js');
 var identificador = require('./adt66-identificador.js');
 var dedup = require('./dedup-esdeveniments.js');
 
+// La regla de quines adreces poden anar a un enllaç: http(s) i prou. La
+// mateixa que fan servir el web i el curador abans de pintar-les.
+var urlSegura = require('../url-segura.js');
+
 
 // --- Constants: els esquemes ------------------------------------------------
 
@@ -427,8 +431,8 @@ function mapejaOfertaADT66(ofertaWCF) {
     descripcio_ca: '',
     descripcio_fr: descripcio,
     associacio: textDeCamp(oferta.DETAILCONTACT),
-    imatge_url: adrecaDeImatge(oferta.LISTINGPHOTO),
-    font_url: adrecaDeEnllac(oferta.DETAILSITEWEB),
+    imatge_url: adrecaSegura(adrecaDeImatge(oferta.LISTINGPHOTO), 'El cartell', avisos),
+    font_url: adrecaSegura(adrecaDeEnllac(oferta.DETAILSITEWEB), 'L\'enllaç de l\'organitzador', avisos),
     // Els dos camps que omple el sistema i que la font no toca mai.
     estat: 'pendent',
     data_entrada: new Date().toISOString(),
@@ -1234,6 +1238,21 @@ function adrecaNua(text) {
     return '';
   }
   return text;
+}
+
+// ------------------------------------------------------------
+// L'adreça tal com ve si pot anar a un enllaç (http o https, url-segura.js),
+// o "" amb un avís si no. L'avís no copia l'adreça a posta: un text del flux
+// dins nota_curador podria portar un tag [ADT66 id: …] fals. `quina` diu de
+// quin camp es tracta, començant en majúscula.
+// ------------------------------------------------------------
+function adrecaSegura(adreca, quina, avisos) {
+  if (adreca === '' || urlSegura.esUrlSegura(adreca)) {
+    return adreca;
+  }
+
+  avisos.push(quina + ' no era cap adreça web (http o https): queda buit.');
+  return '';
 }
 
 

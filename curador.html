@@ -374,6 +374,7 @@
   </main>
 
 <script src="curador-cua.js"></script>
+<script src="url-segura.js"></script>
 <script>
 // ============================================================
 // Coordenades fixes del repositori. Si el repositori es mou o es
@@ -783,12 +784,14 @@ function creaNotaCurador(esdeveniment) {
 // ------------------------------------------------------------
 // Construeix el bloc del cartell: la imatge que s'obre a mida
 // sencera, o el quadre de reserva amb la icona quan no n'hi ha.
+// Una adreça que no és http(s) (url-segura.js) no fa cap enllaç:
+// surt el quadre de reserva, com si no n'hi hagués.
 // ------------------------------------------------------------
 function creaCartell(esdeveniment) {
   var marc = document.createElement('div');
   marc.className = 'cartell';
 
-  if (esdeveniment.imatge_url === '') {
+  if (!esUrlSegura(esdeveniment.imatge_url)) {
     marc.classList.add('sense-cartell');
     var icona = document.createElement('span');
     icona.className = 'icona';

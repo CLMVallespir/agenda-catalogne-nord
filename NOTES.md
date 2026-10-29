@@ -58,6 +58,10 @@ fitxer, i `git show <commit>^:<ruta>` el torna a ensenyar.*
   App d'Apps Script, i el full, ja no hi són.
 - **27 d'octubre.** Els cartells d'octubre, a Cloudinary (151 pendents, 128
   publicats). El curador copia el cartell en publicar (D-07).
+- **29 d'octubre.** Revisió de seguretat. `events.json` (718 KB, 451 de 584
+  actes ja passats) anava cap al límit d'1 MB de l'API de continguts: el
+  curador el poda a cada publicació (D-08). Neix `url-segura.js`: cap enllaç
+  que no sigui http(s), ni a l'entrada de l'ADT66 ni al web ni al curador.
 
 ---
 
@@ -644,11 +648,6 @@ no la línia.
 
 **Seguretat i robustesa del Worker i del web**
 
-- **`font_url` i `imatge_url` van a `href` i `src` sense mirar l'esquema**
-  (`app.js`, i `imatge_url` també a `curador.html`). Era teòric fins que l'ADT66
-  va començar a omplir `font_url` des de `DETAILSITEWEB`; avui n'hi ha centenars
-  a `events.json`. Cal acceptar només `http:` i `https:`. El curador revisa cada
-  fila abans de publicar-la, però no mira l'enllaç.
 - **El correu no va tancat ni declarat «només dades» dins el prompt** (el text
   va darrere de `CORREU:`). La protecció d'avui és que tota fila neix `pendent`.
   Si es corregeix, al prompt mestre i a la còpia del Worker alhora.
