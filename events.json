@@ -11965,5 +11965,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.397Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-cineclub-canetoiles-van",
+    "titol": "Cineclub Canetoiles: Van Gogh",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "16:30",
+    "lloc": "Avenue Guy Drut",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "La sessió es fa en col·laboració amb l'associació le Cercle des amis du musée Rigaud de Perpignan. El film, dirigit per Maurice Pialat, narra l'arribada de Vincent Van Gogh a Auvers-sur-Oise, on visita el doctor Gachet, que li mostra la seva col·lecció de quadres, i es torna a posar a pintar. Hi interpreten Jacques Dutronc, que fa de pintor, Alexandra London, Elsa Zylberstein, Bernard Lecoq i Gérard Sety.",
+    "descripcio_fr": "La séance a lieu en partenariat avec l'association le Cercle des amis du musée Rigaud de Perpignan. Le film, réalisé par Maurice Pialat, raconte l'arrivée de Vincent Van Gogh à Auvers-sur-Oise, où il rend visite au docteur Gachet, qui lui montre sa collection de tableaux, et se remet à peindre. Y interprètent Jacques Dutronc, qui incarne le peintre, Alexandra London, Elsa Zylberstein, Bernard Lecoq et Gérard Sety.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084452/van-gogh-affiche-2_n4hl4m.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.400Z",
+    "periodicitat": ""
   }
 ]
