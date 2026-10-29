@@ -12421,5 +12421,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.426Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-un-violon-a",
+    "titol": "Un violon à la mer: Chihiro Watanabe, guanyadora del concurs internacional de piano Claude Kahn",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "20:30",
+    "lloc": "Centre culturel Oméga2 rue des Cyclades",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Chihiro Watanabe va néixer a Aichi (Japó). Va cursar la llicenciatura i el màster a la Universitat Prefectural d'Arts d'Aichi, a les classes d'Emiko Kumagai i d'Irina Chukovskaya, i en tots dos estudis va ser nomenada la millor de la promoció. Després del màster va continuar els estudis a França, a l'Escola Normal de Música de París, a la classe de Bruno Rigutto, i actualment és al Conservatori de Rueil-Malmaison, a la classe de Jean-Baptiste Fonlupt.",
+    "descripcio_fr": "Chihiro Watanabe est née à Aichi (Japon). Elle a suivi la licence et le master à l'Université préfectorale des arts d'Aichi, dans les classes d'Emiko Kumagai et d'Irina Chukovskaya, et a été nommée major de promotion à l'issue de chacun de ces deux cursus. Après son master, elle a poursuivi ses études en France, à l'École Normale de Musique de Paris, dans la classe de Bruno Rigutto, et elle est actuellement au Conservatoire de Rueil-Malmaison, dans la classe de Jean-Baptiste Fonlupt.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084541/1911ok_gxpdjt.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.446Z",
+    "periodicitat": ""
   }
 ]
