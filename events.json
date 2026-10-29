@@ -11319,5 +11319,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.445Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-10-taller-de-podcast",
+    "titol": "Taller de podcast",
+    "data_inici": "2026-11-10",
+    "data_fi": "2026-11-10",
+    "hora": "",
+    "lloc": "Rue de la Neige",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Beau Bruit proposa a La Fabrica d'Illa un taller de podcast dirigit per la periodista Alice Fabre, en el marc del projecte Podcast de territoire. Consta de quatre sessions per crear un documentari sonor col·lectiu. L'activitat s'adreça a persones a partir de 15 anys i no requereix cap coneixement previ. No cal comprometre's a assistir a totes les sessions.",
+    "descripcio_fr": "Beau Bruit propose à La Fabrica d'Illa un atelier podcast animé par la journaliste Alice Fabre, dans le cadre du projet Podcast de territoire. Il comprend quatre séances pour créer un documentaire sonore collectif. L'activité s'adresse aux personnes à partir de 15 ans et ne demande aucun prérequis. Il n'est pas obligatoire de participer à toutes les séances.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084370/beau-bruitd_ntvpkn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.454Z",
+    "periodicitat": ""
   }
 ]
