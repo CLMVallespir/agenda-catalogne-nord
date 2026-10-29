@@ -11262,5 +11262,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.463Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-10-chameleons-markus-detmer",
+    "titol": "Chameleons+Markus Detmer DJ set",
+    "data_inici": "2026-11-10",
+    "data_fi": "2026-11-10",
+    "hora": "20:30",
+    "lloc": "EL MEDIATORAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Chameleons, amb la veu intensa de Mark Burgess i les guitarres de Reg Smithies i Dave Fielding, es va fer conèixer des dels seus inicis, quan John Peel el va descobrir. Sobre l'escenari, el grup presenta una energia crua, una tensió controlada i una connexió poc habitual amb el públic. Ha compartit cartell amb noms com U2, The Cure, Simple Minds o Bauhaus, sense perdre la seva singularitat. Avui manté un so tallant i una intensitat intacta, i es presenta com un grup de culte en plena activitat.",
+    "descripcio_fr": "Chameleons, avec la voix intense de Mark Burgess et les guitares de Reg Smithies et Dave Fielding, s'est fait connaître dès ses débuts, lorsque John Peel l'a repéré. Sur scène, le groupe présente une énergie brute, une tension maîtrisée et une connexion peu habituelle avec le public. Il a partagé l'affiche avec des noms comme U2, The Cure, Simple Minds ou Bauhaus, sans perdre sa singularité. Aujourd'hui, le groupe conserve un son tranchant et une intensité intacte, et se présente comme un groupe culte en pleine activité.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084364/Chameleons---Novembre-2026--1-_ty4nvk.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/chameleons",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.397Z",
+    "periodicitat": ""
   }
 ]
