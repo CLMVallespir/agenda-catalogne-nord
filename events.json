@@ -12288,5 +12288,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.446Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-kamishibai-mensual-a",
+    "titol": "Kamishibaï mensual a la mediateca",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "10:45",
+    "lloc": "1 RUE FRANCOIS ARAGO",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Mélanie, animadora de l'escola bressol municipal, reprèn les sessions mensuals Kamishibaïs a la mediateca. L'accés és lliure i l'activitat s'adreça a un públic familiar i intergeneracional.",
+    "descripcio_fr": "Mélanie, animatrice de l'école bressol municipale, reprend les sessions mensuelles Kamishibaïs à la médiathèque. L'accès est libre et l'activité s'adresse à un public familial et intergénérationnel.",
+    "associacio": "Contacter MEDIATHEQUE PROSPER MERIMEE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084519/event-FMALAR066V52ZB77-1791625498499_addpen.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.450Z",
+    "periodicitat": ""
   }
 ]
