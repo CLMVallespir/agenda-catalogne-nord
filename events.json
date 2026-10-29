@@ -11186,5 +11186,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.458Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-08-rifle-des-pompiers",
+    "titol": "Rifle des pompiers",
+    "data_inici": "2026-11-08",
+    "data_fi": "2026-11-08",
+    "hora": "16:00",
+    "lloc": "Carrer del Molí Nou",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "L'acte consta de 31 partides i d'una loteria amb nombrosos lots. Hi ha també una barra de begudes.",
+    "descripcio_fr": "L'événement comprend 31 parties et une tombola avec de nombreux lots. Il y a également une buvette.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084354/RIFLE-DES-POMPIERS-3_luvzco.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.470Z",
+    "periodicitat": ""
   }
 ]
