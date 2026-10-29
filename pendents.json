@@ -3760,7 +3760,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52U5WE] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-11-foire-des-camelots",
+    "id": "2026-11-11-fira-dels-camelots",
     "titol": "Fira dels camelots",
     "data_inici": "2026-11-11",
     "data_fi": "2026-11-11",
@@ -3774,7 +3774,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084378/Foire-des-Camelots-1_qzogoc.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.388Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52URDT] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
