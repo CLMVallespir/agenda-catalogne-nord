@@ -11414,5 +11414,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.460Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-11-29a-edicio-de",
+    "titol": "29a edició de la Course des Lézards",
+    "data_inici": "2026-11-11",
+    "data_fi": "2026-11-11",
+    "hora": "09:30",
+    "lloc": "",
+    "municipi": "Eus",
+    "comarca": "Conflent",
+    "categoria": "Esports",
+    "descripcio_ca": "La 29a edició de la Course des Lézards és una cursa tradicional de muntanya per corriols que combina l'esport i la natura, en un ambient cordial amb la Batucada. Es disputen tres proves: la cursa d'adults, de 14 km amb 700 m de desnivell positiu, i les Lluerts, de 4 km amb 170 m de desnivell positiu, i les Lluerts petit, de 2 km amb 70 m de desnivell positiu. Hi ha avituallament al llarg de tot el recorregut, i tots els participants reben un obsequi i un àpat. També hi ha nombrosos lots per guanyar.",
+    "descripcio_fr": "La 29e édition de la Course des Lézards est une course traditionnelle de montagne sur sentiers, qui allie sport et nature, dans une ambiance conviviale avec la Batucada. Trois épreuves sont disputées : la course adultes, de 14 km avec 700 m de dénivelé positif, les Lluerts, de 4 km avec 170 m de dénivelé positif, et les Lluerts petit, de 2 km avec 70 m de dénivelé positif. Un ravitaillement est assuré tout au long du parcours, et tous les participants reçoivent un cadeau et un repas. De nombreux lots sont également à gagner.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084383/IMG-6862_xu0wgh.webp",
+    "font_url": "https://www.centre-pyrenees-trail.com/eus",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.462Z",
+    "periodicitat": ""
   }
 ]
