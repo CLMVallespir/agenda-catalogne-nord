@@ -4880,7 +4880,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZGT4] No s'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l'ADT66."
   },
   {
-    "id": "2026-11-15-repas-choucroute-et",
+    "id": "2026-11-15-apat-de-xucrut",
     "titol": "Àpat de xucrut i tarda ballable",
     "data_inici": "2026-11-15",
     "data_fi": "2026-11-15",
@@ -4894,7 +4894,7 @@
     "associacio": "",
     "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084462/choucroute_lbmylc.webp",
     "font_url": "https://mairie-llupia.fr/fr/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.466Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZHN4] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
