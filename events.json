@@ -11623,5 +11623,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.407Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-13-another-look",
+    "titol": "Another Look",
+    "data_inici": "2026-11-13",
+    "data_fi": "2026-11-13",
+    "hora": "20:00",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Amb motiu dels 90 anys de Philip Glass, Another Look proposa una immersió espectacular en l'univers del compositor nord-americà i del minimalisme musical. Els divuit cantants del cor Les Métaboles, acompanyats per l'orgue de Yoan Héreau, interpreten Another Look at Harmony – Part IV, una obra emblemàtica on els motius repetitius, les harmonies en moviment i les ressonàncies inspirades en el cant gregorià creen un estat d'escolta hipnòtic. A l'inici, el Canon à seize voix d'Andrea Basili crea una atmosfera suspesa abans d'una posada en escena colpidora: tres discos immensos esdevenen superfícies de projecció on imatges i música dialoguen constantment. L'experiència immersiva fa vibrar tant les orelles com els ulls i permet deixar-se portar pel temps, la llum i el so.",
+    "descripcio_fr": "À l'occasion des 90 ans de Philip Glass, Another Look propose une immersion spectaculaire dans l'univers du compositeur américain et du minimalisme musical. Les dix-huit chanteurs du chœur Les Métaboles, accompagnés de l'orgue de Yoan Héreau, interprètent Another Look at Harmony – Part IV, une œuvre emblématique où les motifs répétitifs, les harmonies en mouvement et les résonances inspirées du chant grégorien créent un état d'écoute hypnotique. En ouverture, le Canon à seize voix d'Andrea Basili crée une atmosphère suspendue avant une mise en espace saisissante : trois immenses disques deviennent des surfaces de projection où images et musique dialoguent en permanence. L'expérience immersive fait vibrer autant les oreilles que les yeux et permet de se laisser porter par le temps, la lumière et le son.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084408/Another-Look_qxcdyy.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.407Z",
+    "periodicitat": ""
   }
 ]
