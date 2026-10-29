@@ -12079,5 +12079,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-26T09:37:23.477Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-mercat-de-segona",
+    "titol": "Mercat de segona mà del Lions Club Saint-Cyprien Catalane",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "08:00",
+    "lloc": "Capellans",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El Lions Club Saint-Cyprien Catalane organitza un mercat de segona mà a benefici de les obres socials del club. Hi haurà servei de menjar lleuger i begudes al lloc. Per inscriure's-hi cal presentar una fotocòpia de la carta d'identitat.",
+    "descripcio_fr": "Le Lions Club Saint-Cyprien Catalane organise un vide-grenier au profit des œuvres sociales du club. Un service de restauration légère et de boissons est assuré sur place. Pour s'inscrire, il faut présenter une photocopie de la carte d'identité.",
+    "associacio": "Contacter LE LIONS CLUB SAINT CYPRIEN CATALANE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084474/event-FMALAR066V52ZKL2-1792745737447_yprat3.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-26T09:37:23.481Z",
+    "periodicitat": ""
   }
 ]
