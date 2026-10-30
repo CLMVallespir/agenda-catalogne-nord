@@ -124,6 +124,21 @@ protocol de coordinació.
   passat» és una de sola, `esCaducada()` a `curador-cua.js`, i la poda de
   `pendents.json` de l'Action la crida d'allà. Es reobre si mai es vol un
   arxiu públic d'actes passats: llavors, un fitxer apart.
+- **D-09 · 30 d'octubre.** Un sostre numèric a tot el que entra, en un sol
+  lloc per context. Al Worker, `admetEntrada()` (`eines/admet-entrada.js`, amb
+  còpia literal): com a molt **20 files per dia** entre el correu i el
+  formulari, comptades a `pendents.json` (data_entrada d'avui i cap tag de
+  l'ADT66), i només els **20 000 primers caràcters** d'un correu van al model.
+  El Worker llegeix la cua i decideix ABANS de cridar Claude: un correu no
+  admès no costa res i és igualment a l'arxiu; el formulari respon 429. A
+  l'Action, sense clau es manté el sostre de files que dona el pressupost
+  (300); la baixada del flux té un minut i 20 MB, i cada crida a Claude dos
+  minuts. No és cap criteri editorial i no toca D-04: no mira qui envia ni què
+  diu. Va néixer de la revisió de seguretat del 29 d'octubre (una riuada de
+  correus gastava el crèdit i acostava `pendents.json` al límit d'1 MB). Ús real
+  mesurat: 4 files per les portes manuals des del 28 d'agost, com a molt 3 en
+  un dia. Es reobre si les associacions s'hi acosten: es canvia
+  `MAX_FILES_PORTES_PER_DIA` i es copia al Worker.
 
 Decisions anteriors al registre, igual de tancades (el perquè és a la lliçó que
 s'indica):
@@ -651,18 +666,16 @@ no la línia.
 - **El correu no va tancat ni declarat «només dades» dins el prompt** (el text
   va darrere de `CORREU:`). La protecció d'avui és que tota fila neix `pendent`.
   Si es corregeix, al prompt mestre i a la còpia del Worker alhora.
-- **Cap sostre de mida al text del correu abans del model**
-  (`textDelCorreu()`), que ara es paga per token. Cap límit de repetició al
-  webhook, i qualsevol remitent d'`agenda@` gasta una crida (la confirmació del
-  primer remitent és ajornada, `CLAUDE.md` §8). Els sostres per camp, en canvi,
-  ja hi són a les tres portes (`filaSegura()`, 29 d'octubre).
+- **Qualsevol remitent d'`agenda@` gasta una crida**, fins al sostre del dia
+  (D-09): una riuada ja no gasta el crèdit, però sí que tanca la porta a les
+  associacions fins l'endemà. La confirmació del primer remitent és ajornada
+  (`CLAUDE.md` §8).
 - **Les hores de les portes manuals no es validen de format** (n'hi ha una
   «17:300» a la cua). Les dates sí, des de `filaSegura()`: una de malformada
   queda buida amb un avís.
 - **`{{AVUI}}` es calcula en UTC** (`toISOString()`): de 00.00 a 02.00 de París
   dona el dia anterior. Només afecta la inferència de l'any.
-- **El retorn de `reenviaAArxiu()` no es consulta**, i al correu Claude i
-  Cloudinary es criden abans de comprovar `GITHUB_TOKEN`.
+- **El retorn de `reenviaAArxiu()` no es consulta.**
 - **Cap porta del Worker no mira duplicats** abans d'escriure (D-04 ho
   accepta), i el Worker llegeix de GitHub sense `cache: 'no-store'` (el curador
   sí): primer sospitós si mai surt un 409 inexplicable al Worker.
@@ -680,7 +693,6 @@ no la línia.
 
 **Action**
 
-- La crida a Claude no té temps màxim (cap `signal`).
 - El reintent 409/422 d'`escriuCua` torna a podar però no torna a classificar.
 - El recompte «lot després de fusionar-los» no resta les excloses per criteri.
 - `require('./deteccio-retirades.js')` es carrega a cada run des de la secció de

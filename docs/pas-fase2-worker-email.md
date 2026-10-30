@@ -18,13 +18,17 @@ destinació de l'arxiu verificada i provada des d'un compte de fora.
 
 ## 1. Desplegar
 
-1. Comprova que el concatenat és al dia i que els enums quadren:
+1. Comprova que el concatenat és al dia, que els enums quadren i que les
+   còpies literals del Worker (`filaSegura()`, `admetEntrada()`,
+   `esUrlSegura()`) són iguals als seus originals de Node:
    ```
    node eines/verifica-worker-concatenat.js
    node eines/verifica-enum.js
+   node eines/verifica-copies-worker.js
    ```
-   Tots dos han de sortir en verd. Si el primer falla, el concatenat no
-   correspon al `worker.js` d'ara: torna'l a generar abans de res.
+   Tots tres han de sortir en verd. Si el primer falla, el concatenat no
+   correspon al `worker.js` d'ara: torna'l a generar abans de res. Si falla el
+   tercer, copia l'original al Worker i torna a generar el concatenat.
 2. Tauler de Cloudflare → **Workers & Pages** → `agenda-catalogne-nord` →
    **Edit code**.
 3. Esborra tot el que hi ha a l'editor i enganxa-hi **sencer**

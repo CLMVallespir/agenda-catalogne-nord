@@ -47,6 +47,14 @@ var ADT66_OBJECTES = 'https://wcf.tourinsoft.com/Syndication/3.0/cdt66/' + ADT66
 // Qui som, per si a l'altra banda algú mira els registres.
 var AGENT = 'agenda-catalunya-nord/1.0 (+https://clm.cat; agenda@clm.cat)';
 
+// El temps màxim i la mida màxima de la baixada (D-09). Mesurat el 29
+// d'octubre de 2026: el flux sencer, 1 367 ofertes, fa 4 065 774 bytes i baixa
+// en 1,3 segons. Un minut i vint megues són molt per sobre; un flux que en
+// passi és un flux trencat o hostil, i la passada s'atura amb un error clar
+// en lloc de penjar-se o d'omplir la memòria del runner.
+var TEMPS_MAXIM_FLUX_MS = 60000;
+var BYTES_MAXIMS_FLUX = 20000000;
+
 // Quants dies buits seguits tolerem dins d'una sèrie de dates abans de dir que
 // l'acte no és continu sinó periòdic. Un buit d'UN dia vol dir dues dates
 // separades per DOS dies de calendari: una fira amb un dia de descans encara
@@ -109,14 +117,15 @@ async function llegeixOfertes(marca) {
 
   var resposta = await fetch(url, {
     method: 'GET',
-    headers: { 'User-Agent': AGENT }
+    headers: { 'User-Agent': AGENT },
+    signal: AbortSignal.timeout(TEMPS_MAXIM_FLUX_MS)
   });
 
   if (!resposta.ok) {
     throw new Error('no he pogut llegir les ofertes de l\'ADT66 (codi ' + resposta.status + ').');
   }
 
-  var dades = await resposta.json();
+  var dades = JSON.parse(await textAmbSostre(resposta, BYTES_MAXIMS_FLUX));
 
   if (dades && dades['odata.error']) {
     throw new Error('l\'ADT66 rebutja la petició: ' + dades['odata.error'].message.value);
@@ -127,6 +136,36 @@ async function llegeixOfertes(marca) {
   }
 
   return dades.value;
+}
+
+// ------------------------------------------------------------
+// El cos d'una resposta com a text UTF-8, llegit a trossos i tallat en sec si
+// passa de `sostre` bytes: llança abans de tenir-lo sencer a la memòria. Si el
+// servidor ja declara una mida més gran, ni comença a llegir.
+// ------------------------------------------------------------
+async function textAmbSostre(resposta, sostre) {
+  var declarada = Number(resposta.headers.get('content-length'));
+  if (declarada > sostre) {
+    throw new Error('el flux de l\'ADT66 fa ' + declarada + ' bytes, més del sostre de ' + sostre + '.');
+  }
+
+  var lector = resposta.body.getReader();
+  var trossos = [];
+  var total = 0;
+  while (true) {
+    var tros = await lector.read();
+    if (tros.done) {
+      break;
+    }
+    total = total + tros.value.length;
+    if (total > sostre) {
+      await lector.cancel();
+      throw new Error('el flux de l\'ADT66 passa del sostre de ' + sostre + ' bytes.');
+    }
+    trossos.push(tros.value);
+  }
+
+  return Buffer.concat(trossos).toString('utf8');
 }
 
 // ------------------------------------------------------------

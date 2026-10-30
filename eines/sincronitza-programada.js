@@ -275,6 +275,12 @@ var CLAUDE_VERSIO_API = '2026-10-21';
 // paguen.
 var CLAUDE_MAX_TOKENS = 8192;
 
+// El temps màxim d'una crida, en mil·lisegons. Sense, una crida penjada
+// aturava la passada sencera fins que GitHub matava el run. Dos minuts són
+// molts per a tres camps, amb pensament i tot; la crida que s'hi passa compta
+// com una fallada i té el seu reintent, com qualsevol altra.
+var TEMPS_MAXIM_CLAUDE_MS = 120000;
+
 // L'objecte que ha de tornar el model: les tres claus del prompt, totes
 // cadenes, cap més. L'API el fa complir (`output_config.format`). Si el
 // prompt canvia de claus, aquest esquema canvia amb ell.
@@ -809,7 +815,9 @@ function comparaPerDataInici(a, b) {
 //                dues frases honestes
 //   motiusDeFallada  [{ motiu, quantes }, ...] per què han petat les crides
 //   retalladesPerPressupost  files que no s'escriuen perquè no han tingut
-//                crida. NO són cap descart: tornen a la propera passada
+//                crida o, sense clau, perquè passaven del sostre de files
+//                (filesDinsDelSostre()). NO són cap descart: tornen a la
+//                propera passada
 //   exhauridesPerQuota  files que no s'escriuen perquè Claude ha dit prou —un
 //                429, el crèdit o el límit de despesa (esQuotaExhaurida())—:
 //                la que ha rebut l'error i totes les que venien darrere.
@@ -853,11 +861,16 @@ async function tradueixLot(files, config) {
   // passar, i sense clau és el que diu el §7 bis de CLAUDE.md. Però l'avís hi
   // va igualment: el mapeig ja no n'escriu cap de traducció, i una fila en
   // francès sense avís no ho diria al curador.
+  //
+  // I EL MATEIX SOSTRE DE FILES QUE AMB CLAU (D-09). Amb clau, una passada no
+  // escriu mai més files que crides té el pressupost. Sense clau no hi havia
+  // cap sostre, i un flux inflat o hostil anava sencer a pendents.json.
   if (config.cridaClaude === null) {
-    for (var f = 0; f < llista.length; f++) {
-      posaAvisDeTraduccio(llista[f], AVIS_NO_TRADUIT);
+    var dins = filesDinsDelSostre(llista, config.pressupost, informe);
+    for (var f = 0; f < dins.length; f++) {
+      posaAvisDeTraduccio(dins[f], AVIS_NO_TRADUIT);
     }
-    return { files: llista, informe: informe };
+    return { files: dins, informe: informe };
   }
 
   // Còpia abans d'ordenar: la llista que arriba l'ha construïda el filtre previ
@@ -901,6 +914,23 @@ async function tradueixLot(files, config) {
 
   informe.motiusDeFallada = motiusOrdenats(informe.motiusDeFallada);
   return { files: escrites, informe: informe };
+}
+
+// ------------------------------------------------------------
+// Les files que caben sota el sostre, quan no hi ha clau: com a molt
+// `sostre`, les més imminents, i les altres comptades a l'informe com a
+// retallades. Si totes hi caben, torna la mateixa llista i en el mateix ordre.
+// ------------------------------------------------------------
+function filesDinsDelSostre(files, sostre, informe) {
+  if (files.length <= sostre) {
+    return files;
+  }
+
+  // Còpia abans d'ordenar, com a tradueixLot().
+  var ordenades = files.slice();
+  ordenades.sort(comparaPerDataInici);
+  informe.retalladesPerPressupost = ordenades.length - sostre;
+  return ordenades.slice(0, sostre);
 }
 
 // ------------------------------------------------------------
@@ -1229,7 +1259,8 @@ async function demanaTraduccioClaude(fila, clau) {
       'x-api-key': clau,
       'anthropic-version': CLAUDE_VERSIO_API
     },
-    body: JSON.stringify(cos)
+    body: JSON.stringify(cos),
+    signal: AbortSignal.timeout(TEMPS_MAXIM_CLAUDE_MS)
   });
 
   if (!resposta.ok) {
@@ -1943,6 +1974,33 @@ function bateria() {
         var nota = resultat.files[0].nota_curador;
         return /\[ADT66 id: X2026-10-01\] No s'ha pogut escriure/.test(nota) ? '' :
           'la nota no porta el tag i l\'avís: «' + nota + '»';
+      }
+    },
+
+    {
+      nom: 'sense crida: com a molt tantes files com crides té el pressupost, les més imminents (D-09)',
+      comprova: async function () {
+        var files = [filaDeProva('2026-10-03'), filaDeProva('2026-10-01'), filaDeProva('2026-10-02')];
+        var config = configDeProva(null, 'x');
+        config.pressupost = 2;
+        var resultat = await tradueixLot(files, config);
+        var dates = resultat.files.map(function (fila) { return fila.data_inici; }).join(',');
+        if (dates !== '2026-10-01,2026-10-02') {
+          return 'esperava 2026-10-01,2026-10-02, en tinc ' + dates;
+        }
+        return resultat.informe.retalladesPerPressupost === 1 ? '' :
+          'retalladesPerPressupost hauria de ser 1, és ' + resultat.informe.retalladesPerPressupost;
+      }
+    },
+
+    {
+      nom: 'sense crida: si totes hi caben, surten totes i en el mateix ordre',
+      comprova: async function () {
+        var files = [filaDeProva('2026-10-03'), filaDeProva('2026-10-01')];
+        var resultat = await tradueixLot(files, configDeProva(null, 'x'));
+        var dates = resultat.files.map(function (fila) { return fila.data_inici; }).join(',');
+        return dates === '2026-10-03,2026-10-01' && resultat.informe.retalladesPerPressupost === 0 ? '' :
+          'esperava 2026-10-03,2026-10-01 sense retallades, en tinc ' + dates;
       }
     },
 

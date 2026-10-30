@@ -493,6 +493,17 @@ lloc.
   dos fitxers) són constants dins de cada fitxer de codi. A l'Action, el
   repositori el dona `GITHUB_REPOSITORY`, que ve del propi run.
 
+**Quant pot entrar (D-09) — un sostre per context, i cap criteri:**
+
+- **Al Worker, `admetEntrada()`** (`eines/admet-entrada.js`, en còpia literal
+  com `filaSegura()`): 20 files per dia entre correu i formulari, i 20 000
+  caràcters de cada correu al model. Les dues portes llegeixen la cua i
+  decideixen **abans** de cridar Claude (`decideixAdmissio()`); un correu no
+  admès és igualment a l'arxiu, el formulari respon 429.
+- **A l'Action**, el pressupost de crides és també el sostre de files, amb clau
+  o sense (`filesDinsDelSostre()`). La baixada del flux té un minut i 20 MB
+  (`textAmbSostre()`), i cada crida a Claude, dos minuts.
+
 **Per què això no trenca el §3** («cap servidor més enllà de l'únic Worker»): un
 runner d'Actions no és cap servidor. No escolta res, no té adreça, no és
 accessible des de fora i no existeix entre execucions. La restricció era contra

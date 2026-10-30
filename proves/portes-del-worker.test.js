@@ -207,3 +207,92 @@ test('correu: la fila escrita té els divuit camps i els sostres', async functio
   assert.match(fila.nota_curador, /El camp descripcio_ca passava de 6000 caràcters/);
   assert.equal(fila.estat, 'pendent');
 });
+
+
+// --- La porta d'entrada (admetEntrada, D-09) --------------------------------
+
+// `quantes` files del correu o del formulari entrades avui (UTC).
+function filesManualsDAvui(quantes) {
+  var avui = new Date().toISOString().slice(0, 10);
+  var llista = [];
+  for (var i = 0; i < quantes; i++) {
+    llista.push({ titol: 'Fila ' + i, estat: 'pendent', data_entrada: avui + 'T08:00:00.000Z', nota_curador: '' });
+  }
+  return llista;
+}
+
+var MAX_FILES = require('../eines/admet-entrada.js').MAX_FILES_PORTES_PER_DIA;
+
+test('correu: al sostre del dia no es crida Claude ni s’escriu res, i és arxivat', async function (t) {
+  var registre = simulaServeis(t, { cua: filesManualsDAvui(MAX_FILES), extraccio: extraccio() });
+  var worker = await carregaWorker();
+  var missatge = correu('Concert', 'Concert de la cobla.');
+
+  await worker.email(missatge, entorn(), {});
+
+  assert.equal(missatge.reenviat, true);
+  assert.equal(registre.lectures, 1);
+  assert.equal(registre.claude, 0);
+  assert.equal(registre.escriptures.length, 0);
+});
+
+test('correu: les files de l’ADT66 d’avui no compten al sostre', async function (t) {
+  var cua = filesManualsDAvui(MAX_FILES).map(function (fila) {
+    fila.nota_curador = '[ADT66 id: 1] Traduïda.';
+    return fila;
+  });
+  var registre = simulaServeis(t, { cua: cua, extraccio: extraccio() });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Concert', 'Concert de la cobla.'), entorn(), {});
+
+  assert.equal(registre.claude, 1);
+  assert.equal(registre.escriptures.length, 1);
+});
+
+test('correu: un text llarg arriba tallat al model, i la nota ho diu', async function (t) {
+  var registre = simulaServeis(t, { cua: [], extraccio: extraccio() });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Butlletí', new Array(30001).join('b')), entorn(), {});
+
+  // El text del correu va darrere de la línia «CORREU:» del prompt (i el
+  // seu salt de línia): no n'hi ha d'haver més de 20 000 caràcters.
+  var textEnviat = registre.textAClaude.slice(registre.textAClaude.lastIndexOf('CORREU:') + 'CORREU:'.length);
+  assert.ok(textEnviat.length <= 20001, 'al model hi han anat ' + textEnviat.length + ' caràcters');
+  var fila = registre.escriptures[0].dades[0];
+  assert.match(fila.nota_curador, /El correu passava de 20000 caràcters/);
+});
+
+test('correu: sense GITHUB_TOKEN no es paga cap crida a Claude', async function (t) {
+  var registre = simulaServeis(t, { cua: [], extraccio: extraccio() });
+  var worker = await carregaWorker();
+  var missatge = correu('Concert', 'Concert de la cobla.');
+
+  await worker.email(missatge, entorn({ GITHUB_TOKEN: '' }), {});
+
+  assert.equal(missatge.reenviat, true);
+  assert.equal(registre.claude, 0);
+  assert.equal(registre.escriptures.length, 0);
+});
+
+test('formulari: al sostre del dia respon 429 i no escriu res', async function (t) {
+  var registre = simulaServeis(t, { cua: filesManualsDAvui(MAX_FILES) });
+  var worker = await carregaWorker();
+
+  var resposta = await worker.fetch(postFormulari({ titol: 'Taller', data_inici: '2026-11-14' }), entorn());
+
+  assert.equal(resposta.status, 429);
+  assert.equal(registre.escriptures.length, 0);
+});
+
+test('formulari: per sota del sostre entra, i llegeix la cua dues vegades', async function (t) {
+  var registre = simulaServeis(t, { cua: filesManualsDAvui(MAX_FILES - 1) });
+  var worker = await carregaWorker();
+
+  var resposta = await worker.fetch(postFormulari({ titol: 'Taller', data_inici: '2026-11-14' }), entorn());
+
+  assert.equal(resposta.status, 200);
+  assert.equal(registre.lectures, 2);
+  assert.equal(registre.escriptures.length, 1);
+});

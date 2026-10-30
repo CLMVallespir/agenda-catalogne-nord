@@ -58,6 +58,13 @@ var COPIES = [
   {
     original: 'url-segura.js',
     noms: ['ESQUEMES_SEGURS', 'esUrlSegura']
+  },
+  {
+    original: 'eines/admet-entrada.js',
+    noms: [
+      'MAX_FILES_PORTES_PER_DIA', 'MAX_CARACTERS_CORREU', 'MARCA_ADT66',
+      'admetEntrada', 'filesDeLesPortesDAvui'
+    ]
   }
 ];
 

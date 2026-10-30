@@ -5440,10 +5440,18 @@ async function processaCorreu(message, env) {
     return;
   }
 
+  // LA PORTA, ABANS DE PAGAR RES (D-09): llegir la cua, admetre, i
+  // només llavors cridar Claude. Un correu no admès ja és a l'arxiu.
+  var decisio = await decideixAdmissio(textCorreu, env.GITHUB_TOKEN);
+  if (decisio.admesa === false) {
+    console.log('processaCorreu(): no admès: ' + decisio.motiu + ' Arxivat, sense fila.');
+    return;
+  }
+
   // Claude PRIMER, el cartell després: si l'extracció falla, no
   // haurem deixat cap imatge òrfena a Cloudinary.
   var avui = new Date().toISOString().slice(0, 10);
-  var dadesExtretes = await demanaExtraccioClaude(textCorreu, env.ANTHROPIC_API_KEY, avui);
+  var dadesExtretes = await demanaExtraccioClaude(decisio.text, env.ANTHROPIC_API_KEY, avui);
 
   // El cartell és opcional, i que falli no ha de costar la fila:
   // sense imatge la fila encara és bona i el curador pot afegir-la.
@@ -5460,6 +5468,9 @@ async function processaCorreu(message, env) {
   // La fila surt per filaSegura(): divuit camps, els sostres, el títol
   // d'una línia (va al missatge del commit) i les dates.
   var fila = filaSegura(construeixFila(dadesExtretes, imatgeUrl), 'correu');
+  if (decisio.avis !== '') {
+    afegeixNota(fila, decisio.avis);
+  }
   avisaDatesInvertides(fila);
   await afegeixAPendents(fila, env.GITHUB_TOKEN, 'correu');
   console.log('processaCorreu(): fila afegida a la cua. id: "' + fila.id + '".');
@@ -5530,6 +5541,20 @@ async function respostaDelFormulari(request, env) {
   if (fila.titol === '' && fila.data_inici === '') {
     console.log('respostaDelFormulari(): tramesa sense títol ni data. Cap fila.');
     return respostaJson(400, { ok: false, error: 'cal com a mínim un títol o una data' });
+  }
+
+  // El sostre de files del dia (D-09), comptat a la cua. El formulari no
+  // passa cap text pel model: només hi compta el nombre de files.
+  var decisio = null;
+  try {
+    decisio = await decideixAdmissio('', env.GITHUB_TOKEN);
+  } catch (error) {
+    console.log('respostaDelFormulari(): no he pogut llegir la cua: ' + error.message);
+    return respostaJson(500, { ok: false, error: 'no he pogut desar la tramesa' });
+  }
+  if (decisio.admesa === false) {
+    console.log('respostaDelFormulari(): no admès: ' + decisio.motiu);
+    return respostaJson(429, { ok: false, error: 'massa trameses avui; torna-ho a provar demà' });
   }
 
   // La forma, DESPRÉS de la comprovació de dalt, que es fa sobre el que
@@ -6210,8 +6235,102 @@ function esUrlSegura(url) {
 }
 
 // ============================================================
+// LA PORTA D'ENTRADA — CÒPIA LITERAL
+// ============================================================
+//
+// Les constants i les dues funcions de sota són una còpia LITERAL
+// d'eines/admet-entrada.js: quantes files poden entrar per dia per les
+// dues portes, i quant del text d'un correu va al model (D-09).
+//
+// NO ES TOCA AQUÍ. Es toca l'original, es copia aquí, i
+// `node eines/verifica-copies-worker.js` ha de sortir en verd.
+
+// Les files que poden entrar en un dia per les dues portes manuals juntes.
+// Mesurat el 29 d'octubre de 2026 a l'historial de git: des del 28 d'agost hi
+// han entrat 4 files (1 per correu, 3 pel formulari), com a molt 3 en un dia,
+// i totes de prova. Vint és molt per sobre de l'ús d'avui i encara para una
+// riuada el mateix dia.
+var MAX_FILES_PORTES_PER_DIA = 20;
+
+// Els caràcters d'un correu que van al model, assumpte inclòs. Un anunci
+// d'associació en fa uns quants centenars; vint mil ja és un butlletí sencer.
+var MAX_CARACTERS_CORREU = 20000;
+
+// El començament del tag que posa el mapeig de l'ADT66 al davant de la nota.
+var MARCA_ADT66 = '[ADT66 id: ';
+
+// ------------------------------------------------------------
+// La decisió d'una tramesa: { admesa, text, avis, motiu }. `text` és el que
+// pot anar al model (tallat si calia), `avis` el que s'ha de dir al curador si
+// s'ha tallat, i `motiu` el que va al registre si no s'admet.
+// ------------------------------------------------------------
+function admetEntrada(text, filesAvui) {
+  if (filesAvui >= MAX_FILES_PORTES_PER_DIA) {
+    return {
+      admesa: false,
+      text: '',
+      avis: '',
+      motiu: 'avui ja han entrat ' + filesAvui + ' files per les portes manuals (sostre: ' +
+        MAX_FILES_PORTES_PER_DIA + '). No s\'admet res més fins demà.'
+    };
+  }
+
+  var caracters = Array.from(text);
+  if (caracters.length <= MAX_CARACTERS_CORREU) {
+    return { admesa: true, text: text, avis: '', motiu: '' };
+  }
+
+  return {
+    admesa: true,
+    text: caracters.slice(0, MAX_CARACTERS_CORREU).join(''),
+    avis: 'El correu passava de ' + MAX_CARACTERS_CORREU + ' caràcters i el model només n\'ha llegit el principi: l\'original és a l\'arxiu.',
+    motiu: ''
+  };
+}
+
+// ------------------------------------------------------------
+// Quantes files de la cua han entrat avui per les portes manuals: data_entrada
+// d'avui (AAAA-MM-DD en UTC, com la marca ISO) i cap tag de l'ADT66 al davant.
+// ------------------------------------------------------------
+function filesDeLesPortesDAvui(cua, avui) {
+  var quantes = 0;
+
+  for (var i = 0; i < cua.length; i++) {
+    var fila = cua[i] || {};
+    var entrada = typeof fila.data_entrada === 'string' ? fila.data_entrada : '';
+    var nota = typeof fila.nota_curador === 'string' ? fila.nota_curador : '';
+    if (entrada.slice(0, 10) === avui && nota.indexOf(MARCA_ADT66) !== 0) {
+      quantes++;
+    }
+  }
+
+  return quantes;
+}
+
+// ============================================================
 // GITHUB
 // ============================================================
+
+// ------------------------------------------------------------
+// Llegeix pendents.json i hi aplica admetEntrada(): quantes files han
+// entrat avui per les portes manuals, i quant del text pot anar al
+// model. Llança si falta el token o la cua no es pot llegir: sense
+// saber-ho no s'admet res, i encara no s'ha pagat cap crida. Torna la
+// decisió d'admetEntrada().
+// ------------------------------------------------------------
+async function decideixAdmissio(text, token) {
+  if (!token) {
+    throw new Error('falta el secret GITHUB_TOKEN.');
+  }
+
+  var actual = await llegeixFitxerGitHub(FITXER_PENDENTS, token);
+  if (!Array.isArray(actual.dades)) {
+    throw new Error(FITXER_PENDENTS + ' no conté una llista.');
+  }
+
+  var avui = new Date().toISOString().slice(0, 10);
+  return admetEntrada(text, filesDeLesPortesDAvui(actual.dades, avui));
+}
 
 // ------------------------------------------------------------
 // Afegeix una fila a pendents.json. Llegeix el fitxer fresc, hi posa
