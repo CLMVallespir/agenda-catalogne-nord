@@ -67,7 +67,9 @@ fila entra sense imatge, sense cap error que ho relacioni.
 Triggers**): `*/10 13,14 * * 2`, i **un de sol**.
 
 **Els registres** (Settings → **Observability**): Workers Logs engegat, perquè
-es guardin els dels últims **3 dies** i no només el flux en directe.
+es guardin els dels últims **7 dies** (3 fins a l'1 de desembre de 2026) i no
+només el flux en directe. Al pla gratuït no es paga mai: si un dia passa de
+0,5 GB, el registre s'atura fins l'endemà i el Worker continua treballant.
 
 Quan afegeixes o canvies un Secret, **el canvi no és viu fins que desplegues**:
 els valors formen part de la versió del Worker. Si el registre diu que falta una
@@ -114,7 +116,7 @@ funció. Les claus no s'hi escriuen mai.
 | Al registre hi diu | Què vol dir |
 |---|---|
 | `falta la variable ADRECA_ARXIU` | El Secret no hi és. És l'únic cas en què el Worker **rebutja** el correu en comptes de processar-lo: sense adreça d'arxiu no hi ha manera de desar l'original, i val més que el remitent rebi un avís de no-entrega. Posa el Secret, desplega i demana-li que el torni a enviar. |
-| «falta la variable…» i jures que la vas posar | Tres causes, per ordre de probabilitat. **(1)** El canvi al tauler no s'ha desplegat: mira Worker → **Deployments**. **(2)** És al Worker equivocat, o el nom no és exacte — cap accent, cap espai al final. **(3)** L'entrada del registre és d'abans que ho arreglessis: se'n guarden 3 dies, mira l'hora. |
+| «falta la variable…» i jures que la vas posar | Tres causes, per ordre de probabilitat. **(1)** El canvi al tauler no s'ha desplegat: mira Worker → **Deployments**. **(2)** És al Worker equivocat, o el nom no és exacte — cap accent, cap espai al final. **(3)** L'entrada del registre és d'abans que ho arreglessis: se'n guarden 7 dies (3 fins a l'1 de desembre de 2026), mira l'hora. |
 | `el reenviament ha fallat` | L'adreça d'arxiu no és una destinació verificada a l'Email Routing. |
 | `Claude ha respost amb codi 404` | Anthropic ha retirat el model. Cicle de vida normal: mira quin Haiku hi ha vigent i canvia la constant `CLAUDE_MODEL`. Haiku i prou: els altres models costen vint vegades més. |
 | `Claude ha respost amb codi 401` | La clau `ANTHROPIC_API_KEY` no és bona: mal copiada, revocada o caducada. |
