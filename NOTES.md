@@ -624,6 +624,17 @@ comptadors derivats.
 setembre.* Una sessió deia «el verificador ha de tornar 0», però el verificador
 mirava també la feina de la sessió següent.
 
+**A `curador.html`, cap `<script>` escrit, ni dins d'un comentari.** *30
+d'octubre.* `proves/curador-pagina.js` busca els scripts de la pàgina amb una
+expressió regular, no amb un analitzador d'HTML: un comentari que deia «abans
+de cap `<script>`» va fer caure les 36 proves alhora.
+
+**Una CSP es prova en un navegador, no en Node.** *30 d'octubre.* Node no
+l'aplica. Es va comprovar amb Edge sense finestra (`msedge --headless=new
+--dump-dom`) i un servidor local: el codi en línia queda bloquejat, `index.html`
+pinta les 199 targetes, el curador carrega la cua de GitHub, i dins d'un
+`<iframe>` no arrenca.
+
 ### 5.7 Treballar amb agents i documents
 
 **Una lectura ampla no la fa cap sub-agent: parteix-la abans.** *6 d'octubre.*
@@ -690,6 +701,12 @@ no la línia.
   activada» i falla al primer PUT, amb un 401.
 - `curador-cua.js` no comprova `Array.isArray` abans de transformar (el Worker
   sí): un JSON malformat dona un `TypeError` opac a mitja publicació.
+- **`qui-som.html`, `mencions-legals.html` i `prova-local.html` no porten cap
+  CSP**, i encara tenen el script del tema en línia (tres pàgines, quatre
+  blocs). Són al mateix origen que el curador: el dia que es toquin, que
+  carreguin `tema.js` i la mateixa `<meta>` que `index.html`.
+- **El web públic es pot posar dins d'un marc**, a posta: no hi ha res a clicar
+  que canviï res, i una associació podria voler-lo incrustar. El curador no.
 
 **Action**
 

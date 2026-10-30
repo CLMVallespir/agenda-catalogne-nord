@@ -108,6 +108,14 @@ test('carregaCua pinta només les files amb estat «pendent»', async function (
   assert.equal(pag.element('recompte').textContent, '2 actes pendents');
 });
 
+test('dins d’un marc la pàgina no arrenca: ni carrega la cua ni ho amaga', async function () {
+  var diposit = pagina.creaDipositFals({ 'pendents.json': [filaPendent()], 'events.json': [] });
+  var pag = await pagina.carregaCurador(diposit, { dinsDUnMarc: true });
+
+  assert.equal(pag.element('llista-pendents').fills.length, 0);
+  assert.match(pag.element('avis-global').textContent, /no funciona dins d’un marc/);
+});
+
 
 // --- Publica ----------------------------------------------------------------
 

@@ -338,7 +338,8 @@ function respostaDeCloudinary(diposit, origen) {
 //   element(id)    l'element fals d'aquell id
 //   confirmacions  els textos dels window.confirm demanats
 //   respostaConfirm  què contesta window.confirm (cert per defecte)
-async function carregaCurador(diposit) {
+// Amb `opcions.dinsDUnMarc`, la pàgina es carrega com dins d'un <iframe>.
+async function carregaCurador(diposit, opcions) {
   var elements = {};
   var pagina = { confirmacions: [], respostaConfirm: true };
 
@@ -362,6 +363,11 @@ async function carregaCurador(diposit) {
       return pagina.respostaConfirm;
     }
   };
+  // Dins d'un marc, la finestra de dalt de tot és una altra.
+  if (opcions && opcions.dinsDUnMarc === true) {
+    window.self = window;
+    window.top = {};
+  }
 
   var ctx = vm.createContext({
     document: document,

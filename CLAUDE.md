@@ -351,7 +351,7 @@ un enum, i abans de desplegar el Worker.** El germà per al joc de camps és
 | 5 | `worker/worker-concatenat.js` | la còpia literal del prompt |
 | 6 | `app.js` | `CATEGORIES` (filtre del web públic, amb el francès) |
 | 7 | `app.js` | `CATEGORIA_ICONES` (**una icona SVG per categoria**) |
-| 8 | `curador.html` | `CATEGORIA_VALUES` (desplegable **i** `valorPermes()` en desar) |
+| 8 | `curador.js` | `CATEGORIA_VALUES` (desplegable **i** `valorPermes()` en desar) |
 | 9 | `eines/dedup-esdeveniments.js` | `CATEGORIES` |
 | 10 | `eines/fila-segura.js` | `CATEGORIA_VALUES` (el mapeig de l'ADT66 la llegeix d'aquí) |
 | 11 | `prova-local.html` | `CATEGORIES` (mirall offline d'`app.js`) |
@@ -533,18 +533,24 @@ d'interval de dates al web públic.
 
 Ja fets, en producció, al mateix repositori:
 
-- **`index.html` / `style.css` / `app.js`** — el web públic, amb el disseny
-  blanc-i-negre de dos temes (clar/fosc), el logotip «Què fas?», filtres per
-  comarca i categoria, llista cronològica per dies. No en toquis el disseny.
+- **`index.html` / `style.css` / `tema.js` / `app.js`** — el web públic, amb el
+  disseny blanc-i-negre de dos temes (clar/fosc), el logotip «Què fas?», filtres
+  per comarca i categoria, llista cronològica per dies. No en toquis el disseny.
   **`qui-som.html`** i **`mencions-legals.html`**.
 - **`events.json`** — dades publicades. **`events-exemple.json`** + `?prova=1` —
   mode de prova amb dades fictícies. **`prova-local.html`** — mirall offline.
-- **`curador.html`** + **`curador-cua.js`** — la cua de revisió i les peces
-  d'estat que Node prova.
+- **`curador.html`** + **`curador.js`** + **`curador-cua.js`** — la cua de
+  revisió: la pàgina, el seu codi, i les peces d'estat que Node prova.
+- **`index.html` i `curador.html` porten una CSP en `<meta>`**
+  (`script-src 'self'`): **cap codi en línia** ni cap atribut `on…=`, perquè el
+  navegador no l'executaria. El codi va a un fitxer `.js` del repositori. La
+  del curador només deixa parlar amb `api.github.com` i `api.cloudinary.com`, i
+  la pàgina no arrenca dins d'un marc (`estaDinsDUnMarc()`). La resta de
+  pàgines encara no en porten (`NOTES.md` §6).
 - **`url-segura.js`** — la regla única de quines adreces poden anar a un
   enllaç: `http:` o `https:` i prou. La carreguen `index.html`, `curador.html`
-  i `prova-local.html` (`<script src>`) i `eines/mapeja-adt66.js` (`require`);
-  el Worker no la necessita (no posa cap `font_url`).
+  i `prova-local.html` (`<script src>`), `eines/mapeja-adt66.js` i
+  `eines/fila-segura.js` (`require`), i el Worker en porta una còpia literal.
 - **`prompts/extract-event.txt`** — el prompt d'extracció mestre, amb tres
   correus de prova a `prompts/exemples-test/`.
 - **`fonts/`** (woff2 autoallotjats) i **`img/logo/`**. Les fonts editables del

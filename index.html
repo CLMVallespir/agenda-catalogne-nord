@@ -3,24 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- La CSP: només s'executen els scripts d'aquest mateix lloc (cap codi
+       en línia, cap enllaç javascript:), i la pàgina només demana dades al
+       mateix lloc (events.json). Ha d'anar abans de qualsevol script. -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Agenda cultural — Catalunya Nord</title>
   <meta name="description" content="Agenda cultural de la Catalunya Nord: Rosselló, Conflent, Vallespir, Capcir i Cerdanya. Agenda culturelle de la Catalogne Nord.">
 
   <!-- Aplica el tema desat ABANS de pintar, per evitar el parpelleig. -->
-  <script>
-    (function () {
-      var tema = 'clar';
-      try {
-        var desat = localStorage.getItem('tema');
-        if (desat === 'fosc' || desat === 'clar') {
-          tema = desat;
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          tema = 'fosc';
-        }
-      } catch (e) { /* sense localStorage: es queda en tema clar */ }
-      document.documentElement.setAttribute('data-tema', tema);
-    })();
-  </script>
+  <script src="tema.js"></script>
 
   <link rel="stylesheet" href="style.css">
 </head>

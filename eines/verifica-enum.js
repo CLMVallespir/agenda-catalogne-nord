@@ -83,8 +83,8 @@ var LLOCS = [
   { fitxer: 'app.js', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' },
 
   // 8. El curador: el desplegable I la coerció en desar, el mateix array.
-  { fitxer: 'curador.html', que: 'CATEGORIA_VALUES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIA_VALUES' },
-  { fitxer: 'curador.html', que: 'COMARCA_VALUES', enumeracio: 'comarca', com: 'array', nom: 'COMARCA_VALUES' },
+  { fitxer: 'curador.js', que: 'CATEGORIA_VALUES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIA_VALUES' },
+  { fitxer: 'curador.js', que: 'COMARCA_VALUES', enumeracio: 'comarca', com: 'array', nom: 'COMARCA_VALUES' },
 
   // 9-10. Les eines de la canonada.
   { fitxer: 'eines/dedup-esdeveniments.js', que: 'CATEGORIES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIES' },
