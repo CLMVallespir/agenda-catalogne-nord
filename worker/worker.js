@@ -16,7 +16,7 @@
 //   2. postal-mime            → assumpte + cos de text + adjunts
 //   3. Claude                 → els 11 camps que el model pot deduir
 //   4. Cloudinary             → el primer cartell adjunt (opcional)
-//   5. pendents.json          → una fila de 16 cadenes, estat "pendent"
+//   5. pendents.json          → filaSegura(): 18 cadenes, estat "pendent"
 //
 // EL CAMÍ D'UNA TRAMESA DEL FORMULARI, en ordre:
 //   1. el secret de la capçalera  ← el primer de tot; si no, 403
@@ -26,7 +26,7 @@
 //                                   separats, i el cartell ja ha
 //                                   pujat a Cloudinary des del
 //                                   navegador de qui l'envia
-//   4. pendents.json              → la mateixa fila de 16 cadenes
+//   4. pendents.json              → filaSegura(), com el correu
 //
 // LA INVARIANT: cap correu no es perd mai. El reenviament a l'arxiu
 // es fa ABANS de qualsevol altra cosa i no llança mai. Tot el que ve
@@ -485,7 +485,9 @@ async function processaCorreu(message, env) {
     }
   }
 
-  var fila = construeixFila(dadesExtretes, imatgeUrl);
+  // La fila surt per filaSegura(): divuit camps, els sostres, el títol
+  // d'una línia (va al missatge del commit) i les dates.
+  var fila = filaSegura(construeixFila(dadesExtretes, imatgeUrl), 'correu');
   avisaDatesInvertides(fila);
   await afegeixAPendents(fila, env.GITHUB_TOKEN, 'correu');
   console.log('processaCorreu(): fila afegida a la cua. id: "' + fila.id + '".');
@@ -557,6 +559,11 @@ async function respostaDelFormulari(request, env) {
     console.log('respostaDelFormulari(): tramesa sense títol ni data. Cap fila.');
     return respostaJson(400, { ok: false, error: 'cal com a mínim un títol o una data' });
   }
+
+  // La forma, DESPRÉS de la comprovació de dalt, que es fa sobre el que
+  // ha enviat el formulari: filaSegura() només sanitza i no ha de canviar
+  // què s'accepta (D-04). Divuit camps, sostres, títol d'una línia, dates.
+  fila = filaSegura(fila, 'formulari');
 
   // Només es fia d'una imatge del nostre Cloudinary: qualsevol
   // altra URL es descarta i el curador en queda avisat a la nota.
@@ -1002,6 +1009,232 @@ function valorPermes(valor, llistaPermesa) {
     return '';
   }
   return valor;
+}
+
+// ============================================================
+// LA FILA SEGURA — CÒPIA LITERAL
+// ============================================================
+//
+// Tot el que hi ha d'aquí fins a la secció GITHUB és una còpia LITERAL
+// d'eines/fila-segura.js (llevat de campSegur(), que aquí no cal) i de
+// l'esUrlSegura() d'url-segura.js. Les dues portes passen la fila per
+// filaSegura() abans d'escriure-la: divuit camps, tots cadenes, els
+// sostres, el títol d'una línia, les dates, les adreces i la nota.
+// creaId() i valorPermes() ja són més amunt.
+//
+// NO ES TOCA AQUÍ. Es toca l'original, es copia aquí, i
+// `node eines/verifica-copies-worker.js` ha de sortir en verd.
+
+// Els únics esquemes que poden anar a un enllaç. `http:` hi és a posta:
+// encara hi ha webs d'organitzadors que no tenen `https:`.
+var ESQUEMES_SEGURS = ['http:', 'https:'];
+
+// Els divuit camps de la fila, amb el nom i l'ordre del §4 de CLAUDE.md.
+var CAMPS = [
+  'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
+  'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
+  'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat',
+  'nota_curador'
+];
+
+// El sostre de cada camp de text, en caràcters. No són cap regla editorial:
+// impedeixen que una sola fila faci créixer la cua sense límit (l'API de
+// continguts de GitHub no torna res per damunt d'1 MB, D-08) i que es pagui
+// la traducció d'un text desmesurat.
+//
+// Mesurats el 29 d'octubre de 2026 sobre el flux sencer de l'ADT66 (1 367
+// ofertes, ja mapejades) i les 1 225 files de pendents.json i events.json: el
+// valor més llarg de cada camp hi cap amb marge. El que més s'hi acosta és
+// una descripció de l'ADT66 de 5 610 caràcters; la segona en fa 3 872.
+var SOSTRES = {
+  titol: 200,
+  hora: 20,
+  lloc: 300,
+  municipi: 100,
+  descripcio_ca: 6000,
+  descripcio_fr: 6000,
+  associacio: 300,
+  periodicitat: 200,
+  nota_curador: 2000
+};
+
+// Una adreça més llarga no és de cap cartell ni de cap web de debò (la més
+// llarga del 29 d'octubre en fa 199). Es buida i no es talla: una adreça
+// tallada ja no porta enlloc.
+var SOSTRE_ADRECA = 2000;
+
+var PATRO_DATA = /^\d{4}-\d{2}-\d{2}$/;
+
+// El tag d'ancoratge al davant de la nota, amb la forma que li dona
+// creaTagIdentificador() a eines/adt66-identificador.js.
+var PATRO_TAG_AL_DAVANT = /^\[ADT66 id: [^\s\]]+\]/;
+
+// ------------------------------------------------------------
+// La fila neta que pot entrar a la cua, feta dels camps que dona una porta.
+// `origen` és 'adt66', 'correu' o 'formulari': només l'ADT66 pot dur el tag
+// d'ancoratge al davant de la nota. Torna una fila nova; la d'entrada no es
+// toca.
+// ------------------------------------------------------------
+function filaSegura(campsBruts, origen) {
+  var bruts = campsBruts || {};
+  var avisos = [];
+  var fila = {};
+
+  for (var i = 0; i < CAMPS.length; i++) {
+    fila[CAMPS[i]] = textDelCamp(CAMPS[i], bruts[CAMPS[i]]);
+  }
+
+  tallaAlsSostres(fila, avisos);
+
+  fila.data_inici = dataSegura(fila.data_inici, 'La data d\'inici', avisos);
+  fila.data_fi = dataSegura(fila.data_fi, 'La data de fi', avisos);
+  fila.comarca = valorPermes(fila.comarca, COMARCA_VALUES);
+  fila.categoria = valorPermes(fila.categoria, CATEGORIA_VALUES);
+  fila.imatge_url = adrecaSegura(fila.imatge_url, 'El cartell', avisos);
+  fila.font_url = adrecaSegura(fila.font_url, 'L\'enllaç de la font', avisos);
+
+  // Els tres camps del sistema: mai els que arriben.
+  fila.id = creaId(fila.data_inici, fila.titol);
+  fila.estat = 'pendent';
+  fila.data_entrada = new Date().toISOString();
+
+  fila.nota_curador = ajuntaAvisos(notaSenseTagsFalsos(fila.nota_curador, origen), avisos);
+
+  return fila;
+}
+
+// ------------------------------------------------------------
+// Un valor qualsevol com a cadena retallada; el títol, a més, en una sola
+// línia. Un valor desconegut és "" (§4 de CLAUDE.md: mai null, mai omès).
+// ------------------------------------------------------------
+function textDelCamp(camp, valor) {
+  var text = '';
+  if (valor !== undefined && valor !== null) {
+    text = String(valor).trim();
+  }
+
+  if (camp === 'titol') {
+    text = text.replace(/\s+/g, ' ');
+  }
+
+  return text;
+}
+
+// ------------------------------------------------------------
+// Talla cada camp de text al seu sostre i avisa de cada camp tallat.
+// ------------------------------------------------------------
+function tallaAlsSostres(fila, avisos) {
+  var camps = Object.keys(SOSTRES);
+
+  for (var i = 0; i < camps.length; i++) {
+    var camp = camps[i];
+    var tallat = talla(fila[camp], SOSTRES[camp]);
+    if (tallat !== fila[camp]) {
+      fila[camp] = tallat;
+      avisos.push('El camp ' + camp + ' passava de ' + SOSTRES[camp] + ' caràcters i s\'ha tallat: reviseu-ne el final.');
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// El text tallat a `sostre` caràcters. Compta caràcters de debò i no unitats
+// UTF-16, perquè el tall no parteixi mai un emoji per la meitat. Sense
+// sostre, o si ja hi cap, el torna igual.
+// ------------------------------------------------------------
+function talla(text, sostre) {
+  if (sostre === undefined || text.length <= sostre) {
+    return text;
+  }
+
+  var caracters = Array.from(text);
+  if (caracters.length <= sostre) {
+    return text;
+  }
+
+  return caracters.slice(0, sostre).join('').trim();
+}
+
+// ------------------------------------------------------------
+// La data si té la forma AAAA-MM-DD, o "" amb un avís. L'avís no copia el
+// valor: cap text de fora no ha d'anar a parar a la nota.
+// ------------------------------------------------------------
+function dataSegura(valor, quina, avisos) {
+  if (valor === '' || PATRO_DATA.test(valor)) {
+    return valor;
+  }
+
+  avisos.push(quina + ' no tenia la forma AAAA-MM-DD i queda buida: poseu-la a mà.');
+  return '';
+}
+
+// ------------------------------------------------------------
+// L'adreça si pot anar a un enllaç (http o https, url-segura.js) i no és
+// desmesurada, o "" amb un avís. Com a la data, l'avís no la copia.
+// ------------------------------------------------------------
+function adrecaSegura(adreca, quina, avisos) {
+  if (adreca === '') {
+    return '';
+  }
+  if (adreca.length <= SOSTRE_ADRECA && esUrlSegura(adreca)) {
+    return adreca;
+  }
+
+  avisos.push(quina + ' no era cap adreça web (http o https) o era massa llarga: queda buit.');
+  return '';
+}
+
+// ------------------------------------------------------------
+// La nota sense cap claudàtor, llevat del tag d'ancoratge que una fila de
+// l'ADT66 porta al davant. Així cap text de dins la nota no pot ser un tag
+// [ADT66 id: …] que dedup-contra-fitxers.js llegiria com a bo.
+// ------------------------------------------------------------
+function notaSenseTagsFalsos(nota, origen) {
+  var tag = '';
+  var resta = nota;
+
+  if (origen === 'adt66') {
+    var trobat = nota.match(PATRO_TAG_AL_DAVANT);
+    if (trobat !== null) {
+      tag = trobat[0];
+      resta = nota.slice(tag.length);
+    }
+  }
+
+  return tag + resta.replace(/[\[\]]/g, '');
+}
+
+// ------------------------------------------------------------
+// Els avisos d'aquest mòdul darrere de la nota, separats per un espai: la
+// mateixa regla que ajuntaNotes() (eines/dedup-esdeveniments.js).
+// ------------------------------------------------------------
+function ajuntaAvisos(nota, avisos) {
+  var parts = [];
+  if (nota !== '') {
+    parts.push(nota);
+  }
+  return parts.concat(avisos).join(' ');
+}
+
+// ------------------------------------------------------------
+// Diu si una adreça es pot posar a un `href`: absoluta, i amb esquema
+// `http:` o `https:`. Una cadena buida, o qualsevol cosa que no sigui una
+// cadena, no. L'analitza `new URL()`, el mateix analitzador del navegador:
+// els espais i tabuladors que el navegador ignoraria dins `java script:`
+// també els ignora aquí, i l'esquema surt igual que el veuria el navegador.
+// ------------------------------------------------------------
+function esUrlSegura(url) {
+  if (typeof url !== 'string' || url === '') {
+    return false;
+  }
+
+  var analitzada;
+  try {
+    analitzada = new URL(url);
+  } catch (error) {
+    return false;
+  }
+
+  return ESQUEMES_SEGURS.indexOf(analitzada.protocol) !== -1;
 }
 
 // ============================================================

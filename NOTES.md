@@ -651,20 +651,14 @@ no la línia.
 - **El correu no va tancat ni declarat «només dades» dins el prompt** (el text
   va darrere de `CORREU:`). La protecció d'avui és que tota fila neix `pendent`.
   Si es corregeix, al prompt mestre i a la còpia del Worker alhora.
-- **Cap sostre de mida al Worker**: ni al text del correu abans del model
-  (`textDelCorreu()`), que ara es paga per token, ni a cada camp del formulari
-  (`campText()`). Cap límit de repetició al webhook, i qualsevol remitent
-  d'`agenda@` gasta una crida (la confirmació del primer remitent és ajornada,
-  `CLAUDE.md` §8). L'ADT66 ja té els sostres per camp (`filaSegura()`, 29
-  d'octubre); el Worker els tindrà quan hi passi, amb una còpia literal i un
-  verificador.
-- **El títol del Worker va cru al missatge del commit** (`afegeixAPendents()`):
-  un salt de línia hi pot falsificar línies de peu a l'historial. Ho tanca el
-  títol d'una línia de `filaSegura()` el dia que el Worker hi passi.
-- **Les dates i les hores de les portes manuals no es validen de format**: una
-  `data_inici` malformada desapareix del web sense avís. Només s'avisa de dates
-  invertides (D-05). `filaSegura()` ja ho fa amb les dates, però el Worker
-  encara no hi passa.
+- **Cap sostre de mida al text del correu abans del model**
+  (`textDelCorreu()`), que ara es paga per token. Cap límit de repetició al
+  webhook, i qualsevol remitent d'`agenda@` gasta una crida (la confirmació del
+  primer remitent és ajornada, `CLAUDE.md` §8). Els sostres per camp, en canvi,
+  ja hi són a les tres portes (`filaSegura()`, 29 d'octubre).
+- **Les hores de les portes manuals no es validen de format** (n'hi ha una
+  «17:300» a la cua). Les dates sí, des de `filaSegura()`: una de malformada
+  queda buida amb un avís.
 - **`{{AVUI}}` es calcula en UTC** (`toISOString()`): de 00.00 a 02.00 de París
   dona el dia anterior. Només afecta la inferència de l'any.
 - **El retorn de `reenviaAArxiu()` no es consulta**, i al correu Claude i
@@ -672,9 +666,6 @@ no la línia.
 - **Cap porta del Worker no mira duplicats** abans d'escriure (D-04 ho
   accepta), i el Worker llegeix de GitHub sense `cache: 'no-store'` (el curador
   sí): primer sospitós si mai surt un 409 inexplicable al Worker.
-- **`construeixFila()` del Worker no posa `nota_curador` si no hi ha cap
-  avís**: la fila surt amb disset claus i no divuit, contra la regla «mai
-  omès».
 - **El fracàs d'una comarca del digest només queda al registre**, que dura tres
   dies; el sostre de Brevo (`BREVO_MAX_DIARI`) també només avisa allà.
 - **El digest no porta les exposicions llargues començades abans de la
@@ -717,7 +708,7 @@ no la línia.
 
 **Fora del repositori (Miquel)**
 
-- Enganxar el Worker (ENC-007 i la passada a Claude) després de comprovar que
+- Enganxar el Worker (ENC-007, la passada a Claude i `filaSegura()`) després de comprovar que
   `CLOUDINARY_CLOUD_NAME` val `clm-agenda`. El dia que es faci, `CLAUDE.md` §4 ha
   de dir que el Worker ja escriu `nota_curador`.
 - Revocar la clau de Gemini i treure qualsevol `GEMINI_API_KEY` dels Secrets de

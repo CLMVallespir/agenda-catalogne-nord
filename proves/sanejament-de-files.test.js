@@ -51,7 +51,7 @@ function textDe(quants) {
 
 test('exporta les dues funcions de la fila i les peces del mapeig', function () {
   assert.deepEqual(Object.keys(segura),
-    ['filaSegura', 'campSegur', 'valorPermes', 'creaId', 'CAMPS', 'COMARQUES', 'CATEGORIES']);
+    ['filaSegura', 'campSegur', 'valorPermes', 'creaId', 'CAMPS', 'COMARCA_VALUES', 'CATEGORIA_VALUES']);
 });
 
 test('una fila bona surt igual, llevat dels camps del sistema', function () {

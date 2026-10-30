@@ -115,7 +115,9 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
   generat: `postal-mime.js` sense el seu `export`, un bàner, i `worker/worker.js`
   sense l'`import`. Es toca `worker.js`, es regenera el concatenat al mateix
   commit i s'enganxa sencer; mai al revés. Abans d'enganxar-lo,
-  `node eines/verifica-worker-concatenat.js` ha de sortir en verd. El Git Build
+  `node eines/verifica-worker-concatenat.js` i
+  `node eines/verifica-copies-worker.js` (les còpies literals de mòduls de Node
+  que porta el Worker) han de sortir en verd. El Git Build
   de Cloudflare és desconnectat a posta, i cap `wrangler` ni cap fitxer de
   configuració de desplegament: dues vies alhora es trepitgen en silenci.
 - **Cap base de dades.** L'estat viu en dos fitxers JSON al repositori
@@ -186,8 +188,11 @@ Regles de què depèn el codi:
   llistes, adreces http(s), `id`/`estat`/`data_entrada` del sistema, i cap
   claudàtor a `nota_curador` fora del tag `[ADT66 id: …]` del davant. Només
   sanitza: no decideix res d'entrar (D-04). Es crida a la porta, **abans de cap
-  fusió**. Avui hi passa l'ADT66 (`mapejaOfertaADT66()`, i la traducció de
-  l'Action per `campSegur()`); el Worker encara no.
+  fusió**. Hi passen les tres portes: l'ADT66 (`mapejaOfertaADT66()`, i la
+  traducció de l'Action per `campSegur()`), i el correu i el formulari del
+  Worker, que en porta una còpia literal (`verifica-copies-worker.js`).
+  `proves/portes-del-worker.test.js` prova les dues portes del Worker a Node,
+  amb GitHub i Claude falsos.
 
 **Regles pròpies d'`estat` a `pendents.json`** — `rebutjat` hi és **persistent**:
 
@@ -348,7 +353,7 @@ un enum, i abans de desplegar el Worker.** El germà per al joc de camps és
 | 7 | `app.js` | `CATEGORIA_ICONES` (**una icona SVG per categoria**) |
 | 8 | `curador.html` | `CATEGORIA_VALUES` (desplegable **i** `valorPermes()` en desar) |
 | 9 | `eines/dedup-esdeveniments.js` | `CATEGORIES` |
-| 10 | `eines/fila-segura.js` | `CATEGORIES` (el mapeig de l'ADT66 la llegeix d'aquí) |
+| 10 | `eines/fila-segura.js` | `CATEGORIA_VALUES` (el mapeig de l'ADT66 la llegeix d'aquí) |
 | 11 | `prova-local.html` | `CATEGORIES` (mirall offline d'`app.js`) |
 | 12 | `prova-local.html` | `CATEGORIA_ICONES` (ídem) |
 

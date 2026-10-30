@@ -89,8 +89,8 @@ var LLOCS = [
   // 9-10. Les eines de la canonada.
   { fitxer: 'eines/dedup-esdeveniments.js', que: 'CATEGORIES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIES' },
   { fitxer: 'eines/dedup-esdeveniments.js', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' },
-  { fitxer: 'eines/fila-segura.js', que: 'CATEGORIES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIES' },
-  { fitxer: 'eines/fila-segura.js', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' },
+  { fitxer: 'eines/fila-segura.js', que: 'CATEGORIA_VALUES', enumeracio: 'categoria', com: 'array', nom: 'CATEGORIA_VALUES' },
+  { fitxer: 'eines/fila-segura.js', que: 'COMARCA_VALUES', enumeracio: 'comarca', com: 'array', nom: 'COMARCA_VALUES' },
 
   // 11-12. El mirall offline del web públic.
   { fitxer: 'prova-local.html', que: 'CATEGORIES (filtre)', enumeracio: 'categoria', com: 'bilingue', nom: 'CATEGORIES' },

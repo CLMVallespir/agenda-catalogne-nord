@@ -764,7 +764,7 @@ function descripcioDeProduccio(oferta) {
 // "", però la coerció és la mateixa a tot arreu i no s'ha de saltar aquí.
 // ------------------------------------------------------------
 function comarcaDeProduccio(municipi, avisos) {
-  var comarca = segura.valorPermes(comarques.obtenComarca(municipi), segura.COMARQUES);
+  var comarca = segura.valorPermes(comarques.obtenComarca(municipi), segura.COMARCA_VALUES);
 
   if (comarca === '') {
     avisos.push('El municipi «' + municipi + '» no és a la taula de comarques: cal posar la comarca a mà, o la fila no sortirà al filtre per comarca.');
@@ -926,14 +926,14 @@ function categoriaDunTros(tros) {
     return '';
   }
 
-  var directa = segura.valorPermes(net, segura.CATEGORIES);
+  var directa = segura.valorPermes(net, segura.CATEGORIA_VALUES);
   if (directa !== '') {
     return directa;
   }
 
   var traduida = CATEGORIES_ADT66[normalitzaText(net)] || '';
 
-  return segura.valorPermes(traduida, segura.CATEGORIES);
+  return segura.valorPermes(traduida, segura.CATEGORIA_VALUES);
 }
 
 // ------------------------------------------------------------
@@ -2504,7 +2504,7 @@ function comprovacionsDeSempre(resultat, cas) {
   // La comarca no es comprova per valor: cap dels 35 camps no la porta, però
   // es deduïx del municipi, o sigui que depèn del poble de cada cas. El que sí
   // que ha de valer sempre és que sigui una de les cinc, o buida.
-  if (fila.comarca !== '' && segura.COMARQUES.indexOf(fila.comarca) === -1) {
+  if (fila.comarca !== '' && segura.COMARCA_VALUES.indexOf(fila.comarca) === -1) {
     problemes.push('comarca «' + fila.comarca + '» no és cap de les cinc');
   }
   if (fila.id !== '' && fila.id === syndicObjectID) {

@@ -35,15 +35,23 @@
 //                                    mapejaOfertaADT66()
 //   eines/sincronitza-programada.js  campSegur(), als tres camps que torna
 //                                    la traducció de Claude
-// El Worker (correu i formulari) encara no hi passa: hi anirà una còpia
-// literal amb el seu verificador quan aquestes regles s'hagin assentat.
+//   worker/worker.js                 filaSegura(), a les dues portes (correu
+//                                    i formulari), en CÒPIA LITERAL
+//
+// LA CÒPIA DEL WORKER. El Worker no pot fer `require`: s'enganxa sencer al
+// tauler (CLAUDE.md §3). Hi ha, doncs, una còpia literal de les constants i
+// les funcions d'aquest fitxer (no de campSegur(), que no hi cal), i
+// `node eines/verifica-copies-worker.js` comprova que hi siguin idèntiques. Es
+// toca aquí, es copia allà, i el verificador ha de sortir en verd. Per això
+// les llistes es diuen COMARCA_VALUES i CATEGORIA_VALUES, com al Worker, i
+// esUrlSegura() es crida pel seu nom.
 //
 // ESTATS: no llegeix pendents.json. Tota fila que torna és «pendent».
 //
 // Les proves són a proves/sanejament-de-files.test.js.
 // ---------------------------------------------------------------------------
 
-var urlSegura = require('../url-segura.js');
+var esUrlSegura = require('../url-segura.js').esUrlSegura;
 
 
 // --- Constants: l'esquema ---------------------------------------------------
@@ -56,9 +64,9 @@ var CAMPS = [
   'nota_curador'
 ];
 
-var COMARQUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
+var COMARCA_VALUES = ['Rosselló', 'Conflent', 'Vallespir', 'Capcir', 'Cerdanya'];
 
-var CATEGORIES = [
+var CATEGORIA_VALUES = [
   'Música', 'Teatre', 'Dansa i ball', 'Conferència', 'Exposició', 'Mercat',
   'Cinema', 'Taller', 'Activitat infantil', 'Patrimoni i tradicions',
   'Concentració', 'Esports', 'Vida associativa'
@@ -124,8 +132,8 @@ function filaSegura(campsBruts, origen) {
 
   fila.data_inici = dataSegura(fila.data_inici, 'La data d\'inici', avisos);
   fila.data_fi = dataSegura(fila.data_fi, 'La data de fi', avisos);
-  fila.comarca = valorPermes(fila.comarca, COMARQUES);
-  fila.categoria = valorPermes(fila.categoria, CATEGORIES);
+  fila.comarca = valorPermes(fila.comarca, COMARCA_VALUES);
+  fila.categoria = valorPermes(fila.categoria, CATEGORIA_VALUES);
   fila.imatge_url = adrecaSegura(fila.imatge_url, 'El cartell', avisos);
   fila.font_url = adrecaSegura(fila.font_url, 'L\'enllaç de la font', avisos);
 
@@ -223,7 +231,7 @@ function adrecaSegura(adreca, quina, avisos) {
   if (adreca === '') {
     return '';
   }
-  if (adreca.length <= SOSTRE_ADRECA && urlSegura.esUrlSegura(adreca)) {
+  if (adreca.length <= SOSTRE_ADRECA && esUrlSegura(adreca)) {
     return adreca;
   }
 
@@ -310,6 +318,6 @@ module.exports = {
   valorPermes: valorPermes,
   creaId: creaId,
   CAMPS: CAMPS,
-  COMARQUES: COMARQUES,
-  CATEGORIES: CATEGORIES
+  COMARCA_VALUES: COMARCA_VALUES,
+  CATEGORIA_VALUES: CATEGORIA_VALUES
 };
