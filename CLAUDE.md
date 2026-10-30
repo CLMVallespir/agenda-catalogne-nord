@@ -315,10 +315,6 @@ sense que ningú ho vegi.
   Per això, quan es fusionen dues files duplicades, es queden **totes dues
   notes** (`ajuntaNotes()`).
 
-*El Worker desplegat encara no l'escriu:* els avisos d'`afegeixNota()` són al
-codi del repositori però no al tauler fins que es torni a enganxar el Worker.
-Com que un camp desconegut és `""`, això no trenca res ni al curador ni al web.
-
 ## 4 bis. On viu l'enum — la llista completa
 
 **Un valor nou de `comarca` o de `categoria` s'ha d'afegir als dotze llocs de la

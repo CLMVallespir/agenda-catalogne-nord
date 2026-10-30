@@ -62,6 +62,9 @@ fitxer, i `git show <commit>^:<ruta>` el torna a ensenyar.*
   actes ja passats) anava cap al límit d'1 MB de l'API de continguts: el
   curador el poda a cada publicació (D-08). Neix `url-segura.js`: cap enllaç
   que no sigui http(s), ni a l'entrada de l'ADT66 ni al web ni al curador.
+- **30 d'octubre.** `filaSegura()` a les tres portes, sostre d'entrada
+  (D-09), CSP al curador i al web. Miquel enganxa el Worker: hi són vius
+  Claude, ENC-007, `filaSegura()` i `admetEntrada()`.
 
 ---
 
@@ -737,9 +740,6 @@ no la línia.
 
 **Fora del repositori (Miquel)**
 
-- Enganxar el Worker (ENC-007, la passada a Claude i `filaSegura()`) després de comprovar que
-  `CLOUDINARY_CLOUD_NAME` val `clm-agenda`. El dia que es faci, `CLAUDE.md` §4 ha
-  de dir que el Worker ja escriu `nota_curador`.
 - Revocar la clau de Gemini i treure qualsevol `GEMINI_API_KEY` dels Secrets de
   Cloudflare i dels d'Actions.
 - Al preset `agenda-posters` de Cloudinary: mida màxima (uns 10 MB), formats
@@ -771,7 +771,7 @@ següent és l'ENC-008.
 | 004 | 2026-10-06 | `CLAUDE.md`, única descripció (D-03) | cinc documents arxivats, contradiccions de l'INF-001 corregides |
 | 005 | 2026-10-06 | El Cinema d'Elna, exclòs només per l'adreça | dues ofertes sintètiques d'Elna a la xarxa |
 | 006 | 2026-10-07 | El criteri editorial automàtic en un sol mòdul (ARQ-07) | `aplicaCriteriAutomatic()`, sense canvi de comportament |
-| 007 | 2026-10-07 | Les portes manuals: imatge, dates invertides, D-04 i D-05 | fet al codi; el Worker no és desplegat |
+| 007 | 2026-10-07 | Les portes manuals: imatge, dates invertides, D-04 i D-05 | fet; el Worker, enganxat el 30 d'octubre |
 
 ARQ-04 es va tancar sense fer-se (D-04); ARQ-06 era la canonada de recerca
 (D-01); ARQ-08, la cua del curador a `curador-cua.js`, es va fer el 22
