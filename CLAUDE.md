@@ -2,7 +2,7 @@
 
 *Constitució del projecte per a l'agent de codi. Sempre en context. Descriu el
 sistema tal com és avui; la història, les decisions tancades i les lliçons són
-a `NOTES.md`. Última revisió: 23 d'octubre de 2026.*
+a `NOTES.md`. Última revisió: 31 d'octubre de 2026.*
 
 ---
 
@@ -31,7 +31,8 @@ flux ADT66 ───────────────────────
                                             └─ .github/workflows/sincronitza-adt66.yml
                                                  └─ eines/sincronitza-programada.js
                                                       sincronitza → mapeja → classifica → filtra → tradueix (Claude) → pendents.json
-                                                      (Claude sí, fins a dos intents per fila; Cloudinary no)
+                                                      (Claude sí, fins a dos intents per fila; Cloudinary no;
+                                                       només s'encua el que Claude ha traduït, D-10)
                                                 │
                               curador.html (GitHub Pages) ──valida──► events.json
                                                 │
@@ -459,7 +460,7 @@ lloc.
 |---|---|---|
 | Unitat de treball | un esdeveniment, en directe | un lot sencer, periòdicament |
 | Què el dispara | un correu, un POST del Typebot, el cron del digest | el botó «Run workflow» (el cron setmanal hi és escrit però comentat) |
-| Crida models? | **sí** — Claude i Cloudinary | **sí, Claude i prou** — fins a dos intents per fila (`INTENTS_PER_FILA`), i cada intent gasta pressupost, per traduir-la al català abans d'encuar-la (pas 7 bis). Cloudinary, mai |
+| Crida models? | **sí** — Claude i Cloudinary | **sí, Claude i prou** — fins a dos intents per fila (`INTENTS_PER_FILA`), i cada intent gasta pressupost, per traduir-la al català abans d'encuar-la (pas 7 bis); la que no es tradueix no s'encua (D-10). Cloudinary, mai |
 | Escriu | `pendents.json` | `pendents.json`, i res més |
 | Es desplega | enganxant `worker/worker-concatenat.js` al tauler de Cloudflare | fent commit del `.yml`; no hi ha res a desplegar |
 | Fitxers | `worker/worker.js`, `worker/worker-concatenat.js` | `.github/workflows/sincronitza-adt66.yml` + `eines/sincronitza-programada.js` |
@@ -482,9 +483,11 @@ lloc.
       que compta —la despesa del mes— és de l'organització o del workspace, no
       de la clau. El pressupost de 300 crides de l'Action és un sostre de
       despesa (`PRESSUPOST_CRIDES_CLAUDE`).
-    - **Si `ANTHROPIC_API_KEY` no hi és, el run NO s'atura**: les files s'encuen
-      en francès i el registre del run ho diu amb un ATENCIÓ. És una
-      configuració incompleta que es veu, no una fallada silenciosa.
+    - **Si `ANTHROPIC_API_KEY` no hi és, no s'encua res i el run surt en
+      vermell**, amb un ATENCIÓ al registre. Igual quan hi havia files a
+      traduir i no se n'ha traduït cap (`traduccioEnVerd()`): la clau, el
+      model o la quota. És una configuració incompleta que es veu, no una
+      fallada silenciosa.
 - **Les coordenades del repositori** (`propietari/repositori`, branca, noms dels
   dos fitxers) són constants dins de cada fitxer de codi. A l'Action, el
   repositori el dona `GITHUB_REPOSITORY`, que ve del propi run.
@@ -496,9 +499,23 @@ lloc.
   caràcters de cada correu al model. Les dues portes llegeixen la cua i
   decideixen **abans** de cridar Claude (`decideixAdmissio()`); un correu no
   admès és igualment a l'arxiu, el formulari respon 429.
-- **A l'Action**, el pressupost de crides és també el sostre de files, amb clau
-  o sense (`filesDinsDelSostre()`). La baixada del flux té un minut i 20 MB
+- **A l'Action**, el pressupost de crides és també el sostre de files: només
+  s'encua el que Claude ha traduït. La baixada del flux té un minut i 20 MB
   (`textAmbSostre()`), i cada crida a Claude, dos minuts.
+
+**Què entra a la cua des de l'ADT66 (D-10) — dues portes, una abans i una
+després de Claude:**
+
+- **Abans de gastar cap crida**, `filtraCandidats()` descarta l'oferta sense
+  títol o amb menys de 9 paraules de descripció (`MIN_PARAULES_DESCRIPCIO`).
+  El motiu surt al registre del run, al bloc del filtre previ.
+- **Després**, `tradueixLot()` només torna les files amb títol, `descripcio_ca`
+  i `descripcio_fr` escrits pel model. Les declinades i les fallades no
+  s'escriuen i el flux les torna a oferir la setmana següent; cap fila en
+  francès no arriba mai a la cua.
+- Que faltin `categoria`, `lloc`, `hora` o `associacio` **no** descarta res:
+  també falten a files publicades. Les portes manuals del Worker no hi passen
+  (D-04).
 
 **Per què això no trenca el §3** («cap servidor més enllà de l'únic Worker»): un
 runner d'Actions no és cap servidor. No escolta res, no té adreça, no és

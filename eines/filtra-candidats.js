@@ -16,9 +16,10 @@
 // nucli, perifèria, marcat o fora, són les regles R1-R7 de
 // **docs/CRITERI-EDITORIAL.md**: feina d'un classificador que encara no
 // existeix, i el que en surti serà sempre un SUGGERIMENT per al curador, mai una
-// decisió. Això d'aquí és anterior i molt més tosc: mira dues
-// coses mecàniques i comptables —si l'acte cau dins la finestra de dates i si
-// el títol o l'organitzador porten una paraula de soroll conegut— i prou. La
+// decisió. Això d'aquí és anterior i molt més tosc: mira tres
+// coses mecàniques i comptables —si l'acte cau dins la finestra de dates, si
+// el títol o l'organitzador porten una paraula de soroll conegut, i si hi ha
+// prou matèria per escriure'n la fitxa (D-10 de NOTES.md)— i prou. La
 // seva raó de ser és estalviar crides al model i files que no s'han de mirar.
 //
 // La conseqüència pràctica d'aquesta ratlla: **a la llista negra no hi ha
@@ -119,6 +120,18 @@ var PARAULES_DE_SOROLL = [
 var CAMPS_DE_TEXT = ['nom_original', 'nom_altra_llengua', 'organitzador'];
 
 
+// --- Constants: la matèria mínima (D-10) ------------------------------------
+
+// Per sota d'aquestes paraules de descripció, l'acte no arriba mai a la cua i
+// no val la pena gastar-hi cap crida al model. Mesurat el 31 d'octubre de 2026
+// sobre les 434 files de pendents.json que el flux encara portava: cap de les
+// publicades no en tenia menys de 9 («RIFLE DES POMPIERS 31 parties, tombola,
+// nombreux lots, buvette», 9, es va publicar), i de les 110 que el model va
+// declinar, 30 en tenien menys. Les dues traduïdes que en tenien 7 i 8 es van
+// rebutjar. Es compta sobre la descripció ja netejada pel mapeig.
+var MIN_PARAULES_DESCRIPCIO = 9;
+
+
 // --- La funció --------------------------------------------------------------
 
 // ------------------------------------------------------------
@@ -137,7 +150,8 @@ var CAMPS_DE_TEXT = ['nom_original', 'nom_altra_llengua', 'organitzador'];
 //
 //   passen      [candidat, ...]  tal com han entrat
 //   descartats  [{ candidat, titol, motiu }, ...]  amb el motiu concret:
-//               'fora de finestra' o 'paraula clau: X'
+//               'fora de finestra', 'paraula clau: X', 'sense títol' o
+//               'descripció de menys de 9 paraules'
 // ------------------------------------------------------------
 function filtraCandidats(candidatsRecerca, avui) {
   var llista = candidatsRecerca || [];
@@ -167,7 +181,7 @@ function filtraCandidats(candidatsRecerca, avui) {
 }
 
 // ------------------------------------------------------------
-// El motiu pel qual un candidat no passa, o '' si passa. Els dos criteris es
+// El motiu pel qual un candidat no passa, o '' si passa. Els tres criteris es
 // miren en aquest ordre —primer les dates, que és el que en descarta més i el
 // que costa menys— i el primer que enganxa és el que dona el motiu.
 // ------------------------------------------------------------
@@ -181,7 +195,38 @@ function motiuDeDescart(registre, dia, final) {
     return 'paraula clau: ' + paraula;
   }
 
+  return motiuDeMateria(registre);
+}
+
+
+// --- Les peces: la matèria mínima -------------------------------------------
+
+// ------------------------------------------------------------
+// Per què el candidat no porta prou matèria per fer-ne una fitxa, o '' si en
+// porta. Un títol buit, o una descripció de menys de MIN_PARAULES_DESCRIPCIO
+// paraules (la descripció absent en té zero).
+// ------------------------------------------------------------
+function motiuDeMateria(registre) {
+  if (textDeRecerca(registre.nom_original) === '') {
+    return 'sense títol';
+  }
+
+  if (comptaParaules(textDeRecerca(registre.descripcio)) < MIN_PARAULES_DESCRIPCIO) {
+    return 'descripció de menys de ' + MIN_PARAULES_DESCRIPCIO + ' paraules';
+  }
+
   return '';
+}
+
+// ------------------------------------------------------------
+// Les paraules d'un text, separades per qualsevol espai o salt de línia.
+// ------------------------------------------------------------
+function comptaParaules(text) {
+  if (text === '') {
+    return 0;
+  }
+
+  return text.split(/\s+/).length;
 }
 
 
@@ -383,11 +428,16 @@ module.exports = {
 // quin dia s'executi deixa de provar res.
 var AVUI_DE_PROVA = '2026-08-29';
 
+// Una descripció amb prou paraules per passar la matèria mínima (onze).
+var DESCRIPCIO_DE_PROVA = 'Una descripció de prova amb prou paraules per passar el filtre.';
+
 // ------------------------------------------------------------
-// El lot de prova: deu candidats fets a mà. Els sis que demana la tasca, dos
+// El lot de prova: catorze candidats fets a mà. Els sis que demana la tasca, dos
 // que exerciten les dues decisions que aquest filtre ha hagut de prendre, i els
 // dos dies de la vora de dalt —el trentè i el trenta-unè—, que amb una finestra
 // de dies és el que cal fixar perquè un canvi de la constant es vegi de seguida.
+// Els quatre últims són la matèria mínima (D-10), amb dues fitxes reals del
+// flux a banda i banda de la vora.
 // ------------------------------------------------------------
 function lotDeProva() {
   return [
@@ -421,7 +471,8 @@ function lotDeProva() {
         llengua_nom_original: 'ca',
         data_inici: 'null',
         data_fi: 'null',
-        municipi: 'Perpinyà'
+        municipi: 'Perpinyà',
+        descripcio: DESCRIPCIO_DE_PROVA
       }
     },
     {
@@ -455,7 +506,8 @@ function lotDeProva() {
         llengua_nom_original: 'fr',
         data_inici: '2026-01-01',
         data_fi: '2026-12-31',
-        municipi: 'Prades / Prada'
+        municipi: 'Prades / Prada',
+        descripcio: DESCRIPCIO_DE_PROVA
       }
     },
     {
@@ -466,7 +518,8 @@ function lotDeProva() {
         llengua_nom_original: 'ca',
         data_inici: '2026-09-12',
         data_fi: '2026-09-12',
-        municipi: 'Ceret'
+        municipi: 'Ceret',
+        descripcio: DESCRIPCIO_DE_PROVA
       }
     },
     {
@@ -477,7 +530,8 @@ function lotDeProva() {
         llengua_nom_original: 'ca',
         data_inici: '2026-09-28',
         data_fi: '2026-09-28',
-        municipi: 'Elna'
+        municipi: 'Elna',
+        descripcio: DESCRIPCIO_DE_PROVA
       }
     },
     {
@@ -500,9 +554,49 @@ function lotDeProva() {
           llengua_nom_original: 'ca',
           data_inici: '2026-09-20',
           data_fi: '2026-09-20',
-          municipi: 'Prada'
+          municipi: 'Prada',
+          descripcio: DESCRIPCIO_DE_PROVA
         },
         font: { tipus: 'organitzador' }
+      }
+    },
+    {
+      nom: 'Sense títol: no hi ha res a traduir (D-10)',
+      espera: 'sense títol',
+      candidat: {
+        nom_original: 'null',
+        data_inici: '2026-09-12',
+        data_fi: '2026-09-12',
+        descripcio: DESCRIPCIO_DE_PROVA
+      }
+    },
+    {
+      nom: 'Sense descripció: zero paraules (D-10)',
+      espera: 'descripció de menys de 9 paraules',
+      candidat: {
+        nom_original: 'RIFLE',
+        data_inici: '2026-09-12',
+        data_fi: '2026-09-12'
+      }
+    },
+    {
+      nom: 'Descripció de vuit paraules: una menys del mínim (D-10)',
+      espera: 'descripció de menys de 9 paraules',
+      candidat: {
+        nom_original: 'GRANDE SOIRÉE HALLOWEEN',
+        data_inici: '2026-09-12',
+        data_fi: '2026-09-12',
+        descripcio: 'Venez vous amusez, danser en famille entre amis.'
+      }
+    },
+    {
+      nom: 'Descripció de nou paraules: el mínim, passa (D-10)',
+      espera: '',
+      candidat: {
+        nom_original: 'RIFLE DES POMPIERS',
+        data_inici: '2026-09-12',
+        data_fi: '2026-09-12',
+        descripcio: 'RIFLE DES POMPIERS 31 parties, tombola, nombreux lots, buvette'
       }
     }
   ];

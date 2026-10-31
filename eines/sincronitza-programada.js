@@ -113,18 +113,22 @@
 //     reintent: ni aquella fila ni cap de les que venen darrere no s'escriuen,
 //     i totes tornen la propera passada.
 //   CRIDA FALLIDA (qualsevol altra: xarxa, un altre codi, JSON il·legible,
-//     model que torna buit) -> la fila S'ESCRIU igualment, amb el títol i el
-//     text francesos tal com arriben, i amb un avís a `nota_curador`. Un
-//     reintent per fila com a màxim; després, s'encua i se segueix. UNA FILA
-//     QUE PETA NO ATURA MAI EL RUN. El motiu és el biaix del §4 ter de
-//     CLAUDE.md —si dubtes, ENCUA—: si la fallada descartés, una fila que
-//     petés sempre no entraria mai a la cua, i un acte que ningú no veu és
-//     pitjor que un acte en francès.
+//     model que torna buit) -> la fila NO s'escriu (D-10), i el flux la
+//     tornarà a oferir la setmana següent. Un reintent per fila com a màxim;
+//     després, se segueix. UNA FILA QUE PETA NO ATURA MAI EL RUN. El que sí
+//     el posa en vermell és que no se n'hagi traduït CAP (traduccioEnVerd()):
+//     llavors la fallada és nostra —la clau, el nom del model— i una cua que
+//     no creix semblaria una cua al dia.
+//
+//   LA REGLA D'ENTRADA (D-10, 31 d'octubre de 2026): a la cua només hi arriba
+//   el que Claude ha escrit en català, títol i dues descripcions. Cap fila en
+//   francès: de les 110 que hi havien entrat, el curador no en va publicar
+//   cap. I abans de gastar-hi cap crida, filtraCandidats() ja descarta les
+//   ofertes sense títol o amb menys de 9 paraules de descripció.
 //
 //   PER QUÈ LA QUOTA NO ÉS UNA CRIDA FALLIDA MÉS. Una quota esgotada no depèn
-//   de la fila: si cada fila s'encués en francès tot i que la quota s'hagi
-//   acabat, les últimes de la passada hi entrarien totes seguides. El forat de
-//   «la fila que peta sempre» aquí no hi és. El crèdit del mes i el límit de
+//   de la fila, i les files que vénen darrere no han tingut cap oportunitat:
+//   no compten ni com a fallades ni com a declinades. El crèdit del mes i el límit de
 //   despesa, quan s'acaben, s'acaben per a totes les files que venen darrere,
 //   i un 429 per minut també atura la passada. La pausa entre crides fa que no
 //   hagi de passar; si mai passés, la passada s'aturaria d'hora i la resta
@@ -168,9 +172,9 @@
 //                      `--en-sec` s'atura amb un error clar. Amb token, tots
 //                      dos es llegeixen per l'API —mai de Pages, que serveix
 //                      còpies de CDN endarrerides (§7 de CLAUDE.md).
-//   ANTHROPIC_API_KEY  sense ella NO es tradueix i la passada NO s'atura: les
-//                      files s'encuen en francès, com abans que el pas 7 bis
-//                      existís, i el registre del run ho diu amb un ATENCIÓ.
+//   ANTHROPIC_API_KEY  sense ella NO es tradueix i NO s'encua res (D-10): la
+//                      poda es fa igualment, el registre ho diu amb un
+//                      ATENCIÓ i el run surt en vermell.
 //                      Va als Secrets d'Actions del repositori, que és un
 //                      magatzem diferent del de Cloudflare (§7 bis de
 //                      CLAUDE.md).
@@ -307,7 +311,7 @@ var ESQUEMA_TRADUCCIO = {
 var PRESSUPOST_CRIDES_CLAUDE = 300;
 
 // Els intents que té una fila: un, i un reintent. Prou per a un tall de xarxa i
-// per a una resposta mal formada; el que peti dues vegades s'encua en francès i
+// per a una resposta mal formada; el que peti dues vegades no s'escriu (D-10) i
 // la passada continua.
 var INTENTS_PER_FILA = 2;
 
@@ -329,16 +333,10 @@ var PAUSA_ENTRE_CRIDES_MS = 4500;
 // llegir bonic, hi ha un codi d'error a trobar.
 var MAX_MOTIU_FALLADA = 300;
 
-// Els tres avisos que la traducció enganxa darrere del tag [ADT66 id: …].
-// SÓN EXCLOENTS: una fila en porta un i mai dos. El curador ha de poder
-// distingir «hi ha text català i el va escriure una màquina» de «només hi ha el
-// títol» i de «no hi ha text català».
+// L'avís que la traducció enganxa darrere del tag [ADT66 id: …]. N'hi ha un
+// de sol des de D-10: a la cua només hi arriben files traduïdes.
 var AVIS_TRADUIT =
   'Títol i descripcions escrits per un model a partir del text francès de l\'ADT66. Comprova\'ls abans de publicar.';
-var AVIS_NOMES_TITOL =
-  'Títol escrit per un model a partir del francès de l\'ADT66. L\'oferta no porta cap text descriptiu i no se n\'ha inventat cap: les dues descripcions queden buides.';
-var AVIS_NO_TRADUIT =
-  'No s\'ha pogut escriure la versió catalana: la fila entra amb el títol i el text en francès tal com els dona l\'ADT66.';
 
 
 // --- Constants: el prompt de traducció --------------------------------------
@@ -671,8 +669,9 @@ function nomesLesNoves(entrants, classificacions) {
 // ------------------------------------------------------------
 // La fila de producció vista com un registre de l'esquema de recerca, que és
 // l'únic que sap llegir filtraCandidats(). No és cap conversió de dades: són
-// els quatre camps que aquell filtre mira, i prou —les dates per a la finestra,
-// el títol i l'organitzador per a la llista negra.
+// els camps que aquell filtre mira, i prou —les dates per a la finestra, el
+// títol i l'organitzador per a la llista negra, i el títol i la descripció
+// francesa per a la matèria mínima (D-10).
 //
 // `nom_altra_llengua` es queda buit perquè la fila del flux només porta el
 // títol en francès; la banda catalana l'omple el curador.
@@ -683,7 +682,8 @@ function registreDeFila(fila) {
     nom_altra_llengua: '',
     organitzador: fila.associacio,
     data_inici: fila.data_inici,
-    data_fi: fila.data_fi
+    data_fi: fila.data_fi,
+    descripcio: fila.descripcio_fr
   };
 }
 
@@ -792,9 +792,11 @@ function comparaPerDataInici(a, b) {
 // ------------------------------------------------------------
 // Tradueix el lot. Torna { files, informe }.
 //
-// `files` són les files que s'han d'escriure: totes les que han arribat a tenir
-// crida, tant si ha anat bé com si no. Les que s'han quedat sense pressupost o
-// sense quota NO hi són, i tornaran soles la propera passada.
+// `files` són les files que s'han d'escriure: NOMÉS les traduïdes, amb títol i
+// les dues descripcions escrits pel model (D-10). Les declinades i les
+// fallades no s'escriuen, i el flux les tornarà a oferir; les que s'han quedat
+// sense pressupost o sense quota tampoc, i tornaran soles la propera passada.
+// Sense crida (sense clau, o en sec) no se n'escriu cap.
 //
 // ES TRADUEIX PER ORDRE D'IMMINÈNCIA, no per l'ordre del flux. El que es queda
 // fora del pressupost ha de ser el que passa més tard, que encara serà dins la
@@ -805,19 +807,19 @@ function comparaPerDataInici(a, b) {
 //
 //   feta         cert si s'ha traduït (fals si no hi havia amb què cridar)
 //   motiu        per què no s'ha fet, quan `feta` és fals
+//   aTraduir     les files que han arribat al pas, abans de cap crida
 //   pressupost   les crides que tenia la passada
 //   crides       les que ha gastat de debò, reintents inclosos
-//   traduides    files amb títol i les dues descripcions escrites pel model
-//   nomesTitol   files sense text de font: només el títol, cap descripció
-//   fallades     files encuades en francès perquè LA CRIDA HA PETAT
-//   senseMateria files encuades en francès perquè EL MODEL HO HA DECLINAT: ha
-//                respost bé i ha dit que no hi havia prou matèria per escriure
-//                dues frases honestes
+//   traduides    files amb títol i les dues descripcions escrites pel model:
+//                les úniques que s'escriuen
+//   fallades     files no escrites perquè LA CRIDA HA PETAT
+//   senseMateria files no escrites perquè EL MODEL HO HA DECLINAT: ha
+//                respost bé però sense títol o sense les dues descripcions,
+//                perquè no hi havia prou matèria per escriure dues frases
+//                honestes
 //   motiusDeFallada  [{ motiu, quantes }, ...] per què han petat les crides
 //   retalladesPerPressupost  files que no s'escriuen perquè no han tingut
-//                crida o, sense clau, perquè passaven del sostre de files
-//                (filesDinsDelSostre()). NO són cap descart: tornen a la
-//                propera passada
+//                crida. NO són cap descart: tornen a la propera passada
 //   exhauridesPerQuota  files que no s'escriuen perquè Claude ha dit prou —un
 //                429, el crèdit o el límit de despesa (esQuotaExhaurida())—:
 //                la que ha rebut l'error i totes les que venien darrere.
@@ -829,11 +831,11 @@ function comparaPerDataInici(a, b) {
 //                l'error; '' si no n'hi ha hagut cap. Vegeu
 //                descriuLimitDeQuota()
 //
-// PER QUÈ `fallades` I `senseMateria` VAN SEPARADES. La fila acaba igual —sense
-// text català i amb el mateix avís—, però la causa no té res a veure i el que
-// se n'ha de fer, tampoc. Un `senseMateria` alt vol dir que el flux porta
-// ofertes primes i que el curador hi haurà de escriure a mà: és una dada sobre
-// la font. Un `fallades` alt vol dir que alguna cosa NOSTRA no funciona —la
+// PER QUÈ `fallades` I `senseMateria` VAN SEPARADES. La fila acaba igual —no
+// s'escriu—, però la causa no té res a veure i el que se n'ha de fer, tampoc.
+// Un `senseMateria` alt vol dir que el flux porta ofertes primes que la
+// matèria mínima de filtraCandidats() no ha atrapat: és una dada sobre la font.
+// Un `fallades` alt vol dir que alguna cosa NOSTRA no funciona —la
 // clau, el nom del model, la mida de la resposta— i s'ha d'arreglar avui.
 // Barrejar-les feia invisible la segona, que és l'única de les dues que és un
 // error. La quota exhaurida ja no hi compta: va a `exhauridesPerQuota`.
@@ -843,10 +845,10 @@ async function tradueixLot(files, config) {
   var informe = {
     feta: config.cridaClaude !== null,
     motiu: config.motiuSenseTraduccio,
+    aTraduir: llista.length,
     pressupost: config.pressupost,
     crides: 0,
     traduides: 0,
-    nomesTitol: 0,
     fallades: 0,
     senseMateria: 0,
     motiusDeFallada: {},
@@ -856,21 +858,11 @@ async function tradueixLot(files, config) {
     limitDeQuota: ''
   };
 
-  // Sense crida no es tradueix res i les files surten amb el títol i el text
-  // francesos tal com han entrat. No és cap error: en sec és el que ha de
-  // passar, i sense clau és el que diu el §7 bis de CLAUDE.md. Però l'avís hi
-  // va igualment: el mapeig ja no n'escriu cap de traducció, i una fila en
-  // francès sense avís no ho diria al curador.
-  //
-  // I EL MATEIX SOSTRE DE FILES QUE AMB CLAU (D-09). Amb clau, una passada no
-  // escriu mai més files que crides té el pressupost. Sense clau no hi havia
-  // cap sostre, i un flux inflat o hostil anava sencer a pendents.json.
+  // Sense crida no es tradueix res, i per tant no s'escriu res (D-10). En sec
+  // és el que ha de passar; sense clau és una configuració incompleta, i
+  // principal() posa el run en vermell (traduccioEnVerd()).
   if (config.cridaClaude === null) {
-    var dins = filesDinsDelSostre(llista, config.pressupost, informe);
-    for (var f = 0; f < dins.length; f++) {
-      posaAvisDeTraduccio(dins[f], AVIS_NO_TRADUIT);
-    }
-    return { files: dins, informe: informe };
+    return { files: [], informe: informe };
   }
 
   // Còpia abans d'ordenar: la llista que arriba l'ha construïda el filtre previ
@@ -908,29 +900,13 @@ async function tradueixLot(files, config) {
       continue;
     }
 
-    aplicaTraduccio(ordenades[i], sortida, informe);
-    escrites.push(ordenades[i]);
+    if (aplicaTraduccio(ordenades[i], sortida, informe)) {
+      escrites.push(ordenades[i]);
+    }
   }
 
   informe.motiusDeFallada = motiusOrdenats(informe.motiusDeFallada);
   return { files: escrites, informe: informe };
-}
-
-// ------------------------------------------------------------
-// Les files que caben sota el sostre, quan no hi ha clau: com a molt
-// `sostre`, les més imminents, i les altres comptades a l'informe com a
-// retallades. Si totes hi caben, torna la mateixa llista i en el mateix ordre.
-// ------------------------------------------------------------
-function filesDinsDelSostre(files, sostre, informe) {
-  if (files.length <= sostre) {
-    return files;
-  }
-
-  // Còpia abans d'ordenar, com a tradueixLot().
-  var ordenades = files.slice();
-  ordenades.sort(comparaPerDataInici);
-  informe.retalladesPerPressupost = ordenades.length - sostre;
-  return ordenades.slice(0, sostre);
 }
 
 // ------------------------------------------------------------
@@ -960,7 +936,7 @@ function motiusOrdenats(comptes) {
 //           (esQuotaExhaurida()). Llavors no es reintenta: el reintent
 //           tornaria a topar amb el mateix error
 //
-// NO LLANÇA MAI. Una crida que peta és una fila amb avís, no un run aturat.
+// NO LLANÇA MAI. Una crida que peta és una fila no escrita, no un run aturat.
 //
 // CADA INTENT GASTA PRESSUPOST, també el reintent: el pressupost compta crides
 // a Claude, no files. Si el reintent no hi cap, no es fa i la fila surt amb el
@@ -1083,31 +1059,20 @@ function errorDelCos(motiu) {
 }
 
 // ------------------------------------------------------------
-// Escriu a la fila el que hagi tornat la crida i li enganxa l'avís que li toca.
-// TRES ESTATS DE FILA, excloents, i cada un amb el seu avís:
+// Escriu a la fila el que hagi tornat la crida, si és una traducció sencera, i
+// diu si ho és: cert vol dir que la fila s'escriu a la cua, fals que no (D-10).
 //
-//   traduïda      el model ha tornat les dues descripcions plenes: s'escriuen
-//                 el títol i totes dues
-//   només títol   l'oferta arriba sense `descripcio_fr`: s'escriu el títol i
-//                 les descripcions es queden buides. NO es fa servir cap
-//                 descripció que el model hagi tornat en aquest cas —seria
-//                 inventada, perquè no hi havia text d'on treure-la
-//   no traduïda   la fila es queda EXACTAMENT com arriba del flux, títol
-//                 francès i text francès inclosos
-//
-// L'ÚLTIM ESTAT TÉ DUES CAUSES I ES COMPTEN A PART, tot i compartir l'avís: la
-// crida ha petat (`fallades`, amb el motiu) o el model ho ha declinat perquè no
-// hi havia prou matèria (`senseMateria`). Vegeu el §«Per què van separades» de
+// UNA TRADUCCIÓ SENCERA són TRES camps plens: el títol, `descripcio_ca` i
+// `descripcio_fr`. Qualsevol altra resposta deixa la fila sense tocar i fora
+// de la cua, i es compta a part segons la causa: la crida ha petat
+// (`fallades`, amb el motiu) o el model ho ha declinat perquè no hi havia
+// prou matèria (`senseMateria`). Vegeu el §«Per què van separades» de
 // tradueixLot().
 //
-// LES DUES DESCRIPCIONS VAN JUNTES O NO VAN. Si el model només torna una de les
-// dues, no s'escriu cap: `descripcio_fr` ha de ser la traducció de la
-// `descripcio_ca` que hi ha al costat, i mitja parella no ho és.
-//
-// L'AVÍS DE «TRADUÏDA» NOMENA ELS TRES CAMPS encara que el model no hagi tornat
-// títol i el francès s'hi hagi quedat. No és cap imprecisió: l'avís diu al
-// curador quins tres camps ha de comprovar, i en aquest cas també els ha de
-// comprovar tots tres.
+// LES DUES DESCRIPCIONS VAN JUNTES O NO VAN: `descripcio_fr` ha de ser la
+// traducció de la `descripcio_ca` que hi ha al costat, i mitja parella no ho
+// és. I el títol també hi ha de ser: una fila amb el títol en francès a la cua
+// és una fila que el curador no publicarà.
 //
 // Modifica la fila que rep i no en fa cap còpia: la fila d'aquest punt del camí
 // l'ha construïda mapejaOfertaADT66() per a aquesta passada i no és de ningú
@@ -1117,8 +1082,7 @@ function aplicaTraduccio(fila, sortida, informe) {
   if (!sortida.ok) {
     informe.fallades++;
     comptaMotiuDeFallada(informe, sortida.motiu);
-    posaAvisDeTraduccio(fila, AVIS_NO_TRADUIT);
-    return;
+    return false;
   }
 
   var camps = sortida.camps || {};
@@ -1126,36 +1090,18 @@ function aplicaTraduccio(fila, sortida, informe) {
   var descCa = cadenaDeModel(camps.descripcio_ca, 'descripcio_ca');
   var descFr = cadenaDeModel(camps.descripcio_fr, 'descripcio_fr');
 
-  // L'oferta no porta text descriptiu: només el títol es pot passar al català.
-  if (fila.descripcio_fr === '') {
-    if (titol === '') {
-      informe.senseMateria++;
-      posaAvisDeTraduccio(fila, AVIS_NO_TRADUIT);
-      return;
-    }
-
-    fila.titol = titol;
-    informe.nomesTitol++;
-    posaAvisDeTraduccio(fila, AVIS_NOMES_TITOL);
-    return;
-  }
-
-  // Hi havia text i el model no n'ha tret cap descripció completa: ha fet cas
-  // de la regla de no inventar. La fila es queda crua, títol inclòs, perquè
-  // l'avís diu justament que hi és tot en francès.
-  if (descCa === '' || descFr === '') {
+  // El model ha fet cas de la regla de no inventar, o ha deixat el títol buit.
+  if (titol === '' || descCa === '' || descFr === '') {
     informe.senseMateria++;
-    posaAvisDeTraduccio(fila, AVIS_NO_TRADUIT);
-    return;
+    return false;
   }
 
-  if (titol !== '') {
-    fila.titol = titol;
-  }
+  fila.titol = titol;
   fila.descripcio_ca = descCa;
   fila.descripcio_fr = descFr;
   informe.traduides++;
   posaAvisDeTraduccio(fila, AVIS_TRADUIT);
+  return true;
 }
 
 // ------------------------------------------------------------
@@ -1412,10 +1358,10 @@ function configuracio(opcions) {
 //      manuals en sec per omissió. L'excepció és `ambClaude`
 //      (`--amb-claude`), que és com es jutja el prompt: crides de debò i cap
 //      escriptura. Va amb pressupost petit, sempre.
-//   3. Sense clau no hi ha traducció, i la passada NO s'atura: les files
-//      s'encuen en francès, com abans que el pas 7 bis existís. Però el motiu
-//      ho diu amb un ATENCIÓ, perquè això és una configuració incompleta i no
-//      una decisió: el secret ANTHROPIC_API_KEY no s'hi ha posat.
+//   3. Sense clau no hi ha traducció, i per tant no s'encua res (D-10). El
+//      motiu ho diu amb un ATENCIÓ i el run surt en vermell, perquè això és
+//      una configuració incompleta i no una decisió: el secret
+//      ANTHROPIC_API_KEY no s'hi ha posat.
 // ------------------------------------------------------------
 function decideixCrida(donades, enSec) {
   if (typeof donades.cridaClaude === 'function') {
@@ -1431,7 +1377,7 @@ function decideixCrida(donades, enSec) {
   if (clau === '') {
     return {
       crida: null,
-      motiu: 'ATENCIÓ: falta el secret ANTHROPIC_API_KEY. Les files s\'encuen en francès.'
+      motiu: 'ATENCIÓ: falta el secret ANTHROPIC_API_KEY. No s\'encua res.'
     };
   }
 
@@ -1616,7 +1562,7 @@ function configDeProva(crida, motiu) {
 // ------------------------------------------------------------
 // La passada que exerciten els cinc primers casos. Cinc files desordenades a
 // posta; per ordre d'imminència, la de l'1 es tradueix, la del 2 peta amb un
-// 529 dues vegades i s'encua en francès, la del 3 topa amb la quota, i la del 4
+// 529 dues vegades i no s'escriu, la del 3 topa amb la quota, i la del 4
 // i la del 5 ja no han de tenir crida. Torna { resultat, crides }, amb les
 // crides que ha rebut de debò la funció.
 // ------------------------------------------------------------
@@ -1814,15 +1760,15 @@ async function provaExclosaJaRebutjada() {
 function bateria() {
   return [
     {
-      nom: 'quota a la tercera fila: només s\'escriuen la traduïda i la fallada normal',
+      nom: 'quota a la tercera fila: només s\'escriu la traduïda; la fallada normal tampoc (D-10)',
       comprova: async function () {
         var passada = await passadaAmbQuota();
         var dates = [];
         for (var i = 0; i < passada.resultat.files.length; i++) {
           dates.push(passada.resultat.files[i].data_inici);
         }
-        return dates.join(',') === '2026-10-01,2026-10-02' ? '' :
-          'esperava 2026-10-01,2026-10-02, tinc «' + dates.join(',') + '»';
+        return dates.join(',') === '2026-10-01' ? '' :
+          'esperava 2026-10-01, tinc «' + dates.join(',') + '»';
       }
     },
 
@@ -1898,31 +1844,37 @@ function bateria() {
     },
 
     {
-      nom: 'la fallada normal entra amb l\'avís de no traduïda',
+      nom: 'la traduïda s\'escriu amb els tres camps del model i l\'avís darrere del tag',
       comprova: async function () {
         var files = (await passadaAmbQuota()).resultat.files;
-        if (files.length < 2) {
-          return 'esperava dues files escrites, en tinc ' + files.length;
+        if (files.length !== 1) {
+          return 'esperava una fila escrita, en tinc ' + files.length;
         }
-        return /No s'ha pogut escriure/.test(files[1].nota_curador) ? '' :
-          'la nota de la fila fallada no porta l\'avís: «' + files[1].nota_curador + '»';
+        var fila = files[0];
+        if (fila.titol !== 'Títol' || fila.descripcio_ca !== 'Text.' ||
+            fila.descripcio_fr !== 'Texte.') {
+          return 'els camps no són els del model: ' + fila.titol + ' / ' +
+            fila.descripcio_ca + ' / ' + fila.descripcio_fr;
+        }
+        return fila.nota_curador === '[ADT66 id: X2026-10-01] ' + AVIS_TRADUIT ? '' :
+          'la nota no és el tag i l\'avís: «' + fila.nota_curador + '»';
       }
     },
 
     {
-      nom: 'un 400 que no és de despesa és una fallada normal i s\'escriu',
+      nom: 'un 400 que no és de despesa és una fallada normal i no s\'escriu',
       comprova: async function () {
         var crida = async function () {
           throw new Error('Claude ha respost amb codi 400. ' +
             '{"type":"error","error":{"type":"invalid_request_error","message":"max_tokens: invalid"}}');
         };
         var resultat = await tradueixLot([filaDeProva('2026-10-01')], configDeProva(crida, ''));
-        if (resultat.files.length === 1 && resultat.informe.fallades === 1 &&
+        if (resultat.files.length === 0 && resultat.informe.fallades === 1 &&
             resultat.informe.exhauridesPerQuota === 0) {
           return '';
         }
         return 'files ' + resultat.files.length + ', fallades ' + resultat.informe.fallades +
-          ', quota ' + resultat.informe.exhauridesPerQuota + ' (esperava 1, 1, 0)';
+          ', quota ' + resultat.informe.exhauridesPerQuota + ' (esperava 0, 1, 0)';
       }
     },
 
@@ -1950,57 +1902,70 @@ function bateria() {
     },
 
     {
-      nom: 'el model declina: la fila s\'escriu en francès i compta com a declinada',
+      nom: 'el model declina: la fila no s\'escriu i compta com a declinada (D-10)',
       comprova: async function () {
         var crida = async function () {
           return { titol: 'T', descripcio_ca: '', descripcio_fr: '' };
         };
+        var fila = filaDeProva('2026-10-01');
+        var resultat = await tradueixLot([fila], configDeProva(crida, ''));
+        if (resultat.files.length !== 0 || resultat.informe.senseMateria !== 1) {
+          return 'files ' + resultat.files.length + ', declinades ' +
+            resultat.informe.senseMateria + ' (esperava 0 i 1)';
+        }
+        return fila.titol === 'T2026-10-01' && fila.nota_curador === '[ADT66 id: X2026-10-01]' ? '' :
+          'la fila declinada s\'ha tocat: «' + fila.titol + '» / «' + fila.nota_curador + '»';
+      }
+    },
+
+    {
+      nom: 'el model torna les dues descripcions però cap títol: no s\'escriu (D-10)',
+      comprova: async function () {
+        var crida = async function () {
+          return { titol: '', descripcio_ca: 'Text.', descripcio_fr: 'Texte.' };
+        };
         var resultat = await tradueixLot([filaDeProva('2026-10-01')], configDeProva(crida, ''));
-        if (resultat.files.length === 1 && resultat.informe.senseMateria === 1) {
-          return '';
-        }
-        return 'files ' + resultat.files.length + ', declinades ' +
-          resultat.informe.senseMateria + ' (esperava 1 i 1)';
+        return resultat.files.length === 0 && resultat.informe.senseMateria === 1 ? '' :
+          'files ' + resultat.files.length + ', declinades ' +
+          resultat.informe.senseMateria + ' (esperava 0 i 1)';
       }
     },
 
     {
-      nom: 'sense crida: la fila surt amb el tag i l\'avís de no traduïda',
-      comprova: async function () {
-        var resultat = await tradueixLot([filaDeProva('2026-10-01')], configDeProva(null, 'x'));
-        if (resultat.files.length !== 1) {
-          return 'esperava una fila, en tinc ' + resultat.files.length;
-        }
-        var nota = resultat.files[0].nota_curador;
-        return /\[ADT66 id: X2026-10-01\] No s'ha pogut escriure/.test(nota) ? '' :
-          'la nota no porta el tag i l\'avís: «' + nota + '»';
-      }
-    },
-
-    {
-      nom: 'sense crida: com a molt tantes files com crides té el pressupost, les més imminents (D-09)',
-      comprova: async function () {
-        var files = [filaDeProva('2026-10-03'), filaDeProva('2026-10-01'), filaDeProva('2026-10-02')];
-        var config = configDeProva(null, 'x');
-        config.pressupost = 2;
-        var resultat = await tradueixLot(files, config);
-        var dates = resultat.files.map(function (fila) { return fila.data_inici; }).join(',');
-        if (dates !== '2026-10-01,2026-10-02') {
-          return 'esperava 2026-10-01,2026-10-02, en tinc ' + dates;
-        }
-        return resultat.informe.retalladesPerPressupost === 1 ? '' :
-          'retalladesPerPressupost hauria de ser 1, és ' + resultat.informe.retalladesPerPressupost;
-      }
-    },
-
-    {
-      nom: 'sense crida: si totes hi caben, surten totes i en el mateix ordre',
+      nom: 'sense crida: no s\'escriu cap fila, i aTraduir les compta totes (D-10)',
       comprova: async function () {
         var files = [filaDeProva('2026-10-03'), filaDeProva('2026-10-01')];
         var resultat = await tradueixLot(files, configDeProva(null, 'x'));
-        var dates = resultat.files.map(function (fila) { return fila.data_inici; }).join(',');
-        return dates === '2026-10-03,2026-10-01' && resultat.informe.retalladesPerPressupost === 0 ? '' :
-          'esperava 2026-10-03,2026-10-01 sense retallades, en tinc ' + dates;
+        return resultat.files.length === 0 && resultat.informe.aTraduir === 2 &&
+          resultat.informe.feta === false ? '' :
+          'files ' + resultat.files.length + ', aTraduir ' + resultat.informe.aTraduir +
+          ', feta ' + resultat.informe.feta + ' (esperava 0, 2, fals)';
+      }
+    },
+
+    {
+      nom: 'run en vermell: hi havia files i no se n\'ha traduït cap; en verd si no n\'hi havia o si n\'hi ha una',
+      comprova: function () {
+        var casos = [
+          { traducio: { aTraduir: 5, traduides: 0 }, verd: false },
+          { traducio: { aTraduir: 0, traduides: 0 }, verd: true },
+          { traducio: { aTraduir: 5, traduides: 1 }, verd: true }
+        ];
+        for (var i = 0; i < casos.length; i++) {
+          if (traduccioEnVerd(casos[i].traducio) !== casos[i].verd) {
+            return 'el cas ' + (i + 1) + ' havia de donar ' + casos[i].verd;
+          }
+        }
+        return '';
+      }
+    },
+
+    {
+      nom: 'run en vermell: sense crida i amb files a traduir, el run no és verd',
+      comprova: async function () {
+        var resultat = await tradueixLot([filaDeProva('2026-10-01')], configDeProva(null, 'x'));
+        return traduccioEnVerd(resultat.informe) === false ? '' :
+          'sense crida i amb una fila, traduccioEnVerd() ha dit que sí';
       }
     },
 
@@ -2362,7 +2327,7 @@ function informeDePoda(etiqueta, podades) {
 
 // ------------------------------------------------------------
 // El bloc del pas 7 bis al registre del run. Cada xifra és comptable contra les
-// candidates: traduïdes + només títol + declinades + fallades + retallades pel
+// files a traduir: traduïdes + declinades + fallades + retallades pel
 // pressupost + exhaurides per quota.
 // ------------------------------------------------------------
 function informeDeTraduccio(traducio) {
@@ -2370,20 +2335,20 @@ function informeDeTraduccio(traducio) {
 
   if (!traducio.feta) {
     console.log('    NO S\'HA FET — ' + traducio.motiu);
-    console.log('    files encuades en francès, amb l\'avís de no traduïdes');
+    console.log('    files a traduir no escrites ' + traducio.aTraduir);
     return;
   }
 
+  console.log('    files a traduir            ' + traducio.aTraduir);
   console.log('    pressupost de crides       ' + traducio.pressupost);
   console.log('    crides consumides          ' + traducio.crides +
     '   (reintents inclosos)');
-  console.log('    traduïdes                  ' + traducio.traduides);
-  console.log('    només el títol             ' + traducio.nomesTitol +
-    '   (sense text de font: cap descripció inventada)');
+  console.log('    traduïdes                  ' + traducio.traduides +
+    '   (les úniques que s\'encuen)');
   console.log('    declinades pel model       ' + traducio.senseMateria +
-    '   (ha respost que no hi ha prou matèria: entren en francès)');
+    '   (ha respost que no hi ha prou matèria: no s\'encuen)');
   console.log('    CRIDES QUE HAN PETAT       ' + traducio.fallades +
-    '   (entren en francès, amb avís al curador)');
+    '   (no s\'encuen; tornaran a la propera passada)');
 
   // El motiu, sempre que n'hi hagi cap. Sense això una fallada és un número i
   // no es pot arreglar res.
@@ -2506,10 +2471,27 @@ async function principal() {
     if (process.argv.indexOf('--fitxes') !== -1) {
       escriuFitxes(resultat.noves);
     }
+    if (!enSec && !traduccioEnVerd(resultat.traducio)) {
+      console.error('ERROR: hi havia ' + resultat.traducio.aTraduir +
+        ' files a traduir i no se n\'ha traduït cap. Mira el bloc de la ' +
+        'traducció de dalt: la clau, el model o la quota.');
+      process.exitCode = 1;
+    }
   } catch (error) {
     console.error('Ha fallat: ' + error.message);
     process.exitCode = 1;
   }
+}
+
+// ------------------------------------------------------------
+// Diu si la traducció ha anat prou bé per deixar el run en verd: cert si no hi
+// havia res a traduir o si se n'ha traduït almenys una. Fals vol dir que hi
+// havia files i cap no ha arribat a la cua (D-10): la clau no hi és, el model
+// ha canviat de nom, la quota s'ha acabat a la primera, o cap resposta no és
+// bona. principal() posa llavors el run en vermell a GitHub.
+// ------------------------------------------------------------
+function traduccioEnVerd(traducio) {
+  return traducio.aTraduir === 0 || traducio.traduides > 0;
 }
 
 if (require.main === module) {

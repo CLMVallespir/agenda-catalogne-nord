@@ -15,6 +15,10 @@
 //      `eines/mapeja-adt66.js` (`data_entrada`) i `eines/adt66-sincronitza.js`
 //      (`dataDavuiAParis()`, que tria la propera data d'una sèrie dispersa).
 //      Sense congelar-lo, dues passades no donarien mai la mateixa sortida.
+//   4. La traducció. Des de D-10 sense traducció no s'escriu cap fila, i la
+//      xarxa no veuria res del que surt del mapeig. Una crida simulada
+//      (`cridaClaude`, que ja era una opció) torna el títol tal com és i la
+//      descripció francesa a les dues bandes, la catalana amb «CA: » davant.
 //
 // No hi ha cap costura nova a la interfície de `sincronitzaProgramada()`
 // (decisió D-02 de `NOTES.md`).
@@ -63,7 +67,9 @@ async function passadaEnSec(entrades) {
       return { ofertes: ofertes };
     });
 
-    var informe = await sincronitzaProgramada({ enSec: true, avui: avui, pausaMs: 0 });
+    var informe = await sincronitzaProgramada({
+      enSec: true, avui: avui, pausaMs: 0, cridaClaude: traduccioSimulada
+    });
     return JSON.parse(JSON.stringify(informe));
   } finally {
     mock.timers.reset();
@@ -71,6 +77,16 @@ async function passadaEnSec(entrades) {
     process.chdir(directoriAbans);
     fs.rmSync(carpeta, { recursive: true, force: true });
   }
+}
+
+
+// Una traducció determinista: el títol tal com és i la descripció francesa a les dues bandes.
+async function traduccioSimulada(fila) {
+  return {
+    titol: fila.titol,
+    descripcio_ca: 'CA: ' + fila.descripcio_fr,
+    descripcio_fr: fila.descripcio_fr
+  };
 }
 
 

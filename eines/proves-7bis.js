@@ -49,8 +49,7 @@ async function preparaFlux() {
 // --- Les crides simulades ---------------------------------------------------
 
 // Torna sempre les tres claus plenes. Serveix per veure què fa el codi quan el
-// model respon bé, i també per comprovar que les descripcions NO s'escriuen
-// quan l'oferta no porta text de font.
+// model respon bé.
 function cridaBona(fila) {
   return Promise.resolve({
     titol: 'CATALÀ: ' + fila.titol,
@@ -156,7 +155,9 @@ function filaDeProva(canvis) {
 
 // ------------------------------------------------------------
 // Passa una sola fila per tradueixLot() amb un model simulat que respon sempre
-// el mateix. Torna { fila, informe }.
+// el mateix. Torna { fila, escrita, informe }: la mateixa fila que ha entrat
+// (tradueixLot() la modifica on és, si la tradueix) i si ha arribat a les
+// files que s'escriurien (D-10: només les traduïdes).
 // ------------------------------------------------------------
 async function traduccioDUnaFila(fila, resposta) {
   var sync = require(path.join(ARREL, 'eines', 'sincronitza-programada.js'));
@@ -168,7 +169,7 @@ async function traduccioDUnaFila(fila, resposta) {
     pausaMs: 0
   });
 
-  return { fila: resultat.files[0], informe: resultat.informe };
+  return { fila: fila, escrita: resultat.files.length === 1, informe: resultat.informe };
 }
 
 // ------------------------------------------------------------
@@ -421,7 +422,7 @@ async function casosDeLesQuatreRegles() {
     'i continua sent l\'última regla del prompt'
   );
 
-  // La fila de Sureda tal qual: si el model declina, la canonada l'encua crua.
+  // La fila de Sureda tal qual: si el model declina, la canonada no l'escriu.
   var p15 = await traduccioDUnaFila(
     filaDeProva({
       titol: 'FORUM DES ASSOCIATIONS ET ACCUEIL DES NOUVEAUX ARRIVANTS',
@@ -439,9 +440,11 @@ async function casosDeLesQuatreRegles() {
   comprova(p15.fila.descripcio_ca === '',
     'la descripció catalana es queda buida: no se n\'inventa cap');
   comprova(p15.fila.descripcio_fr === 'Repli au gymnase en cas de mauvais temps',
-    'i la francesa es queda amb el text de font sencer, que és entrar crua');
+    'i la francesa es queda amb el text de font sencer: la fila no es toca');
   comprova(p15.fila.titol === 'FORUM DES ASSOCIATIONS ET ACCUEIL DES NOUVEAUX ARRIVANTS',
-    'la fila entra crua, títol francès inclòs: mitja fitxa no s\'escriu');
+    'títol francès inclòs: mitja fitxa no s\'escriu');
+  comprova(p15.escrita === false,
+    'i la fila declinada no arriba a la cua (D-10)');
 
   // --- P16. El to -----------------------------------------------------------
   console.log('');
@@ -471,12 +474,21 @@ async function principal() {
 
   // --- P1. Tot es tradueix: la línia de base -------------------------------
   console.log('P1. pressupost folgat, crida que va bé sempre');
-  var p1 = await passada(ofertes, { pressupost: 100000, cridaClaude: cridaBona });
+  // La crida apunta quantes files li arriben amb menys de 9 paraules de
+  // descripció francesa: la matèria mínima (D-10) n'ha de deixar zero.
+  var primes = 0;
+  function cridaQueCompta(fila) {
+    var text = fila.descripcio_fr.trim();
+    if (text === '' || text.split(/\s+/).length < 9) {
+      primes++;
+    }
+    return cridaBona(fila);
+  }
+  var p1 = await passada(ofertes, { pressupost: 100000, cridaClaude: cridaQueCompta });
   var candidates = p1.candidates;
   console.log('    candidates=' + candidates +
     '  crides=' + p1.traducio.crides +
     '  traduides=' + p1.traducio.traduides +
-    '  nomesTitol=' + p1.traducio.nomesTitol +
     '  fallades=' + p1.traducio.fallades +
     '  senseMateria=' + p1.traducio.senseMateria +
     '  retallades=' + p1.traducio.retalladesPerPressupost);
@@ -485,31 +497,12 @@ async function principal() {
   comprova(p1.traducio.crides === candidates, 'una crida per fila, ni una més');
   comprova(p1.traducio.retalladesPerPressupost === 0, 'cap fila retallada pel pressupost');
   comprova(
-    p1.traducio.traduides + p1.traducio.nomesTitol + p1.traducio.fallades +
-      p1.traducio.senseMateria === candidates,
-    'els quatre recomptes sumen les candidates'
+    p1.traducio.traduides + p1.traducio.fallades + p1.traducio.senseMateria === candidates,
+    'els tres recomptes sumen les candidates'
   );
   comprova(p1.escrit === false, 'en sec no s\'ha escrit res');
 
-  // Les files sense text de font: cap descripció, ni la que ha tornat el model.
-  var senseText = 0;
-  var ambDescripcioIndeguda = 0;
-  for (var i = 0; i < p1.noves.length; i++) {
-    var fila = p1.noves[i];
-    if (fila.nota_curador.indexOf('L\'oferta no porta cap text descriptiu') !== -1) {
-      senseText++;
-      if (fila.descripcio_ca !== '' || fila.descripcio_fr !== '') {
-        ambDescripcioIndeguda++;
-      }
-      if (fila.titol.indexOf('CATALÀ: ') !== 0) {
-        ambDescripcioIndeguda++;
-      }
-    }
-  }
-  console.log('    files sense text de font: ' + senseText);
-  comprova(senseText === p1.traducio.nomesTitol, 'l\'avís de «només el títol» hi és a totes');
-  comprova(senseText === 8, 'són 8, les mesurades al sondeig');
-  comprova(ambDescripcioIndeguda === 0, 'cap descripció inventada a les files sense text');
+  comprova(primes === 0, 'cap fila amb menys de 9 paraules de descripció arriba al model');
 
   // Les traduïdes porten l'avís dels tres camps i el text del model.
   comprova(
@@ -552,17 +545,17 @@ async function principal() {
   comprova(JSON.stringify(escrites) === JSON.stringify(esperades),
     'les 25 escrites són les de data_inici més imminent');
 
-  // --- P3. Una crida que peta sempre: s'encua tot i no atura --------------
+  // --- P3. Una crida que peta sempre: no s'encua res i no atura -----------
   console.log('');
   console.log('P3. pressupost=30, crida que peta sempre');
   var p3 = await passada(ofertes, { pressupost: 30, cridaClaude: cridaQuePeta });
   console.log('    escrites=' + p3.noves.length +
     '  crides=' + p3.traducio.crides +
     '  fallades=' + p3.traducio.fallades);
-  comprova(p3.noves.length === 15, 'amb 30 crides i 2 intents per fila s\'encuen 15 files');
+  comprova(p3.noves.length === 0, 'cap fila fallada no s\'encua (D-10)');
   comprova(p3.traducio.crides === 30, 'el reintent gasta pressupost: 30 crides');
-  comprova(p3.traducio.fallades === 15, 'les 15 compten com a fallades');
-  comprova(p3.traducio.traduides === 0 && p3.traducio.nomesTitol === 0,
+  comprova(p3.traducio.fallades === 15, 'amb 2 intents per fila, 15 files compten com a fallades');
+  comprova(p3.traducio.traduides === 0,
     'cap fila no surt com a traduïda');
   comprova(p3.traducio.senseMateria === 0,
     'i cap no surt com a declinada pel model: la crida no hi ha arribat');
@@ -573,17 +566,6 @@ async function principal() {
     p3.traducio.motiusDeFallada[0].motiu.indexOf('overloaded_error simulat') !== -1,
     'el motiu de la fallada surt a l\'informe, agrupat i comptat'
   );
-  comprova(
-    totesLesNotes(p3.noves, 'No s\'ha pogut escriure la versió catalana') === 15,
-    'les 15 porten l\'avís de «no traduïda»'
-  );
-  var crues = 0;
-  for (var n = 0; n < p3.noves.length; n++) {
-    if (p3.noves[n].descripcio_ca === '' && p3.noves[n].titol.indexOf('CATALÀ: ') !== 0) {
-      crues++;
-    }
-  }
-  comprova(crues === 15, 'entren amb el títol i el text tal com arriben del flux');
 
   // --- P4. Una fila que peta no atura la resta ----------------------------
   console.log('');
@@ -600,12 +582,11 @@ async function principal() {
   console.log('    escrites=' + p4.noves.length +
     '  crides=' + p4.traducio.crides +
     '  traduides=' + p4.traducio.traduides +
-    '  nomesTitol=' + p4.traducio.nomesTitol +
     '  fallades=' + p4.traducio.fallades);
   comprova(p4.noves.length > 0, 'la passada acaba i escriu files');
   comprova(p4.traducio.crides <= 20, 'no passa del pressupost');
   comprova(
-    p4.traducio.traduides + p4.traducio.nomesTitol > 0 && p4.traducio.fallades === 0,
+    p4.traducio.traduides > 0 && p4.traducio.fallades === 0,
     'el reintent salva les que peten un sol cop'
   );
 
@@ -618,24 +599,14 @@ async function principal() {
   var p5 = await passada(ofertes, { pressupost: 10, cridaClaude: cridaBuida });
   console.log('    escrites=' + p5.noves.length +
     '  traduides=' + p5.traducio.traduides +
-    '  nomesTitol=' + p5.traducio.nomesTitol +
     '  fallades=' + p5.traducio.fallades +
     '  senseMateria=' + p5.traducio.senseMateria);
-  comprova(p5.noves.length === 10, 'les 10 s\'encuen igualment');
+  comprova(p5.noves.length === 0, 'cap de les 10 no s\'encua (D-10)');
   comprova(p5.traducio.traduides === 0, 'cap no compta com a traduïda');
   comprova(p5.traducio.senseMateria === 10 && p5.traducio.fallades === 0,
     'compten com a DECLINADES pel model, no com a crides que peten');
   comprova(p5.traducio.motiusDeFallada.length === 0,
     'i per tant no hi ha cap motiu de fallada a l\'informe');
-  var cruesP5 = 0;
-  for (var q = 0; q < p5.noves.length; q++) {
-    if (p5.noves[q].nota_curador.indexOf('No s\'ha pogut escriure la versió catalana') !== -1 &&
-        p5.noves[q].titol.indexOf('CATALÀ: ') !== 0) {
-      cruesP5++;
-    }
-  }
-  comprova(cruesP5 === p5.traducio.senseMateria,
-    'les que no tenen descripció es queden crues, títol inclòs');
 
   // --- P6. Mitja parella de descripcions ---------------------------------
   console.log('');
@@ -654,13 +625,7 @@ async function principal() {
   comprova(p6.traducio.traduides === 0, 'mitja parella no és cap traducció');
   comprova(p6.traducio.senseMateria === 5 && p6.traducio.fallades === 0,
     'i tampoc no és cap crida que peta');
-  var senseCa = 0;
-  for (var r = 0; r < p6.noves.length; r++) {
-    if (p6.noves[r].descripcio_ca === '') {
-      senseCa++;
-    }
-  }
-  comprova(senseCa === p6.noves.length, 'cap fila no es queda amb només la banda catalana');
+  comprova(p6.noves.length === 0, 'i cap d\'aquestes files no s\'encua (D-10)');
 
   // --- P7. La pausa va ENTRE crides --------------------------------------
   console.log('');
@@ -682,12 +647,8 @@ async function principal() {
   comprova(p8.traducio.feta === false, 'la traducció no s\'ha fet');
   comprova(p8.traducio.motiu.indexOf('en sec') === 0, 'i el motiu diu que és per ser en sec');
   comprova(p8.traducio.crides === 0, 'cap crida gastada');
-  comprova(p8.noves.length === candidates, 'les files s\'encuen igualment, totes');
-  comprova(
-    totesLesNotes(p8.noves, 'per un model') === 0 &&
-    totesLesNotes(p8.noves, 'No s\'ha pogut escriure') === 0,
-    'i sense cap avís de traducció: no se n\'ha intentat cap'
-  );
+  comprova(p8.noves.length === 0, 'sense traducció no s\'encua cap fila (D-10)');
+  comprova(p8.traducio.aTraduir === candidates, 'i l\'informe compta les que hi havia a traduir');
 
   await casosDeNomsPropis();
   await casosDeLesQuatreRegles();

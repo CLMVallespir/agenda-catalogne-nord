@@ -13,8 +13,8 @@
 #     d'encuar-la, i la clau surt del secret `ANTHROPIC_API_KEY` d'AQUEST
 #     repositori (Settings -> Secrets and variables -> Actions), que és un
 #     magatzem DIFERENT dels Secrets de Cloudflare on viu la del Worker. Si el
-#     secret no hi és, la passada NO s'atura: les
-#     files s'encuen en francès i el registre del run ho diu amb un ATENCIÓ.
+#     secret no hi és, no s'encua res (només entren files traduïdes, D-10) i
+#     el run surt en VERMELL; igual si cap fila no s'ha pogut traduir.
 #     RES DE CLOUDINARY: aquest camí continua sense pujar cap cartell.
 #   - CAP `git commit` NI `git push`. El curador pot estar publicant al mateix
 #     moment i un push del runner li trepitjaria el fitxer sencer. El token que

@@ -65,6 +65,8 @@ fitxer, i `git show <commit>^:<ruta>` el torna a ensenyar.*
 - **30 d'octubre.** `filaSegura()` a les tres portes, sostre d'entrada
   (D-09), CSP al curador i al web. Miquel enganxa el Worker: hi són vius
   Claude, ENC-007, `filaSegura()` i `admetEntrada()`.
+- **31 d'octubre.** Cap fila en francès a la cua (D-10). Les 34 pendents sense
+  versió catalana, rebutjades.
 
 ---
 
@@ -134,14 +136,32 @@ protocol de coordinació.
   l'ADT66), i només els **20 000 primers caràcters** d'un correu van al model.
   El Worker llegeix la cua i decideix ABANS de cridar Claude: un correu no
   admès no costa res i és igualment a l'arxiu; el formulari respon 429. A
-  l'Action, sense clau es manté el sostre de files que dona el pressupost
-  (300); la baixada del flux té un minut i 20 MB, i cada crida a Claude dos
-  minuts. No és cap criteri editorial i no toca D-04: no mira qui envia ni què
+  l'Action, el sostre de files és el pressupost de crides (300; des de D-10,
+  sense clau ja no s'encua res); la baixada del flux té un minut i 20 MB, i
+  cada crida a Claude dos minuts. No és cap criteri editorial i no toca D-04: no mira qui envia ni què
   diu. Va néixer de la revisió de seguretat del 29 d'octubre (una riuada de
   correus gastava el crèdit i acostava `pendents.json` al límit d'1 MB). Ús real
   mesurat: 4 files per les portes manuals des del 28 d'agost, com a molt 3 en
   un dia. Es reobre si les associacions s'hi acosten: es canvia
   `MAX_FILES_PORTES_PER_DIA` i es copia al Worker.
+- **D-10 · 31 d'octubre.** De l'ADT66, a la cua només hi arriba el que Claude
+  ha escrit en català: títol, `descripcio_ca` i `descripcio_fr`. Dues portes.
+  Abans de cap crida, `filtraCandidats()` descarta l'oferta sense títol o amb
+  menys de 9 paraules de descripció (`MIN_PARAULES_DESCRIPCIO`). Després,
+  `tradueixLot()` no torna ni les declinades ni les fallades: no s'escriuen,
+  no es marquen, i el flux les torna a oferir. Sense clau no s'encua res, i si
+  hi havia files a traduir i cap no ho ha estat, el run surt en vermell
+  (`traduccioEnVerd()`). Va néixer de la cua: el 31 d'octubre 34 de les 70
+  pendents eren en francès, i de les 110 files sense versió catalana que hi
+  havien entrat mai, el curador no en va publicar cap (79 rebutjades, 31
+  pendents) contra 220 publicades amb traducció. El 9 surt del flux real: cap
+  publicada no en tenia menys (n'hi ha de publicades amb 9 i 10), i 30 de les
+  110 declinades sí. Les 34 pendents en francès es van marcar `rebutjat` el
+  mateix dia, per decisió de Miquel. La resta de camps buits (`categoria`,
+  `lloc`, `hora`, `associacio`) no descarten res: també falten a files
+  publicades. Les portes manuals no hi passen (D-04): qui vol que hi surti un
+  acte que l'ADT66 dona mig buit, l'envia. Es reobre si el curador troba a
+  faltar actes descartats: es baixa el llindar.
 
 Decisions anteriors al registre, igual de tancades (el perquè és a la lliçó que
 s'indica):
