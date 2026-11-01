@@ -1740,7 +1740,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZNCX] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-17-atelier-creatif-gratuit",
+    "id": "2026-11-17-taller-creatiu-gratuit",
     "titol": "Taller creatiu gratuït – Quadre preciós",
     "data_inici": "2026-11-17",
     "data_fi": "2026-11-17",
@@ -1752,9 +1752,9 @@
     "descripcio_ca": "L'acte és un taller creatiu gratuït, obert a persones adultes, en què es proposa crear un quadre únic amb efectes de fum misteriosos i reflexos daurats. Es treballaran diferents tècniques: jocs de matèries, efectes de tinta, empremtes amb esponja i relleus daurats fets amb pistola de cola. La creació s'embellirà amb fulles metàl·liques per aconseguir un resultat elegant i lluminós.",
     "descripcio_fr": "L'atelier gratuit, ouvert aux adultes, consiste à créer un tableau unique aux effets de fumée mystérieux et aux reflets dorés. Différentes techniques sont travaillées : jeux de matières, effets d'encre, empreintes à l'éponge et reliefs dorés réalisés au pistolet à colle. La création est sublimée par des éclats de feuilles métalliques pour un résultat élégant et lumineux.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/at-adlt-17-11.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568303/at-adlt-17-11_ow1upl.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.045Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZMH6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
