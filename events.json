@@ -3556,5 +3556,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.049Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-ca-cartonne-teatre",
+    "titol": "Ça cartonne - Teatre clownesc i màgia per la Cie Matic",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "18:00",
+    "lloc": "Rue Jean Jaurès",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Lucien, que ha viatjat per tot el món, decideix construir la seva pròpia casa, feta de cartró. Aficionat al bricolatge de diumenge, la tasca pot resultar més complexa del previst, sobretot si els cartrons decideixen anar pel seu compte. L'espectacle combina el clown i la màgia amb un univers poètic.",
+    "descripcio_fr": "Lucien, qui a voyagé dans le monde entier, décide de construire sa propre maison, faite de carton. Bricoleur du dimanche, la tâche peut s'avérer plus complexe que prévu, surtout si les cartons décident d'en faire à leur guise. Le spectacle allie le clown et la magie à un univers poétique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568313/A3-ca-cartonne_l8fy1l.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.040Z",
+    "periodicitat": ""
   }
 ]
