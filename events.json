@@ -3309,5 +3309,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.046Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-show-hollywood",
+    "titol": "Show Hollywood",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-12",
+    "hora": "20:00",
+    "lloc": "Route des bains",
+    "municipi": "Molig",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "Els grans films de Hollywood cobren vida a l'escenari en aquest espectacle. Es tracta d'un sopar espectacle amb un menú format per tàrtar de patata amb cítrics i la seva gamba, suprem de pollastre amb salsa de cèps i graten de carbassó amb menta, i tarta fina de pomes. L'aigua i el vi estan inclosos.",
+    "descripcio_fr": "Les plus grands films prennent vie sur scène lors de ce spectacle. Il s'agit d'un dîner spectacle avec un menu composé d'un tartare de pommes de terre aux agrumes et sa gamba, d'un suprême de poulet sauce aux cèpes et gratin de courgettes à la menthe, et d'une tarte fine aux pommes. L'eau et le vin sont compris.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568224/Capture-243_dtxoaf.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.047Z",
+    "periodicitat": ""
   }
 ]
