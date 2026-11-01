@@ -3727,5 +3727,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.046Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-vetllada-del-moscatell",
+    "titol": "Vetllada del moscatell de Nadal",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "19:30",
+    "lloc": "6 avenue de la gare",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "L'acte és una vetllada de Nadal dedicada al moscatell. El menú inclou un got de còctel, un plat d'embotits, calamars farcits a l'americana amb arròs perfumat, braç de Venus amb un xupito de moscatell i cafè. Cal fer reserva prèvia.",
+    "descripcio_fr": "L'acte est une soirée de Noël consacrée au muscat. Le menu comprend un verre de cocktail, une assiette de charcuterie, des calamars farcis à l'américaine avec du riz parfumé, un bras de vénus accompagné d'un choupito de muscat, et un café. Une réservation préalable est nécessaire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568434/56_uoonqc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.047Z",
+    "periodicitat": ""
   }
 ]
