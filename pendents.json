@@ -20,7 +20,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V50KQBR] L'acte es fa 79 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. L'enllaç de l'organitzador no era cap adreça web (http o https): queda buit. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-10-31-marche-du-samedi",
+    "id": "2026-10-31-mercat-del-dissabte",
     "titol": "Mercat del dissabte",
     "data_inici": "2026-10-31",
     "data_fi": "2026-10-31",
@@ -32,9 +32,9 @@
     "descripcio_ca": "Cada dissabte, a la plaça del Foyer Rural de Sant Pau de Fenollet, hi ha un mercat amb diversos comerciants ambulants. Hi venen fruita seca, menjars preparats, peix, verdura, una costurera i articles de bazar. També hi ha productors locals de crocants, formatge i mel. L'activitat es fa sota reserva de condicions climàtiques favorables.",
     "descripcio_fr": "Chaque samedi, sur la place du Foyer Rural de Sant Pau de Fenollet, se tient un marché avec plusieurs commerçants ambulants. On y trouve des fruits secs, des plats préparés, du poisson, des légumes, une couturière et des articles de bazar. Des producteurs locaux proposent aussi des croquants, du fromage et du miel. L'activité se déroule sous réserve de conditions climatiques favorables.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-samedi-st-paul.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568150/marche-samedi-st-paul_nvnez9.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.933Z",
     "periodicitat": "cada setmana",
     "nota_curador": "[ADT66 id: FMALAR066V52GLHD] L'acte es fa 51 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
