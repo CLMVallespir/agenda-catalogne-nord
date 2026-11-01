@@ -4031,5 +4031,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.954Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-espectacle-polifonic-un",
+    "titol": "Espectacle polifònic «Un souffle, une empreinte»",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "18:00",
+    "lloc": "32 Rue du Moulin Cassanyes",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El grup Algo'Rythmes presenta l'espectacle «Un souffle, une empreinte», una proposta de cant polifònic. Les interpretacions barregen sonoritats i fan aflorar les nuances i les melodies de les veus reunides. L'acte es planteja sota el signe de la convivialitat i del plaer de cantar junts.",
+    "descripcio_fr": "Le groupe Algo'Rythmes présente le spectacle « Un souffle, une empreinte », une proposition de chant polyphonique. Les interprétations mêlent les sonorités et font apparaître les nuances et les mélodies des voix réunies. Le rendez-vous est placé sous le signe de la convivialité et du plaisir de chanter ensemble.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568558/Affiche-spectacle-Algo-Rythmes-2026_geqwy8.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.954Z",
+    "periodicitat": ""
   }
 ]
