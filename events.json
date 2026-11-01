@@ -3803,5 +3803,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.953Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-taller-per-fabricar",
+    "titol": "Taller per fabricar el vostre carnet d'enquadernació",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "14:00",
+    "lloc": "7 Boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte consisteix a fabricar un carnet d'escriptura o de dibuix i a conèixer les etapes d'una enquadernació artesanal. Es treballa pas a pas i inclou la descoberta dels materials i les eines, el plegat del cos del llibre, la realització de la coberta i el muntatge del carnet cosit. Cada participant se'n du una peça única.",
+    "descripcio_fr": "L'activité consiste à fabriquer un carnet d'écriture ou de dessin et à découvrir les étapes d'une reliure artisanale. Le travail se fait pas à pas et comprend la découverte des matériaux et des outils, le pliage du corps d'ouvrage, la réalisation de la couverture et le montage du carnet par la couture. Chaque participant repart avec une pièce unique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568462/Aspres-thuir-ateliercahierreliure_p9rsvt.webp",
+    "font_url": "https://atelier-arago.com/ateliers-decouverte/reliure-carnet/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.957Z",
+    "periodicitat": ""
   }
 ]
