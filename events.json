@@ -3879,5 +3879,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.002Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-un-violon-a",
+    "titol": "Un violon à la mer : nos sens en éveil",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "10:00",
+    "lloc": "2 Rue de la Paix",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Concert adreçat a nadons i infants, a càrrec de l'arpista Annabelle Jarre i de la violista Aude Fade. Sobre el tema del viatge, el programa musical és obert i mestís, i mostra la diversitat de la música amb cants d'Espanya, danses de l'Europa de l'Est, una cançó de bressol noruega i cançons infantils d'aquí i d'altres indrets. En acabar l'actuació, els infants poden provar un instrument petit amb les musicistes.",
+    "descripcio_fr": "Concert destiné aux bébés et aux enfants, par la harpiste Annabelle Jarre et l'altiste Aude Fade. Sur le thème du voyage, le programme musical, ouvert et métissé, met en valeur la diversité de la musique, avec des chants d'Espagne, des danses d'Europe de l'Est, une berceuse norvégienne et des comptines d'ici et d'ailleurs. À l'issue de la prestation, les enfants peuvent essayer un petit instrument avec les musiciennes.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568496/2111ok_b5abub.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.008Z",
+    "periodicitat": ""
   }
 ]
