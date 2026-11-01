@@ -1880,7 +1880,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZNF0] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-20-conference-culture-et",
+    "id": "2026-11-20-conferencia-culture-et",
     "titol": "Conferència Culture et Patrimoine",
     "data_inici": "2026-11-20",
     "data_fi": "2026-11-20",
@@ -1892,9 +1892,9 @@
     "descripcio_ca": "La conferència s'endinsa en La Milonga, des del lament del payador fins a l'avantpassat del tango. La imparteix Jean-Louis Olive, antropòleg i professor d'universitat.",
     "descripcio_fr": "La conférence s'intéresse à La Milonga, du lament du payador à l'ancêtre du tango. Elle est donnée par Jean-Louis Olive, anthropologue et professeur d'université.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/20-11-La-Milonga---Affiche-CPCV.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568342/20-11-La-Milonga---Affiche-CPCV_rbpdkp.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.930Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V526VS7] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
