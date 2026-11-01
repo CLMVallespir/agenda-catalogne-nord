@@ -1420,7 +1420,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZMZ6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-11-bourse-auto-moto",
+    "id": "2026-11-11-borsa-auto-moto",
     "titol": "Borsa auto/moto/mob/bicicleta, exposició de vehicles i venda de trastos",
     "data_inici": "2026-11-11",
     "data_fi": "2026-11-11",
@@ -1432,9 +1432,9 @@
     "descripcio_ca": "La jornada gira entorn de la mecànica, les bones ocasions i la convivència, amb una borsa d'auto, moto, mob i bicicleta, una exposició de vehicles i una venda de trastos. Hi poden participar tant els expositors de mecànica com els de venda de trastos. Es pot vendre, buscar ofertes, exposar o veure vehicles. Hi ha aparcament gratuït i un servei de bar i menjar ràpid.",
     "descripcio_fr": "La journée tourne autour de la mécanique, des bonnes affaires et de la convivialité, avec une bourse auto, moto, mob et vélo, une exposition de véhicules et un vide-grenier. Peuvent y participer aussi bien les exposants en mécanique que ceux de vide-grenier. On peut y vendre, chercher des bonnes affaires, exposer ou voir des véhicules. Il y a un parking gratuit et un service de buvette et de snacking.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/1000034753.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568209/1000034753_bpbq0g.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.050Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNG0] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
