@@ -3974,5 +3974,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.016Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-conferencia-els-oceans",
+    "titol": "Conferència: Els oceans, situació actual",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "17:00",
+    "lloc": "17 Avenue Général de Gaulle",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'associació Arts et Culture proposa una conferència sobre els oceans a càrrec de M. Etienne Sabria, enginyer agrícola jubilat i partidari de l'ecologia pràctica, del desenvolupament sostenible i de la innovació frugal. L'acte té per objectiu sensibilitzar el gran públic i els escolars sobre la presència de plàstic en totes les seves formes, inclosos els microfragments, en tots els oceans i mars del món. També es proposen maneres d'actuar per evitar la proliferació d'objectes de plàstic.",
+    "descripcio_fr": "L'association Arts et Culture propose une conférence sur les océans, présentée par M. Etienne Sabria, ingénieur agricole à la retraite et partisan de l'écologie pratique, du développement soutenable et de l'innovation frugale. L'acte a pour objectif de sensibiliser le grand public et les scolaires à la présence de plastique sous toutes ses formes, y compris en microfragments, dans tous les océans et mers du monde. Il propose également des moyens d'agir pour éviter la prolifération des objets en plastique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568539/Conferences-et-debats_lr1sbq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.017Z",
+    "periodicitat": ""
   }
 ]
