@@ -3689,5 +3689,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.024Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-conferencia-les-consequencies",
+    "titol": "Conferència: les conseqüències jurídiques de la Pau i Treva de Déu",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "19:00",
+    "lloc": "1 Avenue Lavoisier",
+    "municipi": "Toluges",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'acte permet comprendre com es van constituir progressivament, durant l'Edat Mitjana, les institucions, les normes i les pràctiques jurídiques. S'hi explica que la Pau i Treva de Déu no era només un moviment religiós destinat a limitar la violència, sinó també una etapa important en l'evolució del dret medieval i en la història política de la Catalunya en construcció. A partir de les decisions preses per les assemblees eclesiàstiques i polítiques, van aparèixer noves regles per protegir les persones, els béns i alguns llocs. La conferència mostra com les iniciatives de pau de l'any mil van contribuir a construir un nou ordre jurídic i social, i que estan a la base d'institucions catalanes que han perdurat durant segles i que ho són encara avui, malgrat les vicissituds de la història.",
+    "descripcio_fr": "L'acte permet de comprendre comment se sont constituées progressivement, au Moyen Âge, les institutions, les normes et les pratiques juridiques. Il y est expliqué que la Paix et Trêve de Dieu n'était pas seulement un mouvement religieux destiné à limiter la violence, mais aussi une étape importante dans l'évolution du droit médiéval et dans l'histoire politique de la Catalunya en construction. À partir des décisions prises par les assemblées ecclésiastiques et politiques, de nouvelles règles sont apparues pour protéger les personnes, les biens et certains lieux. La conférence montre comment les initiatives de paix de l'an mil ont contribué à construire un nouvel ordre juridique et social, et qu'elles sont à la base d'institutions catalanes qui ont perduré pendant des siècles et qui le sont encore aujourd'hui, malgré les vicissitudes de l'histoire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568401/CONFERENCE-4_pinc9t.webp",
+    "font_url": "https://www.toulouges.fr/evenement/conference-les-consequences-juridiques-de-la-paix-et-treve-de-dieu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.028Z",
+    "periodicitat": ""
   }
 ]
