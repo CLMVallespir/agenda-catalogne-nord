@@ -1640,7 +1640,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZNDC] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-14-grande-braderie-croix",
+    "id": "2026-11-14-gran-venda-de",
     "titol": "Gran venda de la Croix-Rouge",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -1652,9 +1652,9 @@
     "descripcio_ca": "La Croix-Rouge de Bages de Rosselló organitza una gran venda per a adults i infants. L'acte és obert a tothom.",
     "descripcio_fr": "La Croix-Rouge de Bages de Rosselló organise une grande braderie pour adultes et enfants. L'acte est ouvert à tous.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/vetements.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568268/vetements_fb3nmc.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.050Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNGJ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
