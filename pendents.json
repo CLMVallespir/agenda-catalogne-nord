@@ -1760,7 +1760,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZMH6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-17-rentree-litteraire",
+    "id": "2026-11-17-rentrada-literaria",
     "titol": "Rentrada literària",
     "data_inici": "2026-11-17",
     "data_fi": "2026-11-17",
@@ -1772,9 +1772,9 @@
     "descripcio_ca": "Les llibreries Le Cheval dans l’arbre de Céret, La Petite Escapade du Boulou, Torcatis de Perpignan i Oxymore de Port-Vendres presenten les seves recomanacions literàries preferides. La vetllada inclou intermedis musicals a càrrec de Maëlle Rouifed i un aperitiu per tancar-la.",
     "descripcio_fr": "Les librairies Le Cheval dans l’arbre de Céret, La Petite Escapade du Boulou, Torcatis de Perpignan et Oxymore de Port-Vendres présentent leurs coups de cœur littéraires. La soirée comprend des intermèdes musicaux assurés par Maëlle Rouifed, et un apéritif clôt le moment.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/livres-5.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568307/livres-5_av0kkt.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.049Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNCI] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
