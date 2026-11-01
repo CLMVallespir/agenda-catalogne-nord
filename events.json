@@ -3613,5 +3613,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.049Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-presentacio-dobra-biografia",
+    "titol": "Presentació d'obra - biografia de Brigitte Krulic",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "18:00",
+    "lloc": "18 Rue Emile Zola",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Es presenta la biografia que Brigitte Krulic ha dedicat a George Sand, publicada per Gallimard. L'acte es duu a terme en col·laboració amb el Centre méditerranéen de littérature.",
+    "descripcio_fr": "La biographie que Brigitte Krulic a consacrée à George Sand, parue chez Gallimard, est présentée. La présentation se déroule en partenariat avec le Centre méditerranéen de littérature.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568334/George-Sand---Visuel-4_g3ypru.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.050Z",
+    "periodicitat": ""
   }
 ]
