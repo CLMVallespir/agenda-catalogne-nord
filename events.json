@@ -3480,5 +3480,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.040Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-15-6a-edicio-foire",
+    "titol": "6a edició Foire au Gras",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
+    "hora": "08:00",
+    "lloc": "",
+    "municipi": "Sant Llorenç de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Hi ha productes de venda directa dels productors, productes de la terra i productes artesanals. Hi ha una barra de begudes i servei de restauració. El protagonisme recau en l'ànec, l'oca, el porc i els productes derivats. Hi ha un menú amb plat de fetge gras i una copa de moscatell, cassoulet, postres, pa, vi i cafè, amb reserva prèvia.",
+    "descripcio_fr": "On y trouve des produits en vente directe des producteurs, des produits du terroir et des produits artisanaux. Une buvette et un service de restauration sont proposés. Le canard, l'oie, le porc et les produits dérivés sont mis à l'honneur. Un menu comprenant une assiette de foie gras et un verre de Muscat, un cassoulet, un dessert, du pain, du vin et du café est proposé sur réservation.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568287/FOIRE-AU-GRAS-6_slwqat.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.048Z",
+    "periodicitat": ""
   }
 ]
