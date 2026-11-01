@@ -2140,7 +2140,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52HP5D] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-21-bourse-aux-jouets",
+    "id": "2026-11-21-fira-de-joguines",
     "titol": "Fira de joguines",
     "data_inici": "2026-11-21",
     "data_fi": "2026-11-21",
@@ -2152,9 +2152,9 @@
     "descripcio_ca": "Es dona les gràcies als donants per les nombroses donacions de qualitat rebudes. Aquestes donacions permetran fer-ne una bona fira.",
     "descripcio_fr": "On remercie les donateurs pour les nombreux dons de qualité reçus. Ces dons permettront d'en faire une belle bourse.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-boursejouetsbasquet.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568454/Aspres-thuir-boursejouetsbasquet_ohiy4k.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.953Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52UZ8J] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
