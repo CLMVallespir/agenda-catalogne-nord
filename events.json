@@ -3423,5 +3423,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.048Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-festa-major",
+    "titol": "Festa major",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "19:00",
+    "lloc": "",
+    "municipi": "Forques",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La festa major de Forques inclou un sopar dansant amb reserva prèvia, amb un menú que comprèn un aperitiu de cortesia, amanida d'entrada, cassolet i illa flotant. Hi actua el Trio Pixel en un concert dansant pensat per a totes les generacions. Hi haurà també servei de begudes. L'acte s'adreça a famílies, amics i veïns.",
+    "descripcio_fr": "La fête majeure de Forques comprend un dîner dansant sur réservation, avec un menu composé d'un apéritif de courtoisie, d'une salade d'entrée, d'un cassoulet et d'une île flottante. Le Trio Pixel donne un concert dansant conçu pour toutes les générations. Un service de boissons est également prévu. L'activité s'adresse aux familles, aux amis et aux voisins.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568263/Aspres-fourques-fete-major_gfk9cu.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.050Z",
+    "periodicitat": ""
   }
 ]
