@@ -3499,5 +3499,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.048Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-16-le-coin-des",
+    "titol": "Le coin des curieux",
+    "data_inici": "2026-11-16",
+    "data_fi": "2026-11-16",
+    "hora": "16:30",
+    "lloc": "3 Rue du Docteur Charles Bolte",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "El Coin des Curieux és un espai per compartir opinions i desitjos sobre un CD, un llibre, un còmic o una pel·lícula que han agradat especialment. Permet intercanviar impressions amb altres persones i prolongar el plaer de descobrir noves obres.",
+    "descripcio_fr": "Le Coin des Curieux est un espace pour partager avis et envies sur un CD, un livre, une BD ou un film qui ont particulièrement plu. Il permet d'échanger avec d'autres personnes et de prolonger le plaisir de découvrir de nouvelles œuvres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568295/MEDIATHEQUE-2_uraqbu.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.049Z",
+    "periodicitat": ""
   }
 ]
