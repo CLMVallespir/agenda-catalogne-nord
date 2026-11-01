@@ -1860,7 +1860,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZNBR] La categoria queda buida a posta: «Salon» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-19-presentation-douvrage-biographie",
+    "id": "2026-11-19-presentacio-dobra-biografia",
     "titol": "Presentació d'obra - biografia de Brigitte Krulic",
     "data_inici": "2026-11-19",
     "data_fi": "2026-11-19",
@@ -1872,9 +1872,9 @@
     "descripcio_ca": "Es presenta la biografia que Brigitte Krulic ha dedicat a George Sand, publicada per Gallimard. L'acte es duu a terme en col·laboració amb el Centre méditerranéen de littérature.",
     "descripcio_fr": "La biographie que Brigitte Krulic a consacrée à George Sand, parue chez Gallimard, est présentée. La présentation se déroule en partenariat avec le Centre méditerranéen de littérature.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/George-Sand---Visuel-4.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568334/George-Sand---Visuel-4_g3ypru.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.050Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNF0] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
