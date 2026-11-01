@@ -3404,5 +3404,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.045Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-43e-rallye-conflent",
+    "titol": "43e Rallye Conflent Fenouillèdes",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Tarerac",
+    "comarca": "Conflent",
+    "categoria": "Esports",
+    "descripcio_ca": "L'acte és una prova única que travessa els paisatges dels Fenouillèdes i del Conflent, als Pyrénées-Orientales. Ofereix reptes entusiasmants i una atmosfera cordial per a tots els aficionats al ral·li.",
+    "descripcio_fr": "L'événement est une épreuve unique qui traverse les paysages des Fenouillèdes et du Conflent, dans les Pyrénées-Orientales. Il offre des défis passionnants et une ambiance conviviale pour tous les amateurs de rallye.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568258/RALLYE-FENOUILLEDES-2026_kix6mh.webp",
+    "font_url": "https://conflentfenouilled.wixsite.com/cfr66",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.048Z",
+    "periodicitat": ""
   }
 ]
