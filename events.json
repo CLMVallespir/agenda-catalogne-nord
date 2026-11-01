@@ -3936,5 +3936,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.013Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-somiar-crear-imaginar",
+    "titol": "Somiar, crear, imaginar amb Miró: tallers familiars",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "14:30",
+    "lloc": "Musée Hyacinthe Rigaud21 Rue Mailly",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'acte és un taller lúdic i convivencial inspirat en les formes, la poesia i el vocabulari de Joan Miró. S'adreça a infants a partir de 5 anys, acompanyats d'un adult, i també a persones adultes que hi participin soles. La durada aproximada és d'unes dues hores.",
+    "descripcio_fr": "L'activité est un atelier ludique et convivial inspiré des formes, de la poésie et du vocabulaire de Joan Miró. Elle s'adresse aux enfants à partir de 5 ans, accompagnés d'un adulte, ainsi qu'aux adultes qui y participent seuls. La durée est d'environ deux heures.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568526/Atelier-famille---rever--creer--imaginer-avec-Miro-2_onmq6i.webp",
+    "font_url": "https://www.musee-rigaud.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.016Z",
+    "periodicitat": ""
   }
 ]
