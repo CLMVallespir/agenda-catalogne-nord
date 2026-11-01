@@ -2220,7 +2220,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YDTE] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-21-atelier-sublimer-les",
+    "id": "2026-11-21-taller-per-sublimar",
     "titol": "Taller per sublimar les fruites i hortalisses de tardor",
     "data_inici": "2026-11-21",
     "data_fi": "2026-11-21",
@@ -2232,9 +2232,9 @@
     "descripcio_ca": "El taller posa el vegetal al centre de la cuina i ofereix idees i tècniques per cuinar cada dia fruites, hortalisses, llavors, herbes i espècies. Mélanie transmet tres enfocaments: la cuina vegetal viva i sense cocció, la lactofermentació i una cuina d'inspiració japonesa, feta amb uns quants ingredients bàsics fàcils de trobar a la despensa. Es tracta d'un taller participatiu per a adults, en grups petits de sis persones, amb productes de proximitat, ecològics quan és possible i de temporada. El material i els ingredients són a càrrec del taller, i els assistents s'enduen les preparacions, les fitxes de receptes i els consells nutricionals.",
     "descripcio_fr": "L'atelier place le végétal au centre de la cuisine et propose des idées et des techniques pour cuisiner au quotidien fruits, légumes, graines, herbes et épices. Mélanie y présente trois approches : la cuisine végétale vivante et sans cuisson, la lactofermentation et une cuisine d'inspiration japonaise, réalisée à partir de quelques ingrédients de base faciles à trouver dans l'épicerie. Il s'agit d'un atelier participatif pour adultes, en petit groupe de six personnes, avec des produits locaux, bio autant que possible et de saison. Le matériel et les ingrédients sont fournis, et les participants repartent avec leurs préparations, les fiches recettes et les conseils nutritionnels.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/6a29c8c5-26ef-4b11-8ea6-3c072a8763d6.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568481/6a29c8c5-26ef-4b11-8ea6-3c072a8763d6_azxltx.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.001Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z07U] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
