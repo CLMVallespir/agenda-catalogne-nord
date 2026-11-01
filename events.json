@@ -3594,5 +3594,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.042Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-le-destin-nest",
+    "titol": "Le destin n'est pas écrit",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "18:30",
+    "lloc": "3 Rue du Docteur Charles Bolte",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Es tracta d'una conferència teatralitzada i interactiva que, a partir de situacions concretes representades amb humor, explora els reptes, les alegries i les fragilitats que poden viure les famílies quan arriba un fill. L'espectacle no pretén donar receptes fetes ni jutjar ningú, sinó obrir pistes de reflexió i crear un espai d'intercanvi i de debat per a famílies i professionals de la primera infància. És un espectacle per a adults, proposat en el marc de la Jornada de la Infància.",
+    "descripcio_fr": "Il s'agit d'une conférence théâtralisée et interactive qui, à partir de situations concrètes mises en scène avec humour, explore les défis, les joies et les fragilités que peuvent rencontrer les familles à l'arrivée d'un enfant. Le spectacle ne vise pas à donner des recettes toutes faites ni à porter un jugement, mais à ouvrir des pistes de réflexion et à créer un espace d'échange et de débat pour les familles et les professionnels de la petite enfance. Il s'agit d'un spectacle pour adultes, proposé dans le cadre de la Journée de l'Enfance.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568324/MEDIATHEQUE_j2lvnk.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.049Z",
+    "periodicitat": ""
   }
 ]
