@@ -3708,5 +3708,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.028Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-tango-et-telethon",
+    "titol": "Tango et Téléthon de la Raho",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "",
+    "lloc": "1 Rue du Gén de Gaulle",
+    "municipi": "Vilanova de Raò",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "La programació inclou milongues amb sessions de DJ a càrrec de Don Diégo, Christian Fortes i René Carbonaro. Hi ha també un taller de vals, de tango i de milonga, a càrrec de Paola i Léonardo.",
+    "descripcio_fr": "Le programme comprend des milongas avec des sessions de DJ assurées par Don Diégo, Christian Fortes et René Carbonaro. Un stage de valse, de tango et de milonga est également proposé, animé par Paola et Léonardo.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568429/TANGUEROS-TELETHON_tbxuak.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.046Z",
+    "periodicitat": ""
   }
 ]
