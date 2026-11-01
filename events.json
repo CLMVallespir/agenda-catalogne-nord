@@ -4012,5 +4012,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.032Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-fira-del-gras",
+    "titol": "Fira del gras i de l'aviram festiu",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "08:00",
+    "lloc": "",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Mercat",
+    "descripcio_ca": "La fira del gras i de l'aviram festiu es fa a Prada. Es tracta d'un mercat de productors on només hi ha agricultors i artesans, amb productes de la terra que es poden comprar directament a l'origen. Els mercats d'aquesta mena valoren la riquesa i la diversitat de les produccions locals.",
+    "descripcio_fr": "La Foire au gras et aux volailles festives a lieu à Prada. Il s'agit d'un marché de producteurs où il n'y a que des agriculteurs et des artisans, avec des produits de la terre que l'on peut acheter directement à la source. Ces marchés mettent en valeur la richesse et la diversité des productions locales.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568550/580-foire-gras-prades-2_pdbuxf.webp",
+    "font_url": "https://producteurs66.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.954Z",
+    "periodicitat": ""
   }
 ]
