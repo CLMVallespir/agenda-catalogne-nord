@@ -3575,5 +3575,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.040Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-taller-de-modelatge",
+    "titol": "Taller de modelatge de l'argila: creacions de Nadal",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "14:00",
+    "lloc": "Place Charles de Gaulle",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Taller de modelatge d'argila de dues hores en què els participants treballen la matèria, els gestos i els volums per crear peces de Nadal fetes a mà. La cocció es fa després del taller, i les peces es poden recollir al lloc unes quantes setmanes més tard. Les places són limitades i cal inscriure's. Un adult pot acompanyar el participant i quedar-se a l'espai sense participar-hi.",
+    "descripcio_fr": "Atelier de modelage de l'argile de deux heures au cours duquel les participants travaillent la matière, les gestes et les volumes pour créer des pièces de Noël faites à la main. La cuisson a lieu après l'atelier, et les pièces peuvent être récupérées sur place quelques semaines plus tard. Les places sont limitées et l'inscription est obligatoire. Un adulte peut accompagner le participant et rester sur place sans participer à l'atelier.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568319/Atelier-Modelage-Elise-Eifler--24273-800px_qzb4zk.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.042Z",
+    "periodicitat": ""
   }
 ]
