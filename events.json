@@ -3385,5 +3385,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.945Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-14-pastis-i-conversa",
+    "titol": "Pastís i conversa",
+    "data_inici": "2026-11-14",
+    "data_fi": "2026-11-14",
+    "hora": "10:00",
+    "lloc": "Avenue Léon-Jean Grégory",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte és una trobada de conversa lliure, exclusivament en català, en què es comparteixen cafè, te i pastissos. S'adreça a qui vulgui parlar en català.",
+    "descripcio_fr": "Il s'agit d'une rencontre de conversation libre, exclusivement en catalan, autour d'un café, d'un thé et de gâteaux. Elle s'adresse à celles et ceux qui souhaitent parler catalan.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568252/Aff-pastis-i-convers-1126_yvxguf.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.045Z",
+    "periodicitat": ""
   }
 ]
