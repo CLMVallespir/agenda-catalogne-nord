@@ -3746,5 +3746,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.047Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-salon-du-chocolat",
+    "titol": "Salon du Chocolat et de l'Artisanat Gourmand",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-22",
+    "hora": "14:00",
+    "lloc": "Avenue de Perpignan196, avenue de PerpignanCanet Village",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La sisena edició del Salon du Chocolat et de l'Artisanat Gourmand inclou demostracions de peces artístiques de xocolata i degustacions, amb una font de xocolata oferta a petits i grans. Hi haurà una sessió de signatures amb Jean-Luc Modat, crític culinari i autor de tres llibres dedicats a la cuina catalana, i petita restauració al lloc. Durant el cap de setmana es fan tallers per a infants, el concurs del millor èclair de xocolata entre professionals, una xicolatada oferta, la intronització de Jordi Pons, xocolater de Lleida, per la Confrérie des Chocolatiers Catalans, i el concurs Faites un gâteau, en què els participants presenten una tarta de xocolata per a sis persones amb la seva recepta.",
+    "descripcio_fr": "La sixième édition du Salon du Chocolat et de l'Artisanat Gourmand propose des démonstrations de pièces artistiques en chocolat et des dégustations, avec une fontaine de chocolat offerte aux petits comme aux grands. Une séance de dédicaces est prévue avec Jean-Luc Modat, critique culinaire et auteur de trois ouvrages consacrés à la cuisine catalane, et une petite restauration est proposée sur place. Le programme comprend aussi des ateliers pour les enfants, le concours du meilleur éclair au chocolat entre professionnels, une xicolatada offerte, l'intronisation de Jordi Pons, chocolatier de Lleida, par la Confrérie des Chocolatiers Catalans, et le concours Faites un gâteau, dans lequel les participants présentent une tarte au chocolat pour six personnes accompagnée de leur recette.",
+    "associacio": "Contacter Monsieur PONRAMON",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568441/IMG-9946_yhf6qw.webp",
+    "font_url": "http://www.canet-tourisme.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.926Z",
+    "periodicitat": ""
   }
 ]
