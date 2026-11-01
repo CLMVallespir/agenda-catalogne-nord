@@ -1560,7 +1560,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZNGC] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-14-bal-country-automne",
+    "id": "2026-11-14-ball-country-de",
     "titol": "Ball country de tardor",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -1572,9 +1572,9 @@
     "descripcio_ca": "Es tracta d'un ball country i de line dance dels Marenda's Dancers 66. L'anima Hélène Di Marco.",
     "descripcio_fr": "Il s'agit d'un bal country et de line dance des Marenda's Dancers 66. Il est animé par Hélène Di Marco.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Bal-country-12-07-19--4-.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568247/Bal-country-12-07-19--4-_jmc3sl.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.945Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52TI3X] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
