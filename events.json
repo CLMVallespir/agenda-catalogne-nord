@@ -3917,5 +3917,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.011Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-conferencia-sobre-les",
+    "titol": "Conferència sobre les migracions europees cap a Algèria al segle XIX, per Monique Hernandez-Rousset",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "15:00",
+    "lloc": "Salle Claude Hulot 1",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La conferència repassa les grans onades de colonització que es van succeir a Algèria des de la conquesta francesa de 1830. S'hi evoquen les motivacions dels migrants europeus i la dificultat del seu establiment en aquell territori, que van contribuir a posar en valor amb un treball intens. La ponent, Monique Hernandez-Rousset, nascuda a Alger, és formadora honorària en pedagogia general i didàctica de la història a l'IUFM de Perpignan, i ha reconstruït la història de la seva família, establerta a Algèria durant sis generacions.",
+    "descripcio_fr": "La conférence retrace les grandes vagues de colonisation qui se sont succédé en Algérie depuis la conquête française de 1830. Elle évoque les motivations des migrants européens et les difficultés de leur installation dans ce territoire, qu'ils ont contribué à mettre en valeur par un travail intense. La conférencière, Monique Hernandez-Rousset, née à Alger, est formatrice honoraire en pédagogie générale et didactique de l'histoire à l'IUFM de Perpignan, et a reconstitué l'histoire de sa famille, installée en Algérie depuis six générations.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568514/chemins-emigration_hxi2vt.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.013Z",
+    "periodicitat": ""
   }
 ]
