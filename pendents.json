@@ -2120,7 +2120,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V51E8BQ] Ve marcada «Jeux» sense cap patró de joc de club al títol: la categoria queda buida. Si és un joc d'entitat, és Vida associativa; si és un negoci, la fila no hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-21-marche-artisanal-de",
+    "id": "2026-11-21-mercat-artesanal-de",
     "titol": "Mercat artesanal de Nadal",
     "data_inici": "2026-11-21",
     "data_fi": "2026-11-21",
@@ -2132,9 +2132,9 @@
     "descripcio_ca": "El mercat reuneix 35 artesans, creadors i artistes. L'animació corre a càrrec de Fraggle Rock Band, que ofereix mini-concerts durant el dia i un concert el dissabte al vespre. El Pare Noel hi serà present durant els dos dies. Hi haurà una rifa amb peces de Lego i objectes artesanals dels expositors, i la barra ofereix xocolata calenta, vi calent, cafè, refrescos i aigua, a més de paninis, patates fregides i crepes dolces.",
     "descripcio_fr": "Le marché réunit 35 artisans, créateurs et artistes. L'animation est assurée par Fraggle Rock Band, qui propose des mini-concerts pendant la journée et un concert le samedi soir. Le Père Noël sera présent pendant les deux jours. Une tombola propose des pièces de Lego et des objets artisanaux des exposants, et la buvette sert du chocolat chaud, du vin chaud, du café, des sodas, de l'eau, ainsi que des paninis, des frites et des crêpes sucrées.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-des-createurs-mai-2025--1-.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568447/marche-des-createurs-mai-2025--1-_yoy9rv.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.935Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52HP5D] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
