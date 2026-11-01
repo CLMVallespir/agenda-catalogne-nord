@@ -3860,5 +3860,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.001Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-le-cocon-dhiver",
+    "titol": "Le Cocon d'hiver: jornada de benestar",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "09:30",
+    "lloc": "13 Rue Vauban",
+    "municipi": "El Barcarès",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "Es tracta d'una jornada de benestar en un ambient càlid i convivial al Barcarès, que combina diverses pràctiques per cuidar el cos i l'esperit: ioga, pilates, relaxació, aromateràpia, massatge, alimentació i consells de benestar. És una jornada en petit comitè per fer una pausa, descobrir pràctiques noves i crear un ritual propi de benestar que es pugui integrar fàcilment en el dia a dia.",
+    "descripcio_fr": "Il s'agit d'une journée de bien-être dans une ambiance chaleureuse et conviviale au Barcarès, qui associe différentes pratiques pour prendre soin du corps et de l'esprit : yoga, pilates, relaxation, aromathérapie, massage, alimentation et conseils bien-être. C'est une journée en petit comité pour souffler, découvrir de nouvelles pratiques et créer un rituel bien-être propre à chacun, à intégrer facilement au quotidien.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568491/image-320x320--1-_sgtaua.webp",
+    "font_url": "https://www.cocoa-conciergerie.fr/evenements/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.002Z",
+    "periodicitat": ""
   }
 ]
