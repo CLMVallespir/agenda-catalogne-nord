@@ -3290,5 +3290,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.050Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-12-taller-creatiu-collars",
+    "titol": "Taller creatiu - Collars de perles de rocalla",
+    "data_inici": "2026-11-12",
+    "data_fi": "2026-11-12",
+    "hora": "18:00",
+    "lloc": "21 Quai Pierre ForgasÀ l'étage",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'associació Ode aux couleurs proposa un taller d'iniciació a la creació de joies fetes a mà, mitjançant la tècnica del perlat. Aquesta activitat combina precisió, paciència i sensibilitat artística. Els participants aprenen a combinar diferents tonalitats i a fer composicions per confeccionar un accessori personalitzat, tant si prefereixen dissenys discrets com combinacions més atrevides. El taller permet expressar el propi estil i emportar-se'n una realització pròpia.",
+    "descripcio_fr": "L'association Ode aux couleurs propose un atelier d'initiation à la création de bijoux faits main, grâce à la technique du perlage. Cette activité allie minutie, patience et sensibilité artistique. Les participants apprennent à associer différentes nuances et à réaliser des compositions pour confectionner un accessoire personnalisé, qu'ils préfèrent des créations discrètes ou des associations plus audacieuses. L'atelier permet d'exprimer son propre style et de repartir avec une réalisation personnelle.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793568218/Perles---Pexels--Lisett-Kruusimae_o29sbm.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.046Z",
+    "periodicitat": ""
   }
 ]
