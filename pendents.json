@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-11-29-rifle-de-lecole",
+    "titol": "Rifle de l'école élémentaire",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "16:00",
+    "lloc": "Salle de la Prade",
+    "municipi": "Saint-Genis-des-Fontaines",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "",
+    "descripcio_fr": "Grande rifle annuelle de l'école aux profits des classes et de leurs projets. Nombreux lots a gagner, buvette et gourmandises.",
+    "associacio": "École élémentaire",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794156469/grande_rifle_saint_genis_2026_a3sxjc.webp",
+    "font_url": "",
+    "estat": "pendent",
+    "data_entrada": "2026-11-08T16:47:51.595Z",
+    "periodicitat": "",
+    "nota_curador": ""
+  },
+  {
     "id": "2026-10-31-mercat-setmanal-a",
     "titol": "Mercat setmanal a la platja",
     "data_inici": "2026-10-31",
