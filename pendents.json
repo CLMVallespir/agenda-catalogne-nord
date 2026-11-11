@@ -4052,9 +4052,9 @@
     "descripcio_ca": "En relació amb el parcurs permanent del museu Puig, que presenta les monedes que han circulat a Catalogne, Roussillon i Perpinyà, l'acte proposa un paral·lelisme amb l'encunyació medieval francesa. S'hi posaran en relleu els canvis polítics i monetaris d'aquest llarg període, com l'aparició dels diners, dels florins i d'altres monedes de plata i d'or.",
     "descripcio_fr": "En lien avec le parcours permanent du musée Puig, qui présente les monnaies ayant circulé en Catalogne, Roussillon et Perpinyà, l'acte propose un parallèle avec le monnayage médiéval français. Y seront mis en lumière les bouleversements politiques et monétaires de cette longue période, comme l'apparition des deniers, des florins et d'autres monnaies d'argent et d'or.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Musee-Puig-3.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423138/Musee-Puig-3_g07nyh.webp",
     "font_url": "https://www.mairie-perpignan.fr/culture-patrimoine/culture/musees/musee-des-monnaies-et-medailles-joseph-puig",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.936Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52IIMZ] Totes les 2 dates de l'acte són passades. Sense data futura: l'id queda buit i aquesta fila no es pot identificar. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
