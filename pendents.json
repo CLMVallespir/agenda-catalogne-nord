@@ -4000,7 +4000,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZIEK] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-29-marche-de-producteurs",
+    "id": "2026-11-29-mercat-de-productors",
     "titol": "Mercat de productors",
     "data_inici": "2026-11-29",
     "data_fi": "2026-11-29",
@@ -4012,9 +4012,9 @@
     "descripcio_ca": "Els mercats de diumenge al matí es fan a la pista de petanca, organitzats per l'associació Val Llech amb el suport de l'ajuntament. Ara adopten el seu ritme d'hivern.",
     "descripcio_fr": "Les marchés du dimanche matin se tiennent sur la piste de pétanque, organisés par l'association Val Llech avec le soutien de la mairie. Ils prennent désormais leur rythme hivernal.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Capture-242.JPG?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423121/Capture-242_w07vau.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.040Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZLF7] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
