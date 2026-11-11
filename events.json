@@ -2515,5 +2515,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.948Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-jocs-de-societat",
+    "titol": "Jocs de societat",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Millars",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La mediateca comunitària Robert Avril de Millars organitza un taller de jocs de societat. L'activitat és oberta a tothom i es desenvolupa com una tarda recreativa.",
+    "descripcio_fr": "La médiathèque communautaire Robert Avril de Millars organise un atelier de jeux de société. L'activité est ouverte à tous et se déroule sous forme d'après-midi récréatif.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422322/JDS-MILLAS-NOV-26_ka1qqz.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.956Z",
+    "periodicitat": ""
   }
 ]
