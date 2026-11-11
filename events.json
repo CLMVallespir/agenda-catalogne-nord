@@ -2439,5 +2439,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.018Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-les-petites-scenes",
+    "titol": "Les petites scènes, espectacle infantil «Papallonas»",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "10:30",
+    "lloc": "3 Rue des Écoles",
+    "municipi": "Ortafà",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Sébi i Filomela són inseparables: ell toca molts instruments i ella balla i gira com una papallona. El somni de Filomela és aprendre a volar amb les seves pròpies ales; per assolir-lo, no ha de renunciar a les seves il·lusions i ha d'acceptar l'ajuda dels altres. L'espectacle, musical i participatiu, proposa una passejada alegre i musical en què els infants són convidats a volar amb ella, i s'adreça a tota la família. La narració és en francès i en català.",
+    "descripcio_fr": "Sébi et Filomela sont inséparables : lui joue de nombreux instruments et elle danse et virevolte comme un papillon. Le rêve de Filomela est d'apprendre à voler de ses propres ailes ; pour y parvenir, elle ne doit pas renoncer à ses aspirations et doit accepter l'aide des autres. Le spectacle, musical et participatif, propose une déambulation joyeuse et musicale où les enfants sont invités à voler avec elle, et il s'adresse à toute la famille. Le récit est en français et en catalan.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422297/2026-les-petites-scenes-OTI-11-25-papallonas.jpg-800px_timmlh.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.931Z",
+    "periodicitat": ""
   }
 ]
