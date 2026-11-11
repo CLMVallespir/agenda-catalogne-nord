@@ -3104,5 +3104,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.992Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-je-suis-ma",
+    "titol": "Je suis ma maison",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "11:00",
+    "lloc": "Boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Je suis ma maison, de Lou Broquin, és un teatre sensorial en què un bosc, un poble i un riu semblen tranquils, però les cases respiren, xiuxiuegen i guarden secrets. Sense nomenar frontalment les violències que els infants poden patir en silenci, l'espectacle els ofereix paraules i imatges per apropar-se a l'àmbit íntim i reconèixer els propis límits: la importància de dir no, de confiar en el propi sentit i de posar nom al que està prohibit, també per als adults. Es presenta com una obra per veure en família, que s'adreça tant a adults com a infants, i inclou un espai de diàleg amb l'equip artístic després de la funció.",
+    "descripcio_fr": "Je suis ma maison, de Lou Broquin, est un théâtre sensoriel où une forêt, un village et une rivière semblent paisibles, mais où les maisons respirent, chuchotent et gardent des secrets. Sans nommer frontalement les violences que les enfants peuvent subir en silence, le spectacle leur offre des mots et des images pour approcher l'intime et reconnaître leurs propres limites : l'importance de dire non, de faire confiance à leur ressenti et de nommer ce qui est interdit, y compris pour les adultes. Il se présente comme une pièce à voir en famille, qui s'adresse aussi bien aux adultes qu'aux enfants, et comprend un échange avec l'équipe artistique après la représentation.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423069/Aspres-thuir-je-suismamaison_fbg0cp.webp",
+    "font_url": "https://thuir.fr/le-theatre-des-aspres/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.998Z",
+    "periodicitat": ""
   }
 ]
