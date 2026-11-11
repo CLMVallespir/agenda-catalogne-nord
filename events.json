@@ -2781,5 +2781,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.997Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-bahaut-en-culture",
+    "titol": "Ba'haut en culture - Teatre: Une belle embrouille",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "20:30",
+    "lloc": "Avenue du Stade",
+    "municipi": "Bao",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "A casa del matrimoni Lemerle, al poble fictici de La Pastourelle, Jules espera gaudir d'una tarda tranquil·la. Però Sidonie, la seva dona, de caràcter ben fort, espera una nova treballadora de la llar, i l'arribada de la fantasiosa Marie-Charlotte converteix el dia tranquil en una successió de malentesos i situacions tan inesperades com còmiques.",
+    "descripcio_fr": "Chez les époux Lemerle, dans le village fictif de La Pastourelle, Jules espère profiter d'un après-midi tranquille. Mais Sidonie, sa femme au caractère bien trempé, attend une nouvelle employée de maison. L'arrivée de la fantasque Marie-Charlotte transforme rapidement cette journée paisible en une succession de quiproquos et de situations aussi inattendues que comiques.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422757/pexels-filipe-braggio-57041688-12092991_frhcwp.webp",
+    "font_url": "https://www.baho.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.003Z",
+    "periodicitat": ""
   }
 ]
