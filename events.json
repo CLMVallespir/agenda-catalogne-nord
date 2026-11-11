@@ -3009,5 +3009,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.000Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-karaoke-des-violets",
+    "titol": "Karaoké des Violets",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "19:30",
+    "lloc": "",
+    "municipi": "Castellnou dels Aspres",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "L'acte és un karaoké a Castellnou dels Aspres, previst abans de la cita del mes de març. El text anuncia també el trail des Aspres, les inscripcions del qual s'obriran properament, i indica que encara en vindrà més informació.",
+    "descripcio_fr": "Il s'agit d'un karaoké à Castellnou dels Aspres, prévu avant le rendez-vous du mois de mars. Le texte annonce également le trail des Aspres, dont les inscriptions s'ouvriront prochainement, et indique que d'autres informations suivront.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422912/Aspres-castelnou-karaokedesviolets_ey6ps8.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.010Z",
+    "periodicitat": ""
   }
 ]
