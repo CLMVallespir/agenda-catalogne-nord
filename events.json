@@ -2382,5 +2382,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.976Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-24-ce-quil-reste",
+    "titol": "Ce qu'il reste de la folie",
+    "data_inici": "2026-11-24",
+    "data_fi": "2026-11-24",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "El documentalista Joris Lachaise porta la càmera a l'hospital psiquiàtric de Thiaroye, al Senegal, un lloc d'internament on el temps sembla haver-se aturat. El film proposa comprendre, a través d'una doble alteritat, física i geogràfica, què passa en aquestes institucions, lluny de les denúncies polítiques de Titicut Follies de Wiseman o de la càmera incessantment agitada de Wang Bing. La sessió es fa en col·laboració amb la Cinémathèque du Doc, en el marc del Mois du Doc.",
+    "descripcio_fr": "Le documentariste Joris Lachaise pose sa caméra à l'hôpital psychiatrique de Thiaroye, au Sénégal, un lieu d'enfermement où le temps semble s'être arrêté. Le film propose de comprendre, à travers une double altérité, physique et géographique, ce qui se passe dans ces institutions, loin des dénonciations politiques de Titicut Follies de Wiseman ou de la caméra incessamment agitée de Wang Bing. La séance se tient en partenariat avec la Cinémathèque du Doc, dans le cadre du Mois du Doc.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422240/Ce-qu-il-reste-de-la-Folie-Novembre-2026_p2miit.webp",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.007Z",
+    "periodicitat": ""
   }
 ]
