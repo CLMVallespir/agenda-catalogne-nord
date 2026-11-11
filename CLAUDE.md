@@ -360,7 +360,7 @@ toquen: aquest fitxer (§4) i `docs/pas-5-typebot-questionari.md`.
 **Una còpia congelada que NO s'ha de sincronitzar mai:**
 `img/_ds/clm-vallespir-design-system-*/_ds_bundle.js`, export d'una eina de
 disseny del 27 d'agost de 2026, amb una còpia fossilitzada de `CATEGORIES` a
-dins. **Cap pàgina no el carrega**: els dos `.dc.html` d'`img/` només en fan
+dins. **Cap pàgina no el carrega**: els dos `.dc.html` d'`img/_disseny/` només en fan
 servir `tokens/colors.css`. És una fotografia, no codi.
 
 *La resta d'ocurrències del repositori són **dades o casos de prova**, no
@@ -569,7 +569,10 @@ Ja fets, en producció, al mateix repositori:
 - **`prompts/extract-event.txt`** — el prompt d'extracció mestre, amb tres
   correus de prova a `prompts/exemples-test/`.
 - **`fonts/`** (woff2 autoallotjats) i **`img/logo/`**. Les fonts editables del
-  logotip són els `.dc.html` d'`img/`.
+  logotip són els `.dc.html` d'`img/_disseny/`, amb el seu `support.js`. La
+  carpeta comença amb `_` a posta: Pages no publica les carpetes que hi
+  comencen, i aquestes pàgines carreguen codi d'un CDN sense cap CSP. No les
+  tornis a posar en una carpeta publicada.
 - **`docs/`** — `CRITERI-EDITORIAL.md` (el criteri de què entra a l'agenda i què
   no: és del curador, no del codi; les exclusions per criteri polític i la regla
   «Tast comercial» les aplica `eines/exclusions-editorials.js`),

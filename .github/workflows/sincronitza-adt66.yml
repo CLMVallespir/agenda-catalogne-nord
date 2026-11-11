@@ -68,10 +68,16 @@ jobs:
 
     steps:
       - name: Recull el repositori
-        uses: actions/checkout@v4
+        # Fixat a un commit, no a l'etiqueta `v4`, que el seu autor pot moure.
+        # Per pujar de versió: `git ls-remote https://github.com/actions/checkout`.
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          # El guió escriu per l'API, no amb `git push`: el token no cal al disc.
+          persist-credentials: false
 
       - name: Prepara Node
-        uses: actions/setup-node@v4
+        # Fixat a un commit, igual que el pas de dalt.
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "20"
         # Cap `npm install`: el projecte no té cap dependència (§3 de CLAUDE.md).
