@@ -2591,5 +2591,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.029Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-training-days-casa",
+    "titol": "Training Days - Casa Musicale",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "18:30",
+    "lloc": "1 Rue Jean Vielledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "El Training Days és una trobada mensual oberta a ballarins i ballarines de tota mena i de tots els nivells, fins i tot principiants. Hi poden anar breakers, freestylers, lockers i poppers, que s'hi reuneixen per fer una sessió d'entrenament al ritme de músiques com breakbeats, hip-hop o soul-funk.",
+    "descripcio_fr": "Le Training Days est une rencontre mensuelle ouverte aux danseur.se.s de tous horizons et de tous niveaux, y compris débutants. Breakers, freestylers, lockers et poppers s'y retrouvent pour une session d'entraînement sur des rythmes de breakbeats, hip-hop ou soul-funk.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422600/Capture-d-ecran-2026-10-27-123631_whqvew.webp",
+    "font_url": "https://www.casamusicale.net/agenda/training-days-2071",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.042Z",
+    "periodicitat": ""
   }
 ]
