@@ -2620,7 +2620,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZKCV] Possible activitat esportiva de pagament elevat (32 €): comproveu si és una entitat o un negoci. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-22-repas-escudella-sainte",
+    "id": "2026-11-22-dinar-descudella",
     "titol": "Dinar d'escudella",
     "data_inici": "2026-11-22",
     "data_fi": "2026-11-22",
@@ -2632,9 +2632,9 @@
     "descripcio_ca": "Aquest àpat ofereix escudella i carn d'olla, un dels plats més antics de la cuina catalana. És un guisat complet amb carn, verdures, llegums i sovint botifarra negra, cuit a foc lent perquè els sabors es barregin. Es tracta d'un plat per compartir en família o entre amics, i s'hi podrà tastar aquesta sopa tradicional. La jornada, a Santa Llocaia, anirà amenitzada per l'orquestra Feeling.",
     "descripcio_fr": "Ce repas propose de l'escudella i carn d'olla, l'un des plats les plus anciens de la cuisine catalane. C'est un ragoût complet à base de viande, de légumes, de légumineuses et souvent de botifarra negra, mijoté lentement pour que les saveurs se mélangent. Il s'agit d'un plat à partager en famille ou entre amis, et l'on pourra y goûter cette soupe traditionnelle. La journée, à Santa Llocaia, sera animée par l'orchestre Feeling.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/22-nov-SAINTE-LEOC.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422199/22-nov-SAINTE-LEOC_y7egr7.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.039Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZKOQ] La categoria queda buida a posta: «Repas spectacle» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
