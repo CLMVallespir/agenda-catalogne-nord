@@ -2838,5 +2838,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.013Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-9-festival-du",
+    "titol": "9ᵉ Festival du film d'archéologie sous-marine et du patrimoine maritime (SUBCAM)",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "",
+    "lloc": "Place Castellane",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "El 9ᵉ Festival du film d'archéologie sous-marine et du patrimoine maritime (SUBCAM) té com a eix l'arqueologia subaquàtica i la conservació de l'herència marítima. Inclou una selecció de pel·lícules sobre el món subaquàtic, conferències, exposicions, un espai de llibreria i sessions de dedicatòries. L'acte s'adreça a persones curioses, amants de la història i del mar.",
+    "descripcio_fr": "Le 9ᵉ Festival du film d'archéologie sous-marine et du patrimoine maritime (SUBCAM) a pour axe l'archéologie subaquatique et la préservation du patrimoine maritime. Il comprend une sélection de films sur le monde subaquatique, des conférences, des expositions, un espace librairie et des séances de dédicaces. L'événement s'adresse aux personnes curieuses, aux passionnés d'histoire et aux amoureux de la mer.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422791/27-au-29-11-2026-SUBCAM-9e-Festival-du-film-d-archeologie-sous-marine_rbjruj.webp",
+    "font_url": "https://subcamarcheologie.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.018Z",
+    "periodicitat": ""
   }
 ]
