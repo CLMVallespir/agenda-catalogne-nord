@@ -2553,5 +2553,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.973Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-conferencia-laigua-i",
+    "titol": "Conferència «L'aigua i les seves problemàtiques», per Fernand Roig",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "18:00",
+    "lloc": "4 Rue Arago",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La conferència tracta l'aigua, un recurs natural que ocupa un lloc central en els equilibris ecològics, econòmics i socials. Recorda que sense aigua no hi ha metabolisme, creixement ni reproducció, i que és la base de tota forma de vida coneguda. A diferència d'altres recursos, l'aigua és capritxosa i pot ser massa abundant o causa de sequeres catastròfiques. La conferència en tractarà a escala mundial i també n'abordarà com es fa front al problema en aquest departament.",
+    "descripcio_fr": "La conférence porte sur l'eau, une ressource naturelle qui occupe une place centrale dans les équilibres écologiques, économiques et sociaux. Elle rappelle que sans eau il n'y a ni métabolisme, ni croissance, ni reproduction, et qu'elle est la base de toute forme de vie connue. Contrairement aux autres ressources, l'eau est capricieuse et peut être trop abondante ou à l'origine de sécheresses catastrophiques. La conférence l'abordera à l'échelle mondiale et traitera aussi de la manière dont le problème est pris en charge dans ce département.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422459/Affiche---L-eau-et-ses-problematiques--_wolddt.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.015Z",
+    "periodicitat": ""
   }
 ]
