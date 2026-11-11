@@ -2933,5 +2933,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.935Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-projeccio-solidarite-nepal",
+    "titol": "Projecció: Solidarité Népal",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "14:00",
+    "lloc": "Avenue Guy Drut",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Es projecta la pel·lícula Au-delà de Katmandou, sobre la vida al Népal i a l'Himalaya, del director A. Murphy. L'acte està organitzat per l'associació Pyrénées Catalanes Népal en benefici dels infants de l'orfenat Namaste Children Népal, a Katmandou. Hi ha una presentació de l'associació, un espai d'intercanvi, una exposició i una venda d'artesania nepalesa.",
+    "descripcio_fr": "Le film Au-delà de Katmandou est projeté, sur la vie au Népal et dans l'Himalaya, du réalisateur A. Murphy. L'événement est organisé par l'association Pyrénées Catalanes Népal au bénéfice des enfants de l'orphelinat Namaste Children Népal, à Katmandou. Une présentation de l'association, des échanges, une exposition et une vente d'artisanat népalais sont également prévus.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422843/Affiche-PCN-Canet-28nov2026_papg4j.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.939Z",
+    "periodicitat": ""
   }
 ]
