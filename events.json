@@ -2249,5 +2249,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.984Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-cine-nins",
+    "titol": "Ciné nins",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "15:30",
+    "lloc": "Place Castellane",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Aquest cicle proposa sessions de cinema per a infants a partir de 3 anys, amb una programació adaptada. Cada projecció és acompanyada per un animador o una animadora, que presenta la pel·lícula i obre l'intercanvi amb els infants, i de vegades hi ha algunes sorpreses per guanyar. Després de la projecció hi ha un berenar. A Portvendres s'hi projecten títols com Ernest et Célestine, Timioche o Le Monde à l’envers.",
+    "descripcio_fr": "Ce cycle propose des séances de cinéma destinées aux enfants à partir de 3 ans, avec une programmation adaptée. Chaque projection est accompagnée par un animateur ou une animatrice, qui présente le film et engage l'échange avec les enfants, et il arrive que des surprises soient à gagner. Un goûter prolonge la séance après la projection. À Portvendres, sont notamment projetés Ernest et Célestine, Timioche ou Le Monde à l’envers.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422157/cine-nins-logo-2_zm6nkl.webp",
+    "font_url": "https://www.cinemaginaire.org/pages/cine-nin-s",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.015Z",
+    "periodicitat": ""
   }
 ]
