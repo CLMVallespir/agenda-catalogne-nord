@@ -2287,5 +2287,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.020Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-braderia-de-la",
+    "titol": "Braderia de la petita infància",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "08:00",
+    "lloc": "",
+    "municipi": "Toluges",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Està adreçada a les persones que vulguin vendre objectes. Cada emplaçament inclou una taula i dues cadires. Hi ha servei de restauració i de bar al lloc.",
+    "descripcio_fr": "Elle s'adresse aux personnes qui souhaitent vendre. Chaque emplacement comprend une table et deux chaises. Une restauration et une buvette sont proposées sur place.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422173/VIDE--DRESSING-_kdjtcc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.028Z",
+    "periodicitat": ""
   }
 ]
