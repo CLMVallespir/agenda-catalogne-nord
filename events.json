@@ -2306,5 +2306,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.028Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-telethon",
+    "titol": "Téléthon",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "08:30",
+    "lloc": "Impasse des Albères",
+    "municipi": "La Roca d'Albera",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "Les entitats Laroque Arts et Culture i Larogue Rando organitzen una jornada solidària per donar suport al Téléthon. Al matí es proposen dues sortides de senderisme, i al migdia hi ha un vermut i un dinar amenitzats per un grup musical. La tarda continua amb ball.",
+    "descripcio_fr": "Les associations Laroque Arts et Culture et Larogue Rando organisent une journée solidaire pour soutenir le Téléthon. Le matin, deux randonnées sont proposées, et à midi un apéritif et un repas animés par un groupe musical sont prévus. L'après-midi se poursuit avec un bal.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422182/857555076-1735660681903332-7967208117205046178-n-2_qc918v.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.037Z",
+    "periodicitat": ""
   }
 ]
