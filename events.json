@@ -2648,5 +2648,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.964Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-26-un-violon-a",
+    "titol": "Un violon à la mer: Trio Luz - Flautes en llum",
+    "data_inici": "2026-11-26",
+    "data_fi": "2026-11-26",
+    "hora": "20:30",
+    "lloc": "Place de la Mairie",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El trio Luz, nom que evoca la llum, combina un so brillant i càlid, amb una sensibilitat que fa vibrar les emocions. El seu repertori va de Paganini a Debussy, passant per Bizet, i inclou des d'obres originals fins a transcripcions. La formació singular posa en relleu la riquesa i l'expressivitat de la flauta travessera.",
+    "descripcio_fr": "Le trio Luz, nom qui évoque la lumière, allie une sonorité brillante et chaleureuse, avec une sensibilité qui fait vibrer les émotions. Son répertoire va de Paganini à Debussy en passant par Bizet, et couvre aussi bien des œuvres originales que des transcriptions. Cette formation singulière met en lumière la richesse et l'expressivité de la flûte traversière.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422691/2611ok_gutbrw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.008Z",
+    "periodicitat": ""
   }
 ]
