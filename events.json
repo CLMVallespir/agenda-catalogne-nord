@@ -2857,5 +2857,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.018Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-les-inoubliables-balavoine",
+    "titol": "Les Inoubliables Balavoine, Berger, Gall",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-28",
+    "hora": "19:00",
+    "lloc": "",
+    "municipi": "Sant Llorenç de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'acte consisteix en dues vetllades de sopar-espectacle dedicades als grans èxits d'un trio llegendari. Sobre l'escenari hi seran Béatrice Renversez, Alain Casanova, Bob Djalout, Gilles Gout, Benoît Lassale i Sébastien Renversez, que faran sonar les melodies intemporals i els refrans que han marcat diverses generacions. Hi ha previst un àpat durant la vetllada, i l'acte s'adreça a qui estima la música, a qui recorda aquests èxits o a qui busca una nit per compartir en família o amb amics, en un ambient càlid i festiu.",
+    "descripcio_fr": "Le spectacle propose deux soirées de dîner-spectacle consacrées aux plus grands succès d'un trio légendaire. Sur scène, Béatrice Renversez, Alain Casanova, Bob Djalout, Gilles Gout, Benoît Lassale et Sébastien Renversez feront revivre les mélodies intemporelles et les refrains qui ont marqué plusieurs générations. Un repas est prévu pendant la soirée, et l'acte s'adresse aux amateurs de musique, aux nostalgiques des grands succès et à celles et ceux qui cherchent une soirée à partager en famille ou entre amis, dans une ambiance chaleureuse et festive.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422811/LES-CHOEURS-D-ARTICHAUT-8_jaoyfw.webp",
+    "font_url": "https://billetterie.festik.net/saint-laurentdelalsalanque/product/les-inoubliables-balavoine-berger-gall/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.043Z",
+    "periodicitat": ""
   }
 ]
