@@ -2971,5 +2971,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.948Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-cine-debat-parfois",
+    "titol": "Ciné-debat «Parfois il pleut»",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "09:00",
+    "lloc": "23 Avenue Gén de Gaulle",
+    "municipi": "Cervera de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'acte combina l'exposició fotogràfica de la COP sobre les catàstrofes naturals a Cerbère, l'atelier Fresque du climat, amb inscripció prèvia, i la projecció de la pel·lícula Parfois il pleut. La pel·lícula tracta l'Aiguat de 1940 i es projectarà en presència del realitzador Arnaud Brugier, seguida d'un debat sobre el clima i les conseqüències del canvi climàtic. És un espai d'intercanvi per contrastar mirades, aprofundir en els temes tractats i reflexionar conjuntament sobre els reptes ambientals. S'adreça a qui estima tant el cinema com les discussions que pot suscitar.",
+    "descripcio_fr": "L'acte combine l'exposition photographique de la COP sur les catastrophes naturelles à Cerbère, l'atelier Fresque du climat, avec inscription préalable, et la projection du film Parfois il pleut. Le film traite de l'Aiguat de 1940 et sera projeté en présence du réalisateur Arnaud Brugier, suivi d'un débat sur le climat et les conséquences du changement climatique. C'est un espace d'échange pour confronter les regards, approfondir les thèmes abordés et réfléchir ensemble aux enjeux environnementaux. Il s'adresse à celles et ceux qui aiment autant le cinéma que les discussions qu'il peut susciter.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422880/Pluie-d-automne---Image-par-Wolfgang-Eckert-de-Pixabay_osd5iz.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.994Z",
+    "periodicitat": ""
   }
 ]
