@@ -2820,7 +2820,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52AE0V] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Categoria per tema infantil; RechercheTYPE deia: Teatre Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-25-conference-asvac",
+    "id": "2026-11-25-conferencia-asvac",
     "titol": "Conferència ASVAC",
     "data_inici": "2026-11-25",
     "data_fi": "2026-11-25",
@@ -2832,9 +2832,9 @@
     "descripcio_ca": "Gilles Peyre presentarà una conferència sobre l'art popular de les cornises pintades de la Catalunya Nord. Es tracta d'una tradició que es va extingir a la segona meitat del segle XIX. Aquests ràfecs pintats eren elements decoratius, però també testimonis de la història.",
     "descripcio_fr": "Gilles Peyre présentera une conférence sur l'art populaire des corniches peintes en Catalogne Nord. Il s'agit d'une tradition qui s'est éteinte dans la deuxième moitié du XIXe siècle. Ces avant-toits peints étaient des éléments décoratifs, mais aussi des témoins de l'histoire.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/microphone-2775447-640.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422303/microphone-2775447-640_jw4ato.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.932Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52CI6R] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
