@@ -98,7 +98,7 @@ Públic: la ciutadania nord-catalana en general. To: obert, cultural, acollidor 
 
 ## 3. Restriccions innegociables
 
-- **Només capes gratuïtes:** Cloudflare (Email Routing + Workers), GitHub Pages,
+- **Només capes gratuïtes:** Cloudflare (Email Routing + Workers + Web Analytics), GitHub Pages,
   Cloudinary, Brevo. Cap infraestructura de pagament, mai.
   **Única excepció, decidida pel propietari el 23 d'octubre de 2026:** l'API de
   Claude (Anthropic). No és cap capa gratuïta: és un servei de pagament que
@@ -525,7 +525,9 @@ tenir una màquina engegada a mantenir; això és un guió que s'executa i para.
 ## 8. Fora d'abast — no ho construeixis, ni si t'ho demanen de passada (confirma primer)
 
 Comptes d'usuari o login · portal d'autosubmissió · edició d'esdeveniments al web
-públic · comentaris o funcions socials · analítica o seguiment · cap base de dades ·
+públic · comentaris o funcions socials · analítica o seguiment més enllà del
+comptador de visites de D-11 (Cloudflare Web Analytics, sense galetes, xifres de
+conjunt) · cap base de dades ·
 cap servidor més enllà de l'únic Worker · cap framework CSS o JS · cap selector
 d'interval de dates al web públic.
 

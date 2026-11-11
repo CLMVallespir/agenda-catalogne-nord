@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- La CSP: només s'executen els scripts d'aquest mateix lloc (cap codi
        en línia, cap enllaç javascript:), i la pàgina només demana dades al
-       mateix lloc (events.json). Ha d'anar abans de qualsevol script. -->
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+       mateix lloc (events.json). Ha d'anar abans de qualsevol script.
+       Única excepció: el comptador de visites de Cloudflare (D-11), que
+       carrega el seu script de static.cloudflareinsights.com i envia les
+       xifres a cloudflareinsights.com. -->
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://static.cloudflareinsights.com; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Agenda cultural — Catalunya Nord</title>
   <meta name="description" content="Agenda cultural de la Catalunya Nord: Rosselló, Conflent, Vallespir, Capcir i Cerdanya. Agenda culturelle de la Catalogne Nord.">
 
@@ -160,5 +163,8 @@
 
   <script src="url-segura.js"></script>
   <script src="app.js"></script>
+
+  <!-- Cloudflare Web Analytics: comptador de visites sense galetes (D-11) -->
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "8e422865715d4173bd097fdbaad24f58"}'></script>
 </body>
 </html>

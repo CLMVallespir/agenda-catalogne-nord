@@ -67,6 +67,7 @@ fitxer, i `git show <commit>^:<ruta>` el torna a ensenyar.*
   Claude, ENC-007, `filaSegura()` i `admetEntrada()`.
 - **31 d'octubre.** Cap fila en francès a la cua (D-10). Les 34 pendents sense
   versió catalana, rebutjades.
+- **11 de novembre.** Comptador de visites al web públic (D-11).
 
 ---
 
@@ -162,6 +163,18 @@ protocol de coordinació.
   publicades. Les portes manuals no hi passen (D-04): qui vol que hi surti un
   acte que l'ADT66 dona mig buit, l'envia. Es reobre si el curador troba a
   faltar actes descartats: es baixa el llindar.
+- **D-11 · 11 de novembre.** Un comptador de visites, i res més d'analítica.
+  Cloudflare Web Analytics, amb el fragment JS a `index.html`, `qui-som.html`
+  i `mencions-legals.html` (no al curador ni a `prova-local.html`). Gratuït,
+  sense galetes, sense seguir cap visitant: només xifres de conjunt, que es
+  consulten al tauler de Cloudflare (Analytics & Logs → Web Analytics). Fragment
+  i no proxy perquè `agenda.clm.cat` va directe a GitHub Pages, sense passar
+  per Cloudflare. La CSP d'`index.html` deixa carregar
+  `static.cloudflareinsights.com` i enviar a `cloudflareinsights.com`; sense
+  això el navegador bloqueja el comptador en silenci. Les mencions legals ho
+  diuen. Va néixer perquè Miquel vol saber quanta gent consulta l'agenda.
+  Compta visites a la pàgina, no quins actes es miren: comptar-ho seria seguir
+  clics, i és fora d'abast (`CLAUDE.md` §8).
 
 Decisions anteriors al registre, igual de tancades (el perquè és a la lliçó que
 s'indica):
