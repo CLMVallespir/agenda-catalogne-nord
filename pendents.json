@@ -3980,7 +3980,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZHNY] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-29-concert-de-musique",
+    "id": "2026-11-29-concert-de-musica",
     "titol": "Concert de música sacra",
     "data_inici": "2026-11-29",
     "data_fi": "2026-11-29",
@@ -3992,9 +3992,9 @@
     "descripcio_ca": "L'agrupació vocal Ruscino ofereix un concert de música sacra a cappella. El concert es fa només amb veus, sense acompanyament instrumental.",
     "descripcio_fr": "L'ensemble vocal Ruscino propose un concert de musique sacrée a cappella. Le concert est donné uniquement avec des voix, sans accompagnement instrumental.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche---Concert-Ensemble-vocal-Ruscino.jpeg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423109/Affiche---Concert-Ensemble-vocal-Ruscino_kp6tiq.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.028Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZIEK] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
