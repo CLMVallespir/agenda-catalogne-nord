@@ -2705,5 +2705,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.927Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-musiques-del-mon",
+    "titol": "Músiques del món",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "21:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El duo Coco Bahia, format per Jean-Michel Pellegrin i Fabrice Vallot, interpreta forró, una música originària del Sertão, al Nordeste brasiler. Basada en la zabumba, l'acordió i el triangle, aquesta música recorda l'herència dels «corridinhos» de l'Algarve i acompanya les festes de Sant Joan des del segle XIX. Entre el ball intens i els relats del quotidiab, el forró parla dels amors, els somnis i les lluites d'una terra marcada pel sol i la sequera, abans d'estendre's per tot el Brasil amb les migracions.",
+    "descripcio_fr": "Le duo Coco Bahia, formé de Jean-Michel Pellegrin et Fabrice Vallot, interprète du forró, une musique originaire du Sertão, dans le Nordeste brésilien. Fondée sur la zabumba, l'accordéon et le triangle, cette musique rappelle l'héritage des «corridinhos» de l'Algarve et accompagne les fêtes de la Saint-Jean depuis le XIXe siècle. Avec une danse intense et des récits du quotidien, le forró évoque les amours, les rêves et les luttes d'une terre marquée par le soleil et la sécheresse, avant de conquérir tout le Brésil au gré des migrations.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422722/lcd-musiques-monde-11_oucbdw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.954Z",
+    "periodicitat": ""
   }
 ]
