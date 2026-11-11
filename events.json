@@ -3066,5 +3066,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.047Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-dedicatoria-dalain-brusy",
+    "titol": "Dedicatòria d'Alain Brusy",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "09:30",
+    "lloc": "6 AVENUE MITTERRAND",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "L'autor, Alain Brusy, signa exemplars i presenta el seu llibre Mi Vuelta, mon tour d'Espagne vélo-escalade a la llibreria Le Presse Papier de Tuïr. És un relat personal que barreja aventures i anècdotes del recorregut de 3600 km en bicicleta i 4000 m d'escalada. El llibre recull 18 textos il·lustrats sobre la fragilitat del viatger, la joia de viure malgrat els elements i la fraternitat entre les persones trobades pel camí. S'hi tracta també la bellesa de la península Ibèrica.",
+    "descripcio_fr": "L'auteur, Alain Brusy, dédicace des exemplaires et présente son livre Mi Vuelta, mon tour d'Espagne vélo-escalade à la librairie Le Presse Papier de Tuïr. Il s'agit d'un récit personnel mêlant aventures et anecdotes du parcours de 3600 km à vélo et de 4000 m d'escalade. Le livre rassemble 18 textes illustrés sur la fragilité du voyageur, la joie de vivre malgré les éléments et la fraternité entre les personnes rencontrées au fil du chemin. Il évoque aussi la beauté de la péninsule Ibérique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422961/Aspres-thuir-dedicacebrusy_r4junn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.050Z",
+    "periodicitat": ""
   }
 ]
