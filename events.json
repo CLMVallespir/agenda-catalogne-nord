@@ -3199,5 +3199,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.040Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-apat-de-louillada",
+    "titol": "Àpat de l'ouillada",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "12:00",
+    "lloc": "1 Route d'Espagne",
+    "municipi": "Cervera de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Le Souvenir Français i l'Association Nautique de Cerbère (ANC) conviden a un moment de compartir al voltant de l'ouillada, una especialitat emblemàtica de la cuina catalana. El menú inclou ouillada, formatge, postres i una beguda, i hi haurà una animació musical a càrrec de Tropicana. La reserva és obligatòria.",
+    "descripcio_fr": "Le Souvenir Français et l'Association Nautique de Cerbère (ANC) invitent à un moment de partage autour de l'ouillade, une spécialité emblématique de la cuisine catalane. Le menu comprend de l'ouillade, du fromage, un dessert et une boisson, et une animation musicale est assurée par Tropicana. La réservation est obligatoire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423130/L-ollada--Shutterstock_mito6l.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.046Z",
+    "periodicitat": ""
   }
 ]
