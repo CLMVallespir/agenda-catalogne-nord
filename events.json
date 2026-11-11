@@ -2477,5 +2477,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.932Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-cine-du-mois",
+    "titol": "Ciné du mois",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "",
+    "lloc": "Rue du 14 juillet",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "El Cinéma Itinérant de Cinémaginaire proposa una vegada al mes sessions de cinema per al gran públic. En aquesta edició s'hi projecten tres pel·lícules: Un bon patron, Quelques mots d'amour i Il faut brûler maman. Les sessions es fan a la sala Novelty.",
+    "descripcio_fr": "Le Cinéma Itinérant de Cinémaginaire propose une fois par mois des séances destinées au grand public. Trois films sont projetés lors de cette édition : Un bon patron, Quelques mots d'amour et Il faut brûler maman. Les séances ont lieu à la salle Novelty.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422311/25-11-cinemaginaire_ryvzq4.webp",
+    "font_url": "http://www.cinemaginaire.org",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.932Z",
+    "periodicitat": ""
   }
 ]
