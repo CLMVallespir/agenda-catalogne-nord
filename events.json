@@ -2724,5 +2724,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.954Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-le-livre-vivant",
+    "titol": "Le Livre Vivant en balade",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Llauró",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Papallonas és un conte musical amb marionetes i deambulació, a càrrec de la companyia Les hirondelles, que es presenta a Llauró dins de la gira del Livre Vivant en balade. L'espectacle és gratuït i està pensat per a famílies, des de la primera infància. Ha estat creat expressament per encàrrec del Departament, a partir d'un llibre infantil i juvenil del Prix du livre vivant.",
+    "descripcio_fr": "Papallonas est un conte musical avec marionnettes et déambulation, par la compagnie Les hirondelles, présenté à Llauró dans le cadre de la tournée du Livre Vivant en balade. Le spectacle est gratuit et s'adresse aux familles, dès le plus jeune âge. Il a été créé spécialement à la demande du Département, à partir d'un livre jeunesse du Prix du livre vivant.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422733/Aspres-aspres--livre-vivant-balade_l8ztp6.webp",
+    "font_url": "https://www.ledepartement66.fr/agenda/livre-vivant-en-balade/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.980Z",
+    "periodicitat": ""
   }
 ]
