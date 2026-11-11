@@ -3160,7 +3160,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z94U] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-26-cluedo-geant",
+    "id": "2026-11-26-cluedo-gegant",
     "titol": "Cluedo gegant",
     "data_inici": "2026-11-26",
     "data_fi": "2026-11-26",
@@ -3172,9 +3172,9 @@
     "descripcio_ca": "Es planteja una investigació a mida real al restaurant, amb mentides, alibis i culpables per descobrir. Aquest any els sospitosos seran els clients.",
     "descripcio_fr": "Une enquête grandeur nature est proposée au restaurant, avec mensonges, alibis et coupables à découvrir. Cette année, les suspects seront les clients.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cludeo-2026-20260920-164224-0000.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422698/cludeo-2026-20260920-164224-0000_br8ezj.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.011Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZB64] Ve marcada «Jeux» sense cap patró de joc de club al títol: la categoria queda buida. Si és un joc d'entitat, és Vida associativa; si és un negoci, la fila no hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
