@@ -4072,9 +4072,9 @@
     "descripcio_ca": "El mercat tradicional es realitza a la plaça Rodin i ofereix productes frescos, especialitats catalanes, artesania local, roba i objectes de decoració. Hi ha olives, formatges, fruita madura i pa, entre d'altres productes. És un mercat animat, situat a poca distància del mar.",
     "descripcio_fr": "Le marché traditionnel se tient sur la place Rodin et propose des produits frais, des spécialités catalanes, de l'artisanat local, des vêtements et des objets de décoration. On y trouve des olives, des fromages, des fruits mûrs et du pain, entre autres produits. C'est un marché animé, situé à deux pas de la mer.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-rodin.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423146/marche-rodin_d8xpaa.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.943Z",
     "periodicitat": "cada setmana",
     "nota_curador": "[ADT66 id: FMALAR066V52QWYS] Totes les 2 dates de l'acte són passades. Sense data futura: l'id queda buit i aquesta fila no es pot identificar. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
