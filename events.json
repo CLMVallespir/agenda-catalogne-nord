@@ -2230,5 +2230,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.963Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-concert-de-la",
+    "titol": "Concert de la Santa Cecília",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "17:00",
+    "lloc": "3 Rue Joseph Lafon",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'Orchestre Symphonique Canet Roussillon Mediterranee, sota la direcció de François Ragot, ofereix un concert en homenatge a la soprano Conxita Badia, dins de l'any Casals / De Falla. El programa reuneix obres de compositors de l'època de la carrera de Badia, entre els quals E. Granados, J. Serra, E. Casals, N. Bonnet, E. Morera, M. De Falla i E. Toldrà. Hi actua com a solista la soprano Sara Bañeras, que té una carrera internacional centrada en el repertori mozartià, el bel canto i l'òpera francesa.",
+    "descripcio_fr": "L'Orchestre Symphonique Canet Roussillon Mediterranee, sous la direction de François Ragot, donne un concert en hommage à la soprano Conxita Badia, dans le cadre de l'année Casals / De Falla. Le programme réunit des œuvres de compositeurs de l'époque de la carrière de Badia, parmi lesquels E. Granados, J. Serra, E. Casals, N. Bonnet, E. Morera, M. De Falla et E. Toldrà. Y participe en tant que soliste la soprano Sara Bañeras, dont la carrière internationale se concentre sur le répertoire mozartien, le bel canto et l'opéra français.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422140/Afiches-A3-TJP-9_ueujls.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.984Z",
+    "periodicitat": ""
   }
 ]
