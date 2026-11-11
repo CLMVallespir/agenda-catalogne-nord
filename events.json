@@ -3180,5 +3180,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.028Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-mercat-de-productors",
+    "titol": "Mercat de productors",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Estoer",
+    "comarca": "Conflent",
+    "categoria": "Mercat",
+    "descripcio_ca": "Els mercats de diumenge al matí es fan a la pista de petanca, organitzats per l'associació Val Llech amb el suport de l'ajuntament. Ara adopten el seu ritme d'hivern.",
+    "descripcio_fr": "Les marchés du dimanche matin se tiennent sur la piste de pétanque, organisés par l'association Val Llech avec le soutien de la mairie. Ils prennent désormais leur rythme hivernal.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423121/Capture-242_w07vau.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.040Z",
+    "periodicitat": ""
   }
 ]
