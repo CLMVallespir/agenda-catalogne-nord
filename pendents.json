@@ -3000,7 +3000,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZLXU] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-25-conte-sonore-flippy",
+    "id": "2026-11-25-conte-sonor-flippy",
     "titol": "Conte sonor «Flippy et la magie de l'hiver»",
     "data_inici": "2026-11-25",
     "data_fi": "2026-11-25",
@@ -3012,9 +3012,9 @@
     "descripcio_ca": "Conte sonor pensat per a infants d'entre 18 mesos i 10 anys, que combina la narració amb sons i vibracions. Guiats per Nathalie, els infants descobreixen els sons delicats dels bols de cristall i d'altres instruments relaxants, que acompanyen el relat. Cal la presència d'un adult acompanyant, i la inscripció és indispensable perquè les places són limitades. L'acte es fa a Sant Genís de Fontanes.",
     "descripcio_fr": "Conte sonore destiné aux enfants de 18 mois à 10 ans, qui combine la narration avec des sons et des vibrations. Guidés par Nathalie, les enfants découvrent les sons délicats des bols de cristal et d'autres instruments apaisants, qui accompagnent le récit. La présence d'un adulte accompagnateur est obligatoire, et l'inscription est indispensable car les places sont limitées. L'acte a lieu à Sant Genís de Fontanes.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/NOEL-NEIGE-ETOILES-ChatGPD.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422607/NOEL-NEIGE-ETOILES-ChatGPD_suuptm.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.044Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZMEZ] Categoria per tema infantil; RechercheTYPE deia: Taller Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
