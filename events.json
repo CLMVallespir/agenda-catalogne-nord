@@ -3028,5 +3028,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.010Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-cafe-filosofic",
+    "titol": "Cafè filosòfic",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "10:00",
+    "lloc": "Avenue Léon-Jean Grégory",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Blandine Margoux anima aquest cafè filosòfic, sota el nom Le fil à philo. Es tracta de recuperar l'àgora, la filosofia primera, oral i democràtica abans de ser escrita, i de conversar entre els participants amb confiança, sense jutjar ni exigir. Els arguments surten de manera espontània del grup, i el dubte i la pregunta hi tenen més pes que l'afirmació. La conversa es fa sense pantalles ni intel·ligència artificial, només amb les paraules pròpies.",
+    "descripcio_fr": "Blandine Margoux anime ce café philosophique, sous le nom Le fil à philo. Il s'agit de renouer avec l'agora, la philosophie première, orale et démocratique avant d'être écrite, et de discuter entre participants avec confiance, sans jugement ni exigence. Les arguments surgissent spontanément du groupe, et le doute et la question y ont davantage de poids que l'affirmation. L'échange se fait sans écrans ni intelligence artificielle, uniquement avec ses propres mots.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422947/Aff-cafe-philo-26_eopkdv.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.045Z",
+    "periodicitat": ""
   }
 ]
