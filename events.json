@@ -2572,5 +2572,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.015Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-festival-flamenc",
+    "titol": "Festival flamenc",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "",
+    "lloc": "1 Avenue Lavoisier",
+    "municipi": "Toluges",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El festival s'estén al llarg de cinc jornades de trobades, música i dansa. Les activitats es fan al teatre.",
+    "descripcio_fr": "Le festival se déroule sur cinq journées de rencontres, de musique et de danse. Les activités ont lieu au théâtre.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422594/FESTIVAL-FLAMENCO_pmvxx3.webp",
+    "font_url": "https://www.pellizco.net/festival-flamenc-toulouges/#programme",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.029Z",
+    "periodicitat": ""
   }
 ]
