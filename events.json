@@ -2819,5 +2819,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.007Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-nepal-himalaya",
+    "titol": "Nepal-Himalaya",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "18:00",
+    "lloc": "174 avenue du Général de Gaulle",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Cinema",
+    "descripcio_ca": "L'associació Pyrénées Catalanes Népal organitza, en col·laboració amb les Cine-rencontres, una vetllada d'informació i solidaritat amb el Nepal. S'hi projecten 2 pel·lícules i se'n fan 2 debats. Els beneficis de la vetllada es destinaran als infants del Nepal.",
+    "descripcio_fr": "L'association Pyrénées Catalanes Népal organise, en partenariat avec les Cine-rencontres, une soirée d'information et de solidarité avec le Népal. Deux films sont projetés et deux débats sont organisés. Les bénéfices de la soirée seront reversés aux enfants du Népal.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422784/projet-affiche-27-novembre_elxksx.webp",
+    "font_url": "https://pyreneescatalanesnepal.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.013Z",
+    "periodicitat": ""
   }
 ]
