@@ -2363,5 +2363,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.951Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-24-masterclass-ableton-live",
+    "titol": "Masterclass Ableton Live",
+    "data_inici": "2026-11-24",
+    "data_fi": "2026-11-24",
+    "hora": "19:00",
+    "lloc": "ELMEDIATORAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "La Masterclass Ableton Live, una trobada mensual i gratuïta a El Mediator, està dedicada a la creació musical digital. L'animen Émilie Gadave, Ableton Certified Trainer, i Franck de Villeneuve, referent de professions del so de L'IDEM Creative Arts School. Cada edició té una temàtica diferent, i les persones participants hi poden plantejar preguntes, desencallar els seus projectes i millorar el domini del programari. La masterclass explora les possibilitats d'Ableton Live, eina habitual en la composició, l'arranjament i l'actuació escènica de nombrosos artistes de les músiques actuals.",
+    "descripcio_fr": "La Masterclass Ableton Live, rendez-vous mensuel et gratuit à El Mediator, est dédiée à la création musicale numérique. Elle est animée par Émilie Gadave, Ableton Certified Trainer, et Franck de Villeneuve, référent des métiers du son à L'IDEM Creative Arts School. Chaque édition a une thématique différente, et les participants peuvent y poser leurs questions, débloquer leurs projets et perfectionner leur maîtrise du logiciel. La masterclass explore les possibilités d'Ableton Live, outil incontournable de la composition, de l'arrangement et de la performance scénique, utilisé par de nombreux artistes des musiques actuelles.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422219/ableton_rfgwlz.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.976Z",
+    "periodicitat": ""
   }
 ]
