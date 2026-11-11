@@ -3161,5 +3161,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.023Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-concert-de-musica",
+    "titol": "Concert de música sacra",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "16:30",
+    "lloc": "",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "L'agrupació vocal Ruscino ofereix un concert de música sacra a cappella. El concert es fa només amb veus, sense acompanyament instrumental.",
+    "descripcio_fr": "L'ensemble vocal Ruscino propose un concert de musique sacrée a cappella. Le concert est donné uniquement avec des voix, sans accompagnement instrumental.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423109/Affiche---Concert-Ensemble-vocal-Ruscino_kp6tiq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.028Z",
+    "periodicitat": ""
   }
 ]
