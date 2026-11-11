@@ -3085,5 +3085,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.050Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-rifle-de-la",
+    "titol": "Rifle de la JOP",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "15:00",
+    "lloc": "Plaine Saint-Martin",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Al llarg de la temporada, el club organitza rifles, en què es juga amb cartrons i fitxes. Són un moment de bon humor per compartir en família o entre amics, amb la possibilitat d'obtenir el cartró guanyador. L'activitat també permet donar suport al club.",
+    "descripcio_fr": "Tout au long de la saison, le club organise des rifles, qui se jouent avec des cartons et des jetons. Ces moments sont l'occasion de passer un bon moment en famille ou entre amis, avec la possibilité de gagner le carton gagnant. L'activité permet aussi de soutenir le club.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423039/Capture-204_mmg3aa.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.992Z",
+    "periodicitat": ""
   }
 ]
