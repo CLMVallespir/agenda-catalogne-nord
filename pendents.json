@@ -2880,7 +2880,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52U6Y1] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-25-jeux-de-societe",
+    "id": "2026-11-25-jocs-de-societat",
     "titol": "Jocs de societat",
     "data_inici": "2026-11-25",
     "data_fi": "2026-11-25",
@@ -2892,9 +2892,9 @@
     "descripcio_ca": "La mediateca comunitària Robert Avril de Millars organitza un taller de jocs de societat. L'activitat és oberta a tothom i es desenvolupa com una tarda recreativa.",
     "descripcio_fr": "La médiathèque communautaire Robert Avril de Millars organise un atelier de jeux de société. L'activité est ouverte à tous et se déroule sous forme d'après-midi récréatif.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/JDS-MILLAS-NOV-26.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422322/JDS-MILLAS-NOV-26_ka1qqz.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.956Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52VE50] Categoria per tema infantil; RechercheTYPE deia: Vida associativa Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
