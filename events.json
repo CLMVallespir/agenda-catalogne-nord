@@ -3142,5 +3142,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.023Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-nadal-solidari-organitzat",
+    "titol": "Nadal solidari organitzat per l'associació Cor d'Artista",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "10:00",
+    "lloc": "PLACE DE LA CATALANE",
+    "municipi": "Ceret",
+    "comarca": "Vallespir",
+    "categoria": "",
+    "descripcio_ca": "L'acte es fa en benefici del CCAS. Hi ha llaminadures per a tota la família i animacions gratuïtes.",
+    "descripcio_fr": "L'acte se déroule au profit du CCAS. Il y a des gourmandises pour toute la famille et des animations gratuites.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794423102/Flyer-caritatif-CCAS-CERET-noel-solidaire_vvsopg.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.023Z",
+    "periodicitat": ""
   }
 ]
