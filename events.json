@@ -2268,5 +2268,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.015Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-shinrin-yoku-bany",
+    "titol": "Shinrin yoku: bany de bosc",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Fillols",
+    "comarca": "Conflent",
+    "categoria": "Esports",
+    "descripcio_ca": "L'activitat proposa una marxa lenta i en silenci per connectar-se amb la natura a través de la descoberta sensorial del bosc. Permet despertar els sentits i sentir-se ben arrelat a la natura, en boscos bonics de les nostres muntanyes catalanes.",
+    "descripcio_fr": "L'activité propose une marche lente et silencieuse pour se relier à la nature à travers la découverte sensorielle de la forêt. Elle permet d'éveiller les sens et de se sentir bien ancré dans la nature, dans de belles forêts de nos montagnes catalanes.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422167/261011-affiche-bain-de-foret-Fillols-web_ptkjtg.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.020Z",
+    "periodicitat": ""
   }
 ]
