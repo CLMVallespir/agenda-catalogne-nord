@@ -2344,5 +2344,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.039Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-24-els-tallers-creatius",
+    "titol": "Els tallers creatius dels fauvistes s'instal·len a l'oficina de turisme",
+    "data_inici": "2026-11-24",
+    "data_fi": "2026-11-24",
+    "hora": "10:30",
+    "lloc": "6, rue de la République",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'un taller creatiu adreçat a adults. El tema encara no s'ha precisat i es concretarà més endavant.",
+    "descripcio_fr": "Il s'agit d'un atelier créatif destiné aux adultes. Le thème n'a pas encore été précisé et sera communiqué ultérieurement.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422214/Animation-hiver-paysage-2026--7--2_xrcqgs.webp",
+    "font_url": "https://www.tourisme-collioure.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.951Z",
+    "periodicitat": ""
   }
 ]
