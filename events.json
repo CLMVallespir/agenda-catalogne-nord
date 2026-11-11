@@ -3258,22 +3258,22 @@
     "periodicitat": "cada setmana"
   },
   {
-    "id": "2026-11-08-mercat-de-segona",
-    "titol": "Mercat de segona mà de tardor",
+    "id": "2026-11-08-te-dansant",
+    "titol": "Te dansant",
     "data_inici": "2026-11-08",
     "data_fi": "2026-11-08",
-    "hora": "08:00",
-    "lloc": "Quai Pierre Forgas",
-    "municipi": "Portvendres",
+    "hora": "14:30",
+    "lloc": "Rue Léo Lagrange",
+    "municipi": "Sant Pau de Fenollet",
     "comarca": "Rosselló",
-    "categoria": "Activitat infantil",
-    "descripcio_ca": "L'acte és un mercat de segona mà amb objectes insòlits i troballes diverses que proposen els expositors. S'adreça a col·leccionistes, aficionats a la decoració, persones interessades en la segona mà i també curiosos. Es presenta com una manera de reutilitzar objectes i de fer neteja de cases abans de l'hivern. Les inscripcions per exposar s'obren primer per als habitants de Portvendres i després per a tothom, i en cas de mal temps l'acte es reportaria.",
-    "descripcio_fr": "La brocante est un marché de seconde main proposant des objets insolites et des trouvailles diverses présentés par les exposants. Elle s'adresse aux collectionneurs, aux amateurs de décoration, aux adeptes de la seconde main et aux curieux. Elle offre une façon de réutiliser des objets et de faire du tri dans les maisons avant l'hiver. Les inscriptions pour exposer s'ouvrent d'abord pour les habitants de Portvendres puis pour tout le monde, et en cas de mauvais temps l'acte serait reporté.",
+    "categoria": "Dansa i ball",
+    "descripcio_ca": "L'Association Culture Tourisme Animation organitza un te dansant al Foyer Rural, amb la participació de l'Orchestre Sandrine et son étincelle musette. Es tracta d'una tarda de ball amb música d'orquestra, i la pastisseria hi és inclosa.",
+    "descripcio_fr": "L'Association Culture Tourisme Animation organise un thé dansant au Foyer Rural, avec la participation de l'Orchestre Sandrine et son étincelle musette. Il s'agit d'un après-midi dansant avec la musique de l'orchestre, et la pâtisserie est incluse.",
     "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084343/vide-grenier-27_rlmjt8.webp",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1793084344/DANSE-de-pixelia-de-pixabay_gwtbez.webp",
     "font_url": "",
     "estat": "publicat",
-    "data_entrada": "2026-10-26T09:37:23.437Z",
+    "data_entrada": "2026-10-26T09:37:23.444Z",
     "periodicitat": ""
   }
 ]
