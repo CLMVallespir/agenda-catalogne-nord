@@ -2914,5 +2914,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.048Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-sopar-dansant-de",
+    "titol": "Sopar dansant de la Fête de la St André",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "20:00",
+    "lloc": "Avenue de la Marne",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Dansa i ball",
+    "descripcio_ca": "El sopar dansant és un dels principals actes de la tradicional festa patronal de la St André de Ribesaltes. Durant el sopar, la música del grup Couleur Café anima l'ambient. El sopar requereix reserva prèvia, segons les places disponibles. L'espectacle musical és obert a tothom, sense reserva prèvia.",
+    "descripcio_fr": "Le dîner dansant est l'un des principaux rendez-vous de la traditionnelle fête patronale de la St André de Ribesaltes. Pendant le dîner, le groupe Couleur Café anime l'ambiance. Le dîner requiert une réservation préalable, selon les places disponibles. Le spectacle musical est ouvert à tous, sans réservation préalable.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422834/Format-Tourinsoft-1024x768--1--14_jcvtwb.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:45.935Z",
+    "periodicitat": ""
   }
 ]
