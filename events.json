@@ -3047,5 +3047,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.045Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-sopar-ballable-a",
+    "titol": "Sopar ballable a benefici de l'AFM Téléthon",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "19:30",
+    "lloc": "Boulevard national",
+    "municipi": "Peirestortes",
+    "comarca": "Rosselló",
+    "categoria": "Dansa i ball",
+    "descripcio_ca": "L'acte consisteix en un sopar amb un menú que comença amb un aperitiu de benvinguda, amb sopa de xampany i un petit aperitiu d'entrada. Després s'hi serveixen una tatin de fetge gras, un vasset de còctel de gambes i un suprem de pintada amb salsa de fetge gras i guarnició. Per acabar, hi ha postres i s'hi serveixen vins i cafè. Les places són limitades i la reserva és obligatòria, amb pagament en fer-la.",
+    "descripcio_fr": "L'acte consiste en un dîner avec un menu qui commence par un apéritif de bienvenue, avec soupe de champagne et une petite mise en bouche. Ensuite sont servis une tatin de foie gras, une verrine de cocktail de crevettes et un suprême de pintade à la sauce foie gras et son accompagnement. Pour finir, il y a un dessert gourmand, et vins et café sont servis. Les places sont limitées et la réservation est obligatoire, avec paiement à la réservation.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422953/TELETHON-2_a30pho.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.047Z",
+    "periodicitat": ""
   }
 ]
