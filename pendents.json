@@ -2480,7 +2480,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52V7SW] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-22-concert-choeur-hemera",
+    "id": "2026-11-22-concert-ch-ur",
     "titol": "Concert Chœur Héméra",
     "data_inici": "2026-11-22",
     "data_fi": "2026-11-22",
@@ -2492,9 +2492,9 @@
     "descripcio_ca": "El Chœur Héméra és un jove conjunt vocal dirigit per la directora de cor Pauline Langlois de Swarte. Actua de manera habitual en concerts de música clàssica i lírica i ofereix també representacions temàtiques.",
     "descripcio_fr": "Le Chœur Héméra est un jeune ensemble vocal dirigé par la directrice de chœur Pauline Langlois de Swarte. Il se produit régulièrement dans le cadre de concerts classiques et lyriques et propose également des représentations thématiques.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Hemera1-scaled.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422133/Hemera1-scaled_ejvyst.webp",
     "font_url": "https://www.alainmarinaro.fr/contact/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:45.963Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52X1ID] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
