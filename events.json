@@ -2895,5 +2895,24 @@
     "estat": "publicat",
     "data_entrada": "2026-10-31T19:44:46.045Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-les-feluettes-collectif",
+    "titol": "Les Feluettes - Collectif Nacéo",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "20:30",
+    "lloc": "19 Avenue du 19 Mars 1962",
+    "municipi": "Cabestany",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Trenta anys després, Simon, que és a la presó, reuneix un grup d'homes al voltant d'una obra de teatre per explicar la seva història. L'obra és Les Feluettes, de Michel Marc Bouchard, dramaturg nascut el 1958 al Québec i una figura major del teatre en llengua francesa. Estrenada el 1987, és considerada una obra cabdal del teatre quebequès i, en el seu moment, va suposar una revolució, perquè mai no s'havia mostrat l'homosexualitat amb tanta dignitat, poesia i violència. La direcció és d'Olivier Sanquer, i el repartiment està format per Cédric Luisier, Simon Guirriec, Amric Trudel, Geoffray Mathieu, Maxime Peyron, Axel Arnault, Soufiane Bencherqui, Sébastien Pruvost i Alexandre Simoens.",
+    "descripcio_fr": "Trente ans plus tard, Simon, qui est en prison, réunit un groupe d'hommes autour d'une pièce de théâtre pour raconter son histoire. La pièce est Les Feluettes, de Michel Marc Bouchard, dramaturge né en 1958 au Québec et une figure majeure du théâtre francophone. Créée en 1987, elle est considérée comme une œuvre majeure du théâtre québécois et, à l'époque, elle a représenté une révolution, car jamais l'homosexualité n'avait été montrée avec autant de dignité, de poésie et de violence. La mise en scène est d'Olivier Sanquer, et la distribution est composée de Cédric Luisier, Simon Guirriec, Amric Trudel, Geoffray Mathieu, Maxime Peyron, Axel Arnault, Soufiane Bencherqui, Sébastien Pruvost et Alexandre Simoens.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794422825/FELUETTES_fynrfl.webp",
+    "font_url": "https://www.cabestany.com",
+    "estat": "publicat",
+    "data_entrada": "2026-10-31T19:44:46.048Z",
+    "periodicitat": ""
   }
 ]
