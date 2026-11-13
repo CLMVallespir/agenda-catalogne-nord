@@ -2935,22 +2935,22 @@
     "periodicitat": "cada setmana"
   },
   {
-    "id": "2026-11-12-mercat-place-de",
-    "titol": "Mercat place de Belgique",
-    "data_inici": "2026-11-12",
-    "data_fi": "2026-11-12",
+    "id": "2026-11-15-venda-de-segona",
+    "titol": "Venda de segona mà",
+    "data_inici": "2026-11-15",
+    "data_fi": "2026-11-15",
     "hora": "07:30",
-    "lloc": "Place de Belgique",
-    "municipi": "Perpinyà",
-    "comarca": "Rosselló",
+    "lloc": "Boulevard de la Petite Provence",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
     "categoria": "Mercat",
-    "descripcio_ca": "El mercat ofereix una oferta variada de productes de qualitat: fruita i verdura, pa, pastisseria, carnisseria, xarcuteria, rostisseria, peixateria, ostres, cargols, mel, vins i flors. Si els clients ho desitgen, els comerciants poden prendre'n les comandes d'una setmana per a l'altra.",
-    "descripcio_fr": "Le marché propose une offre variée de produits de qualité : fruits et légumes, pain, pâtisserie, boucherie, charcuterie, rôtisserie, poissonnerie, huîtres, escargots, miel, vins et fleurs. Si les clients le souhaitent, les commerçants peuvent prendre leurs commandes d'une semaine à l'autre.",
+    "descripcio_ca": "L'associació Les Couleurs de la Vie organitza una venda d'objectes de segona mà. Hi actuarà l'orquestra Apéritubes, i hi haurà barra i restauració al lloc.",
+    "descripcio_fr": "L'association Les Couleurs de la Vie organise une vente d'objets d'occasion. L'orchestre Apéritubes y jouera, et il y aura une buvette et une restauration sur place.",
     "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794586492/Marche-place-de-Belgique_zfjswd.webp",
-    "font_url": "https://www.perpigare.fr/notre-quartier/commercants-artisans-tpe/commercants-marche-place-de-belgique/",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794586508/vide-greniers-4_v8ck4r.webp",
+    "font_url": "",
     "estat": "publicat",
-    "data_entrada": "2026-11-12T07:13:50.280Z",
-    "periodicitat": "cada setmana"
+    "data_entrada": "2026-11-12T07:13:50.310Z",
+    "periodicitat": ""
   }
 ]
