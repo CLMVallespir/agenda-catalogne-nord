@@ -1,6 +1,6 @@
 [
   {
-    "id": "2026-11-12-marche-place-de",
+    "id": "2026-11-12-mercat-a-la",
     "titol": "Mercat a la Place de la République i a la Place des Poilus",
     "data_inici": "2026-11-12",
     "data_fi": "2026-11-12",
@@ -12,9 +12,9 @@
     "descripcio_ca": "Es tracta d'un mercat d'alimentació que se celebra a la Place de la République, al cor del centre històric. El mercat també se situa a la Place des Poilus. Els dissabtes s'hi afegeixen productes ecològics.",
     "descripcio_fr": "Il s'agit d'un marché alimentaire qui se tient sur la Place de la République, au cœur du centre historique. Le marché se tient également sur la Place des Poilus. Le samedi, des produits biologiques viennent s'ajouter au marché.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/marche-republique-1.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794586485/marche-republique-1_jwzl0x.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.280Z",
     "periodicitat": "cada setmana",
     "nota_curador": "[ADT66 id: FMALAR066V51ER70] L'acte es fa 86 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
