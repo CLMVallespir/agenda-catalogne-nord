@@ -20,7 +20,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V51ER70] L'acte es fa 86 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-12-marche-place-de",
+    "id": "2026-11-12-mercat-place-de",
     "titol": "Mercat place de Belgique",
     "data_inici": "2026-11-12",
     "data_fi": "2026-11-12",
@@ -32,9 +32,9 @@
     "descripcio_ca": "El mercat ofereix una oferta variada de productes de qualitat: fruita i verdura, pa, pastisseria, carnisseria, xarcuteria, rostisseria, peixateria, ostres, cargols, mel, vins i flors. Si els clients ho desitgen, els comerciants poden prendre'n les comandes d'una setmana per a l'altra.",
     "descripcio_fr": "Le marché propose une offre variée de produits de qualité : fruits et légumes, pain, pâtisserie, boucherie, charcuterie, rôtisserie, poissonnerie, huîtres, escargots, miel, vins et fleurs. Si les clients le souhaitent, les commerçants peuvent prendre leurs commandes d'une semaine à l'autre.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Marche-place-de-Belgique.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794586492/Marche-place-de-Belgique_zfjswd.webp",
     "font_url": "https://www.perpigare.fr/notre-quartier/commercants-artisans-tpe/commercants-marche-place-de-belgique/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.280Z",
     "periodicitat": "cada setmana",
     "nota_curador": "[ADT66 id: FMALAR066V51ER88] L'acte es fa 28 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
