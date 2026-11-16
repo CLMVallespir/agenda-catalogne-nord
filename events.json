@@ -3446,5 +3446,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.388Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-02-lheure-zero-trobada",
+    "titol": "L'Heure zéro · Trobada amb François Morel",
+    "data_inici": "2026-12-02",
+    "data_fi": "2026-12-02",
+    "hora": "16:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "La trobada amb François Morel s'acompanya de la projecció de L'Heure zéro, de Pascal Thomas. La pel·lícula és una intriga policíaca: un comissari en vacances a la costa bretona investiga l'assassinat d'una vella senyora, interpretada per Danielle Darrieux. François Morel interpreta el comissari, un personatge d'humor sec i perspicaç.",
+    "descripcio_fr": "La rencontre avec François Morel accompagne la projection de L'Heure zéro, de Pascal Thomas. Le film est une intrigue policière : un commissaire en vacances sur la côte bretonne enquête sur le meurtre d'une vieille dame, interprétée par Danielle Darrieux. François Morel incarne le commissaire, un personnage à l'humour pince-sans-rire et perspicace.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863075/L-heure-zero---rencontre-avec-Francois-Morel_qbz38z.webp",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.432Z",
+    "periodicitat": ""
   }
 ]
