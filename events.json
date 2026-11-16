@@ -3218,5 +3218,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.523Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-festa-de-lhivern",
+    "titol": "Festa de l'hivern",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "10:00",
+    "lloc": "1 Route de Font-Romeu",
+    "municipi": "Angostrina i Vilanova de les Escaldes",
+    "comarca": "Cerdanya",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La festa inclou animacions per a infants i una borsa de joguines i de roba d'hivern per a infants. Hi haurà també un mercat artesanal amb productors locals, un taller d'encerat d'esquís i una castanyada amb vi calent. Hi ha restauració al lloc. Els beneficis es destinen a l'associació Les Amis de l'école.",
+    "descripcio_fr": "La fête comprend des animations pour enfants et une bourse de jouets et de vêtements d'hiver pour enfants. Il y aura aussi un marché artisanal avec des producteurs locaux, un atelier de fartage de skis et une castanyada avec du vin chaud. La restauration se fait sur place. Les bénéfices sont destinés à l'association Les Amis de l'école.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862991/28-nov-ANGOUSTRINE_rtsqyj.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.530Z",
+    "periodicitat": ""
   }
 ]
