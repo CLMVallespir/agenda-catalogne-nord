@@ -3484,5 +3484,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.492Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-03-pas-de-panique",
+    "titol": "Pas de panique y’a Monique",
+    "data_inici": "2026-12-03",
+    "data_fi": "2026-12-03",
+    "hora": "21:00",
+    "lloc": "LA BOITE A RIRE113 Avenue du Palais des Expositions",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Una àvia de 55 anys, dinàmica, simpàtica i una mica ingènua, divorciada diverses vegades, és sempre a la recerca d'un príncep blau i agafa el pèl als homes amb tota mena d'astúcies per aconseguir el seu objectiu: trobar l'home de la seva vida. Pel seu aniversari, els seus tres néts li regalen una tauleta perquè pugui connectar-se i conèixer gent nova.",
+    "descripcio_fr": "Une grand-mère de 55 ans, dynamique, attachante et un peu naïve, divorcée à plusieurs reprises, est toujours à la recherche d'un prince charmant et taquine les hommes en usant de toutes les astuces pour atteindre son but : trouver l'homme de sa vie. Pour son anniversaire, ses trois petits-enfants lui offrent une tablette afin qu'elle puisse se connecter et faire des rencontres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863098/Pas-de-panique-y-a-Monique--2_mlnrvs.webp",
+    "font_url": "http://www.laboitearire.net",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.446Z",
+    "periodicitat": ""
   }
 ]
