@@ -3351,5 +3351,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.431Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-01-exposicio-noir-doxyde",
+    "titol": "Exposició «Noir d'Oxyde» de Patrick Cros - Chez Arabesque",
+    "data_inici": "2026-12-01",
+    "data_fi": "2026-12-01",
+    "hora": "",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'exposició de Patrick Cros, a Chez Arabesque, reuneix pintura abstracta en què la matèria ocupa un lloc central. L'artista explora els contrastos entre l'ombra i la llum, i entre la profunditat i el relleu. Els negres intensos es barregen amb matisos minerals, reflexos daurats i traces blanquinoses, i composen superfícies crues, gairebé telúriques. Les textures, les superposicions i els jocs de transparència fan que cada obra convidi a recórrer un univers misteriós, on la matèria sembla conservar l'empremta del temps.",
+    "descripcio_fr": "L'exposition de Patrick Cros, chez Arabesque, réunit une peinture abstraite où la matière occupe une place centrale. L'artiste explore les contrastes entre l'ombre et la lumière, et entre la profondeur et le relief. Les noirs intenses se mêlent à des nuances minérales, à des reflets dorés et à des traces blanchâtres, et composent des surfaces brutes, presque telluriques. Les textures, les superpositions et les jeux de transparence font que chaque œuvre invite à parcourir un univers mystérieux, où la matière semble conserver l'empreinte du temps.",
+    "associacio": "Contacter ARABESQUE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863038/event-FMALAR066V52ZK38-1792654700145_twz30p.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.473Z",
+    "periodicitat": ""
   }
 ]
