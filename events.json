@@ -2439,5 +2439,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.286Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-petit-mercat-del",
+    "titol": "Petit mercat del dimecres",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "05:30",
+    "lloc": "1 Place Léo Lagrange",
+    "municipi": "Sant Pau de Fenollet",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Cada dimecres es fa un petit mercat a la plaça del Foyer Rural de Sant Pau de Fenollet, amb productes de primera temporada. La celebració queda subjecta a unes condicions climàtiques favorables.",
+    "descripcio_fr": "Chaque mercredi se tient un petit marché place du Foyer Rural de Sant Pau de Fenollet, avec des produits de primeur. Il est organisé sous réserve de conditions climatiques favorables.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862595/marche-mercredi_xjb2wr.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.293Z",
+    "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-11-18-animacio-de-realitat",
+    "titol": "Animació de realitat virtual",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "15:00",
+    "lloc": "7 passage jeantet violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Es proposa una trobada amb la realitat virtual. L'acte està adreçat a tothom a partir de 12 anys.",
+    "descripcio_fr": "Il est proposé un rendez-vous avec la réalité virtuelle. L'animation s'adresse à tout public à partir de 12 ans.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862597/Aspres-thuir-realitevrit_fzpeso.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.310Z",
+    "periodicitat": ""
   }
 ]
