@@ -2686,5 +2686,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.506Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-trobada-de-lectors",
+    "titol": "Trobada de lectors: entorn de la intel·ligència artificial",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La trobada de lectors proposa explorar la intel·ligència artificial a partir de llibres, reflexions i experiències de cadascú. Després de la lectura, els participants comparteixen el seu parer, exposen els dubtes i coneixen altres punts de vista sobre les promeses, els reptes i les qüestions de fons de la IA. No cal ser expert: n'hi ha prou amb la curiositat, l'escolta i les ganes d'intercanviar. Es desenvolupa en un ambient obert i cordial.",
+    "descripcio_fr": "La rencontre de lecteurs propose d'explorer l'intelligence artificielle à partir de livres, de réflexions et d'expériences de chacun. Après la lecture, les participants partagent leur ressenti, expriment leurs doutes et découvrent d'autres points de vue sur les promesses, les défis et les enjeux de l'IA. Pas besoin d'être expert : la curiosité, l'écoute et l'envie d'échanger suffisent. Le tout se déroule dans une atmosphère ouverte et cordiale.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862781/book-1283865-1280_m36npp.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.523Z",
+    "periodicitat": ""
   }
 ]
