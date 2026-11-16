@@ -2496,5 +2496,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.403Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-spectacle-des-trucs",
+    "titol": "Spectacle des trucs comme ci des trucs comme ça",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "10:00",
+    "lloc": "7 passage jeantet violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "La companyia Encima presenta un espectacle de teatre d'objectes per a infants a partir de 6 mesos, en francès i en català. Hi apareixen objectes que punxen i d'altres de molt suaus, que fan soroll i que són útils, així com caixes rodones i quadrades, de mides diverses, i un llibre. L'espectacle explora com els infants i els adults donen sentit als trucs comme ci i als trucs comme ça, amb humor, dolçor i sorpresa, en una adaptació amb objectes desviats de la seva funció que celebra la força de la mirada i la poesia de les coses corrents.",
+    "descripcio_fr": "La compagnie Encima présente un spectacle de théâtre d'objets pour les enfants à partir de 6 mois, en français et en catalan. On y voit des objets qui piquent et d'autres très doux, qui font du bruit et qui sont utiles, ainsi que des boîtes rondes et carrées, de tailles diverses, et un livre. Le spectacle explore la manière dont les enfants et les adultes donnent du sens aux trucs comme ci et aux trucs comme ça, avec humour, douceur et surprise, dans une adaptation aux objets détournés de leur fonction qui célèbre la puissance du regard et la poésie des choses ordinaires.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862608/Aspres-thuir-spectaclemedi_cfg5ai.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.440Z",
+    "periodicitat": ""
   }
 ]
