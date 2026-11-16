@@ -2914,5 +2914,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.524Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-festa-de-notre",
+    "titol": "Festa de Notre-Dame de Bonne Nouvelle",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "11:00",
+    "lloc": "Rue Arago",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La comunitat de parròquies de la Côte Vermeille convida a celebrar Notre-Dame de Bonne Nouvelle amb un acte espiritual. Després de la missa, els fidels són convidats a participar en una processó cap a l'estàtua de la Verge daurada, situada al Fort du Fanal. El recorregut inclou oracions, en particular el rosari, i a l'arribada hi ha una benedicció del territori. La celebració continua amb una trobada parroquial que reuneix les comunitats de Collioure i de Portvendres.",
+    "descripcio_fr": "La communauté de paroisses de la Côte Vermeille invite à célébrer Notre-Dame de Bonne Nouvelle à travers un rendez-vous spirituel. Après la messe, les fidèles sont invités à participer à une procession vers la statue de la Vierge dorée, située au Fort du Fanal. Le parcours comprend des prières, notamment le chapelet, et se termine à l'arrivée par une bénédiction du territoire. La célébration se poursuit par une rencontre paroissiale réunissant les communautés de Collioure et de Portvendres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862906/Eglise-Port-Vendres-Bettina-Bauer-25112-1200px_xrrvq9.webp",
+    "font_url": "https://paroissescotevermeille.blogspot.com/p/blog-page_8.html",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.532Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-23-taller-de-descoberta",
+    "titol": "Taller de descoberta de pa de petit espelta i llevat natural",
+    "data_inici": "2026-11-23",
+    "data_fi": "2026-11-23",
+    "hora": "13:50",
+    "lloc": "3 Carrer de l'Aire",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Taller",
+    "descripcio_ca": "L'activitat és un taller de descoberta del pa de petit espelta. Durant el taller es fa un llevat natural, es mol la farina en el mateix lloc i es repassa la història d'aquest cereal ancestral.",
+    "descripcio_fr": "L'activité est un atelier de découverte du pain au petit épeautre. Pendant l'atelier, on fabrique un levain naturel, on moud la farine sur place et on retrace l'histoire de cette céréale ancestrale.",
+    "associacio": "",
+    "imatge_url": "",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.508Z",
+    "periodicitat": ""
   }
 ]
