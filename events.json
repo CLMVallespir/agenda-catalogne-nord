@@ -2762,5 +2762,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.508Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-les-veillees-dantan",
+    "titol": "Les veillées d'antan",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "18:00",
+    "lloc": "Rue du 14 Juillet",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Les Veillées organitzen una vetllada dedicada a Jean Giono a la sala Novelty. Hi ha prevista una lectura en veu alta d'extractes de la novel·la Un roi sans divertissement, acompanyada musicalment pel contrabaixista Yvan Floch. Després es projecta la pel·lícula Un roi sans divertissement, escrita i dialogada per Jean Giono i dirigida per François Leterrier, amb Claude Giraud, Colette Renard i Charles Vanel. Entre les dues parts de la sessió es serveix un refrigeri, i el públic pot portar el seu berenar.",
+    "descripcio_fr": "Les Veillées organisent une soirée consacrée à Jean Giono dans la salle Novelty. Une lecture à voix haute d'extraits du roman Un roi sans divertissement est prévue, accompagnée musicalement par le contrebassiste Yvan Floch. Puis le film Un roi sans divertissement, écrit et dialogué par Jean Giono et réalisé par François Leterrier, avec Claude Giraud, Colette Renard et Charles Vanel, est projeté. Entre les deux parties de la soirée, un rafraîchissement est servi, et le public peut apporter son casse-croûte.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862835/lecture-veillee-antan_bckyiv.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.305Z",
+    "periodicitat": ""
   }
 ]
