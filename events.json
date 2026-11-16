@@ -2876,5 +2876,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.525Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-festa-major",
+    "titol": "Festa major",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "11:00",
+    "lloc": "Place Castellane",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "La festa major combina música, dansa i convivència per fer viure les tradicions catalanes. La Cobla Sol de Banyuls acompanya la celebració religiosa amb les seves sonoritats característiques. Hi haurà una ballada de sardanes organitzada per l'associació La Vigatana Port-vendrenca, i Julio Leone i Maxime Cayuela es reuneixen en un concert de música catalana. L'acte vol celebrar un patrimoni viu, transmetre els costums i compartir l'estima per la cultura catalana.",
+    "descripcio_fr": "La fête majeure associe musique, danse et convivialité pour faire vivre les traditions catalanes. La Cobla Sol de Banyuls accompagne la célébration religieuse de ses sonorités caractéristiques. Une ballada de sardanes est organisée par l'association La Vigatana Port-vendrenca, et Julio Leone et Maxime Cayuela se réunissent lors d'un concert de musique catalane. L'événement vise à célébrer un patrimoine vivant, transmettre les coutumes et partager l'attachement à la culture catalane.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862895/Sardane-Feria-de-Millas--Poune--CC-BY-SA-3.0--via-Wikimedia-Commons_pvo0pj.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.504Z",
+    "periodicitat": ""
   }
 ]
