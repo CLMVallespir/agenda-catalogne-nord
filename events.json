@@ -3009,5 +3009,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.528Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-taller-creatiu",
+    "titol": "Taller creatiu",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "15:00",
+    "lloc": "Médiathèque Victor Hugo2 Rue de la Paix",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Pauline raconte l'art rendeix homenatge a la gran artista Yayoi Kusama, que ens ha deixat. Japonesa de talent extraordinari, Yayoi Kusama va marcar el món sencer amb un art de vocació terapèutica. S'hi pinta a la seva manera, perquè les persones participants esdevinguin, al seu torn, punts dins de l'univers.",
+    "descripcio_fr": "Pauline raconte l'art rend hommage à l'immense artiste Yayoi Kusama, qui nous a quittés. Japonaise au talent extraordinaire, Yayoi Kusama a marqué le monde entier avec un art à visée thérapeutique. On y peint à sa manière, pour devenir à notre tour des pois dans l'univers.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862931/Yayoi-Kusama_a8rzbs.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.437Z",
+    "periodicitat": ""
   }
 ]
