@@ -1040,7 +1040,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52XIUG] L'acte es fa 5 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-17-cine-club-soiree",
+    "id": "2026-11-17-cine-club-vetllada",
     "titol": "Ciné-Club: vetllada ucraïnesa",
     "data_inici": "2026-11-17",
     "data_fi": "2026-11-17",
@@ -1052,9 +1052,9 @@
     "descripcio_ca": "El Ciné-Club de Portvendres proposa una immersió en la cultura ucraïnesa, amb una programació que combina cinema, música, gastronomia i solidaritat. L'acte es fa amb la col·laboració de Mariana Vassylko, Khrystyna Braga i amigues ucraïneses instal·lades a la comuna, i inclou la projecció del documentari de Gildas Girodeau, de 20 minuts, sobre el compromís dels civils i dels militars ucraïnesos, amb una recaptació de fons per als projectes que s'hi duen a terme. Una cor vinguda de Perpinyà interpretarà cançons ucraïneses, i un àpat amb plats tradicionals, com els varenyki, preparat pel traiteur Camion Chavanne i les participants ucraïneses, en completarà la part gastronòmica. La pel·lícula Butterfly Vision narra la tornada de Lilia, especialista en reconeixement aeri, a Ucraïna després de mesos de captivitat al Donbass, i es tanca amb un debat amb el públic.",
     "descripcio_fr": "Le Ciné-Club de Portvendres propose une immersion dans la culture ukrainienne, avec une programmation associant cinéma, musique, gastronomie et solidarité. L'événement se déroule avec la collaboration de Mariana Vassylko, Khrystyna Braga et des amies ukrainiennes installées dans la commune, et comprend la projection du documentaire de Gildas Girodeau, d'une durée de 20 minutes, sur l'engagement des civils et des militaires ukrainiens, accompagnée d'une collecte de fonds au profit des projets menés sur place. Une chorale venue de Perpignan interprétera des chants ukrainiens, et un repas aux saveurs ukrainiennes, préparé par le traiteur Camion Chavanne et les participantes ukrainiennes, complétera la partie gastronomique, avec notamment des varenyki. Le film Butterfly Vision retrace le retour de Lilia, spécialiste en reconnaissance aérienne, en Ukraine après plusieurs mois de captivité dans le Donbass, et se termine par un débat avec le public.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cine-club-pv.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862198/cine-club-pv_qm9edu.webp",
     "font_url": "https://www.facebook.com/Ciné-club-de-Port-Vendres-100083383356905/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.503Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNZA] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
