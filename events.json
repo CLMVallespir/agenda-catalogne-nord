@@ -2591,5 +2591,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.514Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-jornada-dels-drets",
+    "titol": "Jornada dels drets dels infants",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "14:00",
+    "lloc": "Boulevard des Rois de Majorque",
+    "municipi": "El Barcarès",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'acte proposa un programa lúdic i educatiu sobre els drets i les lleis que protegeixen els infants. Hi ha jocs i animacions variades, inspirats en la pedagogia Montessori, i també jocs de fusta, per aprendre mentre es juga. Hi ha animacions virtuals, i la mediateca ofereix activitats interactives i creatives per sensibilitzar els infants sobre els seus drets.",
+    "descripcio_fr": "L'acte propose un programme ludique et éducatif sur les droits et les lois qui protègent les enfants. Il y a des jeux et des animations variés, inspirés de la pédagogie Montessori, ainsi que des jeux en bois, pour apprendre en s'amusant. Il y a aussi des animations virtuelles, et la médiathèque propose des activités interactives et créatives pour sensibiliser les enfants à leurs droits.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862752/AdobeStock-282731186-edited_tnihcg.webp",
+    "font_url": "https://www.lebarcares-tourisme.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.522Z",
+    "periodicitat": ""
   }
 ]
