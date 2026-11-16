@@ -2900,7 +2900,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZK8X] La categoria queda buida a posta: «Concours» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-29-concert-ensemble-de",
+    "id": "2026-11-29-concert-del-conjunt",
     "titol": "Concert del conjunt de metalls Résonances",
     "data_inici": "2026-11-29",
     "data_fi": "2026-11-29",
@@ -2912,9 +2912,9 @@
     "descripcio_ca": "El conjunt de metalls del Conservatoire de Perpignan, format per onze instrumentistes, presenta el concert Résonances. L'acte consisteix en un concert de música per a metalls interpretat pel conjunt.",
     "descripcio_fr": "L'ensemble de cuivres du Conservatoire de Perpignan, composé de onze instrumentistes, présente le concert Résonances. L'acte consiste en un concert de musique pour cuivres interprété par cet ensemble.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/cuivres.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863023/cuivres_xebngi.webp",
     "font_url": "https://alainmarinaro.fr",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.501Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNX8] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
