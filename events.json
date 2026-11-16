@@ -3142,5 +3142,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.521Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-joc-descapada",
+    "titol": "Joc d'escapada",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "09:30",
+    "lloc": "Boulevard Ecoiffier",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Es tracta d'un joc d'escapada, un moment lúdic per compartir en família, a Tuïr. La inscripció prèvia és obligatòria.",
+    "descripcio_fr": "Il s'agit d'un jeu d'évasion, un moment ludique à partager en famille, à Tuïr. L'inscription préalable est obligatoire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862969/Aspres-thuir-escape-zero-dechet_t4g78x.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.349Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-tarda-de-jocs",
+    "titol": "Tarda de jocs de societat",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "14:00",
+    "lloc": "Rue du 14 Juillet",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "L'associació Banyuls Espace Jeux organitza una tarda de jocs de societat. L'activitat s'adreça a tothom.",
+    "descripcio_fr": "L'association Banyuls Espace Jeux organise un après-midi de jeux de société. L'activité s'adresse à tous.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862971/28-11-espace-jeux_wtxs6a.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.492Z",
+    "periodicitat": ""
   }
 ]
