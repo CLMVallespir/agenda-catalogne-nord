@@ -3100,7 +3100,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZN7V] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-02-don-du-sang",
+    "id": "2026-12-02-donacio-de-sang",
     "titol": "Donació de sang",
     "data_inici": "2026-12-02",
     "data_fi": "2026-12-02",
@@ -3112,9 +3112,9 @@
     "descripcio_ca": "Es fa una donació de sang a Passà. Hi poden participar les persones d'entre 18 i 70 anys, que pesin més de 50 kg i que es trobin en bona forma. Cal demanar cita prèvia, i la donació es fa en nom dels pacients transfusats.",
     "descripcio_fr": "Un don de sang a lieu à Passà. Peuvent y participer les personnes âgées de 18 à 70 ans, pesant plus de 50 kg et en bonne forme. Il est nécessaire de prendre rendez-vous, et le don est fait au nom des patients transfusés.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-don-du-sang-5.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863049/Aspres-don-du-sang-5_gfvfrv.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.284Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V520LL1] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
