@@ -2344,5 +2344,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.504Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-17-mes-enlla-de",
+    "titol": "Més enllà de la IA: la il·lusió de la propietat de les dades",
+    "data_inici": "2026-11-17",
+    "data_fi": "2026-11-17",
+    "hora": "18:00",
+    "lloc": "10 Allée de la Liberté",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La conferència planteja si les dades personals són realment de cadascú, en un moment en què la intel·ligència artificial transforma el dia a dia i fa essencials la confidencialitat i el control de la informació. Els ponents, Blaise Madeline, professor-investigador en informàtica, i Gilles Mateu, gestor tècnic de grans comptes, analitzen el que hi ha darrere del món digital. S'hi aborda per què les dades han esdevingut tan valuoses, qui les utilitza, quins n'són els riscos i com es poden protegir. Es presenta com una trobada accessible per entendre els reptes del món digital i les tecnologies que en modelen el futur.",
+    "descripcio_fr": "La conférence pose la question de savoir si les données personnelles appartiennent vraiment à chacun, à un moment où l'intelligence artificielle transforme le quotidien et rend essentielles la confidentialité et la maîtrise de l'information. Les intervenants, Blaise Madeline, enseignant-chercheur en informatique, et Gilles Mateu, gestionnaire technique de grands comptes, analysent ce qui se cache derrière le monde numérique. Il y est abordé pourquoi les données sont devenues si précieuses, qui les utilise, quels en sont les risques et comment les protéger. Elle se présente comme une rencontre accessible pour comprendre les défis du numérique et les technologies qui façonnent l'avenir.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862223/conference-22_kpavdg.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.523Z",
+    "periodicitat": ""
   }
 ]
