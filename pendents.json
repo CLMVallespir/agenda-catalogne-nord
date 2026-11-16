@@ -2140,7 +2140,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZPE7] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-22-fete-de-notre",
+    "id": "2026-11-22-festa-de-notre",
     "titol": "Festa de Notre-Dame de Bonne Nouvelle",
     "data_inici": "2026-11-22",
     "data_fi": "2026-11-22",
@@ -2152,15 +2152,15 @@
     "descripcio_ca": "La comunitat de parròquies de la Côte Vermeille convida a celebrar Notre-Dame de Bonne Nouvelle amb un acte espiritual. Després de la missa, els fidels són convidats a participar en una processó cap a l'estàtua de la Verge daurada, situada al Fort du Fanal. El recorregut inclou oracions, en particular el rosari, i a l'arribada hi ha una benedicció del territori. La celebració continua amb una trobada parroquial que reuneix les comunitats de Collioure i de Portvendres.",
     "descripcio_fr": "La communauté de paroisses de la Côte Vermeille invite à célébrer Notre-Dame de Bonne Nouvelle à travers un rendez-vous spirituel. Après la messe, les fidèles sont invités à participer à une procession vers la statue de la Vierge dorée, située au Fort du Fanal. Le parcours comprend des prières, notamment le chapelet, et se termine à l'arrivée par une bénédiction du territoire. La célébration se poursuit par une rencontre paroissiale réunissant les communautés de Collioure et de Portvendres.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Eglise-Port-Vendres-Bettina-Bauer-25112-1200px.JPG?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862906/Eglise-Port-Vendres-Bettina-Bauer-25112-1200px_xrrvq9.webp",
     "font_url": "https://paroissescotevermeille.blogspot.com/p/blog-page_8.html",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.532Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZPW7] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-23-atelier-decouverte-de",
+    "id": "2026-11-23-taller-de-descoberta",
     "titol": "Taller de descoberta de pa de petit espelta i llevat natural",
     "data_inici": "2026-11-23",
     "data_fi": "2026-11-23",
@@ -2174,7 +2174,7 @@
     "associacio": "",
     "imatge_url": "",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.508Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZOAJ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
