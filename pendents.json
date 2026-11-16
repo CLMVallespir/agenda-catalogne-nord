@@ -1060,7 +1060,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZNZA] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-17-seance-renforcement-musculaire",
+    "id": "2026-11-17-sessio-de-reforc",
     "titol": "Sessió de reforç muscular de l'esquena",
     "data_inici": "2026-11-17",
     "data_fi": "2026-11-17",
@@ -1072,9 +1072,9 @@
     "descripcio_ca": "Es tracta d'una sessió de gimnàstica de l'esquena centrada en el reforç muscular, per tenir cura de la columna de manera suau. Els participants han de portar una tovallola i una ampolla d'aigua.",
     "descripcio_fr": "Il s'agit d'une séance de gym du dos centrée sur le renforcement musculaire, pour prendre soin de son dos en douceur. Les participants doivent apporter une serviette et une bouteille d'eau.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/643257814-934410296224755-5915925964640569110-n.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862204/643257814-934410296224755-5915925964640569110-n_ldw7en.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.504Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZO5F] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
