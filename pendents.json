@@ -3380,7 +3380,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZG59] L'acte es fa 8 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-03-atelier-distillerie",
+    "id": "2026-12-03-taller-de-destil",
     "titol": "Taller de destil·leria",
     "data_inici": "2026-12-03",
     "data_fi": "2026-12-03",
@@ -3392,9 +3392,9 @@
     "descripcio_ca": "L'acte és una mitja jornada a la destil·leria d'Els Masos, al peu del Canigou, on els participants destil·len una planta ells mateixos i veuen com funcionen els alambins i com en surten l'oli essencial i l'hidrolat. Després es tracten les diferències entre l'oli essencial i l'hidrolat, els seus usos, les normes de precaució i com triar-los i conservar-los. Cada participant s'emporta l'hidrolat o el roll-on que haurà fabricat. No cal tenir coneixements previs, i l'activitat és oberta a partir de secundària.",
     "descripcio_fr": "Il s'agit d'une demi-journée à la distillerie d'Els Masos, au pied du Canigou, où les participants distillent eux-mêmes une plante et voient fonctionner les alambics et sortir l'huile essentielle et l'hydrolat. Il est ensuite question des différences entre l'huile essentielle et l'hydrolat, de leurs usages, des règles de prudence et de la manière de les choisir et de les conserver. Chaque participant repart avec l'hydrolat ou le roll-on qu'il aura fabriqué. Aucune connaissance préalable n'est nécessaire, et l'activité est ouverte à partir du collège.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/846705068-18337226308272614-6227497420476566325-n.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863107/846705068-18337226308272614-6227497420476566325-n_fo2cy0.webp",
     "font_url": "https://floraluna.fr/boutique/aroma-distillation-niv1/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.468Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZJJD] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
