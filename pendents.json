@@ -2120,7 +2120,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZP66] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-22-marche-de-noel",
+    "id": "2026-11-22-mercat-de-nadal",
     "titol": "Mercat de Nadal",
     "data_inici": "2026-11-22",
     "data_fi": "2026-11-22",
@@ -2132,9 +2132,9 @@
     "descripcio_ca": "El municipi de Catllar organitza el seu mercat de Nadal en un ambient festiu i màgic. Hi haurà més de 30 parades de creadors locals i de productes de la terra, i es podrà visitar l'església. També hi haurà una tómbola, animació musical i passejades en poni, a més d'altres sorpreses.",
     "descripcio_fr": "La commune de Catllar organise son marché de Noël dans une ambiance festive et magique. Il y aura plus de 30 stands de créateurs locaux et de produits de la terre, une visite de l'église, une tombola, de l'animation musicale et des balades à poney, ainsi que d'autres surprises.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/FB-IMG-1794213539536.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862901/FB-IMG-1794213539536_ygys0a.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.524Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZPE7] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
