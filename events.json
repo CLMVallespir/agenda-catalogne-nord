@@ -3199,5 +3199,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.513Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-venda-de-pa",
+    "titol": "Venda de pa",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "11:00",
+    "lloc": "",
+    "municipi": "Palau de Cerdanya",
+    "comarca": "Cerdanya",
+    "categoria": "",
+    "descripcio_ca": "Es duu a terme una venda de pa cuit al forn de pa. La recaptació va a benefici de la Ligue contre le Cancer.",
+    "descripcio_fr": "Une vente de pain cuit au four à pain est organisée. Les recettes sont au profit de la Ligue contre le Cancer.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862983/28-nov-PALAU_v65uu8.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.523Z",
+    "periodicitat": ""
   }
 ]
