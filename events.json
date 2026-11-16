@@ -3332,5 +3332,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.501Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-01-film-mauprat",
+    "titol": "Film «Mauprat»",
+    "data_inici": "2026-12-01",
+    "data_fi": "2026-12-01",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Adaptació de la novel·la de George Sand, Mauprat és el primer film que Jean Epstein realitza com a productor independent. Ambientada al Berry del segle XVIII, narra el destí de Bernard, un orfe criat en la violència per l'oncle Tristan, que Hubert i la seva filla Edmée intenten alliberar. El film es va rodar en part a la vall de la Creuse i en destaca l'interès d'Epstein pels paisatges. La projecció s'emmarca en la Semaine George Sand, amb motiu del 150è aniversari de la mort de l'autora, i té música en directe a càrrec de LFO-51.",
+    "descripcio_fr": "Adaptation du roman de George Sand, Mauprat est le premier film que Jean Epstein réalise en tant que producteur indépendant. Situé dans le Berry du XVIIIe siècle, il raconte le destin de Bernard, un orphelin élevé dans la violence par l'oncle Tristan, que Hubert et sa fille Edmée tentent de libérer. Le film a été tourné en partie dans la vallée de la Creuse, et l'on y perçoit l'intérêt d'Epstein pour les paysages. La projection s'inscrit dans la Semaine George Sand, à l'occasion du 150e anniversaire de la mort de l'autrice, et est accompagnée en direct par LFO-51.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863031/MAUPRAT---Decembre-2026_t37yay.webp",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.431Z",
+    "periodicitat": ""
   }
 ]
