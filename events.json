@@ -2363,5 +2363,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.523Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-17-club-de-lectura",
+    "titol": "Club de lectura Coup de Coeur",
+    "data_inici": "2026-11-17",
+    "data_fi": "2026-11-17",
+    "hora": "18:00",
+    "lloc": "12 Rue de la Poste",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "El club de lectura Coup de Coeur reuneix les persones interessades a la mediateca per compartir les seves lectures literàries. Les trobades són mensuals i obertes a tothom.",
+    "descripcio_fr": "Le club de lecture Coup de Coeur réunit les personnes intéressées à la médiathèque pour partager leurs lectures littéraires. Les rencontres sont mensuelles et ouvertes à tous.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862577/marysse93-book-2115176-1920--1-_jfmysq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.523Z",
+    "periodicitat": ""
   }
 ]
