@@ -3427,5 +3427,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.386Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-02-espectacle-musical-guirlandes",
+    "titol": "Espectacle musical «Guirlandes & Manteau Blanc» amb Céline Bertault",
+    "data_inici": "2026-12-02",
+    "data_fi": "2026-12-02",
+    "hora": "16:00",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Abans de l'arribada de l'hivern i com a preparació del Nadal, Céline Bertault proposa un conte musical de to molt suau. L'espectacle s'adreça a un públic familiar. Les places són limitades i cal fer reserva prèvia.",
+    "descripcio_fr": "Avant l'arrivée de l'hiver et en préparation de Noël, Céline Bertault propose un conte musical tout en douceur. Le spectacle s'adresse à un public familial. Les places sont limitées et la réservation est nécessaire.",
+    "associacio": "Contacter MEDIATHEQUE PROSPER MERIMEE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863063/event-FMALAR066V52YC5Q-1787136008415_olvykf.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.388Z",
+    "periodicitat": ""
   }
 ]
