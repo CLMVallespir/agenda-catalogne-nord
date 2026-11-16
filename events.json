@@ -2743,5 +2743,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.500Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-vetllada-de-rugbi",
+    "titol": "Vetllada de rugbi femení",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "19:30",
+    "lloc": "Chemin de la Piscine",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "",
+    "descripcio_ca": "És un sopar ballable amenitzat per Christian Fontaine. El menú inclou aperitiu, fideua, vi i formatge, postres i cafè.",
+    "descripcio_fr": "Il s'agit d'un repas dansant animé par Christian Fontaine. Le menu comprend apéritif, fideua, vin et fromage, dessert et café.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862818/11711_qfzztf.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.508Z",
+    "periodicitat": ""
   }
 ]
