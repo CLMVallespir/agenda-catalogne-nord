@@ -2800,5 +2800,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.502Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-neteja-de-tardor",
+    "titol": "Neteja de tardor",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "09:00",
+    "lloc": "Plage nord Bunker de Torreilles",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Es tracta d'una acció de neteja oberta a tothom, que vol contribuir a la protecció del litoral i del medi ambient. Els participants netejaran la plage des Bunkers fins a l'embocadura de l'Agly, i els residus recollits es pesaran en acabar. Es facilita el material necessari, excepte els guants per a infants. L'acció s'organitza amb el suport de la vila de Torrelles de la Salanca, el Mas Alart i els voluntaris de l'associació Submarina 66, i finalitza amb un refresc de l'amistat.",
+    "descripcio_fr": "Il s'agit d'une action de nettoyage ouverte à tous, qui vise à contribuer à la protection du littoral et de l'environnement. Les participants nettoieront la plage des Bunkers jusqu'à l'embouchure de l'Agly, et les déchets collectés seront pesés à l'issue. Le matériel nécessaire est fourni, à l'exception des gants pour enfants. L'action est organisée avec le soutien de la Ville de Torrelles de la Salanca, du Mas Alart et des bénévoles de l'association Submarina 66, et se termine par un verre de l'amitié.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862846/886312993-1099657109510433-87484_ly3is0.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.510Z",
+    "periodicitat": ""
   }
 ]
