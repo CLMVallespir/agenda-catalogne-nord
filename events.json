@@ -3028,5 +3028,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.437Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-english-time",
+    "titol": "English time",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "10:00",
+    "lloc": "22 Avenue du Vallespir",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'un espai de cultura per a infants a partir de 7 anys. L'activitat es dedica al descobriment i a la iniciació a la llengua anglesa.",
+    "descripcio_fr": "Il s'agit d'un espace culturel pour les enfants à partir de 7 ans. L'activité est consacrée à la découverte et à l'initiation à la langue anglaise.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862947/Design-sans-titre--1--8_ngn5s8.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.508Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-taller-de-realitzacio",
+    "titol": "Taller de realització d'una estampa japonesa",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-26",
+    "hora": "09:30",
+    "lloc": "22 Avenue du Vallespir",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'activitat permet iniciar-se en l'univers de l'estampa japonesa i en els seus procediments artístics. Abans del taller, una projecció de vídeo permet conèixer la història i les particularitats d'aquest art. L'espai s'ornamentarà amb uns quants fanals per crear un ambient inspirat en l'estètica japonesa.",
+    "descripcio_fr": "L'atelier permet une initiation à l'univers de l'estampe japonaise et à ses procédés artistiques. Avant l'activité, une projection vidéo permet de découvrir l'histoire et les particularités de cet art. Le lieu sera orné de quelques lanternes afin de créer une ambiance inspirée de l'esthétique japonaise.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862950/Quinzaine-du-Japon-F-compressed-page-0001_terb3z.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.516Z",
+    "periodicitat": ""
   }
 ]
