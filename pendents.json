@@ -3260,7 +3260,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZM46] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-02-tous-au-theatre",
+    "id": "2026-12-02-tots-al-teatre",
     "titol": "Tots al teatre",
     "data_inici": "2026-12-02",
     "data_fi": "2026-12-02",
@@ -3272,9 +3272,9 @@
     "descripcio_ca": "Els municipis de la Côte Vermeille (Cerbère, Banyuls de la Marenda, Port-Vendres i Collioure) ofereixen un transport gratuït en autobús d'anada i tornada fins al teatre de l'Archipel, a Perpignan, per assistir a la representació de L'école des Femmes, de Molière, amb François Morel. Les places són destinades als habitants de la Côte Vermeille i es poden comprar a l'oficina de turisme de cada municipi. El nombre de places és limitat i la representació ja està exhaurida. L'horari del bus es comunicarà en el moment de la inscripció.",
     "descripcio_fr": "Les municipalités de la Côte Vermeille (Cerbère, Banyuls de la Marenda, Port-Vendres et Collioure) proposent un transport gratuit en bus aller-retour jusqu'au théâtre de l'Archipel, à Perpignan, pour assister à la représentation de L'école des Femmes, de Molière, avec François Morel. Les places sont réservées aux habitants de la Côte Vermeille et peuvent être achetées auprès de l'office de tourisme de chaque commune. Le nombre de places est limité et la représentation est déjà complète. L'horaire du bus sera communiqué lors de l'inscription.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/2026-TOUSAUTHEATRE-web.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863086/2026-TOUSAUTHEATRE-web_dncaph.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.492Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZMU6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
