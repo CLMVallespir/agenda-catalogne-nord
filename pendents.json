@@ -2240,7 +2240,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZO5H] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-24-lecture-doracles",
+    "id": "2026-11-24-lectura-doracles",
     "titol": "Lectura d'oracles",
     "data_inici": "2026-11-24",
     "data_fi": "2026-11-24",
@@ -2252,9 +2252,9 @@
     "descripcio_ca": "Virginie Cifuentes ofereix una lectura d'oracles per aportar una mirada sobre el que vivim actualment, sense posicionaments previs. Cada participant del col·lectiu hi fa un balanç de la situació present, per entendre millor els esdeveniments recents. L'acte es fa abans d'entrar en un any que ja s'anuncia com a iniciàtic.",
     "descripcio_fr": "Virginie Cifuentes propose une lecture d'oracles pour apporter un éclairage sur ce que nous vivons actuellement, sans parti pris. Chaque participant du collectif y fait un état des lieux de la situation présente, afin de mieux comprendre les événements récents. L'acte se tient avant d'entrer dans une année qui s'annonce déjà initiatique.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aSPRES-THUIR-LECTUREORACLES.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862922/aSPRES-THUIR-LECTUREORACLES_c0poyy.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.528Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZPM0] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
