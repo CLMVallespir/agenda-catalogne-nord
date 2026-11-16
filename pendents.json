@@ -3080,7 +3080,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZN7O] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-01-scene-ouverte-piano",
+    "id": "2026-12-01-escena-oberta-de",
     "titol": "Escena oberta de piano",
     "data_inici": "2026-12-01",
     "data_fi": "2026-12-01",
@@ -3092,9 +3092,9 @@
     "descripcio_ca": "Chez Maërlle posa a disposició del públic un piano de lliure accés a la planta superior de la botiga. Els aficionats a la música, curiosos o apassionats, hi poden tocar, escoltar o deixar-se portar per improvisacions acústiques i solilòquis musicals, enmig de les pintures.",
     "descripcio_fr": "Chez Maërlle met à disposition du public un piano en accès libre à l'étage de la boutique. Les amateurs de musique, curieux ou passionnés, peuvent y jouer, écouter ou se laisser porter par des improvisations acoustiques et des soliloques musicaux, au milieu des peintures.",
     "associacio": "Contacter CHEZ MAERLLE",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52ZN7V-1793354352256.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863043/event-FMALAR066V52ZN7V-1793354352256_wmseaj.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.496Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZN7V] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
