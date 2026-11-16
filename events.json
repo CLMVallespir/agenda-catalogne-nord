@@ -3313,5 +3313,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.474Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-concert-del-conjunt",
+    "titol": "Concert del conjunt de metalls Résonances",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "",
+    "lloc": "Rue du 14 Juillet",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El conjunt de metalls del Conservatoire de Perpignan, format per onze instrumentistes, presenta el concert Résonances. L'acte consisteix en un concert de música per a metalls interpretat pel conjunt.",
+    "descripcio_fr": "L'ensemble de cuivres du Conservatoire de Perpignan, composé de onze instrumentistes, présente le concert Résonances. L'acte consiste en un concert de musique pour cuivres interprété par cet ensemble.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863023/cuivres_xebngi.webp",
+    "font_url": "https://alainmarinaro.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.501Z",
+    "periodicitat": ""
   }
 ]
