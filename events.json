@@ -2401,5 +2401,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.281Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-11-18-quai-des-bouquinistes",
+    "titol": "Quai des Bouquinistes - Mercat de llibres antics i d'ocasió",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "08:00",
+    "lloc": "Quai Sébastien Vauban",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat s'instal·la habitualment al quai Vauban i de vegades s'estén per les places Jean Jaurès i François Arago. S'hi ofereixen llibres en edició original i llibres antics, així com llibres d'història, d'art i de civilització, documents antics, llibres regionals i còmics.",
+    "descripcio_fr": "Le marché s'installe habituellement sur le quai Vauban et s'étend parfois sur les places Jean Jaurès et François Arago. On y propose des livres en édition originale et des livres anciens, ainsi que des livres d'histoire, d'art et de civilisation, des documents anciens, des livres régionaux et des bandes dessinées.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862588/marche-aux-livres-quai-bouquinistes-2_sdwmmu.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.282Z",
+    "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-11-18-club-de-scrabble",
+    "titol": "Club de scrabble",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "14:00",
+    "lloc": "rue de la sardane",
+    "municipi": "Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "Es tracta d'un taller de scrabble. L'activitat és proposada per l'associació Médialettres.",
+    "descripcio_fr": "Il s'agit d'un atelier de scrabble. L'activité est proposée par l'association Médialettres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862590/game-2299097-1920_dpmryc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.286Z",
+    "periodicitat": ""
   }
 ]
