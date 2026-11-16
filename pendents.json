@@ -2540,7 +2540,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZP12] La categoria «Repas de quartier» no té equivalent entre les tretze: queda buida. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-28-escape-game",
+    "id": "2026-11-28-joc-descapada",
     "titol": "Joc d'escapada",
     "data_inici": "2026-11-28",
     "data_fi": "2026-11-28",
@@ -2552,15 +2552,15 @@
     "descripcio_ca": "Es tracta d'un joc d'escapada, un moment lúdic per compartir en família, a Tuïr. La inscripció prèvia és obligatòria.",
     "descripcio_fr": "Il s'agit d'un jeu d'évasion, un moment ludique à partager en famille, à Tuïr. L'inscription préalable est obligatoire.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-escape-zero-dechet.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862969/Aspres-thuir-escape-zero-dechet_t4g78x.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.349Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52WVAH] Ve marcada «Jeux» i el títol sembla una activitat comercial: la categoria queda buida a posta. Decidiu-la a mà, o deixeu la fila fora. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-28-apres-midi-jeux",
+    "id": "2026-11-28-tarda-de-jocs",
     "titol": "Tarda de jocs de societat",
     "data_inici": "2026-11-28",
     "data_fi": "2026-11-28",
@@ -2572,9 +2572,9 @@
     "descripcio_ca": "L'associació Banyuls Espace Jeux organitza una tarda de jocs de societat. L'activitat s'adreça a tothom.",
     "descripcio_fr": "L'association Banyuls Espace Jeux organise un après-midi de jeux de société. L'activité s'adresse à tous.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/28-11-espace-jeux.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862971/28-11-espace-jeux_wtxs6a.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.492Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZMWI] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
