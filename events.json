@@ -2572,5 +2572,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.508Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-fab-lab-creacio",
+    "titol": "Fab Lab: creació d'un marca-pàgines en forma de gat en 3D",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "15:00",
+    "lloc": "Route de Collioure",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'activitat permet transformar una idea en un objecte real amb eines de fabricació digital. Amb l'acompanyament d'un animador, els participants aprenen a fer servir Tinkercad, un programari de modelatge accessible als principiants. Cadascú pot imaginar la seva pròpia creació, amb motius, formes i detalls personalitzats, abans de veure-la materialitzada amb una impressora 3D. Es tracta d'una activitat lúdica i creativa, accessible a partir de 6 anys, en què es fa un objecte pràctic per emportar-se a casa.",
+    "descripcio_fr": "L'activité permet de transformer une idée en objet réel grâce aux outils de fabrication numérique. Accompagnés d'un animateur, les participants apprennent à utiliser Tinkercad, un logiciel de modélisation accessible aux débutants. Chacun peut imaginer sa propre création, avec motifs, formes et détails personnalisés, avant de la voir prendre forme grâce à l'imprimante 3D. Il s'agit d'une activité ludique et créative, accessible dès 6 ans, qui permet de réaliser un objet pratique à emporter chez soi.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862626/micro-folie-3_sf8e9m.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.514Z",
+    "periodicitat": ""
   }
 ]
