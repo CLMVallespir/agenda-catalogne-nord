@@ -2534,5 +2534,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.499Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-activitats-esportives-per",
+    "titol": "Activitats esportives per a infants",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "10:00",
+    "lloc": "5 Rue des Thermes",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'acte consisteix en activitats esportives per a infants d'entre 4 i 6 anys. Les inscripcions es fan al servei d'esports de l'ajuntament.",
+    "descripcio_fr": "L'événement consiste en activités sportives pour les enfants de 4 à 6 ans. Les inscriptions se font auprès du service des sports de la mairie.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862619/flyer-rifle--2_jcetfc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.506Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-english-time",
+    "titol": "English time",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "10:00",
+    "lloc": "22 Avenue du Vallespir",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'una bulla de cultura per a infants a partir de 7 anys. Està dedicada al descobriment i la iniciació a la llengua anglesa.",
+    "descripcio_fr": "Il s'agit d'une bulle de culture pour les enfants à partir de 7 ans. Elle est consacrée à la découverte et à l'initiation à la langue anglaise.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862620/Design-sans-titre--1--8_kn3jmg.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.508Z",
+    "periodicitat": ""
   }
 ]
