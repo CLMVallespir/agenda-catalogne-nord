@@ -3522,5 +3522,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.468Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-03-taller-creatiu-bracalet",
+    "titol": "Taller creatiu: braçalet de macramé",
+    "data_inici": "2026-12-03",
+    "data_fi": "2026-12-03",
+    "hora": "18:00",
+    "lloc": "21 Quai Pierre ForgasÀ l'étage",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'associació Ode aux couleurs proposa una tècnica artesanal senzilla en el seu principi però amb moltes possibilitats: l'art de fer nusos amb fils per crear motius decoratius. Els participants són guiats pas a pas en l'aprenentatge de diferents nusos, i es treballen les combinacions de colors per personalitzar la creació. L'activitat s'adreça tant a principiants com a aficionats a les manualitats i combina la relaxació i la trobada amb el desenvolupament de la destresa manual.",
+    "descripcio_fr": "L'association Ode aux couleurs propose une technique artisanale simple dans son principe mais riche en possibilités : l'art de nouer des fils pour créer des motifs décoratifs. Les participants sont guidés pas à pas dans l'apprentissage de différents nœuds, et les combinaisons de couleurs sont travaillées pour personnaliser la création. L'activité s'adresse aussi bien aux débutants qu'aux amateurs de loisirs créatifs et associe détente et partage au développement de la dextérité manuelle.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863112/Bracelets-en-macrame--Pexels-Gheorghe-Lupan_mbhedc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.501Z",
+    "periodicitat": ""
   }
 ]
