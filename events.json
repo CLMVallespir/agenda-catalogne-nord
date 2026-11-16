@@ -2648,5 +2648,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.499Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-instants-vignerons-especial",
+    "titol": "Instants vignerons especial festes - Muscat de Noël i Beaujolais",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "09:00",
+    "lloc": "19, rue Jules Pams",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte celebra els plaers del vi en un ambient càlid i festiu. S'hi presenten dues expressions vitícoles amb personalitats ben diferents, pensades per despertar el paladar i trobar inspiració per a futurs moments de compartir. Es tracta d'una experiència gastronòmica per assaborir al propi ritme, adreçada tant a aficionats entesos com a persones curioses.",
+    "descripcio_fr": "L'événement célèbre les plaisirs du vin dans une ambiance chaleureuse et festive. Il présente deux expressions viticoles aux personnalités bien distinctes, idéales pour éveiller les papilles et trouver l'inspiration pour de futurs moments de partage. Il s'agit d'une expérience gourmande à savourer à son propre rythme, destinée aux amateurs avertis comme aux personnes simplement curieuses.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862769/Vignobles-et-Fetes-de-Noel--Pixabay---Olebertelsen_otjnk4.webp",
+    "font_url": "https://www.lescavesduroussillon.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.500Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-les-metamorfosis-dels",
+    "titol": "Les metamorfosis dels gests",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "15:00",
+    "lloc": "22 Avenue du Vallespir",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Taller",
+    "descripcio_ca": "L'activitat proposa un moment de benestar i relaxació per donar sortida a la creativitat i expressar les emocions. No cal tenir experiència prèvia en pintura ni en dibuix. Es treballen diferents tècniques, com l'acrílic, l'aquarel·la o el pastel, i s'exploren els colors i les formes per conèixer-se millor.",
+    "descripcio_fr": "L'activité propose un moment de bien-être et de détente pour libérer sa créativité et exprimer ses émotions. Aucune expérience préalable en peinture ou en dessin n'est nécessaire. Différentes techniques sont travaillées, comme l'acrylique, l'aquarelle ou le pastel, et l'on explore les couleurs et les formes pour mieux se connaître.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862771/atelier-adultes_kpl8cu.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.506Z",
+    "periodicitat": ""
   }
 ]
