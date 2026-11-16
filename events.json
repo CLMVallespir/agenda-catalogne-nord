@@ -3180,5 +3180,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.492Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-borsa-de-joguines",
+    "titol": "Borsa de joguines",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "09:00",
+    "lloc": "BOULEVARD VIOLET",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Els organitzadors agraeixen els nombrosos donatius de qualitat rebuts, que permetran fer una bona borsa de joguines a Tuïr. Es compta amb una nombrosa assistència.",
+    "descripcio_fr": "Les organisateurs remercient leurs donateurs pour les nombreux dons de qualité reçus, qui permettront de réaliser une belle bourse aux jouets à Tuïr. Une nombreuse affluence est attendue.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862977/Aspres-thuir-boursejouetsjuiorassos_ubw8f4.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.513Z",
+    "periodicitat": ""
   }
 ]
