@@ -1860,7 +1860,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52R6C6] La categoria «Repas de quartier» no té equivalent entre les tretze: queda buida. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-21-tournoi-de-petanque",
+    "id": "2026-11-21-torneig-de-petanca",
     "titol": "Torneig de petanca",
     "data_inici": "2026-11-21",
     "data_fi": "2026-11-21",
@@ -1872,9 +1872,9 @@
     "descripcio_ca": "El BDA Pétanque de Banyuls dels Aspres organitza el seu torneig tradicional dedicat als joves talents. Es tracta d'una jornada esportiva i convivencial dedicada als infants. Hi ha restauració al lloc, per passar una estona agradable en família o entre amics.",
     "descripcio_fr": "Le BDA Pétanque de Banyuls dels Aspres organise son tournoi traditionnel consacré aux jeunes talents. Il s'agit d'une journée sportive et conviviale dédiée aux enfants. Une restauration est proposée sur place, pour passer un moment agréable en famille ou entre amis.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-bda-petanque26.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862841/Aspres-bda-petanque26_aphs4d.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.502Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNZ6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
