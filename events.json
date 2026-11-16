@@ -3294,5 +3294,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.331Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-1r-campionat-del",
+    "titol": "1r campionat del món amateur de boles de picolat",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "18:00",
+    "lloc": "17 Avenue Général de Gaulle",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "El campionat amateur del món de boles de picolat és una competició per a aficionats. Cal inscriure's prèviament, i les places són limitades. Els participants s'hi poden mesurar amb el joc.",
+    "descripcio_fr": "Le championnat amateur du monde de boles de picolat est une compétition ouverte aux amateurs. L'inscription préalable est nécessaire, et les places sont limitées. Les participants peuvent s'y mesurer au jeu.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863018/affiche-concours-boles_vxxdhi.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.474Z",
+    "periodicitat": ""
   }
 ]
