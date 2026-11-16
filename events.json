@@ -2838,5 +2838,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.516Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-memorial-de-petanca",
+    "titol": "Memorial de petanca",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "14:30",
+    "lloc": "Chemin du Mas RiuBoulodrome Julien Espelt",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El Memorial és un concurs de petanca en honor dels socis actius i dels jugadors que han mort. Es proposarà una petita restauració al lloc.",
+    "descripcio_fr": "Le Mémorial est un concours de pétanque en l'honneur des membres actifs et des joueurs décédés. Une petite restauration sera proposée sur place.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862864/886519563-3184631001882537-58907_tughad.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.521Z",
+    "periodicitat": ""
   }
 ]
