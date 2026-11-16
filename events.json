@@ -2515,5 +2515,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.440Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-18-conferencia-les-mercredis",
+    "titol": "Conferència Les mercredis de la Connaissance",
+    "data_inici": "2026-11-18",
+    "data_fi": "2026-11-18",
+    "hora": "18:00",
+    "lloc": "Avenue de la Côte VermeilleAmphithéâtre Alain Guille",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La conferència, proposada per l'associació Les Amis du Laboratoire Arago, forma part del cicle Les mercredis de la Connaissance. Fabien Joux, professor de microbiologia a la Sorbonne Université, hi presenta la ponència «Resposta del microbioma als canvis climàtics a l'entorn àrtic». S'hi explica com l'augment de les temperatures, la reducció de la banquisa, la fusió de les glaceres i el desgel del permagel afecten els microorganismes dels sòls i dels medis marins àrtics, i com el seu paper en els cicles del carboni els converteix en indicadors pertinents del canvi climàtic.",
+    "descripcio_fr": "La conférence, proposée par l'association Les Amis du Laboratoire Arago, fait partie du cycle Les mercredis de la Connaissance. Fabien Joux, professeur de microbiologie à la Sorbonne Université, y présente la communication « Réponse du microbiome aux changements climatiques dans l'environnement arctique ». Y sont expliquées la hausse des températures, la réduction de la banquise, la fonte des glaciers et le dégel du pergélisol, ainsi que leurs effets sur les micro-organismes des sols et des milieux marins arctiques, et la manière dont leur rôle dans les cycles du carbone en fait des indicateurs pertinents du changement climatique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862614/conference-53599727-web-4_ckyauf.webp",
+    "font_url": "http://ww.obs-banyuls.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.499Z",
+    "periodicitat": ""
   }
 ]
