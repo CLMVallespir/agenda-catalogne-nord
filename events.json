@@ -2325,5 +2325,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.503Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-17-sessio-de-reforc",
+    "titol": "Sessió de reforç muscular de l'esquena",
+    "data_inici": "2026-11-17",
+    "data_fi": "2026-11-17",
+    "hora": "10:00",
+    "lloc": "Salle du Dojo (à côté du gymnase)",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Esports",
+    "descripcio_ca": "Es tracta d'una sessió de gimnàstica de l'esquena centrada en el reforç muscular, per tenir cura de la columna de manera suau. Els participants han de portar una tovallola i una ampolla d'aigua.",
+    "descripcio_fr": "Il s'agit d'une séance de gym du dos centrée sur le renforcement musculaire, pour prendre soin de son dos en douceur. Les participants doivent apporter une serviette et une bouteille d'eau.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862204/643257814-934410296224755-5915925964640569110-n_ldw7en.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.504Z",
+    "periodicitat": ""
   }
 ]
