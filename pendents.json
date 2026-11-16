@@ -1480,7 +1480,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZP6C] Categoria per tema infantil; RechercheTYPE deia: Taller Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-18-cinema-pour-les",
+    "id": "2026-11-18-cinema-per-a",
     "titol": "Cinema per a infants – Ernest et Célestine",
     "data_inici": "2026-11-18",
     "data_fi": "2026-11-18",
@@ -1492,9 +1492,9 @@
     "descripcio_ca": "La pel·lícula d'animació Ernest et Célestine explica la història d'una amistat improbable entre un ós de gran cor, aficionat a la música, i una ratolina curiosa i plena de vida. Malgrat les diferències que els separen, s'hi crea una complicitat que els ajuda a superar els prejudicis i a acceptar les seves diferències. Transmet també valors com la riquesa d'una amistat sincera, i resulta especialment adreçada als joves espectadors. La municipalitat ofereix un berenar per prolongar aquest moment compartit en família.",
     "descripcio_fr": "Le film d'animation Ernest et Célestine raconte l'histoire d'une amitié improbable entre un ours au grand cœur, qui aime la musique, et une petite souris curieuse et pleine de vie. Malgré les différences qui les séparent, une complicité naît entre eux, qui les aide à dépasser les préjugés et à accepter leurs différences. Il transmet aussi des valeurs comme la richesse d'une amitié sincère, et s'adresse particulièrement aux jeunes spectateurs. La municipalité offre un goûter pour prolonger ce moment partagé en famille.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/images-24.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862758/images-24_sbbjfp.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.523Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZPE3] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
