@@ -2360,7 +2360,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZOSU] Ve marcada només «Festival», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-25-conference-sur-la",
+    "id": "2026-11-25-conferencia-sobre-la",
     "titol": "Conferència sobre la cultura pop a l'hora japonesa",
     "data_inici": "2026-11-25",
     "data_fi": "2026-11-25",
@@ -2372,15 +2372,15 @@
     "descripcio_ca": "Pauline raconte l'art proposa estudiar les obres de diversos artistes que han trobat inspiració en les pel·lícules d'animació japoneses i en el manga. Els personatges dels Studios Ghibli, els Pokemon o Dragon Ball Z es redescobreixen des d'una altra perspectiva. La conferència dona continuïtat a una recerca iniciada el 2015 a Perpignan i s'adreça a adolescents i adults.",
     "descripcio_fr": "Pauline raconte l'art propose d'étudier les œuvres de plusieurs artistes qui ont puisé leur inspiration dans les films d'animation japonais et dans le manga. Les personnages des Studios Ghibli, les Pokemon ou encore Dragon Ball Z y sont redécouverts sous un tout autre jour. La conférence poursuit une recherche entamée en 2015 à Perpignan et s'adresse aux adolescents et aux adultes.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/pop-culture.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862956/pop-culture_erqolo.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.521Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZP0U] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-26-les-metamorphoses-des",
+    "id": "2026-11-26-les-metamorfosis-dels",
     "titol": "Les metamorfosis dels gestos",
     "data_inici": "2026-11-26",
     "data_fi": "2026-11-26",
@@ -2392,9 +2392,9 @@
     "descripcio_ca": "Es proposa una activitat de pintura i dibuix per expressar les emocions a través de la creativitat. S'hi empren tècniques variades, com l'acrílic, l'aquarel·la o el pastel, i es presenta com un moment de benestar i de desconnexió. Explora els colors i les formes per conèixer-se millor, i no cal cap experiència prèvia en pintura ni en dibuix.",
     "descripcio_fr": "Il s'agit d'une activité de peinture et de dessin pour exprimer ses émotions à travers la créativité. Elle fait appel à des techniques variées, comme l'acrylique, l'aquarelle ou le pastel, et se présente comme un moment de bien-être et de détente. Elle explore les couleurs et les formes pour mieux se connaître, et aucune expérience préalable en peinture ou en dessin n'est nécessaire.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/atelier-adultes.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862958/atelier-adultes_d2ygq8.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.506Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZO94] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
@@ -2500,7 +2500,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZO8N] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-27-micro-conference-mosaique",
+    "id": "2026-11-27-micro-conferencia-mosaique",
     "titol": "Micro-conferència «Mosaïque Cultures Sans Frontières»",
     "data_inici": "2026-11-27",
     "data_fi": "2026-11-27",
@@ -2512,15 +2512,15 @@
     "descripcio_ca": "La micro-conferència es dedica a descobrir el Japó a partir de la mirada personal d'una persona que hi ha viscut i hi ha estudiat. L'acte s'acompanya d'una exposició amb les obres realitzades durant els dos tallers artístics, que ofereix un espai per compartir i posar en valor les creacions.",
     "descripcio_fr": "La micro-conférence est consacrée à la découverte du Japon à travers un regard personnel nourri par l'expérience d'une personne ayant séjourné et étudié dans le pays. Elle est accompagnée d'une exposition réunissant les œuvres réalisées lors des deux ateliers artistiques, offrant ainsi un espace de partage et de valorisation des créations.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Conference-sur-le-Japon-compressed--2--page-0001.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862962/Conference-sur-le-Japon-compressed--2--page-0001_xlppne.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.516Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZOSZ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-27-disco-soupe-caudies",
+    "id": "2026-11-27-disco-soupe",
     "titol": "Disco Soupe",
     "data_inici": "2026-11-27",
     "data_fi": "2026-11-27",
@@ -2532,9 +2532,9 @@
     "descripcio_ca": "A Caudiers de Fenolleda es prepara col·lectivament una gran sopa que després es tasta, amb música, en una animació convivencial i original. L'acte té com a objectiu lluitar contra el malbaratament alimentari. El material és cedit per l'associació Solidarité Fenouillèdes, i els participants han de portar els seus bols i coberts. L'activitat és oberta a tothom.",
     "descripcio_fr": "À Caudiers de Fenolleda, on prépare collectivement une grande soupe qui est ensuite dégustée en musique, dans une animation conviviale et originale. L'acte a pour objectif de lutter contre le gaspillage alimentaire. Le matériel est mis à disposition par l'association Solidarité Fenouillèdes, et les participants doivent apporter leurs bols et couverts. L'activité est ouverte à tous.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/CAUDIES-Aff-DiscoSoupe-2026.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794862964/CAUDIES-Aff-DiscoSoupe-2026_qfkgb2.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.521Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZP12] La categoria «Repas de quartier» no té equivalent entre les tretze: queda buida. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
