@@ -3256,5 +3256,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.530Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-rifa-de-lescola",
+    "titol": "Rifa de l'escola elemental",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "L'escola elemental de Sant Genís de Fontanes organitza una rifa amb 27 trens de la sort, amb premis com un pernil tradicional i vals de compra oferts pels col·laboradors. Hi haurà també una tòmbola del benestar, i una barra amb begudes i llaminadures. Cada participació contribueix al suport dels projectes escolars i a noves experiències per als alumnes.",
+    "descripcio_fr": "L'école élémentaire de Sant Genís de Fontanes organise une tombola avec 27 trains de la chance, dotée de lots tels qu'un jambon traditionnel et des bons d'achat offerts par les partenaires. Une tombola bien-être complète le programme, avec une buvette et des gourmandises. Chaque participation contribue au soutien des projets scolaires et à de nouvelles expériences pour les élèves.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863003/grande-rifle-saint-genis-2026_rgb4q1.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.297Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-rifa-organitzada-pel",
+    "titol": "Rifa organitzada pel comitè de festes",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "16:00",
+    "lloc": "Chemin de la PiscineEspace Méditérranée",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "La rifa consta de 20 quines amb cinc cartons plens i una gran tómbola. Hi ha també una partida per a infants. Els premis són lots de menjar, vins, pernils i vals de compra. Hi haurà servei de begudes a l'Espace Méditerranée.",
+    "descripcio_fr": "La rifle comprend 20 quines avec cinq cartons pleins et une grande tombola. Il y a aussi une partie pour les enfants. Les lots comprennent des produits alimentaires, des vins, des jambons et des bons d'achat. Une buvette est prévue à l'Espace Méditerranée.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1794863005/affiche-rifle-29-11-2026-1_hrjzmw.webp",
+    "font_url": "https://amelie-les-bains.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.331Z",
+    "periodicitat": ""
   }
 ]
