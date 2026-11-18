@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-11-22-coral-sang-i",
+    "titol": "Coral Sang i Or a Cortsavi",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Cortsavi",
+    "comarca": "",
+    "categoria": "Música",
+    "descripcio_ca": "La coral Sang i Or serà a Cortsavi el dia 22 de novembre. El correu no indica ni l'hora ni el lloc exacte de l'actuació.",
+    "descripcio_fr": "La chorale Sang i Or sera à Cortsavi le 22 novembre. Le courriel n'indique ni l'heure ni le lieu précis de la prestation.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795014406/cartell_Cortsavi_kghcj5.webp",
+    "font_url": "",
+    "estat": "pendent",
+    "data_entrada": "2026-11-18T15:06:47.377Z",
+    "periodicitat": "",
+    "nota_curador": ""
+  },
+  {
     "id": "2026-11-12-mercat-a-la",
     "titol": "Mercat a la Place de la République i a la Place des Poilus",
     "data_inici": "2026-11-12",
