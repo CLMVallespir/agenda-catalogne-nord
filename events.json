@@ -5764,5 +5764,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.573Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-11-sessio-descolta-1",
+    "titol": "Sessió d'escolta 1",
+    "data_inici": "2026-12-11",
+    "data_fi": "2026-12-11",
+    "hora": "18:30",
+    "lloc": "5 Rue de l'Égalité",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Es presenta el podcast documental de la periodista Alice Fabre, en una sessió d'escolta. La periodista duu a terme al territori un treball de recollida i elaboració de relats sonors, a partir de trobades amb habitants, de la captació de paraules, d'ambients i de la memòria.",
+    "descripcio_fr": "Séance d'écoute du podcast documentaire réalisé par la journaliste Alice Fabre. La journaliste mène sur le territoire un travail de collecte et de mise en récit sonore, à partir de rencontres avec des habitants, de captations de paroles, d'ambiances et de mémoire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078703/10-11_gmngw2.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.635Z",
+    "periodicitat": ""
   }
 ]
