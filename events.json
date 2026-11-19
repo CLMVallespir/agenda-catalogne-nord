@@ -3617,5 +3617,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.707Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-charaf-une-histoire",
+    "titol": "Charaf, une histoire dans l'histoire",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "12:30",
+    "lloc": "20 Rue Jules Verne",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "En una hora, el comediant Jean Noël explica els trenta anys que Maurice Benguemalé va passar a casa seva, a partir del 1987, quan només havia de quedar-s'hi quinze dies. La seva versió es construeix amb la mirada d'un nen que descobreix l'Àfrica a casa als anys vuitanta i la d'un adolescent dels noranta, i es comparteix amb humor i lleugeresa. L'espectacle es presenta com una història vertadera de solidaritat, fraternitat i humanitat.",
+    "descripcio_fr": "En une heure, le comédien Jean Noël raconte les trente ans passés par Maurice Benguemalé chez lui, à partir de 1987, alors qu'il ne devait rester que quinze jours. Sa version est tissée par le regard d'un enfant qui découvre l'Afrique à la maison dans les années 80, puis par celui d'un adolescent des années 90, et elle est partagée avec humour et légèreté. Le spectacle se présente comme une histoire vraie de solidarité, de fraternité et d'humanité.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078238/CHARAF-AFFICHES-A3-sans-logo_yar9rl.webp",
+    "font_url": "https://www.papiermachins.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.717Z",
+    "periodicitat": ""
   }
 ]
