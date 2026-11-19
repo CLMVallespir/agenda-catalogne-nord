@@ -3047,5 +3047,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.325Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-visita-guiada-en",
+    "titol": "Visita guiada en català al casc històric",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-07",
+    "hora": "16:00",
+    "lloc": "Oficina de TurismePlace François Arago",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La visita, en català, recorre el centre històric de Perpinyà acompanyada d'un guia turístic. Perpinyà, antiga capital del Regne de Mallorca i etiquetada Ciutat d'Art i Història, ofereix un patrimoni civil i religiós excepcional. L'itinerari passa pels estrets carrers del centre i permet conèixer la història de la ciutat des de l'Edat Mitjana, amb joies arquitectòniques medievals i edificis Art Nouveau i Art Déco. La visita és accessible a persones amb mobilitat reduïda.",
+    "descripcio_fr": "La visite, en catalan, parcourt le centre historique de Perpinyà accompagnée d'un guide touristique. Perpinyà, ancienne capitale du Regne de Mallorca et labellisée Ciutat d'Art i Història, offre un patrimoine civil et religieux exceptionnel. L'itinéraire traverse les rues étroites du centre et permet de découvrir l'histoire de la ville depuis le Moyen Âge, avec des joyaux architecturaux médiévaux et des bâtiments Art Nouveau et Art Déco. La visite est accessible aux personnes à mobilité réduite.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071939/Visite-guidee---Perpignan-je-te-decouvre---Catalan_ig92vg.webp",
+    "font_url": "https://www.perpignantourisme.com/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.349Z",
+    "periodicitat": ""
   }
 ]
