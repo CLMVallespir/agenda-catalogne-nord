@@ -280,7 +280,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52XIUO] L'acte es fa 5 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-20-exposition-des-productions",
+    "id": "2026-11-20-exposicio-de-les",
     "titol": "Exposició de les produccions (fotos, dibuixos, textos)",
     "data_inici": "2026-11-20",
     "data_fi": "2026-11-20",
@@ -292,15 +292,15 @@
     "descripcio_ca": "Es presenta una exposició del grup InkyTober a la Bédéthèque. L'acte inclou la inauguració de la mostra.",
     "descripcio_fr": "Une exposition du groupe InkyTober est présentée à la Bédéthèque. L'événement comprend l'inauguration de la mostra.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Affiche-expo-Inktober-2026.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078224/Affiche-expo-Inktober-2026_iwxvfq.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.624Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZHP6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-20-cinema-osseja-cycle",
+    "id": "2026-11-20-cicle-vosf-wicker",
     "titol": "Cicle VOSF – Wicker",
     "data_inici": "2026-11-20",
     "data_fi": "2026-11-20",
@@ -312,9 +312,9 @@
     "descripcio_ca": "La pel·lícula Wicker, dirigida per Alex Huston Fischer i Eleanor Wilson i amb Olivia Colman, Alexander Skarsgård i Peter Dinklage, és una producció nord-americana en anglès que combina la comèdia, el drama, la fantasia i el romanç. Es projecta en versió original amb subtítols en francès, dins d'un cicle de cinema. Una pescadora solitària, marginada pel seu poble, encarrega a un cistaller local un marit de vímet. Aquest marit improbable es revela dotat d'una sensibilitat i uns talents que superen totes les expectatives, però quan atrau la cobdícia, els gelos i les fantasies dels veïns, fa trontollar les certeses d'una comunitat fins aleshores ben ordenada.",
     "descripcio_fr": "Le film Wicker, réalisé par Alex Huston Fischer et Eleanor Wilson et avec Olivia Colman, Alexander Skarsgård et Peter Dinklage, est une production nord-américaine en anglais qui mêle la comédie, le drame, le fantastique et la romance. Il est projeté en version originale sous-titrée en français, dans le cadre d'un cycle de cinéma. Une pêcheuse solitaire, mise au ban de son village, commande à un vannier local un mari en osier. Cet époux improbable se révèle doté d'une sensibilité et de talents qui dépassent toutes les attentes, mais lorsqu'il attise la convoitise, la jalousie et les fantasmes des villageois, il fait vaciller les certitudes d'une communauté jusque-là bien ordonnée.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ab608b1c170d26c4f05010e93cdcb0ac--1-.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078221/ab608b1c170d26c4f05010e93cdcb0ac--1-_ms9bck.webp",
     "font_url": "https://www.pyrenees-cerdagne.com",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.690Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQCP] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
