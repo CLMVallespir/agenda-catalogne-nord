@@ -5346,5 +5346,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.701Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-13a-edicio-de",
+    "titol": "13a edició de les Images Pyrénéennes",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "16:30",
+    "lloc": "",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Conferència",
+    "descripcio_ca": "La vetllada inclou la projecció de Le Sifflet i de Canigó 1883, seguida d'un intercanvi amb els realitzadors. Després, l'àpat preparat pel Traiteur du Conflent, que es fa sobre reserva, ofereix boles de picolat o una amanida amb tomàquets, cebes confitades i gambes a la persillada, i de postres una crema catalana amb un got de vi. Per acabar, es projecta la fició Vermiglio ou la marée des montagnes.",
+    "descripcio_fr": "La soirée comprend la projection de Le Sifflet et de Canigó 1883, suivie d'un échange avec les réalisateurs. Ensuite, le repas préparé par le Traiteur du Conflent, qui se fait sur réservation, propose des boles de picolat ou une salade avec tomates, oignons confits et gambas en persillade, puis une crème catalane avec un verre de vin. Pour finir, la fiction Vermiglio ou la marée des montagnes est projetée.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078593/Capture-255_ffxhrf.webp",
+    "font_url": "https://cine-rencontres.org/regards-paysans/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.701Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-les-fetes-inouies",
+    "titol": "Les Fêtes Inouïes - Le Village Enchanté",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Argelers",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'acte inclou un espai d'animacions infantils gratuïtes amb Sulkys (cavalls a pedals), cotxes teledirigits i passejades en poni, així com cabanes de llaminadures. Hi ha també una desfilada d'artistes sobre xancos, Les souffleurs de rêve, a càrrec de Cielo, pel centre, i un parcurs de jocs de fusta. La Bodega de Noël ofereix cabanes de menjars per a l'aperitiu i un concert acústic del duo Good Boys, que revisita clàssics del pop rock. A la sala Salengro s'hi fan tallers creatius de llums de Nadal i de fanals florits, amb inscripció prèvia.",
+    "descripcio_fr": "L'événement comprend un espace d'animations gratuites pour enfants avec des Sulkys (chevaux à pédales), des voitures télécommandées et des balades à poney, ainsi que des chalets de gourmandises. Une parade d'artistes sur échasses, Les souffleurs de rêve, par Cielo, traverse le centre-ville, et un parcours de jeux en bois est proposé. La Bodega de Noël propose des chalets gourmands apéro-dinatoires et un concert acoustique du duo Good Boys, qui revisite des classiques pop rock. À la salle Salengro, des ateliers créatifs de lumières de Noël et de photophores fleuris sont organisés, sur inscription préalable.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078595/A3-generique-fetes-inouies-2026_bcs8i0.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.713Z",
+    "periodicitat": ""
   }
 ]
