@@ -6049,5 +6049,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.595Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-au-theatre-ca",
+    "titol": "Au théâtre ça me dit : on en redemande !",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-12",
+    "hora": "20:30",
+    "lloc": "17 Avenue Général Joseph Santraille",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "La companyia BLScène du Boulou presenta una nova creació, On en redemande, una adaptació per al teatre dels grans sketches del patrimoni, com els de Coluche, Muriel Robin, les Inconnus, Chevallier et Laspalès, Raymond Devos o Michèle Laroque. La direcció escènica és de Christophe Pélissier-Chastang.",
+    "descripcio_fr": "La troupe BLScène du Boulou présente une nouvelle création, On en redemande, une adaptation pour le théâtre des grands sketches du patrimoine, comme ceux de Coluche, Muriel Robin, les Inconnus, Chevallier et Laspalès, Raymond Devos ou Michèle Laroque. La mise en scène est signée Christophe Pélissier-Chastang.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078778/scene-en-tech---on-en-redemande_xpsm45.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.607Z",
+    "periodicitat": ""
   }
 ]
