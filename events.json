@@ -3180,5 +3180,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.331Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-06-chorale-de-lalbera",
+    "titol": "Chorale de l'Albera",
+    "data_inici": "2026-12-06",
+    "data_fi": "2026-12-06",
+    "hora": "15:00",
+    "lloc": "12 Place du 18 Juin",
+    "municipi": "Cotlliure",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "La Chorale Internationale de l'Albera celebra l'hivern amb un gran concert festiu. Es podrà gaudir d'un repertori dinàmic i càlid, portat per l'energia dels seus cantaires. El concert és obert a tothom, i el públic hi pot assistir en família o entre amics per cantar i fer festa junts a Cotlliure.",
+    "descripcio_fr": "La Chorale Internationale de l'Albera célèbre l'hiver avec un grand concert festif. On pourra profiter d'un répertoire dynamique et chaleureux, porté par l'énergie de ses choristes. Le concert est ouvert à tous, et le public peut y assister en famille ou entre amis pour chanter et faire la fête ensemble à Cotlliure.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795072096/maxresdefault2_dmeem6.webp",
+    "font_url": "https://choraleinternationaledalbera.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.349Z",
+    "periodicitat": ""
   }
 ]
