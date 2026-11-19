@@ -3313,5 +3313,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.445Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-08-tio-de-nadal",
+    "titol": "Tió de Nadal Chez Maërlle",
+    "data_inici": "2026-12-08",
+    "data_fi": "2026-12-08",
+    "hora": "",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Durant el període de Nadal, la botiga Chez Maërlle acull un Tió de Nadal, una tradició catalana que els visitants poden alimentar. Segons la llegenda, el tronc màgic vol que en tinguin cura i, com més se'l malcria, més generós esdevé. Cada dia, el Tió reparteix caramels i llaminadures amagats sota la manta entre els infants que hi passen, en una activitat per compartir en família.",
+    "descripcio_fr": "Pendant la période de Noël, la boutique Chez Maërlle accueille un Tió de Nadal, une tradition catalane que les visiteurs peuvent nourrir. Selon la légende, la petite bûche magique veut qu'on en prenne soin et, plus on la gâte, plus elle devient généreuse. Chaque jour, le Tió distribue des bonbons et des friandises cachés sous sa couverture aux enfants de passage, dans une activité à partager en famille.",
+    "associacio": "Contacter CHEZ MAERLLE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795072250/event-FMALAR066V52ZN7H-1793353890101_lvgjwn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.495Z",
+    "periodicitat": ""
   }
 ]
