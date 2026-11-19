@@ -100,7 +100,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V51ER88] L'acte es fa 28 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-12-marche-hebdomadaire",
+    "id": "2026-11-12-mercat-setmanal",
     "titol": "Mercat setmanal",
     "data_inici": "2026-11-12",
     "data_fi": "2026-11-12",
@@ -112,9 +112,9 @@
     "descripcio_ca": "El mercat de detall de Sant Llorenç de la Salanca anima el centre de la vila dues vegades per setmana, en complementarietat amb el comerç local. Hi participen 130 comerciants a l'estiu i prop de 80 a l'hivern, en un mercat d'abastiment de tipus meridional. Hi ha una àmplia oferta de fruita i verdura de la terra, formatges, productes frescos (carns, embotits, peix), espècies, nombrosos articles tèxtils, marroquineria i artesania.",
     "descripcio_fr": "Le marché de détail de Sant Llorenç de la Salanca anime le centre de la ville deux fois par semaine, en complémentarité avec le commerce local. 130 commerçants y participent en été et près de 80 en hiver, dans un marché d'approvisionnement de type méridional. On y trouve un large choix de fruits et légumes de la terre, de fromages, de produits frais (viandes, charcuterie, poissons), d'épices, de nombreux articles textiles, de la maroquinerie et de l'artisanat.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/MARCHE-1.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071703/MARCHE-1_agbfno.webp",
     "font_url": "https://www.saintlaurentdelasalanque.fr/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.286Z",
     "periodicitat": "cada setmana",
     "nota_curador": "[ADT66 id: FMALAR066V528GNT] L'acte es fa 61 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
