@@ -3294,5 +3294,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.432Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-08-conferencia-francis-manent",
+    "titol": "Conferència Francis Manent: Les plantes sauvages",
+    "data_inici": "2026-12-08",
+    "data_fi": "2026-12-08",
+    "hora": "18:00",
+    "lloc": "4 Rue Arago",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "La conferència de Francis Manent aborda els secrets de les plantes silvestres en la tradició catalana. S'hi explora la riquesa de la biodiversitat catalana i els usos tradicionals de més d'un centenar de plantes. Després de la conferència, hi haurà una sessió de signatura del llibre Les plantes sauvages dans la tradition catalane, publicat per Éditions Trabucaire.",
+    "descripcio_fr": "La conférence de Francis Manent aborde les secrets des plantes sauvages dans la tradition catalane. Elle explore la richesse de la biodiversité catalane et les usages traditionnels de plus d'une centaine de plantes. Après la conférence, une séance de dédicaces du livre Les plantes sauvages dans la tradition catalane, publié aux Éditions Trabucaire, est prévue.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795072178/Conf-Dedicace-8-DEC-Francis-Manent-Plantes-sauvages_svgnp0.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.445Z",
+    "periodicitat": ""
   }
 ]
