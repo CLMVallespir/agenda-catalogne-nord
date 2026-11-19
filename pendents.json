@@ -4680,7 +4680,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZLQV] Categoria per tema infantil; RechercheTYPE deia: Mercat Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-06-marche-des-createurs",
+    "id": "2026-12-06-mercat-dels-creadors",
     "titol": "Mercat dels creadors al Mas La Marchette",
     "data_inici": "2026-12-06",
     "data_fi": "2026-12-06",
@@ -4692,9 +4692,9 @@
     "descripcio_ca": "L'acte es presenta com una jornada d'alegria, de compartir i de descoberta. Hi ha la possibilitat de trobar regals únics i personalitzats per a amics o familiars.",
     "descripcio_fr": "L'événement se présente comme une journée placée sous le signe de la bonne humeur, du partage et de la découverte. Il est possible d'y trouver des cadeaux uniques et personnalisés pour ses amis ou ses proches.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-oms-marchecreateurs.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795072142/Aspres-oms-marchecreateurs_czhbeq.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.483Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZLRU] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
