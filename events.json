@@ -2876,5 +2876,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.523Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-04-duo-piano-i",
+    "titol": "Duo piano i veu",
+    "data_inici": "2026-12-04",
+    "data_fi": "2026-12-04",
+    "hora": "12:30",
+    "lloc": "Avenue Maréchal LeclercAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El Duo Movere proposa un recorregut musical en què la veu i el piano fan de fil conductor entre èpoques i estils. La mezzo-soprano Éloïse Cénac-Morthé i el pianista Nicolas Mialocq combinen les seves sensibilitats en un programa de contrastos, a la intersecció de l'òpera, la melodia clàssica i la cançó. Hi sonen obres de Bellini, Debussy, Poulenc i Schubert, al costat de cançons de Barbara, Lennon i Leonard Cohen. La veu, alhora potent, íntima i expressiva, es barreja amb un piano de múltiples colors per crear paisatges sonors entre l'emoció lírica, la poesia i la modernitat.",
+    "descripcio_fr": "Le Duo Movere propose un parcours musical où la voix et le piano servent de fil conducteur entre les époques et les styles. La mezzo-soprano Éloïse Cénac-Morthé et le pianiste Nicolas Mialocq associent leurs sensibilités dans un programme de contrastes, à la croisée de l'opéra, de la mélodie classique et de la chanson. On y entend des œuvres de Bellini, Debussy, Poulenc et Schubert, aux côtés de chansons de Barbara, Lennon et Leonard Cohen. La voix, à la fois puissante, intime et expressive, se mêle à un piano aux multiples couleurs pour créer des paysages sonores entre émotion lyrique, poésie et modernité.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071889/Duo-Piano-et-Voix_crmi6o.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/solann",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.367Z",
+    "periodicitat": ""
   }
 ]
