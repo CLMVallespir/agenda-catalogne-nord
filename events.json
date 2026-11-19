@@ -2819,5 +2819,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-18T15:06:47.377Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2027-01-20-desbloqueja-el-teu",
+    "titol": "Desbloqueja el teu català",
+    "data_inici": "2027-01-20",
+    "data_fi": "2027-03-03",
+    "hora": "14:30",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Tallers creatius adreçats a persones adultes que entenen el català però tenen dificultats per parlar-lo, per vergonya, por d'equivocar-se o incomoditat. El projecte, en col·laboració amb Òmnium Cultural Catalunya Nord i La Bressola, vol recuperar la llengua a través del joc i la creació. S'hi adrecen especialment persones que l'han sentit a casa, amb els avis o al poble, i pares i mares d'infants escolaritzats a La Bressola o en escoles bilingües.",
+    "descripcio_fr": "Ateliers créatifs destinés aux adultes qui comprennent le catalan mais ont des difficultés à le parler, par gêne, peur de se tromper ou inconfort. Le projet, réalisé en collaboration avec Òmnium Cultural Catalunya Nord et La Bressola, vise à retrouver la langue catalane par le jeu et la création. Il s'adresse en particulier aux personnes qui l'ont entendue à la maison, auprès de leurs grands-parents ou au village, ainsi qu'aux parents d'enfants scolarisés à La Bressola ou dans des écoles bilingues.",
+    "associacio": "ARTiCAT",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071587/ARTiCAT_cicle_de_tardor_yhvy35.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T06:59:48.192Z",
+    "periodicitat": ""
   }
 ]
