@@ -3826,5 +3826,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.633Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-wicker",
+    "titol": "Wicker",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "20:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "Pel·lícula de comèdia, drama, fantasia i romanç dirigida per Alex Huston Fischer i Eleanor Wilson, amb Olivia Colman, Alexander Skarsgård i Peter Dinklage. Una pescadora solitària, marginada pel seu poble, encarrega al cistaller local un marit de vímet. Aquest marit inesperat revela una sensibilitat i uns talents que superen totes les expectatives, i ella acaba enamorant-se'n de debò. Però el seu estrany marit desperta la cobdícia, la gelosia i les fantasies dels veïns, i fa trontollar les certeses d'una comunitat fins aleshores molt ordenada.",
+    "descripcio_fr": "Film de comédie, drame, fantastique et romance réalisé par Alex Huston Fischer et Eleanor Wilson, avec Olivia Colman, Alexander Skarsgård et Peter Dinklage. Une pêcheuse solitaire, mise à l'écart par son village, commande au vannier local un mari en osier. Ce mari inattendu révèle une sensibilité et des talents qui dépassent toutes les attentes, et elle finit par en tomber sincèrement amoureuse. Mais son étrange mari éveille la convoitise, la jalousie et les fantasmes des villageois, et fait vaciller les certitudes d'une communauté jusque-là bien ordonnée.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078279/ab608b1c170d26c4f05010e93cdcb0ac--1-_m18buw.webp",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.690Z",
+    "periodicitat": ""
   }
 ]
