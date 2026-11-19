@@ -2859,22 +2859,22 @@
     "periodicitat": ""
   },
   {
-    "id": "2026-11-13-la-pause-dej",
-    "titol": "La pause dej' au musée - Visites flash",
+    "id": "2026-11-13-reunio-coneixer-millor",
+    "titol": "Reunió: conèixer millor els residus per trobar solucions específiques",
     "data_inici": "2026-11-13",
     "data_fi": "2026-11-13",
-    "hora": "12:15",
-    "lloc": "Musée Hyacinthe Rigaud21 rue Mailly",
-    "municipi": "Perpinyà",
+    "hora": "18:30",
+    "lloc": "Rue du 14 Juillet",
+    "municipi": "Banyuls de la Marenda",
     "comarca": "Rosselló",
-    "categoria": "Exposició",
-    "descripcio_ca": "La sèrie de visites breus del museu aborda temes diversos. Hi ha sessions sobre el paisatge pintat després de l'impressionisme amb Terrus i Bausil, sobre el motiu pare-fill a les col·leccions permanents, sobre Miró i la guerra civil espanyola, sobre l'abstracció, sobre la ceràmica de Josep Llorens Artigas i sobre l'academicisme, amb obres d'Ingres i de Gabriel Faraill.",
-    "descripcio_fr": "La série de visites brèves du musée aborde des thèmes variés. Il y a des séances sur le paysage peint après l'impressionnisme avec Terrus et Bausil, sur le motif parent-enfant dans les collections permanentes, sur Miró et la guerre civile espagnole, sur l'abstraction, sur la céramique de Josep Llorens Artigas et sur l'académisme, avec des œuvres d'Ingres et de Gabriel Faraill.",
+    "categoria": "Conferència",
+    "descripcio_ca": "Es tracta d'una reunió participativa en el marc del Festival Tous Sentinelles. Des del 2022, el municipi de Banyuls de la Marenda fa operacions de ciència participativa per seguir l'evolució de la contaminació en punts de concentració de l'espai públic, on els residus abandonats es recullen, es trien i es compten per orientar les accions correctives. Des del 2025 el municipi s'ha sumat al programa nacional Adopt'1 Spot, que reuneix les dades de 700 estructures de tot França. Durant la trobada, una associació presentarà els resultats a escala nacional i, amb l'ajuntament, els principals ensenyaments de les recollides locals, abans que els assistents busquin plegats solucions per limitar els residus a l'origen en un breu taller d'intel·ligència col·lectiva.",
+    "descripcio_fr": "Il s'agit d'une réunion participative dans le cadre du Festival Tous Sentinelles. Depuis 2022, la commune de Banyuls de la Marenda mène des opérations de sciences participatives pour suivre l'évolution de la pollution dans des points de concentration de l'espace public, où les déchets abandonnés sont collectés, triés et comptés afin d'orienter les actions correctives. Depuis 2025, la commune a rejoint le programme national Adopt'1 Spot, qui rassemble les données de 700 structures dans toute la France. Pendant la rencontre, une association présentera les résultats à l'échelle nationale et, avec la mairie, les principaux enseignements des collectes locales, avant que les participants ne cherchent ensemble des solutions pour limiter les déchets à la source lors d'un court atelier d'intelligence collective.",
     "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071742/DETECTIVES-AU-MUSEE---ENQUETE-SUR-LES-FEMMES-EN-IMAGES----Avril-2026-2_ix4wfd.webp",
-    "font_url": "https://www.musee-rigaud.fr/",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071748/Du-11-au-15-11-TOUS-SENTINELLES-BANYULS--REOUCHE-NAT-_ohgopc.webp",
+    "font_url": "",
     "estat": "publicat",
-    "data_entrada": "2026-11-12T07:13:50.442Z",
+    "data_entrada": "2026-11-12T07:13:50.502Z",
     "periodicitat": ""
   }
 ]
