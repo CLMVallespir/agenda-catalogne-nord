@@ -1680,7 +1680,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V525NYS] Categoria per tema infantil; RechercheTYPE deia: Exposició Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-29-animation-telethon-the",
+    "id": "2026-11-29-animacio-telethon-te",
     "titol": "Animació Téléthon - Te dansant",
     "data_inici": "2026-11-29",
     "data_fi": "2026-11-29",
@@ -1692,9 +1692,9 @@
     "descripcio_ca": "El casal rural de Vilamulaca organitza un te dansant. Tots els beneficis es destinaran al Téléthon, i l'entrada inclou un refrigeri.",
     "descripcio_fr": "Le foyer rural de Vilamulaca organise un thé dansant. Tous les bénéfices seront reversés au Téléthon, et l'entrée comprend une collation.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-villemolaque-thedansant.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078416/Aspres-villemolaque-thedansant_iuvhty.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.475Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52HTAK] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
