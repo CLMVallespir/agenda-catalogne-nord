@@ -5707,5 +5707,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.602Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-10-vetllada-de-jocs",
+    "titol": "Vetllada de jocs de societat",
+    "data_inici": "2026-12-10",
+    "data_fi": "2026-12-10",
+    "hora": "18:00",
+    "lloc": "Terrain Ginestou",
+    "municipi": "Finestret",
+    "comarca": "Conflent",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "L'acte és una vetllada de jocs de societat organitzada pel Cafè associatiu de Finestret. Permet compartir un moment de convivència.",
+    "descripcio_fr": "Il s'agit d'une soirée de jeux de société organisée par le Café associatif de Finestret. L'événement permet de partager un moment de convivialité.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078690/7acac3db1e5aefdd786e44a54cbbee28_trjk53.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.712Z",
+    "periodicitat": ""
   }
 ]
