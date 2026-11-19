@@ -3598,5 +3598,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.691Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-20-sessio-de-cinedebat",
+    "titol": "Sessió de cinedebat",
+    "data_inici": "2026-11-20",
+    "data_fi": "2026-11-20",
+    "hora": "18:00",
+    "lloc": "",
+    "municipi": "Sornià",
+    "comarca": "Conflent",
+    "categoria": "Conferència",
+    "descripcio_ca": "La sessió de cinedebat a Sornià proposa conèixer, en imatges i en intercanvis, el dia a dia dels ramaders i dels pastors de les estives. Es projecten tres films: un minidocumental que segueix un vaquer durant una estiva, Éleveurs d'horizon, que visita ramaders de Parcs naturels du Massif central, i un muntatge d'arxius dels anys seixanta i setanta sobre la sega del fenc, la ferrada i la pujada en transhumància als pobles dels Pyrénées-Orientales. Després hi ha un intercanvi amb tres ramaders del territori: Christophe Blandin (Le Vivier), Pierre Regné (Fosse) i Julie de Mourra (Mosset, GAEC des Cardalines), sobre l'ofici, les estives, la transhumància i la seva evolució. La sessió acaba amb un refrigeri de productes locals.",
+    "descripcio_fr": "La soirée de ciné-débat à Sornià propose de découvrir, en images et en échanges, le quotidien des éleveurs et des bergers des estives. Trois films sont projetés : un mini-documentaire qui suit un vacher durant une estive, Éleveurs d'horizon, qui va à la rencontre d'éleveurs de Parcs naturels du Massif central, et un montage d'archives des années 1960-1970 sur la fenaison, le ferrage et la montée en transhumance dans les villages des Pyrénées-Orientales. Un échange suit avec trois éleveurs du territoire : Christophe Blandin (Le Vivier), Pierre Regné (Fosse) et Julie de Mourra (Mosset, GAEC des Cardalines), sur le métier, les estives, la transhumance et l'évolution de leur activité. La soirée se termine par un buffet de produits locaux.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078233/SOURNIA--Cine-debat---20-11-2026---PNRCF_kcfn8m.webp",
+    "font_url": "https://www.parc-corbieres-fenouilledes.fr/agenda/20-11-parcours-pastoraux/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.707Z",
+    "periodicitat": ""
   }
 ]
