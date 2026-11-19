@@ -3275,5 +3275,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.367Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-08-retour-a-reims",
+    "titol": "Retour à Reims [Fragments]",
+    "data_inici": "2026-12-08",
+    "data_fi": "2026-12-08",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "L'acte consisteix en la projecció del film Retour à Reims [Fragments], de Jean-Gabriel Périot, i en una trobada amb el director. El film adapta el text autobiogràfic i sociològic de Didier Eribon, portat per la veu d'Adèle Haenel, i narra en imatges d'arxiu la història íntima i política del món obrer francès, des dels primers anys cinquanta fins a l'actualitat. Hi conflueixen trajectòries individuals, el treball, la condició de les dones i les transformacions polítiques, com ara el trasllat del vot obrer cap a l'extrema dreta.",
+    "descripcio_fr": "L'acte consiste en la projection du film Retour à Reims [Fragments], de Jean-Gabriel Périot, et en une rencontre avec le réalisateur. Le film adapte le texte autobiographique et sociologique de Didier Eribon, porté par la voix d'Adèle Haenel, et retrace en images d'archives l'histoire intime et politique du monde ouvrier français, depuis le début des années 1950 jusqu'à aujourd'hui. Il y croise trajectoires individuelles, travail, condition des femmes et transformations politiques, notamment le passage du vote ouvrier vers l'extrême droite.",
+    "associacio": "",
+    "imatge_url": "",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.432Z",
+    "periodicitat": ""
   }
 ]
