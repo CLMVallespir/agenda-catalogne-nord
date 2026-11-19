@@ -5308,5 +5308,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.692Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-concert-de-nadal",
+    "titol": "Concert de Nadal",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "12:00",
+    "lloc": "",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "La Maîtrise de Saint Joseph ofereix dos concerts de cor sota la direcció de Cyprien Sadek per preparar el Nadal. El primer es fa a la plaça de la République i el segon a l'església Saint Pierre.",
+    "descripcio_fr": "La Maîtrise de Saint Joseph propose deux concerts de chorale sous la direction de Cyprien Sadek pour préparer Noël. Le premier a lieu place de la République et le second à l'église Saint Pierre.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078587/Capture-253_ihljea.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.700Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-concert-dhivern",
+    "titol": "Concert d'hivern",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "19:00",
+    "lloc": "Plaine Saint Martin",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "Concert en què el grup Campus Dels Pireneus, format per sis escoles de música dels Pirineus Orientals i dirigit per François RAGOT, interpreta la primera part. La segona part és a càrrec del grup Les Witch Caroll. Durant l'entreacte es proposa un bufet.",
+    "descripcio_fr": "Concert au cours duquel le groupe Campus Dels Pireneus, formé de six écoles de musique des Pirineus Orientals et dirigé par François RAGOT, interprète la première partie. La seconde partie est assurée par le groupe Les Witch Caroll. Pendant l'entracte, un buffet est proposé.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078588/Capture-254_qum8bq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.701Z",
+    "periodicitat": ""
   }
 ]
