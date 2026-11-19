@@ -3959,5 +3959,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.489Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-cinema",
+    "titol": "Cinema",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "16:00",
+    "lloc": "Boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "El cinema continua a Tuïr, al Théâtre des Aspres, amb dues projeccions. Es projecta Les Misérables, pel·lícula francesa dirigida per Fred Cavayé i estrenada el 2026, adaptació de la novel·la homònima de Victor Hugo que se centra en els personatges de Javert i Jean Valjean, interpretats per Tahar Rahim i Vincent Lindon. La segona és Une femme aujourd'hui, que segueix Juliette, de 30 anys, amb una carrera prestigiosa en el món de les finances. Quan és agredida per un company de feina, el seu món s'ensorra i emprèn un nou camí per donar sentit a la seva vida.",
+    "descripcio_fr": "Le cinéma continue à Tuïr, au Théâtre des Aspres, avec deux projections. Les Misérables est projeté : il s'agit d'un film français réalisé par Fred Cavayé et sorti en 2026, adaptation du roman homonyme de Victor Hugo, centré sur Javert et Jean Valjean, incarnés par Tahar Rahim et Vincent Lindon. La seconde projection est Une femme aujourd'hui, qui suit Juliette, 30 ans, qui a une carrière prestigieuse dans la finance. Lorsqu'elle est agressée par un collègue, son monde s'effondre et elle s'engage sur un nouveau chemin pour redonner un sens à sa vie.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078313/Aspres-thuir-cinema-nov-2026-imprim_f1japl.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.497Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-22-partit-de-rugbi",
+    "titol": "Partit de rugbi",
+    "data_inici": "2026-11-22",
+    "data_fi": "2026-11-22",
+    "hora": "15:00",
+    "lloc": "Rue Michel Costeseque",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "L'Union Sportive Côte Rocheuse (USCR) torna a enfrontar-se amb els seus rivals en partits on cada pilota compta. Els jugadors necessitaran l'ànim del públic per marcar la diferència en plaques, accelerades, assaigs i solidaritat. L'acte s'adreça als aficionats al rugbi, als seguidors fidels i a qui sigui curiós, i permet viure la intensitat d'un partit i compartir un moment de germanor entorn dels valors del rugbi.",
+    "descripcio_fr": "L'Union Sportive Côte Rocheuse (USCR) retrouve ses adversaires lors de rencontres où chaque ballon compte. Les joueurs auront besoin des encouragements du public pour faire la différence dans les plaquages, les accélérations, les essais et la solidarité. L'acte s'adresse aux amateurs de rugby, aux supporters fidèles et aux curieux, et permet de vivre l'intensité d'un match et de partager un moment fédérateur autour des valeurs du rugby.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078315/rugby-6_hgt6mb.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.615Z",
+    "periodicitat": ""
   }
 ]
