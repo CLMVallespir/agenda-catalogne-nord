@@ -5973,5 +5973,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.546Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-concert-de-nadal",
+    "titol": "Concert de Nadal",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-12",
+    "hora": "18:00",
+    "lloc": "Village",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "El concert presenta un recull de cants de Nadal tradicionals i de diverses parts del món, preparat pels cors del Conservatoire i els alumnes de les classes de cant líric. Hi participen les classes de cant líric dirigides per Sabine Riva i Agnès Alibert, i l'Orchestre Symphonique 2e cycle del Conservatoire Montserrat Caballé, sota la direcció de Mehdi Lougraïda. L'acte és fruit d'una col·laboració entre la comuna de Canet de Rosselló, que acull una antena d'ensenyament musical, i la Comunitat Urbana.",
+    "descripcio_fr": "Le concert présente un recueil de chants de Noël traditionnels et venus du monde entier, préparé par les chœurs du Conservatoire et les élèves des classes de chant lyrique. Y participent les classes de chant lyrique dirigées par Sabine Riva et Agnès Alibert, ainsi que l'Orchestre Symphonique 2e cycle du Conservatoire Montserrat Caballé, sous la direction de Mehdi Lougraïda. L'acte est le fruit d'une collaboration entre la commune de Canet de Rosselló, qui accueille une antenne d'enseignement musical, et la Communauté Urbaine.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078751/Afiches-A3-TJP-12_tznx1h.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.566Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-rendez-vous-du",
+    "titol": "Rendez-vous du Pays d'Art et d'Histoire insòlit - Ressonàncies medievals i cèltiques",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-12",
+    "hora": "17:30",
+    "lloc": "57, avenue de la Rotjà",
+    "municipi": "Fullà",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "A l'església de Sainte-Eulalie de Fullà, les cordes de la harpa fan renéixer els ecos d'un temps antic, amb melodies inspirades en l'edat mitjana i en les terres cèltiques. L'acte combina música, història i patrimoni en un recorregut conduït per Michel Desmier, guia-conferenciant i enginyer de recerca a la Université de Perpignan Via Domitia.",
+    "descripcio_fr": "Dans l'église Sainte-Eulalie de Fullà, les cordes de la harpe font renaître les échos d'un temps ancien, avec des mélodies inspirées du Moyen Âge et des terres celtiques. L'acte combine musique, histoire et patrimoine dans un parcours animé par Michel Desmier, guide-conférencier et ingénieur de recherche à l'Université de Perpignan Via Domitia.",
+    "associacio": "Contacter Madame BONNAL Gwenaëlle",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078753/13-Affiche-RDV-Automne-2026-Fuilla_udl7j5.webp",
+    "font_url": "https://www.tourisme-canigo.com/pays-dart-et-dhistoire-conflent-canigo/#rdv",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.573Z",
+    "periodicitat": ""
   }
 ]
