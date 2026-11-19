@@ -4282,5 +4282,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.659Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-cinema-mochy",
+    "titol": "Cinema - Mochy",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "17:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Pel·lícula d'animació dirigida per Greg Brooker, amb Axel Auriant, Olivier Chauvel i Fanny Chelim en el repartiment. Mochy és un jove gos de bon cor, però el seu aspecte no li és fàcil. Tot i això, somia a participar en el concurs del gos més bonic i afronta tots els obstacles per fer realitat aquest projecte agosarat, amb l'esperança secreta de trobar la persona que l'estimarà per sempre. La projecció és per a tots els públics, a partir de 3 anys.",
+    "descripcio_fr": "Film d'animation réalisé par Greg Brooker, avec Axel Auriant, Olivier Chauvel et Fanny Chelim au générique. Mochy est un jeune chien au grand cœur, mais son apparence n'est pas facile. Malgré cela, il rêve de participer au concours du plus beau chien et affronte tous les obstacles pour réaliser ce projet fou, avec l'espoir secret de trouver l'humain qui l'aimera pour la vie. La projection est destinée à tous les publics, à partir de 3 ans.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078373/Image7-11_dshynx.webp",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.690Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-cinema-cicle-documental",
+    "titol": "Cinema – cicle documental – Fini de rire !",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "20:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "El documentari Fini de rire ! L'humour politique au garde-à-vous ? analitza la manera com s'ha limitat la llibertat dels humoristes que satiritzen el poder a la televisió i a la ràdio franceses. Segons el film, en trenta anys els humoristes més lliures han estat neutralitzats, marginalitzats, censurats o acomiadats, des de Canal+ i France Inter fins a France Télévisions, del mandat de Nicolas Sarkozy al d'Emmanuel Macron. Hi participen Guillaume Meurice, Lionel Dutemple i Sandrine Alexi. És per a tots els públics.",
+    "descripcio_fr": "Le documentaire Fini de rire ! L'humour politique au garde-à-vous ? analyse la façon dont s'est restreinte la liberté des humoristes qui satirisent le pouvoir à la télévision et à la radio françaises. Selon le film, en trente ans, les humoristes les plus libres ont été neutralisés, marginalisés, censurés ou renvoyés, de Canal+ et France Inter jusqu'à France Télévisions, du mandat de Nicolas Sarkozy à celui d'Emmanuel Macron. Y participent Guillaume Meurice, Lionel Dutemple et Sandrine Alexi. Il est destiné à tous les publics.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078374/Image8-2_xbfq8t.webp",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.691Z",
+    "periodicitat": ""
   }
 ]
