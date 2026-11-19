@@ -6030,5 +6030,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.592Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-accapna-conferencia-les",
+    "titol": "ACCAPNA: conferència «Les Contes de la Sagesse»",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-12",
+    "hora": "15:00",
+    "lloc": "2759 Imp. Jean Mermoz",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'acte consisteix en una conferència de Sylviane Flocken sobre «Les Contes de la Sagesse», en què s'hi fa una introducció a aquests relats. Mitjançant narracions poètiques, la conferència recorre els camins del somni i de l'imaginari, i els contes es presenten com a vincle amb coneixements universals heretats de generacions anteriors.",
+    "descripcio_fr": "L'acte consiste en une conférence de Sylviane Flocken sur « Les Contes de la Sagesse », au cours de laquelle une introduction à ces récits est proposée. Au moyen de narrations poétiques, la conférence parcourt les chemins du rêve et de l'imaginaire, et les contes sont présentés comme un lien avec des connaissances universelles héritées des générations précédentes.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078765/mic-1132528-1280-5_citlau.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.595Z",
+    "periodicitat": ""
   }
 ]
