@@ -3104,5 +3104,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.387Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-passejada-daniversari-de",
+    "titol": "Passejada d'aniversari de la reserva natural",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "14:00",
+    "lloc": "",
+    "municipi": "Noedes",
+    "comarca": "Conflent",
+    "categoria": "Esports",
+    "descripcio_ca": "L'acte celebra els 40 anys de la Reserva Natural de Noedes amb una passejada en format de deambulació, amb trobades per parlar de la vida de la reserva. Hi participen Nataph, el narrador de les cimes i altres personatges, i el recorregut és fàcil, pels senders que surten de la casa de la reserva natural. Després hi ha un aperitiu dinant, ofert per la RNN i l'AGRNN i preparat per Cal Guilhem, i un espectacle a la sala de festes amb ramells d'històries de plomes, de pèls i d'herbes, música, dibuix, poesia i cançó, a càrrec de Joseph, Claire i Laurent. L'espectacle proposa revisitar la història i la vida de la reserva donant la paraula als no humans i una mica també als humans.",
+    "descripcio_fr": "L'événement célèbre les 40 ans de la Réserve Naturelle de Noedes avec une balade en forme de déambulation, ponctuée de rencontres pour aborder la vie de la réserve. Y participent Nataph, le narrateur des cimes et d'autres personnages, et le parcours est facile, sur les sentiers qui partent de la maison de la réserve naturelle. Il y a ensuite un apéro dinatoire, offert par la RNN et l'AGRNN et préparé par Cal Guilhem, puis un spectacle à la salle des fêtes, avec des bouquets d'histoires de plumes, de poils et d'herbes, en musique, dessin, poésie et chanson, par Joseph, Claire et Laurent. Le spectacle propose de revisiter l'histoire et la vie de la réserve en donnant la parole aux non-humains et un peu aux humains.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071962/Capture-216_bqkyyx.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.428Z",
+    "periodicitat": ""
   }
 ]
