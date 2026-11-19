@@ -3142,5 +3142,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.516Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-bal-trad",
+    "titol": "Bal Trad'",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "20:30",
+    "lloc": "",
+    "municipi": "Angostrina i Vilanova de les Escaldes",
+    "comarca": "Cerdanya",
+    "categoria": "Música",
+    "descripcio_ca": "L'acte és un bal trad amb el grup Bal Perdu. Inclou també un àpat compartit.",
+    "descripcio_fr": "L'événement est un bal trad avec le groupe Bal Perdu. Un repas partagé est également proposé.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795072001/5-dec-angoustrine_e9ovia.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.529Z",
+    "periodicitat": ""
   }
 ]
