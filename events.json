@@ -3028,5 +3028,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.288Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-pessebres",
+    "titol": "Pessebres",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "L'Estudiantina, un cor molt conegut, fa una gira per diverses localitats en aquest final d'any. El programa recull la tradició del pessebre vivent a Catalunya.",
+    "descripcio_fr": "L'Estudiantina, un chœur très connu, fait une tournée dans plusieurs localités en cette fin d'année. Le programme évoque la tradition du pessebre vivent en Catalogne.",
+    "associacio": "Contacter Monsieur SALVA JULIEN",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071926/RETOUCHE2-Pessebre-vivant-St-Michel---Noel---creche--160-E-Fondecave-2_netbkv.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.325Z",
+    "periodicitat": ""
   }
 ]
