@@ -2859,22 +2859,22 @@
     "periodicitat": ""
   },
   {
-    "id": "2026-11-13-disco-soupe",
-    "titol": "Disco Soupe",
+    "id": "2026-11-13-reunio-de-presentacio",
+    "titol": "Reunió de presentació del Lions Club Albères Vallespir",
     "data_inici": "2026-11-13",
     "data_fi": "2026-11-13",
-    "hora": "18:00",
-    "lloc": "Rue de la Mairie",
-    "municipi": "RASIGUERES",
-    "comarca": "",
+    "hora": "18:30",
+    "lloc": "Rue Clemenceau",
+    "municipi": "Sant Genís de Fontanes",
+    "comarca": "Rosselló",
     "categoria": "",
-    "descripcio_ca": "La Disco Soupe de Rasiguères reuneix el públic per elaborar col·lectivament una gran sopa i després degustar-la, amb música. És una animació conviviable i original que vol combatre el malbaratament alimentari. El material és posat a disposició per l'associació Solidarité Fenouillèdes, i l'animació corre a càrrec de Les quezacho. Es recomana portar-hi bols i coberts.",
-    "descripcio_fr": "La Disco Soupe de Rasiguères réunit le public pour préparer collectivement une grande soupe puis la déguster, en musique. C'est une animation conviviale et originale qui vise à lutter contre le gaspillage alimentaire. Le matériel est mis à disposition par l'association Solidarité Fenouillèdes, et l'animation est assurée par Les quezacho. Il est recommandé d'apporter bols et couverts.",
+    "descripcio_ca": "El Lions Club presenta les seves activitats en una reunió oberta als interessats. Els membres de l'entitat expliquen les seves nombroses accions solidàries i les possibilitats de col·laborar-hi. La trobada es prolonga amb un pot de l'amistat, en un ambient distès. L'acte és obert a tothom.",
+    "descripcio_fr": "Le Lions Club présente ses activités lors d'une réunion ouverte aux personnes intéressées. Les membres de l'association expliquent leurs nombreuses actions solidaires et les possibilités de s'engager à leurs côtés. La rencontre se poursuit autour d'un pot de l'amitié, dans une ambiance conviviale. L'activité est ouverte à tous.",
     "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071761/RASIGUERES-Aff-DiscoSoupe-2026-_hagcm8.webp",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071783/lions-club_mpwhe3.webp",
     "font_url": "",
     "estat": "publicat",
-    "data_entrada": "2026-11-12T07:13:50.521Z",
+    "data_entrada": "2026-11-12T07:13:50.522Z",
     "periodicitat": ""
   }
 ]
