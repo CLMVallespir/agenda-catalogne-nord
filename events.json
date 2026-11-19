@@ -4947,5 +4947,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.700Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-04-jornada-medieval-conferencia",
+    "titol": "Jornada medieval: conferència «Les fades al temps medieval»",
+    "data_inici": "2026-12-04",
+    "data_fi": "2026-12-04",
+    "hora": "18:00",
+    "lloc": "",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "Mercat",
+    "descripcio_ca": "Amb motiu dels 40 anys del Téléthon, Vinçà organitza una jornada de temàtica medieval per mobilitzar-se al costat de les persones afectades per malalties rares i de les seves famílies. La programació inclou una conferència sobre «Les fades al temps medieval» i, l'endemà, una jornada festiva al centre del poble amb combats, danses, jocs, mercat d'artesans i de productors i una taverna. El dinar es fa amb reserva prèvia.",
+    "descripcio_fr": "Pour les 40 ans du Téléthon, Vinçà organise une journée sur le thème du Moyen-Âge afin de se mobiliser aux côtés des personnes touchées par des maladies rares et de leurs familles. Le programme comprend une conférence intitulée « Les fées au temps médiéval » puis, le lendemain, une journée festive au centre du village avec combats, danses, jeux, marché d'artisans et de producteurs et une taverne. Le repas se fait sur réservation.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078489/FB-IMG-1794473929008_snnajf.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.680Z",
+    "periodicitat": ""
   }
 ]
