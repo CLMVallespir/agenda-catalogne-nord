@@ -3332,5 +3332,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.495Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-taller-de-bebes",
+    "titol": "Taller de bebès lectors",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "09:30",
+    "lloc": "Médiathèque Claude Blazy",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Moment privilegiat al voltant del llibre i de la lectura, l'activitat és una animació gratuïta d'uns 30 minuts. S'adreça a infants de 0 a 3 anys acompanyats d'un adult. Cal inscripció prèvia.",
+    "descripcio_fr": "Moment privilégié autour du livre et de la lecture, l'activité est une animation gratuite d'environ 30 minutes. Elle s'adresse aux enfants de 0 à 3 ans accompagnés d'un adulte. L'inscription est obligatoire.",
+    "associacio": "Contacter Madame BLASI Mathilde",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078079/flyer-bebes-lecteurs-2024-borne--1-_jkxfeq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.500Z",
+    "periodicitat": ""
   }
 ]
