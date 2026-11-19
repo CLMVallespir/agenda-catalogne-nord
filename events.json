@@ -5422,5 +5422,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.716Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-cafe-musical",
+    "titol": "Cafè musical",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "",
+    "lloc": "5 Rue de l'Égalité",
+    "municipi": "Illa",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Es tracta d'un esmorzar musical de convivència i intercanvi a la mediateca J.S Pons. S'hi repassarà la música a les mediateques del 2026, les novetats i els preferits de l'any, i s'hi farà un focus sobre un grup de llegenda. També s'hi descobrirà un instrument musical. S'adreça als aficionats a la música, que hi podran compartir o descobrir coses.",
+    "descripcio_fr": "Il s'agit d'un petit-déjeuner musical convivial d'échange et de partage à la médiathèque J.S Pons. On y fera le point sur la musique dans les médiathèques en 2026, sur les nouveautés et les coups de cœur de l'année, et un focus sera consacré à un groupe de légende. On y découvrira aussi un instrument de musique. Il s'adresse aux amateurs de musique, qui pourront y partager ou découvrir des choses.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078609/05-12-26_jetaqt.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.721Z",
+    "periodicitat": ""
   }
 ]
