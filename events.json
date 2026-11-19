@@ -3845,5 +3845,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.690Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-cinema-vetllada-especial",
+    "titol": "Cinema - Vetllada especial Nepal",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "17:30",
+    "lloc": "Côte de la place",
+    "municipi": "La Roca d'Albera",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "La vetllada proposa un recorregut pel Nepal amb la projecció de dues pel·lícules en versió original subtitulada que ofereixen mirades singulars sobre la societat nepalesa. Au-delà de Katmandou segueix les germanes Jamuna i Anmuna, que tornen al seu poble natal, a les altures de l'Himàlaia, per participar amb la família en la perillosa collita del yarsagumba, una criatura rara, mig bolet i mig insecte, el valor de la qual supera avui el de l'or. Les éléphants dans la brume es situa en un poble nepalès al cor d'un bosc amb elefants salvatges, on viu una comunitat kinnar, tan venerada com temuda pels seus poders de benedicció i de maledicció. Pirati, una de les mares de la comunitat, somia fugir amb l'home que estima, però quan desapareix una de les seves filles ha d'investigar-ho i triar entre el seu desig de llibertat i les responsabilitats envers la comunitat.",
+    "descripcio_fr": "La soirée propose un parcours au Népal avec la projection de deux films en version originale sous-titrée qui offrent des regards singuliers sur la société népalaise. Au-delà de Katmandou suit les sœurs Jamuna et Anmuna, qui retournent dans leur village natal, sur les hauteurs de l'Himalaya, pour participer avec leur famille à la périlleuse récolte du yarsagumba, une créature rare, mi-champignon, mi-insecte, dont la valeur dépasse aujourd'hui celle de l'or. Les éléphants dans la brume se déroule dans un village népalais au cœur d'une forêt peuplée d'éléphants sauvages, où vit une communauté kinnar, aussi vénérée que crainte pour ses pouvoirs de bénédiction et de malédiction. Pirati, l'une des mères de la communauté, rêve de s'enfuir avec l'homme qu'elle aime ; mais lorsqu'une de ses filles disparaît, elle doit mener l'enquête et choisir entre son désir de liberté et ses responsabilités envers la communauté.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078283/907061384-2409868392754485-4347416687776664676-nr_ag960u.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.706Z",
+    "periodicitat": ""
   }
 ]
