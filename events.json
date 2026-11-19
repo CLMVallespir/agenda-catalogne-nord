@@ -2859,22 +2859,22 @@
     "periodicitat": ""
   },
   {
-    "id": "2026-11-12-les-aperos-contemporains",
-    "titol": "Les apéros contemporains",
-    "data_inici": "2026-11-12",
-    "data_fi": "2026-11-12",
+    "id": "2026-11-13-conferencia-els-recursos",
+    "titol": "Conferència: els recursos en aigua per al futur dels Pirineus Orientals",
+    "data_inici": "2026-11-13",
+    "data_fi": "2026-11-13",
     "hora": "18:30",
-    "lloc": "75 Avenue Jean Jaurès",
-    "municipi": "Maurí",
+    "lloc": "MEDIATHEQUE MUNICIPALE",
+    "municipi": "Tuïr",
     "comarca": "Rosselló",
-    "categoria": "",
-    "descripcio_ca": "Les apéros contemporains s'instal·len a Maurí cada dijous, a la sala de festes, amb begudes (cervesa, vi, suc de fruita) i petits aperitius salats. Cada sessió inclou una intervenció artística contemporània breu, una experiència sonora o una actuació original d'un quart d'hora aproximadament. L'activitat està oberta a tota la família i té per objectiu que el públic amb poca disponibilitat pugui descobrir estètiques diferents i intercanviar impressions amb els artistes. Hi són benvingudes les persones curioses.",
-    "descripcio_fr": "Les apéros contemporains s'installent à Maurí chaque jeudi, dans la salle des fêtes, avec boissons (bière, vin, jus de fruit) et petits en-cas salés. Chaque séance comprend une courte intervention artistique contemporaine, une expérience sonore ou une performance originale d'un quart d'heure environ. L'activité est ouverte à toute la famille et vise à permettre à un public disposant de peu de disponibilité de découvrir des esthétiques différentes et d'échanger avec les artistes. Les personnes curieuses y sont les bienvenues.",
+    "categoria": "Conferència",
+    "descripcio_ca": "La conferència aborda els recursos en aigua de cara al futur dels Pirineus Orientals. La imparteix Caroline Figueres, consultora internacional en matèria d'aigua, en el marc de la revisió del Plan Climat-Air-énergie Territorial.",
+    "descripcio_fr": "La conférence aborde les ressources en eau pour le futur des Pyrénées-Orientales. Elle est donnée par Caroline Figueres, consultante internationale en eau, dans le cadre de la révision du Plan Climat-Air-énergie Territorial.",
     "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071732/Aperos-contemporains--Maury_uzun5z.webp",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071737/Aspres-thuir-conferenceeeau_wpzctm.webp",
     "font_url": "",
     "estat": "publicat",
-    "data_entrada": "2026-11-12T07:13:50.518Z",
+    "data_entrada": "2026-11-12T07:13:50.320Z",
     "periodicitat": ""
   }
 ]
