@@ -40,7 +40,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52W26Z] L'acte es fa 75 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-19-visite-guidee-la",
+    "id": "2026-11-19-visita-guiada-a",
     "titol": "Visita guiada a la medieval",
     "data_inici": "2026-11-19",
     "data_fi": "2026-11-19",
@@ -52,9 +52,9 @@
     "descripcio_ca": "Sant Andreu de Sureda es va bastir al voltant d'un monestir benedictí, el cor del qual, l'església abacial romànica, es conserva gairebé des de fa mil anys. L'arquitectura, la decoració i l'entorn tranquil i atractiu del lloc en fan un autèntic viatge en el temps. La visita és alhora rica i agradable, en un marc situat al centre d'aquest poble típicament català. La visita es fa en francès, està oberta a tothom i és accessible a les persones amb mobilitat reduïda.",
     "descripcio_fr": "Sant Andreu de Sureda s'est bâti autour d'un monastère bénédictin dont le cœur, l'église abbatiale romane, est préservé depuis près de mille ans. Son architecture, son décor et son cadre paisible et séduisant font un véritable voyage dans le temps. La visite, à la fois riche et agréable, se déroule dans un écrin situé au centre de ce village typiquement catalan. La visite se fait en français, est ouverte à tous et accessible aux personnes à mobilité réduite.",
     "associacio": "Contacter Mademoiselle MAHOUX CAROLINE",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/visite-caro-st-andre.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078092/visite-caro-st-andre_yksz2e.webp",
     "font_url": "https://www.tourisme-pyrenees-mediterranee.com/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.535Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52X2BL] L'acte es fa 37 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
