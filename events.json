@@ -4472,5 +4472,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.529Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-amb-el-que",
+    "titol": "Amb el que creixerà entre les ruïnes",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "14:45",
+    "lloc": "LIBRAIRIE TORCATIS10 Rue Mailly",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'atelier d'escriptura permet a cadascú explorar la seva part poètica, l'espai propi de construcció i les emocions amagades. No hi ha judici ni objectiu a assolir: el grup es guia a través de miniconferències, discussions, textos llegits i compartits, imatges i una escolta respectuosa. El plaer d'estar junts, de dir-se, de llegir-se i d'escoltar-se, i de descobrir autors i artistes, n'és el fil conductor. Aquesta vegada, l'atelier compta amb la companyia poètica de Ludivine Joinnot, i amb Ailton Krenak, Marielle Macé i Alain Schnapp, així com d'altres pensadors i historiadors de les «ruïnes», en els diferents sentits del terme.",
+    "descripcio_fr": "L'atelier d'écriture permet à chacun d'explorer sa part poétique, son espace de construction et ses émotions enfouies. Il n'y a ni jugement ni objectif à atteindre : le groupe est guidé à travers des mini-conférences, des discussions, des textes lus et partagés, des images et une écoute respectueuse. Le plaisir d'être ensemble, de se dire, de se lire et de s'écouter, ainsi que la découverte d'auteurs et d'artistes, en constituent le fil conducteur. Cette fois, l'atelier compte sur la compagnie poétique de Ludivine Joinnot, ainsi que d'Ailton Krenak, Marielle Macé et Alain Schnapp, et d'autres penseurs et historiens des « ruines », dans les différents sens du terme.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078402/Ruines---Novembre-2026-_fopvc3.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.622Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-cinema-heart-of",
+    "titol": "Cinema - Heart of the Beast",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "20:30",
+    "lloc": "1 Avenue du Puigmal",
+    "municipi": "Osseja",
+    "comarca": "Cerdanya",
+    "categoria": "Cinema",
+    "descripcio_ca": "La pel·lícula d'acció i aventura Heart of the Beast segueix James Belmont, antic membre de les forces especials, perdut a l'Alaska després d'un accident d'avió. Hi és acompanyat pel seu gos Odin, que sempre ha estat al seu costat, i tots dos hauran de sobreviure junts en una natura tan magnífica com implacable. És apta per a tots els públics.",
+    "descripcio_fr": "Le film d'action et d'aventure Heart of the Beast suit James Belmont, ancien membre des forces spéciales, perdu en Alaska après un crash d'avion. Il est accompagné de son chien Odin, toujours à ses côtés, et tous deux devront survivre ensemble dans une nature aussi magnifique qu'impitoyable. Il est tout public.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078403/Image10-3_sv4uqu.webp",
+    "font_url": "https://www.pyrenees-cerdagne.com",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.691Z",
+    "periodicitat": ""
   }
 ]
