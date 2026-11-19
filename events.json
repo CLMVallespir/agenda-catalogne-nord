@@ -5821,5 +5821,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.654Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-11-espectacle-dels-toublitouts",
+    "titol": "Espectacle dels Toublitouts « Penser, oublier, exister »",
+    "data_inici": "2026-12-11",
+    "data_fi": "2026-12-11",
+    "hora": "18:00",
+    "lloc": "Place Castellane",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "L'espectacle neix de tallers d'expressió teatral que reuneixen persones afectades per la malaltia d'Alzheimer i familiars que les acompanyen, i la companyia Les Toublitouts en presenta una creació col·lectiva basada en experiències personals i moments de vida. Als escenaris, els participants conviden el públic a anar més enllà de les representacions habituals de la malaltia i a descobrir trajectòries, sensibilitats i un fort desig de comunicar-se. És una trobada artística i humana que celebra la capacitat de cadascú per crear, sentir i teixir vincles, malgrat les dificultats que s'hagin trobat.",
+    "descripcio_fr": "Le spectacle est né d'ateliers d'expression théâtrale réunissant des personnes touchées par la maladie d'Alzheimer et leurs proches aidants, et la troupe Les Toublitouts en présente une création collective nourrie d'expériences personnelles et de moments de vie. Sur scène, les participants invitent le public à dépasser les représentations habituelles de la maladie et à découvrir des parcours, des sensibilités et un fort désir de communiquer. C'est une rencontre artistique et humaine qui célèbre la capacité de chacun à créer, à ressentir et à tisser des liens, malgré les difficultés rencontrées.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078718/Spectacle--Pexels-Ann-H_rweanc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.661Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-12-11-snow-white-the",
+    "titol": "Snow White the Pantomime - Blanche Neige",
+    "data_inici": "2026-12-11",
+    "data_fi": "2026-12-11",
+    "hora": "",
+    "lloc": "10 Allée de la Liberté",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'espectacle Snow White the Pantomime és una comèdia musical que revisita el conte clàssic de Blancaneu dins la tradició de la pantomima britànica. Hi apareixen la bella princesa i la temible reina, en un espectacle que combina teatre, música, humor i fantasia. La representació es fa en anglès i en francès, i inclou cançons i situacions còmiques per a petits i grans.",
+    "descripcio_fr": "Le spectacle Snow White the Pantomime est une comédie musicale qui revisite le conte classique de Blanche-Neige dans la tradition de la pantomime britannique. On y retrouve la belle princesse et la redoutable reine, dans un spectacle qui mêle théâtre, musique, humour et fantaisie. La représentation se joue en anglais et en français, avec des chansons et des situations cocasses pour les petits comme pour les grands.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078720/Capture-d-ecran-2026-11-10-111111_qj1v3k.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.675Z",
+    "periodicitat": ""
   }
 ]
