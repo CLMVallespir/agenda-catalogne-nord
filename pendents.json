@@ -1120,7 +1120,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZRHF] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-23-visite-guidee-histoire",
+    "id": "2026-11-23-visita-guiada-historia",
     "titol": "Visita guiada: història d'una terra catalana",
     "data_inici": "2026-11-23",
     "data_fi": "2026-11-23",
@@ -1132,15 +1132,15 @@
     "descripcio_ca": "La visita guiada recorre la història agrícola mil·lenària de les terres al·luvials del Tech, on Palau del Vidre s'inscriu en la riquesa del verger rossellonès. Es presenta com una llarga recerca sobre el topònim, que té el sentit literal de «palau de vidre», i el relat s'organitza al voltant del poble i del Fort, en una alquímia secreta que relaciona templers, «arts del foc» i passadissos subterranis llegendaris. L'activitat es recomana a partir dels 10 anys.",
     "descripcio_fr": "La visite guidée parcourt l'histoire agricole millénaire des terres alluviales du Tech, où Palau del Vidre s'inscrit dans la richesse du verger roussillonnais. Elle se présente comme une longue enquête sur le toponyme, qui a le sens littéral de « Palais du Verre », et le récit s'organise autour du village et du Fort, dans une alchimie secrète qui relie Templiers, « arts du feu » et souterrains légendaires. L'activité est recommandée à partir de 10 ans.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Visite-guidee-Palau-del-Vidre-Bettina-Bauer--3-.jpg-1200px.JPG?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078342/Visite-guidee-Palau-del-Vidre-Bettina-Bauer--3-.jpg-1200px_x9rfy2.webp",
     "font_url": "https://www.tourisme-pyrenees-mediterranee.com/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.516Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52V8GH] L'acte es fa 35 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-23-jeux-pour-tous",
+    "id": "2026-11-23-jocs-per-a",
     "titol": "Jocs per a tothom",
     "data_inici": "2026-11-23",
     "data_fi": "2026-11-23",
@@ -1152,15 +1152,15 @@
     "descripcio_ca": "L'acte permet descobrir o tornar a descobrir els jocs de taula, de cooperació i d'estratègia. S'hi proposa un moment agradable en família o entre amics.",
     "descripcio_fr": "L'activité permet de découvrir ou redécouvrir les jeux de plateau, de coopération et de stratégie. Elle offre un moment agréable en famille ou entre amis.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/JEUX-SOCIETE-PIXABAY.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078343/JEUX-SOCIETE-PIXABAY_srihe3.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.650Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNC0] L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Ve marcada «Jeux» sense cap patró de joc de club al títol: la categoria queda buida. Si és un joc d'entitat, és Vida associativa; si és un negoci, la fila no hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-24-riflettes-de-corneilla",
+    "id": "2026-11-24-riflettes",
     "titol": "Riflettes",
     "data_inici": "2026-11-24",
     "data_fi": "2026-11-24",
@@ -1172,9 +1172,9 @@
     "descripcio_ca": "A Cornellà de Conflent es juguen riflettes amb 15 partides. Hi ha un premi de consolació en forma de bons de compra. L'activitat és oberta a tothom.",
     "descripcio_fr": "À Cornellà de Conflent, des riflettes se jouent en 15 parties. Un lot de consolation est prévu sous forme de bons d'achat. L'activité est ouverte à tous.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Rifle-loto-2.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078344/Rifle-loto-2_k2d4gz.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.628Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZI2B] L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
