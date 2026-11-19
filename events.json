@@ -4263,5 +4263,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.495Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-sessio-de-pilates",
+    "titol": "Sessió de pilates",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "18:30",
+    "lloc": "Salle du Dojo (à côté du gymnase)",
+    "municipi": "Els Banys i Palaldà",
+    "comarca": "Vallespir",
+    "categoria": "Esports",
+    "descripcio_ca": "Es tracta d'una sessió de pilates que es fa a la sala del Dojo, al costat del gimnàs. Cal portar-hi una tovallola i una ampolla d'aigua.",
+    "descripcio_fr": "Il s'agit d'une séance de pilates qui se tient dans la salle du Dojo, à côté du gymnase. Il faut apporter une serviette et une bouteille d'eau.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078369/stretching_krljks.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.659Z",
+    "periodicitat": ""
   }
 ]
