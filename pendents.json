@@ -3340,7 +3340,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52N7DJ] La categoria queda buida a posta: «Action citoyenne» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-09-jeux-de-societe",
+    "id": "2026-12-09-jocs-de-societat",
     "titol": "Jocs de societat",
     "data_inici": "2026-12-09",
     "data_fi": "2026-12-09",
@@ -3352,9 +3352,9 @@
     "descripcio_ca": "L'acte consisteix en una tarda per compartir jocs de societat a la mediateca Pons d'Ille sur Têt. És per a tot públic i l'animació és gratuïta, dins del límit de places disponibles.",
     "descripcio_fr": "L'événement consiste en un après-midi partagé autour des jeux de société à la médiathèque Pons d'Ille sur Têt. Il est ouvert à tous publics et l'animation est gratuite, dans la limite des places disponibles.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/09-12.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078631/09-12_i0xbb5.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.491Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52QSJC] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
