@@ -480,7 +480,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52BW2K] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-14-cinema-a-banyuls",
+    "id": "2026-11-14-cinema",
     "titol": "Cinema",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -492,15 +492,15 @@
     "descripcio_ca": "El Cinémaginaire organitza una jornada de cinema a la Salle des Fêtes (Foyer Rural) de Banyuls dels Aspres, pensada per a l'entreteniment i la convivència. S'hi projecten dues pel·lícules per a petits i grans: Mochy, le chien le plus moche du monde, que és ideal per a famílies, i La Maison de nos rêves.",
     "descripcio_fr": "Le Cinémaginaire organise une journée de cinéma à la Salle des Fêtes (Foyer Rural) de Banyuls dels Aspres, conçue pour le divertissement et le partage. Deux projections sont proposées pour petits et grands : Mochy, le chien le plus moche du monde, idéal en famille, et La Maison de nos rêves.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ASPRES-BDA-MOCHY.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071796/ASPRES-BDA-MOCHY_utdjd4.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.303Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52NTTX] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-14-atelier-tufting-en",
+    "id": "2026-11-14-taller-de-tufting",
     "titol": "Taller de tufting: realitza el teu tapís",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -512,9 +512,9 @@
     "descripcio_ca": "Julien, artista pluridisciplinari, guia els participants en un taller de tufting de dos dies per concebre i realitzar un tapís únic de 40×40 cm. El primer dia es dedica a la concepció del motiu i a la introducció a la tècnica amb la pistola de tufting; el segon, a encolar, tondre i acabar la peça. L'acte s'adreça a qui hi fa els primers passos.",
     "descripcio_fr": "Julien, artiste pluridisciplinaire, accompagne les participants dans un atelier de tufting sur deux jours pour concevoir et réaliser un tapis unique de 40×40 cm. Le premier jour est consacré à la conception du motif et à l'initiation à la technique avec le tufting gun ; le second, au collage, à la tonte et aux finitions de la pièce. L'activité s'adresse à celles et ceux qui font leurs premiers pas dans cet art.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/aSPRES-THUIR-ATELER-2JOURS.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071797/aSPRES-THUIR-ATELER-2JOURS_lskyal.webp",
     "font_url": "https://atelier-arago.com/ateliers-decouverte/stage-decouverte-assise-tabouret/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.345Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52W0S3] [ADT66 id: FMALAR066V52YY86] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
