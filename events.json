@@ -3085,5 +3085,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.369Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-peter-pan-ou",
+    "titol": "Peter Pan ou l'enfant qui ne voulait pas grandir",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-06",
+    "hora": "20:30",
+    "lloc": "3 Rue Joseph Lafon",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Comèdia musical inspirada en l'obra de J. M. Barrie. Peter, refugiat al país Imaginari amb els nois perduts, pot volar i evadir-se gràcies a la pols de fada. Un dia marxa a Londres, on coneix la família Darling, i s'endú Wendy i els seus germans al país Imaginari, perquè Wendy faci de mare dels nois perduts. Allà viuen aventures amb la fada Clochette, el capità Crochet, els pirates, els aborígens i les sirenes, i la història es pregunta si Wendy i els seus germans podran sobreviure sense l'amor i la protecció dels seus pares.",
+    "descripcio_fr": "Comédie musicale inspirée de l'œuvre de J. M. Barrie. Peter, réfugié au pays Imaginaire avec les garçons perdus, peut voler et s'évader grâce à la poussière de fée. Un jour, il part pour Londres, où il rencontre la famille Darling, et emmène Wendy et ses frères au pays Imaginaire, pour que Wendy devienne la mère des garçons perdus. Là-bas, ils vivent des aventures avec la fée Clochette, le capitaine Crochet, les pirates, les aborigènes et les sirènes, et l'histoire se demande si Wendy et ses frères pourront survivre sans l'amour et la protection de leurs parents.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071952/Afiches-A3-TJP-11_nx5pll.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.387Z",
+    "periodicitat": ""
   }
 ]
