@@ -3900,7 +3900,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZHIJ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-11-seance-decoute-1",
+    "id": "2026-12-11-sessio-descolta-1",
     "titol": "Sessió d'escolta 1",
     "data_inici": "2026-12-11",
     "data_fi": "2026-12-11",
@@ -3912,9 +3912,9 @@
     "descripcio_ca": "Es presenta el podcast documental de la periodista Alice Fabre, en una sessió d'escolta. La periodista duu a terme al territori un treball de recollida i elaboració de relats sonors, a partir de trobades amb habitants, de la captació de paraules, d'ambients i de la memòria.",
     "descripcio_fr": "Séance d'écoute du podcast documentaire réalisé par la journaliste Alice Fabre. La journaliste mène sur le territoire un travail de collecte et de mise en récit sonore, à partir de rencontres avec des habitants, de captations de paroles, d'ambiances et de mémoire.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/10-11.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078703/10-11_gmngw2.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.635Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZK9R] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
