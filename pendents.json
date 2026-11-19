@@ -540,7 +540,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52XITR] L'acte es fa 5 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-14-enseignement-a-la",
+    "id": "2026-11-14-ensenyament-de-la",
     "titol": "Ensenyament de la sardana",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -552,15 +552,15 @@
     "descripcio_ca": "La mediateca, en col·laboració amb l'associació La Llevantina, organitza un ensenyament de la sardana. Es tracta d'una dansa tradicional catalana que es comparteix en un ambient de convivència.",
     "descripcio_fr": "La médiathèque, en partenariat avec l'association La Llevantina, organise un enseignement de la sardane. Il s'agit d'une danse traditionnelle catalane que l'on partage dans une ambiance conviviale.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/STE-MARIE-SARDANE.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071802/STE-MARIE-SARDANE_hqdu21.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.407Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52YW5Y] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-14-bal-trad",
+    "id": "2026-11-14-ball-tradicional",
     "titol": "Ball tradicional",
     "data_inici": "2026-11-14",
     "data_fi": "2026-11-14",
@@ -572,9 +572,9 @@
     "descripcio_ca": "Es proposa un ball tradicional amb Lumbrets. També es pot inscriure's al taller i al ball, que es fan a la sala de festes de Trasserra.",
     "descripcio_fr": "Un bal traditionnel avec Lumbrets est proposé. Il est également possible de s'inscrire à l'atelier et au bal, qui ont lieu à la salle des fêtes de Trasserra.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-tresserrebaltrad.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071804/Aspres-tresserrebaltrad_ndk38y.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.502Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNYV] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
