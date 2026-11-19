@@ -2971,5 +2971,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.439Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-04-dedans-dehors-cie",
+    "titol": "Dedans-dehors / Cie La Muse",
+    "data_inici": "2026-12-04",
+    "data_fi": "2026-12-04",
+    "hora": "19:30",
+    "lloc": "Théâtre Aux Croisements31 Rue des Romarins",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Espectacle musical per a públic infantil a partir de 2 anys. Les actrius i músiques Sophie Boudieux i Charlène Moura proposen un viatge vocal i corporal que va de dins de la casa fins al jardí de fora, i de l'interior dels caps fins als vertigens de l'univers. A la manera d'un concert, cada cançó, cada peça i cada testimoni d'infant recollit i difós en cinta sonora ofereix un paisatge sonor diferent. Quatre caixons de fusta transformen l'espai, que és ara castell fort, ara parterre de flors, ara cos d'infants, per explicar el pas de si mateix al món, de l'íntim cap a l'aventura d'altres llocs.",
+    "descripcio_fr": "Spectacle musical destiné au jeune public à partir de 2 ans. Les actrices et musiciennes Sophie Boudieux et Charlène Moura proposent un voyage vocal et corporel, du dedans de la maison au dehors du jardin, et de l'intérieur des têtes aux vertiges de l'univers. À la manière d'un concert, chaque chanson, chaque morceau et chaque témoignage d'enfant recueilli et diffusé sur bande sonore offre un paysage sonore différent. Quatre caissons de bois transforment l'espace, tantôt château fort, tantôt parterre fleuri, tantôt corps d'enfants, pour raconter le passage de soi au monde, de l'intime vers l'aventure d'ailleurs.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071913/Dedans-dehors-_z8r98z.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.458Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-12-04-donacio-de-sang",
+    "titol": "Donació de sang",
+    "data_inici": "2026-12-04",
+    "data_fi": "2026-12-04",
+    "hora": "15:00",
+    "lloc": "14 Boulevard Voltaire",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "La col·lecta de sang es fa a Elna, a la sala de festes. Hi poden donar sang les persones d'entre 18 i 70 anys que pesin més de 50 quilos, que no hagin rebut mai una transfusió i que es trobin en bona forma; cal haver menjat i begut abans de la donació. L'activitat dura una hora, dels quals deu minuts són per a la donació, i cal presentar un document d'identitat. Cada donació permet atendre tres pacients diferents en els propers dies.",
+    "descripcio_fr": "La collecte de sang a lieu à Elna, dans la salle des fêtes. Peuvent donner les personnes de 18 à 70 ans qui pèsent plus de 50 kilos, qui n'ont jamais reçu de transfusion et qui se sentent en forme ; il faut avoir mangé et bu avant le don. L'activité dure une heure, dont dix minutes pour le don proprement dit, et il faut présenter une pièce d'identité. Chaque don permettra de soigner trois patients différents dans les prochains jours.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071915/don-de-sang-2_qcnxo3.webp",
+    "font_url": "https://dondesang.efs.sante.fr/don-de-sang",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.494Z",
+    "periodicitat": ""
   }
 ]
