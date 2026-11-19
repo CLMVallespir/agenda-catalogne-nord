@@ -320,7 +320,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZQCP] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-20-conference-deux-berlinois",
+    "id": "2026-11-20-conferencia-dos-berlinesos",
     "titol": "Conferència: dos berlinesos a l'exili, Charlotte Salomon i Walter Benjamin",
     "data_inici": "2026-11-20",
     "data_fi": "2026-11-20",
@@ -332,9 +332,9 @@
     "descripcio_ca": "Aquesta conferència aborda les trajectòries de Charlotte Salomon, artista pintora alemanya, i Walter Benjamin, escriptor, filòsof i crític, dos creadors que van viure l'exili en una Europa marcada per l'auge del nazisme. L'acte mostra com l'art i el pensament poden donar testimoni dels trastorns històrics i expressar la sensibilitat de qui els viu. La conferència és a dues veus, animada per Clara Silber i Jean-Pierre Bonnel, i la proposa l'associació Walter Benjamin sans Frontières.",
     "descripcio_fr": "Cette conférence aborde les trajectoires de Charlotte Salomon, peintre allemande, et de Walter Benjamin, écrivain, philosophe et critique, deux créateurs qui ont vécu l'exil dans une Europe marquée par la montée du nazisme. L'acte montre comment l'art et la pensée peuvent témoigner des bouleversements historiques et exprimer la sensibilité de ceux qui les traversent. La conférence, à deux voix, est animée par Clara Silber et Jean-Pierre Bonnel, et proposée par l'association Walter Benjamin sans Frontières.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/conference-22.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078228/conference-22_wy7yp8.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.691Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQDS] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
