@@ -2380,7 +2380,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZQK3] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-04-concert-commemoratif-du",
+    "id": "2026-12-04-concert-commemoratiu-del",
     "titol": "Concert commemoratiu del 150è aniversari de Pau Casals",
     "data_inici": "2026-12-04",
     "data_fi": "2026-12-04",
@@ -2392,15 +2392,15 @@
     "descripcio_ca": "El concert, per a piano i soprano, compta amb la participació d'un violoncel·lista al final. La segona part és dedicada íntegrament a obres compostes per Pau Casals.",
     "descripcio_fr": "Le concert, pour piano et soprano, compte la participation d'un violoncelliste en fin de concert. La seconde partie est entièrement consacrée aux œuvres composées par Pau Casals.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/PauCasal004-zzzz-des-fr-DEF.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078514/PauCasal004-zzzz-des-fr-DEF_i4hhnz.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.700Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQSL] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-04-cluedo-geant",
+    "id": "2026-12-04-cluedo-gegant",
     "titol": "Cluédo gegant",
     "data_inici": "2026-12-04",
     "data_fi": "2026-12-04",
@@ -2412,9 +2412,9 @@
     "descripcio_ca": "Es tracta d'un cluédo gegant amb les bibliotecàries, animat pels inspectors la Gachette i Hammer, de la Ludo d'aqui. Hi ha dues sessions, per a infants a partir de 8 anys, amb inscripció prèvia a la mediateca.",
     "descripcio_fr": "Il s'agit d'un Cluédo géant avec les bibliothécaires, animé par les inspecteurs la Gachette et Hammer, de la Ludo d'aqui. Il y a deux sessions, pour les enfants à partir de 8 ans, sur inscription préalable à la médiathèque.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Capture-259.JPG?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078515/Capture-259_uv3njy.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.702Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQTV] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
