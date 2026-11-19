@@ -1180,7 +1180,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZI2B] L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-24-cine-debat",
+    "id": "2026-11-24-cineforum",
     "titol": "Cinefòrum",
     "data_inici": "2026-11-24",
     "data_fi": "2026-11-24",
@@ -1192,15 +1192,15 @@
     "descripcio_ca": "L'acte consisteix en dues projeccions de films documentals. La primera, dedicada a viure amb el risc d'incendi, vol fer reflexionar sobre la nostra capacitat d'adaptar-nos a un risc cada cop més gran. La segona, dedicada al clima i a la salut mental, inclou un intercanvi sobre les conseqüències psicològiques dels incendis i de les canícules.",
     "descripcio_fr": "L'acte consiste en deux projections de films documentaires. La première, consacrée à vivre avec le risque d'incendie, veut faire réfléchir à notre capacité à nous adapter à un risque croissant. La seconde, consacrée au climat et à la santé mentale, comprend un échange sur les conséquences psychologiques des incendies et des canicules.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Aspres-thuir-Affiche-cine-debat-incendie-santementale.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078349/Aspres-thuir-Affiche-cine-debat-incendie-santementale_knh2kh.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.712Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZRAL] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-25-decouverte-et-initiation",
+    "id": "2026-11-25-descoberta-i-iniciacio",
     "titol": "Descoberta i iniciació a l'ofici de bufador de vidre",
     "data_inici": "2026-11-25",
     "data_fi": "2026-11-25",
@@ -1212,9 +1212,9 @@
     "descripcio_ca": "L'activitat permet iniciar-se a l'ofici de bufador de vidre en una sessió de 40 minuts d'immersió a l'obrador. Cada participant bufa la seva pròpia bola de vidre, de color a triar, i després del refredament se'n porta una de gravada amb el seu nom. Cada persona disposa d'una broquilla d'un sol ús per col·locar a la canya. L'activitat és oberta a tothom, a partir de 3 anys, amb places limitades a 8 persones.",
     "descripcio_fr": "L'activité permet de s'initier au métier de souffleur de verre lors d'une séance de 40 minutes d'immersion dans l'atelier. Chaque participant souffle sa propre boule de verre, de la couleur de son choix, et repart, après refroidissement, avec une boule gravée à son prénom. Chacun dispose d'un embout jetable à placer sur la canne. L'activité est ouverte à tous, dès 3 ans, avec des places limitées à 8 personnes.",
     "associacio": "Contacter MATEUS",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/mateus-verre-palau-Hugo-Pages.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078351/mateus-verre-palau-Hugo-Pages_fwjcnb.webp",
     "font_url": "https://www.tourisme-pyrenees-mediterranee.com/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.489Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Q2WG] L'acte es fa 32 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Categoria per tema infantil; RechercheTYPE deia: Taller Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
