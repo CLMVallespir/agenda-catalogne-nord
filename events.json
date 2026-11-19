@@ -3712,5 +3712,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.472Z",
     "periodicitat": "cada setmana"
+  },
+  {
+    "id": "2026-11-21-taller-de-conversa",
+    "titol": "Taller de conversa en català «L'esmorzar»",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "14:30",
+    "lloc": "Médiathèque2 Rue de la Paix",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'acte és un espai de conversa en català, sigui quin sigui el nivell de la persona participant. Es comparteix una beguda calenta i es parla de records d'infància o d'altres temes. Està pensat com a moment convivial i obert a tothom, grans i petits, siguin o no socis de la mediateca.",
+    "descripcio_fr": "L'activité propose un espace de conversation en català, quel que soit le niveau de la personne participante. On y partage une boisson chaude et l'on évoque des souvenirs d'enfance ou d'autres sujets. Elle se veut conviviale et ouverte à tous, petits et grands, membres ou non de la médiathèque.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078257/catalan_z57m79.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.502Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-bal-folk",
+    "titol": "Bal folk",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Trasserra",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El Foyer Rural acull a la cave aux Contes un bal folk amb el grup Les Lumbrets, a iniciativa de l’associació Dans Six Mois. El bal folk és un moment de partatge on músics i ballarins es retroben al voltant de les músiques i les danses tradicionals, en homenatge a la terra que nodreix; hi ha mazurca, scottish, polca, valsos, bourrée, rondeau o cercle circassià, en parella o en grup, accessibles tant a principiants com a ballarins experimentats. Abans del bal s’hi proposa un curs de dansa dedicat al Branle d’Ossau. Els músics, originaris d’Occitanie, interpreten un repertori de músiques i cançons per ballar de tradició gascona i llenguadociana, amb escapades per Pays basque, Catalogne i Berry, acompanyats de violí, acordió diatònic, cornamuses i guitarra.",
+    "descripcio_fr": "Le Foyer Rural accueille à la cave aux Contes un bal folk animé par le groupe Les Lumbrets, à l’initiative de l’association Dans Six Mois. Le bal folk est un moment de partage où musiciens et danseurs se retrouvent autour des musiques et des danses traditionnelles, en hommage à la terre nourricière ; il comprend mazurka, scottish, polka, valse, bourrée, rondeau ou cercle circassien, en couple ou en groupe, accessibles aux débutants comme aux danseurs confirmés. Un cours de danse consacré au Branle d’Ossau est proposé avant le bal. Originaires d’Occitanie, les musiciens interprètent un répertoire de musiques et de chants à danser issus des traditions gasconne et languedocienne, avec des escapades en Pays basque, en Catalogne et dans le Berry, accompagnés de violon, d’accordéon diatonique, de cornemuses et de guitare.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078258/aSPRES-TRESSERRE-BAL26_pobydm.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.510Z",
+    "periodicitat": ""
   }
 ]
