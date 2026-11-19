@@ -4300,7 +4300,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YDVA] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-12-atelier-menu-de",
+    "id": "2026-12-12-taller-de-menu",
     "titol": "Taller de menú de festes",
     "data_inici": "2026-12-12",
     "data_fi": "2026-12-12",
@@ -4312,9 +4312,9 @@
     "descripcio_ca": "Els tallers de cuina giren al voltant del vegetal: fruita, verdura, llavors, herbes i espècies, per variar els plats de cada dia. S'hi presenten tècniques com la cuina vegetal viva i sense cocció, la lactofermentació i una cuina d'inspiració japonesa, a partir de l'experiència de Mélanie al Japó. Són tallers per a adults, en grups reduïts de sis persones, participatius, amb matèries primeres locals, ecològiques sempre que és possible i de temporada; s'hi faciliten el material i els ingredients, fitxes de receptes i consells nutricionals.",
     "descripcio_fr": "Les ateliers de cuisine tournent autour du végétal : fruits, légumes, graines, herbes et épices pour varier l'alimentation au quotidien. Y sont présentées des techniques comme la cuisine végétale vivante et sans cuisson, la lactofermentation et une cuisine d'inspiration japonaise, à partir de l'expérience de Mélanie au Japon. Ce sont des ateliers pour adultes, en petits groupes de six personnes, participatifs, avec des matières premières locales, bio autant que possible et de saison ; le matériel et les ingrédients sont fournis, ainsi que des fiches recettes et des conseils nutritionnels.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ab468ba9-c836-4fe7-9601-c08c61097e75.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078760/ab468ba9-c836-4fe7-9601-c08c61097e75_l2hfnl.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.592Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52Z09R] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
