@@ -80,7 +80,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52YPFM] L'acte es fa 4 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-19-cinema-osseja-karma",
+    "id": "2026-11-19-karma",
     "titol": "Karma",
     "data_inici": "2026-11-19",
     "data_fi": "2026-11-19",
@@ -92,9 +92,9 @@
     "descripcio_ca": "Karma és un drama i thriller dirigit per Guillaume Canet, amb Marion Cotillard, Denis Ménochet i Leonardo Sbaraglia. Jeanne intenta reconstruir la seva vida al costat de Daniel, que no sap res del seu passat fosc. Quan el seu fillol Mateo, de sis anys, desapareix misteriosament, Jeanne, sospitosa per a la policia, es refugia a França, a la comunitat on va néixer i d'on va fugir anys enrere. Daniel no creu en la culpabilitat de la dona que estima i farà tot el possible per trobar-la abans que la policia.",
     "descripcio_fr": "Karma est un drame et thriller réalisé par Guillaume Canet, avec Marion Cotillard, Denis Ménochet et Leonardo Sbaraglia. Jeanne tente de reconstruire sa vie auprès de Daniel, qui ignore tout de son passé trouble. Lorsque Mateo, son filleul de six ans, disparaît mystérieusement, Jeanne, soupçonnée par la police, se réfugie en France, dans la communauté où elle est née et qu'elle a fuie des années auparavant. Daniel ne croit pas à la culpabilité de la femme qu'il aime et fera tout pour la retrouver avant la police.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Image2-5.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078097/Image2-5_evpddb.webp",
     "font_url": "https://www.pyrenees-cerdagne.com",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.690Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQCA] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Possible nova era o guia espiritual («karma»): comproveu de qui és l'acte i si hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
