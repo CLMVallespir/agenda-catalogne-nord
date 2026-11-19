@@ -3883,5 +3883,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.706Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-fete-en-tet",
+    "titol": "Fête en Tet",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Millars",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "A Millars es fa una jornada amb un mercat de productors, un concert, conferències i animacions. Hi haurà també un food truck.",
+    "descripcio_fr": "À Millars se tient une journée avec un marché de producteurs, un concert, des conférences et des animations. Il y aura aussi un food truck.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078294/21-11_fshsag.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.707Z",
+    "periodicitat": ""
   }
 ]
