@@ -6087,5 +6087,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.608Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-vetllada-de-jocs",
+    "titol": "Vetllada de jocs",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-12",
+    "hora": "19:00",
+    "lloc": "1 Place Catalogne",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "La creperia acull una vetllada de jocs animada per la Ludo d'Aqui!. Cada mes s'hi descobreix un joc nou, amb inscripció prèvia.",
+    "descripcio_fr": "La crêperie accueille une soirée de jeux animée par la Ludo d'Aqui!. Chaque mois, un nouveau jeu y est découvert, sur inscription préalable.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078789/Capture-234_jd6k3a.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.621Z",
+    "periodicitat": ""
   }
 ]
