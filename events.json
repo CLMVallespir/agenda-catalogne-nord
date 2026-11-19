@@ -4244,5 +4244,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.489Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-25-trobada-literaria-amb",
+    "titol": "Trobada literària amb Hélène Legrais",
+    "data_inici": "2026-11-25",
+    "data_fi": "2026-11-25",
+    "hora": "18:30",
+    "lloc": "7 Passage Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Hélène Legrais presenta a la mediateca de Tuïr la seva nova novel·la, D'un trait de plume, i en parlarà amb el públic. La novel·la és una gran fresca familiar que va des de l'annexió del Rosselló a França fins a la Revolució francesa, amb escenaris com la revolta dels Angelets, la fortalesa de Salses o la construcció de Port-Vendres. Les dues nissagues que hi apareixen veuen com els seus destins s'entrecreuen enmig de l'amor, la ràbia, l'ambició i l'arrelament a la llengua materna, que afronten les violències de la història. L'auteure explicarà el seu treball d'escriptura i de recerca, i les fonts on troba la inspiració; després hi haurà un intercanvi amb el públic, seguit d'una dedicatòria.",
+    "descripcio_fr": "Hélène Legrais présente à la médiathèque de Tuïr son nouveau roman, D'un trait de plume, et échangera avec le public. Le roman est une grande fresque familiale qui va de l'annexion du Roussillon à la France jusqu'à la Révolution française, avec des lieux comme la révolte des Angelets, la forteresse de Salses ou la construction de Port-Vendres. Les deux lignées qui y figurent voient leurs destins s'entrecroiser, entre amour, rage, ambition et attachement à la langue maternelle, face aux violences de l'Histoire. L'auteure évoquera son travail d'écriture et de recherche ainsi que les sources de son inspiration; un échange avec le public aura lieu, suivi d'une dédicace.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078364/Aspres-thuir-Affiche-rencontre-litteraire-HL_stvfgn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.495Z",
+    "periodicitat": ""
   }
 ]
