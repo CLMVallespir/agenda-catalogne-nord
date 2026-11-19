@@ -400,7 +400,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZOK2] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-13-disco-soupe-rasigueres",
+    "id": "2026-11-13-disco-soupe",
     "titol": "Disco Soupe",
     "data_inici": "2026-11-13",
     "data_fi": "2026-11-13",
@@ -412,9 +412,9 @@
     "descripcio_ca": "La Disco Soupe de Rasiguères reuneix el públic per elaborar col·lectivament una gran sopa i després degustar-la, amb música. És una animació conviviable i original que vol combatre el malbaratament alimentari. El material és posat a disposició per l'associació Solidarité Fenouillèdes, i l'animació corre a càrrec de Les quezacho. Es recomana portar-hi bols i coberts.",
     "descripcio_fr": "La Disco Soupe de Rasiguères réunit le public pour préparer collectivement une grande soupe puis la déguster, en musique. C'est une animation conviviale et originale qui vise à lutter contre le gaspillage alimentaire. Le matériel est mis à disposition par l'association Solidarité Fenouillèdes, et l'animation est assurée par Les quezacho. Il est recommandé d'apporter bols et couverts.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/RASIGUERES-Aff-DiscoSoupe-2026-.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071761/RASIGUERES-Aff-DiscoSoupe-2026-_hagcm8.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.521Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZP0R] El municipi «RASIGUERES» no és a la taula de pobles: el deixo tal com ve. El municipi «RASIGUERES» no és a la taula de comarques: cal posar la comarca a mà, o la fila no sortirà al filtre per comarca. La categoria «Repas de quartier» no té equivalent entre les tretze: queda buida. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
