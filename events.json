@@ -5954,5 +5954,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.506Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-piche",
+    "titol": "Piche",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-12",
+    "hora": "20:30",
+    "lloc": "ELMEDIATORAvenue Maréchal Leclerc",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Piche és una artista lliure i difícil de classificar que combina el rap, el pop, la performance i la cultura drag en un espectacle d'estètica espectacular i de caire reivindicatiu. Donada a conèixer al gran públic per Drag Race France, és una figura singular de l'escena actual, amb una identitat artística pròpia. Originària del sud de França, la seva trajectòria inclou la dansa, la coreografia, la performance, el cant i el rap, disciplines que utilitza com a mitjans d'expressió. El concert, total i sense compromisos, combina energia rap, refrains pop i una estètica espectacular, i una primera part complementarà la vetlada.",
+    "descripcio_fr": "Piche est une artiste libre et difficile à classer, qui associe le rap, la pop, la performance et la culture drag dans un spectacle à l'esthétique spectaculaire et au propos engagé. Révélée au grand public par Drag Race France, elle est une figure singulière de la scène actuelle, dotée d'une identité artistique propre. Originaire du sud de la France, son parcours comprend la danse, la chorégraphie, la performance, le chant et le rap, disciplines qu'elle utilise comme moyens d'expression. Le concert, total et sans compromis, associe énergie rap, refrains pop et esthétique spectaculaire, et une première partie complétera la soirée.",
+    "associacio": "Contacter BILLETTERIE",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078746/piche_nyhpdx.webp",
+    "font_url": "https://www.theatredelarchipel.org/l-archipel-d754af6e/elmediator/piche",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.546Z",
+    "periodicitat": ""
   }
 ]
