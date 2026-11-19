@@ -6011,5 +6011,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.573Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-taller-de-menu",
+    "titol": "Taller de menú de festes",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-12",
+    "hora": "09:00",
+    "lloc": "7 avenue François Arago",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Els tallers de cuina giren al voltant del vegetal: fruita, verdura, llavors, herbes i espècies, per variar els plats de cada dia. S'hi presenten tècniques com la cuina vegetal viva i sense cocció, la lactofermentació i una cuina d'inspiració japonesa, a partir de l'experiència de Mélanie al Japó. Són tallers per a adults, en grups reduïts de sis persones, participatius, amb matèries primeres locals, ecològiques sempre que és possible i de temporada; s'hi faciliten el material i els ingredients, fitxes de receptes i consells nutricionals.",
+    "descripcio_fr": "Les ateliers de cuisine tournent autour du végétal : fruits, légumes, graines, herbes et épices pour varier l'alimentation au quotidien. Y sont présentées des techniques comme la cuisine végétale vivante et sans cuisson, la lactofermentation et une cuisine d'inspiration japonaise, à partir de l'expérience de Mélanie au Japon. Ce sont des ateliers pour adultes, en petits groupes de six personnes, participatifs, avec des matières premières locales, bio autant que possible et de saison ; le matériel et les ingrédients sont fournis, ainsi que des fiches recettes et des conseils nutritionnels.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078760/ab468ba9-c836-4fe7-9601-c08c61097e75_l2hfnl.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.592Z",
+    "periodicitat": ""
   }
 ]
