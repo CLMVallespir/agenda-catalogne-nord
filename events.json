@@ -4928,5 +4928,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.462Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-03-a-la-bona",
+    "titol": "A la bona salut mental",
+    "data_inici": "2026-12-03",
+    "data_fi": "2026-12-03",
+    "hora": "10:00",
+    "lloc": "",
+    "municipi": "Prada",
+    "comarca": "Conflent",
+    "categoria": "",
+    "descripcio_ca": "La jornada InterGEM és una trobada i un espai de compartició, en la seva quarta edició. Té com a tema la cura de la salut mental.",
+    "descripcio_fr": "La journée InterGEM est une rencontre et un espace de partage, dans sa quatrième édition. Elle a pour thème le soin de la santé mentale.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078478/Capture-252_wyueuc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.700Z",
+    "periodicitat": ""
   }
 ]
