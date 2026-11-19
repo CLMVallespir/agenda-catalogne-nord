@@ -5688,5 +5688,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.582Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-10-un-violon-a",
+    "titol": "Un violon à la mer: Trio Escualo - Viatge per l'Amèrica Llatina",
+    "data_inici": "2026-12-10",
+    "data_fi": "2026-12-10",
+    "hora": "20:30",
+    "lloc": "Place de la Mairie",
+    "municipi": "Santa Maria la Mar",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "El Trio Escualo, fundat el 2022 per Aramis Monroy, Flavien Soyer i Boris Trouchaud, explora les músiques d'Amèrica Llatina d'ahir i d'avui. Nascut al voltant de l'arranjament d'Escualo d'Astor Piazzolla, el conjunt reuneix violí, bandolim i contrabaix en una formació singular on es barregen escriptura, folklore i improvisació. Mitjançant arranjaments originals, el trio recorre els univers de Manuel Ponce, Chico Buarque, Gentil Montaña o Hermeto Pascoal, i dibuixa un paisatge sonor que va de l'Argentina a Mèxic.",
+    "descripcio_fr": "Le Trio Escualo, fondé en 2022 par Aramis Monroy, Flavien Soyer et Boris Trouchaud, explore les musiques d'Amérique latine d'hier et d'aujourd'hui. Né autour de l'arrangement d'Escualo d'Astor Piazzolla, l'ensemble réunit violon, bandolim et contrebasse dans une formation singulière où se mêlent écriture, folklore et improvisation. Par le biais d'arrangements originaux, le trio traverse les univers de Manuel Ponce, Chico Buarque, Gentil Montaña ou encore Hermeto Pascoal, et dessine un paysage sonore allant de l'Argentine au Mexique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078685/1012ok_pd2bwe.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.602Z",
+    "periodicitat": ""
   }
 ]
