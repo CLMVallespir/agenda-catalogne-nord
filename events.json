@@ -3750,5 +3750,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.510Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-21-mercat-del-rossello",
+    "titol": "Mercat del Rosselló",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "09:00",
+    "lloc": "Le premier samedi du mois en centre ville, place de la République, et les autres samedis au Centre Cultural de Catalunya Nord, avenue de l'Aéroport.",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "Els productors locals presenten fruita i verdura, mel, formatges, carns, vins, olis i plantes, així com productes de la terra i altres riqueses del territori. Es tracta d'un moment convivial, local i gourmand, per compartir en família o entre amics.",
+    "descripcio_fr": "Les producteurs locaux présentent fruits et légumes, miel, fromages, viandes, vins, huiles et plantes, ainsi que des produits de la terre et d'autres richesses du territoire. Il s'agit d'un moment convivial, local et gourmand, à partager en famille ou entre amis.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078263/Visuel-Mercat-del-Rossello-Rivesaltes_uz9p2y.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.611Z",
+    "periodicitat": "cada setmana"
   }
 ]
