@@ -6068,5 +6068,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.607Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-festa-patronal-de",
+    "titol": "Festa patronal de les santes Eulalie i Julie",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-13",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Festa patronal tradicional de les santes Eulalie i Julie. Hi ha danses folklòriques amb el grup Alegria d'Arles sur Tech, acompanyat per la cobla Mil.lenaria, i sardanes a càrrec de la mateixa cobla. Hi ha també una processó dels bustos relicari de les santes Julie i Eulalie amb la presència de nombroses confraries, un ofici religiós amb la cobla La principal de la Bisbal, una sardana i un concert seguit d'un ball per a tots els públics.",
+    "descripcio_fr": "Fête patronale traditionnelle des saintes Eulalie et Julie. Il y a des danses folkloriques avec le groupe Alegria d'Arles sur Tech, accompagné de la cobla Mil.lenaria, et des sardanes interprétées par la même cobla. Il y a également une procession des bustes reliquaires des saintes Julie et Eulalie en présence de nombreuses confréries, un office religieux avec la cobla La principal de la Bisbal, une sardane et un concert suivi d'un bal pour tous les publics.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078783/12-12-sainte-eulalie.png_v1ftnf.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.608Z",
+    "periodicitat": ""
   }
 ]
