@@ -3123,5 +3123,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.428Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-aleshores-ballem",
+    "titol": "Aleshores, ballem",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "19:00",
+    "lloc": "Avenue de la Marne",
+    "municipi": "Ribesaltes",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El grup Sans Filtre fa ballar el públic en un ambient càlid i animat, adreçat a totes les generacions. Hi són anunciats, a més de Sans Filtre, André i Marie Bascou, Ketlyn, J. Huguet, Noa i Danse et Compagnie. L'acte inclou també un menú.",
+    "descripcio_fr": "Le groupe Sans Filtre fait danser le public dans une ambiance chaleureuse et animée, pour toutes les générations. Y sont annoncés, en plus de Sans Filtre, André et Marie Bascou, Ketlyn, J. Huguet, Noa et Danse et Compagnie. L'acte comprend aussi un menu.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071988/Capture-d-ecran-2024-11-08-100600_yaclj1.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.516Z",
+    "periodicitat": ""
   }
 ]
