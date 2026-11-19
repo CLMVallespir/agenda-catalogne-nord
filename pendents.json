@@ -3300,7 +3300,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZQKL] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-09-session-jeu-dechecs",
+    "id": "2026-12-09-sessio-de-joc",
     "titol": "Sessió de joc d'escacs a la mediateca",
     "data_inici": "2026-12-09",
     "data_fi": "2026-12-09",
@@ -3312,9 +3312,9 @@
     "descripcio_ca": "Es proposa una sessió de joc d'escacs durant una tarda a la mediateca. Hi poden participar tant els principiants com els jugadors experimentats, i hi haurà persones que acompanyaran els participants perquè puguin jugar.",
     "descripcio_fr": "Une séance de jeu d'échecs est proposée pendant un après-midi à la médiathèque. Elle s'adresse aussi bien aux débutants qu'aux joueurs confirmés, et des personnes seront présentes pour accompagner les participants dans leurs parties.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/ChessSet-2.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078625/ChessSet-2_lqbjzb.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.469Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52C7N4] L'acte es fa 3 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
