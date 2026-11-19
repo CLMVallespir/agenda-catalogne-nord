@@ -3427,5 +3427,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.699Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-19-concert-homenatge-a",
+    "titol": "Concert homenatge a Jacques Brel",
+    "data_inici": "2026-11-19",
+    "data_fi": "2026-11-19",
+    "hora": "19:30",
+    "lloc": "",
+    "municipi": "Eus",
+    "comarca": "Conflent",
+    "categoria": "Música",
+    "descripcio_ca": "Es presenten els grans clàssics de Jacques Brel, interpretats per Benjamin Campagna i Eric Noyer. L'acte permet tant descobrir com tornar a escoltar aquestes cançons.",
+    "descripcio_fr": "On y présente les grands classiques de Jacques Brel, interprétés par Benjamin Campagna et Eric Noyer. L'événement permet aussi bien de découvrir que de réentendre ces chansons.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078190/Capture-249_xpjm1f.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.700Z",
+    "periodicitat": ""
   }
 ]
