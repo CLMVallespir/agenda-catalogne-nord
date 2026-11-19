@@ -5631,5 +5631,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.511Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-10-cine-club-canetoiles",
+    "titol": "Ciné-club Canetoiles: The Hours",
+    "data_inici": "2026-12-10",
+    "data_fi": "2026-12-10",
+    "hora": "20:00",
+    "lloc": "Avenue Guy Drut",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "La pel·lícula The Hours, dirigida per Stephan Daldry, forma part del cicle de cineastes contemporanis. Els papers principals són interpretats per Nicole Kidman, Julianne Moore i Meryl Streep. La història connecta tres dones en èpoques diferents: Virginia Woolf, a la perifèria de Londres als anys vint, lluita contra la bogeria mentre escriu la seva novel·la Mrs Dalloway; Laura Brown, a Los Angeles més de vint anys després, llegeix aquesta novel·la; i Clarissa Vaughn, a Nova York en l'actualitat, acompanya Richard, un amic poeta malalt de sida. La literatura hi té un paper central, ja que una mateixa obra pot canviar irrevocablement l'existència de les persones que hi entren en contacte.",
+    "descripcio_fr": "Le film The Hours, réalisé par Stephan Daldry, fait partie du cycle de cinéastes contemporains. Les rôles principaux sont interprétés par Nicole Kidman, Julianne Moore et Meryl Streep. Le récit relie trois femmes à différentes époques : Virginia Woolf, dans la banlieue de Londres au début des années vingt, lutte contre la folie tout en écrivant son roman Mrs Dalloway ; Laura Brown, à Los Angeles plus de vingt ans après, lit ce livre ; et Clarissa Vaughn, à New York de nos jours, accompagne Richard, un ami poète atteint du sida. La littérature y tient un rôle central, puisqu'une même œuvre peut transformer irrévocablement l'existence de ceux qui la côtoient.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078669/affiche-the-hours_ypfzu8.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.532Z",
+    "periodicitat": ""
   }
 ]
