@@ -2952,9 +2952,9 @@
     "descripcio_ca": "La jornada ofereix activitats per a famílies i infants: un matí de cinema en pijama per als nens de 2 a 6 anys, amb esmorzar, conte, projecció adaptada i lliurament de cartes al Pare Noel. També hi ha un espai de fira amb atraccions, una zona gastronòmica amb cabanes i camions de menjar, i animacions amb poneis i tallers per als més petits. Al llarg del dia hi ha la benedicció de la pessebre de Nadal pel Père Étienne Lafaye, una rua de mascotes gegants amb ballarines de l'associació Inès Move i de Lady's Cabaret, i la fanfàrria «La Belle Étoile», que interpreta clàssics nadalencs.",
     "descripcio_fr": "La journée propose des activités pour les familles et les enfants : une matinée de ciné-pyjama pour les enfants de 2 à 6 ans, avec petit-déjeuner, conte, projection adaptée et remise des lettres au Père Noël. Il y a aussi un espace de fête foraine avec des manèges, un village gourmand avec stands et camions de restauration, et des animations avec des poneys et des ateliers pour les plus petits. Au cours de la journée, la bénédiction de la crèche de Noël par le Père Étienne Lafaye, un défilé de mascottes géantes avec les danseuses de l'association Inès Move et de Lady's Cabaret, et la fanfare « La Belle Étoile », qui interprète de grands classiques de Noël.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Noel-Pollestres-animations-samedi.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078601/Noel-Pollestres-animations-samedi_g37qrj.webp",
     "font_url": "https://www.pollestres.com/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.714Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZRFJ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
@@ -2980,7 +2980,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZRG2] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-05-fete-intergenerationnelle-dorres",
+    "id": "2026-12-05-festa-intergeneracional",
     "titol": "Festa intergeneracional",
     "data_inici": "2026-12-05",
     "data_fi": "2026-12-05",
@@ -2992,9 +2992,9 @@
     "descripcio_ca": "L'acte inclou un espectacle i tallers per a infants. També hi ha servei de restauració i begudes, i un concert gratuït de Deep Reasonj.",
     "descripcio_fr": "L'événement comprend un spectacle et des ateliers pour enfants. Il y a aussi un service de restauration et de boissons, ainsi qu'un concert gratuit de Deep Reasonj.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/5-dec-DORRES.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078604/5-dec-DORRES_xuczgf.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.716Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZRH1] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
