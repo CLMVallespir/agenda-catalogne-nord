@@ -2672,9 +2672,9 @@
     "descripcio_ca": "Es tracta d'un trail nocturn que parteix de Pesillà de la Ribera i permet descobrir tres municipis de l'Écoparc Catalan: Pesillà de la Ribera, Villeneuve-la-Rivière i Baixas. A mig camí entre el trail urbà i la cursa en plena natura, l'itinerari travessa el patrimoni del territori, il·luminat de manera especial per a l'ocasió. Hi ha formats de 9 km i 16 km, com a cursa o randonada, i de 25 km i 43 km, com a trail en solitari o per relleus, a més de la Foulée des Pitchouns per als infants de 7 a 12 anys. Els menors han d'anar acompanyats d'un adult.",
     "descripcio_fr": "Il s'agit d'un trail nocturne qui part de Pesillà de la Ribera et permet de découvrir trois communes de l'Écoparc Catalan : Pesillà de la Ribera, Villeneuve-la-Rivière et Baixas. À mi-chemin entre trail urbain et course nature, l'itinéraire traverse le patrimoine du territoire, spécialement illuminé pour l'occasion. Des formats de 9 km et 16 km, en course ou en randonnée, et de 25 km et 43 km, en trail en solitaire ou en relais, sont proposés, ainsi que la Foulée des Pitchouns pour les enfants de 7 à 12 ans. Les mineurs doivent être accompagnés d'un adulte.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Capture-d-ecran-2026-11-12-114446.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078564/Capture-d-ecran-2026-11-12-114446_amahiw.webp",
     "font_url": "https://ats-sport.com/epreuve.php?id_epreuve=9612&course=trail-nocturne-de-l-ecoparc-catalan-4me-dition",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.682Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQ6P] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
@@ -2700,7 +2700,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZQ7Z] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-05-gouter-des-aines",
+    "id": "2026-12-05-berenar-de-la",
     "titol": "Berenar de la gent gran",
     "data_inici": "2026-12-05",
     "data_fi": "2026-12-05",
@@ -2712,9 +2712,9 @@
     "descripcio_ca": "Es tracta d'una tarda festiva per a la gent gran, pensada per a la convivència i l'entreteniment. Inclou l'espectacle Pin'up Revue, que combina música, dansa i esperit de cabaret en un ambient retro. Les festivitats continuaran amb un berenar que permet compartir una estona d'amistat.",
     "descripcio_fr": "Il s'agit d'un après-midi festif destiné aux personnes âgées, conçu pour la convivialité et le divertissement. Il comprend le spectacle Pin'up Revue, qui allie musique, danse et esprit cabaret dans une ambiance rétro. Les festivités se poursuivront par un goûter qui permet de partager un moment d'amitié.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/pexels-vome-9713060.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078567/pexels-vome-9713060_hvm4c7.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.683Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQ86] La categoria queda buida a posta: «Repas spectacle» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
