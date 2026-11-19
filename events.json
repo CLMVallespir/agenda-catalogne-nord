@@ -5498,5 +5498,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.580Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-09-une-vie-manifeste",
+    "titol": "Une vie manifeste",
+    "data_inici": "2026-12-09",
+    "data_fi": "2026-12-09",
+    "hora": "19:00",
+    "lloc": "INSTITUT JEAN VIGO1 rue Jean Vieilledent",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Avantestrena del film de Jean-Gabriel Périot, presentat pel mateix director en associació amb ARTE i la Cinémathèque du Documentaire. La pel·lícula retrata Michèle Firk, militant del FLN durant la guerra d'Algèria i membre de les Forces Armées Rebelles al Guatemala, que es va suïcidar el 1968, als 31 anys, per no caure en mans de la policia d'Estat guatemalenca. A partir d'una selecció de films que ella va estimar o criticar, el film teixeix cinema i compromís anticolonialista i revolucionari, amb la veu de Nadia Tereszkiewicz per a Firk i la d'Alice Diop per al cineasta.",
+    "descripcio_fr": "Avant-première du film de Jean-Gabriel Périot, présenté par le réalisateur lui-même en partenariat avec ARTE et la Cinémathèque du Documentaire. Le film retrace Michèle Firk, militante du FLN pendant la guerre d'Algérie et membre des Forces Armées Rebelles au Guatemala, qui s'est suicidée en 1968, à 31 ans, pour échapper à la police d'État guatémaltèque. À partir d'une sélection de films qu'elle a aimés ou critiqués, le film tisse cinéma et engagement anticolonialiste et révolutionnaire, avec la voix de Nadia Tereszkiewicz pour Firk et celle d'Alice Diop pour le cinéaste.",
+    "associacio": "",
+    "imatge_url": "",
+    "font_url": "https://www.inst-jeanvigo.eu/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.604Z",
+    "periodicitat": ""
   }
 ]
