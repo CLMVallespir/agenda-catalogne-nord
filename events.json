@@ -4833,5 +4833,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.471Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-02-lhora-del-joc",
+    "titol": "L'hora del joc",
+    "data_inici": "2026-12-02",
+    "data_fi": "2026-12-02",
+    "hora": "16:30",
+    "lloc": "Médiathèque Claude Blazy",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Es tracta d'una trobada destinada a infants a partir de 8 anys i a adults. És una ocasió per divertir-se i descobrir jocs nous. L'acte és obert a tothom.",
+    "descripcio_fr": "Il s'agit d'une rencontre destinée aux enfants à partir de 8 ans et aux adultes. C'est l'occasion de s'amuser, de se divertir et de découvrir de nouveaux jeux. L'acte est ouvert à tous.",
+    "associacio": "Contacter Madame BLASI Mathilde",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078459/-1049008_e5ibjb.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.499Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-12-02-mercat-de-nadal",
+    "titol": "Mercat de Nadal",
+    "data_inici": "2026-12-02",
+    "data_fi": "2026-12-02",
+    "hora": "10:00",
+    "lloc": "12 Avenue du Conventionnel Fabre",
+    "municipi": "Vinçà",
+    "comarca": "Conflent",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat de Nadal de Vinçà reuneix nombrosos expositors i ofereix animació musical, una barra de begudes i creps. Inclou també una loteria i la visita del Pare Noel.",
+    "descripcio_fr": "Le marché de Noël de Vinçà réunit de nombreux exposants et propose une animation musicale, une buvette et des crêpes. Il comprend également une loterie et la visite du Père Noël.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078460/FB-IMG-1794474001005_zf8mwu.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.680Z",
+    "periodicitat": ""
   }
 ]
