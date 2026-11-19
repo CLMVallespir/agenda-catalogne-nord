@@ -360,7 +360,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZF9J] L'acte es fa 6 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Visita comentada (R4): es queda perquè el text esmenta el català. Comprova que la visita es faci de debò en català. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-13-reunion-mieux-connaitre",
+    "id": "2026-11-13-reunio-coneixer-millor",
     "titol": "Reunió: conèixer millor els residus per trobar solucions específiques",
     "data_inici": "2026-11-13",
     "data_fi": "2026-11-13",
@@ -372,9 +372,9 @@
     "descripcio_ca": "Es tracta d'una reunió participativa en el marc del Festival Tous Sentinelles. Des del 2022, el municipi de Banyuls de la Marenda fa operacions de ciència participativa per seguir l'evolució de la contaminació en punts de concentració de l'espai públic, on els residus abandonats es recullen, es trien i es compten per orientar les accions correctives. Des del 2025 el municipi s'ha sumat al programa nacional Adopt'1 Spot, que reuneix les dades de 700 estructures de tot França. Durant la trobada, una associació presentarà els resultats a escala nacional i, amb l'ajuntament, els principals ensenyaments de les recollides locals, abans que els assistents busquin plegats solucions per limitar els residus a l'origen en un breu taller d'intel·ligència col·lectiva.",
     "descripcio_fr": "Il s'agit d'une réunion participative dans le cadre du Festival Tous Sentinelles. Depuis 2022, la commune de Banyuls de la Marenda mène des opérations de sciences participatives pour suivre l'évolution de la pollution dans des points de concentration de l'espace public, où les déchets abandonnés sont collectés, triés et comptés afin d'orienter les actions correctives. Depuis 2025, la commune a rejoint le programme national Adopt'1 Spot, qui rassemble les données de 700 structures dans toute la France. Pendant la rencontre, une association présentera les résultats à l'échelle nationale et, avec la mairie, les principaux enseignements des collectes locales, avant que les participants ne cherchent ensemble des solutions pour limiter les déchets à la source lors d'un court atelier d'intelligence collective.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Du-11-au-15-11-TOUS-SENTINELLES-BANYULS--REOUCHE-NAT-.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071748/Du-11-au-15-11-TOUS-SENTINELLES-BANYULS--REOUCHE-NAT-_ohgopc.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.502Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZNZ7] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
