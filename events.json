@@ -2859,22 +2859,22 @@
     "periodicitat": ""
   },
   {
-    "id": "2026-11-13-conferencia-els-recursos",
-    "titol": "Conferència: els recursos en aigua per al futur dels Pirineus Orientals",
+    "id": "2026-11-13-la-pause-dej",
+    "titol": "La pause dej' au musée - Visites flash",
     "data_inici": "2026-11-13",
     "data_fi": "2026-11-13",
-    "hora": "18:30",
-    "lloc": "MEDIATHEQUE MUNICIPALE",
-    "municipi": "Tuïr",
+    "hora": "12:15",
+    "lloc": "Musée Hyacinthe Rigaud21 rue Mailly",
+    "municipi": "Perpinyà",
     "comarca": "Rosselló",
-    "categoria": "Conferència",
-    "descripcio_ca": "La conferència aborda els recursos en aigua de cara al futur dels Pirineus Orientals. La imparteix Caroline Figueres, consultora internacional en matèria d'aigua, en el marc de la revisió del Plan Climat-Air-énergie Territorial.",
-    "descripcio_fr": "La conférence aborde les ressources en eau pour le futur des Pyrénées-Orientales. Elle est donnée par Caroline Figueres, consultante internationale en eau, dans le cadre de la révision du Plan Climat-Air-énergie Territorial.",
+    "categoria": "Exposició",
+    "descripcio_ca": "La sèrie de visites breus del museu aborda temes diversos. Hi ha sessions sobre el paisatge pintat després de l'impressionisme amb Terrus i Bausil, sobre el motiu pare-fill a les col·leccions permanents, sobre Miró i la guerra civil espanyola, sobre l'abstracció, sobre la ceràmica de Josep Llorens Artigas i sobre l'academicisme, amb obres d'Ingres i de Gabriel Faraill.",
+    "descripcio_fr": "La série de visites brèves du musée aborde des thèmes variés. Il y a des séances sur le paysage peint après l'impressionnisme avec Terrus et Bausil, sur le motif parent-enfant dans les collections permanentes, sur Miró et la guerre civile espagnole, sur l'abstraction, sur la céramique de Josep Llorens Artigas et sur l'académisme, avec des œuvres d'Ingres et de Gabriel Faraill.",
     "associacio": "",
-    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071737/Aspres-thuir-conferenceeeau_wpzctm.webp",
-    "font_url": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071742/DETECTIVES-AU-MUSEE---ENQUETE-SUR-LES-FEMMES-EN-IMAGES----Avril-2026-2_ix4wfd.webp",
+    "font_url": "https://www.musee-rigaud.fr/",
     "estat": "publicat",
-    "data_entrada": "2026-11-12T07:13:50.320Z",
+    "data_entrada": "2026-11-12T07:13:50.442Z",
     "periodicitat": ""
   }
 ]
