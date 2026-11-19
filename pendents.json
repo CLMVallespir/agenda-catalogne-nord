@@ -2000,7 +2000,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52EEQ6] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-02-lheure-du-jeu",
+    "id": "2026-12-02-lhora-del-joc",
     "titol": "L'hora del joc",
     "data_inici": "2026-12-02",
     "data_fi": "2026-12-02",
@@ -2012,15 +2012,15 @@
     "descripcio_ca": "Es tracta d'una trobada destinada a infants a partir de 8 anys i a adults. És una ocasió per divertir-se i descobrir jocs nous. L'acte és obert a tothom.",
     "descripcio_fr": "Il s'agit d'une rencontre destinée aux enfants à partir de 8 ans et aux adultes. C'est l'occasion de s'amuser, de se divertir et de découvrir de nouveaux jeux. L'acte est ouvert à tous.",
     "associacio": "Contacter Madame BLASI Mathilde",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/-1049008.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078459/-1049008_e5ibjb.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.499Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52TPA4] L'acte es fa 9 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Ve marcada «Jeux» sense cap patró de joc de club al títol: la categoria queda buida. Si és un joc d'entitat, és Vida associativa; si és un negoci, la fila no hi entra. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-02-marche-de-noel",
+    "id": "2026-12-02-mercat-de-nadal",
     "titol": "Mercat de Nadal",
     "data_inici": "2026-12-02",
     "data_fi": "2026-12-02",
@@ -2032,9 +2032,9 @@
     "descripcio_ca": "El mercat de Nadal de Vinçà reuneix nombrosos expositors i ofereix animació musical, una barra de begudes i creps. Inclou també una loteria i la visita del Pare Noel.",
     "descripcio_fr": "Le marché de Noël de Vinçà réunit de nombreux exposants et propose une animation musicale, une buvette et des crêpes. Il comprend également une loterie et la visite du Père Noël.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/FB-IMG-1794474001005.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078460/FB-IMG-1794474001005_zf8mwu.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.680Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQ5D] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
