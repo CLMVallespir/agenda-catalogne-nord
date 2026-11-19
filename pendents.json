@@ -2100,7 +2100,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZQTU] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-03-village-de-noel",
+    "id": "2026-12-03-poble-de-nadal",
     "titol": "Poble de Nadal",
     "data_inici": "2026-12-03",
     "data_fi": "2026-12-03",
@@ -2112,9 +2112,9 @@
     "descripcio_ca": "Durant quatre dies, Sureda es transforma en un poble de Nadal, un espai festiu i acollidor on es pot passejar entre les casetes de fusta, escoltar música i participar en animacions. Hi ha una oferta gastronòmica variada, amb fondue savoiarda, hamburgueses de Cédric, marisc, creps, vi, vi calent i xocolata, i també s'hi presenten artesans, creadors i productors. Durant la rua de llums, els infants descobriran personatges fantàstics al llarg del recorregut que travessa el poble fins a la sala de festes. L'acte inclou també un concert de The Tof Sawyer and The Good Soûls Blues Band.",
     "descripcio_fr": "Pendant quatre jours, Sureda se transforme en village de Noël, un espace festif et chaleureux où l'on peut flâner entre les chalets en bois, écouter de la musique et participer à des animations. On y trouve une offre gourmande variée, avec fondue savoyarde, burgers de Cédric, fruits de mer, crêpes, vin, vin chaud et chocolat, et l'on y présente aussi des artisans, des créateurs et des producteurs. Lors de la parade des lumières, les enfants découvriront de nombreux personnages féeriques tout au long du parcours qui traverse le village jusqu'à la salle des fêtes. L'acte comprend également un concert de The Tof Sawyer and The Good Soûls Blues Band.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/noel-sorede.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078471/noel-sorede_awmhdn.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.462Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V51N1SW] Categoria per tema infantil; RechercheTYPE deia: Mercat Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
