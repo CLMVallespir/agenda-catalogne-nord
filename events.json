@@ -5916,5 +5916,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.715Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-la-rose-canetoise",
+    "titol": "La Rose Canétoise",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-13",
+    "hora": "09:30",
+    "lloc": "Théâtre de la Mer & Parvis d'Oniria",
+    "municipi": "Canet de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "La Rose Canétoise torna a tenir vida amb dues jornades de marxes i de curses. Hi ha marxes de 4 km i de 6 km, i curses de 5 km i de 10 km. L'acte té com a objectiu unir esforços al voltant d'una bona causa.",
+    "descripcio_fr": "La Rose Canétoise revient avec deux journées de marches et de courses. Il y a des marches de 4 km et de 6 km, ainsi que des courses de 5 km et de 10 km. L'événement a pour but d'unir les efforts autour d'une bonne cause.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078738/BBR-0858_atmfyq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.473Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-12-12-ouillade-a-la",
+    "titol": "Ouillade à la Perdrix",
+    "data_inici": "2026-12-12",
+    "data_fi": "2026-12-12",
+    "hora": "12:00",
+    "lloc": "Traversse de Thuir",
+    "municipi": "Trullars",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "El Domaine de la Perdrix organitza la tradicional ouillada dels Gil's Brothers, acompanyada d'un concert de blues, soul i rock del Berkeley Hot Soul Band. L'acte es fa amb la complicitat de Chez Face d'Huîtres, de Leucate. Cal fer reserva prèvia.",
+    "descripcio_fr": "Le Domaine de la Perdrix organise la traditionnelle ouillade des Gil's Brothers, accompagnée d'un concert de blues, soul et rock du Berkeley Hot Soul Band. L'événement se déroule avec la complicité de Chez Face d'Huîtres, de Leucate. Sur réservation préalable.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078740/Aspres-trouillas-ouillade26_qqq6x7.webp",
+    "font_url": "https://my.weezevent.com/ouillade-2026",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.506Z",
+    "periodicitat": ""
   }
 ]
