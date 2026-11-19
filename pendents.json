@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-11-19-desbloqueja-el-teu",
+    "titol": "Desbloqueja el teu català: cicle de tallers a Perpinyà",
+    "data_inici": "2026-11-19",
+    "data_fi": "2027-03-03",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Cicle de tallers ARTiCAT a Perpinyà per desbloquejar l'oral del català a través de l'art. Inclou dos cicles, amb vuit dates en total: les del cartell, que havien de començar el 19 de novembre de 2026, i les del 2027 (20 de gener, 3 i 24 de febrer, i 3 de març). Les inscripcions es fan en línia mitjançant Calendly.",
+    "descripcio_fr": "Cycle d'ateliers ARTiCAT à Perpignan pour débloquer l'oral du catalan par l'art. Il comprend deux cycles, soit huit dates au total : celles de l'affiche, qui devaient commencer le 19 novembre 2026, et celles de 2027 (20 janvier, 3 et 24 février, 3 mars). Les inscriptions se font en ligne via Calendly.",
+    "associacio": "ARTiCAT",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795071217/ARTiCAT_cicle_de_tardor_kx1ahz.webp",
+    "font_url": "",
+    "estat": "pendent",
+    "data_entrada": "2026-11-19T06:53:37.754Z",
+    "periodicitat": "",
+    "nota_curador": ""
+  },
+  {
     "id": "2026-11-22-coral-sang-i",
     "titol": "Coral Sang i Or a Cortsavi",
     "data_inici": "2026-11-22",
