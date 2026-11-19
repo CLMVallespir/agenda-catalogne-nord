@@ -4453,5 +4453,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.509Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-mini-excursio",
+    "titol": "Mini excursió",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "10:30",
+    "lloc": "8 RUE ARAGO",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "Es proposa una mini excursió accessible a tothom, tant si es tracta de persones esportistes com de principiants. L'activitat combina el moviment, l'aire lliure i la convivència, en un ambient de bon humor i energia positiva. Hi pot anar tothom sol o acompanyat, i la inscripció es fa per missatge privat.",
+    "descripcio_fr": "Il s'agit d'une mini randonnée accessible à tous, qu'il s'agisse de sportifs ou de débutants. L'activité associe mouvement, plein air et convivialité, dans une ambiance de bonne humeur et d'énergie positive. Chacun peut venir seul ou accompagné, et l'inscription se fait par message privé.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078397/aSPRES-THUIR-RANDO28NOV_piwonq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.529Z",
+    "periodicitat": ""
   }
 ]
