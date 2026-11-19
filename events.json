@@ -5251,5 +5251,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.683Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-commemoracio-jornada-nacional",
+    "titol": "Commemoració: jornada nacional d'homenatge",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "16:00",
+    "lloc": "",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "La jornada nacional d'homenatge als morts per França durant la guerra d'Algèria i els combats del Marroc i de Tunísia commemora els qui hi van perdre la vida. La població hi és convidada a aplegar-se en un moment solemne de recolliment. L'acte també recorda el deure de memòria i la transmissió de la història a les noves generacions.",
+    "descripcio_fr": "La journée nationale d'hommage aux morts pour la France pendant la guerre d'Algérie et les combats du Maroc et de la Tunisie commémore celles et ceux qui y ont perdu la vie. La population est invitée à se rassembler pour un moment solennel de recueillement. L'acte rappelle également le devoir de mémoire et la transmission de l'histoire aux jeunes générations.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078572/commemoration-3_qlbk5k.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.684Z",
+    "periodicitat": ""
   }
 ]
