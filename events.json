@@ -5213,5 +5213,43 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.680Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-trail-nocturne-de",
+    "titol": "Trail nocturne de l'Ecoparc Catalan",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "",
+    "lloc": "",
+    "municipi": "Pesillà de la Ribera",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "Es tracta d'un trail nocturn que parteix de Pesillà de la Ribera i permet descobrir tres municipis de l'Écoparc Catalan: Pesillà de la Ribera, Villeneuve-la-Rivière i Baixas. A mig camí entre el trail urbà i la cursa en plena natura, l'itinerari travessa el patrimoni del territori, il·luminat de manera especial per a l'ocasió. Hi ha formats de 9 km i 16 km, com a cursa o randonada, i de 25 km i 43 km, com a trail en solitari o per relleus, a més de la Foulée des Pitchouns per als infants de 7 a 12 anys. Els menors han d'anar acompanyats d'un adult.",
+    "descripcio_fr": "Il s'agit d'un trail nocturne qui part de Pesillà de la Ribera et permet de découvrir trois communes de l'Écoparc Catalan : Pesillà de la Ribera, Villeneuve-la-Rivière et Baixas. À mi-chemin entre trail urbain et course nature, l'itinéraire traverse le patrimoine du territoire, spécialement illuminé pour l'occasion. Des formats de 9 km et 16 km, en course ou en randonnée, et de 25 km et 43 km, en trail en solitaire ou en relais, sont proposés, ainsi que la Foulée des Pitchouns pour les enfants de 7 à 12 ans. Les mineurs doivent être accompagnés d'un adulte.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078564/Capture-d-ecran-2026-11-12-114446_amahiw.webp",
+    "font_url": "https://ats-sport.com/epreuve.php?id_epreuve=9612&course=trail-nocturne-de-l-ecoparc-catalan-4me-dition",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.682Z",
+    "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-berenar-de-la",
+    "titol": "Berenar de la gent gran",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "15:00",
+    "lloc": "10 Allée de la Liberté",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Es tracta d'una tarda festiva per a la gent gran, pensada per a la convivència i l'entreteniment. Inclou l'espectacle Pin'up Revue, que combina música, dansa i esperit de cabaret en un ambient retro. Les festivitats continuaran amb un berenar que permet compartir una estona d'amistat.",
+    "descripcio_fr": "Il s'agit d'un après-midi festif destiné aux personnes âgées, conçu pour la convivialité et le divertissement. Il comprend le spectacle Pin'up Revue, qui allie musique, danse et esprit cabaret dans une ambiance rétro. Les festivités se poursuivront par un goûter qui permet de partager un moment d'amitié.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078567/pexels-vome-9713060_hvm4c7.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.683Z",
+    "periodicitat": ""
   }
 ]
