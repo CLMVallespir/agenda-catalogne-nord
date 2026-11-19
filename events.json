@@ -5479,5 +5479,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.491Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-09-les-petites-scenes",
+    "titol": "Les petites scènes «Contes et légendes des Pyrénées catalanes»",
+    "data_inici": "2026-12-09",
+    "data_fi": "2026-12-09",
+    "hora": "14:30",
+    "lloc": "59 Rue Nationale",
+    "municipi": "Sant Andreu de Sureda",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'acte consisteix en una vetllada de contes i llegendes, del Canigó a la Cerdanya, amb històries de fades i relats transmesos pels més grans. Els assistents s'asseuen al voltant del narrador, un guia local, que explica aquestes històries a l'estil antic, en el món de les encantadores locals. Les inscripcions són obligatòries i les places, limitades; els infants han d'anar acompanyats d'una persona adulta, que també s'ha d'inscriure.",
+    "descripcio_fr": "L'acte consiste en une veillée de contes et légendes, du Canigó à la Cerdanya, avec des histoires de fées et des récits transmis par les aînés. Les participants prennent place autour du conteur, un guide local, qui raconte ces histoires à la manière ancienne, dans le monde des enchanteresses locales. Les inscriptions sont obligatoires et les places limitées ; les enfants doivent être accompagnés d'une personne adulte, qui doit également s'inscrire.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078636/2026-les-petites-scenes-OTI-12-09-contes-et-legendes-des-pyrenees-catalanes_zzgf1p.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.580Z",
+    "periodicitat": ""
   }
 ]
