@@ -3161,5 +3161,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-12T07:13:50.529Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-06-concert-de-ladvent",
+    "titol": "Concert de l'Advent de les corals",
+    "data_inici": "2026-12-06",
+    "data_fi": "2026-12-06",
+    "hora": "17:00",
+    "lloc": "Avenue du",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Quatre corals interpreten un concert de l'Advent a Banyuls de la Marenda: l'Orphéon Banyulenc, Libera me, La Mi Bémol i Le Petit Choeur Banyulenc. L'acte reuneix aquestes quatre formacions en un mateix concert.",
+    "descripcio_fr": "Quatre chorales interprètent un concert de l'Avent à Banyuls de la Marenda : l'Orphéon Banyulenc, Libera me, La Mi Bémol et Le Petit Choeur Banyulenc. L'acte réunit ces quatre formations dans un même concert.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795072009/Concert-chorales-Banyuls-2_bmkvrm.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-12T07:13:50.331Z",
+    "periodicitat": ""
   }
 ]
