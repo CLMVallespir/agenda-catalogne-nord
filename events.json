@@ -5802,5 +5802,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.637Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-11-taller-creatiu-angel",
+    "titol": "Taller creatiu: àngel de la guarda de paper",
+    "data_inici": "2026-12-11",
+    "data_fi": "2026-12-11",
+    "hora": "18:00",
+    "lloc": "21 Quai Pierre ForgasÀ l'étage",
+    "municipi": "Portvendres",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "L'associació Ode aux couleurs proposa un taller de plegat i de treball del paper per crear un petit personatge alat. Al llarg de les etapes s'aprèn a donar volum i moviment al material, per obtenir un objecte decoratiu delicat i personalitzat. L'activitat es presenta com una ocasió per deixar volar la imaginació, compartir un moment càlid i preparar les festes amb una creació artesanal.",
+    "descripcio_fr": "L'association Ode aux couleurs propose un atelier de pliage et de travail du papier pour créer un petit personnage ailé. Au fil des étapes, on apprend à donner du volume et du mouvement à la matière, afin d'obtenir un objet décoratif délicat et personnalisé. L'activité se présente comme une occasion de laisser libre cours à son imagination, de partager un moment chaleureux et de préparer les fêtes avec une création artisanale.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078713/Ange--Pexels---Vladimir-Srajber_drtqta.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.654Z",
+    "periodicitat": ""
   }
 ]
