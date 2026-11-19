@@ -1920,7 +1920,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZQ5W] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-01-cafe-tricote",
+    "id": "2026-12-01-cafe-tricotat",
     "titol": "Cafè tricotat",
     "data_inici": "2026-12-01",
     "data_fi": "2026-12-01",
@@ -1932,15 +1932,15 @@
     "descripcio_ca": "L'acte està obert a persones principiants o experimentades. Els participants hi porten la seva llana i les seves idees, i l'organització s'encarrega de les begudes calentes.",
     "descripcio_fr": "L'activité est ouverte aux débutants ou aux personnes confirmées. Les participants y apportent leur laine et leurs idées, et l'organisation se charge des boissons chaudes.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Capture-257.JPG?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078445/Capture-257_xtnwvw.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.701Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZQTT] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-01-soutien-au-telethon",
+    "id": "2026-12-01-suport-al-telethon",
     "titol": "Suport al Téléthon 2026",
     "data_inici": "2026-12-01",
     "data_fi": "2026-12-04",
@@ -1952,9 +1952,9 @@
     "descripcio_ca": "L'associació Art et Loisirs organitza una venda a benefici del Téléthon. Hi ha nombrosos lots a la venda, gràcies a la generositat dels seus socis. Els beneficis es destinaran íntegrament al Téléthon, i la participació contribueix directament al suport a la recerca i a les famílies.",
     "descripcio_fr": "L'association Art et Loisirs organise une vente au profit du Téléthon. De nombreux lots sont proposés à la vente grâce à la générosité de ses adhérents. Les bénéfices seront intégralement reversés au Téléthon, et la participation contribue directement au soutien de la recherche et des familles.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/affiche-telethon-2026-Arts-et-loisirs.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078447/affiche-telethon-2026-Arts-et-loisirs_kfryoe.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.712Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZRB3] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
