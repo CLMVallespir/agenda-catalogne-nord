@@ -4966,5 +4966,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.680Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-04-noel-de-la",
+    "titol": "Noël de la Distillerie",
+    "data_inici": "2026-12-04",
+    "data_fi": "2026-12-04",
+    "hora": "",
+    "lloc": "12 Place Louis Esparre",
+    "municipi": "Toluges",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "Les festivitats inclouen xalets de gastronomia, espectacles, animacions i una fira d'atraccions per a petits i grans. També s'hi proposa un mercat de creadors i artesans, on es poden descobrir creacions originals i trobar idees de regal. El programa complet es donarà a conèixer properament.",
+    "descripcio_fr": "Les festivités comprennent des chalets gourmands, des spectacles, des animations et une fête foraine pour petits et grands. Un marché de créateurs et d'artisans est également proposé, où l'on peut découvrir des créations originales et trouver des idées de cadeaux. Le programme complet sera communiqué prochainement.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795078494/Noel-de-la-Distillerie-2026_ys2afl.webp",
+    "font_url": "http://www.toulouges.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.681Z",
+    "periodicitat": ""
   }
 ]
