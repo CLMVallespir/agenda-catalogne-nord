@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-11-21-concert-de-musica",
+    "titol": "Concert de música catalana",
+    "data_inici": "2026-11-21",
+    "data_fi": "2026-11-21",
+    "hora": "18:00",
+    "lloc": "Sala polivalent",
+    "municipi": "Sant Joan de Pla de Corts",
+    "comarca": "",
+    "categoria": "Música",
+    "descripcio_ca": "L'Orquestra de Canet Roussillon Méditerranée, dirigida per François Ragot, ofereix un concert amb la solista Sara Bañeras. El programa inclou obres de Granados, De Falla, Casals, Toldrà i Bonet. Les entrades es venen a taquilla a partir de les 17 h, a 14 € (tarifa general) o 10 € (tarifa reduïda).",
+    "descripcio_fr": "L'Orchestre de Canet Roussillon Méditerranée, sous la direction de François Ragot, donne un concert avec la soliste Sara Bañeras. Le programme comprend des œuvres de Granados, De Falla, Casals, Toldrà et Bonet. La billetterie sur place ouvre à partir de 17 h, au tarif plein de 14 € ou au tarif réduit de 10 €.",
+    "associacio": "Orchestre de Canet Roussillon Méditerranée",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795162518/concert_zhs6wp.webp",
+    "font_url": "",
+    "estat": "pendent",
+    "data_entrada": "2026-11-20T08:15:19.564Z",
+    "periodicitat": "",
+    "nota_curador": ""
+  },
+  {
     "id": "2026-11-19-taller-de-bebes",
     "titol": "Taller de bebès lectors",
     "data_inici": "2026-11-19",
