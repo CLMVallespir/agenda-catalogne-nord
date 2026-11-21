@@ -5346,5 +5346,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.611Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-10-les-causeries-aux",
+    "titol": "Les causeries aux collections",
+    "data_inici": "2026-12-10",
+    "data_fi": "2026-12-10",
+    "hora": "18:30",
+    "lloc": "Village",
+    "municipi": "Sant Cebrià de Rosselló",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'acte consisteix en una conferència animada per Alexandre Charett-Dykes. La conferència té com a tema «L'altre mestre del Renaixement: Albrecht Dürer».",
+    "descripcio_fr": "L'événement consiste en une conférence animée par Alexandre Charett-Dykes. La conférence a pour thème « L'autre maître de la Renaissance : Albrecht Dürer ».",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795299793/lcd-causeries-7_pgmmft.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.517Z",
+    "periodicitat": ""
   }
 ]
