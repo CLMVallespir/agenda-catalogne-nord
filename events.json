@@ -5327,5 +5327,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.623Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-10-taller-de-scrapbooking",
+    "titol": "Taller de scrapbooking especial Nadal",
+    "data_inici": "2026-12-10",
+    "data_fi": "2026-12-10",
+    "hora": "14:00",
+    "lloc": "4 Rue Arago",
+    "municipi": "El Voló",
+    "comarca": "Rosselló",
+    "categoria": "",
+    "descripcio_ca": "Taller per a adults de scrapbooking amb motiu de Nadal. Es proposa compartir un moment creatiu i convivial per fer una creació amb els colors de les festes, deixant volar la imaginació. Les persones participants se'n poden endur un record únic.",
+    "descripcio_fr": "Atelier pour adultes de scrapbooking sur le thème de Noël. Il propose de partager un moment créatif et convivial pour réaliser une création aux couleurs des fêtes, en laissant libre cours à l'imagination. Les participants peuvent repartir avec un souvenir unique.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795299788/Affiche---Atelier-scrapbooking--1-_c8g6sn.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.611Z",
+    "periodicitat": ""
   }
 ]
