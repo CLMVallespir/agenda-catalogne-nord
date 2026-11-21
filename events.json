@@ -5441,5 +5441,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.720Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-06-marxa-a-peu",
+    "titol": "Marxa a peu solidària",
+    "data_inici": "2026-12-06",
+    "data_fi": "2026-12-06",
+    "hora": "09:00",
+    "lloc": "",
+    "municipi": "Terrats",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "S'organitza una marxa a peu solidària a Terrats en favor del Téléthon. Hi ha dos recorreguts disponibles, de 5 i de 10 quilòmetres.",
+    "descripcio_fr": "Une marche à pied solidaire est organisée à Terrats en faveur du Téléthon. Deux parcours sont proposés, de 5 et de 10 kilomètres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795299832/Aspres-terrats-randonnetehelton_y19htw.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.702Z",
+    "periodicitat": ""
   }
 ]
