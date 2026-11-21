@@ -3920,7 +3920,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZF6H] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-11-concert-choeur-serenata",
+    "id": "2026-12-11-concert-ch-ur",
     "titol": "Concert: Chœur Serenata",
     "data_inici": "2026-12-11",
     "data_fi": "2026-12-11",
@@ -3932,9 +3932,9 @@
     "descripcio_ca": "El Chœur Serenata ofereix un concert. L'acte està obert a tot públic.",
     "descripcio_fr": "Le Chœur Serenata donne un concert. L'acte est ouvert à tout public.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/CONCERT-CHOEUR-SERENATA.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795299751/CONCERT-CHOEUR-SERENATA_nlfh51.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.623Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZHIJ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
