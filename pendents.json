@@ -3360,7 +3360,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52C7N4] L'acte es fa 3 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-09-don-du-sang",
+    "id": "2026-12-09-donacio-de-sang",
     "titol": "Donació de sang",
     "data_inici": "2026-12-09",
     "data_fi": "2026-12-09",
@@ -3372,9 +3372,9 @@
     "descripcio_ca": "L'Établissement Français du Sang organitza una jornada de donació de sang a Canet de Rosselló, amb o sense cita prèvia. Hi poden donar sang les persones d'entre 18 i 70 anys que pesin més de 50 quilos, que no hagin rebut mai una transfusió i que estiguin en bona forma. Cal portar un document d'identitat. Un sol donatiu pot salvar fins a tres pacients diferents.",
     "descripcio_fr": "L'Établissement Français du Sang organise une journée de don du sang à Canet de Rosselló, avec ou sans rendez-vous. Peuvent donner leur sang les personnes âgées de 18 à 70 ans qui pèsent plus de 50 kilos, qui n'ont jamais reçu de transfusion et qui sont en bonne forme. Il faut se munir d'une pièce d'identité. Un seul don de sang peut soigner jusqu'à trois patients différents.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/24e8faf7-506f-49d6-a84d-6c11ff7f87df.jpeg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795299813/24e8faf7-506f-49d6-a84d-6c11ff7f87df_jhuuac.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.483Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52N7DJ] La categoria queda buida a posta: «Action citoyenne» no s'autoclassifica i l'ha de decidir el curador. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
