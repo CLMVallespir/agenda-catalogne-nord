@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-12-05-visita-guiada-en",
+    "titol": "Visita guiada en català - Al cor de l'exposició",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "12:00",
+    "lloc": "Museu d'Art Hyacinthe Rigaud",
+    "municipi": "Perpinyà",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "El Museu d'Art Hyacinthe Rigaud de Perpinyà proposa una visita guiada en català a l'exposició dedicada a Joan Miró. L'activitat està oberta a aficionats a la llengua i al públic en general del sud de Catalunya, a partir dels 10 anys. La visita dura aproximadament 1 hora i 15 minuts i permet descobrir l'obra de l'artista en la seva llengua materna. El preu és l'entrada més 4 €.",
+    "descripcio_fr": "Le musée d'Art Hyacinthe Rigaud de Perpignan propose une visite guidée en catalan de l'exposition consacrée à Joan Miró. L'activité est ouverte aux amateurs de la langue et au public en général du sud de la Catalogne, à partir de 10 ans. La visite dure environ 1 heure et 15 minutes et permet de découvrir l'œuvre de l'artiste dans sa langue maternelle. Le tarif est le prix de l'entrée plus 4 €.",
+    "associacio": "Cultures, Llengües i Memòries del Vallespir (CLM)",
+    "imatge_url": "",
+    "font_url": "",
+    "estat": "pendent",
+    "data_entrada": "2026-11-21T14:23:59.081Z",
+    "periodicitat": "",
+    "nota_curador": ""
+  },
+  {
     "id": "2026-11-21-concert-de-musica",
     "titol": "Concert de música catalana",
     "data_inici": "2026-11-21",
