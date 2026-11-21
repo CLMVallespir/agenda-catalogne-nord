@@ -5422,5 +5422,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-19T07:14:00.723Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-06-concert-participatiu-de",
+    "titol": "Concert participatiu de cants de Nadal - Chorale de la Maîtrise Saint-Joseph de Prades",
+    "data_inici": "2026-12-06",
+    "data_fi": "2026-12-06",
+    "hora": "15:00",
+    "lloc": "",
+    "municipi": "Elna",
+    "comarca": "Rosselló",
+    "categoria": "Música",
+    "descripcio_ca": "La Chorale de la Maîtrise Saint-Joseph de Prades proposa un concert participatiu de cants de Nadal. El públic hi és convidat a cantar juntament amb els intèrprets.",
+    "descripcio_fr": "La Chorale de la Maîtrise Saint-Joseph de Prades propose un concert participatif de chants de Noël. Le public y est invité à chanter avec les interprètes.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795299823/chorale-maitrise-st-joseph-de-prades_jpmdmw.webp",
+    "font_url": "https://www.maitrisestjosephdeprades.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-19T07:14:00.720Z",
+    "periodicitat": ""
   }
 ]
