@@ -6412,6 +6412,21 @@ async function llegeixFitxerGitHub(nomFitxer, token) {
   }
 
   var fitxer = await resposta.json();
+
+  // Per damunt d'1 MB l'API de continguts torna `content` buit
+  // (encoding "none"): el contingut es demana a l'API de blobs.
+  if (fitxer.encoding === 'none') {
+    var respostaBlob = await fetch(fitxer.git_url, {
+      method: 'GET',
+      headers: capcaleresGitHub(token)
+    });
+    if (!respostaBlob.ok) {
+      throw new Error('no he pogut llegir el blob de ' + nomFitxer + ' (codi ' + respostaBlob.status + ').');
+    }
+    var blob = await respostaBlob.json();
+    fitxer.content = blob.content;
+  }
+
   return {
     dades: JSON.parse(descodificaBase64(fitxer.content)),
     sha: fitxer.sha

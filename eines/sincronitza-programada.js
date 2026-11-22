@@ -1418,6 +1418,18 @@ async function llegeixFitxer(nomFitxer, config) {
   }
 
   var fitxer = await resposta.json();
+
+  // Per damunt d'1 MB l'API de continguts torna `content` buit
+  // (encoding "none"): el contingut es demana a l'API de blobs.
+  if (fitxer.encoding === 'none') {
+    var respostaBlob = await fetch(fitxer.git_url, { method: 'GET', headers: capcaleresGitHub(config.token) });
+    if (!respostaBlob.ok) {
+      throw new Error('no he pogut llegir el blob de ' + nomFitxer + ' (codi ' + respostaBlob.status + ').');
+    }
+    var blob = await respostaBlob.json();
+    fitxer.content = blob.content;
+  }
+
   return {
     dades: JSON.parse(Buffer.from(fitxer.content, 'base64').toString('utf8')),
     sha: fitxer.sha
