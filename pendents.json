@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-10-06-concours-de-truc",
+    "titol": "Concours de TRUC du PUNTO G",
+    "data_inici": "2026-10-06",
+    "data_fi": "2027-04-27",
+    "hora": "21:00",
+    "lloc": "Bar LE PABLO",
+    "municipi": "Céret",
+    "comarca": "Vallespir",
+    "categoria": "Patrimoni i tradicions",
+    "descripcio_ca": "",
+    "descripcio_fr": "Concours de TRUC.\nInscriptions limitées à 32 équipes.",
+    "associacio": "Peña PUNTO G",
+    "imatge_url": "",
+    "font_url": "",
+    "estat": "pendent",
+    "data_entrada": "2026-11-23T12:58:48.591Z",
+    "periodicitat": "",
+    "nota_curador": ""
+  },
+  {
     "id": "2026-12-17-historia-de-les",
     "titol": "Història de les cartes de joc a Catalunya (Le Truc)",
     "data_inici": "2026-12-17",
