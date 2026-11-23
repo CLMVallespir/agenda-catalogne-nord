@@ -17,12 +17,12 @@ var childProcess = require('child_process');
 
 var ARREL = path.join(__dirname, '..');
 var VERIFICADOR = path.join(ARREL, 'eines', 'verifica-copies-worker.js');
-var FITXERS = ['worker/worker.js', 'eines/fila-segura.js', 'eines/admet-entrada.js', 'url-segura.js'];
+var FITXERS = ['worker/worker.js', 'eines/fila-segura.js', 'eines/admet-entrada.js', 'url-segura.js', 'curador-cua.js'];
 
 
 // --- Ajudants ---------------------------------------------------------------
 
-// Copia els quatre fitxers a una arrel temporal nova i en torna el camí.
+// Copia els cinc fitxers a una arrel temporal nova i en torna el camí.
 function copiaArrel() {
   var arrel = fs.mkdtempSync(path.join(os.tmpdir(), 'copies-worker-'));
   FITXERS.forEach(function (cami) {

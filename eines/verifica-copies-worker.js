@@ -65,6 +65,10 @@ var COPIES = [
       'MAX_FILES_PORTES_PER_DIA', 'MAX_CARACTERS_CORREU', 'MARCA_ADT66',
       'admetEntrada', 'filesDeLesPortesDAvui'
     ]
+  },
+  {
+    original: 'curador-cua.js',
+    noms: ['esCaducada', 'darrerDiaDeLActe', 'esData']
   }
 ];
 

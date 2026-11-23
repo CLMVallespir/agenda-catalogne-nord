@@ -69,6 +69,7 @@ fitxer, i `git show <commit>^:<ruta>` el torna a ensenyar.*
   versió catalana, rebutjades.
 - **11 de novembre.** Comptador de visites al web públic (D-11).
 - **23 de novembre.** El Worker tradueix la descripció del formulari (D-12).
+  Un correu pot donar diversos actes, i el model en veu els cartells (D-13).
 
 ---
 
@@ -190,6 +191,28 @@ protocol de coordinació.
   élémentaire» es va publicar el 8 de novembre sense català. Cost: com a molt
   20 crides al dia (D-09), d'un text de 2–4 frases, menys d'un cèntim cadascuna.
   El bloc webhook del Typebot ha d'esperar 60 s (`docs/pas-fase3a-worker-formulari.md`).
+- **D-13 · 23 de novembre.** Un correu, tants actes com anunciï. El prompt
+  d'extracció torna una llista `esdeveniments` (fins a deu,
+  `MAX_ACTES_PER_CORREU`), i a cada element el número del seu `cartell` i
+  l'`acte` amb les 17 claus. Els cartells adjunts (fins a quatre,
+  `MAX_CARTELLS_PER_CORREU`) pugen a Cloudinary **abans** de Claude, que els
+  rep per URL i els veu: un acte que només surt al cartell també entra, i cada
+  acte rep el seu cartell. Miquel va acceptar el preu: si l'extracció falla,
+  els cartells pujats queden orfes a Cloudinary. Cada fila passa per
+  `filaSegura()`; `triaFilesDelCorreu()` en treu les que ja han passat
+  (`esCaducada()`, en còpia literal) i les que ja són a la cua amb el mateix
+  `id` + `titol` + `municipi`, sigui quin sigui l'estat (un acte rebutjat no
+  torna amb el butlletí següent; la resta s'encua, si dubtes, encua), i les
+  que sobren del sostre de D-09, començant per les més llunyanes. Totes les
+  files d'un correu entren en un sol commit. Les notes diuen «Correu amb N
+  actes», quin cartell ha triat el model quan n'hi havia per triar, i l'URL
+  del cartell que no ha anat a cap acte. Si el model no troba cap acte,
+  entra una fila buida amb l'avís i l'assumpte: una confirmació de
+  subscripció es rebutja en un clic, i un correu bo mal llegit no es perd.
+  Va néixer de dos usos: associacions que envien un acte amb el cartell d'un
+  altre, i els butlletins de llistes de distribució amb el programa del mes.
+  Els límits (deu per correu, vint per dia, `CLAUDE_MAX_TOKENS` = 8192) no es
+  van tocar: s'ajustaran amb dades reals.
 
 Decisions anteriors al registre, igual de tancades (el perquè és a la lliçó que
 s'indica):

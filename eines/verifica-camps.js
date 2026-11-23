@@ -310,13 +310,21 @@ function treuDelPrompt(text) {
 
 // ------------------------------------------------------------
 // Les claus de l'exemple de resposta del prompt. És un bloc JSON, o sigui que
-// les claus van entre cometes dobles i seguides de dos punts.
+// les claus van entre cometes dobles i seguides de dos punts. Des de D-13 la
+// resposta és una llista d'elements `{ cartell, acte }`, i els camps són els de
+// l'objecte `"acte"`: si l'exemple en porta un, es llegeix aquell.
 // ------------------------------------------------------------
 function treuDeLExemple(text) {
   var des = text.indexOf('EXEMPLE DE RESPOSTA');
 
   if (des === -1) {
     return null;
+  }
+
+  var acte = text.indexOf('"acte":', des);
+
+  if (acte !== -1) {
+    des = acte;
   }
 
   var obre = text.indexOf('{', des);

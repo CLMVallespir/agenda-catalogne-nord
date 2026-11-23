@@ -4989,9 +4989,18 @@ class PostalMime {
 // EL CAMÍ D'UN CORREU, en ordre:
 //   1. reenviament a l'arxiu  ← el primer de tot, i passi el que passi
 //   2. postal-mime            → assumpte + cos de text + adjunts
-//   3. Claude                 → els 11 camps que el model pot deduir
-//   4. Cloudinary             → el primer cartell adjunt (opcional)
-//   5. pendents.json          → filaSegura(): 18 cadenes, estat "pendent"
+//   3. Cloudinary             → fins a quatre cartells adjunts, ABANS de
+//                               Claude, perquè el model els pugui veure
+//                               (D-13). Un cartell que no puja es perd,
+//                               la fila no
+//   4. Claude                 → UNA crida: el text i els cartells, i
+//                               torna una llista d'actes (fins a deu),
+//                               cadascun amb el número del seu cartell
+//   5. pendents.json          → filaSegura() per a cada acte; fora els
+//                               que ja han passat i els que ja són a la
+//                               cua; totes les files en un sol commit.
+//                               Cap acte trobat = una fila buida amb
+//                               l'avís, perquè el curador ho vegi
 //
 // EL CAMÍ D'UNA TRAMESA DEL FORMULARI, en ordre:
 //   1. el secret de la capçalera  ← el primer de tot; si no, 403
@@ -5098,15 +5107,26 @@ var CLAUDE_VERSIO_API = '2026-10-21';
 // demanaExtraccioClaude()). Els que no s'usen no es paguen.
 var CLAUDE_MAX_TOKENS = 8192;
 
-// Les claus de l'objecte que ha de tornar el model: les 17 de la
-// regla 2 del prompt, en el mateix ordre. L'API les fa complir
-// (`output_config.format`, vegeu esquemaDeCadenes()). SI LA REGLA 2 DEL PROMPT CANVIA
+// Les claus de cada `acte` que ha de tornar el model: les 17 de la
+// regla 4 del prompt, en el mateix ordre. L'API les fa complir
+// (`output_config.format`, vegeu esquemaExtraccio()). SI LA REGLA 4 DEL PROMPT CANVIA
 // DE CLAUS, AQUESTA LLISTA CANVIA AMB ELLA.
 var CLAUS_EXTRACCIO = [
   'id', 'titol', 'data_inici', 'data_fi', 'hora', 'lloc', 'municipi',
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
   'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat'
 ];
+
+// --- Un correu, diversos actes (D-13) ---
+// Els actes que s'encuen d'un sol correu, com a molt. El prompt diu el
+// mateix («fins a deu»); aquí es torna a tallar per si el model no hi fa
+// cas. Si en sobren, es queden els més propers en el temps.
+var MAX_ACTES_PER_CORREU = 10;
+
+// Els cartells adjunts que pugen a Cloudinary i que el model veu, com a
+// molt. Cada un és una crida més al Worker (el pla gratuït en permet 50
+// per execució) i uns 1 200 tokens més d'entrada a Claude.
+var MAX_CARTELLS_PER_CORREU = 4;
 
 // --- La traducció del formulari (D-12) ---
 // Les claus de l'objecte que ha de tornar el model quan tradueix la
@@ -5229,19 +5249,33 @@ var CATEGORIA_VALUES = [
 // Acaba amb la línia "CORREU:"; el text del correu s'afegeix després.
 // (L'únic caràcter escapat aquí baix és la tanca markdown ```, que
 // s'escriu \`\`\` perquè aquest text viu entre cometes invertides.)
-var EXTRACTION_PROMPT = `Ets un extractor de dades per a l'agenda cultural de la Catalunya Nord. Llegeixes el correu electrònic que hi ha al final d'aquest missatge, després de la línia "CORREU:", i en retreus la informació d'un esdeveniment cultural.
+var EXTRACTION_PROMPT = `Ets un extractor de dades per a l'agenda cultural de la Catalunya Nord. Llegeixes el correu electrònic que hi ha al final d'aquest missatge, després de la línia "CORREU:", i els cartells que hi van adjunts, i en retreus la informació de cada esdeveniment cultural que anuncien.
 
 DATA DE REFERÈNCIA
 Avui és: {{AVUI}}
 Fes servir aquesta data únicament per deduir l'any quan el correu esmenta una data sense any: tria la pròxima ocurrència futura d'aquesta data.
 
+CARTELLS
+Cartells adjunts a aquest correu: {{CARTELLS}}.
+Mira'ls sencers: un cartell pot anunciar un acte que el text del correu no esmenta, i aquell acte també compta.
+
 FORMAT DE RESPOSTA — REGLES ABSOLUTES
 1. Respon NOMÉS amb un objecte JSON vàlid. Cap text abans ni després. Cap explicació. Cap bloc de codi markdown (res de \`\`\`).
-2. L'objecte conté exactament aquestes 17 claus, totes presents sempre, en aquest ordre:
+2. L'objecte té una sola clau, "esdeveniments": una llista amb un element per esdeveniment. Cada element té dues claus, "cartell" i "acte".
+3. "cartell" és el número del cartell adjunt que anuncia aquest esdeveniment ("1", "2"…), o cadena buida "" si cap cartell no l'anuncia. Un mateix cartell pot anar amb diversos esdeveniments, per exemple el programa d'un mes.
+4. "acte" és un objecte que conté exactament aquestes 17 claus, totes presents sempre, en aquest ordre:
    id, titol, data_inici, data_fi, hora, lloc, municipi, comarca, categoria, descripcio_ca, descripcio_fr, associacio, imatge_url, font_url, estat, data_entrada, periodicitat
-3. Tots els valors són cadenes de text (strings).
-4. Si no pots determinar un camp amb certesa a partir del correu, el seu valor és una cadena buida "". No facis servir mai null. No ometis mai cap clau. No inventis mai cap dada.
-5. Si el correu anuncia més d'un esdeveniment, extreu només el principal (el primer, si cap no destaca).
+5. Tots els valors són cadenes de text (strings).
+6. Si no pots determinar un camp amb certesa a partir del correu o dels cartells, el seu valor és una cadena buida "". No facis servir mai null. No ometis mai cap clau. No inventis mai cap dada.
+7. Si el correu no anuncia cap esdeveniment, la llista és buida.
+
+QUÈ ÉS UN ESDEVENIMENT
+- Un acte obert al públic, amb una data o una periodicitat. Un element de la llista per acte.
+- Un correu o un butlletí en pot anunciar diversos: extreu-los tots, fins a deu. Si n'anuncia més de deu, queda't amb els deu més propers en el temps.
+- No extreguis els actes que ja han passat: els repassos i els resums («el mes passat…», «retour sur…») no són esdeveniments.
+- Un cicle amb sessions en dates diferents (un cicle de cinema, unes jornades amb una conferència cada dia) dona un esdeveniment per sessió.
+- Una activitat que es repeteix amb regularitat (un curs setmanal, un mercat de cada dissabte) és un sol esdeveniment, amb la regularitat al camp periodicitat.
+- Un mateix acte que surt dues vegades (al text i al cartell, per exemple) és un sol esdeveniment.
 
 CAMPS QUE HAS D'EXTREURE
 - titol: títol de l'esdeveniment, en català. Si el correu el dona en francès, escriu-lo en català, però conserva els noms propis (grups, obres, llocs) tal com apareixen.
@@ -5252,7 +5286,7 @@ CAMPS QUE HAS D'EXTREURE
 - municipi: nom del municipi, en la forma catalana si la coneixes (per exemple: "Perpinyà", "Prada", "Ceret").
 - comarca: NOMÉS una d'aquestes cinc, escrita exactament així: Rosselló, Conflent, Vallespir, Capcir, Cerdanya. Dedueix-la del municipi només si la correspondència és clara i segura. Si tens cap dubte, cadena buida.
 - categoria: NOMÉS una d'aquestes tretze, escrita exactament així: Música, Teatre, Dansa i ball, Conferència, Exposició, Mercat, Cinema, Taller, Activitat infantil, Patrimoni i tradicions, Concentració, Esports, Vida associativa. Si cap no encaixa clarament, cadena buida.
-- descripcio_ca: de 2 a 4 frases en català. Redacta-la tu directament en català natural i correcte a partir de la informació del correu; no facis una traducció literal del francès. To informatiu i acollidor, sense exclamacions publicitàries. No hi afegeixis informació que el correu no doni.
+- descripcio_ca: de 2 a 4 frases en català. Redacta-la tu directament en català natural i correcte a partir de la informació del correu i del cartell; no facis una traducció literal del francès. To informatiu i acollidor, sense exclamacions publicitàries. No hi afegeixis informació que el correu o el cartell no donin.
 - descripcio_fr: traducció francesa fidel de descripcio_ca, també de 2 a 4 frases.
 - associacio: nom de l'entitat o associació organitzadora.
 - periodicitat: si el correu diu que l'esdeveniment es repeteix amb regularitat (un curs setmanal, un mercat de cada dissabte, un taller de cada dimarts), escriu-ho en una frase curta i natural en català (per exemple: "cada dissabte al matí", "els dijous a les 18h"). Si l'acte és puntual o el correu no ho diu amb claredat, cadena buida "". No inventis mai cap periodicitat que el correu no digui.
@@ -5262,23 +5296,30 @@ CAMPS QUE NO HAS D'OMPLIR MAI
 
 EXEMPLE DE RESPOSTA (només per il·lustrar el format; no copiïs aquestes dades)
 {
-  "id": "",
-  "titol": "Ball de la festa major",
-  "data_inici": "2026-09-14",
-  "data_fi": "2026-09-14",
-  "hora": "18:30",
-  "lloc": "Plaça del Firal",
-  "municipi": "Prats de Molló",
-  "comarca": "Vallespir",
-  "categoria": "Dansa i ball",
-  "descripcio_ca": "La festa major de Prats de Molló es tanca amb un ball obert a tothom a la plaça del Firal. L'orquestra local farà ballar petits i grans fins a mitjanit. L'entrada és gratuïta.",
-  "descripcio_fr": "La fête patronale de Prats-de-Mollo se termine par un bal ouvert à tous sur la place du Firal. L'orchestre local fera danser petits et grands jusqu'à minuit. L'entrée est gratuite.",
-  "associacio": "Comitè de festes de Prats de Molló",
-  "imatge_url": "",
-  "font_url": "",
-  "estat": "",
-  "data_entrada": "",
-  "periodicitat": ""
+  "esdeveniments": [
+    {
+      "cartell": "1",
+      "acte": {
+        "id": "",
+        "titol": "Ball de la festa major",
+        "data_inici": "2026-09-14",
+        "data_fi": "2026-09-14",
+        "hora": "18:30",
+        "lloc": "Plaça del Firal",
+        "municipi": "Prats de Molló",
+        "comarca": "Vallespir",
+        "categoria": "Dansa i ball",
+        "descripcio_ca": "La festa major de Prats de Molló es tanca amb un ball obert a tothom a la plaça del Firal. L'orquestra local farà ballar petits i grans fins a mitjanit. L'entrada és gratuïta.",
+        "descripcio_fr": "La fête patronale de Prats-de-Mollo se termine par un bal ouvert à tous sur la place du Firal. L'orchestre local fera danser petits et grands jusqu'à minuit. L'entrée est gratuite.",
+        "associacio": "Comitè de festes de Prats de Molló",
+        "imatge_url": "",
+        "font_url": "",
+        "estat": "",
+        "data_entrada": "",
+        "periodicitat": ""
+      }
+    }
+  ]
 }
 
 CORREU:
@@ -5485,8 +5526,9 @@ function avisaDatesInvertides(fila) {
 }
 
 // ------------------------------------------------------------
-// El correu, de MIME cru a fila a la cua. Llança si res del camí
-// falla; qui el crida ja ho recull. No torna res.
+// El correu, de MIME cru a files a la cua: una per acte (D-13).
+// Llança si res del camí falla; qui el crida ja ho recull. No torna
+// res.
 // ------------------------------------------------------------
 async function processaCorreu(message, env) {
   var correu = await PostalMime.parse(message.raw);
@@ -5508,32 +5550,231 @@ async function processaCorreu(message, env) {
     return;
   }
 
-  // Claude PRIMER, el cartell després: si l'extracció falla, no
-  // haurem deixat cap imatge òrfena a Cloudinary.
-  var avui = new Date().toISOString().slice(0, 10);
-  var dadesExtretes = await demanaExtraccioClaude(decisio.text, env.ANTHROPIC_API_KEY, avui);
+  // Els cartells PRIMER, Claude després (D-13): el model els ha de
+  // veure per saber quin va amb quin acte, i els veu per l'URL de
+  // Cloudinary. Si l'extracció falla, els cartells pujats queden
+  // orfes a Cloudinary: és el preu acceptat.
+  var urlsCartells = await pujaCartells(cartellsAdjunts(correu), env.CLOUDINARY_CLOUD_NAME);
 
-  // El cartell és opcional, i que falli no ha de costar la fila:
-  // sense imatge la fila encara és bona i el curador pot afegir-la.
-  var imatgeUrl = '';
-  var cartell = primerCartellAdjunt(correu);
-  if (cartell !== null) {
-    try {
-      imatgeUrl = await pujaCartellCloudinary(cartell, env.CLOUDINARY_CLOUD_NAME);
-    } catch (error) {
-      console.log('processaCorreu(): el cartell no s\'ha pogut pujar: ' + error.message);
+  var avui = new Date().toISOString().slice(0, 10);
+  var resposta = await demanaExtraccioClaude(decisio.text, urlsCartells, env.ANTHROPIC_API_KEY, avui);
+  var elements = elementsDeLaResposta(resposta);
+
+  // CAP ACTE TROBAT: una fila buida amb l'avís, no res. Pot ser una
+  // confirmació de subscripció o un correu bo mal llegit, i només el
+  // curador ho pot dir; sense fila no ho veuria ningú.
+  if (elements.length === 0) {
+    var buida = filaSegura(construeixFila({}, ''), 'correu');
+    afegeixNota(buida, 'El model no hi ha trobat cap acte. Mira l\'original a l\'arxiu: «' +
+      assumpteNet(correu) + '».');
+    afegeixAvisosDelCorreu(buida, decisio.avis, urlsCartells, []);
+    await afegeixAPendents([buida], env.GITHUB_TOKEN, 'correu');
+    console.log('processaCorreu(): cap acte trobat. Fila buida afegida a la cua.');
+    return;
+  }
+
+  // Cada acte surt per filaSegura(): divuit camps, els sostres, el
+  // títol d'una línia (va al missatge del commit) i les dates.
+  var files = [];
+  var cartellsUsats = [];
+  for (var i = 0; i < elements.length; i++) {
+    var numero = numeroDeCartell(elements[i].cartell, urlsCartells.length);
+    var imatgeUrl = '';
+    if (numero > 0) {
+      imatgeUrl = urlsCartells[numero - 1];
+      cartellsUsats.push(numero);
+    }
+    var fila = filaSegura(construeixFila(elements[i].acte, imatgeUrl), 'correu');
+    avisaDatesInvertides(fila);
+    if (numero > 0 && (urlsCartells.length > 1 || elements.length > 1)) {
+      afegeixNota(fila, 'El model hi ha posat el cartell ' + numero + ' del correu: comprova que és el d\'aquest acte.');
+    }
+    files.push(fila);
+  }
+
+  var triades = triaFilesDelCorreu(files, decisio.cua, decisio.lloc, avui);
+  if (triades.files.length === 0) {
+    console.log('processaCorreu(): ' + triades.motiu + ' Cap fila nova.');
+    return;
+  }
+
+  for (var j = 0; j < triades.files.length; j++) {
+    var triada = triades.files[j];
+    if (elements.length > 1) {
+      afegeixNota(triada, 'Correu amb ' + elements.length + ' actes (' + (j + 1) + ' de ' +
+        triades.files.length + ' encuats).');
+    }
+    if (triades.motiu !== '') {
+      afegeixNota(triada, triades.motiu);
+    }
+  }
+  // Els avisos que són del correu i no de cap acte (el text tallat, els
+  // cartells que no han anat enlloc) van a la primera fila i prou.
+  afegeixAvisosDelCorreu(triades.files[0], decisio.avis, urlsCartells, cartellsUsats);
+
+  await afegeixAPendents(triades.files, env.GITHUB_TOKEN, 'correu');
+  console.log('processaCorreu(): ' + triades.files.length + ' files afegides a la cua.');
+}
+
+// ------------------------------------------------------------
+// Els avisos d'un correu que no són de cap acte: el text tallat per
+// admetEntrada(), i cada cartell que el model no ha posat a cap acte,
+// amb el seu URL perquè el curador el pugui fer servir. Modifica la
+// fila; no torna res.
+// ------------------------------------------------------------
+function afegeixAvisosDelCorreu(fila, avisAdmissio, urlsCartells, cartellsUsats) {
+  if (avisAdmissio !== '') {
+    afegeixNota(fila, avisAdmissio);
+  }
+  for (var i = 0; i < urlsCartells.length; i++) {
+    var numero = i + 1;
+    if (cartellsUsats.indexOf(numero) === -1) {
+      afegeixNota(fila, 'El cartell ' + numero + ' del correu no s\'ha posat a cap acte: ' + urlsCartells[i]);
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// L'assumpte del correu per a una nota: una línia, sense claudàtors
+// (filaSegura() no en deixa cap a nota_curador) i curt. Torna el text.
+// ------------------------------------------------------------
+function assumpteNet(correu) {
+  var assumpte = '';
+  if (correu.subject) {
+    assumpte = String(correu.subject);
+  }
+  assumpte = assumpte.replace(/[\[\]]/g, '').replace(/\s+/g, ' ').trim();
+  if (assumpte === '') {
+    return '(sense assumpte)';
+  }
+  return talla(assumpte, 150);
+}
+
+// ------------------------------------------------------------
+// La llista d'actes de la resposta del model, cadascun com a
+// { cartell, acte }. Un element que no sigui un objecte amb un `acte`
+// objecte es llença; si n'hi ha més de MAX_ACTES_PER_CORREU, es queden
+// els primers (triaFilesDelCorreu() ja ordena per data després).
+// Torna la llista, buida si el model no n'ha trobat cap.
+// ------------------------------------------------------------
+function elementsDeLaResposta(resposta) {
+  var llista = resposta.esdeveniments;
+  if (!Array.isArray(llista)) {
+    throw new Error('la resposta del model no porta la llista «esdeveniments».');
+  }
+
+  var elements = [];
+  for (var i = 0; i < llista.length; i++) {
+    var element = llista[i];
+    if (element === null || typeof element !== 'object') {
+      continue;
+    }
+    if (element.acte === null || typeof element.acte !== 'object' || Array.isArray(element.acte)) {
+      continue;
+    }
+    elements.push({ cartell: campText(element, 'cartell'), acte: element.acte });
+    if (elements.length === MAX_ACTES_PER_CORREU) {
+      break;
+    }
+  }
+  return elements;
+}
+
+// ------------------------------------------------------------
+// El número de cartell que ha dit el model, si és un dels que hi ha
+// ("1" fins a `quants`). Torna el número, o 0 si no n'hi ha cap de bo.
+// ------------------------------------------------------------
+function numeroDeCartell(text, quants) {
+  for (var numero = 1; numero <= quants; numero++) {
+    if (text === String(numero)) {
+      return numero;
+    }
+  }
+  return 0;
+}
+
+// ------------------------------------------------------------
+// De les files d'un correu, les que s'encuen: fora les que ja han
+// passat (esCaducada()), fora les que ja són a la cua o que el mateix
+// correu repeteix (jaHiEs()), i com a molt `lloc` files, les més
+// properes en el temps. Torna { files, motiu }: `motiu` diu què
+// s'ha deixat fora, o "" si res.
+// ------------------------------------------------------------
+function triaFilesDelCorreu(files, cua, lloc, avui) {
+  var queden = [];
+  var passades = 0;
+  var repetides = 0;
+
+  for (var i = 0; i < files.length; i++) {
+    if (esCaducada(files[i], avui)) {
+      passades++;
+    } else if (jaHiEs(files[i], cua) || jaHiEs(files[i], queden)) {
+      repetides++;
+    } else {
+      queden.push(files[i]);
     }
   }
 
-  // La fila surt per filaSegura(): divuit camps, els sostres, el títol
-  // d'una línia (va al missatge del commit) i les dates.
-  var fila = filaSegura(construeixFila(dadesExtretes, imatgeUrl), 'correu');
-  if (decisio.avis !== '') {
-    afegeixNota(fila, decisio.avis);
+  queden.sort(comparaPerDataInici);
+  var sobrants = 0;
+  if (queden.length > lloc) {
+    sobrants = queden.length - lloc;
+    queden = queden.slice(0, lloc);
   }
-  avisaDatesInvertides(fila);
-  await afegeixAPendents(fila, env.GITHUB_TOKEN, 'correu');
-  console.log('processaCorreu(): fila afegida a la cua. id: "' + fila.id + '".');
+
+  var parts = [];
+  if (passades > 0) {
+    parts.push(passades + ' ja havien passat');
+  }
+  if (repetides > 0) {
+    parts.push(repetides + ' ja eren a la cua');
+  }
+  if (sobrants > 0) {
+    parts.push(sobrants + ' no hi cabien pel sostre del dia (l\'original és a l\'arxiu)');
+  }
+
+  var motiu = '';
+  if (parts.length > 0) {
+    motiu = 'Del mateix correu, ' + parts.join(', ') + '.';
+  }
+  return { files: queden, motiu: motiu };
+}
+
+// ------------------------------------------------------------
+// Diu si la fila ja és a la llista, sigui quin sigui l'estat: mateix
+// id, mateix títol i mateix municipi (CLAUDE.md §4). Exacte i prou: el
+// que no coincideixi del tot s'encua, i el curador el resol.
+// ------------------------------------------------------------
+function jaHiEs(fila, llista) {
+  if (fila.id === '' && fila.titol === '') {
+    return false;
+  }
+  for (var i = 0; i < llista.length; i++) {
+    var altra = llista[i] || {};
+    if (altra.id === fila.id && altra.titol === fila.titol && altra.municipi === fila.municipi) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// ------------------------------------------------------------
+// Ordre per data d'inici, i les files sense data al final. Per a sort().
+// ------------------------------------------------------------
+function comparaPerDataInici(a, b) {
+  if (a.data_inici === b.data_inici) {
+    return 0;
+  }
+  if (a.data_inici === '') {
+    return 1;
+  }
+  if (b.data_inici === '') {
+    return -1;
+  }
+  if (a.data_inici < b.data_inici) {
+    return -1;
+  }
+  return 1;
 }
 
 // ============================================================
@@ -5639,7 +5880,7 @@ async function respostaDelFormulari(request, env) {
   avisaDatesInvertides(fila);
 
   try {
-    await afegeixAPendents(fila, env.GITHUB_TOKEN, 'formulari');
+    await afegeixAPendents([fila], env.GITHUB_TOKEN, 'formulari');
   } catch (error) {
     console.log('respostaDelFormulari(): no he pogut escriure la fila: ' + error.message);
     return respostaJson(500, { ok: false, error: 'no he pogut desar la tramesa' });
@@ -5843,15 +6084,16 @@ function textDeHtml(html) {
 }
 
 // ------------------------------------------------------------
-// El primer adjunt que serveixi de cartell (una imatge o un PDF),
-// o null si no n'hi ha cap. Les imatges EN LÍNIA s'ignoren
-// expressament: són logotips de signatura i icones de xarxes, no
-// cartells.
+// Els adjunts que serveixen de cartell (imatges o PDF), en l'ordre
+// del correu i com a molt MAX_CARTELLS_PER_CORREU. Les imatges EN
+// LÍNIA s'ignoren expressament: són logotips de signatura i icones de
+// xarxes, no cartells. Torna la llista, buida si no n'hi ha cap.
 // ------------------------------------------------------------
-function primerCartellAdjunt(correu) {
+function cartellsAdjunts(correu) {
+  var cartells = [];
   var adjunts = correu.attachments;
   if (!adjunts) {
-    return null;
+    return cartells;
   }
 
   for (var i = 0; i < adjunts.length; i++) {
@@ -5864,10 +6106,30 @@ function primerCartellAdjunt(correu) {
       continue;
     }
     if (tipus.indexOf('image/') === 0 || tipus === 'application/pdf') {
-      return adjunt;
+      cartells.push(adjunt);
+      if (cartells.length === MAX_CARTELLS_PER_CORREU) {
+        break;
+      }
     }
   }
-  return null;
+  return cartells;
+}
+
+// ------------------------------------------------------------
+// Puja els cartells a Cloudinary, d'un en un. Un cartell que no puja
+// es registra i es deixa: sense ell les files encara són bones. Torna
+// els URL dels que han pujat, en ordre; el model els veu numerats així.
+// ------------------------------------------------------------
+async function pujaCartells(cartells, cloudName) {
+  var urls = [];
+  for (var i = 0; i < cartells.length; i++) {
+    try {
+      urls.push(await pujaCartellCloudinary(cartells[i], cloudName));
+    } catch (error) {
+      console.log('pujaCartells(): el cartell ' + (i + 1) + ' no s\'ha pogut pujar: ' + error.message);
+    }
+  }
+  return urls;
 }
 
 // ============================================================
@@ -5915,15 +6177,59 @@ async function pujaCartellCloudinary(adjunt, cloudName) {
 // ============================================================
 
 // ------------------------------------------------------------
-// Envia el text del correu a Claude amb el prompt d'extracció i
-// torna la resposta ja convertida en objecte (els 17 camps de
-// l'esquema). Llança si la crida falla o la resposta no és JSON.
-// La clau només viatja a la capçalera, mai al registre. Un
-// `fetch` i prou: el §3 de CLAUDE.md no admet cap paquet npm.
+// Envia el text del correu i els cartells a Claude amb el prompt
+// d'extracció, i torna la resposta ja convertida en objecte:
+// { esdeveniments: [{ cartell, acte }] } (D-13). Els cartells van
+// davant del text, com a imatges per URL de Cloudinary, en l'ordre de
+// `urlsCartells`: el primer és el cartell 1. Llança si la crida falla
+// o la resposta no és JSON.
 // ------------------------------------------------------------
-async function demanaExtraccioClaude(textCorreu, apiKey, avui) {
-  var prompt = EXTRACTION_PROMPT.replace('{{AVUI}}', avui);
-  return await cridaClaude(prompt + textCorreu, CLAUS_EXTRACCIO, apiKey, null);
+async function demanaExtraccioClaude(textCorreu, urlsCartells, apiKey, avui) {
+  var cartells = 'cap';
+  if (urlsCartells.length > 0) {
+    var numeros = [];
+    for (var i = 0; i < urlsCartells.length; i++) {
+      numeros.push('cartell ' + (i + 1));
+    }
+    cartells = urlsCartells.length + ', les imatges que van abans d\'aquest text, en aquest ordre: ' +
+      numeros.join(', ');
+  }
+
+  var prompt = EXTRACTION_PROMPT.replace('{{AVUI}}', avui).replace('{{CARTELLS}}', cartells);
+
+  var contingut = [];
+  for (var j = 0; j < urlsCartells.length; j++) {
+    contingut.push({ type: 'image', source: { type: 'url', url: urlsCartells[j] } });
+  }
+  contingut.push({ type: 'text', text: prompt + textCorreu });
+
+  return await cridaClaude(contingut, esquemaExtraccio(), apiKey, null);
+}
+
+// ------------------------------------------------------------
+// L'esquema de la resposta d'extracció: un objecte amb la llista
+// `esdeveniments`, i cada element amb `cartell` (cadena) i `acte` (les
+// 17 claus de CLAUS_EXTRACCIO). És el que l'API fa complir. Torna
+// l'esquema.
+// ------------------------------------------------------------
+function esquemaExtraccio() {
+  var element = {
+    type: 'object',
+    properties: {
+      cartell: { type: 'string' },
+      acte: esquemaDeCadenes(CLAUS_EXTRACCIO)
+    },
+    required: ['cartell', 'acte'],
+    additionalProperties: false
+  };
+  return {
+    type: 'object',
+    properties: {
+      esdeveniments: { type: 'array', items: element }
+    },
+    required: ['esdeveniments'],
+    additionalProperties: false
+  };
 }
 
 // ------------------------------------------------------------
@@ -5950,16 +6256,17 @@ async function demanaTraduccioClaude(fila, llenguaOriginal, original, apiKey) {
     '\nDESCRIPCIÓ: ' + talla(original, SOSTRES.descripcio_ca);
 
   var senyal = AbortSignal.timeout(TEMPS_MAXIM_TRADUCCIO_MS);
-  return await cridaClaude(PROMPT_TRADUCCIO_FORMULARI + '\n' + fitxa, CLAUS_TRADUCCIO_FORMULARI, apiKey, senyal);
+  return await cridaClaude(PROMPT_TRADUCCIO_FORMULARI + '\n' + fitxa, esquemaDeCadenes(CLAUS_TRADUCCIO_FORMULARI), apiKey, senyal);
 }
 
 // ------------------------------------------------------------
 // Una crida a Claude amb un sol missatge `user` i la resposta obligada
-// a un objecte de cadenes amb aquestes claus. `senyal` és un
-// AbortSignal per tallar-la a temps, o null per esperar el que calgui.
-// Torna l'objecte. Llança si la crida falla o la resposta no és JSON.
+// a aquest esquema JSON. `contingut` és el text del missatge, o una
+// llista de blocs (imatges i text). `senyal` és un AbortSignal per
+// tallar-la a temps, o null per esperar el que calgui. Torna
+// l'objecte. Llança si la crida falla o la resposta no és JSON.
 // ------------------------------------------------------------
-async function cridaClaude(contingut, claus, apiKey, senyal) {
+async function cridaClaude(contingut, esquema, apiKey, senyal) {
   if (!apiKey) {
     throw new Error('falta el secret ANTHROPIC_API_KEY.');
   }
@@ -5979,7 +6286,7 @@ async function cridaClaude(contingut, claus, apiKey, senyal) {
     thinking: { type: 'adaptive' },
     output_config: {
       effort: 'high',
-      format: { type: 'json_schema', schema: esquemaDeCadenes(claus) }
+      format: { type: 'json_schema', schema: esquema }
     },
     messages: [
       { role: 'user', content: contingut }
@@ -6471,6 +6778,59 @@ function filesDeLesPortesDAvui(cua, avui) {
 }
 
 // ============================================================
+// ELS ACTES PASSATS — CÒPIA LITERAL
+// ============================================================
+//
+// Les tres funcions de sota són una còpia LITERAL de les de
+// curador-cua.js: la regla única de «ja ha passat» (CLAUDE.md §4). El
+// correu la fa servir per no encuar els actes d'un butlletí que ja
+// han passat (D-13).
+//
+// NO ES TOCA AQUÍ. Es toca l'original, es copia aquí, i
+// `node eines/verifica-copies-worker.js` ha de sortir en verd.
+
+// ------------------------------------------------------------
+// Diu si l'acte d'una fila ja ha passat: el seu últim dia és anterior a
+// `avui` (AAAA-MM-DD). Una fila sense cap data utilitzable no ha passat:
+// no es pot dir, i es queda.
+// ------------------------------------------------------------
+function esCaducada(fila, avui) {
+  var darrerDia = darrerDiaDeLActe(fila);
+
+  if (darrerDia === '') {
+    return false;
+  }
+
+  return darrerDia < avui;
+}
+
+// ------------------------------------------------------------
+// L'últim dia de l'acte: `data_fi`, o `data_inici` si `data_fi` és buida.
+// Torna '' si la data que toca no té la forma AAAA-MM-DD.
+// ------------------------------------------------------------
+function darrerDiaDeLActe(fila) {
+  var dataFi = fila.data_fi;
+
+  if (dataFi === undefined || dataFi === null || String(dataFi).trim() === '') {
+    dataFi = fila.data_inici;
+  }
+
+  if (!esData(dataFi)) {
+    return '';
+  }
+
+  return dataFi;
+}
+
+// ------------------------------------------------------------
+// Diu si un valor té la forma AAAA-MM-DD. No comprova que el dia existeixi:
+// aquí només cal saber si es pot comparar com a data.
+// ------------------------------------------------------------
+function esData(valor) {
+  return typeof valor === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(valor);
+}
+
+// ============================================================
 // GITHUB
 // ============================================================
 
@@ -6479,7 +6839,9 @@ function filesDeLesPortesDAvui(cua, avui) {
 // entrat avui per les portes manuals, i quant del text pot anar al
 // model. Llança si falta el token o la cua no es pot llegir: sense
 // saber-ho no s'admet res, i encara no s'ha pagat cap crida. Torna la
-// decisió d'admetEntrada().
+// decisió d'admetEntrada(), amb dues dades més que fan servir els
+// correus de diversos actes (D-13): `cua`, la cua que s'ha llegit, i
+// `lloc`, quantes files poden entrar encara avui.
 // ------------------------------------------------------------
 async function decideixAdmissio(text, token) {
   if (!token) {
@@ -6492,39 +6854,50 @@ async function decideixAdmissio(text, token) {
   }
 
   var avui = new Date().toISOString().slice(0, 10);
-  return admetEntrada(text, filesDeLesPortesDAvui(actual.dades, avui));
+  var filesAvui = filesDeLesPortesDAvui(actual.dades, avui);
+  var decisio = admetEntrada(text, filesAvui);
+  decisio.cua = actual.dades;
+  decisio.lloc = MAX_FILES_PORTES_PER_DIA - filesAvui;
+  return decisio;
 }
 
 // ------------------------------------------------------------
-// Afegeix una fila a pendents.json. Llegeix el fitxer fresc, hi posa
-// la fila al DAVANT (el curador vol veure primer el que acaba
-// d'arribar, i curador.html pinta la cua en l'ordre del fitxer) i
-// l'escriu. Si el sha ha canviat perquè algú altre ha escrit al
-// mateix moment, torna a llegir i reintenta un cop. No torna res.
+// Afegeix una o més files a pendents.json, en un sol commit. Llegeix
+// el fitxer fresc, hi posa les files al DAVANT i en el seu ordre (el
+// curador vol veure primer el que acaba d'arribar, i curador.html
+// pinta la cua en l'ordre del fitxer) i l'escriu. Si el sha ha canviat
+// perquè algú altre ha escrit al mateix moment, torna a llegir i
+// reintenta un cop. No torna res.
 //
 // La comparteixen els dos camins d'entrada: `origen` ('correu' o
 // 'formulari') només serveix per al missatge del commit, que és
 // l'única traça de per quina porta ha entrat cada fila.
 // ------------------------------------------------------------
-async function afegeixAPendents(fila, token, origen) {
+async function afegeixAPendents(files, token, origen) {
   if (!token) {
     throw new Error('falta el secret GITHUB_TOKEN.');
   }
 
-  var titol = fila.titol;
-  if (titol === '') {
-    titol = '(sense títol)';
+  var titols = [];
+  for (var i = 0; i < files.length; i++) {
+    var titol = files[i].titol;
+    if (titol === '') {
+      titol = '(sense títol)';
+    }
+    titols.push(titol);
   }
-  var missatgeCommit = 'Fila nova a la cua (' + origen + '): ' + titol;
+  var missatgeCommit = 'Fila nova a la cua (' + origen + '): ' + titols[0];
+  if (files.length > 1) {
+    missatgeCommit = files.length + ' files noves a la cua (' + origen + '): ' + titols.join(' · ');
+  }
 
   var intents = 0;
   while (intents < 2) {
     var actual = await llegeixFitxerGitHub(FITXER_PENDENTS, token);
-    var cua = actual.dades;
-    if (!Array.isArray(cua)) {
+    if (!Array.isArray(actual.dades)) {
       throw new Error(FITXER_PENDENTS + ' no conté una llista.');
     }
-    cua.unshift(fila);
+    var cua = files.concat(actual.dades);
 
     try {
       await escriuFitxerGitHub(FITXER_PENDENTS, cua, actual.sha, missatgeCommit, token);

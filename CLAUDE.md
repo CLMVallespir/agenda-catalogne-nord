@@ -23,7 +23,7 @@ dels dos no toca mai `events.json`.
 associació ──correu──► agenda@clm.cat ──► Cloudflare Email Routing
                                                 │
 associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Cloudflare)
-                                            ├─ email():     reenvia l'original a Gmail (arxiu) → parseja → Claude → Cloudinary → pendents.json
+                                            ├─ email():     reenvia l'original a Gmail (arxiu) → parseja → Cloudinary (cartells) → Claude (text i cartells, un o més actes, D-13) → pendents.json
                                             ├─ fetch():     mapa determinista del formulari → Claude tradueix la llengua que falta (D-12) → pendents.json
                                             └─ scheduled(): digest setmanal per comarca via Brevo
                                                 │
@@ -224,7 +224,8 @@ Regles de què depèn el codi:
 - **El curador poda `events.json` a cada publicació (D-08)**, al mateix commit
   i amb la mateixa regla: `podaEventsPassats()` a `curador-cua.js`, amb l'avui
   del rellotge del navegador. La regla de «ja ha passat» és una de sola,
-  `esCaducada()` a `curador-cua.js`, i `podaCaducades()` la hi va a buscar. Si no
+  `esCaducada()` a `curador-cua.js`, i `podaCaducades()` la hi va a buscar (el
+  Worker en porta una còpia literal, `verifica-copies-worker.js`). Si no
   es pot publicar cap acte del lot, no s'escriu res, ni la poda.
 - **En fusionar dues files duplicades, l'estat es resol per precedència i mai
   per posició.** L'ordre, de més fort a més fluix, és
@@ -242,7 +243,9 @@ Regles de què depèn el codi:
   sencer; `eines/dedup-esdeveniments.js` tracta els tres estats i els resol per
   precedència; `eines/dedup-contra-fitxers.js` tracta els tres estats i en
   torna una etiqueta cadascun (§4 ter); `eines/sincronitza-programada.js`
-  escriu només files `pendent` i en poda les caducades dels tres estats.
+  escriu només files `pendent` i en poda les caducades dels tres estats; el
+  correu del Worker (`triaFilesDelCorreu()`) escriu només files `pendent` i no
+  encua un acte que ja hi és, sigui quin sigui l'estat de la fila (D-13).
 - **L'Action no reescriu mai una fila que ja és a la cua.** `curador-cua.js`
   troba la fila comparant-la sencera (`JSON.stringify`); si canviés mentre el
   curador la té oberta, la seva decisió fallaria amb «ja no era a la cua».
@@ -407,9 +410,12 @@ publicitària.
   `content-type`. Cos idèntic als dos contextos llevat de l'esquema: `model`,
   `max_tokens`, `thinking: { type: 'adaptive' }` amb
   `output_config.effort: 'high'` (sense pensar, Haiku saltava les regles del
-  prompt; la prova és a `NOTES.md`), `messages` amb un sol missatge `user`, i
+  prompt; la prova és a `NOTES.md`), `messages` amb un sol missatge `user`
+  (al correu, els cartells hi van davant del text com a blocs `image` per URL
+  de Cloudinary), i
   `output_config.format` amb l'esquema JSON de les claus que demana el prompt
-  —les 17 de la regla 2 del prompt d'extracció al Worker (`CLAUS_EXTRACCIO`),
+  —al Worker, la llista `esdeveniments` del prompt d'extracció, amb `cartell`
+  i les 17 claus de cada `acte` (`esquemaExtraccio()`, `CLAUS_EXTRACCIO`),
   les 2 de la traducció del formulari al Worker
   (`CLAUS_TRADUCCIO_FORMULARI`), les 3 de la traducció a l'Action
   (`ESQUEMA_TRADUCCIO`)—, que és el que
@@ -422,14 +428,18 @@ publicitària.
 - **Prompt d'extracció** — `prompts/extract-event.txt` és el mestre; la còpia dins
   el Worker ha de ser-hi **idèntica, al peu de la lletra**. `{{AVUI}}` se
   substitueix per la data d'avui (`YYYY-MM-DD`), serveix només per inferir un any
-  absent; el text del correu s'afegeix després de la línia `CORREU:`. El prompt
-  exigeix només JSON, sense preàmbul ni tanques markdown, amb les 17 claus
-  públiques (§4) sempre presents com a cadenes.
+  absent; `{{CARTELLS}}`, pel nombre de cartells que el model veu («cap» si no
+  n'hi ha); el text del correu s'afegeix després de la línia `CORREU:`. El
+  prompt exigeix només JSON, sense preàmbul ni tanques markdown: una llista
+  `esdeveniments` (buida si no n'hi ha cap, fins a deu), i a cada element el
+  número del seu `cartell` i un `acte` amb les 17 claus públiques (§4) sempre
+  presents com a cadenes (D-13).
 - **Cloudinary** — pujada *unsigned*: preset `agenda-posters`, carpeta
   `clm-agenda/posters`, transformació d'entrada `w_800,c_limit,q_80,f_webp`. Només
   cal el nom del cloud, cap signatura. El preset ja converteix un PDF en WebP de la
-  primera pàgina: puja el PDF tal qual. Accepta la primera imatge o PDF adjunt;
-  ignora les imatges en línia. **En publicar, `curador.html` copia a
+  primera pàgina: puja el PDF tal qual. El correu hi puja fins a quatre imatges
+  o PDF adjunts (`MAX_CARTELLS_PER_CORREU`), **abans** de Claude, que els veu i
+  diu quin va amb quin acte (D-13); ignora les imatges en línia. **En publicar, `curador.html` copia a
   Cloudinary el cartell que encara no hi és** (`copiaCartells()`; per a
   l'ADT66, l'original abans que la miniatura de 150 px) i, si no pot, no
   publica: mai no surt al web el cartell d'un tercer (D-07). Mai des de

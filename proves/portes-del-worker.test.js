@@ -70,16 +70,29 @@ function base64(text) {
   return Buffer.from(text, 'utf8').toString('base64');
 }
 
+// El text d'un missatge a Claude: el contingut mateix, o el bloc de text si
+// és una llista de blocs (el correu hi posa els cartells davant).
+function textDelMissatge(contingut) {
+  if (typeof contingut === 'string') {
+    return contingut;
+  }
+  return contingut.filter(function (bloc) { return bloc.type === 'text'; })[0].text;
+}
+
 // Substitueix el fetch global. `cua` és el pendents.json que serveix GitHub,
-// `extraccio` els camps que torna Claude quan extreu un correu i `traduccio`
-// els que torna quan tradueix el formulari (si val 'falla', respon un 500).
-// Torna el registre de crides.
+// `extraccio` la resposta de Claude quan extreu un correu i `traduccio`
+// la que torna quan tradueix el formulari (si val 'falla', respon un 500).
+// Cloudinary torna una URL numerada per pujada. Torna el registre de crides.
 function simulaServeis(t, opcions) {
-  var registre = { lectures: 0, escriptures: [], claude: 0, traduccions: 0 };
+  var registre = { lectures: 0, escriptures: [], claude: 0, traduccions: 0, pujades: 0, imatgesAClaude: [] };
   var cua = opcions.cua || [];
 
   t.mock.method(globalThis, 'fetch', async function (adreca, init) {
     var metode = (init && init.method) || 'GET';
+    if (adreca.indexOf('https://api.cloudinary.com/') === 0) {
+      registre.pujades++;
+      return respostaJson(200, { secure_url: 'https://res.cloudinary.com/clm-agenda/image/upload/cartell-' + registre.pujades + '.webp' });
+    }
     if (adreca.indexOf('https://api.github.com/') === 0 && metode === 'GET') {
       registre.lectures++;
       return respostaJson(200, { content: base64(JSON.stringify(cua)), sha: 'sha-' + registre.lectures });
@@ -107,7 +120,15 @@ function simulaServeis(t, opcions) {
         });
       }
       registre.claude++;
-      registre.textAClaude = peticio.messages[0].content;
+      registre.textAClaude = textDelMissatge(peticio.messages[0].content);
+      if (Array.isArray(peticio.messages[0].content)) {
+        registre.imatgesAClaude = peticio.messages[0].content
+          .filter(function (bloc) { return bloc.type === 'image'; })
+          .map(function (bloc) { return bloc.source.url; });
+      }
+      if (opcions.extraccio === 'falla') {
+        return respostaJson(500, { error: { type: 'api_error' } });
+      }
       return respostaJson(200, {
         stop_reason: 'end_turn',
         content: [{ type: 'text', text: JSON.stringify(opcions.extraccio || {}) }]
@@ -141,10 +162,36 @@ function correu(assumpte, cos) {
   return missatge;
 }
 
-// Els camps que torna el model, amb els que se li passin a sobre.
-function extraccio(extres) {
+// Un correu amb adjunts: un text pla i, per cada adjunt, una part amb el seu
+// tipus. `enLinia` marca la part com a imatge en línia (un logotip).
+function correuAmbAdjunts(assumpte, cos, adjunts) {
+  var frontera = 'frontera-de-prova';
+  var parts = [
+    '--' + frontera + '\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n' + cos + '\r\n'
+  ];
+  adjunts.forEach(function (adjunt) {
+    var disposicio = adjunt.enLinia ? 'inline' : 'attachment';
+    parts.push('--' + frontera + '\r\nContent-Type: ' + adjunt.tipus + '; name="' + adjunt.nom +
+      '"\r\nContent-Disposition: ' + disposicio + '; filename="' + adjunt.nom +
+      '"\r\nContent-Transfer-Encoding: base64\r\n\r\n' + base64('dades de ' + adjunt.nom) + '\r\n');
+  });
+  var missatge = correu(assumpte, '');
+  missatge.raw = 'From: associacio@example.org\r\nTo: agenda@clm.cat\r\nSubject: ' + assumpte +
+    '\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary="' + frontera + '"\r\n\r\n' +
+    parts.join('') + '--' + frontera + '--\r\n';
+  return missatge;
+}
+
+// La data d'aquí a `dies` dies (negatiu: fa `dies` dies), AAAA-MM-DD en UTC.
+function dataDaquiA(dies) {
+  return new Date(Date.now() + dies * 86400000).toISOString().slice(0, 10);
+}
+
+// Els 17 camps d'un acte tal com els torna el model, amb els que se li passin
+// a sobre.
+function acte(extres) {
   var camps = {
-    id: '', titol: 'Concert de la cobla', data_inici: '2026-11-21', data_fi: '',
+    id: '', titol: 'Concert de la cobla', data_inici: dataDaquiA(10), data_fi: '',
     hora: '18:00', lloc: 'Sala', municipi: 'Ceret', comarca: 'Vallespir',
     categoria: 'Música', descripcio_ca: 'Concert.', descripcio_fr: 'Concert.',
     associacio: 'Cobla', imatge_url: '', font_url: '', estat: '', data_entrada: '',
@@ -154,6 +201,16 @@ function extraccio(extres) {
     camps[clau] = extres[clau];
   });
   return camps;
+}
+
+// La resposta d'extracció amb un sol acte, sense cartell (D-13).
+function extraccio(extres) {
+  return { esdeveniments: [{ cartell: '', acte: acte(extres) }] };
+}
+
+// La resposta d'extracció amb diversos elements: cada un és { cartell, acte }.
+function esdeveniments(elements) {
+  return { esdeveniments: elements };
 }
 
 var CAMPS = require('../eines/fila-segura.js').CAMPS;
@@ -412,4 +469,170 @@ test('formulari: per sota del sostre entra, i llegeix la cua dues vegades', asyn
   assert.equal(resposta.status, 200);
   assert.equal(registre.lectures, 2);
   assert.equal(registre.escriptures.length, 1);
+});
+
+
+// --- Un correu, diversos actes (D-13) ---------------------------------------
+
+test('correu: tres actes fan tres files en un sol commit, per ordre de data', async function (t) {
+  var registre = simulaServeis(t, {
+    cua: [{ titol: 'Vella', estat: 'pendent', nota_curador: '' }],
+    extraccio: esdeveniments([
+      { cartell: '', acte: acte({ titol: 'Conferència', data_inici: dataDaquiA(20) }) },
+      { cartell: '', acte: acte({ titol: 'Ball', data_inici: dataDaquiA(5) }) },
+      { cartell: '', acte: acte({ titol: 'Taller', data_inici: dataDaquiA(12) }) }
+    ])
+  });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Programa de desembre', 'Tres actes.'), entorn(), {});
+
+  assert.equal(registre.claude, 1);
+  assert.equal(registre.escriptures.length, 1);
+  var escrita = registre.escriptures[0];
+  assert.deepEqual(escrita.dades.map(function (f) { return f.titol; }), ['Ball', 'Taller', 'Conferència', 'Vella']);
+  assert.equal(escrita.missatge, '3 files noves a la cua (correu): Ball · Taller · Conferència');
+  assert.deepEqual(Object.keys(escrita.dades[0]), CAMPS);
+  assert.match(escrita.dades[0].nota_curador, /Correu amb 3 actes \(1 de 3 encuats\)/);
+  assert.match(escrita.dades[2].nota_curador, /Correu amb 3 actes \(3 de 3 encuats\)/);
+});
+
+test('correu: els actes passats i els que ja són a la cua no entren, i la nota ho diu', async function (t) {
+  var dataRepetida = dataDaquiA(8);
+  var registre = simulaServeis(t, {
+    cua: [{
+      id: dataRepetida + '-ball-de-gala', titol: 'Ball de gala', municipi: 'Ceret',
+      estat: 'rebutjat', nota_curador: ''
+    }],
+    extraccio: esdeveniments([
+      { cartell: '', acte: acte({ titol: 'Ball de gala', data_inici: dataRepetida }) },
+      { cartell: '', acte: acte({ titol: 'Repàs del mes passat', data_inici: dataDaquiA(-15) }) },
+      { cartell: '', acte: acte({ titol: 'Concert nou', data_inici: dataDaquiA(9) }) },
+      { cartell: '', acte: acte({ titol: 'Concert nou', data_inici: dataDaquiA(9) }) }
+    ])
+  });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Butlletí', 'Quatre actes.'), entorn(), {});
+
+  var dades = registre.escriptures[0].dades;
+  assert.equal(dades.length, 2);
+  assert.equal(dades[0].titol, 'Concert nou');
+  assert.equal(dades[1].estat, 'rebutjat');
+  assert.match(dades[0].nota_curador, /1 ja havien passat, 2 ja eren a la cua/);
+});
+
+test('correu: si tots els actes ja hi són, no escriu res', async function (t) {
+  var registre = simulaServeis(t, {
+    cua: [],
+    extraccio: esdeveniments([
+      { cartell: '', acte: acte({ titol: 'Repàs', data_inici: dataDaquiA(-3) }) }
+    ])
+  });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Repàs', 'El mes passat.'), entorn(), {});
+
+  assert.equal(registre.claude, 1);
+  assert.equal(registre.escriptures.length, 0);
+});
+
+test('correu: cap acte trobat fa una fila buida amb l’avís i l’assumpte', async function (t) {
+  var registre = simulaServeis(t, { cua: [], extraccio: esdeveniments([]) });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Confirmeu [la] subscripció', 'Cliqueu aquí.'), entorn(), {});
+
+  var dades = registre.escriptures[0].dades;
+  assert.equal(dades.length, 1);
+  assert.deepEqual(Object.keys(dades[0]), CAMPS);
+  assert.equal(dades[0].titol, '');
+  assert.equal(dades[0].estat, 'pendent');
+  assert.equal(dades[0].nota_curador, 'El model no hi ha trobat cap acte. Mira l\'original a l\'arxiu: «Confirmeu la subscripció».');
+});
+
+test('correu: si Claude falla no s’escriu res, i el correu és arxivat', async function (t) {
+  var registre = simulaServeis(t, { cua: [], extraccio: 'falla' });
+  var worker = await carregaWorker();
+  var missatge = correu('Concert', 'Concert.');
+
+  await worker.email(missatge, entorn(), {});
+
+  assert.equal(missatge.reenviat, true);
+  assert.equal(registre.escriptures.length, 0);
+});
+
+test('correu: els cartells pugen abans de Claude, el model els veu i cada acte rep el seu', async function (t) {
+  var registre = simulaServeis(t, {
+    cua: [],
+    extraccio: esdeveniments([
+      { cartell: '2', acte: acte({ titol: 'Ball', data_inici: dataDaquiA(5) }) },
+      { cartell: '9', acte: acte({ titol: 'Taller', data_inici: dataDaquiA(6) }) }
+    ])
+  });
+  var worker = await carregaWorker();
+  var missatge = correuAmbAdjunts('Dos actes', 'El ball, i el cartell del taller.', [
+    { nom: 'logo.png', tipus: 'image/png', enLinia: true },
+    { nom: 'taller.jpg', tipus: 'image/jpeg' },
+    { nom: 'ball.pdf', tipus: 'application/pdf' }
+  ]);
+
+  await worker.email(missatge, entorn(), {});
+
+  assert.equal(registre.pujades, 2);
+  var url1 = 'https://res.cloudinary.com/clm-agenda/image/upload/cartell-1.webp';
+  var url2 = 'https://res.cloudinary.com/clm-agenda/image/upload/cartell-2.webp';
+  assert.deepEqual(registre.imatgesAClaude, [url1, url2]);
+  assert.match(registre.textAClaude, /Cartells adjunts a aquest correu: 2, les imatges que van abans d'aquest text, en aquest ordre: cartell 1, cartell 2\./);
+  var dades = registre.escriptures[0].dades;
+  assert.equal(dades[0].titol, 'Ball');
+  assert.equal(dades[0].imatge_url, url2);
+  assert.match(dades[0].nota_curador, /El model hi ha posat el cartell 2 del correu/);
+  assert.match(dades[0].nota_curador, new RegExp('El cartell 1 del correu no s\'ha posat a cap acte: ' + url1));
+  assert.equal(dades[1].imatge_url, '');
+  assert.doesNotMatch(dades[1].nota_curador, /cartell 1 del correu/);
+});
+
+test('correu: sense adjunts, el prompt diu que no hi ha cap cartell', async function (t) {
+  var registre = simulaServeis(t, { cua: [], extraccio: extraccio() });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Concert', 'Concert.'), entorn(), {});
+
+  assert.equal(registre.pujades, 0);
+  assert.deepEqual(registre.imatgesAClaude, []);
+  assert.match(registre.textAClaude, /Cartells adjunts a aquest correu: cap\./);
+  assert.equal(registre.escriptures[0].dades[0].nota_curador, '');
+});
+
+test('correu: al límit del sostre entren els actes més propers, i la nota ho diu', async function (t) {
+  var registre = simulaServeis(t, {
+    cua: filesManualsDAvui(MAX_FILES - 2),
+    extraccio: esdeveniments([
+      { cartell: '', acte: acte({ titol: 'Lluny', data_inici: dataDaquiA(30) }) },
+      { cartell: '', acte: acte({ titol: 'Aviat', data_inici: dataDaquiA(2) }) },
+      { cartell: '', acte: acte({ titol: 'Després', data_inici: dataDaquiA(4) }) }
+    ])
+  });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Programa', 'Tres actes.'), entorn(), {});
+
+  var noves = registre.escriptures[0].dades.slice(0, 2);
+  assert.deepEqual(noves.map(function (f) { return f.titol; }), ['Aviat', 'Després']);
+  assert.equal(registre.escriptures[0].dades.length, MAX_FILES);
+  assert.match(noves[0].nota_curador, /1 no hi cabien pel sostre del dia/);
+});
+
+test('correu: més de deu actes, se n’encuen deu', async function (t) {
+  var elements = [];
+  for (var i = 0; i < 12; i++) {
+    elements.push({ cartell: '', acte: acte({ titol: 'Acte ' + i, data_inici: dataDaquiA(3 + i) }) });
+  }
+  var registre = simulaServeis(t, { cua: [], extraccio: esdeveniments(elements) });
+  var worker = await carregaWorker();
+
+  await worker.email(correu('Programa', 'Dotze actes.'), entorn(), {});
+
+  assert.equal(registre.escriptures[0].dades.length, 10);
 });
