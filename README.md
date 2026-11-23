@@ -18,7 +18,7 @@ associació ──correu──► agenda@clm.cat ──► Cloudflare Email Rout
                                                 │
 associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Cloudflare)
                                             ├─ email():     parseja → Claude → Cloudinary → pendents.json → reenvia l'original al Gmail d'arxiu
-                                            ├─ fetch():     mapa determinista del formulari → pendents.json
+                                            ├─ fetch():     mapa determinista del formulari → Claude tradueix la llengua que falta (D-12) → pendents.json
                                             └─ scheduled(): digest setmanal per comarca via Brevo
                                                 │
 flux ADT66 ──────────────────────────────►  UNA SOLA ACTION (GitHub Actions)

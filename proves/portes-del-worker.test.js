@@ -70,10 +70,12 @@ function base64(text) {
   return Buffer.from(text, 'utf8').toString('base64');
 }
 
-// Substitueix el fetch global. `cua` és el pendents.json que serveix GitHub i
-// `extraccio` els camps que torna Claude. Torna el registre de crides.
+// Substitueix el fetch global. `cua` és el pendents.json que serveix GitHub,
+// `extraccio` els camps que torna Claude quan extreu un correu i `traduccio`
+// els que torna quan tradueix el formulari (si val 'falla', respon un 500).
+// Torna el registre de crides.
 function simulaServeis(t, opcions) {
-  var registre = { lectures: 0, escriptures: [], claude: 0 };
+  var registre = { lectures: 0, escriptures: [], claude: 0, traduccions: 0 };
   var cua = opcions.cua || [];
 
   t.mock.method(globalThis, 'fetch', async function (adreca, init) {
@@ -91,8 +93,21 @@ function simulaServeis(t, opcions) {
       return respostaJson(200, {});
     }
     if (adreca.indexOf('https://api.anthropic.com/') === 0) {
+      var peticio = JSON.parse(init.body);
+      var claus = Object.keys(peticio.output_config.format.schema.properties);
+      if (claus.indexOf('traduccio') !== -1) {
+        registre.traduccions++;
+        registre.textATraduccio = peticio.messages[0].content;
+        if (opcions.traduccio === 'falla') {
+          return respostaJson(500, { error: { type: 'api_error' } });
+        }
+        return respostaJson(200, {
+          stop_reason: 'end_turn',
+          content: [{ type: 'text', text: JSON.stringify(opcions.traduccio || {}) }]
+        });
+      }
       registre.claude++;
-      registre.textAClaude = JSON.parse(init.body).messages[0].content;
+      registre.textAClaude = peticio.messages[0].content;
       return respostaJson(200, {
         stop_reason: 'end_turn',
         content: [{ type: 'text', text: JSON.stringify(opcions.extraccio || {}) }]
@@ -152,8 +167,7 @@ test('formulari: la fila escrita té els divuit camps i el títol d’una línia
 
   var resposta = await worker.fetch(postFormulari({
     titol: 'Ball\nCo-Authored-By: algú <a@b.c>',
-    data_inici: '2026-11-14',
-    descripcio: 'Ball de plaça.'
+    data_inici: '2026-11-14'
   }), entorn());
 
   assert.equal(resposta.status, 200);
@@ -164,6 +178,109 @@ test('formulari: la fila escrita té els divuit camps i el títol d’una línia
   assert.equal(fila.titol, 'Ball Co-Authored-By: algú <a@b.c>');
   assert.equal(fila.nota_curador, '');
   assert.equal(escrita.missatge.indexOf('\n'), -1);
+});
+
+
+// --- La traducció del formulari (D-12) --------------------------------------
+
+test('formulari: una descripció en francès entra amb el català i el títol traduïts', async function (t) {
+  var registre = simulaServeis(t, {
+    cua: [],
+    traduccio: { titol: 'Rifle de l\'escola', traduccio: 'Gran rifle anual de l\'escola.' }
+  });
+  var worker = await carregaWorker();
+
+  var resposta = await worker.fetch(postFormulari({
+    titol: 'Rifle de l\'école',
+    data_inici: '2026-11-29',
+    municipi: 'Sant Genís de Fontanes',
+    idioma_descripcio: 'fr',
+    descripcio: 'Grande rifle annuelle de l\'école.'
+  }), entorn());
+
+  assert.equal(resposta.status, 200);
+  assert.equal(registre.traduccions, 1);
+  assert.match(registre.textATraduccio, /LLENGUA ORIGINAL: francès\nLLENGUA DE DESTINACIÓ: català/);
+  var fila = registre.escriptures[0].dades[0];
+  assert.equal(fila.descripcio_fr, 'Grande rifle annuelle de l\'école.');
+  assert.equal(fila.descripcio_ca, 'Gran rifle anual de l\'escola.');
+  assert.equal(fila.titol, 'Rifle de l\'escola');
+  assert.equal(fila.id, '2026-11-29-rifle-de-lescola');
+  assert.match(fila.nota_curador, /Descripció catalana traduïda per un model/);
+  assert.match(fila.nota_curador, /l'original era «Rifle de l'école»/);
+});
+
+test('formulari: una descripció en català entra amb el francès, i el títol intacte', async function (t) {
+  var registre = simulaServeis(t, {
+    cua: [],
+    traduccio: { titol: 'Concert de la coral', traduccio: 'Concert de la chorale.' }
+  });
+  var worker = await carregaWorker();
+
+  await worker.fetch(postFormulari({
+    titol: 'Concert de la coral',
+    data_inici: '2026-11-22',
+    idioma_descripcio: 'ca',
+    descripcio: 'Concert de la coral.'
+  }), entorn());
+
+  var fila = registre.escriptures[0].dades[0];
+  assert.equal(fila.descripcio_ca, 'Concert de la coral.');
+  assert.equal(fila.descripcio_fr, 'Concert de la chorale.');
+  assert.equal(fila.titol, 'Concert de la coral');
+  assert.equal(fila.nota_curador, 'Descripció francesa traduïda per un model a partir del català de l\'associació. Comprova-la abans de publicar.');
+});
+
+test('formulari: si la traducció falla, la tramesa entra igual amb l’avís', async function (t) {
+  var registre = simulaServeis(t, { cua: [], traduccio: 'falla' });
+  var worker = await carregaWorker();
+
+  var resposta = await worker.fetch(postFormulari({
+    titol: 'Rifle',
+    data_inici: '2026-11-29',
+    idioma_descripcio: 'fr',
+    descripcio: 'Grande rifle.'
+  }), entorn());
+
+  assert.equal(resposta.status, 200);
+  assert.equal(registre.traduccions, 1);
+  var fila = registre.escriptures[0].dades[0];
+  assert.equal(fila.descripcio_fr, 'Grande rifle.');
+  assert.equal(fila.descripcio_ca, '');
+  assert.equal(fila.titol, 'Rifle');
+  assert.match(fila.nota_curador, /La traducció automàtica de la descripció ha fallat/);
+});
+
+test('formulari: si el model no torna traducció, no toca ni el títol', async function (t) {
+  var registre = simulaServeis(t, { cua: [], traduccio: { titol: 'Una altra cosa', traduccio: '' } });
+  var worker = await carregaWorker();
+
+  await worker.fetch(postFormulari({
+    titol: 'Rifle',
+    data_inici: '2026-11-29',
+    idioma_descripcio: 'fr',
+    descripcio: 'Grande rifle.'
+  }), entorn());
+
+  var fila = registre.escriptures[0].dades[0];
+  assert.equal(fila.titol, 'Rifle');
+  assert.equal(fila.descripcio_ca, '');
+  assert.match(fila.nota_curador, /La traducció automàtica de la descripció ha fallat/);
+});
+
+test('formulari: al sostre del dia no es paga cap traducció', async function (t) {
+  var registre = simulaServeis(t, { cua: filesManualsDAvui(MAX_FILES), traduccio: { titol: 'X', traduccio: 'Y' } });
+  var worker = await carregaWorker();
+
+  var resposta = await worker.fetch(postFormulari({
+    titol: 'Rifle',
+    data_inici: '2026-11-29',
+    idioma_descripcio: 'fr',
+    descripcio: 'Grande rifle.'
+  }), entorn());
+
+  assert.equal(resposta.status, 429);
+  assert.equal(registre.traduccions, 0);
 });
 
 test('formulari: una data malformada queda buida amb avís, i la tramesa entra', async function (t) {

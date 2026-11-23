@@ -24,7 +24,7 @@ associació ──correu──► agenda@clm.cat ──► Cloudflare Email Rout
                                                 │
 associació ──formulari Typebot──► POST ──►  UN SOL WORKER (Cloudflare)
                                             ├─ email():     reenvia l'original a Gmail (arxiu) → parseja → Claude → Cloudinary → pendents.json
-                                            ├─ fetch():     mapa determinista del formulari → pendents.json
+                                            ├─ fetch():     mapa determinista del formulari → Claude tradueix la llengua que falta (D-12) → pendents.json
                                             └─ scheduled(): digest setmanal per comarca via Brevo
                                                 │
 flux ADT66 ──────────────────────────────►  UNA SOLA ACTION (GitHub Actions)
@@ -410,7 +410,9 @@ publicitària.
   prompt; la prova és a `NOTES.md`), `messages` amb un sol missatge `user`, i
   `output_config.format` amb l'esquema JSON de les claus que demana el prompt
   —les 17 de la regla 2 del prompt d'extracció al Worker (`CLAUS_EXTRACCIO`),
-  les 3 de la traducció a l'Action (`ESQUEMA_TRADUCCIO`)—, que és el que
+  les 2 de la traducció del formulari al Worker
+  (`CLAUS_TRADUCCIO_FORMULARI`), les 3 de la traducció a l'Action
+  (`ESQUEMA_TRADUCCIO`)—, que és el que
   garanteix el JSON. **Cap `temperature`**: la versió `2026-10-21` la rebutja.
   El text es busca pel **tipus de bloc** (`type === 'text'`), mai per la
   posició, i un `stop_reason` `max_tokens` o `refusal` és un error. Resposta
@@ -447,9 +449,12 @@ publicitària.
 - **Typebot** — el formulari no és cap fitxer del repositori: s'edita al servei, i
   la seva especificació és `docs/pas-5-typebot-questionari.md`. Recull **una
   sola** `descripcio` més un senyal `idioma_descripcio` (`"ca"`/`"fr"`): posa el
-  text a la banda que toca i deixa l'altra buida (el curador completa la
-  traducció en revisar). El cartell ja puja del navegador a Cloudinary dins el
-  flux del Typebot: l'URL arriba fet, guarda'l tal qual.
+  text a la banda que toca, i `completaTraduccio()` omple l'altra amb una crida
+  a Claude, i el títol en català (D-12). El text de l'associació no es toca. Si
+  la crida falla, la fila entra igual amb un avís a `nota_curador`: aquesta
+  porta no té arxiu. La crida té 30 s (`TEMPS_MAXIM_TRADUCCIO_MS`), i el bloc
+  webhook del Typebot ha d'esperar-ne 60. El cartell ja puja del navegador a
+  Cloudinary dins el flux del Typebot: l'URL arriba fet, guarda'l tal qual.
 
 ## 7 bis. Els dos contextos d'execució, i quina configuració viu a cadascun
 

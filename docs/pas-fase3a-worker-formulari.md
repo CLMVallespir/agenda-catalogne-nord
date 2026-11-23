@@ -8,11 +8,13 @@ de nou, no hi ha cap URL nova per desplegar. Només s'hi afegeixen un gestor
 Prerequisit: la **Fase 2** ha de ser desplegada i verificada (vegeu
 `docs/pas-fase2-worker-email.md`).
 
-Aquí no hi ha cap crida a cap model, i és a posta: el formulari ja demana cada camp
-per separat, i el cartell ja puja del navegador a Cloudinary dins el flux del
-Typebot. Al Worker només hi arriba un JSON amb els camps fets, i el que fa és un
-mapa determinista camp a camp cap als 17 camps públics de l'esquema (§4 de
-`CLAUDE.md`).
+El formulari ja demana cada camp per separat, i el cartell ja puja del navegador
+a Cloudinary dins el flux del Typebot. Al Worker hi arriba un JSON amb els camps
+fets, i el que fa és un mapa determinista camp a camp cap als 17 camps públics de
+l'esquema (§4 de `CLAUDE.md`). Hi ha **una sola** crida a Claude, i és per
+traduir (D-12): la descripció arriba en una llengua, i `completaTraduccio()` en
+demana l'altra i el títol en català abans d'encuar la fila. Si falla, la fila
+entra igual, amb un avís per al curador.
 
 ## Per què hi ha un secret
 
@@ -109,6 +111,13 @@ del Typebot i no s'envia.
 > `imatge_url` el desa el pas de càrrega del cartell
 > (`docs/pas-5-typebot-cartell-cloudinary.md`): arriba com un URL de Cloudinary
 > fet, o com a cadena buida. El Worker el desa tal qual.
+
+> **El temps d'espera del bloc ha de ser de 60 s** (al bloc HTTP request,
+> **Advanced params** → timeout; per omissió en són 10). El Worker crida Claude per traduir la descripció
+> abans de respondre (D-12), i amb el pensament la crida pot passar dels 10 s
+> que el bloc espera per omissió. El Worker talla la traducció als 30 s i, si no
+> ha arribat, encua la fila sense traduir: amb 60 s al Typebot sempre hi ha
+> resposta.
 
 > No cal enviar `id`, `estat`, `data_entrada` ni `font_url`: els omple sempre el
 > Worker. Si els envies, els ignora — l'`id` el reconstrueix ell mateix i

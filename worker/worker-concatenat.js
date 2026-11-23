@@ -4996,12 +4996,16 @@ class PostalMime {
 // EL CAMÍ D'UNA TRAMESA DEL FORMULARI, en ordre:
 //   1. el secret de la capçalera  ← el primer de tot; si no, 403
 //   2. només POST                 → qualsevol altre mètode, 405
-//   3. mapa determinista          → camp a camp, CAP crida a Claude:
-//                                   el formulari ja dona els camps
-//                                   separats, i el cartell ja ha
-//                                   pujat a Cloudinary des del
+//   3. mapa determinista          → camp a camp: el formulari ja dona
+//                                   els camps separats, i el cartell
+//                                   ja ha pujat a Cloudinary des del
 //                                   navegador de qui l'envia
-//   4. pendents.json              → filaSegura(), com el correu
+//   4. Claude                     → UNA crida, només per traduir la
+//                                   descripció a la llengua que falta
+//                                   i donar el títol en català (D-12).
+//                                   Si falla, la fila entra igual,
+//                                   amb un avís al curador
+//   5. pendents.json              → filaSegura(), com el correu
 //
 // LA INVARIANT: cap correu no es perd mai. El reenviament a l'arxiu
 // es fa ABANS de qualsevol altra cosa i no llança mai. Tot el que ve
@@ -5103,6 +5107,24 @@ var CLAUS_EXTRACCIO = [
   'comarca', 'categoria', 'descripcio_ca', 'descripcio_fr', 'associacio',
   'imatge_url', 'font_url', 'estat', 'data_entrada', 'periodicitat'
 ];
+
+// --- La traducció del formulari (D-12) ---
+// Les claus de l'objecte que ha de tornar el model quan tradueix la
+// descripció d'una tramesa del formulari. SI EL PROMPT DE TRADUCCIÓ
+// CANVIA DE CLAUS, AQUESTA LLISTA CANVIA AMB ELL.
+var CLAUS_TRADUCCIO_FORMULARI = ['titol', 'traduccio'];
+
+// El temps màxim de la crida de traducció. El Typebot espera la
+// resposta del Worker, i una crida penjada li faria esgotar el seu
+// temps d'espera (que s'ha d'haver apujat a 60 s, vegeu
+// docs/pas-fase3a-worker-formulari.md). Passat aquest temps la fila
+// entra sense traducció i amb l'avís.
+var TEMPS_MAXIM_TRADUCCIO_MS = 30000;
+
+// Els avisos que la traducció deixa a nota_curador.
+var AVIS_TRADUIT_DEL_FRANCES = 'Descripció catalana traduïda per un model a partir del francès de l\'associació. Comprova-la abans de publicar.';
+var AVIS_TRADUIT_DEL_CATALA = 'Descripció francesa traduïda per un model a partir del català de l\'associació. Comprova-la abans de publicar.';
+var AVIS_TRADUCCIO_FALLIDA = 'La traducció automàtica de la descripció ha fallat: completa l\'altra llengua abans de publicar.';
 
 // --- Cloudinary: pujada sense signatura (docs/pas-3-cloudinary.md) ---
 // El preset ja porta la carpeta (clm-agenda/posters) i la
@@ -5261,6 +5283,44 @@ EXEMPLE DE RESPOSTA (només per il·lustrar el format; no copiïs aquestes dades
 
 CORREU:
 `;
+
+// El prompt de traducció del formulari (D-12). NO és el prompt
+// d'extracció ni el de l'Action: aquell treu disset camps d'un correu,
+// el de l'Action reescriu el francès cru de l'ADT66; aquest TRADUEIX el
+// text que una associació ja ha escrit, sense reescriure'l. Les regles
+// dels noms propis i dels pobles venen de les lliçons de l'Action
+// (NOTES.md, «La Menera» / «Le Tech»). La fitxa s'enganxa darrere de
+// la línia `FITXA:`, com el correu darrere de `CORREU:`.
+var PROMPT_TRADUCCIO_FORMULARI = [
+  'Ets el traductor de l\'agenda cultural «Què fas?» de la Catalunya Nord, que es publica en català i en francès.',
+  'Una associació ha omplert el formulari de l\'agenda i n\'ha escrit la descripció en una sola llengua. La teva feina és traduir aquesta descripció a l\'altra llengua i donar el títol de l\'acte en català. Res més.',
+  '',
+  'FORMAT DE RESPOSTA — REGLES ABSOLUTES',
+  '1. Respon NOMÉS amb un objecte JSON vàlid, amb exactament aquestes 2 claus: titol, traduccio. Tots dos valors són cadenes de text.',
+  '2. Cap text abans ni després, cap explicació, cap bloc de codi markdown.',
+  '',
+  'ELS DOS CAMPS',
+  '- titol: el títol de l\'acte en català. Si el TÍTOL que reps ja és en català, copia\'l lletra per lletra, sense corregir-lo ni millorar-lo. Si és en francès, tradueix-lo, llevat del que sigui nom propi (regla de sota). Mai tot en majúscules.',
+  '- traduccio: la DESCRIPCIÓ traduïda a la LLENGUA DE DESTINACIÓ. Traducció fidel: la mateixa informació, ni més ni menys, en el mateix ordre. No resumeixis, no hi afegeixis res, no la milloris. Si porta horaris, preus o adreces, tradueix-los també: són de l\'associació.',
+  '',
+  'LA LLENGUA HA DE SER DE DEBÒ',
+  '- En català: cap paraula ni expressió francesa sense traduir dins d\'una frase catalana, i formes catalanes de debò, no calcs del francès: «saveurs du terroir» és «sabors de la terra».',
+  '- En francès: un francès correcte i natural, no un calc del català.',
+  '- El to és el de l\'original. No hi posis exclamacions ni crides al lector que l\'original no porti.',
+  '',
+  'ELS NOMS PROPIS NO ES TRADUEIXEN MAI',
+  '- Un nom propi es copia tal com surt: noms de grup, de companyia, d\'artista, de festival, de sala, d\'associació, títols d\'obra, i noms de lloc com masos, rius, serres o barris.',
+  '- Els pobles de la Catalunya Nord tenen una forma catalana i una de francesa (Perpinyà · Perpignan, Prada · Prades, Ceret · Céret): fes servir la de la llengua en què escrius, i si no la saps del cert, copia la que surt al text. Mai no canviïs un poble per un altre: «La Menera» no és «Le Tech».',
+  '- Una descripció genèrica amb majúscules («Forum des Associations», «Marché de Noël») no és cap nom propi: diu què és l\'acte, no com es diu, i es tradueix.',
+  '',
+  'NO INVENTIS RES',
+  'Tradueix només el que diu la DESCRIPCIÓ. No hi afegeixis el poble, la data, l\'hora ni res que només surti al TÍTOL o al MUNICIPI. Si la DESCRIPCIÓ és il·legible o no és ni en català ni en francès, torna traduccio com a cadena buida.',
+  '',
+  'EXEMPLE DE RESPOSTA (només per il·lustrar el format; no copiïs aquestes dades)',
+  '{"titol":"Castanyada de l\'escola","traduccio":"L\'associació de pares organitza una castanyada al pati de l\'escola. Hi haurà castanyes torrades, música i jocs per a la mainada. L\'entrada és lliure."}',
+  '',
+  'FITXA:'
+].join('\n');
 
 // ============================================================
 // EL GESTOR
@@ -5543,8 +5603,9 @@ async function respostaDelFormulari(request, env) {
     return respostaJson(400, { ok: false, error: 'cal com a mínim un títol o una data' });
   }
 
-  // El sostre de files del dia (D-09), comptat a la cua. El formulari no
-  // passa cap text pel model: només hi compta el nombre de files.
+  // El sostre de files del dia (D-09), comptat a la cua, ABANS de pagar
+  // la traducció. Aquí només hi compta el nombre de files: el text que
+  // va al model és la descripció, ja limitada pel sostre del camp.
   var decisio = null;
   try {
     decisio = await decideixAdmissio('', env.GITHUB_TOKEN);
@@ -5556,6 +5617,11 @@ async function respostaDelFormulari(request, env) {
     console.log('respostaDelFormulari(): no admès: ' + decisio.motiu);
     return respostaJson(429, { ok: false, error: 'massa trameses avui; torna-ho a provar demà' });
   }
+
+  // La llengua que falta (D-12). ABANS de filaSegura(), perquè el que
+  // escriu el model passi pels mateixos sostres i pel mateix id que la
+  // resta de la fila. No llança mai: si falla, la fila entra igual.
+  await completaTraduccio(fila, env.ANTHROPIC_API_KEY);
 
   // La forma, DESPRÉS de la comprovació de dalt, que es fa sobre el que
   // ha enviat el formulari: filaSegura() només sanitza i no ha de canviar
@@ -5586,7 +5652,8 @@ async function respostaDelFormulari(request, env) {
 // ------------------------------------------------------------
 // Munta la fila de 17 camps a partir del cos del formulari. Mapa
 // determinista, camp a camp, sense cap crida a Claude: el formulari
-// ja dona la informació separada. Torna l'objecte de la fila.
+// ja dona la informació separada. La traducció ve després, a
+// completaTraduccio(). Torna l'objecte de la fila.
 // ------------------------------------------------------------
 function construeixFilaFormulari(cos) {
   var titol = campText(cos, 'titol');
@@ -5601,7 +5668,7 @@ function construeixFilaFormulari(cos) {
 
   // El formulari recull UNA descripció i un senyal de quina llengua
   // és (CLAUDE.md §7): el text va a la banda que toca i l'altra
-  // queda buida. La traducció que falta la fa el curador en revisar.
+  // queda buida, fins que completaTraduccio() l'omple (D-12).
   // Es compara en minúscules per si el Typebot envia "FR" o "Fr".
   var descripcio = campText(cos, 'descripcio');
   var idioma = campText(cos, 'idioma_descripcio').toLowerCase();
@@ -5644,6 +5711,62 @@ function construeixFilaFormulari(cos) {
     // servei, arriba buida — mai s'inventa ni es dedueix d'altres camps.
     periodicitat: campText(cos, 'periodicitat')
   };
+}
+
+// ------------------------------------------------------------
+// Omple la descripció que falta d'una fila del formulari, i el títol
+// en català, amb una crida a Claude (D-12). El text de l'associació
+// no es toca mai: només s'omple la banda buida. Si les dues bandes ja
+// són plenes, o totes dues buides, no crida res. NO LLANÇA MAI: aquesta
+// porta no té cap arxiu, i una traducció fallida no pot costar la
+// tramesa (D-04); la fila entra igual, amb l'avís a nota_curador.
+// Modifica la fila que rep; no torna res.
+// ------------------------------------------------------------
+async function completaTraduccio(fila, apiKey) {
+  var llenguaOriginal = '';
+  var original = '';
+  if (fila.descripcio_fr !== '' && fila.descripcio_ca === '') {
+    llenguaOriginal = 'fr';
+    original = fila.descripcio_fr;
+  } else if (fila.descripcio_ca !== '' && fila.descripcio_fr === '') {
+    llenguaOriginal = 'ca';
+    original = fila.descripcio_ca;
+  } else {
+    return;
+  }
+
+  var resposta = null;
+  try {
+    resposta = await demanaTraduccioClaude(fila, llenguaOriginal, original, apiKey);
+  } catch (error) {
+    console.log('completaTraduccio(): la traducció ha fallat: ' + error.message);
+    afegeixNota(fila, AVIS_TRADUCCIO_FALLIDA);
+    return;
+  }
+
+  var traduccio = campText(resposta, 'traduccio');
+  if (traduccio === '') {
+    console.log('completaTraduccio(): el model no ha tornat cap traducció.');
+    afegeixNota(fila, AVIS_TRADUCCIO_FALLIDA);
+    return;
+  }
+
+  if (llenguaOriginal === 'fr') {
+    fila.descripcio_ca = traduccio;
+    afegeixNota(fila, AVIS_TRADUIT_DEL_FRANCES);
+  } else {
+    fila.descripcio_fr = traduccio;
+    afegeixNota(fila, AVIS_TRADUIT_DEL_CATALA);
+  }
+
+  // El títol, només si el model n'ha tornat un i és diferent. L'original
+  // queda a la nota: el curador hi ha de poder veure si un nom propi
+  // s'ha traduït per error.
+  var titol = campText(resposta, 'titol');
+  if (titol !== '' && titol !== fila.titol) {
+    afegeixNota(fila, 'Títol traduït; l\'original era «' + fila.titol + '».');
+    fila.titol = titol;
+  }
 }
 
 // ------------------------------------------------------------
@@ -5799,12 +5922,47 @@ async function pujaCartellCloudinary(adjunt, cloudName) {
 // `fetch` i prou: el §3 de CLAUDE.md no admet cap paquet npm.
 // ------------------------------------------------------------
 async function demanaExtraccioClaude(textCorreu, apiKey, avui) {
+  var prompt = EXTRACTION_PROMPT.replace('{{AVUI}}', avui);
+  return await cridaClaude(prompt + textCorreu, CLAUS_EXTRACCIO, apiKey, null);
+}
+
+// ------------------------------------------------------------
+// Demana a Claude la traducció de la descripció d'una tramesa del
+// formulari a l'altra llengua, i el títol en català (D-12). Torna
+// l'objecte de dues claus (CLAUS_TRADUCCIO_FORMULARI) sense mirar-ne
+// cap: qui decideix què se n'escriu és completaTraduccio(). Llança si
+// la crida falla, passa de TEMPS_MAXIM_TRADUCCIO_MS o no torna JSON.
+// ------------------------------------------------------------
+async function demanaTraduccioClaude(fila, llenguaOriginal, original, apiKey) {
+  var llenguaOrigen = 'català';
+  var llenguaDesti = 'francès';
+  if (llenguaOriginal === 'fr') {
+    llenguaOrigen = 'francès';
+    llenguaDesti = 'català';
+  }
+
+  // El text va limitat al sostre del camp, com quedarà a la fila: no
+  // es paga la traducció de res que filaSegura() hauria tallat.
+  var fitxa = 'LLENGUA ORIGINAL: ' + llenguaOrigen +
+    '\nLLENGUA DE DESTINACIÓ: ' + llenguaDesti +
+    '\nMUNICIPI: ' + fila.municipi +
+    '\nTÍTOL: ' + fila.titol +
+    '\nDESCRIPCIÓ: ' + talla(original, SOSTRES.descripcio_ca);
+
+  var senyal = AbortSignal.timeout(TEMPS_MAXIM_TRADUCCIO_MS);
+  return await cridaClaude(PROMPT_TRADUCCIO_FORMULARI + '\n' + fitxa, CLAUS_TRADUCCIO_FORMULARI, apiKey, senyal);
+}
+
+// ------------------------------------------------------------
+// Una crida a Claude amb un sol missatge `user` i la resposta obligada
+// a un objecte de cadenes amb aquestes claus. `senyal` és un
+// AbortSignal per tallar-la a temps, o null per esperar el que calgui.
+// Torna l'objecte. Llança si la crida falla o la resposta no és JSON.
+// ------------------------------------------------------------
+async function cridaClaude(contingut, claus, apiKey, senyal) {
   if (!apiKey) {
     throw new Error('falta el secret ANTHROPIC_API_KEY.');
   }
-
-  var prompt = EXTRACTION_PROMPT.replace('{{AVUI}}', avui);
-  var contingut = prompt + textCorreu;
 
   var cos = {
     model: CLAUDE_MODEL,
@@ -5821,14 +5979,14 @@ async function demanaExtraccioClaude(textCorreu, apiKey, avui) {
     thinking: { type: 'adaptive' },
     output_config: {
       effort: 'high',
-      format: { type: 'json_schema', schema: esquemaDeCadenes(CLAUS_EXTRACCIO) }
+      format: { type: 'json_schema', schema: esquemaDeCadenes(claus) }
     },
     messages: [
       { role: 'user', content: contingut }
     ]
   };
 
-  var resposta = await fetch(CLAUDE_URL, {
+  var peticio = {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -5836,7 +5994,12 @@ async function demanaExtraccioClaude(textCorreu, apiKey, avui) {
       'anthropic-version': CLAUDE_VERSIO_API
     },
     body: JSON.stringify(cos)
-  });
+  };
+  if (senyal !== null) {
+    peticio.signal = senyal;
+  }
+
+  var resposta = await fetch(CLAUDE_URL, peticio);
 
   if (!resposta.ok) {
     var detall = await resposta.text();

@@ -30,7 +30,7 @@ Les variables que recull aquest formulari són exactament les que espera `respos
 
 `es_un_sol_dia`, `es_permanent` i `idioma_descripcio` només serveixen per guiar el formulari; no s'escriuen a `pendents.json`.
 
-El camp `periodicitat` és per a **activitats permanents**: cursos, tallers o mercats que es repeteixen setmana rere setmana, no per a un acte d'un sol dia (vegeu `NOTES.md`, «Activitats permanents»). És text lliure i **es pot deixar en blanc**: el blanc vol dir «és un acte puntual», no «no ho sabem». El que decideix on va la descripció és `idioma_descripcio`: si val `fr`, el text va a `descripcio_fr`; en qualsevol altre cas, a `descripcio_ca`. La traducció que falti l'omple el curador durant la revisió setmanal.
+El camp `periodicitat` és per a **activitats permanents**: cursos, tallers o mercats que es repeteixen setmana rere setmana, no per a un acte d'un sol dia (vegeu `NOTES.md`, «Activitats permanents»). És text lliure i **es pot deixar en blanc**: el blanc vol dir «és un acte puntual», no «no ho sabem». El que decideix on va la descripció és `idioma_descripcio`: si val `fr`, el text va a `descripcio_fr`; en qualsevol altre cas, a `descripcio_ca`. La traducció que falta l'omple el Worker amb una crida a Claude abans d'encuar la fila, i també hi posa el títol en català (D-12, `completaTraduccio()`); el curador la comprova en revisar.
 
 El camp `imatge_url` ara **sí** que es recull al formulari: la càrrega del cartell es fa directament del navegador a Cloudinary (vegeu el Pas 13 i `docs/pas-5-typebot-cartell-cloudinary.md`). Si l'usuari no carrega cap cartell, arriba com a cadena buida `""`.
 
@@ -295,4 +295,4 @@ Després del webhook, una bombolla final de confirmació:
 
 ## Recordatori de l'esquema
 
-El formulari recull **dades estructurades** ja separades per camps, de manera que en aquesta via **no hi ha cap pas d'IA** (a diferència del correu, que passa per Claude). La descripció arriba en una sola llengua i el curador completa l'altra durant la revisió setmanal. El cartell, si n'hi ha, ja arriba allotjat a Cloudinary (mai al Git); si no, `imatge_url` és buit. Cada esdeveniment entra a `pendents.json` amb `estat = pendent`.
+El formulari recull **dades estructurades** ja separades per camps, de manera que en aquesta via **l'únic pas d'IA és la traducció** (D-12): la descripció arriba en una sola llengua i el Worker en demana l'altra a Claude, amb el títol en català. Si la traducció falla, la fila entra igual i el curador completa l'altra llengua. El cartell, si n'hi ha, ja arriba allotjat a Cloudinary (mai al Git); si no, `imatge_url` és buit. Cada esdeveniment entra a `pendents.json` amb `estat = pendent`.

@@ -68,6 +68,7 @@ fitxer, i `git show <commit>^:<ruta>` el torna a ensenyar.*
 - **31 d'octubre.** Cap fila en francès a la cua (D-10). Les 34 pendents sense
   versió catalana, rebutjades.
 - **11 de novembre.** Comptador de visites al web públic (D-11).
+- **23 de novembre.** El Worker tradueix la descripció del formulari (D-12).
 
 ---
 
@@ -175,6 +176,20 @@ protocol de coordinació.
   diuen. Va néixer perquè Miquel vol saber quanta gent consulta l'agenda.
   Compta visites a la pàgina, no quins actes es miren: comptar-ho seria seguir
   clics, i és fora d'abast (`CLAUDE.md` §8).
+- **D-12 · 23 de novembre.** El formulari ja no deixa cap llengua buida.
+  `completaTraduccio()`, al Worker, fa una crida a Claude
+  (`PROMPT_TRADUCCIO_FORMULARI`, dues claus: `titol` i `traduccio`) que omple
+  la descripció que falta i dona el títol en català; el text de l'associació
+  no es toca, i el títol original queda a `nota_curador` si canvia. Es fa
+  després d'`admetEntrada()` (una tramesa refusada no paga res) i abans de
+  `filaSegura()` (el que escriu el model passa pels mateixos sostres i fa
+  l'`id`). Si la crida falla, passa de 30 s o torna buida, la fila entra igual
+  amb un avís: aquesta porta no té arxiu i D-04 no deixa perdre cap tramesa.
+  Va néixer de la cua: el Typebot promet «nosaltres ens encarregarem de
+  l'altra» i qui se n'encarregava era el curador a mà; la «Rifle de l'école
+  élémentaire» es va publicar el 8 de novembre sense català. Cost: com a molt
+  20 crides al dia (D-09), d'un text de 2–4 frases, menys d'un cèntim cadascuna.
+  El bloc webhook del Typebot ha d'esperar 60 s (`docs/pas-fase3a-worker-formulari.md`).
 
 Decisions anteriors al registre, igual de tancades (el perquè és a la lliçó que
 s'indica):
