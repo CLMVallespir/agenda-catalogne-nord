@@ -221,7 +221,7 @@ s'indica):
 - Rebutjar marca, no suprimeix: la memòria de rebuig (3 de setembre) — §5.4.
 - Publicar marca la fila com a `publicat` (1 d'octubre) — §5.2.
 - El llindar de la capa 2 és 0,75 i no el 0,55 del dedup (3 de setembre) —
-  `CLAUDE.md` §4 ter.
+  §5.4.
 - El Worker només es desplega a mà (29 d'agost) — §5.1.
 - Tota la Fenolleda va a Rosselló (31 d'agost) — `docs/CRITERI-EDITORIAL.md`.
 - El Cinema d'Elna s'exclou només per l'adreça, 13 boulevard Voltaire (6
@@ -229,6 +229,24 @@ s'indica):
 - Haiku i prou, amb pensament (23 d'octubre) — §5.5.
 
 ---
+
+**D-10, detall i el runner no és un servidor** (mogut de `CLAUDE.md` §7 bis, 25/11/2026):
+
+- **Abans de gastar cap crida**, `filtraCandidats()` descarta l'oferta sense
+  títol o amb menys de 9 paraules de descripció (`MIN_PARAULES_DESCRIPCIO`).
+  El motiu surt al registre del run, al bloc del filtre previ.
+- **Després**, `tradueixLot()` només torna les files amb títol, `descripcio_ca`
+  i `descripcio_fr` escrits pel model. Les declinades i les fallades no
+  s'escriuen i el flux les torna a oferir la setmana següent; cap fila en
+  francès no arriba mai a la cua.
+- Que faltin `categoria`, `lloc`, `hora` o `associacio` **no** descarta res:
+  també falten a files publicades. Les portes manuals del Worker no hi passen
+  (D-04).
+
+**Per què això no trenca el §3** («cap servidor més enllà de l'únic Worker»): un
+runner d'Actions no és cap servidor. No escolta res, no té adreça, no és
+accessible des de fora i no existeix entre execucions. La restricció era contra
+tenir una màquina engegada a mantenir; això és un guió que s'executa i para.
 
 ## 3. Activitats permanents (`periodicitat`)
 
@@ -469,6 +487,30 @@ canviïn de contingut. D'aquí la regla del §4 que l'Action no reescriu files d
 la cua. Si dues files són idèntiques, `treuDeLaCua()` les treu totes dues de la
 pantalla fins que es recarrega.
 
+**Regles de `nota_curador`, versió completa** (mogudes de `CLAUDE.md` §4 ter, 25/11/2026):
+
+**Regles pròpies de `nota_curador`** — és un camp de servei, no de contingut:
+
+- **L'escriuen només els agents de darrere:** `mapejaOfertaADT66()` (el tag
+  `[ADT66 id: …]`, sempre el primer, i els avisos del mapeig), la passada de
+  l'Action, `pujaCartell()`, la fusió de `eines/dedup-esdeveniments.js` i el
+  Worker (`afegeixNota()`). Ni el model d'extracció, ni el Typebot, ni cap
+  persona hi escriuen: el prompt no el coneix i el formulari no el demana.
+- **El frontend públic no el llegeix mai.** `index.html` i `app.js` llegeixen
+  els camps pel nom i mai no itineren les claus d'un esdeveniment; qui hi toqui
+  ha de mantenir-ho així.
+- **Només es mostra a `curador.html`**, com un avís groc a dalt de la fitxa, i
+  **no és editable**: no porta `data-camp`, de manera que `recullFitxa()` ni el
+  veu.
+- **No arriba mai a `events.json`, i és deliberat** (decidit el 29 d'agost de
+  2026; no és cap descuit i no s'ha d'«arreglar»). `recullFitxa()` construeix
+  els **17 camps públics exactes**. `events.json` es serveix sencer a qualsevol
+  navegador, i una nota de treball intern no hi pinta res; si mai cal
+  consultar-la, la traça queda a l'historial de git de `pendents.json`.
+- És l'única excepció a «cada camp descriu l'acte»: aquest descriu **la fila**.
+  Per això, quan es fusionen dues files duplicades, es queden **totes dues
+  notes** (`ajuntaNotes()`).
+
 ### 5.3 L'Action i les fonts externes
 
 **Quan una API redirigeix, la metadata que val és la del destí.** *29
@@ -630,6 +672,8 @@ Si afegeix una nota cada vegada, no es pot arreglar esborrant notes:
 `nota_curador` no s'esborra mai. No es deriva cap valor que es pugui calcular
 d'un altre (el dia de la setmana surt de la data), i el lloc no és l'adreça.
 
+**Llindar de la capa 2 d'ancoratge: 0,75, no el 0,55 del dedup** (mogut de `CLAUDE.md` §4 ter, 25/11/2026). Mesurat sobre 92 títols reals: «El Taller de les Barques de Paulilles» i «El Taller de les Descobertes de Paulilles», mateix poble i mateix dia, fan 0,500 i són dos tallers diferents; la franja [0,55–0,75) és la de «una paraula distintiva canviada»; una substitució entre títols de n paraules dona (n−1)/(n+1), que no arriba a 0,75 fins a n = 7, i 88 dels 92 títols en tenen sis o menys. Per damunt de 0,75 gairebé només hi ha títols que **afegeixen** paraules a un altre, que és la forma d'un duplicat de debò. El cost acceptat: un acte publicat i la seva versió llarga a la cua poden quedar per sota (0,444) i s'encuen. És la direcció bona de l'error.
+
 ### 5.5 El model
 
 **De Gemini a Claude Haiku 5.5: la quota, no la qualitat.** *23 d'octubre.* El
@@ -657,6 +701,26 @@ més alt que el crèdit, i sense recàrrega automàtica. En arribar-hi, l'API to
 un 400 o un 429 i l'Action atura la passada; la resta torna la setmana
 següent. Per jutjar el prompt sense escriure res:
 `node eines/sincronitza-programada.js --en-sec --amb-claude --pressupost=20 --fitxes`.
+
+**Cos de la petició a Claude** (mogut de `CLAUDE.md` §7, 25/11/2026):
+
+Capçaleres `x-api-key` (la clau; mai a l'URL, mai al registre),
+`anthropic-version` = `CLAUDE_VERSIO_API` (`2026-10-21`, fixa a posta) i
+`content-type`. Cos idèntic als dos contextos llevat de l'esquema: `model`,
+`max_tokens`, `thinking: { type: 'adaptive' }` amb
+`output_config.effort: 'high'` (sense pensar, Haiku saltava les regles del
+prompt; la prova és a `NOTES.md`), `messages` amb un sol missatge `user`
+(al correu, els cartells hi van davant del text com a blocs `image` per URL
+de Cloudinary), i
+`output_config.format` amb l'esquema JSON de les claus que demana el prompt
+—al Worker, la llista `esdeveniments` del prompt d'extracció, amb `cartell`
+i les 17 claus de cada `acte` (`esquemaExtraccio()`, `CLAUS_EXTRACCIO`),
+les 2 de la traducció del formulari al Worker
+(`CLAUS_TRADUCCIO_FORMULARI`), les 3 de la traducció a l'Action
+(`ESQUEMA_TRADUCCIO`)—, que és el que
+garanteix el JSON.
+
+Cos idèntic als dos contextos llevat de l'esquema: `model`, `max_tokens`, `thinking: { type: 'adaptive' }` amb `output_config.effort: 'high'` (sense pensar, Haiku saltava les regles del prompt), un sol missatge `user` (al correu, els cartells hi van davant del text com a blocs `image` per URL de Cloudinary) i `output_config.format` amb l'esquema JSON de les claus que demana el prompt: al Worker, `esquemaExtraccio()`/`CLAUS_EXTRACCIO` (cartell i 17 claus per `acte`) i `CLAUS_TRADUCCIO_FORMULARI` (2); a l'Action, `ESQUEMA_TRADUCCIO` (3). Això garanteix el JSON.
 
 ### 5.6 Proves, eines i verificadors
 
