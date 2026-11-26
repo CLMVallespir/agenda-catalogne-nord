@@ -4112,5 +4112,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.848Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-telethon-excursio",
+    "titol": "Téléthon - excursió",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "14:00",
+    "lloc": "6 Avenue de la Republique",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Esports",
+    "descripcio_ca": "Banyuls Rando organitza una excursió familiar, i les aportacions dels participants es destinen íntegrament al Téléthon. L'activitat inclou la visita als Vieux mas i al Puig del mas, amb una durada de dues hores i un desnivell de 150 metres.",
+    "descripcio_fr": "Banyuls Rando organise une randonnée familiale dont les participations sont entièrement reversées au Téléthon. L'itinéraire comprend la visite des Vieux mas et du Puig del mas, pour une durée de deux heures et un dénivelé de 150 mètres.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678179/TELETHON-2026-BANYULS-RANDO-AFFA4_ku7jg4.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.601Z",
+    "periodicitat": ""
   }
 ]
