@@ -3846,5 +3846,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.723Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-club-de-jocs",
+    "titol": "Club de jocs de societat",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "17:30",
+    "lloc": "",
+    "municipi": "Enveig",
+    "comarca": "Cerdanya",
+    "categoria": "Vida associativa",
+    "descripcio_ca": "El club de jocs de societat és obert a l'escola de Latour de Carol. És gratuït i obert a tothom. Els més petits hi són acollits mentre els adults juguen.",
+    "descripcio_fr": "Le club de jeux de société est ouvert à l'école de Latour de Carol. L'accès est gratuit et ouvert à tous. Les tout-petits sont accueillis pendant que les adultes jouent.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678081/23-oct-LATOUR_cqg7m2.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.761Z",
+    "periodicitat": ""
   }
 ]
