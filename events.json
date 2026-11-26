@@ -3808,5 +3808,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.730Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-animacio-de-realitat",
+    "titol": "Animació de realitat virtual",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "15:00",
+    "lloc": "7 passage jeantet violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "L'activitat permet explorar nous univers amb cascos de realitat virtual, en un moment de descoberta i intercanvi. S'adreça a adults i a gent gran.",
+    "descripcio_fr": "L'activité permet d'explorer de nouveaux univers avec des casques de réalité virtuelle, dans un moment de découverte et de partage. Elle s'adresse aux adultes et aux seniors.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678068/aSPRES-THUIR-isuels-Mediatheque-27-11-2_nyegxl.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.626Z",
+    "periodicitat": ""
   }
 ]
