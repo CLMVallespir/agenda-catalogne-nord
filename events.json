@@ -4226,5 +4226,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.650Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-09-les-mercredis-de",
+    "titol": "Les mercredis de la connaissance",
+    "data_inici": "2026-12-09",
+    "data_fi": "2026-12-09",
+    "hora": "18:00",
+    "lloc": "20 Avenue Pierre Fabre",
+    "municipi": "Banyuls de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "Conferències obertes a tothom, organitzades per l'Association des Amis du Laboratoire Arago. Una de les sessions s'emmarca dins d'Octobre Rose.",
+    "descripcio_fr": "Conférences ouvertes à tous, organisées par l'Association des Amis du Laboratoire Arago. L'une des séances s'inscrit dans le cadre d'Octobre Rose.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678245/Aff-conf-AALA-2026-A3-S2_zmmyut.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.712Z",
+    "periodicitat": ""
   }
 ]
