@@ -4131,5 +4131,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.601Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-05-taller-creatiu-carta",
+    "titol": "Taller creatiu: carta al Pare Noel",
+    "data_inici": "2026-12-05",
+    "data_fi": "2026-12-05",
+    "hora": "09:00",
+    "lloc": "Médiathèque Claude Blazy14 rue de la Poste",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Activitat infantil",
+    "descripcio_ca": "Taller en què els infants poden posar en joc la seva creativitat i originalitat per formular els desitjos que més els importen. Va dirigit a infants a partir de 4 anys.",
+    "descripcio_fr": "Atelier permettant aux enfants de mettre en valeur leur créativité et leur originalité pour formuler les souhaits qui leur tiennent le plus à cœur. Il s'adresse aux enfants à partir de 4 ans.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678207/child-865116-1280_xzhps5.webp",
+    "font_url": "http://www.torreilles.fr",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.855Z",
+    "periodicitat": ""
   }
 ]
