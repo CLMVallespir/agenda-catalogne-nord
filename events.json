@@ -4093,5 +4093,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.844Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-04-mercat-dhivern",
+    "titol": "Mercat d'hivern",
+    "data_inici": "2026-12-04",
+    "data_fi": "2026-12-04",
+    "hora": "14:00",
+    "lloc": "84 Avenue Emmanuel Brousse",
+    "municipi": "Font-romeu",
+    "comarca": "Cerdanya",
+    "categoria": "Mercat",
+    "descripcio_ca": "El mercat d'hivern es fa en un conjunt de xalets on es poden trobar productes locals i especialitats pròpies de la temporada. L'activitat permet passejar entre les parades i tastar les especialitats de l'hivern. Es presenta com una cita gastronòmica per compartir en família, al cor del conjunt de xalets.",
+    "descripcio_fr": "Le marché d'hiver se tient dans un ensemble de chalets où l'on peut trouver des produits locaux et des spécialités propres à la saison. L'activité permet de flâner entre les stands et de goûter les spécialités de l'hiver. Il s'agit d'un rendez-vous gourmand à partager en famille, au cœur de l'ensemble de chalets.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678168/Prog-Hiver-2026---Insta_zhfjzq.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.848Z",
+    "periodicitat": ""
   }
 ]
