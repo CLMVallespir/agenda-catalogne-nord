@@ -3789,5 +3789,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.794Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-26-passsport-memo-66",
+    "titol": "Pass'Sport Mémo 66",
+    "data_inici": "2026-11-26",
+    "data_fi": "2026-11-26",
+    "hora": "14:30",
+    "lloc": "33 Avenue François Arago",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "El programa Pass'Sport Mémo 66 inclou dotze sessions de taller de memòria, orientades a estimular les capacitats cognitives, la concentració i la confiança en el dia a dia. També hi ha sessions de gimnàs de memòria, que combinen exercicis físics i exercicis cognitius, i tres sessions de marxa activa a l'aire lliure per millorar la resistència i l'equilibri. Les activitats estan pensades per mantenir l'autonomia, reforçar les capacitats físiques i mentals, combatre l'aïllament i compartir moments agradables en grup.",
+    "descripcio_fr": "Le programme Pass'Sport Mémo 66 comprend douze séances d'atelier mémoire, destinées à stimuler les capacités cognitives, la concentration et la confiance au quotidien. Il propose aussi des séances de gym mémoire, qui associent exercices physiques et exercices cognitifs, ainsi que trois séances de marche active en plein air pour améliorer l'endurance et l'équilibre. Ces activités visent à maintenir l'autonomie, renforcer les capacités physiques et mentales, lutter contre l'isolement et partager des moments agréables en groupe.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678062/fe322d5c-cb85-41c0-8b6c-1c039133_iue4xq.webp",
+    "font_url": "https://pyrenees-orientales.profession-sport-loisirs.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.730Z",
+    "periodicitat": ""
   }
 ]
