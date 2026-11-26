@@ -4036,5 +4036,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.775Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-01-rimbaud-warrior",
+    "titol": "Rimbaud Warrior",
+    "data_inici": "2026-12-01",
+    "data_fi": "2026-12-01",
+    "hora": "19:00",
+    "lloc": "21 Rue Saint-Jean",
+    "municipi": "Vilafranca de Conflent",
+    "comarca": "Conflent",
+    "categoria": "Teatre",
+    "descripcio_ca": "Rimbaud Warrior és un espectacle presentat per les companyies Les Petites Gens i L'Autre Monde. Es tracta d'una creació teatral accessible a partir de 13 anys, que es podrà veure a Vilafranca de Conflent. És una proposta cultural original que barreja teatre i univers artístic entorn de la figura de Rimbaud.",
+    "descripcio_fr": "Rimbaud Warrior est un spectacle présenté par les compagnies Les Petites Gens et L'Autre Monde. Il s'agit d'une création théâtrale accessible à partir de 13 ans, à découvrir à Vilafranca de Conflent. C'est une proposition culturelle originale qui mêle théâtre et univers artistique autour de la figure de Rimbaud.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678144/Affiche-rainbow-warrior-2026-hires_ncin9e.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.847Z",
+    "periodicitat": ""
   }
 ]
