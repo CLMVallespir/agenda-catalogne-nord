@@ -4169,5 +4169,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.797Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-06-laffaire-marie-claire",
+    "titol": "L'affaire Marie-Claire",
+    "data_inici": "2026-12-06",
+    "data_fi": "2026-12-06",
+    "hora": "16:00",
+    "lloc": "Salle juste à côté de la Mairie proche du point chaud/vente la \"Fabrique\".",
+    "municipi": "Cervera de la Marenda",
+    "comarca": "Rosselló",
+    "categoria": "Cinema",
+    "descripcio_ca": "Drama històric que recrea el procés de Marie-Claire Chevalier, una adolescent de 16 anys que el 1972 compareix davant del tribunal de Bobigny per haver avortat il·legalment, juntament amb la seva mare i les dones que l'havien ajudat, també amenaçades de condemna. La seva advocada, Gisèle Halimi, decideix convertir el judici en una lluita contra una llei que considera injusta i qüestiona la mateixa legislació. Protagonitzada, entre d'altres, per Cécile de France i Charlotte Gainsbourg, la pel·lícula evoca un cas emblemàtic de la lluita pels drets de les dones, que va contribuir a obrir el camí a la legalització de l'avortament a França. S'hi reflexiona sobre la justícia, el coratge i els grans avenços socials.",
+    "descripcio_fr": "Drame historique qui retrace le procès de Marie-Claire Chevalier, une adolescente de 16 ans qui comparaît en 1972 devant le tribunal de Bobigny pour avoir avorté illégalement, avec sa mère et les femmes qui l'avaient aidée, également menacées de condamnation. Leur avocate, Gisèle Halimi, décide de transformer le procès en une lutte contre une loi qu'elle juge injuste, et remet en cause la législation elle-même. Interprété notamment par Cécile de France et Charlotte Gainsbourg, le film évoque un cas emblématique de la lutte pour les droits des femmes, qui a contribué à ouvrir la voie à la légalisation de l'avortement en France. Il s'interroge sur la justice, le courage et les grandes avancées sociales.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678220/mohamed-hassan-cinema-4153289-640_qyqupe.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.847Z",
+    "periodicitat": ""
   }
 ]
