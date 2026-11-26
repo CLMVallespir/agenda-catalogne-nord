@@ -760,7 +760,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52W0S3] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. [ADT66 id: FMALAR066V52YY86] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-28-enseignement-a-la",
+    "id": "2026-11-28-ensenyament-de-la",
     "titol": "Ensenyament de la sardana",
     "data_inici": "2026-11-28",
     "data_fi": "2026-11-28",
@@ -768,13 +768,13 @@
     "lloc": "2 Rue de la Paix",
     "municipi": "Santa Maria la Mar",
     "comarca": "Rosselló",
-    "categoria": "",
+    "categoria": "Dansa i ball",
     "descripcio_ca": "La mediateca, en col·laboració amb l'associació La Llevantina, organitzarà un ensenyament de sardana. Es tracta d'una dansa tradicional catalana que es comparteix en un ambient de convivència.",
     "descripcio_fr": "La médiathèque, en partenariat avec l'association La Llevantina, organisera un enseignement de la sardane. Il s'agit d'une danse traditionnelle catalane à partager dans une ambiance conviviale.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/STE-MARIE-SARDANE.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678094/STE-MARIE-SARDANE_omjpdz.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.715Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52YW5Y] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
