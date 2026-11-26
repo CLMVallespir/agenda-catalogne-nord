@@ -3998,5 +3998,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.619Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-01-el-petit-marche",
+    "titol": "El Petit Marché celebra el Nadal",
+    "data_inici": "2026-12-01",
+    "data_fi": "2026-12-01",
+    "hora": "16:30",
+    "lloc": "Avenue du Général De Gaulle",
+    "municipi": "La Tor de França",
+    "comarca": "Rosselló",
+    "categoria": "Mercat",
+    "descripcio_ca": "El Petit Marché de La Tor de França celebra el Nadal amb una edició especial. Amb motiu de l'ocasió, el mercat convida nombrosos productors, artesans i creadors dels voltants. Tots els dimarts al vespre, el Petit Marché reuneix artesans i productors locals i ecològics, en un ambient festiu. Un concurs permet guanyar cistelles garnides amb productes dels expositors, en què cal estimar el pes de la cistella.",
+    "descripcio_fr": "Le Petit Marché de La Tor de França fête Noël avec une édition spéciale. À cette occasion, le marché invite de nombreux producteurs, artisans et créateurs des environs. Chaque mardi soir, le Petit Marché réunit des artisans et producteurs locaux et biologiques, dans une ambiance festive. Un concours permet de gagner des paniers garnis avec des produits des exposants, en estimant le poids du panier.",
+    "associacio": "Contacter Madame GENDRON Alice",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678129/le-petit-marche-de-noel-26---LATOUR-DE-FRANCE---01-12-2026-2_c9zbkr.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.621Z",
+    "periodicitat": ""
   }
 ]
