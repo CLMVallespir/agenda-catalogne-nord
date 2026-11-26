@@ -1332,9 +1332,9 @@
     "descripcio_ca": "La cursa no es cronometra. La inscripció es fa al mateix lloc, on també hi ha restauració, i no es lliura dorsal.",
     "descripcio_fr": "La course n'est pas chronométrée. L'inscription se fait sur place, où il y a aussi une restauration, et aucun dossard n'est remis.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Telethon-VLB.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678214/Telethon-VLB_pmewhc.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.797Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZP8N] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
