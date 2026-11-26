@@ -960,7 +960,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52Z9D2] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-01-exposition-damien-deroubaix",
+    "id": "2026-12-01-exposicio-damien-deroubaix",
     "titol": "Exposició: Damien Deroubaix",
     "data_inici": "2026-12-01",
     "data_fi": "2026-12-01",
@@ -972,9 +972,9 @@
     "descripcio_ca": "El Musée d'art moderne de Ceret presenta el treball de Damien Deroubaix, figura destacada de la pintura a França. L'exposició reuneix més de trenta obres entre pintures, ceràmiques i gravats en fusta, fruit de la residència de l'artista a la ciutat. Durant la residència, l'artista va comptar amb l'acollida d'un pintor, els consells d'una ceramista i l'atelier de Pierre Brune al Castellas, antic castell de la ciutat. Algunes de les peces són inèdites, i entre elles hi ha ceràmiques que es presenten per primera vegada al públic.",
     "descripcio_fr": "Le Musée d'art moderne de Ceret présente le travail de Damien Deroubaix, figure majeure de la peinture en France. L'exposition réunit plus de trente œuvres entre peintures, céramiques et gravures sur bois, issues de la résidence de l'artiste dans la ville. Pendant cette résidence, l'artiste a bénéficié de l'accueil d'un peintre, des conseils d'une céramiste et de l'atelier de Pierre Brune au Castellas, ancien château de la ville. Certaines pièces sont inédites, et parmi elles figurent des céramiques présentées pour la première fois au public.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/deroubaix-expo-visuel-2.JPG?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678138/deroubaix-expo-visuel-2_ufrqnz.webp",
     "font_url": "https://www.musee-ceret.com/",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.775Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZMIX] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
