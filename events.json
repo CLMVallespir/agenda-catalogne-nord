@@ -3922,5 +3922,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.727Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-exposicio-i-venda",
+    "titol": "Exposició i venda de lleure creatiu",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "09:00",
+    "lloc": "Rue des Écoles",
+    "municipi": "Torrelles de la Salanca",
+    "comarca": "Rosselló",
+    "categoria": "Exposició",
+    "descripcio_ca": "L'acte permet conèixer les darreres creacions artesanals dels expositors, totalment fetes a mà amb passió i saber fer. S'hi troben idees úniques i originals per fer regals a familiars i amics o per a un mateix, en ple període nadalenc, alhora que es dona suport a l'artesania local.",
+    "descripcio_fr": "L'événement permet de découvrir les dernières créations artisanales des exposants, entièrement faites à la main avec passion et savoir-faire. On y trouve des idées uniques et originales pour offrir des cadeaux à ses proches ou pour soi-même, en cette période de Noël, tout en soutenant l'artisanat local.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678106/pexels-anntarazevich-6146661--1-_udg7xs.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.859Z",
+    "periodicitat": ""
   }
 ]
