@@ -1380,7 +1380,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZRUS] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-08-distribution-des-colis",
+    "id": "2026-12-08-repartiment-dels-paquets",
     "titol": "Repartiment dels paquets de Nadal a la gent gran",
     "data_inici": "2026-12-08",
     "data_fi": "2026-12-08",
@@ -1388,13 +1388,13 @@
     "lloc": "23 Avenue Gén de Gaulle",
     "municipi": "Cervera de la Marenda",
     "comarca": "Rosselló",
-    "categoria": "",
+    "categoria": "Vida associativa",
     "descripcio_ca": "Amb motiu de les festes de final d'any, la municipalitat de Cervera de la Marenda obsequia amb un paquet de Nadal les persones de més de 70 anys. La iniciativa expressa el vincle de la localitat amb la gent gran i promou els valors de proximitat i benevolença. Es recorda que les festes són també una ocasió per tenir cura els uns dels altres i reforçar els vincles entre generacions.",
     "descripcio_fr": "À l'occasion des fêtes de fin d'année, la municipalité de Cervera de la Marenda offre un colis de Noël aux personnes de plus de 70 ans. L'initiative exprime le lien de la localité avec les aînés et promeut les valeurs de proximité et de bienveillance. Elle rappelle que les fêtes sont aussi l'occasion de prendre soin les uns des autres et de renforcer les liens entre les générations.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/pexels-marceloverfe-28575498.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678230/pexels-marceloverfe-28575498_oou8is.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.849Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZRVS] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
