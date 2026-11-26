@@ -4150,5 +4150,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.855Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-06-courses-du-telethon",
+    "titol": "Courses du Téléthon",
+    "data_inici": "2026-12-06",
+    "data_fi": "2026-12-06",
+    "hora": "10:00",
+    "lloc": "Place de la République",
+    "municipi": "Vernet",
+    "comarca": "Conflent",
+    "categoria": "Esports",
+    "descripcio_ca": "La cursa no es cronometra. La inscripció es fa al mateix lloc, on també hi ha restauració, i no es lliura dorsal.",
+    "descripcio_fr": "La course n'est pas chronométrée. L'inscription se fait sur place, où il y a aussi une restauration, et aucun dossard n'est remis.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678214/Telethon-VLB_pmewhc.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.797Z",
+    "periodicitat": ""
   }
 ]
