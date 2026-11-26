@@ -1400,7 +1400,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZRVS] L'acte es fa 2 dies escampats: només se'n publica la propera ocurrència, i els altres dies no hi surten. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-09-conference-les-mercredis",
+    "id": "2026-12-09-conferencia-les-mercredis",
     "titol": "Conferència Les mercredis de la connaissance",
     "data_inici": "2026-12-09",
     "data_fi": "2026-12-09",
@@ -1412,9 +1412,9 @@
     "descripcio_ca": "La conferència de l'AALA proposa una immersió a dues veus en els mecanismes del canvi climàtic i en l'evolució de les ciències meteorològiques. Els ponents, Laurent Bonnard i François Vinit, abordaran com es prediu el temps, com funcionen els models i per quin motiu el clima s'escalfa, i quins són els impactes per a la Mediterrània. Es tracta d'un recorregut il·lustrat i accessible.",
     "descripcio_fr": "La conférence de l'AALA propose une immersion à deux voix dans les mécanismes du changement climatique et dans l'évolution des sciences météorologiques. Les intervenants, Laurent Bonnard et François Vinit, aborderont comment on prévoit le temps, comment fonctionnent les modèles et pourquoi le climat se réchauffe, ainsi que quels sont les impacts pour la Méditerranée. Il s'agit d'un parcours illustré et accessible.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/09-12-2026-CONF-AALA.png?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678239/09-12-2026-CONF-AALA_nlfbbj.webp",
     "font_url": "http://ww.obs-banyuls.fr",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.650Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52V6FK] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
