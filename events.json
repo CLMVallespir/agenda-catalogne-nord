@@ -3827,5 +3827,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.626Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-27-conferencia-el-tractat",
+    "titol": "Conferència: el tractat dels Pirineus",
+    "data_inici": "2026-11-27",
+    "data_fi": "2026-11-27",
+    "hora": "18:30",
+    "lloc": "2 Rue du Docteur Massina",
+    "municipi": "Forques",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "L'acte és una conferència sobre el tractat dels Pirineus, a càrrec de Laurence Gaillet, que se celebra en el marc de Les Arts Buissonniers a Forques. Es proposa entendre millor els fets que van redibuixar les fronteres i les conseqüències que encara són visibles avui. Ofereix una altra mirada sobre la història a través d'aquesta conferència.",
+    "descripcio_fr": "L'événement est une conférence sur le traité des Pyrénées, animée par Laurence Gaillet, qui se tient dans le cadre des Arts Buissonniers à Forques. Elle vise à mieux comprendre les événements qui ont redessiné les frontières et dont les conséquences sont encore visibles aujourd'hui. Elle offre un autre regard sur l'histoire à travers cette conférence.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678074/Aspres-fourques-conferencetraite_ocqjjt.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.723Z",
+    "periodicitat": ""
   }
 ]
