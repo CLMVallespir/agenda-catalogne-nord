@@ -4302,5 +4302,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.860Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-11-conferencia-debat-sobre",
+    "titol": "Conferència debat sobre el clima",
+    "data_inici": "2026-12-11",
+    "data_fi": "2026-12-11",
+    "hora": "18:30",
+    "lloc": "",
+    "municipi": "Vilamulaca",
+    "comarca": "Rosselló",
+    "categoria": "Conferència",
+    "descripcio_ca": "En el marc de la revisió del PCAET, es fan tres conferències-debats amb experts per reflexionar col·lectivament sobre accions a portar a terme en aquest pla. La primera, a la sala de festes d'Oms, tracta els efectes de les fortes calors sobre la salut, amb el doctor François Carbonnel; la segona, a la mediateca de Thuir, aborda els recursos hídrics per al futur, amb Caroline Figueres. La tercera, a la sala del Canigou de Vilamulaca, es dedica a la qualitat de l'aire, també amb el doctor François Carbonnel.",
+    "descripcio_fr": "Dans le cadre de la révision du PCAET, trois conférences-débats avec des experts sont organisées pour réfléchir collectivement aux actions à mener dans ce plan. La première, à la salle des fêtes d'Oms, traite des effets des fortes chaleurs sur la santé, avec le docteur François Carbonnel ; la deuxième, à la médiathèque de Thuir, porte sur les ressources en eau pour l'avenir, avec Caroline Figueres. La troisième, à la salle du Canigou de Vilamulaca, aborde la qualité de l'air, également avec le docteur François Carbonnel.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678281/Aspres-aspres-conferencedebatclimat_hrxctf.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.722Z",
+    "periodicitat": ""
   }
 ]
