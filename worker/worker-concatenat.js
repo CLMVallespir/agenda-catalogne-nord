@@ -7,43 +7,72 @@
 // correus que arriben a agenda@clm.cat.
 //
 //   Paquet   : postal-mime
-//   Versió   : 3.0.0  (publicada 2026-08-11)
+//   Versió   : 4.2.1  (publicada 2026-11-10)
 //   Autor    : Andris Reinman / Postal Systems
 //   Llicència: MIT-0  (sense obligació d'atribució; hi és per cortesia)
-//   Origen   : https://registry.npmjs.org/postal-mime/-/postal-mime-3.0.0.tgz
+//   Origen   : https://registry.npmjs.org/postal-mime/-/postal-mime-4.2.1.tgz
 //   sha256 del .tgz:
-//     f7dd7476ca1088b6c9a692528e04b502bde90f92a5cc108bcbf3831368ca1abb
+//     dad2b616bad1b49df28308446d4ce28bb8e377c07c469217721b692eeb750ae0
 //   Codi font: https://github.com/postalsys/postal-mime
+//   Substitueix la 3.0.0 (GHSA-f2hq-32vh-53cc, CPU quadràtica sobre un
+//   encapçalament RFC 2047; corregit a partir de la 4.0.8).
 //
 // COM S'HA FET (per si algun dia cal refer-ho amb una versió nova):
-// el paquet npm no porta cap fitxer únic ja empaquetat, només deu
-// mòduls ESM a `src/`. S'han concatenat aquests deu fitxers, en aquest
-// ordre, TAL COM SÓN:
-//     decode-strings.js, base64-encoder.js, html-entities.js,
-//     text-format.js, pass-through-decoder.js, base64-decoder.js,
-//     qp-decoder.js, mime-node.js, address-parser.js, postal-mime.js
-// L'ÚNIC canvi respecte de l'original: s'han esborrat les 14 línies
-// `import ... from './...'` (que ara sobren, perquè tot viu en un sol
-// fitxer) i s'ha tret la paraula `export` de les declaracions. Cap
-// línia de lògica no s'ha tocat. Es pot comprovar baixant el .tgz i
-// comparant.
+// des de la 4.x el paquet npm està escrit en TypeScript i publica els
+// mòduls ja compilats a `dist/esm/` (catorze fitxers amb codi; `types.js`
+// és buit). S'han concatenat aquests catorze fitxers, en l'ordre de
+// dependències:
+//     errors.js, decode-strings.js, base64-encoder.js, html-entities.js,
+//     chunk-writer.js, pass-through-decoder.js, base64-decoder.js,
+//     qp-decoder.js, boundary-stack.js, otp-token.js, text-format.js,
+//     mime-node.js, address-parser.js, postal-mime.js
+// CANVIS respecte de l'original, tots mecànics: s'han esborrat les
+// línies `import ... from './...'` (ara tot viu en un sol fitxer), les
+// línies `export { ... }` i `export default X;`, i s'ha tret la paraula
+// `export` de les declaracions; s'han esborrat els comentaris
+// `sourceMappingURL`. Cap línia de lògica no s'ha tocat. Cada mòdul
+// comença amb una línia `// --- nom.js ---`.
 //
 // SI CONCATENES AQUEST FITXER DINS worker.js (desplegament d'un sol
 // fitxer al tauler de Cloudflare): esborra només l'última línia del
 // fitxer, la de l'`export`, que hi ha marcada amb un comentari.
 // ============================================================
 
-// --- decode-strings.js ---------------------------------------------
+// --- errors.js ------------------------------------------------------
+// The error class each code is thrown as. An invalid option or input is a TypeError, as an
+// invalid option was before codes were added
+const ERROR_TYPES = {
+    EINVALIDOPTION: TypeError,
+    EINVALIDINPUT: TypeError,
+    EPARSERREUSED: Error,
+    EMAXNESTINGDEPTH: Error,
+    EMAXHEADERSIZE: Error,
+    EMAXPARTCOUNT: Error,
+    EMAXFORWARDEDADDRESSES: Error
+};
+/**
+ * Creates an error with a code
+ *
+ * @param code Error code
+ * @param message Error message
+ * @returns The error
+ */
+function createError(code, message) {
+    const error = new ERROR_TYPES[code](message);
+    error.code = code;
+    return error;
+}
+
+// --- decode-strings.js ----------------------------------------------
 const textEncoder = new TextEncoder();
-
+/** SP or HTAB, the only whitespace RFC 5322 and RFC 2045 give a meaning to in a line */
+const isWsp = (c) => c === 0x20 || c === 0x09;
 const base64Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-
 // Use a lookup table to find the index.
 const base64Lookup = new Uint8Array(256);
 for (let i = 0; i < base64Chars.length; i++) {
     base64Lookup[base64Chars.charCodeAt(i)] = i;
 }
-
 function decodeBase64(base64) {
     // Padding carries no data, so the byte count comes from the payload alone. Sizing the
     // buffer from the raw length instead treated '=' as a data character and left the
@@ -52,26 +81,20 @@ function decodeBase64(base64) {
     while (len > 0 && base64.charAt(len - 1) === '=') {
         len--;
     }
-
     // A remainder of one character cannot encode a byte, it is a truncated group
     if (len % 4 === 1) {
         len--;
     }
-
     const remainder = len % 4;
     const bufferLength = Math.floor(len / 4) * 3 + (remainder ? remainder - 1 : 0);
-
     const arrayBuffer = new ArrayBuffer(bufferLength);
     const bytes = new Uint8Array(arrayBuffer);
-
     let p = 0;
-
     for (let i = 0; i < len; i += 4) {
         let encoded1 = base64Lookup[base64.charCodeAt(i)];
         let encoded2 = base64Lookup[base64.charCodeAt(i + 1)];
         let encoded3 = base64Lookup[base64.charCodeAt(i + 2)];
         let encoded4 = base64Lookup[base64.charCodeAt(i + 3)];
-
         bytes[p++] = (encoded1 << 2) | (encoded2 >> 4);
         if (p < bufferLength) {
             bytes[p++] = ((encoded2 & 15) << 4) | (encoded3 >> 2);
@@ -80,10 +103,8 @@ function decodeBase64(base64) {
             bytes[p++] = ((encoded3 & 3) << 6) | (encoded4 & 63);
         }
     }
-
     return arrayBuffer;
 }
-
 // Charset labels the WHATWG Encoding Standard does not list, but that name an encoding
 // TextDecoder can decode. Without an entry the TextDecoder constructor throws and
 // getDecoder falls back to windows-1252, turning the body into mojibake with nothing to
@@ -97,14 +118,12 @@ const charsetAliases = new Map([
     // Hebrew. The logical and explicit ordering variants share the iso-8859-8 index.
     ['iso88598i', 'iso-8859-8'],
     ['iso88598e', 'iso-8859-8'],
-
     // Japanese. WHATWG shift_jis is the Windows-31J index, so cp932 text decodes
     // identically, including the NEC and IBM extension rows.
     ['shiftjis', 'shift_jis'],
     ['windows31j', 'shift_jis'],
     ['mskanji', 'shift_jis'],
     ['eucjp', 'euc-jp'],
-
     // ISO-2022-JP, including the -1 / -2 supersets. Escape sequences outside plain
     // ISO-2022-JP (JIS X 0212, the non-Japanese G2 sets, and the SO/SI katakana shifts
     // cp50222 uses) decode to replacement characters, but the Japanese text around them
@@ -113,15 +132,12 @@ const charsetAliases = new Map([
     ['iso2022jp1', 'iso-2022-jp'],
     ['iso2022jp2', 'iso-2022-jp'],
     ['junet', 'iso-2022-jp'],
-
     // Korean. The WHATWG euc-kr index is the extended cp949 / UHC index.
     ['euckr', 'euc-kr'],
     ['uhc', 'euc-kr'],
-
     // Thai.
     ['tis620', 'windows-874']
 ]);
-
 // Windows and IBM code page numbers, as written in labels like cp932, windows-932, ms932
 // or ibm932. An explicit allowlist rather than a derived one, because plenty of code
 // pages that appear in mail (cp437, cp850, cp1361) have no equivalent to map onto and
@@ -139,73 +155,385 @@ const codePageAliases = new Map([
     ['50221', 'iso-2022-jp'],
     ['50222', 'iso-2022-jp']
 ]);
-
 const codePagePattern = /^(?:cp|windows|ms|ibm)(\d+)$/;
-
 // Strip the decorations mail clients add to an otherwise standard label: an x- vendor
 // prefix, the IANA cs- prefix, and any separators.
 function normalizeCharset(charset) {
     return charset.replace(/^(?:x-ms-|x-|cs)/, '').replace(/[\s._-]+/g, '');
 }
-
-function tryDecoder(charset) {
-    try {
-        return new TextDecoder(charset);
-    } catch (err) {
-        return null;
-    }
-}
-
-function getDecoder(charset) {
+// Every label of the WHATWG Encoding Standard, https://encoding.spec.whatwg.org/encodings.json,
+// but for the UTF-16 family, which UTF16_LABELS resolves on its own.
+//
+// TextDecoder accepts these and nothing else, so a label outside the list is turned away
+// without constructing a decoder for it. Letting the constructor throw instead costs
+// several times the decode itself, and a message controls how often it happens: once
+// per encoded word, twice when the label also fails after normalization.
+const ENCODING_LABELS = new Set([
+    // UTF-8
+    'unicode-1-1-utf-8 unicode11utf8 unicode20utf8 utf-8 utf8 x-unicode20utf8',
+    // IBM866
+    '866 cp866 csibm866 ibm866',
+    // ISO-8859-2
+    'csisolatin2 iso-8859-2 iso-ir-101 iso8859-2 iso88592 iso_8859-2 iso_8859-2:1987 l2 latin2',
+    // ISO-8859-3
+    'csisolatin3 iso-8859-3 iso-ir-109 iso8859-3 iso88593 iso_8859-3 iso_8859-3:1988 l3 latin3',
+    // ISO-8859-4
+    'csisolatin4 iso-8859-4 iso-ir-110 iso8859-4 iso88594 iso_8859-4 iso_8859-4:1988 l4 latin4',
+    // ISO-8859-5
+    'csisolatincyrillic cyrillic iso-8859-5 iso-ir-144 iso8859-5 iso88595 iso_8859-5 iso_8859-5:1988',
+    // ISO-8859-6
+    'arabic asmo-708 csiso88596e csiso88596i csisolatinarabic ecma-114 iso-8859-6 iso-8859-6-e',
+    'iso-8859-6-i iso-ir-127 iso8859-6 iso88596 iso_8859-6 iso_8859-6:1987',
+    // ISO-8859-7
+    'csisolatingreek ecma-118 elot_928 greek greek8 iso-8859-7 iso-ir-126 iso8859-7 iso88597 iso_8859-7',
+    'iso_8859-7:1987 sun_eu_greek',
+    // ISO-8859-8
+    'csiso88598e csisolatinhebrew hebrew iso-8859-8 iso-8859-8-e iso-ir-138 iso8859-8 iso88598 iso_8859-8',
+    'iso_8859-8:1988 visual',
+    // ISO-8859-8-I
+    'csiso88598i iso-8859-8-i logical',
+    // ISO-8859-10
+    'csisolatin6 iso-8859-10 iso-ir-157 iso8859-10 iso885910 l6 latin6',
+    // ISO-8859-13
+    'iso-8859-13 iso8859-13 iso885913',
+    // ISO-8859-14
+    'iso-8859-14 iso8859-14 iso885914',
+    // ISO-8859-15
+    'csisolatin9 iso-8859-15 iso8859-15 iso885915 iso_8859-15 l9',
+    // ISO-8859-16
+    'iso-8859-16',
+    // KOI8-R
+    'cskoi8r koi koi8 koi8-r koi8_r',
+    // KOI8-U
+    'koi8-ru koi8-u',
+    // macintosh
+    'csmacintosh mac macintosh x-mac-roman',
+    // windows-874
+    'dos-874 iso-8859-11 iso8859-11 iso885911 tis-620 windows-874',
+    // windows-1250
+    'cp1250 windows-1250 x-cp1250',
+    // windows-1251
+    'cp1251 windows-1251 x-cp1251',
+    // windows-1252
+    'ansi_x3.4-1968 ascii cp1252 cp819 csisolatin1 ibm819 iso-8859-1 iso-ir-100 iso8859-1 iso88591',
+    'iso_8859-1 iso_8859-1:1987 l1 latin1 us-ascii windows-1252 x-cp1252',
+    // windows-1253
+    'cp1253 windows-1253 x-cp1253',
+    // windows-1254
+    'cp1254 csisolatin5 iso-8859-9 iso-ir-148 iso8859-9 iso88599 iso_8859-9 iso_8859-9:1989 l5 latin5',
+    'windows-1254 x-cp1254',
+    // windows-1255
+    'cp1255 windows-1255 x-cp1255',
+    // windows-1256
+    'cp1256 windows-1256 x-cp1256',
+    // windows-1257
+    'cp1257 windows-1257 x-cp1257',
+    // windows-1258
+    'cp1258 windows-1258 x-cp1258',
+    // x-mac-cyrillic
+    'x-mac-cyrillic x-mac-ukrainian',
+    // GBK
+    'chinese csgb2312 csiso58gb231280 gb2312 gb_2312 gb_2312-80 gbk iso-ir-58 x-gbk',
+    // gb18030
+    'gb18030',
+    // Big5
+    'big5 big5-hkscs cn-big5 csbig5 x-x-big5',
+    // EUC-JP
+    'cseucpkdfmtjapanese euc-jp x-euc-jp',
+    // ISO-2022-JP
+    'csiso2022jp iso-2022-jp',
+    // Shift_JIS
+    'csshiftjis ms932 ms_kanji shift-jis shift_jis sjis windows-31j x-sjis',
+    // EUC-KR
+    'cseuckr csksc56011987 euc-kr iso-ir-149 korean ks_c_5601-1987 ks_c_5601-1989 ksc5601 ksc_5601',
+    'windows-949',
+    // replacement
+    'csiso2022kr hz-gb-2312 iso-2022-cn iso-2022-cn-ext iso-2022-kr replacement',
+    // x-user-defined
+    'x-user-defined'
+]
+    .join(' ')
+    .split(' '));
+// The labels the Encoding Standard maps to the replacement encoding: ISO-2022-KR,
+// ISO-2022-CN and HZ-GB-2312, whose escape and shift sequences let the same bytes read as
+// text to one decoder and as markup to another. A browser decodes a document in any of
+// them to a single U+FFFD for that reason, and TextDecoder refuses to be constructed for
+// them. They used to fall through to the UTF-8 or windows-1252 reading, which is the
+// markup reading: a body of `ESC$)C SO <img onerror=…> SI` under charset=iso-2022-kr is
+// Hangul to Python and a scanner built on it, and was an image tag here.
+const REPLACEMENT_LABELS = new Set([
+    'csiso2022kr',
+    'hz-gb-2312',
+    'iso-2022-cn',
+    'iso-2022-cn-ext',
+    'iso-2022-kr',
+    'replacement'
+]);
+// The decoder of the replacement encoding: U+FFFD once there is a byte to replace
+const replacementDecoder = {
+    encoding: 'replacement',
+    decode: input => (input && input.byteLength ? '�' : '')
+};
+// The UTF-16 labels honoured and the label of the standard each stands for: the spellings
+// that Python and iconv-lite both decode, and nothing else. Matched as written only, never
+// after normalization: `x-utf16` is known to neither.
+//
+// A label that one of the two reads and the other does not is the split this table
+// exists to close: under it a scanner built on the other reads the bytes as single byte
+// text, NUL interleaved and inert, where they decoded to markup here. So the standard's
+// `unicode`, `csunicode`, `iso-10646-ucs-2`, `unicodefeff` and `unicodefffe`, which
+// neither knows, are out, and so are `ucs-2`, `ucs2`, `utf16le` and `utf16be`, which
+// iconv-lite alone knows (and `ucs-2` as little endian whatever mark the bytes carry).
+// They all fall back like any unknown label.
+const UTF16_LABELS = new Map([
+    ['utf-16', 'utf-16'],
+    ['utf16', 'utf-16'],
+    ['utf_16', 'utf-16'],
+    ['utf-16le', 'utf-16le'],
+    ['utf-16be', 'utf-16be']
+]);
+/**
+ * The label of the Encoding Standard a charset resolves to, as written or through the
+ * alias tables, or null when it names no encoding the standard lists
+ */
+function resolveLabel(charset) {
     charset = (charset || 'utf8').trim().toLowerCase();
-
-    // Try the label as written first, so the alias table only ever adds to what the
-    // runtime already supports instead of shadowing it.
-    const decoder = tryDecoder(charset);
-    if (decoder) {
-        return decoder;
+    // The label as written first, so the alias table only ever adds to what the standard
+    // lists instead of shadowing it
+    if (ENCODING_LABELS.has(charset)) {
+        return charset;
     }
-
+    const utf16 = UTF16_LABELS.get(charset);
+    if (utf16) {
+        return utf16;
+    }
     const normalized = normalizeCharset(charset);
     const codePage = normalized.match(codePagePattern);
-
     // The normalized label is itself the last candidate, which resolves everything that
-    // differed from a supported label only by a prefix or a separator, eg. x-big5.
+    // differed from a listed label only by a prefix or a separator, eg. x-big5.
     const alias = (codePage && codePageAliases.get(codePage[1])) || charsetAliases.get(normalized) || normalized;
-
-    return tryDecoder(alias) || new TextDecoder('windows-1252');
+    return ENCODING_LABELS.has(alias) ? alias : null;
 }
-
+// Decoders by label, or null where the runtime refuses the label (an encoding a runtime
+// was built without). Only labels from the list above are stored, so the map can not grow
+// past it however many labels a message makes up.
+//
+// Sharing a decoder is safe because nothing decodes with `stream: true`, so every
+// decode() call starts from a fresh state.
+const decoders = new Map();
+function tryDecoder(label) {
+    if (REPLACEMENT_LABELS.has(label)) {
+        return replacementDecoder;
+    }
+    let decoder = decoders.get(label);
+    if (decoder === undefined) {
+        decoder = null;
+        try {
+            decoder = new TextDecoder(label);
+        }
+        catch {
+            // not supported by this runtime
+        }
+        decoders.set(label, decoder);
+    }
+    return decoder;
+}
+// Every runtime has utf-8, so a decoder is always returned even where windows-1252 is
+// missing, rather than letting the caller fail on a null decoder
+const utf8Decoder = new TextDecoder();
+/**
+ * Finds the decoder for a charset label, or null when the runtime has no encoding for it
+ */
+function findDecoder(charset) {
+    const label = resolveLabel(charset);
+    return label ? tryDecoder(label) : null;
+}
+function getDecoder(charset) {
+    return findDecoder(charset) || tryDecoder('windows-1252') || utf8Decoder;
+}
+const UTF16_ENCODINGS = new Set(['utf-16le', 'utf-16be']);
+// The label of UTF-16 that leaves the byte order to the bytes, which a byte order mark
+// then decides, as it does for Python's utf-16 codec and for iconv-lite. The labels that
+// name the order, utf-16le and utf-16be, are read as they say whatever mark the bytes
+// carry, and no label honours a UTF-8 mark. The Encoding Standard lets any mark override
+// any label, but Python and mailparser do not, and following it here rendered as markup
+// under charset=utf-16be a body that a scanner built on either reads as CJK text.
+const UTF16_UNORDERED_LABELS = new Set(['utf-16']);
+/**
+ * The byte order a UTF-16 byte order mark at the start of the bytes names, or null without one
+ */
+function bomByteOrder(bytes) {
+    if (bytes[0] === 0xfe && bytes[1] === 0xff) {
+        return 'utf-16be';
+    }
+    if (bytes[0] === 0xff && bytes[1] === 0xfe) {
+        return 'utf-16le';
+    }
+    return null;
+}
+/**
+ * Whether the bytes are well formed UTF-8. A scan rather than a fatal TextDecoder, since
+ * the exception one throws costs more than the decode itself and a message decides how
+ * many lines throw it.
+ */
+function isUtf8(bytes) {
+    for (let i = 0; i < bytes.length;) {
+        const lead = bytes[i];
+        if (lead < 0x80) {
+            i++;
+            continue;
+        }
+        // The number of continuation bytes, and the range the first of them may take,
+        // which is what rules out overlong forms, surrogates and code points past U+10FFFF
+        let count;
+        if (lead >= 0xc2 && lead <= 0xdf) {
+            count = 1;
+        }
+        else if (lead >= 0xe0 && lead <= 0xef) {
+            count = 2;
+        }
+        else if (lead >= 0xf0 && lead <= 0xf4) {
+            count = 3;
+        }
+        else {
+            return false;
+        }
+        if (i + count >= bytes.length) {
+            return false;
+        }
+        const second = bytes[i + 1];
+        const min = lead === 0xe0 ? 0xa0 : lead === 0xf0 ? 0x90 : 0x80;
+        const max = lead === 0xed ? 0x9f : lead === 0xf4 ? 0x8f : 0xbf;
+        if (second < min || second > max) {
+            return false;
+        }
+        for (let k = 2; k <= count; k++) {
+            if ((bytes[i + k] & 0xc0) !== 0x80) {
+                return false;
+            }
+        }
+        i += count + 1;
+    }
+    return true;
+}
+/**
+ * Decodes bytes whose encoding is not known: as UTF-8 when they are well formed UTF-8, as
+ * windows-1252 otherwise.
+ *
+ * A message that declares no charset, or one the runtime has never heard of, usually
+ * predates RFC 6532 or comes from a generator that never heard of it either, and its 8-bit
+ * bytes are a legacy single byte encoding far more often than broken UTF-8. windows-1252
+ * is the fallback the WHATWG Encoding Standard prescribes and what a mail client's default
+ * charset amounts to, and it reads such text rather than filling it with replacement
+ * characters.
+ *
+ * @param bytes Bytes to decode
+ * @param utf8 The UTF-8 decoder to use, header lines bring one that keeps a BOM
+ * @return Decoded text
+ */
+function decodeUtf8OrWindows1252(bytes, utf8 = utf8Decoder) {
+    const view = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+    return isUtf8(view) ? utf8.decode(view) : getDecoder('windows-1252').decode(view);
+}
+/**
+ * Decodes bytes in a named charset. A label the runtime does not know is no charset at
+ * all, see decodeUtf8OrWindows1252.
+ *
+ * @param bytes Bytes to decode
+ * @param charset Charset label
+ * @return Decoded text
+ */
+function decodeCharset(bytes, charset) {
+    const view = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+    const label = resolveLabel(charset);
+    let decoder = label ? tryDecoder(label) : null;
+    if (label && UTF16_UNORDERED_LABELS.has(label)) {
+        // `utf-16` reads as little endian on its own, so a byte order mark decides the
+        // order. Read in the other order the bytes are swapped pairs of the characters
+        // every other reader got: FE FF and big endian text under charset=utf-16 was CJK
+        // text to Python and a browser, and here it was the little endian reading, which
+        // the sender picks to be markup.
+        const order = bomByteOrder(view);
+        decoder = (order && tryDecoder(order)) || decoder;
+    }
+    return decoder ? decoder.decode(view) : decodeUtf8OrWindows1252(view);
+}
+// The charset an html document names for itself, in a `<meta charset>` or in the
+// Content-Type `<meta http-equiv>`, read from the first 1024 bytes like a browser's prescan.
+// Tags are found with indexOf and the attribute is matched inside one tag at a time: a
+// single pattern over the whole head rescans it once for every `<meta` in it, and a head of
+// nothing but `<meta ` took it quadratic
+const META_PRESCAN_BYTES = 1024;
+const CHARSET_ATTRIBUTE = /charset\s*=\s*["']?\s*([^\s"';>]+)/;
+function sniffHtmlCharset(bytes) {
+    const head = utf8Decoder.decode(bytes.subarray(0, META_PRESCAN_BYTES)).toLowerCase();
+    let pos = 0;
+    while ((pos = head.indexOf('<meta', pos)) >= 0) {
+        let end = head.indexOf('>', pos);
+        if (end < 0) {
+            end = head.length;
+        }
+        const match = CHARSET_ATTRIBUTE.exec(head.slice(pos, end));
+        if (match) {
+            return match[1];
+        }
+        pos = end;
+    }
+    return null;
+}
+/**
+ * Decodes the bytes of a text part: in the declared charset, otherwise in the one an html
+ * part names for itself, otherwise as UTF-8 or windows-1252 depending on what the bytes
+ * turn out to be, see decodeUtf8OrWindows1252.
+ *
+ * @param bytes Decoded body of the part
+ * @param charset The charset parameter of the Content-Type, if any
+ * @param html Whether the part is html, which may name its own charset
+ * @return The text of the part
+ */
+function decodeText(bytes, charset, html) {
+    const view = new Uint8Array(bytes);
+    if (charset) {
+        return decodeCharset(view, charset);
+    }
+    // The HTML prescan has two overrides, and for a reason: a `<meta>` tag that could be
+    // read as ASCII proves the document is not UTF-16, so such a label is read as UTF-8,
+    // and x-user-defined is read as windows-1252. Without them a sender picks the encoding
+    // that turns bytes a scanner sees as inert into markup for this parser alone. A label
+    // of the replacement encoding is the replacement text, as it is for a browser, see
+    // tryDecoder
+    const sniffed = html ? sniffHtmlCharset(view) : null;
+    const decoder = sniffed ? findDecoder(sniffed) : null;
+    if (!decoder || UTF16_ENCODINGS.has(decoder.encoding)) {
+        return decodeUtf8OrWindows1252(view);
+    }
+    return (decoder.encoding === 'x-user-defined' ? getDecoder('windows-1252') : decoder).decode(view);
+}
 /**
  * Converts a Blob into an ArrayBuffer
- * @param {Blob} blob Blob to convert
- * @returns {ArrayBuffer} Converted value
+ * @param blob Blob to convert
+ * @returns Converted value
  */
 async function blobToArrayBuffer(blob) {
     if ('arrayBuffer' in blob) {
         return await blob.arrayBuffer();
     }
-
     const fr = new FileReader();
-
     return new Promise((resolve, reject) => {
-        fr.onload = function (e) {
-            resolve(e.target.result);
+        fr.onload = () => {
+            resolve(fr.result);
         };
-
-        fr.onerror = function (e) {
+        fr.onerror = () => {
             reject(fr.error);
         };
-
         fr.readAsArrayBuffer(blob);
     });
 }
-
 /**
  * Numeric value of an ASCII hex digit
  *
- * @param {Number} c Byte to read
- * @return {Number} Value 0-15, or -1 if the byte is not a hex digit
+ * @param c Byte to read
+ * @return Value 0-15, or -1 if the byte is not a hex digit
  */
 function hexNibble(c) {
     if (c >= 0x30 /* 0 */ && c <= 0x39 /* 9 */) {
@@ -219,16 +547,32 @@ function hexNibble(c) {
     }
     return -1;
 }
-
-function getHex(c) {
-    return hexNibble(c) < 0 ? false : String.fromCharCode(c);
+/**
+ * Folds the line breaks of a header value into spaces.
+ *
+ * A header value holds no line breaks. The raw value is folded when the headers are
+ * processed, see processHeaders in mime-node.ts, an RFC 2047 encoded word is folded as it
+ * is decoded, and an RFC 2231 filename is folded where the attachment is built. Otherwise a
+ * decoded name, subject or filename written into a header of an outgoing message by the
+ * consumer ends the header early and starts another one with the rest of the value.
+ *
+ * The RFC 2231 percent decoder itself does not fold: it also produces the boundary, and a
+ * boundary holding a line break can never match a line. That has to stay so, or a message
+ * that has no parts for every other parser would have them here.
+ *
+ * @param str Header value
+ * @return The value with every run of CR and LF replaced by a space
+ */
+function foldLineBreaks(str) {
+    return str.replace(/[\r\n]+/g, ' ');
 }
-
 /**
  * Decode a complete mime word encoded string
  *
- * @param {String} str Mime word encoded string
- * @return {String} Decoded unicode string
+ * @param charset Character set of the encoded word
+ * @param encoding `Q` or `B`
+ * @param str Mime word encoded string
+ * @return Decoded unicode string
  */
 function decodeWord(charset, encoding, str) {
     // RFC2231 added language tag to the encoding
@@ -236,20 +580,16 @@ function decodeWord(charset, encoding, str) {
     // this implementation silently ignores this tag
     let splitPos = charset.indexOf('*');
     if (splitPos >= 0) {
-        charset = charset.substr(0, splitPos);
+        charset = charset.slice(0, splitPos);
     }
-
     encoding = encoding.toUpperCase();
-
     let byteStr;
-
     if (encoding === 'Q') {
         str = str
             // remove spaces between = and hex char, this might indicate invalidly applied line splitting
             .replace(/=\s+([0-9a-fA-F])/g, '=$1')
             // convert all underscores to spaces
             .replace(/[_\s]/g, ' ');
-
         let buf = textEncoder.encode(str);
         let encodedBytes = [];
         for (let i = 0, len = buf.length; i < len; i++) {
@@ -270,38 +610,34 @@ function decodeWord(charset, encoding, str) {
         for (let i = 0, len = encodedBytes.length; i < len; i++) {
             dataView.setUint8(i, encodedBytes[i]);
         }
-    } else if (encoding === 'B') {
+    }
+    else if (encoding === 'B') {
         byteStr = decodeBase64(str.replace(/[^a-zA-Z0-9\+\/=]+/g, ''));
-    } else {
+    }
+    else {
         // keep as is, convert ArrayBuffer to unicode string, assume utf8
         byteStr = textEncoder.encode(str);
     }
-
-    return getDecoder(charset).decode(byteStr);
+    return foldLineBreaks(decodeCharset(byteStr, charset));
 }
-
 // A charset label runs to the next '?' so that labels containing punctuation, eg.
 // ISO_8859-1:1987, are recognised. Whitespace is excluded so a stray '=?' in running text
 // can not swallow the rest of the line.
 const ENCODED_WORD_PATTERN = '=\\?([^?\\s]+)\\?([QqBb])\\?([^?]*)\\?=';
 const ENCODED_WORD_REGEX = new RegExp(ENCODED_WORD_PATTERN, 'g');
-
 // Only linear whitespace separates encoded words, the rest is content
 const WORD_SEPARATOR_REGEX = /^[ \t\r\n]+$/;
-
 const ENCODED_WORDS_ONLY_REGEX = new RegExp(`^(?:${ENCODED_WORD_PATTERN}\\s*)+$`);
-
 /**
  * Checks whether a string is nothing but RFC 2047 encoded words. Kept next to the grammar
  * it depends on, so the pattern has a single definition.
  *
- * @param {String} str String to check
- * @return {Boolean} true if the string holds encoded words and nothing else
+ * @param str String to check
+ * @return true if the string holds encoded words and nothing else
  */
 function isEncodedWordsOnly(str) {
     return ENCODED_WORDS_ONLY_REGEX.test(str);
 }
-
 /**
  * Splits a string into encoded words and the literal text around them.
  *
@@ -309,17 +645,14 @@ function isEncodedWordsOnly(str) {
  * means the input can not contain the marker, which previously let a sender delete text
  * from a subject or a display name by writing the marker into the header themselves.
  *
- * @param {String} str String to split
- * @return {Array} Array of `{text}` and `{charset, encoding, encodedText}` tokens
+ * @param str String to split
+ * @return Array of `{text}` and `{charset, encoding, encodedText}` tokens
  */
 function splitEncodedWords(str) {
     const tokens = [];
-
     ENCODED_WORD_REGEX.lastIndex = 0;
-
     let pos = 0;
     let match;
-
     while ((match = ENCODED_WORD_REGEX.exec(str))) {
         if (match.index > pos) {
             tokens.push({ text: str.substring(pos, match.index) });
@@ -327,14 +660,11 @@ function splitEncodedWords(str) {
         tokens.push({ charset: match[1], encoding: match[2], encodedText: match[3] });
         pos = match.index + match[0].length;
     }
-
     if (pos < str.length) {
         tokens.push({ text: str.substring(pos) });
     }
-
     return tokens;
 }
-
 /**
  * Checks if two adjacent encoded words may be decoded as a single unit. A multi byte
  * character is often split across two words, so the bytes have to be concatenated before
@@ -343,32 +673,30 @@ function splitEncodedWords(str) {
  */
 function canJoinWords(left, right) {
     const encoding = left.encoding.toUpperCase();
-
     if (left.charset !== right.charset || encoding !== right.encoding.toUpperCase()) {
         return false;
     }
-
     if (encoding === 'B') {
-        return left.encodedText.length % 4 === 0 && !/=$/.test(left.encodedText);
+        // The length of a string built by concatenation is stored with it, but a regex or
+        // endsWith on it flattens everything joined so far first. Testing the growing text
+        // for a pad on every word made a subject of a hundred thousand short words cost
+        // seconds, so the pad is tracked as the words are appended instead.
+        return left.encodedText.length % 4 === 0 && !left.padded;
     }
-
     return true;
 }
-
 /**
  * Decodes a token list into a string, optionally merging adjacent encoded words.
  *
- * @param {Array} tokens Tokens from splitEncodedWords
- * @param {Boolean} joinWords Whether adjacent encoded words may be decoded as one unit
- * @return {String} Decoded string
+ * @param tokens Tokens from splitEncodedWords
+ * @param joinWords Whether adjacent encoded words may be decoded as one unit
+ * @return Decoded string
  */
 function renderTokens(tokens, joinWords) {
     let result = '';
     let pending = null;
-
     for (let i = 0; i < tokens.length; i++) {
         const token = tokens[i];
-
         if (token.text !== undefined) {
             // whitespace between two encoded words is a folding artifact, not content
             const nextToken = tokens[i + 1];
@@ -382,117 +710,117 @@ function renderTokens(tokens, joinWords) {
             result += token.text;
             continue;
         }
-
         if (pending && joinWords && canJoinWords(pending, token)) {
             pending.encodedText += token.encodedText;
+            pending.padded = token.encodedText.endsWith('=');
             continue;
         }
-
         if (pending) {
             result += decodeWord(pending.charset, pending.encoding, pending.encodedText);
         }
-        pending = { charset: token.charset, encoding: token.encoding, encodedText: token.encodedText };
+        pending = {
+            charset: token.charset,
+            encoding: token.encoding,
+            encodedText: token.encodedText,
+            padded: token.encodedText.endsWith('=')
+        };
     }
-
     if (pending) {
         result += decodeWord(pending.charset, pending.encoding, pending.encodedText);
     }
-
     return result;
 }
-
+/**
+ * Decodes RFC 2047 encoded words in a string
+ *
+ * @param str String that may contain encoded words
+ * @return Unicode string with every encoded word decoded
+ */
 function decodeWords(str) {
     const tokens = splitEncodedWords((str || '').toString());
-
     const result = renderTokens(tokens, true);
-
     // A replacement character means the bytes did not decode, which happens when two
     // words were joined that should have stayed apart. Retry keeping them separate.
     return result.indexOf('\ufffd') < 0 ? result : renderTokens(tokens, false);
 }
-
 function decodeURIComponentWithCharset(encodedStr, charset) {
     charset = charset || 'utf-8';
-
     let encodedBytes = [];
     for (let i = 0; i < encodedStr.length; i++) {
         let c = encodedStr.charAt(i);
-        if (c === '%' && /^[a-f0-9]{2}/i.test(encodedStr.substr(i + 1, 2))) {
+        // -1 past the end of the string as well, since charCodeAt returns NaN there
+        const high = c === '%' ? hexNibble(encodedStr.charCodeAt(i + 1)) : -1;
+        const low = high >= 0 ? hexNibble(encodedStr.charCodeAt(i + 2)) : -1;
+        if (low >= 0) {
             // encoded sequence
-            let byte = encodedStr.substr(i + 1, 2);
+            encodedBytes.push((high << 4) | low);
             i += 2;
-            encodedBytes.push(parseInt(byte, 16));
-        } else if (c.charCodeAt(0) > 126) {
-            c = textEncoder.encode(c);
-            for (let j = 0; j < c.length; j++) {
-                encodedBytes.push(c[j]);
+        }
+        else if (c.charCodeAt(0) > 126) {
+            const bytes = textEncoder.encode(c);
+            for (let j = 0; j < bytes.length; j++) {
+                encodedBytes.push(bytes[j]);
             }
-        } else {
+        }
+        else {
             // "normal" char
             encodedBytes.push(c.charCodeAt(0));
         }
     }
-
     const byteStr = new ArrayBuffer(encodedBytes.length);
     const dataView = new DataView(byteStr);
     for (let i = 0, len = encodedBytes.length; i < len; i++) {
         dataView.setUint8(i, encodedBytes[i]);
     }
-
-    return getDecoder(charset).decode(byteStr);
+    return decodeCharset(byteStr, charset);
 }
-
 function decodeParameterValueContinuations(header) {
     // handle parameter value continuations
     // https://tools.ietf.org/html/rfc2231#section-3
-
     // preprocess values
     let paramKeys = new Map();
-
     Object.keys(header.params).forEach(key => {
         let match = key.match(/\*((\d+)\*?)?$/);
         if (!match) {
             // nothing to do here, does not seem like a continuation param
             return;
         }
-
-        let actualKey = key.substr(0, match.index).toLowerCase();
+        let actualKey = key.slice(0, match.index).toLowerCase();
         let nr = Number(match[2]) || 0;
-
-        let paramVal;
-        if (!paramKeys.has(actualKey)) {
+        let paramVal = paramKeys.get(actualKey);
+        if (!paramVal) {
             paramVal = {
-                charset: false,
+                charset: null,
                 values: []
             };
             paramKeys.set(actualKey, paramVal);
-        } else {
-            paramVal = paramKeys.get(actualKey);
         }
-
         let value = header.params[key];
         // RFC 2231 section 4.1: only a section whose name ends in '*' is percent encoded.
         // A plain `name*0=` section is literal text, so decoding it invents characters
         // that never appeared on the wire, turning `a%2F..%2Fetc` into a path traversal.
         let encoded = match[0].charAt(match[0].length - 1) === '*';
-
         if (nr === 0 && encoded && (match = value.match(/^([^']*)'[^']*'(.*)$/))) {
             paramVal.charset = match[1] || 'utf-8';
             value = match[2];
         }
-
         paramVal.values.push({ nr, value, encoded });
-
         // remove the old reference
         delete header.params[key];
     });
-
     paramKeys.forEach((paramVal, key) => {
+        if (Object.prototype.hasOwnProperty.call(header.params, key)) {
+            // The same name was also given as a plain parameter, which the starred keys were
+            // just deleted from around, so this write would be the only one here to override a
+            // name already taken. `filename="plain"; filename*0="cont"` resolves to the plain
+            // parameter either way round, so the reading does not come down to which of the
+            // two spellings the sender put first. See storeParam in mime-node.ts
+            return;
+        }
         let result = '';
         // Adjacent encoded sections are decoded together, because a single multi byte
         // character may be percent encoded across a section boundary.
         let pending = '';
-
         for (let part of paramVal.values.sort((a, b) => a.nr - b.nr)) {
             if (part.encoded) {
                 pending += part.value;
@@ -504,22 +832,18 @@ function decodeParameterValueContinuations(header) {
             }
             result += part.value;
         }
-
         if (pending) {
             result += decodeURIComponentWithCharset(pending, paramVal.charset);
         }
-
         header.params[key] = result;
     });
 }
 
-// --- base64-encoder.js ---------------------------------------------
+// --- base64-encoder.js ----------------------------------------------
 // Code from: https://gist.githubusercontent.com/jonleighton/958841/raw/fb05a8632efb75d85d43deb593df04367ce48371/base64ArrayBuffer.js
-
 // Converts an ArrayBuffer directly to base64, without any intermediate 'convert to string then
 // use window.btoa' step. According to my tests, this appears to be a faster approach:
 // http://jsperf.com/encoding-xhr-image-data/5
-
 /*
 MIT LICENSE
 
@@ -531,60 +855,47 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
 function base64ArrayBuffer(arrayBuffer) {
-    var base64 = '';
-    var encodings = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-
-    var bytes = new Uint8Array(arrayBuffer);
-    var byteLength = bytes.byteLength;
-    var byteRemainder = byteLength % 3;
-    var mainLength = byteLength - byteRemainder;
-
-    var a, b, c, d;
-    var chunk;
-
+    let base64 = '';
+    const encodings = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+    const bytes = new Uint8Array(arrayBuffer);
+    const byteLength = bytes.byteLength;
+    const byteRemainder = byteLength % 3;
+    const mainLength = byteLength - byteRemainder;
+    let a, b, c, d;
+    let chunk;
     // Main loop deals with bytes in chunks of 3
-    for (var i = 0; i < mainLength; i = i + 3) {
+    for (let i = 0; i < mainLength; i = i + 3) {
         // Combine the three bytes into a single integer
         chunk = (bytes[i] << 16) | (bytes[i + 1] << 8) | bytes[i + 2];
-
         // Use bitmasks to extract 6-bit segments from the triplet
         a = (chunk & 16515072) >> 18; // 16515072 = (2^6 - 1) << 18
         b = (chunk & 258048) >> 12; // 258048   = (2^6 - 1) << 12
         c = (chunk & 4032) >> 6; // 4032     = (2^6 - 1) << 6
         d = chunk & 63; // 63       = 2^6 - 1
-
         // Convert the raw binary segments to the appropriate ASCII encoding
         base64 += encodings[a] + encodings[b] + encodings[c] + encodings[d];
     }
-
     // Deal with the remaining bytes and padding
-    if (byteRemainder == 1) {
+    if (byteRemainder === 1) {
         chunk = bytes[mainLength];
-
         a = (chunk & 252) >> 2; // 252 = (2^6 - 1) << 2
-
         // Set the 4 least significant bits to zero
         b = (chunk & 3) << 4; // 3   = 2^2 - 1
-
         base64 += encodings[a] + encodings[b] + '==';
-    } else if (byteRemainder == 2) {
+    }
+    else if (byteRemainder === 2) {
         chunk = (bytes[mainLength] << 8) | bytes[mainLength + 1];
-
         a = (chunk & 64512) >> 10; // 64512 = (2^6 - 1) << 10
         b = (chunk & 1008) >> 4; // 1008  = (2^6 - 1) << 4
-
         // Set the 2 least significant bits to zero
         c = (chunk & 15) << 2; // 15    = 2^4 - 1
-
         base64 += encodings[a] + encodings[b] + encodings[c] + '=';
     }
-
     return base64;
 }
 
-// --- html-entities.js ---------------------------------------------
+// --- html-entities.js -----------------------------------------------
 // Entity map from https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references
 const htmlEntities = {
     '&AElig': '\u00C6',
@@ -2820,102 +3131,840 @@ const htmlEntities = {
     '&zwnj;': '\u200C'
 };
 
-// --- text-format.js ---------------------------------------------
+// --- chunk-writer.js ------------------------------------------------
+/**
+ * Collects decoded content in fixed size chunks, so memory follows the number of bytes
+ * written rather than the number of writes. Decoders that write many short runs, such as
+ * a quoted-printable line or a base64 body that pads every line, would otherwise hold a
+ * buffer per run.
+ */
+class ChunkWriter {
+    constructor(maxChunkSize = 100 * 1024) {
+        this.maxChunkSize = maxChunkSize;
+        // allocated on the first write, a part with no content costs nothing
+        this.buffer = null;
+        this.bufferPos = 0;
+        this.chunks = [];
+    }
+    writeByte(byte) {
+        if (!this.buffer || this.bufferPos >= this.buffer.length) {
+            this.flush();
+            this.buffer ??= new Uint8Array(this.maxChunkSize);
+        }
+        this.buffer[this.bufferPos++] = byte;
+    }
+    // Copied in runs rather than a byte at a time
+    writeBytes(bytes, start = 0, end = bytes.length) {
+        while (start < end) {
+            if (!this.buffer || this.bufferPos >= this.buffer.length) {
+                this.flush();
+                this.buffer ??= new Uint8Array(this.maxChunkSize);
+            }
+            const count = Math.min(end - start, this.buffer.length - this.bufferPos);
+            this.buffer.set(bytes.subarray(start, start + count), this.bufferPos);
+            this.bufferPos += count;
+            start += count;
+        }
+    }
+    /**
+     * Keeps a buffer the caller hands over and will not touch again. A large one is kept as
+     * a chunk of its own instead of being copied, a small one is copied like any other write.
+     */
+    append(bytes) {
+        if (bytes.length >= this.maxChunkSize / 2) {
+            this.flush();
+            this.chunks.push(bytes);
+        }
+        else {
+            this.writeBytes(bytes);
+        }
+    }
+    flush() {
+        if (this.buffer && this.bufferPos) {
+            this.chunks.push(this.buffer.slice(0, this.bufferPos));
+            this.bufferPos = 0;
+        }
+    }
+    finalize() {
+        this.flush();
+        // convert an array of arraybuffers into a blob and then back into a single arraybuffer
+        return blobToArrayBuffer(new Blob(this.chunks, { type: 'application/octet-stream' }));
+    }
+}
+
+// --- pass-through-decoder.js ----------------------------------------
+// Hands the body through as it is, the line endings included.
+//
+// The line break is written when the next line arrives, not after each line. The CRLF in
+// front of a multipart boundary belongs to the boundary (RFC 2046 5.1.1), so the last line
+// of a part ended by a boundary must not carry one.
+//
+// The break written is the one the line came with. Writing LF for every line rewrote the
+// bytes of every 7bit, 8bit and binary part: an attached message lost each of its CR and a
+// binary attachment came out corrupted. Text is normalized to LF where it is read as text
+// instead, see MimeNode.getTextContent.
+//
+// The lines of a part, breaks included, are one contiguous range of the message, so the
+// decoder keeps the bounds of that range rather than a chunk per line: a Blob of two parts
+// per line took 60 times longer to assemble than one of a single part.
+class PassThroughDecoder {
+    constructor() {
+        this.chunks = [];
+        this.runBuffer = null;
+        this.runStart = 0;
+        this.runEnd = 0;
+        this.pendingLineBreak = null;
+    }
+    // Whether the bytes sit in the run's buffer right at the end of the run
+    continuesRun(bytes) {
+        return bytes.buffer === this.runBuffer && bytes.byteOffset === this.runEnd;
+    }
+    flushRun() {
+        if (this.runBuffer && this.runEnd > this.runStart) {
+            this.chunks.push(new Uint8Array(this.runBuffer, this.runStart, this.runEnd - this.runStart));
+        }
+        this.runBuffer = null;
+    }
+    update(line, lineBreak) {
+        const pending = this.pendingLineBreak;
+        if (pending &&
+            this.continuesRun(pending) &&
+            line.buffer === this.runBuffer &&
+            line.byteOffset === this.runEnd + pending.byteLength) {
+            // the break follows the run and the line follows the break, so the run grows
+            this.runEnd = line.byteOffset + line.byteLength;
+        }
+        else {
+            this.flushRun();
+            if (pending) {
+                this.chunks.push(pending);
+            }
+            this.runBuffer = line.buffer;
+            this.runStart = line.byteOffset;
+            this.runEnd = line.byteOffset + line.byteLength;
+        }
+        this.pendingLineBreak = lineBreak;
+    }
+    // A part ended by the end of the message has no boundary to own its final line
+    // break, so there it stays content
+    finalize(boundaryEnded = false) {
+        const pending = this.pendingLineBreak;
+        if (!boundaryEnded && pending) {
+            if (this.continuesRun(pending)) {
+                this.runEnd += pending.byteLength;
+            }
+            else {
+                this.flushRun();
+                this.chunks.push(pending);
+            }
+        }
+        this.flushRun();
+        // convert an array of arraybuffers into a blob and then back into a single arraybuffer
+        return blobToArrayBuffer(new Blob(this.chunks, { type: 'application/octet-stream' }));
+    }
+}
+
+// --- base64-decoder.js ----------------------------------------------
+class Base64Decoder {
+    constructor(opts) {
+        opts = opts || {};
+        this.decoder = opts.decoder || new TextDecoder();
+        this.maxChunkSize = 100 * 1024;
+        this.output = new ChunkWriter();
+        this.remainder = '';
+    }
+    pushChunk(base64Str) {
+        if (base64Str.length) {
+            this.output.append(new Uint8Array(decodeBase64(base64Str)));
+        }
+    }
+    flushRemainder() {
+        this.pushChunk(this.remainder);
+        this.remainder = '';
+    }
+    update(buffer) {
+        let str = this.decoder.decode(buffer).replace(/[^a-zA-Z0-9+/=]+/g, '');
+        // '=' terminates a base64 unit. Some mailers pad every line, and erasing the
+        // padding used to concatenate the units, which knocked everything after the first
+        // embedded pad out of 4 character alignment and decoded it to garbage.
+        //
+        // Each unit is flushed as soon as its '=' is found. A run of '=' flushes an empty
+        // remainder, which writes nothing.
+        let start = 0;
+        let end;
+        while ((end = str.indexOf('=', start)) >= 0) {
+            this.remainder += str.substring(start, end);
+            this.flushRemainder();
+            start = end + 1;
+        }
+        // the trailing piece is not followed by padding, so it stays open
+        this.remainder += str.substring(start);
+        if (this.remainder.length >= this.maxChunkSize) {
+            const alignedLength = Math.floor(this.remainder.length / 4) * 4;
+            this.pushChunk(this.remainder.substring(0, alignedLength));
+            this.remainder = this.remainder.substring(alignedLength);
+        }
+    }
+    finalize() {
+        this.flushRemainder();
+        return this.output.finalize();
+    }
+}
+
+// --- qp-decoder.js --------------------------------------------------
+const CHR_EQUALS = 0x3d;
+class QPDecoder {
+    constructor() {
+        this.output = new ChunkWriter();
+        this.pendingLineBreak = null;
+    }
+    writeLineBreak() {
+        if (this.pendingLineBreak) {
+            this.output.writeBytes(this.pendingLineBreak);
+        }
+    }
+    // Quoted-printable source is 7 bit by definition, so it is decoded byte by byte and
+    // the result is handed on as bytes. Running the body charset over the encoded source
+    // instead corrupted every part whose charset was not ASCII compatible: the same
+    // content that decoded correctly in base64 came out as mojibake in quoted-printable.
+    //
+    // As in PassThroughDecoder, a hard line break is only written once the next line
+    // arrives, so the CRLF that belongs to a following boundary is not decoded as content,
+    // and the break written is the one the line came with.
+    update(line, lineBreak) {
+        this.writeLineBreak();
+        let len = line.length;
+        // Trailing white space on an encoded line was added in transit and is deleted (RFC
+        // 2045 6.7 rule 3). Before the soft line break is looked for, since the `=` it
+        // consists of may have had white space appended the same way
+        while (len > 0 && isWsp(line[len - 1])) {
+            len--;
+        }
+        // a line ending in '=' is a soft line break, the newline is not part of the content
+        const softBreak = len > 0 && line[len - 1] === CHR_EQUALS;
+        if (softBreak) {
+            len--;
+        }
+        let literalStart = 0;
+        for (let i = 0; i < len; i++) {
+            if (line[i] !== CHR_EQUALS || i + 2 >= len) {
+                continue;
+            }
+            const high = hexNibble(line[i + 1]);
+            const low = hexNibble(line[i + 2]);
+            if (high < 0 || low < 0) {
+                // not a valid escape sequence, keep it as literal text
+                continue;
+            }
+            this.output.writeBytes(line, literalStart, i);
+            this.output.writeByte((high << 4) | low);
+            i += 2;
+            literalStart = i + 1;
+        }
+        this.output.writeBytes(line, literalStart, len);
+        this.pendingLineBreak = softBreak ? null : lineBreak;
+    }
+    // see PassThroughDecoder.finalize
+    finalize(boundaryEnded = false) {
+        if (!boundaryEnded) {
+            this.writeLineBreak();
+        }
+        return this.output.finalize();
+    }
+}
+
+// --- boundary-stack.js ----------------------------------------------
+// The line is decoded only to look it up. A boundary is ASCII (see MimeNode), and UTF-8
+// decodes ASCII bytes as themselves and any other byte to a non-ASCII character, so a line
+// that is not byte for byte a boundary never decodes to one. ignoreBOM keeps a leading
+// EF BB BF from being dropped, which would let `--<BOM>abc` read as `--abc`
+const keyDecoder = new TextDecoder('utf-8', { ignoreBOM: true });
+/**
+ * The boundaries of the open multipart parts, indexed by value.
+ *
+ * A line is looked up instead of being compared against every open boundary in turn. With a
+ * scan, a line sharing a long prefix with every boundary of a deeply nested message cost
+ * the nesting depth times that prefix to reject, so a message of n such lines cost depth
+ * times its size. A lookup costs the length of the line, whatever the depth.
+ */
+class BoundaryStack {
+    constructor() {
+        this.byValue = new Map();
+        this.byNode = new Map();
+        // how many open boundaries have each byte length, so that a line of a length no boundary
+        // can match is turned away before it is decoded. A boundary is ASCII, so its string
+        // length is its byte length
+        this.lengths = new Map();
+        this.nextOrder = 0;
+    }
+    get size() {
+        return this.byNode.size;
+    }
+    /** Registers the boundary of a multipart node, which must be ASCII and not end in whitespace */
+    push(value, node) {
+        const boundary = { value, node, order: this.nextOrder++ };
+        const list = this.byValue.get(value);
+        if (list) {
+            list.push(boundary);
+        }
+        else {
+            this.byValue.set(value, [boundary]);
+        }
+        this.byNode.set(node, boundary);
+        this.lengths.set(value.length, (this.lengths.get(value.length) || 0) + 1);
+    }
+    /** Removes the boundary of a node, if it registered one */
+    remove(node) {
+        const boundary = this.byNode.get(node);
+        if (!boundary) {
+            return;
+        }
+        this.byNode.delete(node);
+        const list = this.byValue.get(boundary.value);
+        if (list.length === 1) {
+            this.byValue.delete(boundary.value);
+        }
+        else {
+            list.splice(list.indexOf(boundary), 1);
+        }
+        const count = this.lengths.get(boundary.value.length) - 1;
+        if (count) {
+            this.lengths.set(boundary.value.length, count);
+        }
+        else {
+            this.lengths.delete(boundary.value.length);
+        }
+    }
+    /**
+     * Finds the boundary a line delimits or terminates: `--` and the boundary, optionally
+     * `--`, then optional whitespace (RFC 2046 5.1.1). When the line matches more than one
+     * open boundary, the outermost wins: a boundary may not appear inside the parts it
+     * delimits, and when a nested multipart declares the boundary of an ancestor anyway, or
+     * one that the ancestor's terminator matches, the ancestor's delimiter is the one every
+     * other parser reads the line as. Reading it as the nested one instead gave the nested
+     * multipart parts, and an attachment after the ancestor's terminator, that Python and
+     * Go leave in the epilogue.
+     */
+    match(line) {
+        if (!this.byNode.size || line.length <= 2 || line[0] !== 0x2d || line[1] !== 0x2d) {
+            return null;
+        }
+        // A boundary does not end in whitespace, so the trailing whitespace is never part of it
+        let end = line.length;
+        while (end > 2 && isWsp(line[end - 1])) {
+            end--;
+        }
+        const delimiter = this.find(line, end);
+        const terminator = end - 2 >= 2 && line[end - 1] === 0x2d && line[end - 2] === 0x2d ? this.find(line, end - 2) : null;
+        if (terminator && (!delimiter || terminator.order < delimiter.order)) {
+            return { node: terminator.node, isTerminator: true };
+        }
+        return delimiter ? { node: delimiter.node, isTerminator: false } : null;
+    }
+    // the outermost open boundary equal to line[2..end]
+    find(line, end) {
+        if (!this.lengths.has(end - 2)) {
+            return null;
+        }
+        const list = this.byValue.get(keyDecoder.decode(line.subarray(2, end)));
+        return list ? list[0] : null;
+    }
+}
+
+// --- otp-token.js ---------------------------------------------------
+// Parser for the OTP-Token header of draft-goto-otp-token-01, an Internet-Draft that expires
+// on 25 March 2027. By then check for a newer revision of the draft or a published RFC, the
+// header name and its parameters are still open questions in the draft.
+//
+// The header value is a structured field item (RFC 9651): a String holding the passcode,
+// with an `origin` parameter naming the origin the passcode is bound to. Unknown parameters
+// are ignored, but they still have to be valid, otherwise the whole field fails to parse.
+// RFC 9651 lets a parser limit the size of a field. A passcode and an origin take well under
+// a kilobyte, the limit keeps the regular expressions below away from megabyte inputs
+const MAX_FIELD_LENGTH = 8192;
+// The bare item syntax of RFC 9651 4.2.3.1, keyed by the first character of the item. An
+// Integer has at most 15 digits, a Decimal at most 12 before and 1 to 3 after the dot, and a
+// Date is an Integer. Whatever follows a match is left for the caller, which only accepts a
+// parameter separator or the end of the field, so a 16th digit or a 4th decimal fails there
+const NUMBER = /-?(?:\d{1,12}\.\d{1,3}|\d{1,15})/y;
+const STRING = /"((?:[\x20\x21\x23-\x5b\x5d-\x7e]|\\["\\])*)"/y;
+const TOKEN = /[A-Za-z*][!#$%&'*+\-.^_`|~0-9A-Za-z:/]*/y;
+const BYTE_SEQUENCE = /:[A-Za-z0-9+/=]*:/y;
+const BOOLEAN = /\?[01]/y;
+const DATE = /@-?\d{1,15}/y;
+const DISPLAY_STRING = /%"((?:[\x20\x21\x23\x24\x26-\x7e]|%[0-9a-f]{2})*)"/y;
+const KEY = /[a-z*][a-z0-9_\-.*]*/y;
+const SPACES = / */y;
+// Matches the sticky expression at the cursor and moves past it, returns null if it does not match
+function match(cursor, re) {
+    re.lastIndex = cursor.pos;
+    const result = re.exec(cursor.input);
+    if (result) {
+        cursor.pos = re.lastIndex;
+    }
+    return result;
+}
+// RFC 9651 4.2.5, returns the unescaped String or null if there is no valid String at the cursor
+function parseString(cursor) {
+    const result = match(cursor, STRING);
+    return result && result[1].replace(/\\(["\\])/g, '$1');
+}
+// RFC 9651 4.2.10. The percent encoded bytes must be valid UTF-8, which decodeURIComponent
+// checks as it decodes them
+function isDisplayString(cursor) {
+    const result = match(cursor, DISPLAY_STRING);
+    if (!result) {
+        return false;
+    }
+    try {
+        decodeURIComponent(result[1]);
+        return true;
+    }
+    catch {
+        return false;
+    }
+}
+// RFC 9651 4.2.3.1. Returns the value of a String, true for any other valid bare item and
+// false for an invalid one
+function parseBareItem(cursor) {
+    const c = cursor.input.charAt(cursor.pos);
+    switch (c) {
+        case '"':
+            return parseString(cursor) ?? false;
+        case ':':
+            return !!match(cursor, BYTE_SEQUENCE);
+        case '?':
+            return !!match(cursor, BOOLEAN);
+        case '@':
+            return !!match(cursor, DATE);
+        case '%':
+            return isDisplayString(cursor);
+    }
+    return !!match(cursor, c === '-' || (c >= '0' && c <= '9') ? NUMBER : TOKEN);
+}
+/**
+ * Parses a structured field item (RFC 9651 4.2 with field_type "item") whose bare item is a
+ * String. Returns the String and the String parameters, or null if the value does not parse
+ * or the bare item is of another type. A parameter of any other type is stored as true
+ * @internal
+ */
+function parseStringItem(value) {
+    const cursor = { input: value, pos: 0 };
+    match(cursor, SPACES);
+    const item = parseString(cursor);
+    if (item === null) {
+        return null;
+    }
+    // a later parameter with the same key replaces the earlier one
+    const params = new Map();
+    while (cursor.input[cursor.pos] === ';') {
+        cursor.pos++;
+        match(cursor, SPACES);
+        const key = match(cursor, KEY);
+        if (!key) {
+            return null;
+        }
+        let paramValue = true;
+        if (cursor.input[cursor.pos] === '=') {
+            cursor.pos++;
+            paramValue = parseBareItem(cursor);
+            if (paramValue === false) {
+                return null;
+            }
+        }
+        params.set(key[0], paramValue);
+    }
+    match(cursor, SPACES);
+    return cursor.pos === cursor.input.length ? { value: item, params } : null;
+}
+/**
+ * Checks that the origin is the canonical ASCII serialization of a potentially trustworthy
+ * origin, as the draft requires: https, or http on a loopback host
+ * @internal
+ */
+function isOtpOrigin(origin) {
+    let url;
+    try {
+        url = new URL(origin);
+    }
+    catch {
+        return false;
+    }
+    // the URL parser lowercases the host, converts it to punycode and drops the default port, so
+    // a value that is not canonical, or has a path, userinfo or an opaque origin, does not match
+    // its own origin. The WHATWG parser lets characters such as a quote or a brace into a host,
+    // which the origin grammar (RFC 6454) does not allow, so only a DNS name, an IPv4 address or a
+    // bracketed IPv6 address is accepted
+    if (url.origin !== origin || !/^([a-z0-9_-]+\.)*[a-z0-9_-]+$|^\[[0-9a-f:.]+\]$/.test(url.hostname)) {
+        return false;
+    }
+    const isLoopback = /^(localhost|.+\.localhost|127(\.\d+){3}|\[::1\])$/.test(url.hostname);
+    return url.protocol === 'https:' || (url.protocol === 'http:' && isLoopback);
+}
+/**
+ * Returns the one-time passcode from the OTP-Token header of a message, following the
+ * receiver steps of the draft (section 3.2), or undefined if the message has no valid one.
+ * Only the header of the message itself counts, the draft has an OTP-Token in a MIME part
+ * ignored, and more than one OTP-Token header makes the message have none
+ * @internal
+ */
+function getOtp(headers) {
+    let otpHeader;
+    for (const header of headers) {
+        if (header.key === 'otp-token') {
+            if (otpHeader) {
+                return undefined;
+            }
+            otpHeader = header;
+        }
+    }
+    if (!otpHeader || otpHeader.value.length > MAX_FIELD_LENGTH) {
+        return undefined;
+    }
+    // the header value is already unfolded, which the draft requires before the structured field parse
+    const parsed = parseStringItem(otpHeader.value);
+    const origin = parsed?.params.get('origin');
+    // an empty passcode is valid syntax, but there is nothing in it to fill in
+    if (!parsed?.value || typeof origin !== 'string' || !isOtpOrigin(origin)) {
+        return undefined;
+    }
+    return { code: parsed.value, origin };
+}
+
+// --- text-format.js -------------------------------------------------
+// What a numeric character reference to the C1 control range stands for, per the HTML
+// numeric character reference end state: the windows-1252 character at that byte. This is
+// how Outlook and Word write their curly quotes and dashes (`&#146;`, `&#150;`), and the
+// raw control character they decoded to otherwise is invisible in the text.
+const C1_ENTITY_REPLACEMENTS = new Map([
+    [0x80, 0x20ac],
+    [0x82, 0x201a],
+    [0x83, 0x0192],
+    [0x84, 0x201e],
+    [0x85, 0x2026],
+    [0x86, 0x2020],
+    [0x87, 0x2021],
+    [0x88, 0x02c6],
+    [0x89, 0x2030],
+    [0x8a, 0x0160],
+    [0x8b, 0x2039],
+    [0x8c, 0x0152],
+    [0x8e, 0x017d],
+    [0x91, 0x2018],
+    [0x92, 0x2019],
+    [0x93, 0x201c],
+    [0x94, 0x201d],
+    [0x95, 0x2022],
+    [0x96, 0x2013],
+    [0x97, 0x2014],
+    [0x98, 0x02dc],
+    [0x99, 0x2122],
+    [0x9a, 0x0161],
+    [0x9b, 0x203a],
+    [0x9c, 0x0153],
+    [0x9e, 0x017e],
+    [0x9f, 0x0178]
+]);
 function decodeHTMLEntities(str) {
     return str.replace(/&(#\d+|#x[a-f0-9]+|[a-z]+\d*);?/gi, (match, entity) => {
         if (typeof htmlEntities[match] === 'string') {
             return htmlEntities[match];
         }
-
         if (entity.charAt(0) !== '#' || match.charAt(match.length - 1) !== ';') {
             // keep as is, invalid or unknown sequence
             return match;
         }
-
         let codePoint;
-        if (entity.charAt(1) === 'x') {
-            // hex
-            codePoint = parseInt(entity.substr(2), 16);
-        } else {
-            // dec
-            codePoint = parseInt(entity.substr(1), 10);
+        // The pattern matches the marker in either case, so the test has to as well. Reading
+        // `&#X41;` as decimal gave NaN, which passes every range check below and comes out
+        // of String.fromCharCode as a NUL character
+        if (entity.charAt(1).toLowerCase() === 'x') {
+            codePoint = parseInt(entity.slice(2), 16);
         }
-
+        else {
+            codePoint = parseInt(entity.slice(1), 10);
+        }
         let output = '';
-
-        if ((codePoint >= 0xd800 && codePoint <= 0xdfff) || codePoint > 0x10ffff) {
-            // Invalid range, return a replacement character instead
-            return '\uFFFD';
+        // A NUL reference, a surrogate or a code point out of range is a replacement
+        // character, like in a browser. A NUL in particular would truncate the text in
+        // whatever reads it next
+        if (codePoint === 0 || (codePoint >= 0xd800 && codePoint <= 0xdfff) || codePoint > 0x10ffff) {
+            return '\ufffd';
         }
-
+        codePoint = C1_ENTITY_REPLACEMENTS.get(codePoint) ?? codePoint;
         if (codePoint > 0xffff) {
             codePoint -= 0x10000;
             output += String.fromCharCode(((codePoint >>> 10) & 0x3ff) | 0xd800);
             codePoint = 0xdc00 | (codePoint & 0x3ff);
         }
-
         output += String.fromCharCode(codePoint);
-
         return output;
     });
 }
-
+// two uppercase hex digits of a value below 256
+const hexByte = (value) => value.toString(16).toUpperCase().padStart(2, '0');
 function escapeHtml(str) {
-    return str.trim().replace(/[<>"'?&]/g, c => {
-        let hex = c.charCodeAt(0).toString(16);
-        if (hex.length < 2) {
-            hex = '0' + hex;
-        }
-        return '&#x' + hex.toUpperCase() + ';';
-    });
+    return str.trim().replace(/[<>"'?&]/g, c => '&#x' + hexByte(c.charCodeAt(0)) + ';');
 }
-
+// The characters an address may carry into a mailto URL as they are (RFC 6068 2:
+// unreserved and some-delims). Anything else is percent encoded: a `?` or `&` starts the
+// header fields of the URL, so `help@bank.example?cc=attacker@evil.example&body=…` given
+// as the address of a forwarded message opened a compose window with a Cc and a body the
+// sender chose once the link was clicked. Html escaping alone does not help, the browser
+// decodes the entities back before it reads the URL
+const MAILTO_UNSAFE = /[^A-Za-z0-9\-._~!$'()*+,;:@]+/g;
+// the percent encoded form of every byte, so that an encoded run allocates nothing per byte
+const PERCENT_ENCODED = Array.from({ length: 256 }, (_, byte) => '%' + hexByte(byte));
+// Each unsafe run is encoded whole and the result is built flat by replace. Appended one
+// character at a time it was a cons string of a node per character, which escapeHtml then
+// flattened: a long address of percent signs in a forwarded header held some sixty bytes
+// of heap per byte of it until then
+function encodeMailto(address) {
+    return address.replace(MAILTO_UNSAFE, run => Array.from(textEncoder.encode(run), byte => PERCENT_ENCODED[byte]).join(''));
+}
 function textToHtml(str) {
     let html = escapeHtml(str).replace(/\n/g, '<br />');
     return '<div>' + html + '</div>';
 }
-
+// htmlToText strips tags with regexes like `<br\b[^>]*>` and `<!--.*?-->`. Handed to
+// String#replace as they are, the engine tries every candidate in turn and a candidate
+// that does not close scans on to the next `>` or the end of the input before giving up,
+// so an html part holding many unclosed `<`, `<a ` or `<!--` took seconds to minutes to
+// convert. The helpers below give the same results in linear time. They run on text
+// without line terminators, see htmlToText, so `.` matches every character of it.
+/**
+ * Returns a function that finds the next match of a global regex at or after a position.
+ *
+ * Callers only ever ask about positions that move forward, so a match stays the answer
+ * until a position passes it, and no match stays the answer for good. That way every part
+ * of the string is scanned once, however many times it is asked about.
+ *
+ * @param str String to search
+ * @param regex Global regex to look for
+ * @return `pos => match` of the next match, or null if there is none
+ */
+function createFinder(str, regex) {
+    let searchedFrom = Infinity;
+    let found = null;
+    return pos => {
+        if (pos < searchedFrom || (found && pos > found.index)) {
+            regex.lastIndex = pos;
+            found = regex.exec(str);
+            searchedFrom = pos;
+        }
+        return found;
+    };
+}
+/**
+ * Runs `process` on the text up to and including the last `>` and appends the rest as is,
+ * for a pass whose every match ends at a `>`. The text after the last `>` can never match
+ * and is where a failing pattern rescans to the end from each candidate.
+ *
+ * @param str String to process
+ * @param process The pass to run
+ * @return Processed string
+ */
+function throughLastTag(str, process) {
+    const end = str.lastIndexOf('>') + 1;
+    return process(str.slice(0, end)) + str.slice(end);
+}
+/**
+ * `str.replace(pattern, replacement)` for a pattern shaped like `<tag\b[^>]*>`.
+ *
+ * Such a pattern only fails at a candidate that has no `>` after it, so the text after
+ * the last `>` can never match and is where every rescan happened. Leaving it out keeps
+ * the native replace, and its speed, for everything else.
+ *
+ * @param str String to process
+ * @param pattern Global regex that ends on the first `>` after its start
+ * @param replacement Replacement text
+ * @return Processed string
+ */
+function replaceClosedTags(str, pattern, replacement) {
+    return throughLastTag(str, head => head.replace(pattern, replacement));
+}
+/**
+ * `str.replace(pattern, replacement)` for a tag pattern that may fail even when a `>`
+ * follows, like `<a\b[^>]*href...>`, or that runs on past its `>`.
+ *
+ * A candidate with no `>` after it ends the search, since no later candidate can close
+ * either. A candidate that does not match skips every other candidate before the same
+ * `>`, since those see the same tag body and fail the same way.
+ *
+ * @param str String to process
+ * @param prefix Global regex for the start of a candidate, which can not contain `>`
+ * @param pattern The whole pattern as a sticky regex
+ * @param replacement Function given the match and its groups
+ * @return Processed string
+ */
+function replaceTags(str, prefix, pattern, replacement) {
+    const parts = [];
+    // everything before this index is already in parts
+    let copied = 0;
+    let searchFrom = 0;
+    while (true) {
+        prefix.lastIndex = searchFrom;
+        const candidate = prefix.exec(str);
+        if (!candidate) {
+            break;
+        }
+        const start = candidate.index;
+        // Looked up before the pattern runs. The engine finds out on its own that there is
+        // no `>` to close on, but only after it has retried the tail of the pattern at every
+        // `href` in the rest of the input and rescanned to the end each time, which made an
+        // html part of many unclosed `<a href` tags quadratic to convert
+        const gt = str.indexOf('>', start);
+        if (gt < 0) {
+            break;
+        }
+        pattern.lastIndex = start;
+        const match = pattern.exec(str);
+        if (!match) {
+            searchFrom = gt + 1;
+            continue;
+        }
+        parts.push(str.slice(copied, start), replacement(...match));
+        copied = searchFrom = start + match[0].length;
+    }
+    parts.push(str.slice(copied));
+    return parts.join('');
+}
+/**
+ * `str.replace(pattern, replacement)` for a pattern like `<!--.*?-->` or
+ * `<script\b[^>]*>.*?<\/script\b[^>]*>`, ie. an opener and a closer, either of which may
+ * continue with `[^>]*>`, and a lazy `.*?` between them. The engine rescans to the end of
+ * the input for every opener that is not closed.
+ *
+ * @param str String to process
+ * @param open Global regex for the opener
+ * @param openToGt Whether the opener continues with `[^>]*>`
+ * @param close Global regex for the closer
+ * @param closeToGt Whether the closer continues with `[^>]*>`
+ * @param replacement Replacement text
+ * @return Processed string
+ */
+function replaceBlocks(str, open, openToGt, close, closeToGt, replacement) {
+    const nextGt = createFinder(str, />/g);
+    const nextClose = createFinder(str, close);
+    const parts = [];
+    let copied = 0;
+    let searchFrom = 0;
+    while (true) {
+        open.lastIndex = searchFrom;
+        const opener = open.exec(str);
+        if (!opener) {
+            break;
+        }
+        const start = opener.index;
+        searchFrom = start + 1;
+        // where the lazy `.*?` starts
+        let from = start + opener[0].length;
+        if (openToGt) {
+            const gt = nextGt(from);
+            if (!gt) {
+                // neither this opener nor any later one can close
+                break;
+            }
+            from = gt.index + 1;
+        }
+        const closer = nextClose(from);
+        if (!closer) {
+            // no closer follows this opener, so none follows a later one either
+            break;
+        }
+        let end = closer.index + closer[0].length;
+        if (closeToGt) {
+            const gt = nextGt(end);
+            if (!gt) {
+                // this is the first closer after the opener, and any other one comes
+                // later, so none of them is followed by `>`
+                break;
+            }
+            end = gt.index + 1;
+        }
+        parts.push(str.slice(copied, start), replacement);
+        copied = searchFrom = end;
+    }
+    parts.push(str.slice(copied));
+    return parts.join('');
+}
+/**
+ * `str.replace(pattern, '')` for `^.*<tag\b[^>]*>`, ie. drops everything up to and
+ * including the last such tag.
+ *
+ * @param str String to process
+ * @param prefix Global regex for the start of the tag, which can not contain `>`
+ * @return Processed string
+ */
+function stripThroughLastTag(str, prefix) {
+    // `[^>]*>` needs a `>` after the tag
+    const limit = str.lastIndexOf('>');
+    let last = -1;
+    prefix.lastIndex = 0;
+    let match;
+    while ((match = prefix.exec(str)) && match.index < limit) {
+        last = match.index;
+    }
+    return last < 0 ? str : str.slice(str.indexOf('>', last) + 1);
+}
+/**
+ * `str.replace(pattern, '')` for `<tag\b[^>]*>.*$`, ie. drops the first such tag that is
+ * closed, and everything after it.
+ *
+ * @param str String to process
+ * @param prefix Global regex for the start of the tag, which can not contain `>`
+ * @return Processed string
+ */
+function stripFromFirstTag(str, prefix) {
+    prefix.lastIndex = 0;
+    const match = prefix.exec(str);
+    return match && match.index < str.lastIndexOf('>') ? str.slice(0, match.index) : str;
+}
 function htmlToText(str) {
+    // Tags are not processed across lines, so every line terminator, every character `.`
+    // does not match, becomes a placeholder first. Only `\r?\n` used to, and the patterns
+    // below do not cross the others either: `.*?` stops at a bare CR or a U+2028, so a
+    // script whose body held one was not removed as a block, its tags were stripped as
+    // tags and the script itself landed in the text, which a filter reading the text then
+    // took for content
+    str = str.replace(/\r\n|[\n\r\u2028\u2029]/g, '\u0001');
+    str = replaceBlocks(str, /<!--/g, false, /-->/g, false, ' ');
+    str = replaceClosedTags(str, /<br\b[^>]*>/gi, '\n');
+    str = replaceClosedTags(str, /<\/?(p|div|table|tr|td|th)\b[^>]*>/gi, '\n\n');
+    str = replaceBlocks(str, /<script\b/gi, true, /<\/script\b/gi, true, ' ');
+    // a stylesheet in the body is no text of the message either
+    str = replaceBlocks(str, /<style\b/gi, true, /<\/style\b/gi, true, ' ');
+    str = stripThroughLastTag(str, /<body\b/gi);
+    str = stripThroughLastTag(str, /<\/head\b/gi);
+    str = stripThroughLastTag(str, /<!doctype\b/gi);
+    str = stripFromFirstTag(str, /<\/body\b/gi);
+    str = stripFromFirstTag(str, /<\/html\b/gi);
+    // The href capture also matches `>`, so after a link a run with no whitespace or quote
+    // is taken to the end of the input and given back one character at a time, retrying
+    // `[^>]*>` to the end from each, which is quadratic when no `>` follows
+    str = throughLastTag(str, head => replaceTags(head, /<a\b/gi, /<a\b[^>]*href\s*=\s*["']?([^\s"']+)[^>]*>/iy, (match, href) => ` (${href}) `));
+    str = replaceClosedTags(str, /<\/?(span|em|i|strong|b|u|a)\b[^>]*>/gi, '');
+    // the whitespace after the tag may run on past the last `>`
+    str = replaceTags(str, /<li\b/gi, /<li\b[^>]*>[\n\u0001\s]*/iy, () => '* ');
+    str = replaceClosedTags(str, /<hr\b[^>]*>/g, '\n-------------\n');
+    str = replaceClosedTags(str, /<[^>]*>/g, ' ');
     str = str
-        // we can't process tags on multiple lines so remove newlines first
-        .replace(/\r?\n/g, '\u0001')
-        .replace(/<\!\-\-.*?\-\->/gi, ' ')
-
-        .replace(/<br\b[^>]*>/gi, '\n')
-        .replace(/<\/?(p|div|table|tr|td|th)\b[^>]*>/gi, '\n\n')
-        .replace(/<script\b[^>]*>.*?<\/script\b[^>]*>/gi, ' ')
-        .replace(/^.*<body\b[^>]*>/i, '')
-        .replace(/^.*<\/head\b[^>]*>/i, '')
-        .replace(/^.*<\!doctype\b[^>]*>/i, '')
-        .replace(/<\/body\b[^>]*>.*$/i, '')
-        .replace(/<\/html\b[^>]*>.*$/i, '')
-
-        .replace(/<a\b[^>]*href\s*=\s*["']?([^\s"']+)[^>]*>/gi, ' ($1) ')
-
-        .replace(/<\/?(span|em|i|strong|b|u|a)\b[^>]*>/gi, '')
-
-        .replace(/<li\b[^>]*>[\n\u0001\s]*/gi, '* ')
-
-        .replace(/<hr\b[^>]*>/g, '\n-------------\n')
-
-        .replace(/<[^>]*>/g, ' ')
-
         // convert linebreak placeholders back to newlines
         .replace(/\u0001/g, '\n')
-
         .replace(/[ \t]+/g, ' ')
-
         .replace(/^\s+$/gm, '')
-
         .replace(/\n\n+/g, '\n\n')
         .replace(/^\n+/, '\n')
         .replace(/\n+$/, '\n');
-
     str = decodeHTMLEntities(str);
-
     return str;
 }
-
+// The formatter the dates of forwarded headers are rendered with, created on first use.
+// One instance serves every date, a formatter is immutable. Constructing one per rendered
+// header held some 30 KB of ICU state outside the V8 heap for each, so a message of a few
+// thousand dated forwards took hundreds of megabytes that no heap limit saw, and several
+// times the time of the same message without the dates
+let dateFormatter = null;
 // A message date is not always a date. PostalMime keeps the raw header value when it does
 // not parse, and Intl.DateTimeFormat throws a RangeError on that, which used to reject the
 // whole parse of any message carrying a forwarded copy with a broken Date header.
@@ -2923,13 +3972,11 @@ function formatDate(date) {
     if (typeof Intl === 'undefined') {
         return date;
     }
-
     const parsed = new Date(date);
     if (isNaN(parsed.getTime())) {
         return date;
     }
-
-    return new Intl.DateTimeFormat('default', {
+    dateFormatter ??= new Intl.DateTimeFormat('default', {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
@@ -2937,82 +3984,61 @@ function formatDate(date) {
         minute: 'numeric',
         second: 'numeric',
         hour12: false
-    }).format(parsed);
+    });
+    return dateFormatter.format(parsed);
 }
-
 function formatTextAddress(address) {
-    return []
-        .concat(address.name || [])
-        .concat(address.name ? `<${address.address}>` : address.address)
-        .join(' ');
+    return (address.name ? [address.name, `<${address.address}>`] : [address.address]).join(' ');
 }
-
 function formatTextAddresses(addresses) {
     let parts = [];
-
     let processAddress = (address, partCounter) => {
         if (partCounter) {
             parts.push(', ');
         }
-
         if (address.group) {
             let groupStart = `${address.name}:`;
             let groupEnd = `;`;
-
             parts.push(groupStart);
             address.group.forEach(processAddress);
             parts.push(groupEnd);
-        } else {
+        }
+        else {
             parts.push(formatTextAddress(address));
         }
     };
-
     addresses.forEach(processAddress);
-
     return parts.join('');
 }
-
 function formatHtmlAddress(address) {
-    return `<a href="mailto:${escapeHtml(address.address)}" class="postal-email-address">${escapeHtml(address.name || `<${address.address}>`)}</a>`;
+    return `<a href="mailto:${escapeHtml(encodeMailto(address.address))}" class="postal-email-address">${escapeHtml(address.name || `<${address.address}>`)}</a>`;
 }
-
 function formatHtmlAddresses(addresses) {
     let parts = [];
-
     let processAddress = (address, partCounter) => {
         if (partCounter) {
             parts.push('<span class="postal-email-address-separator">, </span>');
         }
-
         if (address.group) {
             let groupStart = `<span class="postal-email-address-group">${escapeHtml(address.name)}:</span>`;
             let groupEnd = `<span class="postal-email-address-group">;</span>`;
-
             parts.push(groupStart);
             address.group.forEach(processAddress);
             parts.push(groupEnd);
-        } else {
+        }
+        else {
             parts.push(formatHtmlAddress(address));
         }
     };
-
     addresses.forEach(processAddress);
-
     return parts.join(' ');
 }
-
 function foldLines(str, lineLength, afterSpace) {
     str = (str || '').toString();
     lineLength = lineLength || 76;
-
-    let pos = 0,
-        len = str.length,
-        result = '',
-        line,
-        match;
-
+    let pos = 0, len = str.length, result = '', line, match;
     while (pos < len) {
-        line = str.substr(pos, lineLength);
+        line = str.slice(pos, pos + lineLength);
         if (line.length < lineLength) {
             result += line;
             break;
@@ -3022,54 +4048,44 @@ function foldLines(str, lineLength, afterSpace) {
             result += line;
             pos += line.length;
             continue;
-        } else if (
-            (match = line.match(/(\s+)[^\s]*$/)) &&
-            match[0].length - (afterSpace ? (match[1] || '').length : 0) < line.length
-        ) {
-            line = line.substr(0, line.length - (match[0].length - (afterSpace ? (match[1] || '').length : 0)));
-        } else if ((match = str.substr(pos + line.length).match(/^[^\s]+(\s*)/))) {
-            line = line + match[0].substr(0, match[0].length - (!afterSpace ? (match[1] || '').length : 0));
         }
-
+        else if ((match = line.match(/(\s+)[^\s]*$/)) &&
+            match[0].length - (afterSpace ? (match[1] || '').length : 0) < line.length) {
+            line = line.slice(0, line.length - (match[0].length - (afterSpace ? (match[1] || '').length : 0)));
+        }
+        else if ((match = str.slice(pos + line.length).match(/^[^\s]+(\s*)/))) {
+            line = line + match[0].slice(0, match[0].length - (!afterSpace ? (match[1] || '').length : 0));
+        }
         result += line;
         pos += line.length;
         if (pos < len) {
             result += '\r\n';
         }
     }
-
     return result;
 }
-
 function formatTextHeader(message) {
     let rows = [];
-
     if (message.from) {
         // through the plural formatter, because `From:` may hold RFC 5322 group syntax
         // and a group has no address of its own
         rows.push({ key: 'From', val: formatTextAddresses([message.from]) });
     }
-
     if (message.subject) {
         rows.push({ key: 'Subject', val: message.subject });
     }
-
     if (message.date) {
         rows.push({ key: 'Date', val: formatDate(message.date) });
     }
-
     if (message.to && message.to.length) {
         rows.push({ key: 'To', val: formatTextAddresses(message.to) });
     }
-
     if (message.cc && message.cc.length) {
         rows.push({ key: 'Cc', val: formatTextAddresses(message.cc) });
     }
-
     if (message.bcc && message.bcc.length) {
         rows.push({ key: 'Bcc', val: formatTextAddresses(message.bcc) });
     }
-
     // Align keys and values by adding space between these two
     // Also make sure that the separator line is as long as the longest line
     // Should end up with something like this:
@@ -3081,268 +4097,101 @@ function formatTextHeader(message) {
     To:      not@found.com
     -----------------------------
     */
-
     let maxKeyLength = rows
         .map(r => r.key.length)
         .reduce((acc, cur) => {
-            return cur > acc ? cur : acc;
-        }, 0);
-
-    rows = rows.flatMap(row => {
+        return cur > acc ? cur : acc;
+    }, 0);
+    const lines = rows.flatMap(row => {
         let sepLen = maxKeyLength - row.key.length;
         let prefix = `${row.key}: ${' '.repeat(sepLen)}`;
         let emptyPrefix = `${' '.repeat(row.key.length + 1)} ${' '.repeat(sepLen)}`;
-
         let foldedLines = foldLines(row.val, 80, true)
             .split(/\r?\n/)
             .map(line => line.trim());
-
         return foldedLines.map((line, i) => `${i ? emptyPrefix : prefix}${line}`);
     });
-
-    let maxLineLength = rows
+    let maxLineLength = lines
         .map(r => r.length)
         .reduce((acc, cur) => {
-            return cur > acc ? cur : acc;
-        }, 0);
-
+        return cur > acc ? cur : acc;
+    }, 0);
     let lineMarker = '-'.repeat(maxLineLength);
-
     let template = `
 ${lineMarker}
-${rows.join('\n')}
+${lines.join('\n')}
 ${lineMarker}
 `;
-
     return template;
 }
-
 function formatHtmlHeader(message) {
     let rows = [];
-
     if (message.from) {
         rows.push(
-            // through the plural formatter, because `From:` may hold RFC 5322 group syntax
-            // and a group has no address of its own
-            `<div class="postal-email-header-key">From</div><div class="postal-email-header-value">${formatHtmlAddresses([message.from])}</div>`
-        );
+        // through the plural formatter, because `From:` may hold RFC 5322 group syntax
+        // and a group has no address of its own
+        `<div class="postal-email-header-key">From</div><div class="postal-email-header-value">${formatHtmlAddresses([message.from])}</div>`);
     }
-
     if (message.subject) {
-        rows.push(
-            `<div class="postal-email-header-key">Subject</div><div class="postal-email-header-value postal-email-header-subject">${escapeHtml(
-                message.subject
-            )}</div>`
-        );
+        rows.push(`<div class="postal-email-header-key">Subject</div><div class="postal-email-header-value postal-email-header-subject">${escapeHtml(message.subject)}</div>`);
     }
-
     if (message.date) {
-        rows.push(
-            `<div class="postal-email-header-key">Date</div><div class="postal-email-header-value postal-email-header-date" data-date="${escapeHtml(
-                message.date
-            )}">${escapeHtml(formatDate(message.date))}</div>`
-        );
+        rows.push(`<div class="postal-email-header-key">Date</div><div class="postal-email-header-value postal-email-header-date" data-date="${escapeHtml(message.date)}">${escapeHtml(formatDate(message.date))}</div>`);
     }
-
     if (message.to && message.to.length) {
-        rows.push(
-            `<div class="postal-email-header-key">To</div><div class="postal-email-header-value">${formatHtmlAddresses(message.to)}</div>`
-        );
+        rows.push(`<div class="postal-email-header-key">To</div><div class="postal-email-header-value">${formatHtmlAddresses(message.to)}</div>`);
     }
-
     if (message.cc && message.cc.length) {
-        rows.push(
-            `<div class="postal-email-header-key">Cc</div><div class="postal-email-header-value">${formatHtmlAddresses(message.cc)}</div>`
-        );
+        rows.push(`<div class="postal-email-header-key">Cc</div><div class="postal-email-header-value">${formatHtmlAddresses(message.cc)}</div>`);
     }
-
     if (message.bcc && message.bcc.length) {
-        rows.push(
-            `<div class="postal-email-header-key">Bcc</div><div class="postal-email-header-value">${formatHtmlAddresses(message.bcc)}</div>`
-        );
+        rows.push(`<div class="postal-email-header-key">Bcc</div><div class="postal-email-header-value">${formatHtmlAddresses(message.bcc)}</div>`);
     }
-
-    let template = `<div class="postal-email-header">${rows.length ? '<div class="postal-email-header-row">' : ''}${rows.join(
-        '</div>\n<div class="postal-email-header-row">'
-    )}${rows.length ? '</div>' : ''}</div>`;
-
+    let template = `<div class="postal-email-header">${rows.length ? '<div class="postal-email-header-row">' : ''}${rows.join('</div>\n<div class="postal-email-header-row">')}${rows.length ? '</div>' : ''}</div>`;
     return template;
 }
 
-// --- pass-through-decoder.js ---------------------------------------------
-class PassThroughDecoder {
-    constructor() {
-        this.chunks = [];
-    }
-
-    update(line) {
-        this.chunks.push(line);
-        this.chunks.push('\n');
-    }
-
-    finalize() {
-        // convert an array of arraybuffers into a blob and then back into a single arraybuffer
-        return blobToArrayBuffer(new Blob(this.chunks, { type: 'application/octet-stream' }));
-    }
-}
-
-// --- base64-decoder.js ---------------------------------------------
-class Base64Decoder {
-    constructor(opts) {
-        opts = opts || {};
-
-        this.decoder = opts.decoder || new TextDecoder();
-
-        this.maxChunkSize = 100 * 1024;
-
-        this.chunks = [];
-
-        this.remainder = '';
-    }
-
-    pushChunk(base64Str) {
-        if (base64Str.length) {
-            this.chunks.push(decodeBase64(base64Str));
-        }
-    }
-
-    flushRemainder() {
-        this.pushChunk(this.remainder);
-        this.remainder = '';
-    }
-
-    update(buffer) {
-        let str = this.decoder.decode(buffer).replace(/[^a-zA-Z0-9+/=]+/g, '');
-
-        // '=' terminates a base64 unit. Some mailers pad every line, and erasing the
-        // padding used to concatenate the units, which knocked everything after the first
-        // embedded pad out of 4 character alignment and decoded it to garbage.
-        const units = str.split(/=+/);
-        for (let i = 0; i < units.length; i++) {
-            this.remainder += units[i];
-            // the trailing piece is not followed by padding, so it stays open
-            if (i < units.length - 1) {
-                this.flushRemainder();
-            }
-        }
-
-        if (this.remainder.length >= this.maxChunkSize) {
-            const alignedLength = Math.floor(this.remainder.length / 4) * 4;
-            this.pushChunk(this.remainder.substring(0, alignedLength));
-            this.remainder = this.remainder.substring(alignedLength);
-        }
-    }
-
-    finalize() {
-        this.flushRemainder();
-
-        return blobToArrayBuffer(new Blob(this.chunks, { type: 'application/octet-stream' }));
-    }
-}
-
-// --- qp-decoder.js ---------------------------------------------
-const CHR_EQUALS = 0x3d;
-const CHR_LF = 0x0a;
-
-class QPDecoder {
-    constructor() {
-        this.maxChunkSize = 100 * 1024;
-
-        this.buffer = new Uint8Array(this.maxChunkSize);
-        this.bufferPos = 0;
-
-        this.chunks = [];
-    }
-
-    writeByte(byte) {
-        if (this.bufferPos >= this.buffer.length) {
-            this.flushBuffer();
-        }
-        this.buffer[this.bufferPos++] = byte;
-    }
-
-    // Literal text is the bulk of a typical body, so it is copied in runs rather than a
-    // byte at a time
-    writeBytes(line, start, end) {
-        while (start < end) {
-            if (this.bufferPos >= this.buffer.length) {
-                this.flushBuffer();
-            }
-            const count = Math.min(end - start, this.buffer.length - this.bufferPos);
-            this.buffer.set(line.subarray(start, start + count), this.bufferPos);
-            this.bufferPos += count;
-            start += count;
-        }
-    }
-
-    flushBuffer() {
-        if (this.bufferPos) {
-            this.chunks.push(this.buffer.slice(0, this.bufferPos));
-            this.bufferPos = 0;
-        }
-    }
-
-    // Quoted-printable source is 7 bit by definition, so it is decoded byte by byte and
-    // the result is handed on as bytes. Running the body charset over the encoded source
-    // instead corrupted every part whose charset was not ASCII compatible: the same
-    // content that decoded correctly in base64 came out as mojibake in quoted-printable.
-    update(line) {
-        let len = line.length;
-
-        // a line ending in '=' is a soft line break, the newline is not part of the content
-        const softBreak = len > 0 && line[len - 1] === CHR_EQUALS;
-        if (softBreak) {
-            len--;
-        }
-
-        let literalStart = 0;
-        for (let i = 0; i < len; i++) {
-            if (line[i] !== CHR_EQUALS || i + 2 >= len) {
-                continue;
-            }
-
-            const high = hexNibble(line[i + 1]);
-            const low = hexNibble(line[i + 2]);
-            if (high < 0 || low < 0) {
-                // not a valid escape sequence, keep it as literal text
-                continue;
-            }
-
-            this.writeBytes(line, literalStart, i);
-            this.writeByte((high << 4) | low);
-            i += 2;
-            literalStart = i + 1;
-        }
-        this.writeBytes(line, literalStart, len);
-
-        if (!softBreak) {
-            this.writeByte(CHR_LF);
-        }
-    }
-
-    finalize() {
-        this.flushBuffer();
-
-        // convert an array of arraybuffers into a blob and then back into a single arraybuffer
-        return blobToArrayBuffer(new Blob(this.chunks, { type: 'application/octet-stream' }));
-    }
-}
-
-// --- mime-node.js ---------------------------------------------
+// --- mime-node.js ---------------------------------------------------
 // Header lines are decoded with ignoreBOM so that a U+FEFF at the start of a line is
 // kept as a character instead of being swallowed. A stripped BOM turns a line a strict
 // parser skips into a genuine header, which is how a second `From:` gets smuggled past
 // anything that inspects the raw message.
+//
+// Raw 8-bit header text is UTF-8 (RFC 6532), and a line that is not is legacy mail in a
+// single byte charset, read as windows-1252 rather than as replacement characters, see
+// decodeUtf8OrWindows1252.
 const headerDecoder = new TextDecoder('utf-8', { ignoreBOM: true });
-
-// Trims only the whitespace RFC 5322 allows around a field name. String.prototype.trim
-// also strips U+00A0, U+FEFF, U+2028 and the rest of the Unicode spaces, which turns a
-// line that a strict parser rejects into a canonical field name: ` From:` became a
-// `from` header, and since the first occurrence of a header wins it outranked the real
-// sender. Leaving the character in the key keeps the line visible without letting it
-// collide with a genuine header.
-const trimWsp = str => str.replace(/^[ \t]+|[ \t]+$/g, '');
-
+// number of pieces decodeFlowedText collects before joining them
+const FLOWED_JOIN_INTERVAL = 4096;
+// What a header line costs to hold, at the least. The decoded line, its entry in
+// rawHeaderLines and the parsed header come to a few hundred bytes for a line of one
+// byte, so two million such lines stayed inside maxHeadersSize while they held a few
+// hundred megabytes. Counting every line for at least this much keeps the memory in step
+// with the budget, 32768 lines at the default 2 MiB.
+const HEADER_LINE_MIN_COST = 64;
+// Trims the SP and HTAB around a field body, the only whitespace RFC 5322 reads as padding
+// there. String.prototype.trim also strips U+00A0, U+FEFF, U+2028 and the rest of the
+// Unicode spaces, which a raw UTF-8 header (RFC 6532) may carry as content.
+//
+// An index scan rather than `/^[ \t]+|[ \t]+$/g`, which retries the trailing branch at
+// every position of a blank run that is followed by other text, so a single header with
+// a long run of spaces in the middle took seconds to trim.
+const trimWsp = (str) => {
+    let start = 0;
+    let end = str.length;
+    while (start < end && isWsp(str.charCodeAt(start))) {
+        start++;
+    }
+    while (end > start && isWsp(str.charCodeAt(end - 1))) {
+        end--;
+    }
+    return str.slice(start, end);
+};
+// The start of a header field, the shape Python's header pattern reads: a field name of
+// printable ASCII other than the colon (RFC 5322 3.6.8 ftext), an empty one included, and
+// the colon itself, with the whitespace in between that processHeaders tolerates as well,
+// or the `From ` of an mbox separator line, which every reader lets through
+const FIELD_START = /^(?:From |[!-9;-~]*[ \t]*:)/;
 // Headers that decide how this part's body is read, see processHeaders
 const CONTENT_HEADERS = new Set([
     'content-type',
@@ -3351,108 +4200,100 @@ const CONTENT_HEADERS = new Set([
     'content-id',
     'content-description'
 ]);
-
 class MimeNode {
     constructor(options) {
-        this.options = options || {};
-
-        this.postalMime = this.options.postalMime;
-
+        this.options = options;
+        this.postalMime = options.postalMime;
+        // Counted across the whole message like the header size, nested message/rfc822
+        // parts included, so that neither a multipart nor a forward can carry the budget
+        // again for every part it declares
+        const limits = this.postalMime.limits;
+        this.postalMime.counters.partCount++;
+        if (this.postalMime.counters.partCount > limits.maxPartCount) {
+            throw createError('EMAXPARTCOUNT', `Maximum MIME part count of ${limits.maxPartCount} parts exceeded`);
+        }
         this.childNodes = [];
         // Cursor into childNodes for finalizeChildNodes. Every new part of a multipart
         // finalizes its parent's children, so re-walking the whole array each time is
         // quadratic in the number of parts.
         this.finalizedChildCount = 0;
-
-        if (this.options.parentNode) {
-            this.parentNode = this.options.parentNode;
-
+        if (options.parentNode) {
+            this.parentNode = options.parentNode;
             this.depth = this.parentNode.depth + 1;
-            if (this.depth > this.options.maxNestingDepth) {
-                throw new Error(`Maximum MIME nesting depth of ${this.options.maxNestingDepth} levels exceeded`);
+            if (this.depth > limits.maxNestingDepth) {
+                throw createError('EMAXNESTINGDEPTH', `Maximum MIME nesting depth of ${limits.maxNestingDepth} levels exceeded`);
             }
-
-            this.options.parentNode.childNodes.push(this);
-        } else {
+            options.parentNode.childNodes.push(this);
+        }
+        else {
             this.depth = 0;
         }
-
         this.state = 'header';
-
         this.headerLines = [];
-
         // RFC 2046 Section 5.1.5: multipart/digest defaults to message/rfc822
-        const parentMultipartType = this.options.parentMultipartType || null;
+        const parentMultipartType = options.parentMultipartType || null;
         const defaultContentType = parentMultipartType === 'digest' ? 'message/rfc822' : 'text/plain';
-
-        // Replaced by the first matching header, see the CONTENT_HEADERS pass in
-        // processHeaders
+        // The value is replaced by the first matching header and the rest is derived
+        // from it, see the CONTENT_HEADERS pass in processHeaders
         this.contentType = {
-            value: defaultContentType
+            value: defaultContentType,
+            parsed: { value: defaultContentType, params: {} },
+            multipart: false
         };
-
         this.contentTransferEncoding = {
-            value: '8bit'
+            value: '8bit',
+            encoding: ''
         };
-
         this.contentDisposition = {
-            value: ''
+            value: '',
+            parsed: { value: '', params: {} }
         };
-
         this.headers = [];
-
-        this.contentDecoder = false;
+        this.rawHeaderLines = [];
+        this.contentDecoder = null;
+        this.content = null;
     }
-
+    // `transferEncoding` is the lowercased token of the header, see processHeaders. It is
+    // matched whole: `x-base64` or `7bit-base64` is no encoding Python or mailparser
+    // decode, and decoding it here rendered as markup a body every other reader keeps as
+    // inert base64
     setupContentDecoder(transferEncoding) {
-        if (/base64/i.test(transferEncoding)) {
+        if (transferEncoding === 'base64') {
             this.contentDecoder = new Base64Decoder();
-        } else if (/quoted-printable/i.test(transferEncoding)) {
+        }
+        else if (transferEncoding === 'quoted-printable') {
             this.contentDecoder = new QPDecoder();
-        } else {
+        }
+        else {
             this.contentDecoder = new PassThroughDecoder();
         }
     }
-
-    async finalize() {
+    // `boundaryEnded` tells that the part was ended by a multipart boundary, which owns
+    // the line break after the last line of the part (RFC 2046 5.1.1)
+    async finalize(boundaryEnded = false) {
         if (this.state === 'finished') {
             return;
         }
-
         if (this.state === 'header') {
-            this.processHeaders();
+            this.endHeaders();
         }
-
         // remove self from boundary listing
-        let boundaries = this.postalMime.boundaries;
-        for (let i = boundaries.length - 1; i >= 0; i--) {
-            let boundary = boundaries[i];
-            if (boundary.node === this) {
-                boundaries.splice(i, 1);
-                break;
-            }
-        }
-
-        await this.finalizeChildNodes();
-
-        this.content = this.contentDecoder ? await this.contentDecoder.finalize() : null;
-
+        this.postalMime.boundaries.remove(this);
+        await this.finalizeChildNodes(boundaryEnded);
+        this.content = this.contentDecoder ? await this.contentDecoder.finalize(boundaryEnded) : null;
         // The decoder buffers every body line it received, so keeping it around
         // retains a second copy of the content for the lifetime of the node.
         // Nothing reads it once the node is finished, so release it here.
-        this.contentDecoder = false;
-
+        this.contentDecoder = null;
         this.state = 'finished';
     }
-
-    async finalizeChildNodes() {
+    async finalizeChildNodes(boundaryEnded = false) {
         // Children are only ever appended, so everything before the cursor is already
         // finished and re-visiting it only costs time.
         while (this.finalizedChildCount < this.childNodes.length) {
-            await this.childNodes[this.finalizedChildCount++].finalize();
+            await this.childNodes[this.finalizedChildCount++].finalize(boundaryEnded);
         }
     }
-
     // Strip RFC 822 comments (parenthesized text) from structured header values.
     //
     // Inside an unquoted parameter value a parenthesis that continues the current token is
@@ -3467,86 +4308,88 @@ class MimeNode {
         let commentStart = -1;
         // A parameter value starts at `=` and ends at the `;` that begins the next one
         let inParameterValue = false;
-
+        // The characters kept are copied into the result as runs, a run ending at the
+        // next character dropped. Appended one at a time they made a cons string of a
+        // node per character, tens of megabytes of pointer chasing for the collector on a
+        // header of a megabyte, and the parse grew faster than the header did
+        let runStart = 0;
+        const drop = (i) => {
+            result += str.slice(runStart, i);
+            runStart = i + 1;
+        };
+        // Whether anything has been kept, and whether the last character kept is SP or
+        // HTAB. Kept up to date on every character, because testing `/[ \t]$/` against the
+        // result flattens the whole string on each `(` and is quadratic in the length of
+        // the header.
+        let keptAny = false;
+        let endsWithWsp = false;
+        const keep = (i) => {
+            keptAny = true;
+            endsWithWsp = isWsp(str.charCodeAt(i));
+        };
         // A comment may only appear where linear whitespace is allowed, so inside a
         // parameter value the parenthesis has to follow whitespace to open one. Outside
         // one, eg. after the type itself, anything goes.
-        const opensComment = () => !inParameterValue || !result.length || /[ \t]$/.test(result);
-
+        const opensComment = () => !inParameterValue || !keptAny || endsWithWsp;
         for (let i = 0; i < str.length; i++) {
             const chr = str.charAt(i);
-
             if (escaped) {
-                if (depth === 0) {
-                    result += chr;
-                }
                 escaped = false;
-                continue;
             }
-
-            if (chr === '\\') {
+            else if (chr === '\\') {
                 escaped = true;
-                if (depth === 0) {
-                    result += chr;
-                }
-                continue;
             }
-
-            if (chr === '"' && depth === 0) {
+            else if (chr === '"' && depth === 0) {
                 inQuote = !inQuote;
-                result += chr;
-                continue;
             }
-
-            if (!inQuote) {
+            else if (!inQuote) {
                 if (chr === '(' && opensComment()) {
                     if (depth === 0) {
                         commentStart = i;
                     }
                     depth++;
+                    drop(i);
                     continue;
                 }
                 if (chr === ')' && depth > 0) {
                     depth--;
+                    drop(i);
                     continue;
                 }
                 if (depth === 0) {
                     if (chr === '=') {
                         inParameterValue = true;
-                    } else if (chr === ';') {
+                    }
+                    else if (chr === ';') {
                         inParameterValue = false;
                     }
                 }
             }
-
             if (depth === 0) {
-                result += chr;
+                keep(i);
+            }
+            else {
+                drop(i);
             }
         }
-
         if (depth === 0) {
-            return result;
+            return result + str.slice(runStart);
         }
-
         // An unbalanced `(` is not a comment. Dropping everything after it would take any
         // parameter that follows with it, including the boundary that holds the message
         // together, so the dangling text is only discarded when nothing follows it.
-        return str.indexOf(';', commentStart) < 0 ? result : str;
+        return str.indexOf(';', commentStart) < 0 ? result + str.slice(runStart) : str;
     }
-
     parseStructuredHeader(str) {
         // Strip RFC 822 comments before parsing
         str = this.stripComments(str);
-
         let response = {
-            value: false,
+            value: '',
             params: {}
         };
-
         let key = false;
         let value = '';
         let stage = 'value';
-
         // Whitespace seen outside a quoted string is held back until a significant
         // character follows it, so surrounding whitespace can be dropped without
         // trimming spaces the sender quoted on purpose. Trimming the stored value
@@ -3554,19 +4397,34 @@ class MimeNode {
         // next continuation section is meant to be appended to.
         let pendingSpace = '';
         let quoteClosed = false;
-
         let quote = false;
         let escaped = false;
         let chr;
-
-        const addChr = c => {
+        // Whitespace ahead of the first character of a value is padding and is dropped, the
+        // whitespace between two characters of it is content
+        const flushSpace = () => {
             if (value.length) {
                 value += pendingSpace;
             }
             pendingSpace = '';
-            value += c;
         };
-
+        // The characters of the value are copied as runs, see stripComments. A run is the
+        // characters from runStart on, none is open while it is -1, and it is closed by
+        // whatever is not a character of the value
+        let runStart = -1;
+        const closeRun = (end) => {
+            if (runStart >= 0) {
+                value += str.slice(runStart, end);
+                runStart = -1;
+            }
+        };
+        // the character at i is part of the value
+        const addChr = (i) => {
+            if (runStart < 0) {
+                flushSpace();
+                runStart = i;
+            }
+        };
         const takeValue = () => {
             const result = value;
             value = '';
@@ -3574,149 +4432,200 @@ class MimeNode {
             quoteClosed = false;
             return result;
         };
-
         // A duplicated parameter resolves to its first occurrence, matching how duplicated
         // headers are resolved. Letting the last one win means `boundary="b"; boundary="c"`
         // registers a boundary that no delimiter in the message matches, which drops the
         // body without an error. hasOwnProperty, because a parameter may be named
-        // `constructor` or `toString`.
+        // `constructor` or `toString`. A name is a token and a token is never empty, so the
+        // nameless parameter of `text/plain; =v` names nothing and is dropped.
         const storeParam = (name, result) => {
-            if (!Object.prototype.hasOwnProperty.call(response.params, name)) {
+            if (name && !Object.prototype.hasOwnProperty.call(response.params, name)) {
                 response.params[name] = result;
             }
         };
-
         const storeValue = () => {
             const result = takeValue();
             if (key === false) {
                 response.value = result;
-            } else {
+            }
+            else {
                 storeParam(key, result);
             }
         };
-
         // A parameter name with no `=` is a valueless parameter, not the start of the
         // next one. Without this the name would keep growing across the `;` and swallow
         // whatever followed, which is how `x=1; flag; boundary="AAA"` loses its boundary.
         const storeEmptyKey = () => {
-            const name = takeValue().trim();
-            if (name) {
-                storeParam(name.toLowerCase(), '');
-            }
+            storeParam(takeValue().trim().toLowerCase(), '');
         };
-
         for (let i = 0, len = str.length; i < len; i++) {
             chr = str.charAt(i);
             switch (stage) {
                 case 'key':
                     if (chr === '=') {
+                        closeRun(i);
                         key = takeValue().trim().toLowerCase();
                         stage = 'value';
                         break;
                     }
                     if (chr === ';') {
+                        closeRun(i);
                         storeEmptyKey();
                         break;
                     }
-                    value += chr;
+                    if (runStart < 0) {
+                        runStart = i;
+                    }
                     break;
                 case 'value':
+                    if (quoteClosed && chr !== ';') {
+                        // Nothing behind a closed quoted string reaches the value. RFC 2045
+                        // says a parameter value is a token or a quoted string, not both, so
+                        // what follows one is junk and only the `;` that ends the parameter
+                        // still counts. Tested ahead of the branches rather than beside the
+                        // append at the foot of them, where each branch above was a way
+                        // around it. A second `"` reopened quoting, which both carried the
+                        // whitespace in front of it into the value and took the `;` along, so
+                        // `boundary="AAA" "; boundary=BBB"` registered a boundary of `AAA `
+                        // that no delimiter matches and the whole body was dropped without an
+                        // error; the escape branch appended arbitrary characters the same way.
+                        // quoteClosed is only ever set while no quote is open, and this is
+                        // what keeps one from being opened afterwards.
+                        escaped = false;
+                        break;
+                    }
                     if (escaped) {
-                        addChr(chr);
-                    } else if (quote && chr === '\\') {
+                        addChr(i);
+                    }
+                    else if (quote && chr === '\\') {
                         // backslash only escapes inside a quoted string, everywhere else
                         // it is an ordinary character. Treating it as an escape turns
                         // `filename=C:\Users\me\a.txt` into `C:Usersmea.txt`.
+                        closeRun(i);
                         escaped = true;
                         continue;
-                    } else if (quote && chr === quote) {
+                    }
+                    else if (quote && chr === quote) {
+                        closeRun(i);
                         quote = false;
                         quoteClosed = true;
-                    } else if (!quote && chr === '"') {
+                    }
+                    else if (!quote && chr === '"') {
+                        closeRun(i);
                         quote = chr;
-                        // whitespace before a quote that opens the value is padding, but
-                        // between a token and a quoted string it is content
-                        if (value.length) {
-                            value += pendingSpace;
-                        }
-                        pendingSpace = '';
-                    } else if (!quote && chr === ';') {
+                        flushSpace();
+                    }
+                    else if (!quote && chr === ';') {
+                        closeRun(i);
                         storeValue();
                         stage = 'key';
-                    } else if (!quote && (chr === ' ' || chr === '\t')) {
-                        pendingSpace += chr;
-                    } else if (!quoteClosed) {
-                        addChr(chr);
                     }
-                    // Anything else is trailing junk after a closed quoted string. RFC 2045
-                    // says a parameter value is a token or a quoted string, not both, and
-                    // appending the junk is how `boundary="AAA" (unterminated comment`
-                    // turned into a boundary that no delimiter in the message matches.
+                    else if (!quote && (chr === ' ' || chr === '\t')) {
+                        closeRun(i);
+                        pendingSpace += chr;
+                    }
+                    else {
+                        addChr(i);
+                    }
                     escaped = false;
                     break;
             }
         }
-
+        closeRun(str.length);
         // finalize remainder
         if (stage === 'value') {
             storeValue();
-        } else {
+        }
+        else {
             // treat as key without value, see emptykey:
             // Header-Key: somevalue; key=value; emptykey
             storeEmptyKey();
         }
-
         if (response.value) {
             response.value = response.value.toLowerCase();
         }
-
         // convert Parameter Value Continuations into single strings
         decodeParameterValueContinuations(response);
-
         return response;
     }
-
+    // Unfolds format=flowed text (RFC 3676 4.1). A line is read as its quote marks, one
+    // space of stuffing and its content, in that order, and a line whose content ends in a
+    // space is flowed: the next line of the same quote depth continues its paragraph. The
+    // paragraph ends at a fixed line, at a change of quote depth and at the signature
+    // separator, which is neither flowed nor fixed. Joining a quoted paragraph used to
+    // leave the quote marks of the continuation lines inside the text, so a quoted reply
+    // read `> one > two` instead of `> one two`.
+    //
+    // The quote marks and stuffing of the first line of a paragraph are kept as they were
+    // written, so a fixed quoted line comes out exactly as it went in. An unquoted stuffed
+    // line loses its stuffing, which is all the stuffing is for.
     decodeFlowedText(str, delSp) {
-        return (
-            str
-                .split(/\r?\n/)
-                // remove whitespace stuffing before anything else
-                // http://tools.ietf.org/html/rfc3676#section-4.4
-                // doing it after the join leaves the stuffed space of a continuation line
-                // sitting in the middle of the joined paragraph
-                .map(line => (line.charAt(0) === ' ' ? line.slice(1) : line))
-                // remove soft linebreaks
-                // soft linebreaks are added after space symbols
-                .reduce((previousValue, currentValue) => {
-                    if (previousValue.endsWith(' ') && previousValue !== '-- ' && !previousValue.endsWith('\n-- ')) {
-                        if (delSp) {
-                            // delsp adds space to text to be able to fold it
-                            // these spaces can be removed once the text is unfolded
-                            return previousValue.slice(0, -1) + currentValue;
-                        } else {
-                            return previousValue + currentValue;
-                        }
-                    } else {
-                        return previousValue + '\n' + currentValue;
-                    }
-                })
-        );
+        // Pieces of the result. Growing a single string instead flattens the whole
+        // paragraph again on each line, which is quadratic in the length of a paragraph.
+        // `parts` holds an entry or two per line, so it is joined into `chunks` every few
+        // thousand entries to keep memory following the length of the text rather than
+        // the number of lines. Its last entry stays behind, since delsp trims it when
+        // the next line continues the paragraph.
+        const chunks = [];
+        let parts = [];
+        // whether the previous line was flowed, and the quote depth of its paragraph
+        let flowed = false;
+        let depth = 0;
+        for (let lineStart = 0; lineStart <= str.length;) {
+            let lineEnd = str.indexOf('\n', lineStart);
+            if (lineEnd < 0) {
+                lineEnd = str.length;
+            }
+            const line = str.slice(lineStart, lineEnd);
+            let quoteDepth = 0;
+            while (line.charCodeAt(quoteDepth) === 0x3e /* > */) {
+                quoteDepth++;
+            }
+            const contentStart = line.charCodeAt(quoteDepth) === 0x20 ? quoteDepth + 1 : quoteDepth;
+            const content = line.slice(contentStart);
+            const isSignature = content === '-- ';
+            if (flowed && quoteDepth === depth && !isSignature) {
+                if (delSp) {
+                    // delsp adds the space to make the text foldable, so it is not content
+                    const last = parts[parts.length - 1];
+                    parts[parts.length - 1] = last.slice(0, -1);
+                }
+                parts.push(content);
+            }
+            else {
+                if (lineStart) {
+                    parts.push('\n');
+                }
+                parts.push(quoteDepth ? line : content);
+            }
+            flowed = !isSignature && content.endsWith(' ');
+            depth = quoteDepth;
+            if (parts.length >= FLOWED_JOIN_INTERVAL) {
+                const last = parts.pop();
+                chunks.push(parts.join(''));
+                parts = [last];
+            }
+            lineStart = lineEnd + 1;
+        }
+        chunks.push(parts.join(''));
+        return chunks.join('');
     }
-
     getTextContent() {
         if (!this.content) {
             return '';
         }
-
-        let str = getDecoder(this.contentType.parsed.params.charset).decode(this.content);
-
-        if (/^flowed$/i.test(this.contentType.parsed.params.format)) {
+        // The bytes keep the line endings the part was sent with, see PassThroughDecoder,
+        // which differ from one transfer encoding to the next. Text is normalized to LF so
+        // that a consumer does not get CRLF from one message and LF from another
+        let str = decodeText(this.content, this.contentType.parsed.params.charset, this.contentType.parsed.value === 'text/html').replace(/\r\n/g, '\n');
+        // format=flowed is defined for text/plain (RFC 3676), and a browser never unfolds
+        // an html part. Unfolded here anyway, `<scri \r\npt>` under delsp=yes was joined
+        // into a tag that neither Python nor a browser given the raw bytes sees
+        if (this.contentType.parsed.value === 'text/plain' && /^flowed$/i.test(this.contentType.parsed.params.format)) {
             str = this.decodeFlowedText(str, /^yes$/i.test(this.contentType.parsed.params.delsp));
         }
-
         return str;
     }
-
     processHeaders() {
         // First pass: group folded continuation lines with the header they belong to.
         //
@@ -3733,43 +4642,45 @@ class MimeNode {
         for (let line of this.headerLines) {
             if (foldedLines.length && /^[ \t]/.test(line)) {
                 foldedLines[foldedLines.length - 1].push(line);
-            } else {
+            }
+            else {
                 foldedLines.push([line]);
             }
         }
-
-        // Initialize rawHeaderLines to store unmodified lines
-        this.rawHeaderLines = [];
-
         let seenContentHeaders = new Set();
-
         // Second pass: process headers in document order
         for (let parts of foldedLines) {
             let rawLine = parts.join('\n');
-
-            // Extract key from raw line for rawHeaderLines
+            // The field name is kept as it was written, whitespace included. RFC 5322 puts
+            // the colon right after the name and only its obsolete syntax lets whitespace
+            // come between the two, so `From :` names a different field than `From:`, as
+            // Go reads it, and the first line of a message may start with whitespace while
+            // it is a fold of nothing, a line Python drops and Go rejects the message for.
+            // Trimming the name made such a line the canonical header, and since the first
+            // occurrence of a header wins, a ` From:` first line or a `From :` ahead of the
+            // genuine From named the sender here while a verifier reading the other had
+            // authenticated the one this parser ignored. The same put a Content-Type ahead
+            // of the one every other parser reads the body by. Leaving the whitespace in
+            // the key keeps the line visible without letting it collide with a genuine
+            // header. A line whose name holds anything else, a non-ASCII space say, is no
+            // field at all and ends the headers, see feed.
             let sep = rawLine.indexOf(':');
-            let rawKey = trimWsp(sep < 0 ? rawLine : rawLine.substr(0, sep));
-
+            let rawKey = sep < 0 ? rawLine : rawLine.slice(0, sep);
             // Store raw line with lowercase key
             this.rawHeaderLines.push({
                 key: rawKey.toLowerCase(),
                 line: rawLine
             });
-
             // Unfolding removes the line break and keeps the folding whitespace, so
             // `Subject: Hello\r\n    World` stays `Hello    World`. Collapsing every
             // whitespace run instead also rewrote boundary values and filenames, and it
             // replaced the non-ASCII spaces that raw UTF-8 headers (RFC 6532) may carry.
             let unfoldedLine = parts.join('');
             sep = unfoldedLine.indexOf(':');
-            let key = trimWsp(sep < 0 ? unfoldedLine : unfoldedLine.substr(0, sep));
-            // A bare CR is not legal in a field body. It used to be folded into a space by
-            // the whitespace collapse, and passing it through would hand consumers that
-            // write the value back out a line of their own.
-            let value = sep < 0 ? '' : trimWsp(unfoldedLine.substr(sep + 1).replace(/[\r\n]+/g, ' '));
+            let key = sep < 0 ? unfoldedLine : unfoldedLine.slice(0, sep);
+            // A bare CR is not legal in a field body, see foldLineBreaks
+            let value = sep < 0 ? '' : trimWsp(foldLineBreaks(unfoldedLine.slice(sep + 1)));
             this.headers.push({ key: key.toLowerCase(), originalKey: key, value });
-
             // A header that decides how the body is read must resolve the same way every
             // time it is duplicated, otherwise a message can present one Content-Type to a
             // scanner and a different one here. Every one of these takes the first
@@ -3777,16 +4688,15 @@ class MimeNode {
             const lowerKey = key.toLowerCase();
             if (CONTENT_HEADERS.has(lowerKey) && !seenContentHeaders.has(lowerKey)) {
                 seenContentHeaders.add(lowerKey);
-
                 switch (lowerKey) {
                     case 'content-type':
-                        this.contentType = { value, parsed: {} };
+                        this.contentType.value = value;
                         break;
                     case 'content-transfer-encoding':
-                        this.contentTransferEncoding = { value, parsed: {} };
+                        this.contentTransferEncoding.value = value;
                         break;
                     case 'content-disposition':
-                        this.contentDisposition = { value, parsed: {} };
+                        this.contentDisposition.value = value;
                         break;
                     case 'content-id':
                         this.contentId = value;
@@ -3797,330 +4707,1154 @@ class MimeNode {
                 }
             }
         }
-
         this.contentType.parsed = this.parseStructuredHeader(this.contentType.value);
         this.contentType.multipart = /^multipart\//i.test(this.contentType.parsed.value)
-            ? this.contentType.parsed.value.substr(this.contentType.parsed.value.indexOf('/') + 1)
+            ? this.contentType.parsed.value.slice(this.contentType.parsed.value.indexOf('/') + 1)
             : false;
-
-        if (this.contentType.multipart && this.contentType.parsed.params.boundary) {
-            // add self to boundary terminator listing
-            this.postalMime.boundaries.push({
-                value: textEncoder.encode(this.contentType.parsed.params.boundary),
-                node: this
-            });
+        // A boundary does not end in whitespace (RFC 2046 5.1.1, bcharsnospace), and one
+        // written with some anyway, `boundary="abc "`, is `abc` to Python. Registered as
+        // written it matched no delimiter line and the whole body was dropped without a
+        // trace, an attachment included. A delimiter line written with the space still
+        // matches, since a boundary line may end in whitespace. trimEnd rather than
+        // trimWsp, because Python strips any whitespace here.
+        //
+        // A boundary is ASCII as well (RFC 2046 5.1.1, bchars), and Python matches no line
+        // against one that is not. One holding a non-ASCII character came out of a header
+        // line decoded as windows-1252 and re-encoded as UTF-8, or was written in UTF-8 to
+        // begin with. Matched here, `boundary="ab\xE9cd"` found the parts under lines of
+        // `--ab\xC3\xA9cd` that a scanner built on Python never saw, and with the same byte
+        // on both sides nothing matched and the body was dropped without a trace. Such a
+        // boundary counts as none, so the body reads as text below
+        let boundary = this.contentType.multipart ? (this.contentType.parsed.params.boundary || '').trimEnd() : '';
+        if (/[^\x00-\x7f]/.test(boundary)) {
+            boundary = '';
         }
-
+        if (this.contentType.multipart && !boundary) {
+            // A multipart without the boundary RFC 2046 5.1.1 requires, or with one it does
+            // not allow, has no parts to find, and its body used to be dropped without a
+            // trace. RFC 2045 5.2 recommends reading an invalid Content-Type as plain text,
+            // which is also what the body of such a message usually is
+            this.contentType.parsed.value = 'text/plain';
+            this.contentType.multipart = false;
+        }
+        if (this.contentType.multipart) {
+            // add self to boundary terminator listing
+            this.postalMime.boundaries.push(boundary, this);
+        }
         this.contentDisposition.parsed = this.parseStructuredHeader(this.contentDisposition.value);
-
-        // Take the first token rather than splitting on the first non-token character.
-        // `split()` returns an empty string for anything that does not start with a word
-        // character, so `(comment) base64` and `"base64"` used to fall through to the
-        // pass-through decoder and hand the caller undecoded base64 as the message body.
+        // The disposition type is a token, so it ends at the first whitespace. Read whole,
+        // `attachment garbage` was neither attachment nor inline, and a text/html part
+        // declaring it was rendered as the body while Python and mailparser keep it an
+        // attachment. The type of a Content-Type stays as it is: `text/html garbage` is no
+        // html to them either, and reading it as html here would be the reverse mistake
+        const disposition = this.contentDisposition.parsed.value;
+        const dispositionEnd = disposition.search(/[ \t]/);
+        if (dispositionEnd >= 0) {
+            this.contentDisposition.parsed.value = disposition.slice(0, dispositionEnd);
+        }
+        // The token at the start of the value, behind the whitespace a leading comment
+        // leaves: `(comment) base64`, `base64 (comment)` and `base64 x` decode, as they do
+        // for Python. A quoted token does not. `"base64"` is raw base64 to Python and to
+        // mailparser, and decoding it here rendered as markup a body both hand through as
+        // it is. Taking the first token anywhere in the value read it, and `x "base64"`.
         this.contentTransferEncoding.encoding = (this.stripComments(this.contentTransferEncoding.value)
             .toLowerCase()
-            .match(/[\w-]+/) || [''])[0];
-
+            .match(/^[ \t]*([\w-]+)/) || ['', ''])[1];
         this.setupContentDecoder(this.contentTransferEncoding.encoding);
+        // the lines live on in rawHeaderLines and headers, so the raw copies are released
+        this.headerLines = [];
     }
-
-    feed(line) {
+    // Ends the header section and sets up the body
+    endHeaders() {
+        this.state = 'body';
+        this.processHeaders();
+    }
+    // Returns true when the line was not consumed: the headers ended with the line before
+    // it, and the parser has to read it again, since the boundary this part declares was
+    // not known yet when the line was checked for one
+    feed(line, lineBreak) {
         switch (this.state) {
-            case 'header':
+            case 'header': {
                 if (!line.length) {
-                    this.state = 'body';
-                    return this.processHeaders();
+                    this.endHeaders();
+                    return false;
                 }
-
                 // Counted across the whole message, not per part. A per-node budget lets a
                 // multipart carry the limit again for every part it declares, so a message
                 // many times over the limit still parses.
-                this.postalMime.headerSize += line.length;
-
-                if (this.postalMime.headerSize > this.options.maxHeadersSize) {
-                    let error = new Error(`Maximum header size of ${this.options.maxHeadersSize} bytes exceeded`);
-                    throw error;
+                this.postalMime.counters.headerSize += Math.max(line.length, HEADER_LINE_MIN_COST);
+                const maxHeadersSize = this.postalMime.limits.maxHeadersSize;
+                if (this.postalMime.counters.headerSize > maxHeadersSize) {
+                    throw createError('EMAXHEADERSIZE', `Maximum header size of ${maxHeadersSize} bytes exceeded`);
                 }
-
-                this.headerLines.push(headerDecoder.decode(line));
+                const text = decodeUtf8OrWindows1252(line, headerDecoder);
+                // A line that is neither a header field nor a fold ends the headers, as it
+                // does for Python and for an MTA that stores the header block on its own,
+                // and Go rejects the message for it. Read on as a header here, a Content-Type
+                // or a From behind such a line was honoured where a scanner built on Python
+                // had read it as the first line of a text/plain body.
+                //
+                // A line of nothing but whitespace is a fold (RFC 5322 4.2, obs-FWS), but
+                // broken generators also put one where the empty line that ends the headers
+                // belongs, and reading it as a fold used to turn the whole body into one
+                // more header. The next line decides: a field or a fold keeps it a fold,
+                // anything else ends the headers, as it does for Python
+                if (!isWsp(line[0]) && !FIELD_START.test(text)) {
+                    this.endHeaders();
+                    return true;
+                }
+                this.headerLines.push(text);
                 break;
-            case 'body': {
-                // add line to body
-                this.contentDecoder.update(line);
             }
+            case 'body':
+                // add line to body. processHeaders installs a decoder before the state
+                // becomes body, and the only time the decoder is released is finalize,
+                // which moves the state on to finished, so the guard only narrows the type
+                if (this.contentDecoder) {
+                    this.contentDecoder.update(line, lineBreak);
+                }
+                break;
         }
+        return false;
     }
 }
 
-// --- address-parser.js ---------------------------------------------
-const WORD_CHAR_REGEX = /\w/;
-const NON_SPACE_TOKEN_REGEX = /[^\s]+/g;
-
+// --- address-parser.js ----------------------------------------------
+/** The token is an operator, a text run otherwise */
+const TOKEN_OPERATOR = 1;
+/** The next character continues the same run without whitespace in between */
+const TOKEN_NO_BREAK = 2;
+/** The text run holds characters its value leaves out or changes, so it is no plain slice */
+const TOKEN_DIRTY = 4;
+/** A backslash escapes the next character in the text run, inside a quoted string or a comment */
+const TOKEN_ESCAPES = 8;
+/** The text run opens on a character an escaping backslash in front of it has escaped */
+const TOKEN_STARTS_ESCAPED = 16;
+/** The text run held a control character other than a line break or a tab, left out of its value */
+const TOKEN_CONTROL = 32;
 /**
- * Finds the first address looking token in a run of text.
+ * The tokens of an address field, kept as offsets into it.
  *
- * This replaces a `\s*\b[^@\s]+@[^\s]+\b\s*` scan over the whole string, which backtracks
- * quadratically: the leading `\s*` makes every position inside a whitespace run a viable
- * start, and `[^@\s]+` then gives back one character at a time looking for an '@'. A
- * single header well inside the default size limit could hold a core busy for minutes.
- *
- * Scanning whitespace delimited tokens instead is linear and keeps the word boundary
- * semantics of the regex: the local part has to open on a word character and the domain
- * has to end on one.
- *
- * @param {String} text Text to search
- * @return {Object|null} `{index, length, value}` of the address, or null if there is none
+ * Every token used to be an object of its own, an operator for every ',' and a value string
+ * for every run of text, and a list of one letter names, 'a,a,a,...', took some 65 times its
+ * size in tokens before any address was read. A token is now three numbers in one typed
+ * array, its kind and the range of the field it covers, and its value is sliced off the field
+ * when it is read. The few text runs whose value differs from their slice, as they hold an
+ * escaping backslash, a line break or a control character, are rebuilt once and kept aside.
  */
-function findAddressInText(text) {
-    NON_SPACE_TOKEN_REGEX.lastIndex = 0;
-
-    let match;
-    while ((match = NON_SPACE_TOKEN_REGEX.exec(text))) {
-        const token = match[0];
-        const at = token.indexOf('@');
-
-        // `\b[^@\s]+@` needs at least one character before the '@'
-        let start = 0;
-        while (start < at && !WORD_CHAR_REGEX.test(token.charAt(start))) {
+class TokenList {
+    constructor(str) {
+        this.str = str;
+        this.slots = new Int32Array(48);
+        this.length = 0;
+        this.cleaned = new Map();
+    }
+    /**
+     * Appends a token
+     *
+     * @param kind Kind and flags of the token
+     * @param start Offset of its first character
+     * @param end Offset just past its last character
+     * @return Index of the token
+     */
+    push(kind, start, end) {
+        if ((this.length + 1) * 3 > this.slots.length) {
+            const grown = new Int32Array(this.slots.length * 2);
+            grown.set(this.slots);
+            this.slots = grown;
+        }
+        const at = this.length * 3;
+        this.slots[at] = kind;
+        this.slots[at + 1] = start;
+        this.slots[at + 2] = end;
+        return this.length++;
+    }
+    /**
+     * Offset of the first character of a token that is part of its value. A text run that is
+     * no plain slice of the field still spans the whitespace and control characters its value
+     * is trimmed of.
+     */
+    contentStart(index) {
+        let start = this.slots[index * 3 + 1];
+        const end = this.slots[index * 3 + 2];
+        while (start < end && isDroppedCode(this.str.charCodeAt(start))) {
             start++;
         }
-        if (start >= at) {
-            continue;
-        }
-
-        // `[^\s]+\b` needs at least one character after the '@', ending on a word character
-        let end = token.length;
-        while (end > at + 1 && !WORD_CHAR_REGEX.test(token.charAt(end - 1))) {
+        return start;
+    }
+    /**
+     * Offset just past the last character of a token that is part of its value
+     */
+    contentEnd(index) {
+        const start = this.slots[index * 3 + 1];
+        let end = this.slots[index * 3 + 2];
+        while (end > start && isDroppedCode(this.str.charCodeAt(end - 1))) {
             end--;
         }
-        if (end <= at + 1) {
+        return end;
+    }
+    /**
+     * The character of an operator token, an empty string for a text run
+     */
+    operatorAt(index) {
+        const at = index * 3;
+        return this.slots[at] & TOKEN_OPERATOR ? this.str.charAt(this.slots[at + 1]) : '';
+    }
+    /**
+     * Whether a token is an operator
+     */
+    isOperator(index) {
+        return (this.slots[index * 3] & TOKEN_OPERATOR) !== 0;
+    }
+    /**
+     * Whether the next character continues the run of a token without whitespace in between
+     */
+    noBreak(index) {
+        return (this.slots[index * 3] & TOKEN_NO_BREAK) !== 0;
+    }
+    /**
+     * Whether a control character was left out of the value of a token
+     */
+    hasControl(index) {
+        return (this.slots[index * 3] & TOKEN_CONTROL) !== 0;
+    }
+    /**
+     * Value of a token
+     */
+    value(index) {
+        const cleaned = this.cleaned.get(index);
+        if (cleaned !== undefined) {
+            return cleaned;
+        }
+        return this.str.slice(this.slots[index * 3 + 1], this.slots[index * 3 + 2]);
+    }
+}
+/**
+ * Any whitespace, the test for an angle-addr that needs recovering
+ */
+const HAS_WHITESPACE = /\s/;
+/**
+ * An addr-spec that carries its whitespace legally, inside a quoted local part. The
+ * optional tail is the malformed shape: a real mailbox with wreckage trailing it.
+ */
+const QUOTED_LOCAL_ADDR = /^("(?:[^"\\]|\\[\s\S])*"@\S+)(?:\s+([\s\S]+))?$/;
+/**
+ * One run holding a single '@' and no whitespace, the shape an addr-spec has to have
+ */
+const ADDR_SPEC = /^[^@\s]+@[^@\s]+$/;
+/**
+ * The same with a domain literal for the domain, which may hold an '@' of its own
+ */
+const LITERAL_ADDR_SPEC = /^[^@\s]+@\[[^[\]\\\s]*\]$/;
+/**
+ * The '@' and domain that follow a quoted local part in the same run
+ */
+const QUOTED_LOCAL_DOMAIN = /^@(?:[^@\s"]+|\[[^[\]\\\s]*\])$/;
+/**
+ * Whether a whitespace free run reads as an addr-spec under the strict grammar
+ *
+ * @param value Run to check
+ * @return true when it does
+ */
+function isAddrSpec(value) {
+    return ADDR_SPEC.test(value) || LITERAL_ADDR_SPEC.test(value);
+}
+/**
+ * The looser reading applied once the strict one finds nothing, which tolerates the
+ * further '@' that a domain should not have but malformed headers carry anyway
+ */
+const LOOSE_ADDR_SPEC = /^[^@\s]+@\S+$/;
+/**
+ * An addr-spec sitting inside free text, together with the whitespace around it. Sticky
+ * on purpose: it is only run at the offset looseAddressStart picks, see there.
+ */
+const LOOSE_TEXT_ADDR = /\s*\b[^@\s]+@[^\s]+\b\s*/y;
+/**
+ * A domain literal that ends an address. dtext includes '@' (RFC 5322 3.4.1), so the '@'
+ * in front of the literal is the one that splits the domain off, not the last one: reading
+ * 'a@[x@evil.com]' at its last '@' made it an address at evil.com.
+ */
+const DOMAIN_LITERAL_TAIL = /@(\[[^[\]\\]*\])$/;
+/**
+ * Offset of the '@' that splits the domain off an address, or -1 when there is none
+ *
+ * @param address Address to split
+ * @return Offset of the '@'
+ */
+function domainAt(address) {
+    const literal = address.charAt(address.length - 1) === ']' ? DOMAIN_LITERAL_TAIL.exec(address) : null;
+    return literal ? address.length - literal[1].length - 1 : address.lastIndexOf('@');
+}
+/**
+ * Restores the quoting of a local part that was read out of a quoted string.
+ *
+ * RFC 5321 allows '@' inside a quoted local part, so handing '"user@evil.com"@good.com'
+ * on as the bare 'user@evil.com@good.com' leaves it to the consumer which '@' splits the
+ * domain off. Getting that wrong is a misrouting vector, so the quotes go back on. The
+ * same holds for the other specials: a ',' or a ';' that loses its quotes reads as a
+ * recipient separator once the consumer puts the address back into a header.
+ *
+ * @param address Address with an unquoted local part
+ * @return Address with the local part as a quoted-string
+ */
+function quoteLocalPart(address) {
+    const lastAt = domainAt(address);
+    if (lastAt < 0) {
+        // no domain to split off, nothing can be misrouted
+        return address;
+    }
+    const user = address.substring(0, lastAt);
+    if (/^[^\s"(),:;<>@[\\\]]+$/.test(user) || /^"(?:[^"\\]|\\[\s\S])*"$/.test(user)) {
+        // a local part that carries no special reads the same with or without the quotes,
+        // and one that is already a complete quoted-string needs nothing either
+        return address;
+    }
+    return '"' + user.replace(/["\\]/g, '\\$&') + '"@' + address.substring(lastAt + 1);
+}
+/**
+ * The characters JS `\s` matches, which the scan below has to agree with to land on the
+ * same match LOOSE_TEXT_ADDR would.
+ */
+function isSpaceCode(code) {
+    return (code === 0x20 ||
+        (code >= 0x09 && code <= 0x0d) ||
+        code === 0xa0 ||
+        code === 0x1680 ||
+        (code >= 0x2000 && code <= 0x200a) ||
+        code === 0x2028 ||
+        code === 0x2029 ||
+        code === 0x202f ||
+        code === 0x205f ||
+        code === 0x3000 ||
+        code === 0xfeff);
+}
+/**
+ * Checks for the whitespace RFC 5322 folding whitespace is made of: SP and HTAB, plus the
+ * line break a fold carries. The other characters isSpaceCode accepts are atext under
+ * RFC 6532, and parsers disagree on them: mailauth keeps U+00A0 in a domain, so joining a
+ * domain across one names a domain that reader never sees
+ *
+ * @param code Character code
+ * @return true if the character is folding whitespace
+ */
+function isFoldingSpaceCode(code) {
+    return code === 0x20 || code === 0x09 || code === 0x0d || code === 0x0a;
+}
+/**
+ * Checks if every character in a stretch of the field is folding whitespace
+ *
+ * @param str The field
+ * @param from Offset of the first character
+ * @param to Offset just past the last one
+ * @return true if the stretch holds nothing but folding whitespace
+ */
+function isFoldingGap(str, from, to) {
+    for (let i = from; i < to; i++) {
+        if (!isFoldingSpaceCode(str.charCodeAt(i))) {
+            return false;
+        }
+    }
+    return true;
+}
+/**
+ * Checks for a character the value of a text run is trimmed of, or leaves out: whitespace,
+ * C0 controls and DEL
+ *
+ * @param code Character code
+ * @return true if the character is not part of the value at the edge of a run
+ */
+function isDroppedCode(code) {
+    return code < 0x20 || code === 0x7f || isSpaceCode(code);
+}
+/**
+ * The characters JS `\w` matches without the unicode flag, the set the `\b` in
+ * LOOSE_TEXT_ADDR is read against. charCodeAt off either end of the string gives NaN,
+ * which compares false throughout, so out of range reads as a non-word character.
+ */
+function isWordCode(code) {
+    return ((code >= 0x30 && code <= 0x39) ||
+        (code >= 0x41 && code <= 0x5a) ||
+        (code >= 0x61 && code <= 0x7a) ||
+        code === 0x5f);
+}
+/**
+ * Whether `\b` holds at an offset
+ */
+function isBoundary(text, at) {
+    return isWordCode(text.charCodeAt(at - 1)) !== isWordCode(text.charCodeAt(at));
+}
+/**
+ * Offset of the first '@' in `text` between `from` and `to`, or -1 when the range holds none.
+ * Bounded rather than indexOf, which would scan on to the end of the header once for every
+ * whitespace delimited run and make the walk below quadratic.
+ */
+function indexOfAt(text, from, to) {
+    for (let i = from; i < to; i++) {
+        if (text.charCodeAt(i) === 0x40) {
+            return i;
+        }
+    }
+    return -1;
+}
+/**
+ * A quoted-string a value opens with
+ */
+const LEADING_QUOTED_STRING = /^"(?:[^"\\]|\\[\s\S])*"/;
+/**
+ * Drops the whitespace on either side of the '@' at an offset.
+ *
+ * obs-local-part and obs-domain allow CFWS around the '@' (RFC 5322 4.4), so 'user @ good.com'
+ * names user@good.com. Kept, the whitespace became part of the address as '"user "@ good.com'.
+ * The scan is by index, a pattern such as /\s+@/ backtracks over a long whitespace run that
+ * no '@' follows.
+ *
+ * The whitespace around the dots of the domain that follows is dropped as well, see
+ * joinDomainDotSpacing.
+ *
+ * @param value Value holding the '@'
+ * @param at Offset of the '@', or -1
+ * @return The value with the whitespace beside that '@' removed
+ */
+function joinAtSpacing(value, at) {
+    if (at < 0) {
+        return value;
+    }
+    let start = at;
+    while (start > 0 && isSpaceCode(value.charCodeAt(start - 1))) {
+        start--;
+    }
+    let end = at + 1;
+    while (end < value.length && isSpaceCode(value.charCodeAt(end))) {
+        end++;
+    }
+    const joined = start === at && end === at + 1 ? value : value.slice(0, start) + '@' + value.slice(end);
+    return joinDomainDotSpacing(joined, start);
+}
+// The ASCII atext characters: printable, and none of the RFC 5322 specials
+const ASCII_ATEXT = new Uint8Array(0x80);
+for (let code = 0x21; code < 0x7f; code++) {
+    ASCII_ATEXT[code] = '()<>[]:;@\\,."'.indexOf(String.fromCharCode(code)) < 0 ? 1 : 0;
+}
+/**
+ * Checks if a character can be part of an atom: anything but the specials, whitespace and
+ * the control characters (RFC 5322 3.2.3, with non-ASCII allowed as RFC 6532 does)
+ *
+ * @param code Character code
+ * @return true if the character is atext
+ */
+function isAtextCode(code) {
+    return code < 0x80 ? ASCII_ATEXT[code] === 1 : !isSpaceCode(code);
+}
+/**
+ * Drops the whitespace around the dots of the domain behind the '@' at an offset.
+ *
+ * obs-domain is atoms with CFWS around the dots (RFC 5322 4.4), so 'user@victim.example
+ * .allowed.example' names user@victim.example.allowed.example. Read as two runs, the domain
+ * ended at the whitespace and the mailbox was shown as victim.example, a different domain
+ * than the one an RFC 5322 parser, and a DMARC verifier built on one, reads. A comment
+ * around a dot reaches here as whitespace.
+ *
+ * Only SP, HTAB and a fold count as the whitespace, see isFoldingSpaceCode.
+ *
+ * Only a dot with an atom on both sides joins, as for a conformant parser: whitespace that
+ * is not beside a dot ends the domain, and so does a dot that no atom follows, which keeps
+ * 'user@example.com .' from becoming a domain with a trailing dot. A domain literal is left
+ * alone. Everything from where the domain ends is kept as it is.
+ *
+ * @param value Value holding the '@'
+ * @param at Offset of the '@'
+ * @return The value with the whitespace around the dots of that domain removed
+ */
+function joinDomainDotSpacing(value, at) {
+    const len = value.length;
+    // '[' is no atext, so a domain literal ends the walk before it starts
+    let pos = at + 1;
+    let spaced = false;
+    for (;;) {
+        const labelStart = pos;
+        while (pos < len && isAtextCode(value.charCodeAt(pos))) {
+            pos++;
+        }
+        if (pos === labelStart) {
+            break;
+        }
+        // the dot, with the whitespace on either side of it, and the label behind it
+        let next = pos;
+        while (next < len && isFoldingSpaceCode(value.charCodeAt(next))) {
+            next++;
+        }
+        if (value.charCodeAt(next) !== 0x2e) {
+            break;
+        }
+        next++;
+        while (next < len && isFoldingSpaceCode(value.charCodeAt(next))) {
+            next++;
+        }
+        if (next >= len || !isAtextCode(value.charCodeAt(next))) {
+            break;
+        }
+        spaced = spaced || next !== pos + 1;
+        pos = next;
+    }
+    if (!spaced) {
+        return value;
+    }
+    // every whitespace character the walk covered sits beside a dot
+    let domain = '';
+    for (let k = at + 1; k < pos; k++) {
+        if (!isFoldingSpaceCode(value.charCodeAt(k))) {
+            domain += value.charAt(k);
+        }
+    }
+    return value.slice(0, at + 1) + domain + value.slice(pos);
+}
+/**
+ * Drops the whitespace beside the '@' that splits the domain off a value. That is the '@'
+ * right after a quoted local part the value opens with, or else the only '@' it holds outside
+ * any quoted string. With several it is not clear which one the whitespace belongs to, and
+ * '<x@evil.com @good.com>' is left to the addr-spec recovery to read as it always has.
+ *
+ * @param value Value to clean up
+ * @return The value with the whitespace beside that '@' removed
+ */
+function collapseAtSpacing(value) {
+    const quoted = LEADING_QUOTED_STRING.exec(value);
+    if (quoted) {
+        let at = quoted[0].length;
+        while (at < value.length && isSpaceCode(value.charCodeAt(at))) {
+            at++;
+        }
+        if (value.charAt(at) === '@' && value.indexOf('@', at + 1) < 0) {
+            return joinAtSpacing(value, at);
+        }
+    }
+    const at = value.indexOf('@');
+    if (at < 0 || value.indexOf('@', at + 1) >= 0 || value.lastIndexOf('"') > at) {
+        return value;
+    }
+    return joinAtSpacing(value, at);
+}
+/**
+ * Finds the offset LOOSE_TEXT_ADDR matches at, or -1 when it does not match at all.
+ *
+ * Letting the pattern search for itself is quadratic: '[^@\s]+' is retried from every
+ * offset and rescans the run to the next '@' each time, so a single header well inside
+ * the default size limit could hold a core busy for minutes. The search is also
+ * unnecessary. '[^@\s]+' crosses neither whitespace nor a '@', so a match can only begin
+ * at the head of a whitespace delimited run or just past a '@' inside one, and '[^\s]+\b'
+ * gives characters back until it lands on a boundary, so the only end it can take in that
+ * run is the last boundary in it. Both are found in one pass, and the pattern is then run
+ * at that single offset.
+ *
+ * @param text Free text to look in
+ * @return Offset to match at, or -1
+ */
+function looseAddressStart(text) {
+    const len = text.length;
+    let pos = 0;
+    while (pos < len) {
+        while (pos < len && isSpaceCode(text.charCodeAt(pos))) {
+            pos++;
+        }
+        if (pos >= len) {
+            break;
+        }
+        const runStart = pos;
+        let runEnd = pos;
+        while (runEnd < len && !isSpaceCode(text.charCodeAt(runEnd))) {
+            runEnd++;
+        }
+        let at = indexOfAt(text, runStart, runEnd);
+        if (at >= 0) {
+            let lastBoundary = -1;
+            for (let k = runEnd; k > runStart; k--) {
+                if (isBoundary(text, k)) {
+                    lastBoundary = k;
+                    break;
+                }
+            }
+            let atomStart = runStart;
+            while (lastBoundary >= 0 && at >= 0) {
+                // '[^@\s]+' has to cover a character before the '@' and '[^\s]+' one after it,
+                // and the boundary that ends the match has to sit past both
+                if (at > atomStart && runEnd > at + 1 && lastBoundary > at + 1) {
+                    for (let start = atomStart; start < at; start++) {
+                        if (isBoundary(text, start)) {
+                            if (start > runStart) {
+                                return start;
+                            }
+                            // the leading '\s*' is greedy, so a match that begins at the run
+                            // takes the whitespace in front of it along
+                            let padded = runStart;
+                            while (padded > 0 && isSpaceCode(text.charCodeAt(padded - 1))) {
+                                padded--;
+                            }
+                            return padded;
+                        }
+                    }
+                }
+                atomStart = at + 1;
+                at = indexOfAt(text, atomStart, runEnd);
+            }
+        }
+        pos = runEnd;
+    }
+    return -1;
+}
+/**
+ * Recovers the addr-spec from an angle-addr that came back holding unquoted whitespace.
+ *
+ * A malformed header can put more than a mailbox between the angle brackets, most often
+ * because the generator wrote the recipient twice: '<user@example.com user@example.com>'
+ * or '<example.com user@example.com>'. Whitespace is not addr-spec, so the whole run can
+ * never be a mailbox, and passing it on as the address loses the recipient that is
+ * sitting right there in the header.
+ *
+ * The run that still reads as an addr-spec is kept and whatever is left over becomes
+ * display text. Candidates are read strictly first and then under the looser grammar,
+ * the same two tiers the unquoted text fallback applies, so that '<a@b@c.com junk>' and a
+ * bare 'a@b@c.com junk' agree on the recipient.
+ *
+ * A quoted local part is left alone: RFC 5321 allows whitespace inside it, so
+ * '<"user name"@example.com>' is well formed and means exactly what it says.
+ *
+ * @param address Collected address
+ * @param text Collected display text
+ * @return The address and the display text, with any leftovers moved to the text
+ */
+function recoverAddrSpec(address, text) {
+    address = collapseAtSpacing(address);
+    if (!HAS_WHITESPACE.test(address)) {
+        return { address, text };
+    }
+    let rest;
+    const quoted = address.match(QUOTED_LOCAL_ADDR);
+    if (quoted) {
+        if (!quoted[2]) {
+            // the whitespace sits inside the quoted local part, this is a well formed mailbox
+            return { address, text };
+        }
+        // a real mailbox with wreckage trailing it, so peel the addr-spec off whole rather
+        // than splitting into the quotes
+        address = quoted[1];
+        rest = [quoted[2]];
+    }
+    else {
+        if (address.indexOf('"') >= 0) {
+            // Splitting on whitespace loses track of where a quoted string starts and ends,
+            // and addresses are never taken out of quoted strings: the run picked out of
+            // '<junk "user@evil.com b"@good.com>' would be an address from the domain the
+            // quotes were hiding. Every well formed shape was handled above, so the original
+            // is the honest answer
+            return { address, text };
+        }
+        const parts = address.split(/\s+/);
+        let addrIndex = parts.findIndex(isAddrSpec);
+        if (addrIndex < 0) {
+            addrIndex = parts.findIndex(part => LOOSE_ADDR_SPEC.test(part));
+        }
+        if (addrIndex < 0) {
+            // nothing in there reads as an address, there is no better answer than the original
+            return { address, text };
+        }
+        address = parts.splice(addrIndex, 1)[0];
+        rest = parts;
+    }
+    return {
+        address,
+        text: [text, ...rest].filter(part => part).join(' ')
+    };
+}
+/**
+ * Takes the RFC 5322 comments out of the contents of an angle-addr.
+ *
+ * The tokenizer tracks a single open operator, so once '<' is open a '(' is plain text and
+ * a comment inside the brackets reached the address verbatim: 'Name <user@example.com(x)evil.com>'
+ * put 'user@example.com(x)evil.com' into the address, a value that is no mailbox and that a
+ * consumer stripping the comment reads as 'user@example.comevil.com'. A comment is folding
+ * whitespace, so it is read as a space that splits two atoms and as nothing next to an '@',
+ * the same rule the token walk applies outside the brackets. Quoted strings and domain
+ * literals are copied through untouched, a '(' in there is not a comment. An unexpected '<'
+ * outside them drops everything in front of it, comments included.
+ *
+ * RFC 822 also let an angle-addr name the relays to go through in front of the mailbox,
+ * '<@relay1,@relay2:user@example.com>', which RFC 5322 still parses as obs-route. The route
+ * is not part of the mailbox, and folded into the local part it made
+ * '"@relay1,@relay2:user"@example.com' a recipient that does not exist. A local part can not
+ * start with '@', so contents that do, up to the first ':' outside a domain literal and in
+ * front of any quoted string, are a route and are dropped, as long as a mailbox with an '@'
+ * of its own follows.
+ *
+ * @param address Contents of the angle brackets
+ * @return The address with the comments removed, and the text of the comments
+ */
+function stripAddressComments(address) {
+    const comments = [];
+    let result = '';
+    let comment = '';
+    let depth = 0;
+    let closer = '';
+    // carried along rather than read back off the growing result, which would flatten it on
+    // every comment (see lastChars in _handleAddress)
+    let lastChar = '';
+    // A comment that just closed stands for a space, written once the next character shows
+    // whether one is wanted: not beside an '@', and not on top of whitespace that follows.
+    // Deciding on the spot saw only the character right after the ')', so a second comment
+    // in a row hid the '@' behind it and 'a(x)(y)@b' read as 'a @b'
+    let pendingSpace = false;
+    // first character of the result and whether a quoted string has opened since, which
+    // together tell a route from a local part
+    let firstChar = '';
+    let quoteSeen = false;
+    let routeEnd = -1;
+    for (let i = 0, len = address.length; i < len; i++) {
+        const chr = address.charAt(i);
+        if (depth) {
+            if (chr === '\\' && i < len - 1) {
+                comment += address.charAt(++i);
+            }
+            else if (chr === '(') {
+                depth++;
+                comment += chr;
+            }
+            else if (chr === ')' && !--depth) {
+                comments.push(comment.trim());
+                comment = '';
+                pendingSpace = lastChar !== '@';
+            }
+            else {
+                comment += chr;
+            }
             continue;
         }
-
-        return { index: match.index + start, length: end - start, value: token.substring(start, end) };
+        if (pendingSpace && chr !== '(') {
+            pendingSpace = false;
+            if (chr !== '@' && chr !== '<' && !isSpaceCode(address.charCodeAt(i))) {
+                result += ' ';
+                lastChar = ' ';
+            }
+        }
+        if (closer) {
+            if (chr === '\\' && closer === '"' && i < len - 1) {
+                result += chr + address.charAt(++i);
+                lastChar = address.charAt(i);
+                continue;
+            }
+            if (chr === closer) {
+                closer = '';
+            }
+        }
+        else if (chr === '"') {
+            closer = '"';
+            quoteSeen = true;
+        }
+        else if (chr === ':' && routeEnd < 0 && firstChar === '@' && !quoteSeen) {
+            routeEnd = result.length + 1;
+        }
+        else if (chr === '[') {
+            closer = ']';
+        }
+        else if (chr === '(') {
+            depth = 1;
+            continue;
+        }
+        else if (chr === '<') {
+            // Apple Mail drops everything between an unexpected '<' and the address after it.
+            // Read here rather than off the raw brackets so that a '<' inside a quoted string,
+            // a comment or a domain literal stays where it is: '<"a<b"@victim.com>' cut at
+            // the first '<' left the address 'b"@victim.com'
+            result = '';
+            lastChar = '';
+            comments.length = 0;
+            firstChar = '';
+            quoteSeen = false;
+            routeEnd = -1;
+            continue;
+        }
+        result += chr;
+        lastChar = chr;
+        if (!firstChar && !isSpaceCode(address.charCodeAt(i))) {
+            firstChar = chr;
+        }
     }
-
-    return null;
+    if (routeEnd >= 0 && result.indexOf('@', routeEnd) >= 0) {
+        result = result.slice(routeEnd);
+    }
+    if (depth) {
+        // an unterminated comment runs to the end of the address
+        comments.push(comment.trim());
+    }
+    return { address: result.trim(), comments: comments.filter(text => text) };
 }
-
 /**
- * Converts tokens for a single address into an address object
+ * Walks the tokens of one entry of an address list and sorts them into the runs of display
+ * text, angle-addr and comment they belong to
  *
- * @param {Array} tokens Tokens object
- * @param {Number} depth Current recursion depth for nested group protection
- * @return {Object} Address object
+ * @param tokens Tokens of the whole address list
+ * @param from Index of the first token of the entry
+ * @param to Index just past the last token of the entry
+ * @return The collected runs, and whether the display text came out of a comment
  */
-function _handleAddress(tokens, depth) {
-    let isGroup = false;
+function collectAddressParts(tokens, from, to) {
     let state = 'text';
-    let address;
-    let addresses = [];
     let data = {
         address: [],
         comment: [],
-        group: [],
         text: [],
-        textWasQuoted: [] // Track which text tokens came from inside quotes
+        addressControl: [],
+        textControl: [],
+        textWasQuoted: [], // Track which text tokens came from inside quotes
+        // For a text run that is a quoted local part followed by the unquoted '@' and domain
+        // of an addr-spec, '"user"@example.com', the length of the local part, -1 otherwise
+        quotedLocalAt: []
     };
+    // whether the last text run holds nothing but quoted text so far, which is what a quoted
+    // local part is until the '@' after it joins the run
+    let lastTextPureQuoted = false;
+    // whether the last text run holds an unquoted '@', so that it runs on into a domain, and
+    // whether nothing but comments has come since it, see the join below
+    let lastTextHasAt = false;
+    let lastTextOpen = false;
+    // Where the last text run, or the last comment since it, ended in the field, and whether
+    // everything between it and the comments since was folding whitespace. The tokens are
+    // trimmed of any whitespace, so this is read off the field itself.
+    let gapFrom = 0;
+    let gapsFolding = true;
     let i;
-    let len;
     let insideQuotes = false; // Track if we're currently inside a quoted string
-
+    // Last character of the run each state is currently accumulating. Reading it back off
+    // the accumulator with slice(-1) makes the engine flatten the whole growing string on
+    // every token, which is quadratic over an address built from many comment-joined atoms.
+    // A run only ever grows by the token appended below, so the character is carried along.
+    const lastChars = { address: '', comment: '', text: '' };
     // Filter out <addresses>, (comments) and regular text
-    for (i = 0, len = tokens.length; i < len; i++) {
-        let token = tokens[i];
-        let prevToken = i ? tokens[i - 1] : null;
-        if (token.type === 'operator') {
-            switch (token.value) {
+    for (i = from; i < to; i++) {
+        const value = tokens.value(i);
+        // the operator in front of this token, if there is one, and whether it runs on into it
+        const prevOperator = i > from ? tokens.operatorAt(i - 1) : '';
+        const prevNoBreak = i > from && tokens.noBreak(i - 1);
+        if (tokens.isOperator(i)) {
+            switch (value) {
                 case '<':
                     state = 'address';
                     insideQuotes = false;
+                    lastTextOpen = false;
                     break;
                 case '(':
                     state = 'comment';
                     insideQuotes = false;
-                    break;
-                case ':':
-                    state = 'group';
-                    isGroup = true;
-                    insideQuotes = false;
+                    gapsFolding = gapsFolding && isFoldingGap(tokens.str, gapFrom, tokens.contentStart(i));
                     break;
                 case '"':
                     // Track quote state for text tokens
                     insideQuotes = !insideQuotes;
                     state = 'text';
+                    lastTextOpen = false;
                     break;
                 default:
                     state = 'text';
                     insideQuotes = false;
+                    if (value !== ')') {
+                        lastTextOpen = false;
+                    }
+                    else {
+                        gapFrom = tokens.contentEnd(i);
+                    }
                     break;
             }
-        } else if (token.value) {
-            if (state === 'address') {
-                // handle use case where unquoted name includes a "<"
-                // Apple Mail truncates everything between an unexpected < and an address
-                // and so will we
-                token.value = token.value.replace(/^[^<]*<\s*/, '');
-            }
-
-            if (prevToken && prevToken.noBreak && data[state].length) {
+        }
+        else {
+            // An empty quoted string is dropped by the tokenizer, leaving no text token of its
+            // own to record the quoting on, so the pair of quote operators right in front of
+            // this token is all that is left of it and the run it opens carries the quoting
+            // instead. Without this '""@example.com' reads as the bare '@example.com'. It only
+            // ever opens a run: a run already holding unquoted text is not a quoted string
+            const opensAfterEmptyQuotedString = prevOperator === '"' && prevNoBreak && i > from + 1 && tokens.operatorAt(i - 2) === '"';
+            // A comment is folding whitespace. It may sit inside an addr-spec, on either side
+            // of the '@', but it cannot join two atoms into one: gluing across it would read
+            // 'user@example.com(x)evil.com' as the single domain 'example.comevil.com' and
+            // name a domain the sender never wrote.
+            // A comment beside a dot of a domain is CFWS inside obs-domain, with or without
+            // folding whitespace around it, so 'user@victim.example(x).allowed.example' names
+            // one domain. Any other whitespace in between keeps them apart.
+            // A ')' always leaves the walk in unquoted text, so neither needs checking here.
+            // Neither join across a comment takes in a second '@' once the run holds one: the
+            // address would then split at the last '@', and 'user@company(x).com@attacker.net',
+            // which an RFC 5322 parser reads as user@company.com, would go to attacker.net.
+            const secondAt = lastTextHasAt && prevOperator === ')' && value.indexOf('@') >= 0;
+            const joinsDomain = !secondAt &&
+                lastTextOpen &&
+                lastTextHasAt &&
+                prevOperator === ')' &&
+                (lastChars.text === '.' || value.charAt(0) === '.') &&
+                gapsFolding &&
+                isFoldingGap(tokens.str, gapFrom, tokens.contentStart(i));
+            const joins = joinsDomain ||
+                (!secondAt &&
+                    prevNoBreak &&
+                    data[state].length > 0 &&
+                    (prevOperator !== ')' || lastChars[state] === '@' || value.charAt(0) === '@'));
+            if (joins) {
                 // join values
-                data[state][data[state].length - 1] += token.value;
-                if (state === 'text' && insideQuotes) {
-                    data.textWasQuoted[data.textWasQuoted.length - 1] = true;
+                const last = data[state].length - 1;
+                if (state === 'text' && !insideQuotes) {
+                    if (lastTextPureQuoted && value.charAt(0) === '@') {
+                        data.quotedLocalAt[last] = data.text[last].length;
+                    }
+                    lastTextPureQuoted = false;
                 }
-            } else {
-                data[state].push(token.value);
+                data[state][last] += value;
+                if (state === 'text' && insideQuotes) {
+                    data.textWasQuoted[last] = true;
+                }
+                if (tokens.hasControl(i) && state !== 'comment') {
+                    data[state === 'text' ? 'textControl' : 'addressControl'][last] = true;
+                }
+            }
+            else {
+                data[state].push(value);
+                if (state !== 'comment') {
+                    data[state === 'text' ? 'textControl' : 'addressControl'].push(tokens.hasControl(i));
+                }
                 if (state === 'text') {
-                    data.textWasQuoted.push(insideQuotes);
+                    data.textWasQuoted.push(insideQuotes || opensAfterEmptyQuotedString);
+                    // an empty quoted string leaves no text of its own, so the '@' opens the run
+                    data.quotedLocalAt.push(opensAfterEmptyQuotedString && value.charAt(0) === '@' ? 0 : -1);
+                    lastTextPureQuoted = insideQuotes;
+                }
+            }
+            lastChars[state] = value.charAt(value.length - 1);
+            if (state === 'text') {
+                lastTextHasAt = (joins && lastTextHasAt) || (!insideQuotes && value.indexOf('@') >= 0);
+                lastTextOpen = true;
+                gapFrom = tokens.contentEnd(i);
+                gapsFolding = true;
+            }
+        }
+    }
+    // If there is no text but a comment, replace the two. A comment is never part of a
+    // mailbox, so text that came out of one only ever names it: reading an address out of it
+    // made '(a@evil.com)' a recipient where no conformant reading has a mailbox at all
+    let textFromComment = false;
+    if (!data.text.length && data.comment.length) {
+        data.text = data.comment;
+        data.textControl = data.comment.map(() => false);
+        data.comment = [];
+        textFromComment = true;
+    }
+    return { data, textFromComment };
+}
+/**
+ * Name of a group, from the tokens in front of its ':'. A comment names it when no text
+ * does, as it names a mailbox.
+ *
+ * @param tokens Tokens of the whole address list
+ * @param from Index of the first token in front of the ':'
+ * @param to Index of the ':'
+ * @return Decoded name of the group
+ */
+function groupName(tokens, from, to) {
+    // http://tools.ietf.org/html/rfc2822#appendix-A.1.3
+    return decodeWords(collectAddressParts(tokens, from, to).data.text.join(' '));
+}
+/**
+ * Converts tokens for a single address into an address object
+ *
+ * @param tokens Tokens of the whole address list
+ * @param from Index of the first token of this address
+ * @param to Index just past the last token of this address
+ * @return The address object
+ */
+function _handleAddress(tokens, from, to) {
+    const collected = collectAddressParts(tokens, from, to);
+    const data = collected.data;
+    let textFromComment = collected.textFromComment;
+    let i;
+    // Comments come out of the angle-addr before anything asks whether one was found, so
+    // that brackets holding nothing but a comment read the same as empty ones
+    const addressComments = [];
+    const addressParts = [];
+    // whether a control character was left out of the run the mailbox is read from
+    let addressControlled = false;
+    data.address.forEach((part, index) => {
+        const stripped = stripAddressComments(part);
+        for (const comment of stripped.comments) {
+            addressComments.push(comment);
+        }
+        if (stripped.address) {
+            if (!addressParts.length) {
+                addressControlled = data.addressControl[index];
+            }
+            addressParts.push(stripped.address);
+        }
+    });
+    data.address = addressParts;
+    // If no address was found, try to detect one from regular text
+    if (!data.address.length && data.text.length && !textFromComment) {
+        // Whitespace beside the '@' is CFWS, so 'user @ good.com' is read as one run. Both
+        // tiers read the collapsed runs, and only a run an address comes out of is replaced
+        // by its collapsed form, the display text keeps its spacing
+        const candidates = data.text.map(part => collapseAtSpacing(part));
+        // The first addr-spec in the text is the mailbox, as it is for a conformant parser
+        // reading as far as it can. Taking the last one let a comment part two of them and
+        // pick the second, 'user@good.com (x) evil@evil.com' named evil.com, while the
+        // same two without the comment, one run, named good.com
+        for (i = 0; i < data.text.length; i++) {
+            // Security fix: Do not extract email addresses from quoted strings
+            // RFC 5321 allows @ inside quoted local-parts like "user@domain"@example.com
+            // Extracting emails from quoted text leads to misrouting vulnerabilities
+            // A run that is a quoted local part with its '@' and domain is an addr-spec of
+            // its own, with the quoting put back on, and takes its turn like any other
+            const local = data.quotedLocalAt[i];
+            const quotedLocal = data.textWasQuoted[i] && local >= 0 && QUOTED_LOCAL_DOMAIN.test(data.text[i].slice(local))
+                ? quoteLocalPart(data.text[i])
+                : '';
+            if (quotedLocal || (!data.textWasQuoted[i] && isAddrSpec(candidates[i]))) {
+                data.address = [quotedLocal || candidates[i]];
+                addressControlled = data.textControl[i];
+                data.text.splice(i, 1);
+                data.textWasQuoted.splice(i, 1);
+                data.quotedLocalAt.splice(i, 1);
+                data.textControl.splice(i, 1);
+                break;
+            }
+        }
+        // still no address
+        if (!data.address.length) {
+            for (i = 0; i < data.text.length; i++) {
+                // Security fix: Do not extract email addresses from quoted strings
+                if (!data.textWasQuoted[i]) {
+                    // handles an email address that has more than one @. The strict tier
+                    // found nothing, so it spliced nothing and the indexes still line up
+                    const part = candidates[i];
+                    const start = looseAddressStart(part);
+                    if (start >= 0) {
+                        LOOSE_TEXT_ADDR.lastIndex = start;
+                        const match = LOOSE_TEXT_ADDR.exec(part);
+                        if (match) {
+                            data.address = [match[0].trim()];
+                            addressControlled = data.textControl[i];
+                            // the match takes the whitespace around the address along, so
+                            // the text on either side is joined with a single space
+                            data.text[i] = (part.slice(0, start) + ' ' + part.slice(start + match[0].length)).trim();
+                            break;
+                        }
+                    }
+                    data.text[i] = data.text[i].trim();
                 }
             }
         }
     }
-
-    // If there is no text but a comment, replace the two
+    // If there's still no text but a comment exists, replace the two
     if (!data.text.length && data.comment.length) {
         data.text = data.comment;
         data.comment = [];
     }
-
-    if (isGroup) {
-        // http://tools.ietf.org/html/rfc2822#appendix-A.1.3
-        data.text = data.text.join(' ');
-
-        // Parse group members, but flatten any nested groups (RFC 5322 doesn't allow nesting)
-        let groupMembers = [];
-        if (data.group.length) {
-            let parsedGroup = addressParser(data.group.join(','), { _depth: depth + 1 });
-            // Flatten: if any member is itself a group, extract its members into the sequence
-            parsedGroup.forEach(member => {
-                if (member.group) {
-                    // Nested group detected - flatten it by adding its members directly
-                    groupMembers = groupMembers.concat(member.group);
-                } else {
-                    groupMembers.push(member);
-                }
-            });
-        }
-
-        addresses.push({
-            name: decodeWords(data.text || (address && address.name)),
-            group: groupMembers
-        });
-    } else {
-        // If no address was found, try to detect one from regular text
-        if (!data.address.length && data.text.length) {
-            for (i = data.text.length - 1; i >= 0; i--) {
-                // Security fix: Do not extract email addresses from quoted strings
-                // RFC 5321 allows @ inside quoted local-parts like "user@domain"@example.com
-                // Extracting emails from quoted text leads to misrouting vulnerabilities
-                if (!data.textWasQuoted[i] && data.text[i].match(/^[^@\s]+@[^@\s]+$/)) {
-                    data.address = data.text.splice(i, 1);
-                    data.textWasQuoted.splice(i, 1);
-                    break;
-                }
-            }
-
-            // still no address
-            if (!data.address.length) {
-                for (i = data.text.length - 1; i >= 0; i--) {
-                    // Security fix: Do not extract email addresses from quoted strings
-                    if (!data.textWasQuoted[i]) {
-                        // handles an email address that has more than one @
-                        const found = findAddressInText(data.text[i]);
-                        if (found) {
-                            data.address = [found.value];
-                            // the address and the whitespace around it collapse to one space
-                            data.text[i] = (
-                                data.text[i].substring(0, found.index).replace(/\s+$/, '') +
-                                ' ' +
-                                data.text[i].substring(found.index + found.length).replace(/^\s+/, '')
-                            ).trim();
-                            break;
-                        }
-                        data.text[i] = data.text[i].trim();
-                    }
-                }
-            }
-        }
-
-        // If there's still no text but a comment exists, replace the two
-        if (!data.text.length && data.comment.length) {
-            data.text = data.comment;
-            data.comment = [];
-        }
-
-        // Keep only the first address occurrence, push others to regular text
-        if (data.address.length > 1) {
-            data.text = data.text.concat(data.address.splice(1));
-        }
-
-        // Join values with spaces
-        data.text = data.text.join(' ');
-        data.address = data.address.join(' ');
-
-        // `^=\?[^=]+?=$` could not match a base64 word whose padding puts an '=' inside it,
-        // so whether a bare encoded word was decoded or left to become the address itself
-        // came down to whether its payload happened to need padding.
-        if (!data.address && isEncodedWordsOnly(data.text.trim())) {
-            // try to extract words from text content
-            const decodedText = decodeWords(data.text);
-            // Security: only re-parse if decoded text contains angle-bracket addresses.
-            // Without this, a bare encoded email (e.g. =?utf-8?B?dGVzdEBldmlsLmNv?=)
-            // would be fabricated into an address from attacker-controlled input.
-            if (/<[^<>]+@[^<>]+>/.test(decodedText)) {
-                const parsedSubAddresses = addressParser(decodedText);
-                if (parsedSubAddresses && parsedSubAddresses.length) {
-                    return parsedSubAddresses;
-                }
-            }
-            // No usable address found - treat decoded text as display name only
-            return [{ address: '', name: decodedText }];
-        }
-
-        address = {
-            address: data.address || data.text || '',
-            name: decodeWords(data.text || data.address || '')
-        };
-
-        if (address.address === address.name) {
-            if ((address.address || '').match(/@/)) {
-                address.name = '';
-            } else {
-                address.address = '';
-            }
-        }
-
-        addresses.push(address);
+    // Keep only the first address occurrence, push others to regular text
+    if (data.address.length > 1) {
+        data.text = data.text.concat(data.address.splice(1));
     }
-
-    return addresses;
+    // An address is only taken from unquoted text, so anything left in the text at this
+    // point that still has to serve as the address carries its quoting in this flag
+    const addressFromQuotedText = !data.address.length && data.textWasQuoted.some(wasQuoted => wasQuoted);
+    // Join values with spaces
+    let text = data.text.join(' ');
+    let addressValue = data.address.join(' ');
+    // A field that is nothing but encoded words names the mailbox and is not one. The
+    // decoded text used to be parsed again when it held an angle-addr, so a word decoding
+    // to `CEO <ceo@victim.example>` became that mailbox. Nothing that authenticates the
+    // message reads it that way: a DMARC verifier takes the author from the raw header,
+    // where the word holds no mailbox, so the message has no author domain to check and
+    // the sender it showed here was one no verifier had seen. nodemailer, mailparser and
+    // Python read the field as a name as well.
+    //
+    // `^=\?[^=]+?=$` could not match a base64 word whose padding puts an '=' inside it,
+    // so whether a bare encoded word was decoded or left to become the address itself
+    // came down to whether its payload happened to need padding.
+    if (!addressValue && isEncodedWordsOnly(text.trim())) {
+        return { address: '', name: decodeWords(text) };
+    }
+    if (addressFromQuotedText && text.indexOf('@') >= 0) {
+        // The mailbox is still sitting in the text, so it moves over here and is quoted
+        // before the recovery below rather than after it. Anything else the text holds
+        // came along with it: a comment ends the domain but leaves the atoms behind it in
+        // the same text, so '"user"@example.com(x)evil.com' would otherwise hand on
+        // 'user@example.com evil.com', a second domain riding along in a value that is no
+        // addr-spec at all. Putting the quotes back first is what lets the recovery tell
+        // the whitespace a quoted local part may carry from the wreckage trailing one
+        // The quotes are gone at this point, so the '@' the domain splits off at is the
+        // last one, not the single one collapseAtSpacing insists on
+        addressValue = quoteLocalPart(joinAtSpacing(text, domainAt(text)));
+        addressControlled = data.textControl.some(Boolean);
+        text = '';
+    }
+    ({ address: addressValue, text } = recoverAddrSpec(addressValue, text));
+    // a comment names the mailbox only when nothing else does, as one outside the brackets
+    if (!text && addressComments.length) {
+        text = addressComments.join(' ');
+        textFromComment = true;
+    }
+    let mailbox = addressValue || (textFromComment ? '' : text) || '';
+    let rawName = text || addressValue || '';
+    // A control character has no place in an addr-spec. Left out, as it is from a name,
+    // 'ceo@vic\x01tim.example' read as ceo@victim.example where Python keeps the character
+    // and reads a domain no one can authenticate for, so a run that held one names no
+    // mailbox. Nor is the address shown as the name, which would be the same clean
+    // looking address again. Decided for the whole run, as a control character the
+    // extraction read as a delimiter would otherwise leave a clean address beside it
+    if (mailbox && (addressControlled || (!addressValue && data.textControl.some(Boolean)))) {
+        if (rawName === mailbox) {
+            rawName = '';
+        }
+        mailbox = '';
+    }
+    const address = {
+        address: mailbox,
+        name: decodeWords(rawName)
+    };
+    // The raw comparison is the check Nodemailer makes, it holds when a single source
+    // filled both fields. The decoded one is added because postal-mime decodes names,
+    // which also catches a name that decodes to the address itself. Comparing only the
+    // decoded name kept a name that mixes an encoded word with plain text as the address
+    if (address.address === rawName || address.address === address.name) {
+        if (address.address.match(/@/)) {
+            address.name = '';
+        }
+        else {
+            address.address = '';
+        }
+    }
+    return address;
 }
-
 /**
- * Creates a Tokenizer object for tokenizing address field strings
- *
- * @constructor
- * @param {String} str Address field string
+ * Tokenizer for address field strings
  */
 class Tokenizer {
+    /**
+     * @param str Address field string
+     */
     constructor(str) {
         this.str = (str || '').toString();
         this.operatorCurrent = '';
         this.operatorExpecting = '';
-        this.node = null;
+        this.node = -1;
         this.escaped = false;
-
-        this.list = [];
-        /**
-         * Operator tokens and which tokens are expected to end the sequence
-         */
+        this.inDomainLiteral = false;
+        this.afterAt = false;
+        this.inGroup = false;
+        this.innerQuoted = false;
+        this.innerComment = 0;
+        this.innerLiteral = false;
+        this.innerEscaped = false;
+        this.list = new TokenList(this.str);
         this.operators = {
             '"': '"',
             '(': ')',
             '<': '>',
             ',': '',
-            ':': ';',
+            // A group is read in the same pass as the rest of the list, so its ':' only marks
+            // where the name ends and its members are tokenized like any other address
+            ':': '',
             // Semicolons are not a legal delimiter per the RFC2822 grammar other
             // than for terminating a group, but they are also not valid for any
             // other use in this context.  Given that some mail clients have
@@ -4130,100 +5864,371 @@ class Tokenizer {
             ';': ''
         };
     }
-
     /**
      * Tokenizes the original input string
      *
-     * @return {Array} An array of operator|text tokens
+     * @return An array of operator|text tokens
      */
     tokenize() {
-        let list = [];
-
-        for (let i = 0, len = this.str.length; i < len; i++) {
-            let chr = this.str.charAt(i);
-            let nextChr = i < len - 1 ? this.str.charAt(i + 1) : null;
-            this.checkChar(chr, nextChr);
+        const str = this.str;
+        const len = str.length;
+        for (let i = 0; i < len; i++) {
+            this.checkChar(str.charAt(i), i);
         }
-
-        this.list.forEach(node => {
-            node.value = (node.value || '').toString().trim();
-            if (node.value) {
-                list.push(node);
+        this.closeText(len);
+        // Compacted in place: a text run is trimmed to its value and one left empty is
+        // dropped, and the value of a run that is no plain slice is rebuilt and kept aside
+        const list = this.list;
+        const slots = list.slots;
+        let kept = 0;
+        for (let i = 0, count = list.length; i < count; i++) {
+            const kind = slots[i * 3];
+            let start = slots[i * 3 + 1];
+            let end = slots[i * 3 + 2];
+            if (kind & TOKEN_DIRTY) {
+                const value = this.cleanValue(start, end, kind).trim();
+                if (!value) {
+                    continue;
+                }
+                list.cleaned.set(kept, value);
             }
-        });
-
+            else if (!(kind & TOKEN_OPERATOR)) {
+                while (start < end && isSpaceCode(str.charCodeAt(start))) {
+                    start++;
+                }
+                while (end > start && isSpaceCode(str.charCodeAt(end - 1))) {
+                    end--;
+                }
+                if (start === end) {
+                    continue;
+                }
+            }
+            slots[kept * 3] = kind;
+            slots[kept * 3 + 1] = start;
+            slots[kept * 3 + 2] = end;
+            kept++;
+        }
+        list.length = kept;
         return list;
     }
-
+    /**
+     * Ends the text run being collected, if there is one
+     *
+     * @param end Offset just past its last character
+     */
+    closeText(end) {
+        if (this.node >= 0) {
+            this.list.slots[this.node * 3 + 2] = end;
+            this.node = -1;
+        }
+    }
+    /**
+     * Rebuilds the value of a text run that is no plain slice of the field, applying the
+     * rules checkChar collects characters by: an escaping backslash is dropped, a line break
+     * reads as a space and any other control character is left out
+     *
+     * @param start Offset of the first character of the run
+     * @param end Offset just past its last character
+     * @param kind Kind and flags of the run
+     * @return Value of the run
+     */
+    cleanValue(start, end, kind) {
+        const str = this.str;
+        const escapes = (kind & TOKEN_ESCAPES) !== 0;
+        let escaped = (kind & TOKEN_STARTS_ESCAPED) !== 0;
+        let value = '';
+        for (let i = start; i < end; i++) {
+            const chr = str.charAt(i);
+            if (escapes && !escaped && chr === '\\') {
+                escaped = true;
+                continue;
+            }
+            escaped = false;
+            if (chr === '\n') {
+                value += ' ';
+            }
+            else if (chr.charCodeAt(0) >= 0x21 || chr === ' ' || chr === '\t') {
+                value += chr;
+            }
+        }
+        return value;
+    }
     /**
      * Checks if a character is an operator or text and acts accordingly
      *
-     * @param {String} chr Character from the address field
+     * @param chr Character from the address field
+     * @param i Offset of the character in the field
      */
-    checkChar(chr, nextChr) {
+    checkChar(chr, i) {
+        // Track RFC 5322 domain-literals ("[" *dtext "]"). The ":" of an IPv6 address-literal
+        // (user@[IPv6:2001:db8::1]) is dtext and must not be read as the group delimiter while
+        // inside the brackets. That is the only operator the literal hides: letting it hide
+        // the others as well meant a "[" could turn the comment, quoted string or angle-addr
+        // after it into text and pick a different mailbox, '[ ( ] <a@victim.com> ) <b@evil.com>'
+        // yielded a@victim.com where RFC 5322 reads b@evil.com. A "[" also only opens a literal
+        // right after the "@" of an addr-spec, so the group delimiter of a display name
+        // holding one stays intact. Quoted strings and comments are handled via
+        // operatorExpecting, so this state is only entered when no operator is open. The list
+        // separators "," and ";" always end the literal, so that an unclosed "[" can not
+        // swallow later recipients.
+        if (!this.escaped && !this.operatorExpecting) {
+            if (!this.inDomainLiteral && chr === '[' && this.afterAt) {
+                this.inDomainLiteral = true;
+            }
+            else if (this.inDomainLiteral && (chr === ']' || chr === ',' || chr === ';')) {
+                this.inDomainLiteral = false;
+            }
+        }
+        // The closer of an angle-addr is only read outside the quoted strings, comments and
+        // domain literals it holds. Looking for nothing but the closer let a '>' inside a
+        // quoted local part end the angle-addr, '<"a@evil.com>"@good.com>' was read as an
+        // address at evil.com. The characters are still collected as they are, the angle-addr
+        // is read again later
+        let nested = false;
+        if (this.operatorExpecting === '>') {
+            nested = this.trackInner(chr);
+            if (!nested && chr === ';' && this.inGroup) {
+                // The ';' of a group ends an angle-addr left open inside it, as it always did
+                // when a group was cut out of the field at its ';' and parsed on its own. Read
+                // as text instead, an unclosed '<' swallowed the end of the group and every
+                // recipient after it
+                this.closeText(i);
+                this.operatorExpecting = '';
+                this.resetInner();
+            }
+        }
+        else if (this.operatorExpecting === ')' && !this.escaped) {
+            // Comments nest (RFC 5322 3.2.2). Ending one at the first ')' let the ')' of a
+            // nested comment close the outer one and released the rest of it, an address
+            // included, into the header
+            if (chr === '(') {
+                this.innerComment++;
+            }
+            else if (chr === ')' && this.innerComment) {
+                this.innerComment--;
+                nested = true;
+            }
+        }
         if (this.escaped) {
             // ignore next condition blocks
-        } else if (chr === this.operatorExpecting) {
-            this.node = {
-                type: 'operator',
-                value: chr
-            };
-
-            if (nextChr && ![' ', '\t', '\r', '\n', ',', ';'].includes(nextChr)) {
-                this.node.noBreak = true;
+        }
+        else if (chr === this.operatorExpecting && !nested) {
+            const nextChr = this.str.charAt(i + 1);
+            this.closeText(i);
+            this.list.push(nextChr && ![' ', '\t', '\r', '\n', ',', ';'].includes(nextChr)
+                ? TOKEN_OPERATOR | TOKEN_NO_BREAK
+                : TOKEN_OPERATOR, i, i + 1);
+            if (chr !== ')') {
+                // a comment is folding whitespace, it does not part the "@" from the "["
+                this.afterAt = false;
             }
-
-            this.list.push(this.node);
-            this.node = null;
             this.operatorExpecting = '';
             this.escaped = false;
-
+            this.resetInner();
             return;
-        } else if (!this.operatorExpecting && chr in this.operators) {
-            this.node = {
-                type: 'operator',
-                value: chr
-            };
-            this.list.push(this.node);
-            this.node = null;
+        }
+        else if (!this.operatorExpecting && !(this.inDomainLiteral && chr === ':') && chr in this.operators) {
+            this.closeText(i);
+            this.list.push(TOKEN_OPERATOR, i, i + 1);
+            if (chr === ':') {
+                this.inGroup = true;
+            }
+            else if (chr === ';') {
+                this.inGroup = false;
+            }
+            if (chr !== '(') {
+                this.afterAt = false;
+            }
             this.operatorExpecting = this.operators[chr];
             this.escaped = false;
+            this.resetInner();
             return;
-        } else if (this.operatorExpecting === '"' && chr === '\\') {
+        }
+        else if ((this.operatorExpecting === '"' || this.operatorExpecting === ')') && chr === '\\') {
+            // A backslash escapes the next character inside a quoted string and inside a
+            // comment alike (RFC 5322 3.2.2, ccontent includes quoted-pair). Honouring it
+            // only in quoted strings let an escaped parenthesis close the comment, which
+            // released the rest of it, an address included, into the header
             this.escaped = true;
+            if (this.node >= 0) {
+                // the backslash is left out of the value
+                this.list.slots[this.node * 3] |= TOKEN_DIRTY;
+            }
             return;
         }
-
-        if (!this.node) {
-            this.node = {
-                type: 'text',
-                value: ''
-            };
-            this.list.push(this.node);
+        if (this.node < 0) {
+            this.node = this.list.push((this.operatorExpecting === '"' || this.operatorExpecting === ')' ? TOKEN_ESCAPES : 0) |
+                (this.escaped ? TOKEN_STARTS_ESCAPED : 0), i, i);
         }
-
         if (chr === '\n') {
             // Convert newlines to spaces. Carriage return is ignored as \r and \n usually
             // go together anyway and there already is a WS for \n. Lone \r means something is fishy.
             chr = ' ';
+            this.list.slots[this.node * 3] |= TOKEN_DIRTY;
         }
-
-        if (chr.charCodeAt(0) >= 0x21 || [' ', '\t'].includes(chr)) {
+        if (chr.charCodeAt(0) >= 0x21 || chr === ' ' || chr === '\t') {
+            // the character is part of the value, which is read off the field later
+            // text inside a quoted string or a comment is not part of an addr-spec. Tracked
+            // as it goes rather than read back off the value (see lastChars in _handleAddress)
+            if (!this.operatorExpecting && chr !== ' ' && chr !== '\t') {
+                this.afterAt = chr === '@';
+            }
+        }
+        else {
             // skip command bytes
-            this.node.value += chr;
+            this.list.slots[this.node * 3] |= chr === '\r' ? TOKEN_DIRTY : TOKEN_DIRTY | TOKEN_CONTROL;
         }
-
         this.escaped = false;
     }
+    /**
+     * Tracks the quoted strings, comments and domain literals inside an angle-addr, which its
+     * closer must not be read from. A backslash escapes the next character inside a quoted
+     * string and a comment. A domain literal opens right after an "@" and ends at the "]".
+     * dtext holds the list separators as well, and inside the brackets they never split the
+     * list anyway.
+     *
+     * @param chr Character from the address field
+     * @return true while the character sits inside one of them, the one that closes it included
+     */
+    trackInner(chr) {
+        if (this.innerEscaped) {
+            this.innerEscaped = false;
+            return true;
+        }
+        if (this.innerQuoted) {
+            if (chr === '\\') {
+                this.innerEscaped = true;
+            }
+            else if (chr === '"') {
+                this.innerQuoted = false;
+            }
+            return true;
+        }
+        if (this.innerComment) {
+            if (chr === '\\') {
+                this.innerEscaped = true;
+            }
+            else if (chr === '(') {
+                this.innerComment++;
+            }
+            else if (chr === ')') {
+                this.innerComment--;
+            }
+            return true;
+        }
+        if (this.innerLiteral) {
+            if (chr === ']') {
+                this.innerLiteral = false;
+            }
+            return true;
+        }
+        if (chr === '"') {
+            this.innerQuoted = true;
+            return true;
+        }
+        if (chr === '(') {
+            this.innerComment = 1;
+            return true;
+        }
+        if (chr === '[' && this.afterAt) {
+            this.innerLiteral = true;
+            return true;
+        }
+        // afterAt is otherwise only kept outside the operators and is cleared when one opens
+        // or ends, so inside an angle-addr it serves the literal tracked here
+        if (!isSpaceCode(chr.charCodeAt(0))) {
+            this.afterAt = chr === '@';
+        }
+        return false;
+    }
+    /**
+     * Forgets the nesting collected for the operator that just opened or ended
+     */
+    resetInner() {
+        this.innerQuoted = false;
+        this.innerComment = 0;
+        this.innerLiteral = false;
+        this.innerEscaped = false;
+    }
 }
-
 /**
- * Maximum recursion depth for parsing nested groups.
- * RFC 5322 doesn't allow nested groups, so this is a safeguard against
- * malicious input that could cause stack overflow.
+ * Folds the fragments an unquoted display name holding a comma is split into back together.
+ *
+ * "Joe Foo, PhD <joe@example.com>" is split on the comma into
+ * [{name:"Joe Foo", address:""}, {name:"PhD", address:"joe@example.com"}]. A name-only entry
+ * followed by an entry with both name and address is recombined. Walked back to front so
+ * that a run of fragments folds into one entry in a single pass. Splicing each fragment out
+ * of the list instead would be quadratic.
+ *
+ * @param list Parsed entries, in order
+ * @return The entries with the fragments folded in
  */
-const MAX_NESTED_GROUP_DEPTH = 50;
-
+function mergeNameFragments(list) {
+    const merged = [];
+    for (let i = list.length - 1; i >= 0; i--) {
+        const current = list[i];
+        const next = merged.length ? merged[merged.length - 1] : null;
+        if (next && current.address === '' && current.name && !current.group && next.address && next.name) {
+            next.name = current.name + ', ' + next.name;
+        }
+        else {
+            merged.push(current);
+        }
+    }
+    return merged.reverse();
+}
+/**
+ * Parses an address list, groups included, in a single pass over its tokens.
+ *
+ * A group used to be cut out of the field at the ';' that ends it and parsed again as an
+ * address list of its own, recursively, so every level of nesting parsed what was left of
+ * the field once more. RFC 5322 does not nest groups at all, and the nested ones were
+ * flattened anyway. The tokens are now walked once: a ':' opens a group, its members are
+ * read as they come, a ';' closes it. A ':' inside an open group stands for a group nested
+ * in it, whose name is dropped and whose members belong to the outer one, and the first ';'
+ * ends the group, nested or not, as before.
+ *
+ * @param str Address field
+ * @return An array of address objects
+ */
+function parseAddressList(str) {
+    const tokens = new Tokenizer(str).tokenize();
+    const parsedAddresses = [];
+    let group = null;
+    let members = [];
+    // Every address is handed over as the range of the token list it covers, as soon as the
+    // separator after it is seen. Copying the tokens of each address into an array of its own,
+    // and collecting those before handling any, held a second structure as large as the token
+    // list for the whole parse, and an array that receives a single push is allocated room for
+    // seventeen: a list of one letter names took some 80 times its size in that alone
+    let from = 0;
+    for (let i = 0, len = tokens.length; i <= len; i++) {
+        const operator = i < len ? tokens.operatorAt(i) : '';
+        if (i < len && operator !== ',' && operator !== ';' && operator !== ':') {
+            continue;
+        }
+        if (operator === ':') {
+            if (!group) {
+                group = { name: groupName(tokens, from, i), group: [] };
+                members = [];
+            }
+            from = i + 1;
+            continue;
+        }
+        if (i > from) {
+            // Appended in place. Rebuilding the list with concat() for every address copies
+            // everything parsed so far and is quadratic in the number of addresses.
+            (group ? members : parsedAddresses).push(_handleAddress(tokens, from, i));
+        }
+        from = i + 1;
+        if (group && (operator === ';' || i === len)) {
+            group.group = mergeNameFragments(members);
+            parsedAddresses.push(group);
+            group = null;
+        }
+    }
+    return mergeNameFragments(parsedAddresses);
+}
 /**
  * Parses structured e-mail addresses from an address field
  *
@@ -4235,56 +6240,20 @@ const MAX_NESTED_GROUP_DEPTH = 50;
  *
  *     [{name: 'Name', address: 'address@domain'}]
  *
- * @param {String} str Address field
- * @param {Object} options Optional options object
- * @param {Number} options._depth Internal recursion depth counter (do not set manually)
- * @return {Array} An array of address objects
+ * @param str Address field
+ * @param options Optional options object
+ * @return An array of address objects
  */
 function addressParser(str, options) {
-    options = options || {};
-    let depth = options._depth || 0;
-
-    // Prevent stack overflow from deeply nested groups (DoS protection)
-    if (depth > MAX_NESTED_GROUP_DEPTH) {
-        return [];
-    }
-
-    let tokenizer = new Tokenizer(str);
-    let tokens = tokenizer.tokenize();
-
-    let addresses = [];
-    let address = [];
-    let parsedAddresses = [];
-
-    tokens.forEach(token => {
-        if (token.type === 'operator' && (token.value === ',' || token.value === ';')) {
-            if (address.length) {
-                addresses.push(address);
-            }
-            address = [];
-        } else {
-            address.push(token);
-        }
-    });
-
-    if (address.length) {
-        addresses.push(address);
-    }
-
-    addresses.forEach(address => {
-        address = _handleAddress(address, depth);
-        if (address.length) {
-            parsedAddresses = parsedAddresses.concat(address);
-        }
-    });
-
-    if (options.flatten) {
+    const parsedAddresses = parseAddressList(str);
+    if (options && options.flatten) {
         let addresses = [];
-        let walkAddressList = list => {
+        let walkAddressList = (list) => {
             list.forEach(address => {
                 if (address.group) {
                     return walkAddressList(address.group);
-                } else {
+                }
+                else {
                     addresses.push(address);
                 }
             });
@@ -4292,560 +6261,483 @@ function addressParser(str, options) {
         walkAddressList(parsedAddresses);
         return addresses;
     }
-
     return parsedAddresses;
 }
-
 // expose to the world
 
-// --- postal-mime.js ---------------------------------------------
+// --- postal-mime.js -------------------------------------------------
+function isReadableStream(value) {
+    return !!value && typeof value.getReader === 'function';
+}
+function isBlob(value) {
+    return value instanceof Blob || Object.prototype.toString.call(value) === '[object Blob]';
+}
+// Checked by tag rather than instanceof, which fails for a buffer from another realm
+function isArrayBuffer(value) {
+    const tag = Object.prototype.toString.call(value);
+    return tag === '[object ArrayBuffer]' || tag === '[object SharedArrayBuffer]';
+}
+const ATTACHMENT_ENCODINGS = new Set(['arraybuffer', 'base64', 'utf8']);
+// Checked up front, an unknown encoding used to reject only once the whole message had
+// been parsed
+function parseAttachmentEncoding(value) {
+    const encoding = String(value || '')
+        .replace(/[-_\s]/g, '')
+        .toLowerCase() || 'arraybuffer';
+    if (!ATTACHMENT_ENCODINGS.has(encoding)) {
+        throw createError('EINVALIDOPTION', `Unknown attachment encoding ${encoding}`);
+    }
+    return encoding;
+}
+// Renders one entry of a node as the requested text type. A text part of the other type
+// is converted, and a nested message becomes a header block in that format
+function renderEntry(textEntry, textType, convert) {
+    if (textEntry.type === 'subMessage') {
+        return textType === 'html' ? formatHtmlHeader(textEntry.value) : formatTextHeader(textEntry.value);
+    }
+    if (!convert) {
+        return textEntry.value;
+    }
+    return textType === 'html' ? textToHtml(textEntry.value) : htmlToText(textEntry.value);
+}
+// The line break given to the last line of a message that ends without one, see readLine
+const LINE_FEED = new Uint8Array([0x0a]);
 const MAX_NESTING_DEPTH = 256;
 const MAX_HEADERS_SIZE = 2 * 1024 * 1024;
+// The depth limit does not bound the size of the tree. An empty part costs six bytes of
+// input (`--b` and a blank line) and over a kilobyte of parser state at its peak, so a
+// flat multipart of a million empty parts took a 7 MB message to 1.4 GB of memory.
+const MAX_PART_COUNT = 10000;
 // Inline message/rfc822 parts are parsed recursively. Without a dedicated limit
 // each nesting level spawns a new parser that retains the full nested message,
 // so a small crafted email can exhaust memory (OOM crash). Cap the recursion and
 // treat deeper nested messages as regular attachments instead.
 const MAX_RFC822_NESTING_DEPTH = 10;
-
-function toCamelCase(key) {
-    return key.replace(/-(.)/g, (o, c) => c.toUpperCase());
+// The From, To, Cc and Bcc of every inline message/rfc822 part are rendered into the
+// text and html of the parent, an address of one or two bytes as some 60 characters of
+// html. maxHeadersSize bounds the header bytes, not the addresses they hold, so without
+// a limit of their own the output grows with the number of forwards.
+const MAX_FORWARDED_ADDRESSES = 10000;
+// the number of entries the header formatters render for a list of addresses, a group
+// counted along with each of its members
+function countAddresses(addresses) {
+    if (!addresses) {
+        return 0;
+    }
+    let count = 0;
+    for (const address of Array.isArray(addresses) ? addresses : [addresses]) {
+        count += 1 + (address.group ? address.group.length : 0);
+    }
+    return count;
 }
-
 // Limit options must be validated rather than falsy-coalesced. `0` would silently
 // restore the default, and a string or NaN disables the limit altogether, because
 // every `size > limit` comparison against such a value is false. Callers that
 // forward a request supplied options object would otherwise hand an attacker a way
 // to turn the limits off.
-function parseLimitOption(value, defaultValue, name) {
+function parseLimitOption(value, defaultValue, name, min = 0) {
     if (value === undefined || value === null) {
         return defaultValue;
     }
-
-    if (typeof value !== 'number' || !Number.isInteger(value) || value < 0) {
-        throw new TypeError(`${name} must be a non-negative integer`);
+    if (typeof value !== 'number' || !Number.isInteger(value) || value < min) {
+        throw createError('EINVALIDOPTION', `${name} must be a ${min ? 'positive' : 'non-negative'} integer`);
     }
-
     return value;
 }
-
+function parseLimits(options) {
+    return {
+        maxNestingDepth: parseLimitOption(options.maxNestingDepth, MAX_NESTING_DEPTH, 'maxNestingDepth'),
+        maxHeadersSize: parseLimitOption(options.maxHeadersSize, MAX_HEADERS_SIZE, 'maxHeadersSize'),
+        // The root part is always counted, so a limit of zero can parse nothing, not even
+        // an empty message, and it threw EMAXPARTCOUNT from the constructor, where only
+        // EINVALIDOPTION is thrown
+        maxPartCount: parseLimitOption(options.maxPartCount, MAX_PART_COUNT, 'maxPartCount', 1),
+        // A limit of 0 disables inline parsing entirely, so every message/rfc822 part
+        // becomes an attachment.
+        maxRfc822NestingDepth: parseLimitOption(options.maxRfc822NestingDepth, MAX_RFC822_NESTING_DEPTH, 'maxRfc822NestingDepth'),
+        maxForwardedAddresses: parseLimitOption(options.maxForwardedAddresses, MAX_FORWARDED_ADDRESSES, 'maxForwardedAddresses')
+    };
+}
 class PostalMime {
+    /**
+     * Parses a raw email message
+     *
+     * @param buf Raw email message
+     * @param options Parser options
+     * @returns The parsed email
+     */
     // async so that an invalid option rejects the returned promise instead of throwing
     // synchronously, which would escape a `.catch()` chain
     static async parse(buf, options) {
         const parser = new PostalMime(options);
         return parser.parse(buf);
     }
-
-    // rfc822NestingDepth is internal state that nested parsers receive from their parent.
-    // It is deliberately a separate argument rather than an option, so that forwarding a
-    // caller supplied options object can not seed it and switch the recursion limit off.
-    constructor(options, rfc822NestingDepth = 0) {
+    constructor(options, parent) {
         this.options = options || {};
-        this.mimeOptions = {
-            maxNestingDepth: parseLimitOption(this.options.maxNestingDepth, MAX_NESTING_DEPTH, 'maxNestingDepth'),
-            maxHeadersSize: parseLimitOption(this.options.maxHeadersSize, MAX_HEADERS_SIZE, 'maxHeadersSize')
-        };
-
-        // A limit of 0 disables inline parsing entirely, so every message/rfc822 part
-        // becomes an attachment.
-        this.maxRfc822NestingDepth = parseLimitOption(
-            this.options.maxRfc822NestingDepth,
-            MAX_RFC822_NESTING_DEPTH,
-            'maxRfc822NestingDepth'
-        );
-        this.rfc822NestingDepth = rfc822NestingDepth;
-
-        this.root = this.currentNode = new MimeNode({
-            postalMime: this,
-            ...this.mimeOptions
-        });
-        this.boundaries = [];
-
-        // Header bytes seen across every part of this message, see MimeNode.feed
-        this.headerSize = 0;
-
+        // Internal state that a nested parser receives from its parent. It is deliberately
+        // not an option, so that forwarding a caller supplied options object can not seed
+        // it and switch the recursion limit off or start the counters over.
+        this.rfc822NestingDepth = parent ? parent.rfc822NestingDepth + 1 : 0;
+        // Set before the root part is created, since the root is counted and checked too
+        this.limits = parent ? parent.limits : parseLimits(this.options);
+        this.counters = parent ? parent.counters : { headerSize: 0, partCount: 0, forwardedAddresses: 0 };
+        this.root = this.currentNode = new MimeNode({ postalMime: this });
+        this.boundaries = new BoundaryStack();
         this.textContent = {};
+        this.textMap = new Map();
+        this.textTypes = new Set();
         this.attachments = [];
-
-        this.attachmentEncoding =
-            (this.options.attachmentEncoding || '')
-                .toString()
-                .replace(/[-_\s]/g, '')
-                .trim()
-                .toLowerCase() || 'arraybuffer';
-
+        this.forceRfc822Attachments = false;
+        this.attachmentEncoding = parseAttachmentEncoding(this.options.attachmentEncoding);
         this.started = false;
     }
-
+    /** @internal */
     async finalize() {
         // close all pending nodes
         await this.root.finalize();
     }
-
-    async processLine(line, isFinal) {
-        let boundaries = this.boundaries;
-
-        // check if this is a mime boundary
-        if (boundaries.length && line.length > 2 && line[0] === 0x2d && line[1] === 0x2d) {
-            // could be a boundary marker
-            for (let i = boundaries.length - 1; i >= 0; i--) {
-                let boundary = boundaries[i];
-
-                // Line must be at least long enough for "--" + boundary
-                if (line.length < boundary.value.length + 2) {
-                    continue;
-                }
-
-                // Check if boundary value matches
-                let boundaryMatches = true;
-                for (let j = 0; j < boundary.value.length; j++) {
-                    if (line[j + 2] !== boundary.value[j]) {
-                        boundaryMatches = false;
-                        break;
-                    }
-                }
-                if (!boundaryMatches) {
-                    continue;
-                }
-
-                // Check for terminator (-- after boundary) and determine where boundary ends
-                let boundaryEnd = boundary.value.length + 2;
-                let isTerminator = false;
-
-                if (
-                    line.length >= boundary.value.length + 4 &&
-                    line[boundary.value.length + 2] === 0x2d &&
-                    line[boundary.value.length + 3] === 0x2d
-                ) {
-                    isTerminator = true;
-                    boundaryEnd = boundary.value.length + 4;
-                }
-
-                // RFC 2046: boundary line may have trailing whitespace (space/tab) before CRLF
-                let hasValidTrailing = true;
-                for (let j = boundaryEnd; j < line.length; j++) {
-                    if (line[j] !== 0x20 && line[j] !== 0x09) {
-                        hasValidTrailing = false;
-                        break;
-                    }
-                }
-                if (!hasValidTrailing) {
-                    continue;
-                }
-
-                if (isTerminator) {
-                    await boundary.node.finalize();
-
-                    this.currentNode = boundary.node.parentNode || this.root;
-                } else {
-                    // finalize any open child nodes (should be just one though)
-                    await boundary.node.finalizeChildNodes();
-
-                    this.currentNode = new MimeNode({
-                        postalMime: this,
-                        parentNode: boundary.node,
-                        parentMultipartType: boundary.node.contentType.multipart,
-                        ...this.mimeOptions
-                    });
-                }
-
-                if (isFinal) {
-                    return this.finalize();
-                }
-
-                return;
+    /** @internal */
+    async processLine(line, lineBreak, isFinal) {
+        const match = this.boundaries.match(line);
+        if (match) {
+            if (match.isTerminator) {
+                await match.node.finalize(true);
+                this.currentNode = match.node.parentNode || this.root;
             }
+            else {
+                // finalize any open child nodes (should be just one though)
+                await match.node.finalizeChildNodes(true);
+                this.currentNode = new MimeNode({
+                    postalMime: this,
+                    parentNode: match.node,
+                    parentMultipartType: match.node.contentType.multipart
+                });
+            }
+            if (isFinal) {
+                return this.finalize();
+            }
+            return;
         }
-
-        this.currentNode.feed(line);
-
+        if (this.currentNode.feed(line, lineBreak)) {
+            // The headers ended with the line before this one, so the boundary this part
+            // declares was not registered when the line was checked above. Read it again
+            return this.processLine(line, lineBreak, isFinal);
+        }
         if (isFinal) {
             return this.finalize();
         }
     }
-
+    // Reads the next line without its line break. The break itself, the exact bytes between
+    // the line and the next one, is returned alongside, because the body decoders write it
+    // back out: a part has to keep the line endings it was sent with, see PassThroughDecoder.
+    /** @internal */
     readLine() {
         let startPos = this.readPos;
         let endPos = this.readPos;
-
         while (this.readPos < this.av.length) {
             const c = this.av[this.readPos++];
-
             if (c !== 0x0d && c !== 0x0a) {
                 endPos = this.readPos;
             }
-
             if (c === 0x0a) {
                 return {
                     bytes: new Uint8Array(this.buf, startPos, endPos - startPos),
+                    lineBreak: this.av.subarray(endPos, this.readPos),
                     done: this.readPos >= this.av.length
                 };
             }
         }
-
+        // A message that ends without a line break still gets one after its last line, the
+        // decoders write it out unless a boundary ended the part
         return {
             bytes: new Uint8Array(this.buf, startPos, endPos - startPos),
+            lineBreak: LINE_FEED,
             done: this.readPos >= this.av.length
         };
     }
-
-    async processNodeTree() {
-        // get text nodes
-
-        let textContent = {};
-
-        let textTypes = new Set();
-        let textMap = (this.textMap = new Map());
-
-        let forceRfc822Attachments = this.forceRfc822Attachments();
-
-        let walk = async (node, alternative, related) => {
-            alternative = alternative || false;
-            related = related || false;
-
-            if (!node.contentType.multipart) {
-                const inlineRfc822 = this.isInlineMessageRfc822(node) && !forceRfc822Attachments;
-                const rfc822DepthExceeded = inlineRfc822 && this.rfc822NestingDepth >= this.maxRfc822NestingDepth;
-
-                // is it inline message/rfc822
-                if (inlineRfc822 && !rfc822DepthExceeded) {
-                    const subParser = new PostalMime(
-                        {
-                            // Only the limits are inherited. Options that decide how a part
-                            // is classified stay with the parser that was configured.
-                            ...this.mimeOptions,
-                            maxRfc822NestingDepth: this.maxRfc822NestingDepth,
-                            // attachments are encoded by the parent parser, keep raw buffers here
-                            attachmentEncoding: 'arraybuffer'
-                        },
-                        this.rfc822NestingDepth + 1
-                    );
-                    node.subMessage = await subParser.parse(node.content);
-
-                    if (!textMap.has(node)) {
-                        textMap.set(node, {});
-                    }
-
-                    let textEntry = textMap.get(node);
-
-                    // default to text if there is no content
-                    if (node.subMessage.text || !node.subMessage.html) {
-                        textEntry.plain = textEntry.plain || [];
-                        textEntry.plain.push({ type: 'subMessage', value: node.subMessage });
-                        textTypes.add('plain');
-                    }
-
-                    if (node.subMessage.html) {
-                        textEntry.html = textEntry.html || [];
-                        textEntry.html.push({ type: 'subMessage', value: node.subMessage });
-                        textTypes.add('html');
-                    }
-
-                    if (subParser.textMap) {
-                        subParser.textMap.forEach((subTextEntry, subTextNode) => {
-                            textMap.set(subTextNode, subTextEntry);
-                        });
-                    }
-
-                    for (let attachment of node.subMessage.attachments || []) {
-                        this.attachments.push(attachment);
-                    }
-                }
-
-                // is it text?
-                else if (this.isInlineTextNode(node)) {
-                    let textType = node.contentType.parsed.value.substr(node.contentType.parsed.value.indexOf('/') + 1);
-
-                    let selectorNode = alternative || node;
-                    if (!textMap.has(selectorNode)) {
-                        textMap.set(selectorNode, {});
-                    }
-
-                    let textEntry = textMap.get(selectorNode);
-                    textEntry[textType] = textEntry[textType] || [];
-                    textEntry[textType].push({ type: 'text', value: node.getTextContent() });
-                    textTypes.add(textType);
-                }
-
-                // is it an attachment
-                else if (node.content) {
-                    const filename =
-                        node.contentDisposition?.parsed?.params?.filename ||
-                        node.contentType.parsed.params.name ||
-                        null;
-                    const attachment = {
-                        filename: filename ? decodeWords(filename) : null,
-                        mimeType: node.contentType.parsed.value,
-                        disposition: node.contentDisposition?.parsed?.value || null
-                    };
-
-                    // A nested message that was not parsed is not a renderable inline
-                    // resource, so it must not join the cid map behind an <img src>.
-                    if (related && node.contentId && !rfc822DepthExceeded) {
-                        attachment.related = true;
-                    }
-
-                    if (rfc822DepthExceeded) {
-                        // Tell the caller this part would have been parsed inline but hit
-                        // maxRfc822NestingDepth, so anything inside it is not reflected in
-                        // email.text, email.html or email.attachments.
-                        attachment.rfc822DepthExceeded = true;
-                    }
-
-                    if (node.contentDescription) {
-                        // decoded like filename, it is an unstructured header that may
-                        // carry encoded words
-                        attachment.description = decodeWords(node.contentDescription);
-                    }
-
-                    if (node.contentId) {
-                        attachment.contentId = node.contentId;
-                    }
-
-                    switch (node.contentType.parsed.value) {
-                        // Special handling for calendar events
-                        case 'text/calendar':
-                        case 'application/ics': {
-                            if (node.contentType.parsed.params.method) {
-                                attachment.method = node.contentType.parsed.params.method
-                                    .toString()
-                                    .toUpperCase()
-                                    .trim();
-                            }
-
-                            // Enforce into unicode
-                            const decodedText = node.getTextContent().replace(/\r?\n/g, '\n').replace(/\n*$/, '\n');
-                            attachment.content = textEncoder.encode(decodedText);
-                            break;
-                        }
-
-                        // Regular attachments
-                        default:
-                            attachment.content = node.content;
-                    }
-
-                    this.attachments.push(attachment);
-                }
-            } else if (node.contentType.multipart === 'alternative') {
-                alternative = node;
-            } else if (node.contentType.multipart === 'related') {
-                related = node;
+    // Records a text part or a nested message under the node that selects it
+    /** @internal */
+    addTextEntry(selector, textType, item) {
+        let textEntry = this.textMap.get(selector);
+        if (!textEntry) {
+            textEntry = {};
+            this.textMap.set(selector, textEntry);
+        }
+        const entries = textEntry[textType] || [];
+        textEntry[textType] = entries;
+        entries.push(item);
+        this.textTypes.add(textType);
+    }
+    // Sorts every leaf of the tree into text content, nested messages and attachments.
+    // `alternative` is the closest enclosing multipart/alternative, if any: its text parts
+    // are collected under the alternative itself, so that the body is assembled from one
+    // representation of it rather than from every one. `related` tells whether the part
+    // sits inside a multipart/related, where a Content-ID makes it an inline resource
+    /** @internal */
+    async collectNode(node, alternative, related) {
+        if (!node.contentType.multipart) {
+            const inlineRfc822 = this.isInlineMessageRfc822(node);
+            const rfc822DepthExceeded = inlineRfc822 && this.rfc822NestingDepth >= this.limits.maxRfc822NestingDepth;
+            if (inlineRfc822 && !rfc822DepthExceeded) {
+                await this.collectSubMessage(node);
             }
-
-            for (let childNode of node.childNodes) {
-                await walk(childNode, alternative, related);
+            else if (this.isInlineTextNode(node)) {
+                const textType = node.contentType.parsed.value === 'text/html' ? 'html' : 'plain';
+                this.addTextEntry(alternative || node, textType, { type: 'text', value: node.getTextContent() });
             }
+            else if (node.content) {
+                this.collectAttachment(node, node.content, related, rfc822DepthExceeded);
+            }
+        }
+        else if (node.contentType.multipart === 'alternative') {
+            alternative = node;
+        }
+        else if (node.contentType.multipart === 'related') {
+            related = true;
+        }
+        for (let childNode of node.childNodes) {
+            await this.collectNode(childNode, alternative, related);
+        }
+    }
+    // Parses an inline message/rfc822 part with a nested parser and takes over its text
+    // parts and attachments
+    /** @internal */
+    async collectSubMessage(node) {
+        const subParser = new PostalMime({
+            // Options that decide how a part is classified stay with the parser that
+            // was configured, the limits and their counters come from this parser.
+            // Attachments are encoded by the parent parser, so raw buffers are kept here.
+            attachmentEncoding: 'arraybuffer'
+        }, this);
+        const subMessage = await subParser.parse(node.content || new ArrayBuffer(0));
+        // counted before the header block below is rendered into the text and html
+        this.counters.forwardedAddresses +=
+            countAddresses(subMessage.from) +
+                countAddresses(subMessage.to) +
+                countAddresses(subMessage.cc) +
+                countAddresses(subMessage.bcc);
+        if (this.counters.forwardedAddresses > this.limits.maxForwardedAddresses) {
+            throw createError('EMAXFORWARDEDADDRESSES', `Maximum forwarded address count of ${this.limits.maxForwardedAddresses} addresses exceeded`);
+        }
+        // The nested parser renders no text, see parse, its text parts are taken over below
+        // and rendered by the root parser along with everything else. What it holds of each
+        // kind is read off its text types instead of its text and html
+        const hasPlain = subParser.textTypes.has('plain');
+        const hasHtml = subParser.textTypes.has('html');
+        // default to text if there is no content
+        if (hasPlain || !hasHtml) {
+            this.addTextEntry(node, 'plain', { type: 'subMessage', value: subMessage });
+        }
+        if (hasHtml) {
+            this.addTextEntry(node, 'html', { type: 'subMessage', value: subMessage });
+        }
+        subParser.textMap.forEach((subTextEntry, subTextNode) => {
+            this.textMap.set(subTextNode, subTextEntry);
+        });
+        for (let attachment of subMessage.attachments) {
+            this.attachments.push(attachment);
+        }
+    }
+    /** @internal */
+    collectAttachment(node, content, related, rfc822DepthExceeded) {
+        const filename = node.contentDisposition.parsed.params.filename || node.contentType.parsed.params.name || null;
+        // `content` is filled in below once the part type is known, hence the cast
+        const attachment = {
+            // An RFC 2231 filename is percent decoded without folding, since the same decoder
+            // produces the boundary, so the fold happens here, see foldLineBreaks
+            filename: filename ? decodeWords(foldLineBreaks(filename)) : null,
+            mimeType: node.contentType.parsed.value,
+            disposition: node.contentDisposition.parsed.value || null
         };
-
-        await walk(this.root, false, false);
-
-        textMap.forEach(mapEntry => {
-            textTypes.forEach(textType => {
-                if (!textContent[textType]) {
-                    textContent[textType] = [];
+        // A nested message that was not parsed is not a renderable inline
+        // resource, so it must not join the cid map behind an <img src>.
+        if (related && node.contentId && !rfc822DepthExceeded) {
+            attachment.related = true;
+        }
+        if (rfc822DepthExceeded) {
+            // Tell the caller this part would have been parsed inline but hit
+            // maxRfc822NestingDepth, so anything inside it is not reflected in
+            // email.text, email.html or email.attachments.
+            attachment.rfc822DepthExceeded = true;
+        }
+        if (node.contentDescription) {
+            // decoded like filename, it is an unstructured header that may
+            // carry encoded words
+            attachment.description = decodeWords(node.contentDescription);
+        }
+        if (node.contentId) {
+            attachment.contentId = node.contentId;
+        }
+        switch (node.contentType.parsed.value) {
+            // Special handling for calendar events
+            case 'text/calendar':
+            case 'application/ics': {
+                if (node.contentType.parsed.params.method) {
+                    attachment.method = node.contentType.parsed.params.method.toString().toUpperCase().trim();
                 }
-
-                if (mapEntry[textType]) {
-                    mapEntry[textType].forEach(textEntry => {
-                        switch (textEntry.type) {
-                            case 'text':
-                                textContent[textType].push(textEntry.value);
-                                break;
-
-                            case 'subMessage':
-                                {
-                                    switch (textType) {
-                                        case 'html':
-                                            textContent[textType].push(formatHtmlHeader(textEntry.value));
-                                            break;
-                                        case 'plain':
-                                            textContent[textType].push(formatTextHeader(textEntry.value));
-                                            break;
-                                    }
-                                }
-                                break;
-                        }
-                    });
-                } else {
-                    let alternativeType;
-                    switch (textType) {
-                        case 'html':
-                            alternativeType = 'plain';
-                            break;
-                        case 'plain':
-                            alternativeType = 'html';
-                            break;
-                    }
-
-                    (mapEntry[alternativeType] || []).forEach(textEntry => {
-                        switch (textEntry.type) {
-                            case 'text':
-                                switch (textType) {
-                                    case 'html':
-                                        textContent[textType].push(textToHtml(textEntry.value));
-                                        break;
-                                    case 'plain':
-                                        textContent[textType].push(htmlToText(textEntry.value));
-                                        break;
-                                }
-                                break;
-
-                            case 'subMessage':
-                                {
-                                    switch (textType) {
-                                        case 'html':
-                                            textContent[textType].push(formatHtmlHeader(textEntry.value));
-                                            break;
-                                        case 'plain':
-                                            textContent[textType].push(formatTextHeader(textEntry.value));
-                                            break;
-                                    }
-                                }
-                                break;
-                        }
-                    });
+                // Enforce into unicode, ending in exactly one newline. The trailing
+                // newlines are counted rather than replaced with `/\n*$/`, which
+                // retries at every newline of a run that does not end the text.
+                const decodedText = node.getTextContent();
+                let end = decodedText.length;
+                while (end > 0 && decodedText.charCodeAt(end - 1) === 0x0a) {
+                    end--;
+                }
+                attachment.content = textEncoder.encode(decodedText.slice(0, end) + '\n');
+                break;
+            }
+            // Regular attachments
+            default:
+                attachment.content = content;
+        }
+        this.attachments.push(attachment);
+    }
+    // Joins the collected text parts into the plain and html bodies
+    /** @internal */
+    renderTextContent() {
+        const textContent = {};
+        this.textMap.forEach(mapEntry => {
+            this.textTypes.forEach(textType => {
+                const output = textContent[textType] || [];
+                textContent[textType] = output;
+                // a node without a part of this type is rendered from the other type
+                const ownEntries = mapEntry[textType];
+                const entries = ownEntries || mapEntry[textType === 'html' ? 'plain' : 'html'] || [];
+                for (const textEntry of entries) {
+                    output.push(renderEntry(textEntry, textType, !ownEntries));
                 }
             });
         });
-
         Object.keys(textContent).forEach(textType => {
-            textContent[textType] = textContent[textType].join('\n');
+            this.textContent[textType] = textContent[textType].join('\n');
         });
-
-        this.textContent = textContent;
     }
-
+    /** @internal */
     isInlineTextNode(node) {
-        if (node.contentDisposition?.parsed?.value === 'attachment') {
+        if (node.contentDisposition.parsed.value === 'attachment') {
             // no matter the type, this is an attachment
             return false;
         }
-
-        switch (node.contentType.parsed?.value) {
+        switch (node.contentType.parsed.value) {
             case 'text/html':
             case 'text/plain':
                 return true;
-
             case 'text/calendar':
             case 'text/csv':
             default:
                 return false;
         }
     }
-
+    /** @internal */
     isInlineMessageRfc822(node) {
-        if (node.contentType.parsed?.value !== 'message/rfc822') {
+        if (this.forceRfc822Attachments || node.contentType.parsed.value !== 'message/rfc822') {
             return false;
         }
-        let disposition =
-            node.contentDisposition?.parsed?.value || (this.options.rfc822Attachments ? 'attachment' : 'inline');
+        // RFC 2046 5.2.1 allows no encoding but 7bit, 8bit and binary for a message/rfc822
+        // body. Python parses the lines of a base64 or quoted-printable part as they are, so
+        // the nested message it sees has no headers and holds the encoded text, and
+        // mailparser keeps the part as one attachment. Decoding and inlining it here
+        // rendered the html and listed the attachments of a message no scanner built on
+        // either reads, so such a part is an attachment, with its content decoded
+        const encoding = node.contentTransferEncoding.encoding;
+        if (encoding === 'base64' || encoding === 'quoted-printable') {
+            return false;
+        }
+        let disposition = node.contentDisposition.parsed.value || (this.options.rfc822Attachments ? 'attachment' : 'inline');
         return disposition === 'inline';
     }
-
-    // Check if this is a specially crafted report email where message/rfc822 content should not be inlined
-    forceRfc822Attachments() {
-        if (this.options.forceRfc822Attachments) {
-            return true;
-        }
-
-        let forceRfc822Attachments = false;
-        let walk = node => {
+    // A delivery status or feedback report carries the offending message as a part. It is
+    // evidence rather than content, so it is not inlined into the body of the report
+    /** @internal */
+    hasReportParts() {
+        let found = false;
+        let walk = (node) => {
             if (!node.contentType.multipart) {
-                if (
-                    node.contentType.parsed &&
-                    ['message/delivery-status', 'message/feedback-report'].includes(node.contentType.parsed.value)
-                ) {
-                    forceRfc822Attachments = true;
+                if (['message/delivery-status', 'message/feedback-report'].includes(node.contentType.parsed.value)) {
+                    found = true;
                 }
             }
-
             for (let childNode of node.childNodes) {
                 walk(childNode);
             }
         };
         walk(this.root);
-        return forceRfc822Attachments;
+        return found;
     }
-
+    /** @internal */
     async resolveStream(stream) {
         let chunkLen = 0;
         let chunks = [];
         const reader = stream.getReader();
-
         while (true) {
             const { done, value } = await reader.read();
             if (done) {
                 break;
             }
-            chunks.push(value);
-            chunkLen += value.length;
+            // A chunk that is not a byte view, eg. a string from a text stream, used to be
+            // copied in as zeros
+            if (!ArrayBuffer.isView(value)) {
+                const error = createError('EINVALIDINPUT', 'Stream chunks must be Uint8Array values');
+                // Not awaited, a source that fails or stalls on cancel must not hide this error
+                reader.cancel(error).catch(() => { });
+                throw error;
+            }
+            chunks.push(new Uint8Array(value.buffer, value.byteOffset, value.byteLength));
+            chunkLen += value.byteLength;
         }
-
         const result = new Uint8Array(chunkLen);
         let chunkPointer = 0;
         for (let chunk of chunks) {
             result.set(chunk, chunkPointer);
             chunkPointer += chunk.length;
         }
-
         return result;
     }
-
-    async parse(buf) {
-        if (this.started) {
-            throw new Error('Can not reuse parser, create a new PostalMime object');
-        }
-        this.started = true;
-
+    /** @internal */
+    async resolveInput(buf) {
+        let input = buf;
         // Check if the input is a readable stream and resolve it into an ArrayBuffer
-        if (buf && typeof buf.getReader === 'function') {
-            buf = await this.resolveStream(buf);
+        if (isReadableStream(input)) {
+            input = await this.resolveStream(input);
         }
-
         // Should it throw for an empty value instead of defaulting to an empty ArrayBuffer?
-        buf = buf || new ArrayBuffer(0);
-
+        input = input || new ArrayBuffer(0);
         // Cast string input to Uint8Array
-        if (typeof buf === 'string') {
-            buf = textEncoder.encode(buf);
+        if (typeof input === 'string') {
+            input = textEncoder.encode(input);
         }
-
         // Cast Blob to ArrayBuffer
-        if (buf instanceof Blob || Object.prototype.toString.call(buf) === '[object Blob]') {
-            buf = await blobToArrayBuffer(buf);
+        if (isBlob(input)) {
+            input = await blobToArrayBuffer(input);
         }
-
         // Cast a Node.js Buffer, a typed array or a DataView into an ArrayBuffer.
         // `new Uint8Array(view)` only works for array-likes, so a DataView produced an
         // empty buffer and the message parsed to nothing without an error. Slicing off
         // byteOffset also keeps views over a larger buffer from reading their neighbours.
-        if (ArrayBuffer.isView(buf)) {
-            buf = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
+        if (ArrayBuffer.isView(input)) {
+            return input.buffer.slice(input.byteOffset, input.byteOffset + input.byteLength);
         }
-
-        this.buf = buf;
-
-        this.av = new Uint8Array(buf);
-        this.readPos = 0;
-
-        while (this.readPos < this.av.length) {
-            const line = this.readLine();
-
-            await this.processLine(line.bytes, line.done);
+        // Anything else, eg. a number or a plain object, was handed to the Uint8Array
+        // constructor as it is and parsed into an empty or zero filled message
+        if (!isArrayBuffer(input)) {
+            throw createError('EINVALIDINPUT', 'Unsupported email input type');
         }
-
-        await this.processNodeTree();
-
+        return input;
+    }
+    // Properties are added in the order the output has always had them, so the required
+    // ones are filled in below rather than in the literal
+    /** @internal */
+    buildMessage() {
+        const headers = this.root.headers;
         const message = {
-            headers: this.root.headers.map(entry => ({
+            headers: headers.map(entry => ({
                 key: entry.key,
                 originalKey: entry.originalKey,
                 value: entry.value
             }))
         };
-
         for (const key of ['from', 'sender']) {
-            const addressHeader = this.root.headers.find(line => line.key === key);
+            const addressHeader = headers.find(line => line.key === key);
             if (addressHeader && addressHeader.value) {
                 const addresses = addressParser(addressHeader.value);
                 if (addresses && addresses.length) {
@@ -4853,93 +6745,127 @@ class PostalMime {
                 }
             }
         }
-
-        for (const key of ['delivered-to', 'return-path']) {
-            const addressHeader = this.root.headers.find(line => line.key === key);
+        for (const [key, camelKey] of [
+            ['delivered-to', 'deliveredTo'],
+            ['return-path', 'returnPath']
+        ]) {
+            const addressHeader = headers.find(line => line.key === key);
             if (addressHeader && addressHeader.value) {
                 const addresses = addressParser(addressHeader.value);
                 if (addresses && addresses.length && addresses[0].address) {
-                    const camelKey = toCamelCase(key);
                     message[camelKey] = addresses[0].address;
                 }
             }
         }
-
-        for (const key of ['to', 'cc', 'bcc', 'reply-to']) {
-            const addressHeaders = this.root.headers.filter(line => line.key === key);
-            let addresses = [];
-
-            addressHeaders
-                .filter(entry => entry && entry.value)
-                .map(entry => addressParser(entry.value))
-                .forEach(parsed => (addresses = addresses.concat(parsed || [])));
-
-            if (addresses && addresses.length) {
-                const camelKey = toCamelCase(key);
+        for (const [key, camelKey] of [
+            ['to', 'to'],
+            ['cc', 'cc'],
+            ['bcc', 'bcc'],
+            ['reply-to', 'replyTo']
+        ]) {
+            // Appended in place, concat() copies the whole list for every header
+            const addresses = [];
+            for (const entry of headers) {
+                if (entry.key === key && entry.value) {
+                    for (const address of addressParser(entry.value)) {
+                        addresses.push(address);
+                    }
+                }
+            }
+            if (addresses.length) {
                 message[camelKey] = addresses;
             }
         }
-
-        for (const key of ['subject', 'message-id', 'in-reply-to', 'references']) {
-            const header = this.root.headers.find(line => line.key === key);
+        for (const [key, camelKey] of [
+            ['subject', 'subject'],
+            ['message-id', 'messageId'],
+            ['in-reply-to', 'inReplyTo'],
+            ['references', 'references']
+        ]) {
+            const header = headers.find(line => line.key === key);
             if (header && header.value) {
-                const camelKey = toCamelCase(key);
                 message[camelKey] = decodeWords(header.value);
             }
         }
-
-        let dateHeader = this.root.headers.find(line => line.key === 'date');
+        let dateHeader = headers.find(line => line.key === 'date');
         if (dateHeader) {
             let date = new Date(dateHeader.value);
-            if (date.toString() === 'Invalid Date') {
-                date = dateHeader.value;
-            } else {
-                // enforce ISO format if seems to be a valid date
-                date = date.toISOString();
-            }
-            message.date = date;
+            // enforce ISO format if seems to be a valid date
+            message.date = date.toString() === 'Invalid Date' ? dateHeader.value : date.toISOString();
         }
-
-        if (this.textContent?.html) {
+        const otp = getOtp(headers);
+        if (otp) {
+            message.otp = otp;
+        }
+        if (this.textContent.html) {
             message.html = this.textContent.html;
         }
-
-        if (this.textContent?.plain) {
+        if (this.textContent.plain) {
             message.text = this.textContent.plain;
         }
-
         message.attachments = this.attachments;
-
         // Expose raw header lines, in the same order as the headers array
-        message.headerLines = (this.root.rawHeaderLines || []).slice();
-
+        message.headerLines = this.root.rawHeaderLines.slice();
+        return message;
+    }
+    // Every attachment holds binary content at this point, since nested parsers are
+    // created with the arraybuffer encoding. The string check narrows the public content
+    // type rather than handling a reachable case
+    /** @internal */
+    encodeAttachments() {
         switch (this.attachmentEncoding) {
             case 'arraybuffer':
                 break;
-
             case 'base64':
-                for (let attachment of message.attachments || []) {
-                    if (attachment?.content) {
+                for (let attachment of this.attachments) {
+                    if (attachment.content && typeof attachment.content !== 'string') {
                         attachment.content = base64ArrayBuffer(attachment.content);
                         attachment.encoding = 'base64';
                     }
                 }
                 break;
-
-            case 'utf8':
+            case 'utf8': {
                 let attachmentDecoder = new TextDecoder('utf8');
-                for (let attachment of message.attachments || []) {
-                    if (attachment?.content) {
+                for (let attachment of this.attachments) {
+                    if (attachment.content && typeof attachment.content !== 'string') {
                         attachment.content = attachmentDecoder.decode(attachment.content);
                         attachment.encoding = 'utf8';
                     }
                 }
                 break;
-
-            default:
-                throw new Error('Unknown attachment encoding');
+            }
         }
-
+    }
+    /**
+     * Parses a raw email message. A parser instance can be used once
+     *
+     * @param buf Raw email message
+     * @returns The parsed email
+     */
+    async parse(buf) {
+        if (this.started) {
+            throw createError('EPARSERREUSED', 'Can not reuse parser, create a new PostalMime object');
+        }
+        this.started = true;
+        this.buf = await this.resolveInput(buf);
+        this.av = new Uint8Array(this.buf);
+        this.readPos = 0;
+        while (this.readPos < this.av.length) {
+            const line = this.readLine();
+            await this.processLine(line.bytes, line.lineBreak, line.done);
+        }
+        this.forceRfc822Attachments = Boolean(this.options.forceRfc822Attachments) || this.hasReportParts();
+        await this.collectNode(this.root, false, false);
+        // A nested parser hands its text parts to its parent, see collectSubMessage, and the
+        // root parser renders them all at once. Rendering at every level as well cost each
+        // level the text and html of everything below it, and kept them until the root was
+        // done: a chain of forwards as deep as maxRfc822NestingDepth allows took ten times
+        // the time and the memory of the flat message it held
+        if (this.rfc822NestingDepth === 0) {
+            this.renderTextContent();
+        }
+        const message = this.buildMessage();
+        this.encodeAttachments();
         return message;
     }
 }
@@ -4955,7 +6881,7 @@ class PostalMime {
 //   FI DE LA DEPENDÈNCIA VENDORITZADA — COMENÇA EL WORKER
 //
 //   Tot el que hi ha a SOBRE d'aquesta línia és postal-mime
-//   3.0.0, copiat tal qual de worker/postal-mime.js (CLAUDE.md
+//   4.2.1, copiat tal qual de worker/postal-mime.js (CLAUDE.md
 //   §3). No l'editis: si algun dia cal actualitzar-lo, es torna
 //   a generar aquest fitxer sencer, no es pedaça aquí.
 //
@@ -4971,6 +6897,8 @@ class PostalMime {
 //   generar aquest.
 //
 // ============================================================
+// ============================================================
+
 // ============================================================
 
 // ============================================================
