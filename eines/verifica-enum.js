@@ -93,9 +93,9 @@ var LLOCS = [
   { fitxer: 'eines/fila-segura.js', que: 'COMARCA_VALUES', enumeracio: 'comarca', com: 'array', nom: 'COMARCA_VALUES' },
 
   // 11-12. El mirall offline del web públic.
-  { fitxer: 'prova-local.html', que: 'CATEGORIES (filtre)', enumeracio: 'categoria', com: 'bilingue', nom: 'CATEGORIES' },
-  { fitxer: 'prova-local.html', que: 'CATEGORIA_ICONES', enumeracio: 'categoria', com: 'icones', nom: 'CATEGORIA_ICONES' },
-  { fitxer: 'prova-local.html', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' }
+  { fitxer: '_local/prova-local.html', que: 'CATEGORIES (filtre)', enumeracio: 'categoria', com: 'bilingue', nom: 'CATEGORIES' },
+  { fitxer: '_local/prova-local.html', que: 'CATEGORIA_ICONES', enumeracio: 'categoria', com: 'icones', nom: 'CATEGORIA_ICONES' },
+  { fitxer: '_local/prova-local.html', que: 'COMARQUES', enumeracio: 'comarca', com: 'array', nom: 'COMARQUES' }
 ];
 
 // Els fitxers que porten una còpia LITERAL del prompt mestre. No n'hi ha prou

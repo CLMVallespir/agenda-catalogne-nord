@@ -37,10 +37,10 @@
    Català: Fraunces (títols) + Montserrat (cos/UI). Francès: Georgia cursiva.
    Si els .woff2 no hi són, es mostren les alternatives sense trencar res.
 -------------------------------------------------------------------- */
-@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/fraunces-700.woff2') format('woff2'); }
-@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/fraunces-900.woff2') format('woff2'); }
-@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/montserrat-400.woff2') format('woff2'); }
-@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/montserrat-600.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/fraunces-700.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 900; font-display: swap; src: url('../fonts/fraunces-900.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/montserrat-400.woff2') format('woff2'); }
+@font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/montserrat-600.woff2') format('woff2'); }
 
 /* --------------------------------------------------------------------
    Colors. El «sang i or» és invariable i només surt com a accent.
@@ -715,13 +715,13 @@ body.visor-obert { overflow: hidden; }
     <div class="contingut">
       <!-- El logotip: dues imatges, una per tema (el CSS amaga la inactiva). -->
       <h1>
-        <img class="logo-quefas logo-clar" src="img/logo/que-fas_clar.svg" alt="Què fas? — l’Agenda de Cat Nord">
-        <img class="logo-quefas logo-fosc" src="img/logo/que-fas_fosc.svg" alt="Què fas? — l’Agenda de Cat Nord">
+        <img class="logo-quefas logo-clar" src="../img/logo/que-fas_clar.svg" alt="Què fas? — l’Agenda de Cat Nord">
+        <img class="logo-quefas logo-fosc" src="../img/logo/que-fas_fosc.svg" alt="Què fas? — l’Agenda de Cat Nord">
       </h1>
       <!-- Fila d'utilitats sota el logotip: «Qui sem» + botó de tema.
            En pantalla ampla (≥900px) el botó de tema salta a la cantonada. -->
       <div class="fila-utilitats">
-        <a class="boto-quisom" href="qui-som.html">
+        <a class="boto-quisom" href="../qui-som.html">
           <span class="quisom-ca">Qui sem</span>
           <span class="quisom-fr" lang="fr">Qui sommes-nous</span>
         </a>
@@ -803,7 +803,7 @@ body.visor-obert { overflow: hidden; }
       <p class="peu-legal">
         <span class="peu-legal-ca">Les informacions es publiquen de bona fe sota la responsabilitat exclusiva dels organitzadors. Verifiqueu sempre horaris i lloc amb l’organitzador.</span>
         <span class="peu-legal-fr" lang="fr">Les informations sont publiées de bonne foi sous la responsabilité exclusive des organisateurs. Vérifiez toujours auprès de l’organisateur.</span>
-        <a class="enllac-legal" href="mencions-legals.html">Mencions legals i condicions · Mentions légales et conditions</a>
+        <a class="enllac-legal" href="../mencions-legals.html">Mencions legals i condicions · Mentions légales et conditions</a>
       </p>
     </div>
   </footer>
@@ -817,7 +817,7 @@ body.visor-obert { overflow: hidden; }
     <p id="visor-titol" class="visor-titol"></p>
   </div>
 
-  <script src="url-segura.js"></script>
+  <script src="../url-segura.js"></script>
   <script>
 // Còpia de la lògica d'app.js amb una única diferència: en lloc de fer
 // fetch() de events.json, les dades d'exemple són incrustades aquí sota.

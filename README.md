@@ -61,7 +61,7 @@ s'executa i para.
 | `events.json` | Dades publicades — font de veritat del que és en línia |
 | `pendents.json` | La cua de revisió — el que espera validació |
 | `events-exemple.json` | Dades fictícies de prova (mode `?prova=1`) |
-| `prova-local.html` | Mirall offline del web públic |
+| `_local/prova-local.html` | Mirall offline del web públic (no es publica: el prefix `_` el deixa fora de Pages) |
 | `worker/worker.js` | **La font de veritat del Worker.** Els tres gestors: `email()`, `fetch()`, `scheduled()` |
 | `worker/postal-mime.js` | Analitzador MIME vendoritzat (l'única dependència del projecte) |
 | `worker/worker-concatenat.js` | **Generat.** Els dos fitxers de dalt en un de sol: és el que s'enganxa al tauler |

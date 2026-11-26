@@ -308,7 +308,7 @@ un enum, i abans de desplegar el Worker.** El germà per al joc de camps és
 
 `node eines/verifica-enum.js` llista les dotze còpies vives (vuit fitxers: prompt mestre, Worker i
 el seu concatenat, `app.js`, `curador.js`, `eines/dedup-esdeveniments.js`, `eines/fila-segura.js`,
-`prova-local.html`) i les compara.
+`_local/prova-local.html`) i les compara.
 
 **Els dos documents que també l'escriuen** i que queden desfasats si no es
 toquen: aquest fitxer (§4) i `docs/pas-5-typebot-questionari.md`.
