@@ -3903,5 +3903,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.715Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-28-bahaut-en-culture",
+    "titol": "Ba'Haut en Culture - Espectacle Toto et Flo",
+    "data_inici": "2026-11-28",
+    "data_fi": "2026-11-28",
+    "hora": "17:00",
+    "lloc": "Avenue du Stade",
+    "municipi": "Bao",
+    "comarca": "Rosselló",
+    "categoria": "Teatre",
+    "descripcio_ca": "Es tracta d'un acte d'una hora de durada que transcorre en un univers decalat. Es proposa com un moment de felicitat i de relaxació.",
+    "descripcio_fr": "Il s'agit d'un acte d'une heure qui se déroule dans un univers décalé. Il est présenté comme un moment de bonheur et de détente.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678100/pexels-filipe-braggio-57041688-12092991_n8i7uz.webp",
+    "font_url": "https://www.baho.fr/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.727Z",
+    "periodicitat": ""
   }
 ]
