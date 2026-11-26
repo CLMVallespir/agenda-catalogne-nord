@@ -840,7 +840,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZS58] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-11-29-cinema-un-bon",
+    "id": "2026-11-29-un-bon-patron",
     "titol": "Un bon patron",
     "data_inici": "2026-11-29",
     "data_fi": "2026-11-29",
@@ -852,9 +852,9 @@
     "descripcio_ca": "L'acte proposa una cita cinematogràfica amb la pel·lícula Un bon patron, una comèdia dirigida per Philippe de Chauveron i protagonitzada per Didier Bourdon i Catherine Frot. Antoine Blanchet dirigeix una fàbrica familiar de balances i, a pocs dies de rebre un prestigiós premi d'excel·lència, el seu món ben organitzat comença a trontollar. Un antic empleat acomiadat protesta davant la fàbrica, un capatàs afectat per problemes conjugals amenaça la producció i una atractiva becària hi sembra el desconcert entre els treballadors. L'obra explora amb humor les relacions humanes i les contradiccions del món de l'empresa.",
     "descripcio_fr": "L'acte propose une rencontre cinématographique autour du film Un bon patron, une comédie réalisée par Philippe de Chauveron et portée par Didier Bourdon et Catherine Frot. Antoine Blanchet dirige une fabrique familiale de balances et s'apprête à recevoir un prestigieux prix d'excellence, mais à quelques jours de cette consécration, son univers bien organisé commence à vaciller. Un ancien employé licencié manifeste devant l'usine, un contremaître bouleversé par ses problèmes conjugaux menace la production et une séduisante stagiaire sème le trouble parmi les salariés. L'œuvre explore avec humour les relations humaines et les contradictions du monde de l'entreprise.",
     "associacio": "",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/Pixabay---Cinema.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678111/Pixabay---Cinema_vc53lr.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.847Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZRTZ] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
