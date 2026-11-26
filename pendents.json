@@ -1020,7 +1020,7 @@
     "nota_curador": "[ADT66 id: FMALAR066V52ZO40] Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
   },
   {
-    "id": "2026-12-02-spectacle-de-lequipe",
+    "id": "2026-12-02-espectacle-de-lequip",
     "titol": "Espectacle de l'equip de l'escola bressol municipal en benefici del Téléthon",
     "data_inici": "2026-12-02",
     "data_fi": "2026-12-02",
@@ -1032,9 +1032,9 @@
     "descripcio_ca": "L'equip de l'escola bressol municipal El cant del ocells presenta a la sala Escaro de l'ajuntament de Sant Cebrià de Rosselló L'enveloppe mystérieuse, un espectacle inèdit imaginat, escrit i interpretat pels professionals de la petita infància. És un moment de compartir, pensat per a famílies i amics, en benefici del Téléthon. Les places són limitades.",
     "descripcio_fr": "L'équipe de la crèche municipale El cant del ocells présente à la salle Escaro de la mairie de Sant Cebrià de Rosselló L'enveloppe mystérieuse, un spectacle inédit imaginé, écrit et interprété par les professionnels de la petite enfance. C'est un moment de partage, pensé pour les familles et les amis, au profit du Téléthon. Les places sont limitées.",
     "associacio": "Contacter NATHALIE MOYA, DIRECTRICE DE LA CRÈCHE",
-    "imatge_url": "http://cdt66.media.tourinsoft.eu/upload/event-FMALAR066V52ZS93-1795189948061.jpg?width=150&height=120",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678150/event-FMALAR066V52ZS93-1795189948061_vhhla1.webp",
     "font_url": "",
-    "estat": "pendent",
+    "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.862Z",
     "periodicitat": "",
     "nota_curador": "[ADT66 id: FMALAR066V52ZS93] Ve marcada només «Spectacle», que no diu de què va: es posa Teatre per defecte. Comproveu-ho. Títol i descripcions escrits per un model a partir del text francès de l'ADT66. Comprova'ls abans de publicar."
