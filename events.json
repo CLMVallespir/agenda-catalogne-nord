@@ -3960,5 +3960,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.847Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-11-29-treball-participatiu-de",
+    "titol": "Treball participatiu de pedra seca",
+    "data_inici": "2026-11-29",
+    "data_fi": "2026-11-29",
+    "hora": "09:30",
+    "lloc": "Comes",
+    "municipi": "Eus",
+    "comarca": "Conflent",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'un treball voluntari col·lectiu i de caràcter convivial. L'activitat és oberta a tothom i inclou un pícnic gratuït. Cal portar guants i bon calçat.",
+    "descripcio_fr": "Il s'agit d'un chantier bénévole collectif et de caractère convivial. L'activité est ouverte à tous et comprend un pique-nique gratuit. Il est nécessaire d'apporter des gants et de bonnes chaussures.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678116/IMG-7268_tmiscd.webp",
+    "font_url": "",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.857Z",
+    "periodicitat": ""
   }
 ]
