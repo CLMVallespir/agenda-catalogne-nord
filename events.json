@@ -3979,5 +3979,24 @@
     "estat": "publicat",
     "data_entrada": "2026-11-21T22:27:42.857Z",
     "periodicitat": ""
+  },
+  {
+    "id": "2026-12-01-taller-de-pastisseria",
+    "titol": "Taller de pastisseria per a adults",
+    "data_inici": "2026-12-01",
+    "data_fi": "2026-12-01",
+    "hora": "18:30",
+    "lloc": "2 boulevard Violet",
+    "municipi": "Tuïr",
+    "comarca": "Rosselló",
+    "categoria": "Taller",
+    "descripcio_ca": "Es tracta d'una nova temporada de tallers de pastisseria per a adults, en un ambient distès i de convivència. S'hi prepararan tartes de temporada, postres elaborats i dolços reconfortants, amb receptes creatives. Els participants cuinen al costat de la xef, que comparteix els seus secrets i astúcies. Cada taller ofereix un resultat per degustar i emportar-se a casa.",
+    "descripcio_fr": "Il s'agit d'une nouvelle saison d'ateliers de pâtisserie pour adultes, dans une ambiance conviviale. On y préparera des tartes de saison, des entremets raffinés et des douceurs réconfortantes, avec des recettes créatives. Les participants cuisinent aux côtés de la cheffe, qui partage ses secrets et astuces. Chaque atelier offre une réalisation à déguster et à emporter chez soi.",
+    "associacio": "",
+    "imatge_url": "https://res.cloudinary.com/clm-agenda/image/upload/v1795678123/Programme-A3-2026-2027-ateliers-patisserie-adultes-page-0001_pfsaau.webp",
+    "font_url": "https://caves-byrrh-boutique.fr/ateliers-culinaires/",
+    "estat": "publicat",
+    "data_entrada": "2026-11-21T22:27:42.619Z",
+    "periodicitat": ""
   }
 ]
